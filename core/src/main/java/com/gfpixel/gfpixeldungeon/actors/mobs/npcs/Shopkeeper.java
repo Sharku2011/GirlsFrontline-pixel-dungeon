@@ -21,6 +21,7 @@
 
 package com.gfpixel.gfpixeldungeon.actors.mobs.npcs;
 
+import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
@@ -68,7 +69,15 @@ public class Shopkeeper extends NPC {
 				heap.destroy();
 			}
 		}
-		
+
+		int theme = 0;
+
+		if (Dungeon.depth == 6) { theme = 1; }
+		else if (Dungeon.depth == 11) { theme = 2; }
+		else if (Dungeon.depth == 16) { theme = 3; }
+
+		Badges.validateBullyShopkeeper( theme );
+
 		destroy();
 		
 		sprite.killAndErase();

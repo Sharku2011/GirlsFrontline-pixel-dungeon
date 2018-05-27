@@ -21,6 +21,7 @@
 
 package com.gfpixel.gfpixeldungeon.actors.mobs.npcs;
 
+import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
@@ -56,7 +57,9 @@ public class ImpShopkeeper extends Shopkeeper {
 				heap.destroy();
 			}
 		}
-		
+
+		Badges.validateBullyShopkeeper( 4 );
+
 		destroy();
 		
 		sprite.emitter().burst( Speck.factory( Speck.WOOL ), 15 );
