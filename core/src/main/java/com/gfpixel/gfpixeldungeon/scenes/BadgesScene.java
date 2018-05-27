@@ -75,7 +75,7 @@ public class BadgesScene extends PixelScene {
 
 		List<Badges.Badge> badges = Badges.filtered( true );
 
-		int blankBadges = 33;
+		int blankBadges = 34;
 		blankBadges -= badges.size();
 		if (badges.contains(Badges.Badge.ALL_ITEMS_IDENTIFIED))	blankBadges -= 6;
 		if (badges.contains(Badges.Badge.YASD)) 				blankBadges -= 5;
@@ -85,7 +85,8 @@ public class BadgesScene extends PixelScene {
 		int nCols = SPDSettings.landscape() ? 7 : 4;
 		if (badges.size() + blankBadges > 32 && !SPDSettings.landscape())	nCols++;
 
-		int nRows = 1 + (blankBadges + badges.size())/nCols;
+		// add 1 line if there are remains when divided by nCols.
+		int nRows = Math.min(1,(blankBadges + badges.size())%nCols) + (blankBadges + badges.size())/nCols;
 
 		float badgeWidth = (w - 2*left)/nCols;
 		float badgeHeight = (h - 2*top)/nRows;
