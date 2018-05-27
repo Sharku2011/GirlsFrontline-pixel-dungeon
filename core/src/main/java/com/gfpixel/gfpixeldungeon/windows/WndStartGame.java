@@ -317,7 +317,7 @@ public class WndStartGame extends Window {
 					switch(cl){
 						case WARRIOR:
 							heroItem.icon(new ItemSprite(ItemSpriteSheet.SEAL, null));
-							heroLoadout.icon(new ItemSprite(ItemSpriteSheet.WORN_SHORTSWORD, null));
+							heroLoadout.icon(new ItemSprite(ItemSpriteSheet.UMP45, null));
 							heroMisc.icon(new ItemSprite(ItemSpriteSheet.RATION, null));
 							break;
 						case MAGE:

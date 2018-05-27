@@ -49,6 +49,8 @@ public class Assets {
 	public static final String HUNTRESS	= "huntress.png";
 	public static final String AVATARS	= "avatars.png";
 	public static final String PET		= "pet.png";
+	public static final String UMP40 	= "ump40.png";
+	public static final String EMOTION 	= "emotion.png";
 	
 	public static final String SURFACE	= "surface.png";
 	
