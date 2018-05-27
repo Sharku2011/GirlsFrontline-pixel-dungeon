@@ -59,6 +59,7 @@ public class Badges {
 		LEVEL_REACHED_2( 9 ),
 		LEVEL_REACHED_3( 10 ),
 		LEVEL_REACHED_4( 11 ),
+		LEVEL_REACHED_5( 8 ),
 		ALL_WEAPONS_IDENTIFIED( 16 ),
 		ALL_ARMOR_IDENTIFIED( 17 ),
 		ALL_WANDS_IDENTIFIED( 18 ),
@@ -84,11 +85,17 @@ public class Badges {
 		BOSS_SLAIN_1_MAGE,
 		BOSS_SLAIN_1_ROGUE,
 		BOSS_SLAIN_1_HUNTRESS,
-		BOSS_SLAIN_1( 12 ),
-		BOSS_SLAIN_2( 13 ),
-		BOSS_SLAIN_3( 14 ),
-		BOSS_SLAIN_4( 15 ),
+		BOSS_SLAIN_1( 64 ),
+		BOSS_SLAIN_2( 65 ),
+		BOSS_SLAIN_3( 66 ),
+		BOSS_SLAIN_4( 67 ),
+		BOSS_SLAIN_5( 68 ),
 		BOSS_SLAIN_1_ALL_CLASSES( 32, true ),
+		BULLY_SHOPKEEPER_1,
+		BULLY_SHOPKEEPER_2,
+		BULLY_SHOPKEEPER_3,
+		BULLY_SHOPKEEPER_4,
+		BULLY_SHOPKEEPER_ALL( 70, true ),
 		BOSS_SLAIN_3_GLADIATOR,
 		BOSS_SLAIN_3_BERSERKER,
 		BOSS_SLAIN_3_WARLOCK,
@@ -108,10 +115,12 @@ public class Badges {
 		CHAMPION_1( 37, true ),
 		CHAMPION_2( 38, true ),
 		CHAMPION_3( 39, true ),
+		CHAMPION_ALL( 39, true ),
 		STRENGTH_ATTAINED_1( 40 ),
 		STRENGTH_ATTAINED_2( 41 ),
 		STRENGTH_ATTAINED_3( 42 ),
 		STRENGTH_ATTAINED_4( 43 ),
+		STRENGTH_ATTAINED_5( 40 ),
 		FOOD_EATEN_1( 44 ),
 		FOOD_EATEN_2( 45 ),
 		FOOD_EATEN_3( 46 ),
@@ -124,10 +133,12 @@ public class Badges {
 		ITEM_LEVEL_2( 49 ),
 		ITEM_LEVEL_3( 50 ),
 		ITEM_LEVEL_4( 51 ),
+		ITEM_LEVEL_5( 58 ),
 		POTIONS_COOKED_1( 52 ),
 		POTIONS_COOKED_2( 53 ),
 		POTIONS_COOKED_3( 54 ),
 		POTIONS_COOKED_4( 55 ),
+		POTIONS_COOKED_5( 52 ),
 		MASTERY_COMBO( 56 ),
 		NO_MONSTERS_SLAIN( 57 ),
 		GRIM_WEAPON( 58 ),
@@ -321,6 +332,10 @@ public class Badges {
 			badge = Badge.LEVEL_REACHED_4;
 			local.add( badge );
 		}
+		if (!local.contains( Badge.LEVEL_REACHED_5 ) && Dungeon.hero.lvl >= 30) {
+			badge = Badge.LEVEL_REACHED_5;
+			local.add( badge );
+		}
 		
 		displayBadge( badge );
 	}
@@ -342,6 +357,10 @@ public class Badges {
 		}
 		if (!local.contains( Badge.STRENGTH_ATTAINED_4 ) && Dungeon.hero.STR >= 19) {
 			badge = Badge.STRENGTH_ATTAINED_4;
+			local.add( badge );
+		}
+		if (!local.contains( Badge.STRENGTH_ATTAINED_4 ) && Dungeon.hero.STR >= 21) {
+			badge = Badge.STRENGTH_ATTAINED_5;
 			local.add( badge );
 		}
 		
@@ -390,6 +409,10 @@ public class Badges {
 			badge = Badge.POTIONS_COOKED_4;
 			local.add( badge );
 		}
+		if (!local.contains( Badge.POTIONS_COOKED_4 ) && Statistics.potionsCooked >= 15) {
+			badge = Badge.POTIONS_COOKED_5;
+			local.add( badge );
+		}
 		
 		displayBadge( badge );
 	}
@@ -432,6 +455,10 @@ public class Badges {
 		}
 		if (!local.contains( Badge.ITEM_LEVEL_4 ) && item.level() >= 12) {
 			badge = Badge.ITEM_LEVEL_4;
+			local.add( badge );
+		}
+		if (!local.contains( Badge.ITEM_LEVEL_4 ) && item.level() >= 15) {
+			badge = Badge.ITEM_LEVEL_5;
 			local.add( badge );
 		}
 		
@@ -553,7 +580,45 @@ public class Badges {
 			displayBadge( badge );
 		}
 	}
-	
+
+	public static void validateBullyShopkeeper(int theme)
+	{
+		Badge badge = null;
+
+		switch (theme)
+		{
+			case 0:
+				break;
+			case 1:
+				badge = Badge.BULLY_SHOPKEEPER_1;
+				break;
+			case 2:
+				badge = Badge.BULLY_SHOPKEEPER_2;
+				break;
+			case 3:
+				badge = Badge.BULLY_SHOPKEEPER_3;
+				break;
+			case 4:
+				badge = Badge.BULLY_SHOPKEEPER_4;
+				break;
+			default:
+				break;
+		}
+
+		if (!local.contains( badge )) {
+			local.add( badge );
+			saveNeeded = true;
+		}
+
+		if (local.contains(Badge.BULLY_SHOPKEEPER_1) && local.contains(Badge.BULLY_SHOPKEEPER_2) &&
+			local.contains(Badge.BULLY_SHOPKEEPER_3) && local.contains(Badge.BULLY_SHOPKEEPER_4)) {
+
+			badge = Badge.BULLY_SHOPKEEPER_ALL;
+
+			displayBadge( badge );
+		}
+	}
+
 	public static void validateBossSlain() {
 		Badge badge = null;
 		switch (Dungeon.depth) {
@@ -787,6 +852,9 @@ public class Badges {
 		if (challenges >= 6){
 			badge = Badge.CHAMPION_3;
 		}
+		if (challenges >= Challenges.MASKS.length){
+			badge = Badge.CHAMPION_ALL;
+		}
 		displayBadge( badge );
 	}
 	
@@ -840,11 +908,11 @@ public class Badges {
 
 		leaveBest( filtered, Badge.MONSTERS_SLAIN_1, Badge.MONSTERS_SLAIN_2, Badge.MONSTERS_SLAIN_3, Badge.MONSTERS_SLAIN_4 );
 		leaveBest( filtered, Badge.GOLD_COLLECTED_1, Badge.GOLD_COLLECTED_2, Badge.GOLD_COLLECTED_3, Badge.GOLD_COLLECTED_4 );
-		leaveBest( filtered, Badge.BOSS_SLAIN_1, Badge.BOSS_SLAIN_2, Badge.BOSS_SLAIN_3, Badge.BOSS_SLAIN_4 );
-		leaveBest( filtered, Badge.LEVEL_REACHED_1, Badge.LEVEL_REACHED_2, Badge.LEVEL_REACHED_3, Badge.LEVEL_REACHED_4 );
-		leaveBest( filtered, Badge.STRENGTH_ATTAINED_1, Badge.STRENGTH_ATTAINED_2, Badge.STRENGTH_ATTAINED_3, Badge.STRENGTH_ATTAINED_4 );
+		leaveBest( filtered, Badge.BOSS_SLAIN_1, Badge.BOSS_SLAIN_2, Badge.BOSS_SLAIN_3, Badge.BOSS_SLAIN_4, Badge.BOSS_SLAIN_5 );
+		leaveBest( filtered, Badge.LEVEL_REACHED_1, Badge.LEVEL_REACHED_2, Badge.LEVEL_REACHED_3, Badge.LEVEL_REACHED_4, Badge.LEVEL_REACHED_5 );
+		leaveBest( filtered, Badge.STRENGTH_ATTAINED_1, Badge.STRENGTH_ATTAINED_2, Badge.STRENGTH_ATTAINED_3, Badge.STRENGTH_ATTAINED_4, Badge.STRENGTH_ATTAINED_5 );
 		leaveBest( filtered, Badge.FOOD_EATEN_1, Badge.FOOD_EATEN_2, Badge.FOOD_EATEN_3, Badge.FOOD_EATEN_4 );
-		leaveBest( filtered, Badge.ITEM_LEVEL_1, Badge.ITEM_LEVEL_2, Badge.ITEM_LEVEL_3, Badge.ITEM_LEVEL_4 );
+		leaveBest( filtered, Badge.ITEM_LEVEL_1, Badge.ITEM_LEVEL_2, Badge.ITEM_LEVEL_3, Badge.ITEM_LEVEL_4, Badge.ITEM_LEVEL_5 );
 		leaveBest( filtered, Badge.POTIONS_COOKED_1, Badge.POTIONS_COOKED_2, Badge.POTIONS_COOKED_3, Badge.POTIONS_COOKED_4 );
 		leaveBest( filtered, Badge.DEATH_FROM_FIRE, Badge.YASD );
 		leaveBest( filtered, Badge.DEATH_FROM_GAS, Badge.YASD );
@@ -860,7 +928,7 @@ public class Badges {
 		leaveBest( filtered, Badge.ALL_POTIONS_IDENTIFIED, Badge.ALL_ITEMS_IDENTIFIED );
 		leaveBest( filtered, Badge.ALL_SCROLLS_IDENTIFIED, Badge.ALL_ITEMS_IDENTIFIED );
 		leaveBest( filtered, Badge.GAMES_PLAYED_1, Badge.GAMES_PLAYED_2, Badge.GAMES_PLAYED_3, Badge.GAMES_PLAYED_4 );
-		leaveBest( filtered, Badge.CHAMPION_1, Badge.CHAMPION_2, Badge.CHAMPION_3 );
+		leaveBest( filtered, Badge.CHAMPION_1, Badge.CHAMPION_2, Badge.CHAMPION_3, Badge.CHAMPION_ALL );
 		
 		ArrayList<Badge> list = new ArrayList<Badge>( filtered );
 		Collections.sort( list );
