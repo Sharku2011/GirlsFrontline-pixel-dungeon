@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015 Oleg Dolya
+ * Copyright (C) 2012-2015  Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2018 Evan Debenham
+ * Copyright (C) 2014-2017 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,26 +21,21 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
-import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Gauntlet extends MeleeWeapon {
-	
-	{
-		image = ItemSpriteSheet.SOMETHING;
-		
-		tier = 5;
-		DLY = 0.5f; //2x speed
-	}
-	
-	@Override
-	public int max(int lvl) {
-		return  Math.round(2.5f*(tier+1)) +     //15 base, down from 30
-				lvl*Math.round(0.5f*(tier+1));  //+3 per level, down from +6
-	}
-	
-	@Override
-	public int defenseFactor( Char owner ) {
-		return 5;	//5 extra defence
-	}
+public class G36 extends MeleeWeapon {
+
+    {
+        image = ItemSpriteSheet.G36;
+
+        tier = 2;
+        DLY = 0.8f;
+    }
+
+    @Override
+    public int max(int lvl) {
+        return  3*(tier+1) +    //8 base, down from 10
+                lvl*(tier+2);   //scaling unchanged
+    }
+
 }

@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.actors.hero;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Badges;
+import com.gfpixel.gfpixeldungeon.BuildConfig;
 import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.items.BrokenSeal;
@@ -39,6 +40,7 @@ import com.gfpixel.gfpixeldungeon.items.potions.PotionOfMindVision;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dagger;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Knuckles;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
@@ -130,6 +132,11 @@ public enum HeroClass {
 		new PotionBandolier().collect();
 		Dungeon.LimitedDrops.POTION_BANDOLIER.drop();
 		new PotionOfHealing().identify();
+
+		if (BuildConfig.DEBUG) 	{
+			new Cannon().identify().collect();
+		}
+
 	}
 
 	private static void initMage( Hero hero ) {
