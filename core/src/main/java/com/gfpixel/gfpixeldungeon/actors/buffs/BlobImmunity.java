@@ -1,0 +1,75 @@
+/*
+ * Pixel Dungeon
+ * Copyright (C) 2012-2015 Oleg Dolya
+ *
+ * Shattered Pixel Dungeon
+ * Copyright (C) 2014-2018 Evan Debenham
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ */
+
+package com.gfpixel.gfpixeldungeon.actors.buffs;
+
+import com.gfpixel.gfpixeldungeon.actors.blobs.ConfusionGas;
+import com.gfpixel.gfpixeldungeon.actors.blobs.CorrosiveGas;
+import com.gfpixel.gfpixeldungeon.actors.blobs.Electricity;
+import com.gfpixel.gfpixeldungeon.actors.blobs.Fire;
+import com.gfpixel.gfpixeldungeon.actors.blobs.Freezing;
+import com.gfpixel.gfpixeldungeon.actors.blobs.ParalyticGas;
+import com.gfpixel.gfpixeldungeon.actors.blobs.Regrowth;
+import com.gfpixel.gfpixeldungeon.actors.blobs.StenchGas;
+import com.gfpixel.gfpixeldungeon.actors.blobs.ToxicGas;
+import com.gfpixel.gfpixeldungeon.actors.blobs.Web;
+import com.gfpixel.gfpixeldungeon.messages.Messages;
+import com.gfpixel.gfpixeldungeon.ui.BuffIndicator;
+import com.watabou.noosa.Image;
+
+public class BlobImmunity extends FlavourBuff {
+	
+	public static final float DURATION	= 20f;
+	
+	@Override
+	public int icon() {
+		return BuffIndicator.IMMUNITY;
+	}
+	
+	@Override
+	public void tintIcon(Image icon) {
+		greyIcon(icon, 5f, cooldown());
+	}
+	
+	@Override
+	public String toString() {
+		return Messages.get(this, "name");
+	}
+
+	{
+		//all harmful blobs
+		immunities.add( ConfusionGas.class );
+		immunities.add( CorrosiveGas.class );
+		immunities.add( Electricity.class );
+		immunities.add( Fire.class );
+		immunities.add( Freezing.class );
+		immunities.add( ParalyticGas.class );
+		immunities.add( Regrowth.class );
+		immunities.add( StenchGas.class );
+		immunities.add( ToxicGas.class );
+		immunities.add( Web.class );
+	}
+
+	@Override
+	public String desc() {
+		return Messages.get(this, "desc", dispTurns());
+	}
+}

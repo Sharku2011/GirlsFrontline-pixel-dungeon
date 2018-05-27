@@ -1,0 +1,160 @@
+/*
+ * Pixel Dungeon
+ * Copyright (C) 2012-2015 Oleg Dolya
+ *
+ * Shattered Pixel Dungeon
+ * Copyright (C) 2014-2018 Evan Debenham
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ */
+
+package com.gfpixel.gfpixeldungeon.plants;
+
+import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.Actor;
+import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
+import com.gfpixel.gfpixeldungeon.actors.buffs.FlavourBuff;
+import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
+import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
+import com.gfpixel.gfpixeldungeon.effects.Speck;
+import com.gfpixel.gfpixeldungeon.effects.particles.ShaftParticle;
+import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
+import com.gfpixel.gfpixeldungeon.messages.Messages;
+import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
+import com.gfpixel.gfpixeldungeon.ui.BuffIndicator;
+import com.watabou.noosa.Image;
+import com.watabou.utils.Bundle;
+
+public class Sungrass extends Plant {
+	
+	{
+		image = 4;
+	}
+	
+	@Override
+	public void activate() {
+		Char ch = Actor.findChar(pos);
+		
+		if (ch == Dungeon.hero) {
+			Buff.affect( ch, Health.class ).boost(ch.HT);
+		}
+		
+		if (Dungeon.level.heroFOV[pos]) {
+			CellEmitter.get( pos ).start( ShaftParticle.FACTORY, 0.2f, 3 );
+		}
+	}
+	
+	public static class Seed extends Plant.Seed {
+		{
+			image = ItemSpriteSheet.SEED_SUNGRASS;
+
+			plantClass = Sungrass.class;
+			alchemyClass = PotionOfHealing.class;
+
+			bones = true;
+		}
+	}
+	
+	public static class Health extends Buff {
+		
+		private static final float STEP = 1f;
+		
+		private int pos;
+		private float partialHeal;
+		private int level;
+
+		{
+			type = buffType.POSITIVE;
+		}
+		
+		@Override
+		public boolean act() {
+			if (target.pos != pos) {
+				detach();
+			}
+			
+			//for the hero, full heal takes ~50/93/111/120 turns at levels 1/10/20/30
+			partialHeal += (40 + target.HT)/150f;
+			
+			if (partialHeal > 1){
+				target.HP += (int)partialHeal;
+				level -= (int)partialHeal;
+				partialHeal -= (int)partialHeal;
+				target.sprite.emitter().burst(Speck.factory(Speck.HEALING), 1);
+				
+				if (target.HP >= target.HT) {
+					target.HP = target.HT;
+					if (target instanceof Hero){
+						((Hero)target).resting = false;
+					}
+				}
+			}
+			
+			if (level <= 0) {
+				detach();
+			} else {
+				BuffIndicator.refreshHero();
+			}
+			spend( STEP );
+			return true;
+		}
+
+		public void boost( int amount ){
+			level += amount;
+			pos = target.pos;
+		}
+		
+		@Override
+		public int icon() {
+			return BuffIndicator.HEALING;
+		}
+		
+		@Override
+		public void tintIcon(Image icon) {
+			FlavourBuff.greyIcon(icon, target.HT/4f, level);
+		}
+		
+		@Override
+		public String toString() {
+			return Messages.get(this, "name");
+		}
+
+		@Override
+		public String desc() {
+			return Messages.get(this, "desc", level);
+		}
+
+		private static final String POS	= "pos";
+		private static final String PARTIAL = "partial_heal";
+		private static final String LEVEL = "level";
+
+		@Override
+		public void storeInBundle( Bundle bundle ) {
+			super.storeInBundle( bundle );
+			bundle.put( POS, pos );
+			bundle.put( PARTIAL, partialHeal);
+			bundle.put( LEVEL, level);
+		}
+		
+		@Override
+		public void restoreFromBundle( Bundle bundle ) {
+			super.restoreFromBundle( bundle );
+			pos = bundle.getInt( POS );
+			partialHeal = bundle.getFloat( PARTIAL );
+			level = bundle.getInt( LEVEL );
+
+		}
+	}
+}
