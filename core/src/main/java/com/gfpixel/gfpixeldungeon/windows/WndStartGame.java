@@ -170,7 +170,7 @@ public class WndStartGame extends Window {
 			} else if (cl == HeroClass.ROGUE){
 				hero = new Image(Assets.ROGUE, 0, 86, 12, 17);
 			} else if (cl == HeroClass.HUNTRESS){
-				hero = new Image(Assets.HUNTRESS, 0, 86, 12, 17);
+				hero = new Image(Assets.RANGER, 0, 86, 12, 17);
 			}
 			add(hero);
 			

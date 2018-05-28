@@ -349,8 +349,9 @@ public class Hero extends Char {
 			}
 			if (wepDr > 0) dr += wepDr;
 		}
-		if (bark != null)               dr += Random.NormalIntRange( 0 , bark.level() );
-
+		if (bark != null) {
+			dr += Random.NormalIntRange(0, bark.level());
+		}
 		return dr;
 	}
 	
