@@ -160,6 +160,29 @@ public class Bestiary {
 						Succubus.class,
 						Eye.class, Eye.class,
 						Scorpio.class, Scorpio.class, Scorpio.class));
+			case 26:
+				return new ArrayList<>(Arrays.asList(
+						Cyclops.class, Cyclops.class,Cyclops.class, Cyclops.class,
+						Succubus.class,Succubus.class,
+						Jupiter.class));
+			case 27:
+				return new ArrayList<>(Arrays.asList(
+						Cyclops.class, Cyclops.class,Cyclops.class,
+						Succubus.class,Succubus.class,
+						Jupiter.class, Jupiter.class,
+						Hydra.class));
+			case 28:
+				return new ArrayList<>(Arrays.asList(
+						Cyclops.class, Cyclops.class,
+						Succubus.class, Jupiter.class,
+						Hydra.class, Hydra.class, Hydra.class,
+						Hydra.class, Hydra.class, Hydra.class));
+			case 29:
+				return new ArrayList<>(Arrays.asList(
+						Cyclops.class,
+						Hydra.class, Hydra.class, Hydra.class,
+						Hydra.class, Hydra.class, Hydra.class,
+						Hydra.class, Hydra.class, Hydra.class));
 		}
 		
 	}
@@ -220,6 +243,8 @@ public class Bestiary {
 					cl = Senior.class;
 				} else if (cl == Scorpio.class) {
 					cl = Acidic.class;
+				} else if (cl == Hydra.class) {
+					cl = Typhoon.class;
 				}
 				rotation.set(i, cl);
 			}
