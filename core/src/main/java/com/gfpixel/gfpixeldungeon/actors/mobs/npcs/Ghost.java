@@ -51,6 +51,7 @@ import com.gfpixel.gfpixeldungeon.sprites.GhostSprite;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.gfpixel.gfpixeldungeon.windows.WndQuest;
 import com.gfpixel.gfpixeldungeon.windows.WndSadGhost;
+import com.gfpixel.gfpixeldungeon.windows.WndStory;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
@@ -111,7 +112,9 @@ public class Ghost extends NPC {
 		sprite.turnTo( pos, Dungeon.hero.pos );
 		
 		Sample.INSTANCE.play( Assets.SND_GHOST );
-		
+
+		WndStory wnd;
+
 		if (Quest.given) {
 			if (Quest.weapon != null) {
 				if (Quest.processed) {
@@ -129,6 +132,9 @@ public class Ghost extends NPC {
 							GameScene.show(new WndQuest(this, Messages.get(this, "crab_2")));
 							break;
 					}
+
+
+
 
 					int newPos = -1;
 					for (int i = 0; i < 10; i++) {
@@ -166,7 +172,8 @@ public class Ghost extends NPC {
 
 			if (questBoss.pos != -1) {
 				GameScene.add(questBoss);
-				GameScene.show( new WndQuest( this, txt_quest ) );
+				WndStory.showChapter(WndStory.ID_STAR_QUEST);
+				//GameScene.show( new WndQuest( this, txt_quest ) );
 				Quest.given = true;
 				Notes.add( Notes.Landmark.GHOST );
 			}

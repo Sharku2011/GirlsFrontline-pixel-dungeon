@@ -54,6 +54,8 @@ import com.gfpixel.gfpixeldungeon.levels.LastShopLevel;
 import com.gfpixel.gfpixeldungeon.levels.Level;
 import com.gfpixel.gfpixeldungeon.levels.PrisonBossLevel;
 import com.gfpixel.gfpixeldungeon.levels.PrisonLevel;
+import com.gfpixel.gfpixeldungeon.levels.ReCavesBossLevel;
+import com.gfpixel.gfpixeldungeon.levels.ReCavesLevel;
 import com.gfpixel.gfpixeldungeon.levels.SewerBossLevel;
 import com.gfpixel.gfpixeldungeon.levels.SewerLevel;
 import com.gfpixel.gfpixeldungeon.levels.rooms.secret.SecretRoom;
@@ -301,20 +303,30 @@ public class Dungeon {
 		case 21:
 			level = new LastShopLevel();
 			break;
-		case 22:
-		case 23:
-		case 24:
-			level = new HallsLevel();
-			break;
-		case 25:
-			level = new HallsBossLevel();
-			break;
-		case 26:
-			level = new LastLevel();
-			break;
-		default:
-			level = new DeadEndLevel();
-			Statistics.deepestFloor--;
+			case 22:
+			case 23:
+			case 24:
+				level = new ReCavesLevel();
+				break;
+			case 25:
+				level = new ReCavesBossLevel();
+				break;
+			case 26:
+			case 27:
+			case 28:
+			case 29:
+				level = new HallsLevel();
+				break;
+			case 30:
+				level = new HallsBossLevel();
+				break;
+			case 31:
+				level = new LastLevel();
+				break;
+
+			default:
+				level = new DeadEndLevel();
+				Statistics.deepestFloor--;
 		}
 		
 		level.create();
