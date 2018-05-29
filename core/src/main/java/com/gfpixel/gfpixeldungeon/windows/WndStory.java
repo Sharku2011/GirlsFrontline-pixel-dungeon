@@ -97,6 +97,7 @@ public class WndStory extends Window {
 		CHAPTERS.put( ID_P7_QUEST, "p7quest");
 	};
 
+	// 안쓰임
 	static {
 		CHAPTERSLENGTH.put( ID_SEWERS, 2 );
 		CHAPTERSLENGTH.put( ID_PRISON, 2 );
@@ -207,6 +208,7 @@ public class WndStory extends Window {
 		} );
 	}
 
+	// FIXME static int로 변환
 	public int characterFind(String ctext){
 		switch (ctext){
 			case "G11":
@@ -225,6 +227,7 @@ public class WndStory extends Window {
 				return 6;
 			case "PPSH":
 				return 8;
+			// FIXME typo - destroyer
 			case "DISTROYER" :
 				return 9;
 			case "DREAMER" :
