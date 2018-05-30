@@ -137,6 +137,7 @@ public class WndStory extends Window {
 		resize( (int)(tf.width() + MARGIN * 2), (int)Math.min( tf.height(), 180 ) );
 	}
 
+	// text - 대사 식별자, ctext - 캐릭터 이름
 	public WndStory( String text , String ctext , int id) {
 		super( 0, 0, Chrome.get( Chrome.Type.NONE ) );
 		final int ids = id;
