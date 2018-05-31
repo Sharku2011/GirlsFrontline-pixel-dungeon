@@ -24,7 +24,6 @@ package com.gfpixel.gfpixeldungeon.windows;
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.Dungeon;
-import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
@@ -150,12 +149,12 @@ public class WndStory extends Window {
 		int sceneSlash = SPDSettings.landscape() ? 4:6;
 		int font_size = SPDSettings.landscape() ? 6:5;
 		int emotionGeter = ids >= 90 ? (QemotionFact[idsFact][sceneLevel]) : (emotionFact[idsFact][sceneLevel]);
-		gpd_talk = Chrome.get( Chrome.Type.GPDTALK );
+		gpd_talk = Chrome.get( Chrome.Type.DIALOG );
 		gpd_talk.size(
 				(PixelScene.uiCamera.width)-20,
-				(PixelScene.uiCamera.height/sceneSlash)-5);
+				(PixelScene.uiCamera.height/sceneSlash));
 		gpd_talk.x =10;
-		gpd_talk.y =PixelScene.uiCamera.height - gpd_talk.height() - 10;
+		gpd_talk.y =PixelScene.uiCamera.height - gpd_talk.height() - 32;
 		add(gpd_talk);
 		character = new Image(Assets.EMOTION);
 		character.frame( (24 * emotionGeter), (24*characterType)+1, 24, 23 );
@@ -163,14 +162,14 @@ public class WndStory extends Window {
 				2f:
 				1.5f );
 		character.x = 10;
-		character.y = ((PixelScene.uiCamera.height - ((PixelScene.uiCamera.height/sceneSlash)+5)) - (character.height()));
+		character.y = ((PixelScene.uiCamera.height - ((PixelScene.uiCamera.height/sceneSlash)+32)) - (character.height()));
 		add(character);
 
 
 		tf = PixelScene.renderMultiline( text, font_size );
-		tf.maxWidth((int)(gpd_talk.width()-20));
+		tf.maxWidth((int)(gpd_talk.width()-16));
 		tf.invert();
-		tf.setPos(20, PixelScene.uiCamera.height - gpd_talk.height());
+		tf.setPos(16, PixelScene.uiCamera.height - gpd_talk.height()-16);
 		tf.hardlight(0xFFFFFF);
 		add( tf );
 
