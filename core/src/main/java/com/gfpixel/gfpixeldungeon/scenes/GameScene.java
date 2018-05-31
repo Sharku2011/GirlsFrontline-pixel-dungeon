@@ -81,6 +81,7 @@ import com.gfpixel.gfpixeldungeon.ui.Window;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.gfpixel.gfpixeldungeon.windows.WndBag;
 import com.gfpixel.gfpixeldungeon.windows.WndBag.Mode;
+import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.gfpixel.gfpixeldungeon.windows.WndGame;
 import com.gfpixel.gfpixeldungeon.windows.WndHero;
 import com.gfpixel.gfpixeldungeon.windows.WndInfoCell;
@@ -340,7 +341,8 @@ public class GameScene extends PixelScene {
 		case DESCEND:
 			switch (Dungeon.depth) {
 			case 1:
-				WndStory.showChapter( WndStory.ID_SEWERS );
+				add(new WndDialog(0,0,""));
+				//WndStory.showChapter( WndStory.ID_SEWERS );
 				break;
 			case 6:
 				WndStory.showChapter( WndStory.ID_PRISON );
@@ -1004,4 +1006,8 @@ public class GameScene extends PixelScene {
 			return null;
 		}
 	};
+
+	public float ToolbarHeight() {
+	    return toolbar.height();
+    }
 }
