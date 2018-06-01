@@ -341,7 +341,7 @@ public class GameScene extends PixelScene {
 		case DESCEND:
 			switch (Dungeon.depth) {
 			case 1:
-				add(new WndDialog(0,0,""));
+				add(new WndDialog(0));
 				//WndStory.showChapter( WndStory.ID_SEWERS );
 				break;
 			case 6:
