@@ -5,6 +5,7 @@ import android.app.Dialog;
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
@@ -27,9 +28,17 @@ public class WndDialog extends Window {
         public final int LENGTH;
         public int[] CharacterArray;
         public int[] EmotionArray;
+        public int BRANCH;
 
-        public DialogInfo(int newID, int[] Chrs, int[] Emos)
-        {
+        public DialogInfo(int newID, int[] Chrs) {
+            ID = newID;
+            CharacterArray = Chrs;
+            EmotionArray = new int[Chrs.length];
+            LENGTH = Chrs.length;
+            BRANCH = 0;
+        }
+
+        public DialogInfo(int newID, int[] Chrs, int[] Emos) {
             ID = newID;
             CharacterArray = Chrs;
 
@@ -48,8 +57,38 @@ public class WndDialog extends Window {
             }
 
             LENGTH = Chrs.length;
+            BRANCH = 0;
+        }
+
+        public DialogInfo(int newID, int[] Chrs, int[] Emos, int option) {
+
+            ID = newID;
+            CharacterArray = Chrs;
+
+            if (Chrs.length <= Emos.length) {
+                EmotionArray = Emos;
+            } else {
+                EmotionArray = new int[Chrs.length];
+                for (int i=0; i<Emos.length; ++i) {
+                    if (Emos[i] > 2)
+                    {
+                        EmotionArray[i] = 0;
+                        continue;
+                    }
+                    EmotionArray[i] = Emos[i];
+                }
+            }
+
+            LENGTH = Chrs.length;
+            BRANCH = option;
+        }
+
+        public void setBRANCH(int newOption) {
+            BRANCH = newOption;
         }
     };
+
+    public static SparseArray<String> DialogIdentifier = new SparseArray<String>();
 
     public static final int G11         = 0;
     public static final int UMP45       = 1;
@@ -75,9 +114,10 @@ public class WndDialog extends Window {
     public static final int ID_PPSH47_QUEST	= 102;
     public static final int ID_P7_QUEST 	= 103;
 
-    private static final int MARGIN_X = 10;
-    private static final int MARGIN_Y = 5;
-    private static final int PADDING = 16;
+    // general tag for quest
+    public static final int QUEST_COMPLETE  = -1;
+    public static final int QUEST_INPROGRESS= -2;
+
 
     public static DialogInfo[] STORIES = new DialogInfo[] {
             new DialogInfo (
@@ -90,34 +130,72 @@ public class WndDialog extends Window {
                     new int[]{UMP9, UMP45, UMP9, G11, HK416, UMP9, UMP45},
                     new int[]{   0,     2,    2,   1,     2,    1,     1}
             ),
-            // TODO 캐릭터 배열 windows_ko 보고 옮겨적기, getDialogName으로 식별자 이름 받아오는 함수 만들기
             new DialogInfo (
                     WndDialog.ID_CAVES,
-                    new int[]{UMP45, UMP9, UMP45, HK416, UMP45, G11, HK416, G11},
-                    new int[]{0,2,0,1,2,1,0,1,0}
+                    new int[]{G11, UMP45, G11, UMP45, G11, HK416, UMP9, HK416, G11},
+                    new int[]{  0,     2,   0,     1,   2,     1,    0,     1,   0}
             ),
             new DialogInfo (
                     WndDialog.ID_CITY,
-                    new int[]{UMP45, UMP9, UMP45, HK416, UMP45, G11, HK416, G11},
-                    new int[]{2,2,2,1,1,0,0,0,2,0}
+                    new int[]{HK416, UMP45, UMP9, G11, HK416, UMP9, UMP45, DESTROYER, UMP45, UMP9},
+                    new int[]{    2,     2,    2,   1,     1,    0,     0,         0,     2,    0}
             ),
             new DialogInfo (
                     WndDialog.ID_RECAVES,
-                    new int[]{UMP45, UMP9, UMP45, HK416, UMP45, G11, HK416, G11},
-                    new int[]{1,2,1,1,1,1,0,2,1,0}
+                    new int[]{DESTROYER, DREAMER, DESTROYER, DREAMER, DESTROYER, DREAMER, DREAMER, DESTROYER, G11, UMP45},
+                    new int[]{        1,       2,         1,       1,         1,       1,       0,         2,   1,     0}
             ),
             new DialogInfo (
                     WndDialog.ID_HALLS,
-                    new int[]{UMP45, UMP9, UMP45, HK416, UMP45, G11, HK416, G11},
-                    new int[]{1,2,1,0,1,1,1,0}
+                    new int[]{UMP9, UMP45, UMP9, HK416, G11, HK416, G11, UMP45},
+                    new int[]{   1,     2,    1,     0,   1,     1,   1,     0}
             ),
             new DialogInfo (
                     WndDialog.ID_COLDWAR,
                     new int[]{UMP9, G11, UMP45},
                     new int[]{   2,   1,     1}
             ),
+            new DialogInfo (
+                    WndDialog.ID_STAR15_QUEST,
+                    new int[]{UMP45, UMP9, STAR15, STAR15, STAR15},
+                    new int[]{   1,     2,      0,      1,      0}
+            ),
+            new DialogInfo (
+                    WndDialog.ID_M16A1_QUEST,
+                    new int[]{UMP45, M16A1, M16A1, HK416, UMP45},
+                    new int[]{    1,     1,     0,     1,     0}
+            ),
+            new DialogInfo (
+                    WndDialog.ID_PPSH47_QUEST,
+                    new int[]{HK416, PPSH47, UMP9, PPSH47, PPSH47},
+                    new int[]{    0,      1,    1,       0,     1}
+            ),
+            new DialogInfo (
+                    WndDialog.ID_P7_QUEST,
+                    new int[]{P7, UMP9, P7, P7, P7},
+                    new int[]{ 1,    0,  0,  1,  0}
+            )
     };
 
+    static {
+        DialogIdentifier.put( ID_SEWERS, "sewers" );
+        DialogIdentifier.put( ID_PRISON, "prison" );
+        DialogIdentifier.put( ID_CAVES, "caves" );
+        DialogIdentifier.put( ID_CITY, "city" );
+        DialogIdentifier.put( ID_RECAVES, "recaves" );
+        DialogIdentifier.put( ID_HALLS, "halls" );
+        DialogIdentifier.put( ID_COLDWAR, "coldwar" );
+        DialogIdentifier.put( ID_STAR15_QUEST, "star15quest" );
+        DialogIdentifier.put( ID_M16A1_QUEST, "m16a1quest");
+        DialogIdentifier.put( ID_PPSH47_QUEST, "ppsh47quest");
+        DialogIdentifier.put( ID_P7_QUEST, "p7quest");
+        DialogIdentifier.put( QUEST_COMPLETE, "complete");
+        DialogIdentifier.put( QUEST_INPROGRESS, "inprogress");
+    };
+
+    private static final int MARGIN_X = 10;
+    private static final int MARGIN_Y = 5;
+    private static final int PADDING = 16;
 
     private static final int PADDING_TEXT = 15;
 
@@ -141,7 +219,10 @@ public class WndDialog extends Window {
         dialogLength = newLength;
         dialogStep = 0;
 
-        AVATAR = new Image(Assets.EMOTION, )
+        int widthAvatar  = 24;
+        int heightAvatar = 23;
+
+        AVATAR = new Image(Assets.EMOTION, );
 
         nametag = PixelScene.renderText(8 );
         tf = PixelScene.renderMultiline( fontSize );
