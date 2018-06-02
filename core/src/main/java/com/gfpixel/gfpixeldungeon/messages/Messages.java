@@ -21,6 +21,7 @@
 
 package com.gfpixel.gfpixeldungeon.messages;
 
+import com.gfpixel.gfpixeldungeon.BuildConfig;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.watabou.utils.DeviceCompat;
@@ -134,6 +135,9 @@ public class Messages {
 			if (c != null && c.getSuperclass() != null){
 				return get(c.getSuperclass(), k, args);
 			} else {
+				if (BuildConfig.DEBUG)	{
+					return key;
+				}
 				return "!!!NO TEXT FOUND!!!";
 			}
 		}

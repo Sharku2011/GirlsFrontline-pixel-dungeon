@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.scenes;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Badges;
+import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
@@ -340,28 +341,30 @@ public class GameScene extends PixelScene {
 			break;
 		case DESCEND:
 			switch (Dungeon.depth) {
-			case 1:
-				add(new WndDialog(0));
-				//WndStory.showChapter( WndStory.ID_SEWERS );
-				break;
-			case 6:
-				WndStory.showChapter( WndStory.ID_PRISON );
-				break;
-			case 11:
-				WndStory.showChapter( WndStory.ID_CAVES );
-				break;
-			case 16:
-				WndStory.showChapter( WndStory.ID_CITY );
-				break;
-			case 22:
-				WndStory.showChapter( WndStory.ID_HALLS );
-				break;
-			}
+                case 1:
+                    WndDialog.ShowChapter( DialogInfo.ID_SEWER );
+                    break;
+                case 6:
+                    WndDialog.ShowChapter( DialogInfo.ID_PRISON );
+                    break;
+                case 11:
+                    WndDialog.ShowChapter( DialogInfo.ID_CAVES );
+                    break;
+                case 16:
+                    WndDialog.ShowChapter( DialogInfo.ID_CITY );
+                    break;
+                case 22:
+                    WndDialog.ShowChapter( DialogInfo.ID_RECAVES );
+                    break;
+                case 26:
+                    WndDialog.ShowChapter( DialogInfo.ID_HALLS );
+                    break;
+                }
 			if (Dungeon.hero.isAlive() && Dungeon.depth != 22) {
 				Badges.validateNoKilling();
 			}
 			break;
-		default:
+		    default:
 		}
 
 		ArrayList<Item> dropped = Dungeon.droppedItems.get( Dungeon.depth );
