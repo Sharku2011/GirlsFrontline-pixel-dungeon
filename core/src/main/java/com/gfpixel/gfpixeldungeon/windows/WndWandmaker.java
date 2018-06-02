@@ -22,6 +22,8 @@
 package com.gfpixel.gfpixeldungeon.windows;
 
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
+import com.gfpixel.gfpixeldungeon.actors.hero.HeroClass;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Wandmaker;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.quest.CorpseDust;
@@ -31,6 +33,7 @@ import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.plants.Rotberry;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSprite;
+import com.gfpixel.gfpixeldungeon.sprites.WandmakerSprite;
 import com.gfpixel.gfpixeldungeon.ui.RedButton;
 import com.gfpixel.gfpixeldungeon.ui.RenderedTextMultiline;
 import com.gfpixel.gfpixeldungeon.ui.Window;
@@ -47,32 +50,18 @@ public class WndWandmaker extends Window {
 		super();
 		
 		IconTitle titlebar = new IconTitle();
-		titlebar.icon(new ItemSprite(item.image(), null));
-		titlebar.label(Messages.titleCase(item.name()));
+		titlebar.icon(new WandmakerSprite());
+		titlebar.label("원하는 탄환을 가져 가라고.");
 		titlebar.setRect(0, 0, WIDTH, 0);
 		add( titlebar );
 
-		String msg = "";
-		if (item instanceof CorpseDust){
-			msg = Messages.get(this, "dust");
-		} else if (item instanceof Embers){
-			msg = Messages.get(this, "ember");
-		} else if (item instanceof Rotberry.Seed){
-			msg = Messages.get(this, "berry");
-		}
-
-		RenderedTextMultiline message = PixelScene.renderMultiline( msg, 6 );
-		message.maxWidth(WIDTH);
-		message.setPos(0, titlebar.bottom() + GAP);
-		add( message );
-		
 		RedButton btnWand1 = new RedButton( Wandmaker.Quest.wand1.name() ) {
 			@Override
 			protected void onClick() {
 				selectReward( wandmaker, item, Wandmaker.Quest.wand1 );
 			}
 		};
-		btnWand1.setRect(0, message.top() + message.height() + GAP, WIDTH, BTN_HEIGHT);
+		btnWand1.setRect(0, titlebar.top() + titlebar.height() + GAP, WIDTH, BTN_HEIGHT);
 		add( btnWand1 );
 		
 		RedButton btnWand2 = new RedButton( Wandmaker.Quest.wand2.name() ) {
@@ -99,8 +88,16 @@ public class WndWandmaker extends Window {
 		} else {
 			Dungeon.level.drop( reward, wandmaker.pos ).sprite.drop();
 		}
-		
-		wandmaker.yell( Messages.get(this, "farewell", Dungeon.hero.givenName()) );
+
+		String farewellMsg = Messages.get(this, "farewell");
+
+
+		if (Dungeon.hero.heroClass == HeroClass.HUNTRESS)
+		{
+			farewellMsg += Messages.get(this, "farewell_hk416");
+		}
+		wandmaker.yell( farewellMsg );
+
 		wandmaker.destroy();
 		
 		wandmaker.sprite.die();

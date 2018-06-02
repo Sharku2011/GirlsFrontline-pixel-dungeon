@@ -183,15 +183,15 @@ public  class DialogInfo
         STORIES.put( ID_M16A1_QUEST + INPROGRESS,
                 new DialogInfo (
                         "m16a1quest.inprogress",
-                        new int[]{M16A1},
-                        new int[]{    0}
+                        new int[]{M16A1, M16A1},
+                        new int[]{    0,     0}
                 )
         );
         STORIES.put( ID_M16A1_QUEST + COMPLETE,
                 new DialogInfo (
                         "m16a1quest.complete",
                         new int[]{M16A1},
-                        new int[]{    1}
+                        new int[]{    0}
                 )
         );
         STORIES.put( ID_PPSH47_QUEST,
