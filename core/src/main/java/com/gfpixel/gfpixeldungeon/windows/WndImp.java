@@ -27,6 +27,7 @@ import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.quest.DwarfToken;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
+import com.gfpixel.gfpixeldungeon.sprites.ImpSprite;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSprite;
 import com.gfpixel.gfpixeldungeon.ui.RedButton;
 import com.gfpixel.gfpixeldungeon.ui.RenderedTextMultiline;
@@ -44,23 +45,18 @@ public class WndImp extends Window {
 		super();
 		
 		IconTitle titlebar = new IconTitle();
-		titlebar.icon( new ItemSprite( tokens.image(), null ) );
-		titlebar.label( Messages.titleCase( tokens.name() ) );
+		titlebar.icon( new ImpSprite() );
+		titlebar.label( "아~무 이상없는 사이트야!" );
 		titlebar.setRect( 0, 0, WIDTH, 0 );
 		add( titlebar );
-		
-		RenderedTextMultiline message = PixelScene.renderMultiline( Messages.get(this, "message"), 6 );
-		message.maxWidth(WIDTH);
-		message.setPos(0, titlebar.bottom() + GAP);
-		add( message );
-		
+
 		RedButton btnReward = new RedButton( Messages.get(this, "reward") ) {
 			@Override
 			protected void onClick() {
 				takeReward( imp, tokens, Imp.Quest.reward );
 			}
 		};
-		btnReward.setRect( 0, message.top() + message.height() + GAP, WIDTH, BTN_HEIGHT );
+		btnReward.setRect( 0, titlebar.top() + titlebar.height() + GAP, WIDTH, BTN_HEIGHT );
 		add( btnReward );
 		
 		resize( WIDTH, (int)btnReward.bottom() );
