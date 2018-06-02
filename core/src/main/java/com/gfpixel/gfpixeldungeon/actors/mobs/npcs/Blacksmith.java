@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.actors.mobs.npcs;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Badges;
+import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
@@ -41,6 +42,7 @@ import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.BlacksmithSprite;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.gfpixel.gfpixeldungeon.windows.WndBlacksmith;
+import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.gfpixel.gfpixeldungeon.windows.WndQuest;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
@@ -68,42 +70,44 @@ public class Blacksmith extends NPC {
 		sprite.turnTo( pos, Dungeon.hero.pos );
 		
 		if (!Quest.given) {
-			
-			GameScene.show( new WndQuest( this,
-				Quest.alternative ? Messages.get(this, "blood_1") : Messages.get(this, "gold_1") ) {
-				
-				@Override
-				public void onBackPressed() {
-					super.onBackPressed();
-					
-					Quest.given = true;
-					Quest.completed = false;
-					
-					Pickaxe pick = new Pickaxe();
-					if (pick.doPickUp( Dungeon.hero )) {
-						GLog.i( Messages.get(Dungeon.hero, "you_now_have", pick.name() ));
-					} else {
-						Dungeon.level.drop( pick, Dungeon.hero.pos ).sprite.drop();
-					}
-				}
-			} );
+
+			int DialogID = DialogInfo.ID_PPSH47_QUEST;
+
+			WndDialog.setBRANCH(DialogID, Quest.alternative ? 1:2);
+			WndDialog.ShowChapter(DialogID);
+
+			Quest.given = true;
+			Quest.completed = false;
+
+			Pickaxe pick = new Pickaxe();
+			if (pick.doPickUp( Dungeon.hero )) {
+				GLog.i( Messages.get(Dungeon.hero, "you_now_have", pick.name() ));
+			} else {
+				Dungeon.level.drop( pick, Dungeon.hero.pos ).sprite.drop();
+			}
 			
 			Notes.add( Notes.Landmark.TROLL );
 			
 		} else if (!Quest.completed) {
 			if (Quest.alternative) {
-				
+				int DialogID = DialogInfo.ID_PPSH47_QUEST+DialogInfo.INPROGRESS;
 				Pickaxe pick = Dungeon.hero.belongings.getItem( Pickaxe.class );
 				if (pick == null) {
-					tell( Messages.get(this, "lost_pick") );
+					WndDialog.setBRANCH(DialogID, 0);
+					WndDialog.ShowChapter(DialogID);
 				} else if (!pick.bloodStained) {
-					tell( Messages.get(this, "blood_2") );
+					WndDialog.setBRANCH(DialogID, 1);
+					WndDialog.ShowChapter(DialogID);
 				} else {
 					if (pick.isEquipped( Dungeon.hero )) {
 						pick.doUnequip( Dungeon.hero, false );
 					}
 					pick.detach( Dungeon.hero.belongings.backpack );
-					tell( Messages.get(this, "completed") );
+
+					DialogID = DialogInfo.ID_PPSH47_QUEST + DialogInfo.COMPLETE;
+
+					WndDialog.setBRANCH(DialogID, 1);
+					WndDialog.ShowChapter(DialogID);
 					
 					Quest.completed = true;
 					Quest.reforged = false;
@@ -113,17 +117,26 @@ public class Blacksmith extends NPC {
 				
 				Pickaxe pick = Dungeon.hero.belongings.getItem( Pickaxe.class );
 				DarkGold gold = Dungeon.hero.belongings.getItem( DarkGold.class );
+
+				int DialogID = DialogInfo.ID_PPSH47_QUEST + DialogInfo.INPROGRESS;
+
 				if (pick == null) {
-					tell( Messages.get(this, "lost_pick") );
+					WndDialog.setBRANCH(DialogID, 0);
+					WndDialog.ShowChapter(DialogID);
 				} else if (gold == null || gold.quantity() < 15) {
-					tell( Messages.get(this, "gold_2") );
+					WndDialog.setBRANCH(DialogID, 2);
+					WndDialog.ShowChapter(DialogID);
 				} else {
 					if (pick.isEquipped( Dungeon.hero )) {
 						pick.doUnequip( Dungeon.hero, false );
 					}
 					pick.detach( Dungeon.hero.belongings.backpack );
 					gold.detachAll( Dungeon.hero.belongings.backpack );
-					tell( Messages.get(this, "completed") );
+
+					DialogID = DialogInfo.ID_PPSH47_QUEST + DialogInfo.COMPLETE;
+
+					WndDialog.setBRANCH(DialogID, 1);
+					WndDialog.ShowChapter(DialogID);
 					
 					Quest.completed = true;
 					Quest.reforged = false;
@@ -135,8 +148,10 @@ public class Blacksmith extends NPC {
 			GameScene.show( new WndBlacksmith( this, Dungeon.hero ) );
 			
 		} else {
-			
-			tell( Messages.get(this, "get_lost") );
+			int DialogID = DialogInfo.ID_PPSH47_QUEST + DialogInfo.COMPLETE;
+
+			WndDialog.setBRANCH(DialogID, 2);
+			WndDialog.ShowChapter(DialogID);
 			
 		}
 
