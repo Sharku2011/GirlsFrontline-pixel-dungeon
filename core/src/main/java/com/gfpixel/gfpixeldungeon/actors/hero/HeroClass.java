@@ -29,6 +29,7 @@ import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.items.BrokenSeal;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
+import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
 import com.gfpixel.gfpixeldungeon.items.artifacts.CloakOfShadows;
 import com.gfpixel.gfpixeldungeon.items.bags.PotionBandolier;
 import com.gfpixel.gfpixeldungeon.items.bags.ScrollHolder;
@@ -135,6 +136,7 @@ public enum HeroClass {
 
 		if (BuildConfig.DEBUG) 	{
 			new Cannon().identify().collect();
+			new PlateArmor().identify().upgrade(7).collect();
 		}
 
 	}
