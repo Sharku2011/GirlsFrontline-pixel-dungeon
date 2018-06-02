@@ -21,6 +21,7 @@
 
 package com.gfpixel.gfpixeldungeon.actors.mobs.npcs;
 
+import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
@@ -35,6 +36,7 @@ import com.gfpixel.gfpixeldungeon.levels.CityLevel;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.ImpSprite;
+import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.gfpixel.gfpixeldungeon.windows.WndImp;
 import com.gfpixel.gfpixeldungeon.windows.WndQuest;
 import com.watabou.utils.Bundle;
@@ -88,21 +90,35 @@ public class Imp extends NPC {
 	
 	@Override
 	public boolean interact() {
-		
+
+		int DialogID = DialogInfo.ID_P7_QUEST;
+
 		sprite.turnTo( pos, Dungeon.hero.pos );
 		if (Quest.given) {
-			
-			DwarfToken tokens = Dungeon.hero.belongings.getItem( DwarfToken.class );
+
+			final DwarfToken tokens = Dungeon.hero.belongings.getItem( DwarfToken.class );
 			if (tokens != null && (tokens.quantity() >= 8 || (!Quest.alternative && tokens.quantity() >= 6))) {
-				GameScene.show( new WndImp( this, tokens ) );
+				// 퀘스트 완료
+				DialogID += DialogInfo.COMPLETE;
+				WndDialog wnd = new WndDialog(DialogID) {
+					@Override
+					protected void onFinish() {
+						GameScene.show(new WndImp((Imp)this.npc, tokens));
+					}
+				};
+				wnd.npc = this;
+				GameScene.show(wnd);
+
 			} else {
-				tell( Quest.alternative ?
-						Messages.get(this, "monks_2", Dungeon.hero.givenName())
-						: Messages.get(this, "golems_2", Dungeon.hero.givenName()) );
+				DialogID += DialogInfo.INPROGRESS;
+				WndDialog.setBRANCH(DialogID, Quest.alternative ? 1 : 2);
+				WndDialog.ShowChapter(DialogID);
 			}
 			
 		} else {
-			tell( Quest.alternative ? Messages.get(this, "monks_1") : Messages.get(this, "golems_1") );
+			WndDialog.setBRANCH(DialogID, Quest.alternative ? 1 : 2);
+			WndDialog.ShowChapter(DialogID);
+
 			Quest.given = true;
 			Quest.completed = false;
 			
