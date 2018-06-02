@@ -22,6 +22,7 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs.npcs;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
@@ -47,14 +48,24 @@ import com.gfpixel.gfpixeldungeon.journal.Notes;
 import com.gfpixel.gfpixeldungeon.levels.SewerLevel;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
+import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
 import com.gfpixel.gfpixeldungeon.sprites.GhostSprite;
+import com.gfpixel.gfpixeldungeon.ui.Tag;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
+import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.gfpixel.gfpixeldungeon.windows.WndQuest;
 import com.gfpixel.gfpixeldungeon.windows.WndSadGhost;
 import com.gfpixel.gfpixeldungeon.windows.WndStory;
+import com.watabou.input.Touchscreen;
+import com.watabou.noosa.Game;
+import com.watabou.noosa.TouchArea;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
+import com.watabou.utils.SparseArray;
+
+import java.lang.reflect.Constructor;
+import java.util.HashMap;
 
 public class Ghost extends NPC {
 
@@ -65,7 +76,7 @@ public class Ghost extends NPC {
 		
 		state = WANDERING;
 	}
-	
+
 	public Ghost() {
 		super();
 
@@ -113,28 +124,24 @@ public class Ghost extends NPC {
 		
 		Sample.INSTANCE.play( Assets.SND_GHOST );
 
-		WndStory wnd;
-
 		if (Quest.given) {
 			if (Quest.weapon != null) {
 				if (Quest.processed) {
-					GameScene.show(new WndSadGhost(this, Quest.type));
+					int DialogID = DialogInfo.ID_STAR15_QUEST + DialogInfo.COMPLETE;
+					WndDialog wnd = new WndDialog( DialogID ) {
+						@Override
+						protected void onFinish()
+						{
+							GameScene.show(new WndSadGhost((Ghost)this.npc, Quest.type));
+						}
+					};
+
+					wnd.npc = this;
+					GameScene.show(wnd);
+
 				} else {
-					switch (Quest.type) {
-						case 1:
-						default:
-							GameScene.show(new WndQuest(this, Messages.get(this, "rat_2")));
-							break;
-						case 2:
-							GameScene.show(new WndQuest(this, Messages.get(this, "gnoll_2")));
-							break;
-						case 3:
-							GameScene.show(new WndQuest(this, Messages.get(this, "crab_2")));
-							break;
-					}
-
-
-
+					int DialogID = DialogInfo.ID_STAR15_QUEST + DialogInfo.INPROGRESS;
+					WndDialog.ShowChapter(DialogID);
 
 					int newPos = -1;
 					for (int i = 0; i < 10; i++) {
@@ -153,29 +160,26 @@ public class Ghost extends NPC {
 				}
 			}
 		} else {
-			Mob questBoss;
-			String txt_quest;
 
-			switch (Quest.type){
-				case 1: default:
-					questBoss = new FetidRat();
-					txt_quest = Messages.get(this, "rat_1", Dungeon.hero.givenName()); break;
-				case 2:
-					questBoss = new GnollTrickster();
-					txt_quest = Messages.get(this, "gnoll_1", Dungeon.hero.givenName()); break;
-				case 3:
-					questBoss = new GreatCrab();
-					txt_quest = Messages.get(this, "crab_1", Dungeon.hero.givenName()); break;
-			}
+			try {
+				Mob questBoss;
 
-			questBoss.pos = Dungeon.level.randomRespawnCell();
+				questBoss = Quest.TARGETS.get(Quest.type).newInstance();
 
-			if (questBoss.pos != -1) {
-				GameScene.add(questBoss);
-				WndStory.showChapter(WndStory.ID_STAR_QUEST);
-				//GameScene.show( new WndQuest( this, txt_quest ) );
-				Quest.given = true;
-				Notes.add( Notes.Landmark.GHOST );
+				questBoss.pos = Dungeon.level.randomRespawnCell();
+
+				WndDialog.setBRANCH(DialogInfo.ID_STAR15_QUEST, Quest.type);
+
+				if (questBoss.pos != -1) {
+					GameScene.add(questBoss);
+					WndDialog.ShowChapter(DialogInfo.ID_STAR15_QUEST);
+					//GameScene.show( new WndQuest( this, txt_quest ) );
+					Quest.given = true;
+					Notes.add( Notes.Landmark.GHOST );
+				}
+
+			} catch (Exception e) {
+				GirlsFrontlinePixelDungeon.reportException(e);
 			}
 
 		}
@@ -189,7 +193,15 @@ public class Ghost extends NPC {
 	}
 
 	public static class Quest {
-		
+
+		private static final SparseArray<Class<? extends Mob>> TARGETS = new SparseArray<>();
+
+		static {
+			TARGETS.put(1, FetidRat.class);
+			TARGETS.put(2, GnollTrickster.class);
+			TARGETS.put(3, GreatCrab.class);
+		}
+
 		private static boolean spawned;
 
 		private static int type;
@@ -271,7 +283,7 @@ public class Ghost extends NPC {
 				spawned = true;
 				//dungeon depth determines type of quest.
 				//depth2=fetid rat, 3=gnoll trickster, 4=great crab
-				type = Dungeon.depth-1;
+				type = Dungeon.depth - 1;
 				
 				given = false;
 				processed = false;
@@ -351,4 +363,5 @@ public class Ghost extends NPC {
 			return processed() && weapon == null && armor == null;
 		}
 	}
+
 }

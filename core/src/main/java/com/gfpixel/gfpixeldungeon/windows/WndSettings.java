@@ -165,8 +165,8 @@ public class WndSettings extends WndTabbed {
 			}
 
 			RedButton btnOrientation = new RedButton( SPDSettings.landscape() ?
-					Messages.get(this, "portrait")
-					: Messages.get(this, "landscape") ) {
+					Messages.get(this, "landscape")
+					: Messages.get(this, "portrait") ) {
 				@Override
 				protected void onClick() {
 					SPDSettings.landscape(!SPDSettings.landscape());
