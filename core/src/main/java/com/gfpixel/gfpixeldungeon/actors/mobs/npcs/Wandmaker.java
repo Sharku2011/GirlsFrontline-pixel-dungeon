@@ -21,6 +21,7 @@
 
 package com.gfpixel.gfpixeldungeon.actors.mobs.npcs;
 
+import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
@@ -40,10 +41,13 @@ import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.plants.Rotberry;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.WandmakerSprite;
+import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.gfpixel.gfpixeldungeon.windows.WndQuest;
 import com.gfpixel.gfpixeldungeon.windows.WndWandmaker;
+import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
+import com.watabou.utils.SparseArray;
 
 import java.util.ArrayList;
 
@@ -73,7 +77,7 @@ public class Wandmaker extends NPC {
 	@Override
 	public void add( Buff buff ) {
 	}
-	
+
 	@Override
 	public boolean reset() {
 		return true;
@@ -83,84 +87,41 @@ public class Wandmaker extends NPC {
 	public boolean interact() {
 		
 		sprite.turnTo( pos, Dungeon.hero.pos );
-		if (Quest.given) {
-			
-			Item item;
-			switch (Quest.type) {
-				case 1:
-				default:
-					item = Dungeon.hero.belongings.getItem(CorpseDust.class);
-					break;
-				case 2:
-					item = Dungeon.hero.belongings.getItem(Embers.class);
-					break;
-				case 3:
-					item = Dungeon.hero.belongings.getItem(Rotberry.Seed.class);
-					break;
-			}
 
+		// 퀘스트 진행 검사
+		if (Quest.given) {
+			final Item item = Dungeon.hero.belongings.getItem( Quest.TARGETS.get(Quest.type));
+
+			// 퀘스트 완료
 			if (item != null) {
-				GameScene.show( new WndWandmaker( this, item ) );
+
+				int DialogID = DialogInfo.ID_M16A1_QUEST + DialogInfo.COMPLETE;
+				WndDialog wnd = new WndDialog( DialogID ) {
+					@Override
+					protected void onFinish()
+					{
+						GameScene.show(new WndWandmaker((Wandmaker) this.npc, item));
+					}
+				};
+
+				wnd.npc = this;
+				GameScene.show(wnd);
+
 			} else {
-				String msg = "";
-				switch(Quest.type){
-					case 1:
-						msg = Messages.get(this, "reminder_dust", Dungeon.hero.givenName());
-						break;
-					case 2:
-						msg = Messages.get(this, "reminder_ember", Dungeon.hero.givenName());
-						break;
-					case 3:
-						msg = Messages.get(this, "reminder_berry", Dungeon.hero.givenName());
-						break;
-				}
-				GameScene.show(new WndQuest(this, msg));
+				// 진행중 대사 출력
+				int DialogID = DialogInfo.ID_M16A1_QUEST + DialogInfo.INPROGRESS;
+
+				WndDialog.setBRANCH(DialogID, Quest.type);
+				WndDialog.ShowChapter(DialogID);
+
 			}
 			
 		} else {
+			// 퀘스트 수주
+			int DialogID = DialogInfo.ID_M16A1_QUEST;
 
-			String msg1 = "";
-			String msg2 = "";
-			switch(Dungeon.hero.heroClass){
-				case WARRIOR:
-					msg1 += Messages.get(this, "intro_warrior");
-					break;
-				case ROGUE:
-					msg1 += Messages.get(this, "intro_rogue");
-					break;
-				case MAGE:
-					msg1 += Messages.get(this, "intro_mage", Dungeon.hero.givenName());
-					break;
-				case HUNTRESS:
-					msg1 += Messages.get(this, "intro_huntress");
-					break;
-			}
-
-			msg1 += Messages.get(this, "intro_1");
-
-			switch (Quest.type){
-				case 1:
-					msg2 += Messages.get(this, "intro_dust");
-					break;
-				case 2:
-					msg2 += Messages.get(this, "intro_ember");
-					break;
-				case 3:
-					msg2 += Messages.get(this, "intro_berry");
-					break;
-			}
-
-			msg2 += Messages.get(this, "intro_2");
-			final String msg2final = msg2;
-			final NPC wandmaker = this;
-
-			GameScene.show(new WndQuest(wandmaker, msg1){
-				@Override
-				public void hide() {
-					super.hide();
-					GameScene.show(new WndQuest(wandmaker, msg2final));
-				}
-			});
+			WndDialog.setBRANCH(DialogID, Quest.type);
+			WndDialog.ShowChapter(DialogID);
 
 			Notes.add( Notes.Landmark.WANDMAKER );
 			Quest.given = true;
@@ -175,6 +136,14 @@ public class Wandmaker extends NPC {
 		// 1 = corpse dust quest
 		// 2 = elemental embers quest
 		// 3 = rotberry quest
+
+		private static SparseArray<Class<? extends Item>> TARGETS = new SparseArray<>();
+
+		static {
+			TARGETS.put(1, CorpseDust.class);
+			TARGETS.put(2, Embers.class);
+			TARGETS.put(3, Rotberry.Seed.class);
+		}
 		
 		private static boolean spawned;
 		
@@ -202,7 +171,7 @@ public class Wandmaker extends NPC {
 		private static final String RITUALPOS	= "ritualpos";
 		
 		public static void storeInBundle( Bundle bundle ) {
-			
+
 			Bundle node = new Bundle();
 			
 			node.put( SPAWNED, spawned );
