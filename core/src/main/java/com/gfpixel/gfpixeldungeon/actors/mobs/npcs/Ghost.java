@@ -132,7 +132,7 @@ public class Ghost extends NPC {
 						@Override
 						protected void onFinish()
 						{
-							GameScene.show(new WndSadGhost((Ghost)this.npc, Quest.type));
+							GameScene.show(new WndSadGhost((Ghost)this.npc));
 						}
 					};
 
