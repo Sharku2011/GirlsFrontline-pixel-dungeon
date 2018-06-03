@@ -28,8 +28,8 @@ import com.watabou.noosa.TextureFilm;
 
 public class MirrorSprite extends MobSprite {
 	
-	private static final int FRAME_WIDTH	= 12;
-	private static final int FRAME_HEIGHT	= 15;
+	private static final int FRAME_WIDTH	= 15;
+	private static final int FRAME_HEIGHT	= 17;
 	
 	public MirrorSprite() {
 		super();

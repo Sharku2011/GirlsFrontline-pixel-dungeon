@@ -174,7 +174,7 @@ public class StartScene extends PixelScene {
 				}
 				
 				if (hero == null){
-					hero = new Image(info.heroClass.spritesheet(), 0, 15*info.armorTier, 12, 15);
+					hero = new Image(info.heroClass.spritesheet(), 0, 86, 12, 17);
 					add(hero);
 					
 					steps = new Image(Icons.get(Icons.DEPTH));
@@ -187,7 +187,7 @@ public class StartScene extends PixelScene {
 					level = new BitmapText(PixelScene.pixelFont);
 					add(level);
 				} else {
-					hero.copy(new Image(info.heroClass.spritesheet(), 0, 15*info.armorTier, 12, 15));
+					hero.copy(new Image(info.heroClass.spritesheet(), 0, 86, 12, 17));
 					
 					classIcon.copy(Icons.get(info.heroClass));
 				}

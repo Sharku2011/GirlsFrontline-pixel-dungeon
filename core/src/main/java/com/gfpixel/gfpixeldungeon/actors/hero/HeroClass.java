@@ -205,7 +205,7 @@ public enum HeroClass {
 		case ROGUE:
 			return Assets.ROGUE;
 		case HUNTRESS:
-			return Assets.HUNTRESS;
+			return Assets.RANGER;
 		}
 		
 		return null;

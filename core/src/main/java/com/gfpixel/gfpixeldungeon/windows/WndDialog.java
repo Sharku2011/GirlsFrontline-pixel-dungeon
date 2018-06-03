@@ -86,8 +86,8 @@ public class WndDialog extends Window {
         add(tf);
         add(nametag);
 
-        // TODO 화면 전체를 클릭해도 대사가 진행되도록 (touch area의 영역이 WndDialog의 영역을 벗어날 수 있도록)
-        add(new TouchArea( 0, 0, PixelScene.uiCamera.width, PixelScene.uiCamera.height ) {
+        // TODO -100을 나중에 적당한 변수값으로 치환할 것
+        add(new TouchArea( 0, -100, PixelScene.uiCamera.width, PixelScene.uiCamera.height ) {
                  @Override
                  protected void onClick( Touchscreen.Touch touch ) {
                      if (dialogLength -1 <= dialogStep) {

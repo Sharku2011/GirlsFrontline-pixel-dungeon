@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.actors.mobs;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Badges;
+import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
@@ -42,6 +43,7 @@ import com.gfpixel.gfpixeldungeon.sprites.GooSprite;
 import com.gfpixel.gfpixeldungeon.ui.BossHealthBar;
 import com.gfpixel.gfpixeldungeon.utils.BArray;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
+import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
@@ -245,7 +247,8 @@ public class Goo extends Mob {
 	public void notice() {
 		super.notice();
 		BossHealthBar.assignBoss(this);
-		yell( Messages.get(this, "notice") );
+		WndDialog.ShowChapter(DialogInfo.ID_SEWER);
+		//yell( Messages.get(this, "notice") );
 	}
 
 	private final String PUMPEDUP = "pumpedup";
@@ -268,5 +271,5 @@ public class Goo extends Mob {
 		if ((HP*2 <= HT)) BossHealthBar.bleed(true);
 
 	}
-	
+
 }
