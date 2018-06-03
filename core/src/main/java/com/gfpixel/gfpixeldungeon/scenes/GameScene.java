@@ -342,22 +342,40 @@ public class GameScene extends PixelScene {
 		case DESCEND:
 			switch (Dungeon.depth) {
                 case 1:
-                    WndDialog.ShowChapter( DialogInfo.ID_SEWER );
+                	if (!DialogInfo.EXPIRED.contains(DialogInfo.ID_SEWER)) {
+						WndDialog.ShowChapter( DialogInfo.ID_SEWER );
+						DialogInfo.EXPIRED.add(DialogInfo.ID_SEWER);
+					}
                     break;
                 case 6:
-                    WndDialog.ShowChapter( DialogInfo.ID_PRISON );
+					if (!DialogInfo.EXPIRED.contains(DialogInfo.ID_PRISON)) {
+						WndDialog.ShowChapter( DialogInfo.ID_PRISON );
+						DialogInfo.EXPIRED.add(DialogInfo.ID_PRISON);
+					}
                     break;
                 case 11:
-                    WndDialog.ShowChapter( DialogInfo.ID_CAVES );
+					if (!DialogInfo.EXPIRED.contains(DialogInfo.ID_CAVES)) {
+						WndDialog.ShowChapter( DialogInfo.ID_CAVES );
+						DialogInfo.EXPIRED.add(DialogInfo.ID_CAVES);
+					}
                     break;
                 case 16:
-                    WndDialog.ShowChapter( DialogInfo.ID_CITY );
+					if (!DialogInfo.EXPIRED.contains(DialogInfo.ID_CITY)) {
+						WndDialog.ShowChapter( DialogInfo.ID_CITY );
+						DialogInfo.EXPIRED.add(DialogInfo.ID_CITY);
+					}
                     break;
                 case 22:
-                    WndDialog.ShowChapter( DialogInfo.ID_RECAVES );
+					if (!DialogInfo.EXPIRED.contains(DialogInfo.ID_RECAVES)) {
+						WndDialog.ShowChapter( DialogInfo.ID_RECAVES );
+						DialogInfo.EXPIRED.add(DialogInfo.ID_RECAVES);
+					}
                     break;
                 case 26:
-                    WndDialog.ShowChapter( DialogInfo.ID_HALLS );
+					if (!DialogInfo.EXPIRED.contains(DialogInfo.ID_HALLS)) {
+						WndDialog.ShowChapter( DialogInfo.ID_HALLS );
+						DialogInfo.EXPIRED.add(DialogInfo.ID_HALLS);
+					}
                     break;
                 }
 			if (Dungeon.hero.isAlive() && Dungeon.depth != 22) {
