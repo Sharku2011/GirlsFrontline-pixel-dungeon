@@ -31,21 +31,37 @@ public class DM300Sprite extends MobSprite {
 		super();
 		
 		texture( Assets.DM300 );
-		
+
+		TextureFilm frames = new TextureFilm( texture, 25, 25 );
+
+		idle = new Animation( 2, true );
+		idle.frames( frames, 0, 0, 0, 0 );
+
+		run = new Animation( 10, true );
+		run.frames( frames, 1, 2, 3, 4, 5 );
+
+		attack = new Animation( 15, false );
+		attack.frames( frames, 6, 7 );
+
+		die = new Animation( 10, false );
+		die.frames( frames, 8, 9 );
+
+		/*
 		TextureFilm frames = new TextureFilm( texture, 22, 20 );
-		
+
 		idle = new Animation( 10, true );
 		idle.frames( frames, 0, 1 );
-		
+
 		run = new Animation( 10, true );
 		run.frames( frames, 2, 3 );
-		
+
 		attack = new Animation( 15, false );
 		attack.frames( frames, 4, 5, 6 );
-		
+
 		die = new Animation( 20, false );
 		die.frames( frames, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 8 );
-		
+		*/
+
 		play( idle );
 	}
 	

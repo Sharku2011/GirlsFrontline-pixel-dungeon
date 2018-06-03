@@ -2,6 +2,8 @@ package com.gfpixel.gfpixeldungeon;
 
 import com.watabou.utils.SparseArray;
 
+import java.util.HashSet;
+
 public  class DialogInfo
 {
     public final String ID;
@@ -100,6 +102,7 @@ public  class DialogInfo
     public static final int INPROGRESS  = 1;
     public static final int COMPLETE    = 2;
 
+    public static HashSet<Integer> EXPIRED = new HashSet<>();
 
     public static SparseArray<DialogInfo> STORIES = new SparseArray<> ();
 
