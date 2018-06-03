@@ -263,7 +263,7 @@ public abstract class RegularLevel extends Level {
 			if (!heroFOV[cell]
 					&& Actor.findChar( cell ) == null
 					&& passable[cell]
-					&& cell != exit) {
+					&& distance(cell, exit) >= 2) {
 				return cell;
 			}
 			

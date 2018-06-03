@@ -101,6 +101,7 @@ public class Assets {
 	public static final String ROT_HEART	= "rot_heart.png";
 	public static final String GUARD	    = "guard.png";
 	public static final String AEGIS		= "aegis.png";
+	public static final String GOLIATH		= "goliath.png";
 	public static final String CYCLOPS		= "cyclops.png";
 	public static final String JUPITER		= "jupiter.png";
 	public static final String HYDRA		= "hydra.png";

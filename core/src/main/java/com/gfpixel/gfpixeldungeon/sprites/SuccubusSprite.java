@@ -33,7 +33,7 @@ public class SuccubusSprite extends MobSprite {
 		
 		texture( Assets.SUCCUBUS );
 		
-		TextureFilm frames = new TextureFilm( texture, 12, 15 );
+		TextureFilm frames = new TextureFilm( texture, 24, 15 );
 		
 		idle = new Animation( 8, true );
 		idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 1 );
