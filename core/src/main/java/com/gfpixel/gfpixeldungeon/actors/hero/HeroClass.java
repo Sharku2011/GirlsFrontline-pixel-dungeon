@@ -136,7 +136,7 @@ public enum HeroClass {
 
 		if (BuildConfig.DEBUG) 	{
 			new Cannon().identify().collect();
-			new PlateArmor().identify().upgrade(7).collect();
+			new PlateArmor().identify().upgrade(100).collect();
 		}
 
 	}

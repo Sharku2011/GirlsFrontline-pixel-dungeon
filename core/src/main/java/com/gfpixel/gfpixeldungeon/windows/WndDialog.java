@@ -5,6 +5,7 @@ import android.app.Dialog;
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.DialogInfo;
+import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.NPC;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
@@ -120,6 +121,7 @@ public class WndDialog extends Window {
     public static void ShowChapter(int dialogID) {
         WndDialog newDialog = new WndDialog(dialogID);
         Game.scene().add(newDialog);
+        Dungeon.chapters.add( dialogID );
     }
 
     public static void setBRANCH (int dialogID, int newOption) {
