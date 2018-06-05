@@ -110,6 +110,7 @@ public class ScrollPane extends Component {
 			thumb_horizontal.y = bottom() - thumb_horizontal.height();
 			thumb_horizontal.x = x;
 		}
+
 	}
 
 	public Component content() {
@@ -182,5 +183,8 @@ public class ScrollPane extends Component {
 
 			}
 		}
+	}
+	public void OnDrag(Touch touch) {
+		controller.onDrag(touch);
 	}
 }
