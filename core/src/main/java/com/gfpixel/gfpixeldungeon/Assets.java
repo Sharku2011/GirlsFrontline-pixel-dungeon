@@ -31,6 +31,9 @@ public class Assets {
 	public static final String BADGES	= "badges.png";
 	public static final String LOCKED	= "locked_badge.png";
 	public static final String AMULET	= "amulet.png";
+
+	public static final String SAVESLOT	= "new_ui.png";
+	public static final String PORTRAIT	= "choice.png";
 	
 	public static final String CHROME	= "chrome.png";
 	public static final String ICONS	= "icons.png";
