@@ -328,7 +328,7 @@ public class Generator {
 					GROZA.class,
 					NAGANT.class
 			};
-			WEP_T6.probs = new float[]{ 6, 5, 5, 4, 4, 4 };
+			WEP_T6.probs = new float[]{ 6, 5, 5, 4, 4 };
 			
 			//see Generator.randomArmor
 			ARMOR.classes = new Class<?>[]{
