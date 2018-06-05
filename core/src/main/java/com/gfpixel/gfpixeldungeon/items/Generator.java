@@ -103,6 +103,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.Crossbow;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dagger;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dirk;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Flail;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.GROZA;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gauntlet;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Glaive;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Greataxe;
@@ -114,9 +115,13 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.Longsword;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Mace;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MeleeWeapon;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Mg42;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.NAGANT;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ntw20;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Quarterstaff;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.RoundShield;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.RunicBlade;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SAIGA;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Sai;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Scimitar;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Shortsword;
@@ -166,6 +171,7 @@ public class Generator {
 		WEP_T3	( 0,    MeleeWeapon.class),
 		WEP_T4	( 0,    MeleeWeapon.class),
 		WEP_T5	( 0,    MeleeWeapon.class),
+		WEP_T6	( 0,	MeleeWeapon.class),
 		
 		ARMOR	( 4,    Armor.class ),
 		
@@ -314,6 +320,15 @@ public class Generator {
 					Gauntlet.class
 			};
 			WEP_T5.probs = new float[]{ 6, 5, 5, 4, 4, 4 };
+
+			WEP_T6.classes = new Class<?>[]{
+					SAIGA.class,
+					Ntw20.class,
+					Mg42.class,
+					GROZA.class,
+					NAGANT.class
+			};
+			WEP_T6.probs = new float[]{ 6, 5, 5, 4, 4 };
 			
 			//see Generator.randomArmor
 			ARMOR.classes = new Class<?>[]{
@@ -412,12 +427,33 @@ public class Generator {
 		}
 	}
 
-	private static final float[][] floorSetTierProbs = new float[][] {
-			{0, 70, 20,  8,  2},
-			{0, 25, 50, 20,  5},
-			{0, 10, 40, 40, 10},
-			{0,  5, 20, 50, 25},
-			{0,  2,  8, 20, 70}
+	// Table of weapon spawn probability by every tier
+	private static final float[][] floorSetWeaponTierProbs = new float[][] {
+			{0, 63, 20, 12,  2,  3},
+			{0, 25, 54, 12,  5,  4},
+			{0, 10, 35, 40,  7,  5},
+			{0,  5, 30, 33, 22,  10},
+			{0,  2,  8, 35, 30, 15},
+			{0,  2,  8, 20, 40, 30},
+	};
+
+	// Table of armor spawn probability by every tier
+	private static final float[][] floorSetArmorTierProbs = new float[][] {
+			{0, 65, 20, 10, 5 },
+			{0, 25, 50, 15, 10},
+			{0, 12, 33, 40, 15},
+			{0,  5, 15, 60, 20},
+			{0,  2,  8, 40, 50},
+			{0,  0,  5, 15, 80}
+	};
+
+	private static final float[][] floorSetMissileTierProbs = new float[][] {
+			{0, 65, 20, 10, 5 },
+			{0, 25, 50, 15, 10},
+			{0, 12, 33, 40, 15},
+			{0,  5, 15, 60, 20},
+			{0,  2,  8, 40, 50},
+			{0,  0,  5, 15, 80}
 	};
 	
 	private static HashMap<Category,Float> categoryProbs = new LinkedHashMap<>();
@@ -483,10 +519,10 @@ public class Generator {
 	
 	public static Armor randomArmor(int floorSet) {
 
-		floorSet = (int)GameMath.gate(0, floorSet, floorSetTierProbs.length-1);
+		floorSet = (int)GameMath.gate(0, floorSet, floorSetArmorTierProbs.length-1);
 
 		try {
-			Armor a = (Armor)Category.ARMOR.classes[Random.chances(floorSetTierProbs[floorSet])].newInstance();
+			Armor a = (Armor)Category.ARMOR.classes[Random.chances(floorSetArmorTierProbs[floorSet])].newInstance();
 			a.random();
 			return a;
 		} catch (Exception e) {
@@ -500,7 +536,8 @@ public class Generator {
 			Category.WEP_T2,
 			Category.WEP_T3,
 			Category.WEP_T4,
-			Category.WEP_T5
+			Category.WEP_T5,
+			Category.WEP_T6
 	};
 
 	public static MeleeWeapon randomWeapon(){
@@ -509,10 +546,10 @@ public class Generator {
 	
 	public static MeleeWeapon randomWeapon(int floorSet) {
 
-		floorSet = (int)GameMath.gate(0, floorSet, floorSetTierProbs.length-1);
+		floorSet = (int)GameMath.gate(0, floorSet, floorSetWeaponTierProbs.length-1);
 
 		try {
-			Category c = wepTiers[Random.chances(floorSetTierProbs[floorSet])];
+			Category c = wepTiers[Random.chances(floorSetWeaponTierProbs[floorSet])];
 			MeleeWeapon w = (MeleeWeapon)c.classes[Random.chances(c.probs)].newInstance();
 			w.random();
 			return w;
@@ -536,10 +573,10 @@ public class Generator {
 	
 	public static MissileWeapon randomMissile(int floorSet) {
 		
-		floorSet = (int)GameMath.gate(0, floorSet, floorSetTierProbs.length-1);
+		floorSet = (int)GameMath.gate(0, floorSet, floorSetMissileTierProbs.length-1);
 		
 		try {
-			Category c = misTiers[Random.chances(floorSetTierProbs[floorSet])];
+			Category c = misTiers[Random.chances(floorSetMissileTierProbs[floorSet])];
 			MissileWeapon w = (MissileWeapon)c.classes[Random.chances(c.probs)].newInstance();
 			w.random();
 			return w;

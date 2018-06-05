@@ -5,6 +5,7 @@ import android.app.Dialog;
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.DialogInfo;
+import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.NPC;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
@@ -41,7 +42,7 @@ public class WndDialog extends Window {
 
         int heightUnit = SPDSettings.landscape()? 4:6;
 
-        int fontSize = SPDSettings.landscape() ? 6:8;
+        int fontSize = SPDSettings.landscape() ? 8:6;
 
         dialog = DialogInfo.STORIES.get(dialogID);
 
@@ -76,8 +77,8 @@ public class WndDialog extends Window {
         nametag.invert();
         nametag.hardlight(0x2B7BB9);
 
-        nametag.x = avatar.width() + MARGIN_X;
-        nametag.y = - 15;
+        nametag.x = avatar.width() + 5;
+        nametag.y = avatar.height() - 15;
 
         tf = PixelScene.renderMultiline( Messages.get(this, dialog.ID + dialog.BRANCH + dialogStep), fontSize );
         tf.maxWidth( PixelScene.uiCamera.width - 2 * (MARGIN_X + fontSize) );
@@ -120,6 +121,7 @@ public class WndDialog extends Window {
     public static void ShowChapter(int dialogID) {
         WndDialog newDialog = new WndDialog(dialogID);
         Game.scene().add(newDialog);
+        Dungeon.chapters.add( dialogID );
     }
 
     public static void setBRANCH (int dialogID, int newOption) {
