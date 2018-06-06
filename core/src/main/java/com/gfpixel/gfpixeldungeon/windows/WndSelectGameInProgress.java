@@ -18,10 +18,15 @@ import java.util.ArrayList;
 
 public class WndSelectGameInProgress extends Window {
 
-    public static int DISPHEIGHT = SPDSettings.landscape() ? PixelScene.uiCamera.height / 3 * 2 : PixelScene.uiCamera.height / 4 * 3;
+    public static float SLOT_SCALE = 140 / 52f;
+
+    public static int DISPWIDTH;
+    public static int DISPHEIGHT;// = SPDSettings.landscape() ? 150 : 297;
+
+    public static int REALHEIGHT;
     public static int REALWIDTH;
+
     protected static final int MARGIN = 7;
-    protected static final int THUMB_THICK = 2;
 
     protected static int SlotsToDisplay;
     protected static ScrollPane squad;
@@ -51,7 +56,8 @@ public class WndSelectGameInProgress extends Window {
 
         add(squad);
 
-        int DISPWIDTH = SlotsToDisplay * (int)Slots[0].width() + (SlotsToDisplay + 1) * MARGIN;
+        DISPWIDTH = SlotsToDisplay * (int)Slots[0].width() + (SlotsToDisplay + 1) * MARGIN;
+        DISPHEIGHT = 10 / SlotsToDisplay * (int)Slots[0].height() +
         resize(DISPWIDTH, DISPHEIGHT);
         squad.setSize( DISPWIDTH, DISPHEIGHT );
         squad.scrollTo(0, 0);
@@ -68,7 +74,7 @@ public class WndSelectGameInProgress extends Window {
         protected Image[] challenges;
 
         protected TouchArea hotArea;
-        public static float SCALE;
+        public static float SCALE = SLOT_SCALE;
 
         protected String[] names = { "파이터 UMP45", "호크아이 G11", "암살자 UMP9", "저격수 HK416", "UMP 40"};
         protected RenderedText name;
@@ -83,7 +89,6 @@ public class WndSelectGameInProgress extends Window {
 
             portrait = new Image(Assets.PORTRAIT, cl * 20, 0, 19, 25);
             frame = new Image(Assets.SAVESLOT, 0, 0, 21, 52);
-            SCALE = (DISPHEIGHT - 5*2) / frame.height;
 
             setRect(0, 0, frame.width * SCALE, frame.height * SCALE);
 
