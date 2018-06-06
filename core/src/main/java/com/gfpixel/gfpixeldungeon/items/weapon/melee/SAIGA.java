@@ -21,22 +21,21 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class WarHammer extends MeleeWeapon {
+public class SAIGA extends MeleeWeapon {
 
-	{
-		image = ItemSpriteSheet.WAR_HAMMER;
+    {
+        image = ItemSpriteSheet.SAIGA;
 
-		tier = 5;
-		DLY = 0.6f; //1.25x speed
-		RCH = 2;    //extra reach
-	}
+        tier=6;
+        DLY = 0.5f;
+        ACC = 1.27f; //27% boost to accuracy
+    }
 
-	@Override
-	public int max(int lvl) {
-		return   3*(tier+1) +    //24 base, down from 30
-				lvl*Math.round(1f*(tier+1));
-	}
-
+    @Override
+    public int defenseFactor( Char owner ) {
+        return 6+2*level();     //6 extra defence, plus 2 per level;
+    }
 }

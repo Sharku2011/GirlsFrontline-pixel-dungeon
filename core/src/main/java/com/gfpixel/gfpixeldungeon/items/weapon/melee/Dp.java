@@ -23,20 +23,19 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class WarHammer extends MeleeWeapon {
+public class Dp extends MeleeWeapon {
 
-	{
-		image = ItemSpriteSheet.WAR_HAMMER;
+    {
+        image = ItemSpriteSheet.DP;
 
-		tier = 5;
-		DLY = 0.6f; //1.25x speed
-		RCH = 2;    //extra reach
-	}
+        tier = 1;
+        DLY = 0.2f; //1time 5hit
+    }
 
-	@Override
-	public int max(int lvl) {
-		return   3*(tier+1) +    //24 base, down from 30
-				lvl*Math.round(1f*(tier+1));
-	}
+    @Override
+    public int max(int lvl) {
+        return  Math.round(2.1f*(tier+1)) +    //5 base, down from 20
+                lvl*Math.round(0.4f*(tier+1));   //+1 per level, down from +2
+    }
 
 }

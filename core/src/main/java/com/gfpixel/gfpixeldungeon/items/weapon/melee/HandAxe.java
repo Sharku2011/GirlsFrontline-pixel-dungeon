@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015 Oleg Dolya
+ * Copyright (C) 2012-2015  Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2018 Evan Debenham
+ * Copyright (C) 2014-2017 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,12 +29,12 @@ public class HandAxe extends MeleeWeapon {
 		image = ItemSpriteSheet.HAND_AXE;
 
 		tier = 2;
-		ACC = 1.32f; //32% boost to accuracy
+		RCH = 3;    //lots of extra reach
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  4*(tier+1) +    //12 base, down from 15
+		return  3*(tier+1) +  //9 base, down from 15
 				lvl*(tier+1);   //scaling unchanged
 	}
 

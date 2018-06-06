@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015 Oleg Dolya
+ * Copyright (C) 2012-2015  Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2018 Evan Debenham
+ * Copyright (C) 2014-2017 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,8 +49,8 @@ public class AssassinsBlade extends MeleeWeapon {
 			if (enemy instanceof Mob && ((Mob) enemy).surprisedBy(hero)) {
 				//deals 50% toward max to max on surprise, instead of min to max.
 				int diff = max() - min();
-				int damage = augment.damageFactor(Random.NormalIntRange(
-						min() + Math.round(diff*0.50f),
+				int damage = imbue.damageFactor(Random.NormalIntRange(
+						min() + Math.round(diff*1.10f),
 						max()));
 				int exStr = hero.STR() - STRReq();
 				if (exStr > 0) {

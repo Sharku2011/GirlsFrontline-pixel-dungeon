@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015 Oleg Dolya
+ * Copyright (C) 2012-2015  Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2018 Evan Debenham
+ * Copyright (C) 2014-2017 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,6 +37,6 @@ public class RunicBlade extends MeleeWeapon {
 	@Override
 	public int max(int lvl) {
 		return  5*(tier) +                	//20 base, down from 25
-				Math.round(lvl*(tier+2));	//+6 per level, up from +5
+				Math.round(lvl*(tier+3));	//+6 per level, up from +5
 	}
 }

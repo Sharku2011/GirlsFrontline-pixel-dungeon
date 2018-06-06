@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015 Oleg Dolya
+ * Copyright (C) 2012-2015  Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2018 Evan Debenham
+ * Copyright (C) 2014-2017 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,16 +21,24 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.missiles;
 
+import android.util.Log;
+
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.items.bags.Bag;
+import com.gfpixel.gfpixeldungeon.items.bags.WandHolster;
+import com.gfpixel.gfpixeldungeon.items.wands.M79;
+import com.gfpixel.gfpixeldungeon.items.wands.Wand;
 import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 import com.gfpixel.gfpixeldungeon.sprites.MissileSprite;
 
 import java.util.ArrayList;
+
+import static com.gfpixel.gfpixeldungeon.Dungeon.hero;
 
 public class Boomerang extends MissileWeapon {
 
@@ -41,8 +49,12 @@ public class Boomerang extends MissileWeapon {
 
 		unique = true;
 		bones = false;
-		
 	}
+
+	public Char owner;
+	private int stackOfattack = 0;
+	private int stackOfattackPlus = 0;
+	public ArrayList<Item> items = new ArrayList<Item>();
 
 	@Override
 	public ArrayList<String> actions(Hero hero) {
@@ -59,7 +71,7 @@ public class Boomerang extends MissileWeapon {
 
 	@Override
 	public int max(int lvl) {
-		return  6 +     //half the base damage of a tier-1 weapon
+		return  5 +     //half the base damage of a tier-1 weapon
 				2 * lvl;//scales the same as a tier 1 weapon
 	}
 
@@ -67,7 +79,7 @@ public class Boomerang extends MissileWeapon {
 	public int STRReq(int lvl) {
 		lvl = Math.max(0, lvl);
 		//strength req decreases at +1,+3,+6,+10,etc.
-		return 9 - (int)(Math.sqrt(8 * lvl + 1) - 1)/2;
+		return 10 - (int)(Math.sqrt(8 * lvl + 1) - 1)/2;
 	}
 
 	@Override
@@ -90,24 +102,66 @@ public class Boomerang extends MissileWeapon {
 	}
 	
 	@Override
-	protected float durabilityPerUse() {
-		return 0;
-	}
-	
-	@Override
-	public void rangedHit( Char enemy, int cell ) {
-		circleBack(cell, curUser);
+	public Item degrade() {
+		return super.degrade();
 	}
 
 	@Override
-	protected void rangedMiss( int cell ) {
+	public int proc( Char attacker, Char defender, int damage ) {
+		if (attacker instanceof Hero && ((Hero)attacker).rangedWeapon == this) {
+			circleBack( defender.pos, (Hero)attacker );
+		}
+		if(Dungeon.hero.subTitle() == "warden") {
+			stackOfattack += 1;
+			stackOfattackPlus = stackOfattackPlus>=625?625:stackOfattackPlus+1;
+			if (stackOfattack == 15) {
+				if (chargedM79(hero.belongings.backpack)) {
+					stackOfattack = 0;
+				} else {
+					stackOfattack = 0;
+				}
+			}
+			if (stackOfattackPlus > 0){
+				plusedM79(hero.belongings.backpack , stackOfattackPlus);
+			}
+		}
+		return super.proc( attacker, defender, damage );
+	}
+	public boolean grab( Item item ) {
+		return item instanceof Wand;
+	}
+	public boolean chargedM79(Bag container ) {
+		ArrayList<Item> items = container.items;
+		for (Item item : container.items.toArray( new Item[0] )) {
+			if (grab( item )) {
+				item.chargeMe();
+			}
+		}
+		return true;
+	}
+	public boolean plusedM79(Bag container, int stack ) {
+		int TMPVAR = 0;
+		ArrayList<Item> items = container.items;
+		for (Item item : container.items.toArray( new Item[0] )) {
+			if (grab( item )) {
+				stackOfattackPlus = item.plusDamage(stack);
+				TMPVAR = 1;
+			}
+		}
+
+		return true;
+	}
+
+
+	@Override
+	protected void miss( int cell ) {
 		circleBack( cell, curUser );
 	}
 
 	private void circleBack( int from, Hero owner ) {
 
 		((MissileSprite)curUser.sprite.parent.recycle( MissileSprite.class )).
-				reset( from, owner.sprite, curItem, null );
+				reset( from, curUser.pos, curItem, null );
 
 		if (throwEquiped) {
 			owner.belongings.weapon = this;
@@ -132,12 +186,12 @@ public class Boomerang extends MissileWeapon {
 	@Override
 	public String desc() {
 		String info = super.desc();
-		switch (augment) {
-			case SPEED:
-				info += "\n\n" + Messages.get(Weapon.class, "faster");
+		switch (imbue) {
+			case LIGHT:
+				info += "\n\n" + Messages.get(Weapon.class, "lighter");
 				break;
-			case DAMAGE:
-				info += "\n\n" + Messages.get(Weapon.class, "stronger");
+			case HEAVY:
+				info += "\n\n" + Messages.get(Weapon.class, "heavier");
 				break;
 			case NONE:
 		}
