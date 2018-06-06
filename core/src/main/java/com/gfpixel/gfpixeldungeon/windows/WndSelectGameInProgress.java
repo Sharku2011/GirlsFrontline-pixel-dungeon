@@ -1,57 +1,63 @@
 package com.gfpixel.gfpixeldungeon.windows;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.Challenges;
+import com.gfpixel.gfpixeldungeon.GamesInProgress;
+import com.gfpixel.gfpixeldungeon.SPDSettings;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
 import com.gfpixel.gfpixeldungeon.ui.ScrollPane;
 import com.gfpixel.gfpixeldungeon.ui.Window;
-import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.input.Touchscreen;
-import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.RenderedText;
 import com.watabou.noosa.TouchArea;
 import com.watabou.noosa.ui.Component;
 import com.watabou.utils.Random;
 
-import android.graphics.Typeface;
+import java.util.ArrayList;
 
 
 public class WndSelectGameInProgress extends Window {
 
-    public static final int HEIGHT   = PixelScene.uiCamera.height / 3 * 2;;
+    public static int DISPHEIGHT = SPDSettings.landscape() ? PixelScene.uiCamera.height / 3 * 2 : PixelScene.uiCamera.height / 4 * 3;
+    public static int REALWIDTH;
+    protected static final int MARGIN = 7;
+    protected static final int THUMB_THICK = 2;
 
+    protected static int SlotsToDisplay;
     protected static ScrollPane squad;
+
+    protected SaveSlot[] Slots = new SaveSlot[GamesInProgress.MAX_SLOTS];
 
     public WndSelectGameInProgress()
     {
+        SlotsToDisplay= SPDSettings.landscape()? 5 : 2;
 
-        int DISPWIDTH = 323;
+        ArrayList<GamesInProgress.Info> games = GamesInProgress.checkAll();
 
-        GLog.i(String.valueOf(HEIGHT));
-
-        resize(DISPWIDTH, HEIGHT);
+        int slotCount = Math.min(GamesInProgress.MAX_SLOTS, games.size()+1);
 
         squad = new ScrollPane( new Component() );
 
         Component content = squad.content();
 
-        content.setRect(0, 0, 500, HEIGHT);
+        for (int i=0; i<10; ++i) {
 
-        for (int i=0; i<8; ++i) {
+            Slots[i] = new SaveSlot( i%5 );
 
-            Component btn = new SaveSlot( i%5 );
-
-            content.add(btn);
-            btn.setPos(  5 + (btn.width() + 7) * i, 5);
+            content.add(Slots[i]);
+            Slots[i].setPos(  5 + (Slots[i].width() + 7) * i, 5);
 
         }
 
         add(squad);
 
-        squad.setSize( DISPWIDTH, HEIGHT );
+        int DISPWIDTH = SlotsToDisplay * (int)Slots[0].width() + (SlotsToDisplay + 1) * MARGIN;
+        resize(DISPWIDTH, DISPHEIGHT);
+        squad.setSize( DISPWIDTH, DISPHEIGHT );
         squad.scrollTo(0, 0);
 
+        int REALWIDTH = (int)Slots[0].width() * 10 + 7 * 11;
+        content.setRect(0, 0, REALWIDTH, DISPHEIGHT);
     }
 
     private static class SaveSlot extends Component {
@@ -62,7 +68,7 @@ public class WndSelectGameInProgress extends Window {
         protected Image[] challenges;
 
         protected TouchArea hotArea;
-        public float SCALE;
+        public static float SCALE;
 
         protected String[] names = { "파이터 UMP45", "호크아이 G11", "암살자 UMP9", "저격수 HK416", "UMP 40"};
         protected RenderedText name;
@@ -77,7 +83,7 @@ public class WndSelectGameInProgress extends Window {
 
             portrait = new Image(Assets.PORTRAIT, cl * 20, 0, 19, 25);
             frame = new Image(Assets.SAVESLOT, 0, 0, 21, 52);
-            SCALE = (HEIGHT - 5*2) / frame.height;
+            SCALE = (DISPHEIGHT - 5*2) / frame.height;
 
             setRect(0, 0, frame.width * SCALE, frame.height * SCALE);
 
@@ -98,7 +104,6 @@ public class WndSelectGameInProgress extends Window {
                 @Override
                 protected void onClick( Touchscreen.Touch touch ) {
 
-                    GLog.i("Hello!");
                 }
                 @Override
                 protected void onDrag( Touchscreen.Touch touch ) {
