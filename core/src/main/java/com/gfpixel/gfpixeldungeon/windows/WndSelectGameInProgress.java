@@ -6,11 +6,12 @@ import com.gfpixel.gfpixeldungeon.SPDSettings;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
 import com.gfpixel.gfpixeldungeon.ui.ScrollPane;
 import com.gfpixel.gfpixeldungeon.ui.Window;
-import com.watabou.input.Touchscreen;
+import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.RenderedText;
 import com.watabou.noosa.TouchArea;
 import com.watabou.noosa.ui.Component;
+import com.watabou.utils.Point;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
@@ -21,49 +22,58 @@ public class WndSelectGameInProgress extends Window {
     public static float SLOT_SCALE = 140 / 52f;
 
     public static int DISPWIDTH;
-    public static int DISPHEIGHT;// = SPDSettings.landscape() ? 150 : 297;
+    public static int DISPHEIGHT;
 
-    public static int REALHEIGHT;
-    public static int REALWIDTH;
+    private ArrayList<SaveSlot> Slots = new ArrayList<>(GamesInProgress.MAX_SLOTS);
 
-    protected static final int MARGIN = 7;
+    protected static final int MARGIN = SPDSettings.landscape() ? 7:5;
 
-    protected static int SlotsToDisplay;
+    protected static Point SlotsToDisplay;
     protected static ScrollPane squad;
 
-    protected SaveSlot[] Slots = new SaveSlot[GamesInProgress.MAX_SLOTS];
 
     public WndSelectGameInProgress()
     {
-        SlotsToDisplay= SPDSettings.landscape()? 5 : 2;
+        SlotsToDisplay = SPDSettings.landscape()? new Point( 5, 1)  : new Point( 2, 2 );
 
         ArrayList<GamesInProgress.Info> games = GamesInProgress.checkAll();
 
         int slotCount = Math.min(GamesInProgress.MAX_SLOTS, games.size()+1);
 
-        squad = new ScrollPane( new Component() );
+        squad = new ScrollPane( new Component() ) {
+            @Override
+            public void onClick( float x, float y ) {
+                for ( SaveSlot slot : Slots ) {
+                    if (slot.inside(x,y)) {
+                        slot.onClick();
+                    }
+                }
+            }
+        };
 
         Component content = squad.content();
 
         for (int i=0; i<10; ++i) {
 
-            Slots[i] = new SaveSlot( i%5 );
+            Slots.add(new SaveSlot( i%5 ));
 
-            content.add(Slots[i]);
-            Slots[i].setPos(  5 + (Slots[i].width() + 7) * i, 5);
+            content.add(Slots.get(i));
+            Slots.get(i).setPos( 5 + (Slots.get(i).width() + MARGIN) * (i % SlotsToDisplay.x), MARGIN + (Slots.get(i).height() + MARGIN) * (i / SlotsToDisplay.x) );
 
         }
 
         add(squad);
 
-        DISPWIDTH = SlotsToDisplay * (int)Slots[0].width() + (SlotsToDisplay + 1) * MARGIN;
-        DISPHEIGHT = 10 / SlotsToDisplay * (int)Slots[0].height() +
+        DISPWIDTH = SlotsToDisplay.x * (int)Slots.get(0).width() + (SlotsToDisplay.x + 1) * MARGIN;
+        DISPHEIGHT = SlotsToDisplay.y * (int)Slots.get(0).height() + (SlotsToDisplay.y + 1) * MARGIN;
         resize(DISPWIDTH, DISPHEIGHT);
         squad.setSize( DISPWIDTH, DISPHEIGHT );
         squad.scrollTo(0, 0);
 
-        int REALWIDTH = (int)Slots[0].width() * 10 + 7 * 11;
-        content.setRect(0, 0, REALWIDTH, DISPHEIGHT);
+        Point TotalSlots = SPDSettings.landscape() ? new Point( 5, 2 ) : new Point( 2, 5 );
+        int REALWIDTH = (int)Slots.get(0).width() * TotalSlots.x + MARGIN * (TotalSlots.x+1);
+        int REALHEIGHT = (int)Slots.get(0).height() * TotalSlots.y  + MARGIN * (TotalSlots.y + 1);
+        content.setRect(0, 0, REALWIDTH, REALHEIGHT);
     }
 
     private static class SaveSlot extends Component {
@@ -82,6 +92,7 @@ public class WndSelectGameInProgress extends Window {
         protected RenderedText score;
 
         private int order;
+
 
         public SaveSlot( int cl ) {
 
@@ -104,19 +115,6 @@ public class WndSelectGameInProgress extends Window {
             for (int i=0; i<10; ++i) {
                 challenges[i] = new Image(Assets.SAVESLOT, 22, 2, 3, 3);
             }
-
-            hotArea = new TouchArea(0, 0, 0, 0) {
-                @Override
-                protected void onClick( Touchscreen.Touch touch ) {
-
-                }
-                @Override
-                protected void onDrag( Touchscreen.Touch touch ) {
-                    squad.OnDrag(touch);
-                }
-            };
-
-            add(hotArea);
 
             name = PixelScene.renderText( 8 );
             level = PixelScene.renderText( 7 );
@@ -141,10 +139,6 @@ public class WndSelectGameInProgress extends Window {
 
             add( frame );
 
-            hotArea.x = x;
-            hotArea.y = y;
-            hotArea.width = width;
-            hotArea.height = height;
 
             add(name);
             name.text( names[order] );
@@ -184,7 +178,9 @@ public class WndSelectGameInProgress extends Window {
 
         }
 
-
+        protected void onClick() {
+            GLog.i("Hi");
+        }
 
     }
 
