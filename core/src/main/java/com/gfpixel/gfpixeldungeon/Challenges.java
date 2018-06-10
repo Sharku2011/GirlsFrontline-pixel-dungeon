@@ -41,8 +41,11 @@ public class Challenges {
 	public static final int SWARM_INTELLIGENCE	= 16;
 	public static final int DARKNESS			= 32;
 	public static final int NO_SCROLLS		    = 64;
+	public static final int DUMMY_1				= 128;
+	public static final int DUMMY_2				= 256;
+	public static final int DUMMY_3				= 512;
 
-	public static final int MAX_VALUE           = 127;
+	public static final int MAX_VALUE           = 1023;
 
 	public static final String[] NAME_IDS = {
 			"no_food",
@@ -51,11 +54,14 @@ public class Challenges {
 			"no_herbalism",
 			"swarm_intelligence",
 			"darkness",
-			"no_scrolls"
+			"no_scrolls",
+			"dummy1",
+			"dummy2",
+			"dummy3"
 	};
 
 	public static final int[] MASKS = {
-			NO_FOOD, NO_ARMOR, NO_HEALING, NO_HERBALISM, SWARM_INTELLIGENCE, DARKNESS, NO_SCROLLS
+			NO_FOOD, NO_ARMOR, NO_HEALING, NO_HERBALISM, SWARM_INTELLIGENCE, DARKNESS, NO_SCROLLS, DUMMY_1, DUMMY_2, DUMMY_3
 	};
 
 	public static boolean isItemBlocked( Item item ){
