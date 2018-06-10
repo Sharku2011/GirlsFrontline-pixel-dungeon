@@ -67,6 +67,9 @@ public class WndStartGame extends Window {
 		
 		float curX = heroBtnSpacing;
 		for (HeroClass cl : HeroClass.values()){
+			if (cl == HeroClass.NONE) {
+				continue;
+			}
 			HeroBtn button = new HeroBtn(cl);
 			button.setRect(curX, title.baseLine() + 4, HeroBtn.WIDTH, HeroBtn.HEIGHT);
 			curX += HeroBtn.WIDTH + heroBtnSpacing;
@@ -310,7 +313,8 @@ public class WndStartGame extends Window {
 			if (GamesInProgress.selectedClass != cl){
 				cl = GamesInProgress.selectedClass;
 				if (cl != null) {
-					avatar.frame(cl.ordinal() * 24, 0, 24, 32);
+					// subtract 1 for NONE class
+					avatar.frame((cl.ordinal() - 1) * 24, 0, 24, 32);
 					
 					name.text(Messages.capitalize(cl.title()));
 					

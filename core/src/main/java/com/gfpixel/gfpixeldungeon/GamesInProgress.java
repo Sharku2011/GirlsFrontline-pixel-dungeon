@@ -163,12 +163,14 @@ public class GamesInProgress {
 		public int hp;
 		public int ht;
 		public int shld;
-		public HeroClass heroClass;
+		public HeroClass heroClass = HeroClass.NONE;
 		public HeroSubClass subClass;
 		public int armorTier;
 		
 		public int goldCollected;
 		public int maxDepth;
+
+		public int score;
 	}
 	
 	public static final Comparator<GamesInProgress.Info> scoreComparator = new Comparator<GamesInProgress.Info>() {

@@ -54,6 +54,7 @@ import com.watabou.utils.Bundle;
 
 public enum HeroClass {
 
+	NONE( "none", HeroSubClass.NONE ),
 	WARRIOR( "warrior", HeroSubClass.BERSERKER, HeroSubClass.GLADIATOR ),
 	MAGE( "mage", HeroSubClass.BATTLEMAGE, HeroSubClass.WARLOCK ),
 	ROGUE( "rogue", HeroSubClass.ASSASSIN, HeroSubClass.FREERUNNER ),

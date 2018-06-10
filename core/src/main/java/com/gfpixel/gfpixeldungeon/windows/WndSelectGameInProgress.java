@@ -1,15 +1,20 @@
 package com.gfpixel.gfpixeldungeon.windows;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.GamesInProgress;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
+import com.gfpixel.gfpixeldungeon.actors.hero.HeroClass;
+import com.gfpixel.gfpixeldungeon.actors.hero.HeroSubClass;
+import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
+import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 import com.gfpixel.gfpixeldungeon.ui.ScrollPane;
 import com.gfpixel.gfpixeldungeon.ui.Window;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.RenderedText;
-import com.watabou.noosa.TouchArea;
+import com.watabou.noosa.particles.Emitter;
 import com.watabou.noosa.ui.Component;
 import com.watabou.utils.Point;
 import com.watabou.utils.Random;
@@ -53,13 +58,23 @@ public class WndSelectGameInProgress extends Window {
 
         Component content = squad.content();
 
-        for (int i=0; i<10; ++i) {
+        int i = 0;
 
-            Slots.add(new SaveSlot( i%5 ));
+        for (GamesInProgress.Info info : games) {
 
-            content.add(Slots.get(i));
-            Slots.get(i).setPos( 5 + (Slots.get(i).width() + MARGIN) * (i % SlotsToDisplay.x), MARGIN + (Slots.get(i).height() + MARGIN) * (i / SlotsToDisplay.x) );
+            SaveSlot newSlot = new SaveSlot( info );
+            Slots.add( newSlot );
+            content.add( newSlot );
+            newSlot.setPos( 5 + (Slots.get(i).width() + MARGIN) * (i % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * (i / SlotsToDisplay.x) );
 
+            i++;
+        }
+
+        if (i < 9) {
+            SaveSlot newSlot = new SaveSlot( new GamesInProgress.Info() );
+            Slots.add( newSlot );
+            content.add( newSlot );
+            newSlot.setPos( 5 + (Slots.get(i).width() + MARGIN) * (i % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * (i / SlotsToDisplay.x) );
         }
 
         add(squad);
@@ -67,6 +82,7 @@ public class WndSelectGameInProgress extends Window {
         DISPWIDTH = SlotsToDisplay.x * (int)Slots.get(0).width() + (SlotsToDisplay.x + 1) * MARGIN;
         DISPHEIGHT = SlotsToDisplay.y * (int)Slots.get(0).height() + (SlotsToDisplay.y + 1) * MARGIN;
         resize(DISPWIDTH, DISPHEIGHT);
+
         squad.setSize( DISPWIDTH, DISPHEIGHT );
         squad.scrollTo(0, 0);
 
@@ -81,24 +97,46 @@ public class WndSelectGameInProgress extends Window {
         protected Image portrait;
         protected Image frame;
 
-        protected Image[] challenges;
+        protected Image[] challengeMarks;
+        protected Emitter[] depthEmmiters;
 
-        protected TouchArea hotArea;
+        private GamesInProgress.Info Info;
+
         public static float SCALE = SLOT_SCALE;
 
-        protected String[] names = { "파이터 UMP45", "호크아이 G11", "암살자 UMP9", "저격수 HK416", "UMP 40"};
         protected RenderedText name;
         protected RenderedText level;
         protected RenderedText score;
+        protected RenderedText depth;
 
-        private int order;
+        private HeroClass cls;
 
+        public SaveSlot( GamesInProgress.Info info ) {
 
-        public SaveSlot( int cl ) {
+            Info = info;
+            cls = Info.heroClass;
 
-            order = cl;
+            int order;
 
-            portrait = new Image(Assets.PORTRAIT, cl * 20, 0, 19, 25);
+            switch (cls) {
+                case WARRIOR:
+                    order = 1;
+                    break;
+                case MAGE:
+                    order = 2;
+                    break;
+                case ROGUE:
+                    order = 3;
+                    break;
+                case HUNTRESS:
+                    order = 4;
+                    break;
+                default:
+                    order = 0;
+                    break;
+            }
+
+            portrait = new Image(Assets.PORTRAIT, (order % 5) * 20, (order / 5) * 26, 19, 25);
             frame = new Image(Assets.SAVESLOT, 0, 0, 21, 52);
 
             setRect(0, 0, frame.width * SCALE, frame.height * SCALE);
@@ -110,15 +148,22 @@ public class WndSelectGameInProgress extends Window {
         protected void createChildren() {
             super.createChildren();
 
-            challenges = new Image[10];
+            challengeMarks = new Image[Challenges.MASKS.length];
+            depthEmmiters = new Emitter[6];
+
+
 
             for (int i=0; i<10; ++i) {
-                challenges[i] = new Image(Assets.SAVESLOT, 22, 2, 3, 3);
+                challengeMarks[i] = new Image(Assets.SAVESLOT, 22, 2, 3, 3);
+            }
+            for (int i=0; i<6; ++i) {
+                depthEmmiters[i] = new Emitter();
             }
 
             name = PixelScene.renderText( 8 );
             level = PixelScene.renderText( 7 );
             score = PixelScene.renderText( 8 );
+            depth = PixelScene.renderText( 7 );
         }
 
         @Override
@@ -141,39 +186,60 @@ public class WndSelectGameInProgress extends Window {
 
 
             add(name);
-            name.text( names[order] );
 
-            name.x = x + 10.5f * SCALE - name.width() / 2f; //+ getNameLength()/2f * SCALE;
+            if (Info.heroClass == HeroClass.NONE) {
+                name.text( Info.heroClass.title() );
+            } else {
+                name.text( Info.subClass != HeroSubClass.NONE ? Info.subClass.title() + " " + Info.heroClass.title() :Info.heroClass.title() );
+            }
+
+
+            name.x = x + 10.5f * SCALE - name.width() / 2f;
             name.y = y + 34.5f * SCALE - name.height() / 3f;
 
             name.alpha(3.0f);
 
-            add(level);
-            level.text(String.valueOf(Random.Int(1,30)));
+            add(depth);
+            depth.text(String.valueOf(Info.depth));
+            depth.x = x + 15f * SCALE - depth.width() / 4f;
+            depth.y = y + 2.5f * SCALE - depth.height() / 3f;
 
-            level.x = x + 16 * SCALE - level.width() / 4f;
-            level.y = y + 29 * SCALE - level.height() / 8f;
+            add(level);
+            level.text(String.valueOf(Info.level));
+
+            level.x = x + 16f * SCALE - level.width() / 4f;
+            level.y = y + 29f * SCALE - level.height() / 8f;
 
             add(score);
-            score.text(String.valueOf(Random.Int(400,50000)));
+            score.text(String.valueOf(0));
 
             score.x = x + 10.5f * SCALE - score.width() / 2f;
-            score.y = y + 47 * SCALE;
+            score.y = y + 47f * SCALE;
 
             for (int i = 0; i < 10; ++i) {
-                add(challenges[i]);
+                add(challengeMarks[i]);
 
-                challenges[i].scale.set(SCALE);
+                challengeMarks[i].scale.set(SCALE);
 
-                challenges[i].y = y + (38 + 4 *(i / 5)) * SCALE;
-                challenges[i].x = x + (1 + 4 * (i % 5)) * SCALE;
+                challengeMarks[i].y = y + (38 + 4 *(i / 5)) * SCALE;
+                challengeMarks[i].x = x + (1 + 4 * (i % 5)) * SCALE;
 
-                challenges[i].visible = false;
+                challengeMarks[i].visible = false;
             }
 
-            for (int i=0; i < Random.Int(3, 8); ++i) {
-                int index = Random.Int( 0, 9 );
-                challenges[index].visible = true;
+            for (int i = 0; i < Challenges.MASKS.length; ++i) {
+                challengeMarks[ i ].visible = ((Info.challenges) & Challenges.MASKS[i]) != 0 ;
+            }
+
+            int procTheme = Info.heroClass == HeroClass.NONE ? 0 : Info.maxDepth/5 + 1;
+
+            for (int i = 0; i < procTheme; ++i) {
+                add(depthEmmiters[i]);
+
+                depthEmmiters[i].pos( x + (11f + (i+1) * 8f/(procTheme+1)) * SCALE, y + 2.5f * SCALE);
+                depthEmmiters[i].fillTarget = false;
+                depthEmmiters[i].pour(Speck.factory( Speck.RED_LIGHT ), 0.6f);
+
             }
 
         }

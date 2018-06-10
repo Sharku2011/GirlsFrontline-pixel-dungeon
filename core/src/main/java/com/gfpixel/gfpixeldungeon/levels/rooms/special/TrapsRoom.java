@@ -28,6 +28,7 @@ import com.gfpixel.gfpixeldungeon.items.Generator;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfLevitation;
+import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.levels.Level;
 import com.gfpixel.gfpixeldungeon.levels.Terrain;
 import com.gfpixel.gfpixeldungeon.levels.painters.Painter;
@@ -38,6 +39,8 @@ import com.gfpixel.gfpixeldungeon.levels.traps.FlockTrap;
 import com.gfpixel.gfpixeldungeon.levels.traps.GrimTrap;
 import com.gfpixel.gfpixeldungeon.levels.traps.GrippingTrap;
 import com.gfpixel.gfpixeldungeon.levels.traps.PoisonDartTrap;
+import com.gfpixel.gfpixeldungeon.levels.traps.ShockingTrap;
+import com.gfpixel.gfpixeldungeon.levels.traps.SummoningTrap;
 import com.gfpixel.gfpixeldungeon.levels.traps.TeleportationTrap;
 import com.gfpixel.gfpixeldungeon.levels.traps.Trap;
 import com.gfpixel.gfpixeldungeon.levels.traps.WarpingTrap;
@@ -153,6 +156,8 @@ public class TrapsRoom extends SpecialRoom {
 			{PoisonDartTrap.class, FlashingTrap.class, ExplosiveTrap.class},
 			//city
 			{WarpingTrap.class, FlashingTrap.class, DisintegrationTrap.class},
+			//recave
+			{GrimTrap.class, DisintegrationTrap.class, ShockingTrap.class},
 			//halls, muahahahaha
 			{GrimTrap.class}
 	};

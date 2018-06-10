@@ -49,14 +49,14 @@ import com.watabou.utils.PointF;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
-
+// TODO Rename to DeeperCaves
 public class ReCavesLevel extends RegularLevel {
 
     {
         color1 = 0x534f3e;
         color2 = 0xb9d661;
 
-        viewDistance = 6;
+        viewDistance = Math.min(5, viewDistance);
     }
 
     @Override
