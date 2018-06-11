@@ -1,14 +1,16 @@
 package com.gfpixel.gfpixeldungeon.windows;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.GamesInProgress;
+import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
 import com.gfpixel.gfpixeldungeon.actors.hero.HeroClass;
 import com.gfpixel.gfpixeldungeon.actors.hero.HeroSubClass;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
+import com.gfpixel.gfpixeldungeon.journal.Journal;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
-import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 import com.gfpixel.gfpixeldungeon.ui.ScrollPane;
 import com.gfpixel.gfpixeldungeon.ui.Window;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
@@ -17,7 +19,6 @@ import com.watabou.noosa.RenderedText;
 import com.watabou.noosa.particles.Emitter;
 import com.watabou.noosa.ui.Component;
 import com.watabou.utils.Point;
-import com.watabou.utils.Random;
 
 import java.util.ArrayList;
 
@@ -39,11 +40,14 @@ public class WndSelectGameInProgress extends Window {
 
     public WndSelectGameInProgress()
     {
+        Badges.loadGlobal();
+        Journal.loadGlobal();
+
         SlotsToDisplay = SPDSettings.landscape()? new Point( 5, 1)  : new Point( 2, 2 );
 
         ArrayList<GamesInProgress.Info> games = GamesInProgress.checkAll();
 
-        int slotCount = Math.min(GamesInProgress.MAX_SLOTS, games.size()+1);
+        final int slotCount = Math.min(GamesInProgress.MAX_SLOTS, games.size()+1);
 
         squad = new ScrollPane( new Component() ) {
             @Override
@@ -62,7 +66,12 @@ public class WndSelectGameInProgress extends Window {
 
         for (GamesInProgress.Info info : games) {
 
-            SaveSlot newSlot = new SaveSlot( info );
+            SaveSlot newSlot = new SaveSlot( info ) {
+                @Override
+                public void onClick() {
+                    GirlsFrontlinePixelDungeon.scene().add( new WndGameInProgress( this.slot ) );
+                }
+            };
             Slots.add( newSlot );
             content.add( newSlot );
             newSlot.setPos( 5 + (Slots.get(i).width() + MARGIN) * (i % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * (i / SlotsToDisplay.x) );
@@ -71,7 +80,12 @@ public class WndSelectGameInProgress extends Window {
         }
 
         if (i < 9) {
-            SaveSlot newSlot = new SaveSlot( new GamesInProgress.Info() );
+            SaveSlot newSlot = new SaveSlot( new GamesInProgress.Info() ) {
+                @Override
+                public void onClick() {
+                    GirlsFrontlinePixelDungeon.scene().add( new WndStartGame( slotCount ) );
+                }
+            };
             Slots.add( newSlot );
             content.add( newSlot );
             newSlot.setPos( 5 + (Slots.get(i).width() + MARGIN) * (i % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * (i / SlotsToDisplay.x) );
@@ -111,10 +125,13 @@ public class WndSelectGameInProgress extends Window {
 
         private HeroClass cls;
 
+        public int slot;
+
         public SaveSlot( GamesInProgress.Info info ) {
 
             Info = info;
             cls = Info.heroClass;
+            slot = info.slot;
 
             int order;
 
@@ -199,7 +216,7 @@ public class WndSelectGameInProgress extends Window {
 
             name.alpha(3.0f);
 
-            add(depth);
+            //add(depth);
             depth.text(String.valueOf(Info.depth));
             depth.x = x + 15f * SCALE - depth.width() / 4f;
             depth.y = y + 2.5f * SCALE - depth.height() / 3f;
@@ -231,21 +248,20 @@ public class WndSelectGameInProgress extends Window {
                 challengeMarks[ i ].visible = ((Info.challenges) & Challenges.MASKS[i]) != 0 ;
             }
 
-            int procTheme = Info.heroClass == HeroClass.NONE ? 0 : Info.maxDepth/5 + 1;
+            int procTheme = Math.min( Info.heroClass == HeroClass.NONE ? 0 : Info.maxDepth/5 + 1, 6 );
 
             for (int i = 0; i < procTheme; ++i) {
                 add(depthEmmiters[i]);
-
                 depthEmmiters[i].pos( x + (11f + (i+1) * 8f/(procTheme+1)) * SCALE, y + 2.5f * SCALE);
                 depthEmmiters[i].fillTarget = false;
-                depthEmmiters[i].pour(Speck.factory( Speck.RED_LIGHT ), 0.6f);
+                depthEmmiters[i].pour(Speck.factory( Speck.YELLOW_LIGHT ), 0.6f);
 
             }
 
         }
 
         protected void onClick() {
-            GLog.i("Hi");
+
         }
 
     }

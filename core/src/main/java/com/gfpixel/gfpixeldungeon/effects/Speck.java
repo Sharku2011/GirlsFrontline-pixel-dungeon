@@ -65,6 +65,7 @@ public class Speck extends Image {
 	public static final int FORGE		= 112;
 	public static final int CONFUSION	= 113;
 	public static final int RED_LIGHT   = 114;
+	public static final int YELLOW_LIGHT= 115;
 	
 	private static final int SIZE = 7;
 	
@@ -94,6 +95,7 @@ public class Speck extends Image {
 		switch (type) {
 		case DISCOVER:
 		case RED_LIGHT:
+		case YELLOW_LIGHT:
 			frame( film.get( LIGHT ) );
 			break;
 		case EVOKE:
@@ -174,6 +176,12 @@ public class Speck extends Image {
 			lifespan = 0.5f;
 			break;
 
+		case YELLOW_LIGHT:
+			tint(0xFFFFFF00);
+			angle = Random.Float( 360 );
+			angularSpeed = 90;
+			lifespan = 1f;
+			break;
 		case RED_LIGHT:
 			tint(0xFFCC0000);
 		case LIGHT:
@@ -358,6 +366,7 @@ public class Speck extends Image {
 				am = p < 0.5f ? 1 : 2 - p * 2;
 				break;
 
+			case YELLOW_LIGHT:
 			case RED_LIGHT:
 			case LIGHT:
 				am = scale.set( p < 0.2f ? p * 5f : (1 - p) * 1.25f ).x;
