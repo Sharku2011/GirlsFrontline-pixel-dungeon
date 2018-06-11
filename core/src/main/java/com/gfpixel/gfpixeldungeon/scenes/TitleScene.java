@@ -33,6 +33,7 @@ import com.gfpixel.gfpixeldungeon.ui.ChangesButton;
 import com.gfpixel.gfpixeldungeon.ui.ExitButton;
 import com.gfpixel.gfpixeldungeon.ui.LanguageButton;
 import com.gfpixel.gfpixeldungeon.ui.PrefsButton;
+import com.gfpixel.gfpixeldungeon.windows.WndSelectGameInProgress;
 import com.gfpixel.gfpixeldungeon.windows.WndStartGame;
 import com.watabou.glwrap.Blending;
 import com.watabou.noosa.BitmapText;
@@ -119,7 +120,8 @@ public class TitleScene extends PixelScene {
 				if (GamesInProgress.checkAll().size() == 0){
 					TitleScene.this.add( new WndStartGame(1) );
 				} else {
-					GirlsFrontlinePixelDungeon.switchNoFade( StartScene.class );
+					TitleScene.this.add( new WndSelectGameInProgress() );
+					//GirlsFrontlinePixelDungeon.switchNoFade( StartScene.class );
 				}
 			}
 		};
