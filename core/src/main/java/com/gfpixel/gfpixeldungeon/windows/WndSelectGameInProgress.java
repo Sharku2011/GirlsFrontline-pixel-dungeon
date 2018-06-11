@@ -217,9 +217,9 @@ public class WndSelectGameInProgress extends Window {
             name.alpha(3.0f);
 
             //add(depth);
-            depth.text(String.valueOf(Info.depth));
-            depth.x = x + 15f * SCALE - depth.width() / 4f;
-            depth.y = y + 2.5f * SCALE - depth.height() / 3f;
+            //depth.text(String.valueOf(Info.depth));
+            //depth.x = x + 15f * SCALE - depth.width() / 4f;
+            //depth.y = y + 2.5f * SCALE - depth.height() / 3f;
 
             add(level);
             level.text(String.valueOf(Info.level));
