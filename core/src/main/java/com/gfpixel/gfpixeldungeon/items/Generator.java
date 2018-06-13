@@ -45,6 +45,7 @@ import com.gfpixel.gfpixeldungeon.items.artifacts.TimekeepersHourglass;
 import com.gfpixel.gfpixeldungeon.items.artifacts.UnstableSpellbook;
 import com.gfpixel.gfpixeldungeon.items.bags.Bag;
 import com.gfpixel.gfpixeldungeon.items.food.Food;
+import com.gfpixel.gfpixeldungeon.items.food.Maccol;
 import com.gfpixel.gfpixeldungeon.items.food.MysteryMeat;
 import com.gfpixel.gfpixeldungeon.items.food.Pasty;
 import com.gfpixel.gfpixeldungeon.items.potions.Potion;
@@ -159,6 +160,7 @@ import com.watabou.utils.GameMath;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -200,6 +202,8 @@ public class Generator {
 		
 		public float prob;
 		public Class<? extends Item> superClass;
+
+		public static final Calendar calendar = Calendar.getInstance();
 		
 		private Category( float prob, Class<? extends Item> superClass ) {
 			this.prob = prob;
@@ -375,9 +379,10 @@ public class Generator {
 			
 			FOOD.classes = new Class<?>[]{
 					Food.class,
+					Maccol.class,
 					Pasty.class,
 					MysteryMeat.class };
-			FOOD.probs = new float[]{ 4, 1, 0 };
+			FOOD.probs = (calendar.get(Calendar.WEEK_OF_MONTH) <= 2) ? new float[] { 0, 0, 1, 0 } : new float[]{ 4, 1, 1, 0 };
 			
 			RING.classes = new Class<?>[]{
 					RingOfAccuracy.class,

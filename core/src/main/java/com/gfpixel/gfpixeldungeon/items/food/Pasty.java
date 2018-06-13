@@ -21,6 +21,7 @@
 
 package com.gfpixel.gfpixeldungeon.items.food;
 
+import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Hunger;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Recharging;
@@ -29,6 +30,7 @@ import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
+import com.gfpixel.gfpixeldungeon.utils.GLog;
 
 import java.util.Calendar;
 
@@ -39,6 +41,7 @@ public class Pasty extends Food {
 	private enum Holiday{
 		NONE,
 		EASTER, //TBD
+		BREAD_INDEPENDENT, // 6월 4일 빵복절
 		HWEEN,//2nd week of october though first day of november
 		XMAS //3rd week of december through first week of january
 	}
@@ -55,6 +58,10 @@ public class Pasty extends Food {
 				if (calendar.get(Calendar.WEEK_OF_MONTH) == 1)
 					holiday = Holiday.XMAS;
 				break;
+			case Calendar.JUNE:
+				if (calendar.get(Calendar.WEEK_OF_MONTH) <= 2)
+					holiday = holiday.BREAD_INDEPENDENT;
+					break;
 			case Calendar.OCTOBER:
 				if (calendar.get(Calendar.WEEK_OF_MONTH) >= 2)
 					holiday = Holiday.HWEEN;
@@ -86,6 +93,10 @@ public class Pasty extends Food {
 				name = Messages.get(this, "pasty");
 				image = ItemSpriteSheet.PASTY;
 				break;
+			case BREAD_INDEPENDENT:
+				name = Messages.get( this, "cinnamonroll" );
+				image = ItemSpriteSheet.CINNAMONROLL;
+				break;
 			case HWEEN:
 				name = Messages.get(this, "pie");
 				image = ItemSpriteSheet.PUMPKIN_PIE;
@@ -105,6 +116,10 @@ public class Pasty extends Food {
 			switch(holiday){
 				case NONE:
 					break; //do nothing extra
+				case BREAD_INDEPENDENT:
+					if (Badges.getLocal().contains(Badges.Badge.FOOD_EATEN_1))
+						GLog.n(Messages.get(this, "cinnamon_msg"));
+					break;
 				case HWEEN:
 					//heals for 10% max hp
 					hero.HP = Math.min(hero.HP + hero.HT/10, hero.HT);
@@ -122,11 +137,13 @@ public class Pasty extends Food {
 	public String info() {
 		switch(holiday){
 			case NONE: default:
-				return Messages.get(this, "pasty_desc");
+				return Messages.get(this, "pasty_desc" );
+			case BREAD_INDEPENDENT:
+				return Messages.get( this, "cinnamonroll_desc" );
 			case HWEEN:
-				return Messages.get(this, "pie_desc");
+				return Messages.get(this, "pie_desc" );
 			case XMAS:
-				return Messages.get(this, "cane_desc");
+				return Messages.get(this, "cane_desc" );
 		}
 	}
 	

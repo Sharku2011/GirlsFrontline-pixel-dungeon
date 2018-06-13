@@ -28,6 +28,7 @@ import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
 import com.gfpixel.gfpixeldungeon.items.artifacts.HornOfPlenty;
 import com.gfpixel.gfpixeldungeon.items.food.Blandfruit;
 import com.gfpixel.gfpixeldungeon.items.food.Food;
+import com.gfpixel.gfpixeldungeon.items.food.Maccol;
 import com.gfpixel.gfpixeldungeon.items.food.SmallRation;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
 
@@ -66,8 +67,10 @@ public class Challenges {
 
 	public static boolean isItemBlocked( Item item ){
 		if (Dungeon.isChallenged(NO_FOOD)){
-			if (item instanceof Food && !(item instanceof SmallRation)) {
-				return true;
+			if (item instanceof Food ) {
+				if (!(item instanceof SmallRation) && !(item instanceof Maccol)) {
+					return true;
+				}
 			} else if (item instanceof HornOfPlenty){
 				return true;
 			}

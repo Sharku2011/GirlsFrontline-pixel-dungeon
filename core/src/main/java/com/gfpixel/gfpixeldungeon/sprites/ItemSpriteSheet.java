@@ -493,7 +493,8 @@ public class ItemSpriteSheet {
 	public static final int PASTY       = FOOD+6;
 	public static final int PUMPKIN_PIE = FOOD+7;
 	public static final int CANDY_CANE  = FOOD+8;
-	public static final int MACCOL       = FOOD+9;
+	public static final int MACCOL      = FOOD+9;
+	public static final int CINNAMONROLL= FOOD+10;
 	static{
 		assignItemRect(MEAT,        15, 11);
 		assignItemRect(STEAK,       15, 11);
@@ -505,6 +506,7 @@ public class ItemSpriteSheet {
 		assignItemRect(PUMPKIN_PIE, 16, 12);
 		assignItemRect(CANDY_CANE,  13, 16);
 		assignItemRect(MACCOL,       7, 10);
+		assignItemRect(CINNAMONROLL, 8, 8 );
 	}
 
 	private static final int QUEST  =                                       xy(1, 26);  //32 slots
