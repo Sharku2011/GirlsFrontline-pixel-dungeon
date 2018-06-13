@@ -27,6 +27,7 @@ import com.gfpixel.gfpixeldungeon.BuildConfig;
 import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.items.BrokenSeal;
+import com.gfpixel.gfpixeldungeon.items.Generator;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
@@ -35,6 +36,7 @@ import com.gfpixel.gfpixeldungeon.items.bags.PotionBandolier;
 import com.gfpixel.gfpixeldungeon.items.bags.ScrollHolder;
 import com.gfpixel.gfpixeldungeon.items.bags.VelvetPouch;
 import com.gfpixel.gfpixeldungeon.items.food.Food;
+import com.gfpixel.gfpixeldungeon.items.food.Pasty;
 import com.gfpixel.gfpixeldungeon.items.food.SmallRation;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfMindVision;
@@ -51,6 +53,8 @@ import com.gfpixel.gfpixeldungeon.items.weapon.missiles.ThrowingKnife;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.ThrowingStone;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.watabou.utils.Bundle;
+
+import java.util.Calendar;
 
 public enum HeroClass {
 
@@ -98,7 +102,8 @@ public enum HeroClass {
 		Item i = new ClothArmor().identify();
 		if (!Challenges.isItemBlocked(i)) hero.belongings.armor = (ClothArmor)i;
 
-		i = new Food();
+
+		i = Generator.Category.calendar.get(Calendar.WEEK_OF_MONTH) <= 2 ? new Pasty() : new Food();
 		if (!Challenges.isItemBlocked(i)) i.collect();
 
 		if (Dungeon.isChallenged(Challenges.NO_FOOD)){
