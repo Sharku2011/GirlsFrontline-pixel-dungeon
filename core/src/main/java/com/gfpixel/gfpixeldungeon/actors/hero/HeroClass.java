@@ -53,6 +53,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.missiles.ThrowingKnife;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.ThrowingStone;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.watabou.utils.Bundle;
+import com.watabou.utils.Holidays;
 
 import java.util.Calendar;
 
@@ -103,7 +104,7 @@ public enum HeroClass {
 		if (!Challenges.isItemBlocked(i)) hero.belongings.armor = (ClothArmor)i;
 
 
-		i = Generator.Category.calendar.get(Calendar.WEEK_OF_MONTH) <= 2 ? new Pasty() : new Food();
+		i = ( (Holidays.getHolidays() == Holidays.Holiday.BREAD_INDEPENDENT) ? new Pasty() : new Food() );
 		if (!Challenges.isItemBlocked(i)) i.collect();
 
 		if (Dungeon.isChallenged(Challenges.NO_FOOD)){
