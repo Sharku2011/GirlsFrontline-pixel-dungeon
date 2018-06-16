@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2018 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
-import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
 public class Shortsword extends MeleeWeapon {
@@ -30,17 +29,6 @@ public class Shortsword extends MeleeWeapon {
 		image = ItemSpriteSheet.SHORTSWORD;
 
 		tier = 2;
-		RCH = 2;
 	}
 
-	@Override
-	public int max(int lvl) {
-		return  2*(tier+1) +    //12 base, down from 20
-				lvl*Math.round(0.8f*(tier+1));   //+2 per level, down from +4
-	}
-
-	@Override
-	public int defenseFactor( Char owner ) {
-		return 2+1*level();     //5 extra defence, plus 2 per level;
-	}
 }

@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2018 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,9 +29,8 @@ public class Glaive extends MeleeWeapon {
 		image = ItemSpriteSheet.GLAIVE;
 
 		tier = 5;
-		ACC = 0.6f; //0.9x accuracy
+		DLY = 1.5f; //0.67x speed
 		RCH = 2;    //extra reach
-		//also cannot surprise attack, see Hero.canSurpriseAttack
 	}
 
 	@Override

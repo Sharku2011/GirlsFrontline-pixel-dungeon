@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2018 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,14 +29,13 @@ public class Scimitar extends MeleeWeapon {
 		image = ItemSpriteSheet.SCIMITAR;
 
 		tier = 3;
-		ACC = 0.95f;
-		DLY = 0.2f; //1time 5hit
+		DLY = 0.8f; //1.25x speed
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  Math.round(2.1f*(tier+1)) +    //5 base, down from 20
-				lvl*Math.round(0.4f*(tier+1));   //+1 per level, down from +2
+		return  4*(tier+1) +    //16 base, down from 20
+				lvl*(tier+1);   //scaling unchanged
 	}
 
 }

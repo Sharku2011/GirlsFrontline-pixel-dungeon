@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2018 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,6 +32,7 @@ import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.bags.Bag;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.items.wands.Wand;
+import com.gfpixel.gfpixeldungeon.items.wands.WandOfCorrosion;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfCorruption;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfRegrowth;
@@ -352,7 +353,6 @@ public class MagesStaff extends MeleeWeapon {
 			Dungeon.quickslot.clearItem(wand);
 
 			wand.detach(curUser.belongings.backpack);
-			Badges.validateTutorial();
 
 			GLog.p( Messages.get(MagesStaff.class, "imbue", wand.name()));
 			imbueWand( wand, curUser );
@@ -378,6 +378,7 @@ public class MagesStaff extends MeleeWeapon {
 		public boolean lightMode() {
 			return !((wand instanceof WandOfDisintegration)
 					|| (wand instanceof WandOfCorruption)
+					|| (wand instanceof WandOfCorrosion)
 					|| (wand instanceof WandOfRegrowth));
 		}
 	};

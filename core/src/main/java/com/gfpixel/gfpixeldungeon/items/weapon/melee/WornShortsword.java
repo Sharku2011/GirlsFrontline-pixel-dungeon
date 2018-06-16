@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2018 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,30 +21,16 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
-import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
-import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
-import com.watabou.utils.Random;
 
-public class Ump45 extends MeleeWeapon {
+public class WornShortsword extends MeleeWeapon {
 
-    {
-        image = ItemSpriteSheet.UMP45;
+	{
+		image = ItemSpriteSheet.WORN_SHORTSWORD;
 
-        tier = 1;
-        RCH = 1;
-    }
-
-    @Override
-    public int max(int lvl) {
-        return  4*(tier+1) +    //8 base, down from 10
-                lvl*(tier+1);   //scaling unchanged
-    }
-
-    @Override
-    public int defenseFactor( Char owner ) {
-        return 1;	//3 extra defence
-    }
+		tier = 1;
+		
+		bones = false;
+	}
 
 }

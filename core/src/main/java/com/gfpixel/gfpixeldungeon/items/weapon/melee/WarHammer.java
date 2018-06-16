@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2018 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,14 +29,13 @@ public class WarHammer extends MeleeWeapon {
 		image = ItemSpriteSheet.WAR_HAMMER;
 
 		tier = 5;
-		DLY = 0.6f; //1.25x speed
-		RCH = 2;    //extra reach
+		ACC = 1.20f; //20% boost to accuracy
 	}
 
 	@Override
 	public int max(int lvl) {
-		return   3*(tier+1) +    //24 base, down from 30
-				lvl*Math.round(1f*(tier+1));
+		return  4*(tier+1) +    //24 base, down from 30
+				lvl*(tier+1);   //scaling unchanged
 	}
 
 }

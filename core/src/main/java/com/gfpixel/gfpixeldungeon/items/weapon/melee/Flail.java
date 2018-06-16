@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2018 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,8 +29,7 @@ public class Flail extends MeleeWeapon {
 		image = ItemSpriteSheet.FLAIL;
 
 		tier = 4;
-		ACC = 0.9f; //0.8x accuracy
-		RCH = 2;    //extra reach
+		ACC = 0.9f; //0.9x accuracy
 		//also cannot surprise attack, see Hero.canSurpriseAttack
 	}
 

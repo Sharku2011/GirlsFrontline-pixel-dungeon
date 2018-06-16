@@ -1,9 +1,9 @@
 /*
  * Pixel Dungeon
- * Copyright (C) 2012-2015  Oleg Dolya
+ * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Shattered Pixel Dungeon
- * Copyright (C) 2014-2017 Evan Debenham
+ * Copyright (C) 2014-2018 Evan Debenham
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,12 +30,14 @@ public class Knuckles extends MeleeWeapon {
 
 		tier = 1;
 		DLY = 0.5f; //2x speed
+		
+		bones = false;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  3*(tier+1) +    //6 base, down from 10
-				lvl*tier;       //+1 per level, down from +2
+		return  (int)(2.5f*(tier+1)) +  //5 base, down from 10
+				lvl*tier;               //+1 per level, down from +2
 	}
 
 }
