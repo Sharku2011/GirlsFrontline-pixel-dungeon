@@ -157,6 +157,7 @@ import com.gfpixel.gfpixeldungeon.plants.Stormvine;
 import com.gfpixel.gfpixeldungeon.plants.Sungrass;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.GameMath;
+import com.watabou.utils.Holidays;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
@@ -382,7 +383,7 @@ public class Generator {
 					Maccol.class,
 					Pasty.class,
 					MysteryMeat.class };
-			FOOD.probs = (calendar.get(Calendar.WEEK_OF_MONTH) <= 2) ? new float[] { 0, 0, 1, 0 } : new float[]{ 4, 1, 1, 0 };
+			FOOD.probs = ( Holidays.getHolidays() == Holidays.Holiday.BREAD_INDEPENDENT ) ? new float[] { 0, 0, 1, 0 } : new float[]{ 4, 1, 1, 0 };
 			
 			RING.classes = new Class<?>[]{
 					RingOfAccuracy.class,
