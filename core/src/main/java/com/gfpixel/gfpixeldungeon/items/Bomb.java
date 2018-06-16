@@ -109,7 +109,11 @@ public class Bomb extends Item {
 		return super.doPickUp(hero);
 	}
 
-	public void explode(int cell){
+	public void explode(int cell) {
+		explode(cell, 0);
+	}
+
+	public void explode(int cell, float stack){
 		//We're blowing up, so no need for a fuse anymore.
 		this.fuse = null;
 
@@ -146,7 +150,7 @@ public class Bomb extends Item {
 
 					int dmg = Random.NormalIntRange( minDamage, maxDamage ) - ch.drRoll();
 					if (dmg > 0) {
-						ch.damage( dmg, this );
+						ch.damage( Math.round( dmg * ( 1+stack ) ), this );
 					}
 
 					if (ch == Dungeon.hero && !ch.isAlive())
