@@ -442,7 +442,7 @@ public class ItemSpriteSheet {
 	public static final int STONE_TIWAZ    = STONES+11;
 	static {
 		for (int i = STONES; i < STONES+16; i++)
-			assignItemRect(i, 11, 13);
+			assignItemRect(i, 12, 13);
 	}
 
 	private static final int POTIONS        =                               xy(1, 22);  //16 slots

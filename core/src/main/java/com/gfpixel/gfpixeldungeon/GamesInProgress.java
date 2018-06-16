@@ -138,7 +138,10 @@ public class GamesInProgress {
 		
 		info.goldCollected = Statistics.goldCollected;
 		info.maxDepth = Statistics.deepestFloor;
-		
+
+		// TODO 점수 계산 식 작성 필요
+		info.score = 0;
+
 		slotStates.put( slot, info );
 	}
 	
