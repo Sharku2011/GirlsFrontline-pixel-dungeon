@@ -47,13 +47,13 @@ public class WndSelectGameInProgress extends Window {
 
         ArrayList<GamesInProgress.Info> games = GamesInProgress.checkAll();
 
-        final int slotCount = Math.min(GamesInProgress.MAX_SLOTS, games.size()+1);
+        final int slotCount = Math.min( GamesInProgress.MAX_SLOTS, games.size() );
 
         squad = new ScrollPane( new Component() ) {
             @Override
             public void onClick( float x, float y ) {
                 for ( SaveSlot slot : Slots ) {
-                    if (slot.inside(x,y)) {
+                    if (slot.inside( x, y )) {
                         slot.onClick();
                     }
                 }
@@ -62,7 +62,7 @@ public class WndSelectGameInProgress extends Window {
 
         Component content = squad.content();
 
-        int i = 0;
+        int lastSlot = 0;
 
         for (GamesInProgress.Info info : games) {
 
@@ -74,21 +74,22 @@ public class WndSelectGameInProgress extends Window {
             };
             Slots.add( newSlot );
             content.add( newSlot );
-            newSlot.setPos( 5 + (Slots.get(i).width() + MARGIN) * (i % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * (i / SlotsToDisplay.x) );
+            newSlot.setPos( 5 + (Slots.get(lastSlot).width() + MARGIN) * (lastSlot % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * (lastSlot / SlotsToDisplay.x) );
 
-            i++;
+            lastSlot = info.slot;
         }
 
-        if (i < 9) {
+        if (lastSlot < GamesInProgress.MAX_SLOTS) {
             SaveSlot newSlot = new SaveSlot( new GamesInProgress.Info() ) {
                 @Override
                 public void onClick() {
-                    GirlsFrontlinePixelDungeon.scene().add( new WndStartGame( slotCount ) );
+                    GirlsFrontlinePixelDungeon.scene().add( new WndStartGame( slotCount + 1 ) );
                 }
             };
+            lastSlot++;
             Slots.add( newSlot );
             content.add( newSlot );
-            newSlot.setPos( 5 + (Slots.get(i).width() + MARGIN) * (i % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * (i / SlotsToDisplay.x) );
+            newSlot.setPos( 5 + (Slots.get(0).width() + MARGIN) * (lastSlot % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * (lastSlot / SlotsToDisplay.x) );
         }
 
         add(squad);

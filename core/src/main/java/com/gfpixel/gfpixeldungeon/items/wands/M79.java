@@ -121,9 +121,7 @@ public class M79 extends DamageWand {
     }
 
     //@Override
-    public boolean getUniq(){
-        return true;
-    }
+    //public boolean getUniq(){ return true; }
 
     @Override
     public String statsDesc(){
