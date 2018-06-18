@@ -95,7 +95,7 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 30, 16, 45, 26 ) );
 			break;
 		case SHPX:
-			icon.frame( icon.texture.uvRect( 64, 44, 80, 60 ) );
+			icon.frame( icon.texture.uvRect( 56, 40, 70, 54 ) );
 			break;
 		case WARRIOR:
 			icon.frame( icon.texture.uvRect( 0, 29, 16, 45 ) );
@@ -149,10 +149,10 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 108, 0, 124, 16 ) );
 			break;
 		case NOTES:
-			icon.frame( icon.texture.uvRect( 79, 40, 94, 56 ) );
+			icon.frame( icon.texture.uvRect( 72, 52, 82, 63 ) );
 			break;
 		case LANGS:
-			icon.frame( icon.texture.uvRect( 95, 42, 107, 51 ) );
+			icon.frame( icon.texture.uvRect( 83, 54, 95, 63 ) );
 			break;
 		case CHALLENGE_OFF:
 			icon.frame( icon.texture.uvRect( 78, 12, 92, 24 ) );
