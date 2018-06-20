@@ -47,7 +47,7 @@ public class WndSelectGameInProgress extends Window {
 
         ArrayList<GamesInProgress.Info> games = GamesInProgress.checkAll();
 
-        final int slotCount = Math.min( GamesInProgress.MAX_SLOTS, games.size() );
+        //final int slotCount = Math.min( GamesInProgress.MAX_SLOTS, games.size() );
 
         squad = new ScrollPane( new Component() ) {
             @Override
@@ -62,7 +62,7 @@ public class WndSelectGameInProgress extends Window {
 
         Component content = squad.content();
 
-        int lastSlot = 0;
+        int slotIndex = 1;
 
         for (GamesInProgress.Info info : games) {
 
@@ -74,22 +74,24 @@ public class WndSelectGameInProgress extends Window {
             };
             Slots.add( newSlot );
             content.add( newSlot );
-            newSlot.setPos( 5 + (Slots.get(lastSlot).width() + MARGIN) * (lastSlot % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * (lastSlot / SlotsToDisplay.x) );
+            newSlot.setPos( 5 + (newSlot.width() + MARGIN) * ((slotIndex-1) % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * ((slotIndex-1) / SlotsToDisplay.x) );
 
-            lastSlot = info.slot;
+            GLog.i(String.valueOf(info.slot));
+
+            slotIndex++;
         }
 
-        if (lastSlot < GamesInProgress.MAX_SLOTS) {
+        if (slotIndex <= GamesInProgress.MAX_SLOTS) {
+            final int finalLastSlot = slotIndex;
             SaveSlot newSlot = new SaveSlot( new GamesInProgress.Info() ) {
                 @Override
                 public void onClick() {
-                    GirlsFrontlinePixelDungeon.scene().add( new WndStartGame( slotCount + 1 ) );
+                    GirlsFrontlinePixelDungeon.scene().add( new WndStartGame( finalLastSlot ) );
                 }
             };
-            lastSlot++;
             Slots.add( newSlot );
             content.add( newSlot );
-            newSlot.setPos( 5 + (Slots.get(0).width() + MARGIN) * (lastSlot % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * (lastSlot / SlotsToDisplay.x) );
+            newSlot.setPos( 5 + (Slots.get(0).width() + MARGIN) * ((finalLastSlot-1) % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * ((finalLastSlot-1) / SlotsToDisplay.x) );
         }
 
         add(squad);
@@ -98,13 +100,15 @@ public class WndSelectGameInProgress extends Window {
         DISPHEIGHT = SlotsToDisplay.y * (int)Slots.get(0).height() + (SlotsToDisplay.y + 1) * MARGIN;
         resize(DISPWIDTH, DISPHEIGHT);
 
-        squad.setSize( DISPWIDTH, DISPHEIGHT );
-        squad.scrollTo(0, 0);
+
 
         Point TotalSlots = SPDSettings.landscape() ? new Point( 5, 2 ) : new Point( 2, 5 );
         int REALWIDTH = (int)Slots.get(0).width() * TotalSlots.x + MARGIN * (TotalSlots.x+1);
         int REALHEIGHT = (int)Slots.get(0).height() * TotalSlots.y  + MARGIN * (TotalSlots.y + 1);
         content.setRect(0, 0, REALWIDTH, REALHEIGHT);
+
+        squad.setSize( DISPWIDTH, DISPHEIGHT );
+        squad.scrollTo(0, 0);
     }
 
     private static class SaveSlot extends Component {
