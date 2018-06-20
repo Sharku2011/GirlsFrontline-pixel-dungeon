@@ -247,8 +247,9 @@ public class Goo extends Mob {
 	public void notice() {
 		super.notice();
 		BossHealthBar.assignBoss(this);
-		WndDialog.ShowChapter(DialogInfo.ID_SEWER);
-		//yell( Messages.get(this, "notice") );
+		if (!Dungeon.level.locked) {
+			WndDialog.ShowChapter(DialogInfo.ID_SEWER);
+		}
 	}
 
 	private final String PUMPEDUP = "pumpedup";
