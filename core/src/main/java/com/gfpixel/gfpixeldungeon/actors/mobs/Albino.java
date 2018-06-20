@@ -24,6 +24,7 @@ package com.gfpixel.gfpixeldungeon.actors.mobs;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Bleeding;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
+import com.gfpixel.gfpixeldungeon.items.potions.PotionOfParalyticGas;
 import com.gfpixel.gfpixeldungeon.sprites.AlbinoSprite;
 import com.watabou.utils.Random;
 
@@ -31,6 +32,9 @@ public class Albino extends Rat {
 
 	{
 		spriteClass = AlbinoSprite.class;
+
+		loot = new PotionOfParalyticGas().identify();
+		lootChance = 1;
 		
 		HP = HT = 15;
 	}
