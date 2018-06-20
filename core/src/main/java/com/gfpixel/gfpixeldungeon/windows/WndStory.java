@@ -122,7 +122,7 @@ public class WndStory extends Window {
 		tf.maxWidth(SPDSettings.landscape() ?
 					WIDTH_L - MARGIN * 2:
 					WIDTH_P - MARGIN *2);
-		tf.invert();
+		//tf.invert();
 		tf.setPos(MARGIN, 0);
 		add( tf );
 		
