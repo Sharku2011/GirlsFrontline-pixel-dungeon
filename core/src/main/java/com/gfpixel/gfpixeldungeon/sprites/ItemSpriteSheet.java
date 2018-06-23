@@ -134,14 +134,14 @@ public class ItemSpriteSheet {
 	                                                                                    //32 free slots
 
 	private static final int WEP_TIER1      =                               xy(1, 7);   //8 slots
-	public static final int UMP45        = WEP_TIER1+0;
-	public static final int DP             = WEP_TIER1+1;
+	public static final int UMP45        	= WEP_TIER1+0;
+	public static final int DP             	= WEP_TIER1+1;
 	public static final int KNUCKLEDUSTER   = WEP_TIER1+2;
-	public static final int UMP40          = WEP_TIER1+3;
+	public static final int UMP40          	= WEP_TIER1+3;
 	public static final int DAGGER          = WEP_TIER1+4;
 	public static final int MAGES_STAFF     = WEP_TIER1+5;
-	public static final int SR3          = WEP_TIER1+6;
-	public static final int CANNON         = WEP_TIER1+7;
+	public static final int SR3          	= WEP_TIER1+6;
+	public static final int CANNON         	= WEP_TIER1+7;
 	static{
 		assignItemRect(UMP45, 15, 16);
 		assignItemRect(DP,     15, 16);
@@ -194,7 +194,7 @@ public class ItemSpriteSheet {
 	public static final int FLAIL           = WEP_TIER4+2;
 	public static final int RUNIC_BLADE     = WEP_TIER4+3;
 	public static final int ASSASSINS_BLADE = WEP_TIER4+4;
-	public static final int AWP               = WEP_TIER4+5;
+	public static final int AWP             = WEP_TIER4+5;
 	public static final int CROSSBOW        = WEP_TIER4+6;
 	static{
 		assignItemRect(LONGSWORD,       15, 15);

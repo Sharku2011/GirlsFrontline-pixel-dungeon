@@ -23,19 +23,21 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Flail extends MeleeWeapon {
+public class M99 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.FLAIL;
+		image = ItemSpriteSheet.GLAIVE;
 
-		tier = 4;
-		ACC = 0.9f; //0.9x accuracy
-		//also cannot surprise attack, see Hero.canSurpriseAttack
+		tier = 5;
+		ACC = 1.6f;	// 60% additional accuracy
+		//DLY = 1.5f; //0.67x speed
+		RCH = 2;    //extra reach
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  Math.round(7*(tier+1)) +        //35 base, up from 25
-				lvl*Math.round(1.6f*(tier+1));  //+8 per level, up from +5
+		return  Math.round(6.67f*(tier+1)) +    //40 base, up from 30
+				lvl*Math.round(1.33f*(tier+1)); //+8 per level, up from +6
 	}
+
 }

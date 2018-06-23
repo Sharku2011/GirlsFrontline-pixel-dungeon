@@ -347,27 +347,27 @@ public class GameScene extends PixelScene {
 					}
                     break;
                 case 6:
-					if (!Dungeon.chapters.contains(1)) {
+					if (!Dungeon.chapters.contains(DialogInfo.ID_PRISON)) {
 						WndDialog.ShowChapter( DialogInfo.ID_PRISON );
 					}
                     break;
                 case 11:
-					if (!Dungeon.chapters.contains(2)) {
+					if (!Dungeon.chapters.contains(DialogInfo.ID_CAVES)) {
 						WndDialog.ShowChapter( DialogInfo.ID_CAVES );
 					}
                     break;
                 case 16:
-					if (!Dungeon.chapters.contains(3)) {
+					if (!Dungeon.chapters.contains(DialogInfo.ID_CITY)) {
 						WndDialog.ShowChapter( DialogInfo.ID_CITY );
 					}
                     break;
                 case 22:
-					if (!Dungeon.chapters.contains(4)) {
+					if (!Dungeon.chapters.contains(DialogInfo.ID_RECAVES)) {
 						WndDialog.ShowChapter( DialogInfo.ID_RECAVES );
 					}
                     break;
                 case 26:
-					if (!Dungeon.chapters.contains(5)) {
+					if (!Dungeon.chapters.contains(DialogInfo.ID_HALLS)) {
 						WndDialog.ShowChapter( DialogInfo.ID_HALLS );
 					}
                     break;
