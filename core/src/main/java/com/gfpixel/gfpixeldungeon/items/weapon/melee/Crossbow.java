@@ -24,15 +24,15 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
 public class Crossbow extends MeleeWeapon {
-	
+
 	{
 		image = ItemSpriteSheet.CROSSBOW;
-		
+
 		//check Dart.class for additional properties
-		
+
 		tier = 4;
 	}
-	
+
 	@Override
 	public int max(int lvl) {
 		return  4*(tier+1) +    //20 base, down from 25
