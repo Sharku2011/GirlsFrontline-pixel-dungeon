@@ -87,7 +87,7 @@ import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Flail;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.gfpixel.gfpixeldungeon.journal.Notes;
 import com.gfpixel.gfpixeldungeon.levels.Level;
@@ -397,7 +397,7 @@ public class Hero extends Char {
 	public boolean canSurpriseAttack(){
 		if (belongings.weapon == null || !(belongings.weapon instanceof Weapon))    return true;
 		if (STR() < ((Weapon)belongings.weapon).STRReq())                           return false;
-		if (belongings.weapon instanceof Flail)                                     return false;
+		if (belongings.weapon instanceof AK47)                                     return false;
 
 		return true;
 	}

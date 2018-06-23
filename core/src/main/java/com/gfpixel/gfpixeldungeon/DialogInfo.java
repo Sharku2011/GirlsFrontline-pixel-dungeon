@@ -85,17 +85,31 @@ public  class DialogInfo
             "G11", "UMP45", "UMP9", "HK416", "P7", "ST-AR 15", "M16A1", "제퓨티", "Ppsh-47", "디스트로이어", "드리머"
     };
 
-    public static final int ID_SEWER		= 0;
-    public static final int ID_PRISON		= 1;
-    public static final int ID_CAVES		= 2;
-    public static final int ID_CITY     	= 3;
-    public static final int ID_RECAVES		= 4;
-    public static final int ID_HALLS		= 5;
-    public static final int ID_COLDWAR		= 6;
-    public static final int ID_STAR15_QUEST = 100;
-    public static final int ID_M16A1_QUEST	= 200;
-    public static final int ID_PPSH47_QUEST	= 300;
-    public static final int ID_P7_QUEST 	= 400;
+    public static final int ID_SEWER		= 1;
+    public static final int ID_SEWER_BOSS   = 100;
+
+    public static final int ID_PRISON		= 2;
+    public static final int ID_PRISON_BOSS	= 200;
+
+    public static final int ID_CAVES		= 3;
+    public static final int ID_CAVES_BOSS	= 300;
+
+    public static final int ID_CITY     	= 4;
+    public static final int ID_CITY_BOSS   	= 400;
+
+    public static final int ID_RECAVES		= 5;
+    public static final int ID_RECAVES_BOSS	= 500;
+
+    public static final int ID_HALLS		= 6;
+    public static final int ID_HALLS_BOSS	= 600;
+
+    public static final int ID_COLDWAR		= 7;
+    public static final int ID_COLDWAR_BOSS	= 700;
+
+    public static final int ID_STAR15_QUEST = 1000;
+    public static final int ID_M16A1_QUEST	= 2000;
+    public static final int ID_PPSH47_QUEST	= 3000;
+    public static final int ID_P7_QUEST 	= 4000;
 
     // general tag for quest
     public static final int INIT        = 0;
@@ -112,6 +126,12 @@ public  class DialogInfo
                         "sewer",
                         new int[]{UMP45, UMP9, UMP45, HK416, UMP45, G11, HK416, G11},
                         new int[]{    0,    1,     2,     2,     2,   1,     1,   2} )
+        );
+        STORIES.put( ID_SEWER_BOSS,
+                new DialogInfo (
+                        "excutioner",
+                        new int[]{DESTROYER},
+                        new int[]{        0} )
         );
         STORIES.put( ID_PRISON,
                 new DialogInfo (
