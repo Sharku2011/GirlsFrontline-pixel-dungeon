@@ -248,7 +248,7 @@ public class Goo extends Mob {
 		super.notice();
 		BossHealthBar.assignBoss(this);
 		if (!Dungeon.level.locked) {
-			WndDialog.ShowChapter(DialogInfo.ID_SEWER);
+			WndDialog.ShowChapter(DialogInfo.ID_SEWER_BOSS);
 		}
 	}
 

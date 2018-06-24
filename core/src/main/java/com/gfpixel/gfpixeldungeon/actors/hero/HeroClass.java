@@ -27,7 +27,6 @@ import com.gfpixel.gfpixeldungeon.BuildConfig;
 import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.items.BrokenSeal;
-import com.gfpixel.gfpixeldungeon.items.Generator;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
@@ -52,7 +51,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.Crossbow;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dagger;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Knuckles;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.WornShortsword;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Boomerang;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.ThrowingKnife;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.ThrowingStone;
@@ -60,7 +59,6 @@ import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Holidays;
 
-import java.util.Calendar;
 
 public enum HeroClass {
 
@@ -133,7 +131,7 @@ public enum HeroClass {
 	}
 
 	private static void initWarrior( Hero hero ) {
-		(hero.belongings.weapon = new WornShortsword()).identify();
+		(hero.belongings.weapon = new Ump45()).identify();
 		new PotionOfHealing().identify().collect();
 		ThrowingStone stones = new ThrowingStone();
 		stones.identify().quantity(3).collect();

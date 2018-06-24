@@ -30,6 +30,7 @@ import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.InterlevelScene;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
 import com.gfpixel.gfpixeldungeon.scenes.StartScene;
+import com.gfpixel.gfpixeldungeon.scenes.TitleScene;
 import com.gfpixel.gfpixeldungeon.sprites.HeroSprite;
 import com.gfpixel.gfpixeldungeon.ui.RedButton;
 import com.gfpixel.gfpixeldungeon.ui.Window;
@@ -125,7 +126,8 @@ public class WndGameInProgress extends Window {
 						if (index == 0) {
 							FileUtils.deleteDir(GamesInProgress.gameFolder(slot));
 							GamesInProgress.setUnknown(slot);
-							GirlsFrontlinePixelDungeon.switchNoFade(StartScene.class);
+
+							GirlsFrontlinePixelDungeon.switchNoFade(TitleScene.class);
 						}
 					}
 				} );
