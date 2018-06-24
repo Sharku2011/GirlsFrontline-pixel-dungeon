@@ -21,14 +21,26 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Sword extends MeleeWeapon {
-	
+public class Kriss extends MeleeWeapon {
+
 	{
-		image = ItemSpriteSheet.SWORD;
+		image = ItemSpriteSheet.KRISS;
 
 		tier = 3;
+		DLY = 0.5f; //2x speed
 	}
 
+	@Override
+	public int max(int lvl) {
+		return  Math.round(2.5f*(tier+1)) +     //10 base, down from 20
+				lvl*Math.round(0.5f*(tier+1));  //+2 per level, down from +4
+	}
+
+	@Override
+	public int defenseFactor( Char owner ) {
+		return 3;	//3 extra defence
+	}
 }

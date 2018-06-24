@@ -21,26 +21,22 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
-import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Sai extends MeleeWeapon {
+public class M1903 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.SAI;
+		image = ItemSpriteSheet.M1903;
 
-		tier = 3;
-		DLY = 0.5f; //2x speed
+		tier = 2;
+		DLY = 1.5f; //0.67x speed
+		RCH = 2;    //extra reach
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  Math.round(2.5f*(tier+1)) +     //10 base, down from 20
-				lvl*Math.round(0.5f*(tier+1));  //+2 per level, down from +4
+		return  Math.round(6.67f*(tier+1)) +    //20 base, up from 15
+				lvl*Math.round(1.33f*(tier+1)); //+4 per level, up from +3
 	}
 
-	@Override
-	public int defenseFactor( Char owner ) {
-		return 3;	//3 extra defence
-	}
 }

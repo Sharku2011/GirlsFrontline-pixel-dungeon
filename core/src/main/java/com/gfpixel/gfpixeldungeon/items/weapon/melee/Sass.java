@@ -23,20 +23,19 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Spear extends MeleeWeapon {
+public class Sass extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.SPEAR;
+		image = ItemSpriteSheet.SASS;
 
-		tier = 2;
-		DLY = 1.5f; //0.67x speed
-		RCH = 2;    //extra reach
+		tier = 5;
+		ACC = 1.20f; //20% boost to accuracy
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  Math.round(6.67f*(tier+1)) +    //20 base, up from 15
-				lvl*Math.round(1.33f*(tier+1)); //+4 per level, up from +3
+		return  4*(tier+1) +    //24 base, down from 30
+				lvl*(tier+1);   //scaling unchanged
 	}
 
 }

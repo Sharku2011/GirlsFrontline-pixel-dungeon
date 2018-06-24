@@ -21,22 +21,25 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class RunicBlade extends MeleeWeapon {
+public class Mos extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.RUNIC_BLADE;
+		image = ItemSpriteSheet.MOS;
 
-		tier = 4;
+		tier = 3;
 	}
-
-	//Essentially it's a tier 4 weapon, with tier 3 base max damage, and tier 5 scaling.
-	//equal to tier 4 in damage at +5
 
 	@Override
 	public int max(int lvl) {
-		return  5*(tier) +                	//20 base, down from 25
-				Math.round(lvl*(tier+2));	//+6 per level, up from +5
+		return  3*(tier+1) +    //12 base, down from 20
+				lvl*(tier-1);   //+2 per level, down from +4
+	}
+
+	@Override
+	public int defenseFactor( Char owner ) {
+		return 5+2*level();     //5 extra defence, plus 2 per level;
 	}
 }

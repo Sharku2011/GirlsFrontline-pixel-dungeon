@@ -23,14 +23,19 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class WornShortsword extends MeleeWeapon {
+public class Kar98 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.SOMETHING;
+		image = ItemSpriteSheet.KAR98;
 
-		tier = 1;
-		
-		bones = false;
+		tier = 3;
+		ACC = 1.28f; //28% boost to accuracy
+	}
+
+	@Override
+	public int max(int lvl) {
+		return  4*(tier+1) +    //16 base, down from 20
+				lvl*(tier+1);   //scaling unchanged
 	}
 
 }

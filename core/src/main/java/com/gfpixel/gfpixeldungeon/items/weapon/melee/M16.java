@@ -23,10 +23,10 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Shortsword extends MeleeWeapon {
+public class M16 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.SHORTSWORD;
+		image = ItemSpriteSheet.M16;
 
 		tier = 2;
 	}

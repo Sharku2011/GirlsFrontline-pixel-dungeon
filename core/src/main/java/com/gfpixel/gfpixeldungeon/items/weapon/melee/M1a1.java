@@ -21,21 +21,25 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Scimitar extends MeleeWeapon {
+public class M1a1 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.SCIMITAR;
+		image = ItemSpriteSheet.M1A1;
 
-		tier = 3;
-		DLY = 0.8f; //1.25x speed
+		tier = 2;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  4*(tier+1) +    //16 base, down from 20
+		return  4*(tier+1) +    //12 base, down from 15
 				lvl*(tier+1);   //scaling unchanged
 	}
 
+	@Override
+	public int defenseFactor( Char owner ) {
+		return 3;	//3 extra defence
+	}
 }

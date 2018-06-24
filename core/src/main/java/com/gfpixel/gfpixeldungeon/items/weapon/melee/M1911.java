@@ -23,19 +23,19 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Whip extends MeleeWeapon {
+public class M1911 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.WHIP;
+		image = ItemSpriteSheet.M1911;
 
-		tier = 3;
-		RCH = 3;    //lots of extra reach
+		tier = 2;
+		ACC = 1.32f; //32% boost to accuracy
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  3*(tier+1) +    //12 base, down from 20
-				lvl*(tier);     //+3 per level, down from +4
+		return  4*(tier+1) +    //12 base, down from 15
+				lvl*(tier+1);   //scaling unchanged
 	}
 
 }

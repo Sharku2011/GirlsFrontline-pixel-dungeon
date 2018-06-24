@@ -23,19 +23,20 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class HandAxe extends MeleeWeapon {
+public class Hk416 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.HAND_AXE;
+		image = ItemSpriteSheet.HK416;
 
-		tier = 2;
-		ACC = 1.32f; //32% boost to accuracy
+		tier = 4;
 	}
+
+	//Essentially it's a tier 4 weapon, with tier 3 base max damage, and tier 5 scaling.
+	//equal to tier 4 in damage at +5
 
 	@Override
 	public int max(int lvl) {
-		return  4*(tier+1) +    //12 base, down from 15
-				lvl*(tier+1);   //scaling unchanged
+		return  5*(tier) +                	//20 base, down from 25
+				Math.round(lvl*(tier+2));	//+6 per level, up from +5
 	}
-
 }

@@ -23,12 +23,19 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Longsword extends MeleeWeapon {
-	
-	{
-		image = ItemSpriteSheet.LONGSWORD;
+public class Wa extends MeleeWeapon {
 
-		tier = 4;
+	{
+		image = ItemSpriteSheet.WA;
+
+		tier = 3;
+		RCH = 3;    //lots of extra reach
+	}
+
+	@Override
+	public int max(int lvl) {
+		return  3*(tier+1) +    //12 base, down from 20
+				lvl*(tier);     //+3 per level, down from +4
 	}
 
 }
