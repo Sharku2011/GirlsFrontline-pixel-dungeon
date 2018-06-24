@@ -23,11 +23,12 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Greatsword extends MeleeWeapon {
+public class Usas12 extends MeleeWeapon {
 
 	{
 		image = ItemSpriteSheet.GREATSWORD;
 
+		DLY = 0.8f;
 		tier=5;
 	}
 
