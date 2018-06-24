@@ -29,14 +29,17 @@ public class M1903 extends MeleeWeapon {
 		image = ItemSpriteSheet.M1903;
 
 		tier = 2;
-		DLY = 1.5f; //0.67x speed
-		RCH = 2;    //extra reach
+		ACC = 1.75f;
+		DLY = 5f;
+		RCH = 60;
 	}
+
 
 	@Override
 	public int max(int lvl) {
-		return  Math.round(6.67f*(tier+1)) +    //20 base, up from 15
-				lvl*Math.round(1.33f*(tier+1)); //+4 per level, up from +3
+		return  Math.round(15.4f*(tier+1)) +    //40 base, up from 35
+				lvl*Math.round(2.1f*(tier+2)); //+4 per level, up from +3
 	}
 
 }
+

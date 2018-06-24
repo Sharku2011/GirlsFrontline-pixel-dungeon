@@ -29,7 +29,7 @@ public class Wa extends MeleeWeapon {
 		image = ItemSpriteSheet.WA;
 
 		tier = 3;
-		RCH = 3;    //lots of extra reach
+		RCH = 4;    //lots of extra reach
 	}
 
 	@Override
@@ -39,3 +39,4 @@ public class Wa extends MeleeWeapon {
 	}
 
 }
+

@@ -29,12 +29,13 @@ public class Kar98 extends MeleeWeapon {
 		image = ItemSpriteSheet.KAR98;
 
 		tier = 3;
-		ACC = 1.28f; //28% boost to accuracy
+		DLY = 0.8f; //1.25x speed
+		RCH = 2;    //extra reach
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  4*(tier+1) +    //16 base, down from 20
+		return 3*(tier+1) +    //20 base, down from 25
 				lvl*(tier+1);   //scaling unchanged
 	}
 

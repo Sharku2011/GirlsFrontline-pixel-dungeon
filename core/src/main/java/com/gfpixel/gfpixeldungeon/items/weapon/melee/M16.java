@@ -21,6 +21,7 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
 public class M16 extends MeleeWeapon {
@@ -29,6 +30,17 @@ public class M16 extends MeleeWeapon {
 		image = ItemSpriteSheet.M16;
 
 		tier = 2;
+		RCH = 2;
 	}
 
+	@Override
+	public int max(int lvl) {
+		return  2*(tier+2) +    //12 base, down from 20
+				lvl*Math.round(0.8f*(tier+1));   //+2 per level, down from +4
+	}
+
+	@Override
+	public int defenseFactor( Char owner ) {
+		return 2;	//3 extra defence
+	}
 }
