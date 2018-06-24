@@ -39,7 +39,7 @@ import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.wands.Wand;
 import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.gfpixel.gfpixeldungeon.journal.Catalog;
 import com.gfpixel.gfpixeldungeon.journal.Notes.Landmark;
@@ -97,7 +97,7 @@ public class WaterOfTransmutation extends WellWater {
 		return Landmark.WELL_OF_TRANSMUTATION;
 	}
 
-	private MagesStaff changeStaff( MagesStaff staff ){
+	private MagesStaff changeStaff( G11 staff ){
 		Class<?extends Wand> wandClass = staff.wandClass();
 
 		if (wandClass == null){

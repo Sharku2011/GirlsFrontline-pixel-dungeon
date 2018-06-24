@@ -32,7 +32,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Ooze;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.effects.particles.CorrosionParticle;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
@@ -81,7 +81,7 @@ public class WandOfCorrosion extends Wand {
 	}
 
 	@Override
-	public void onHit(MagesStaff staff, Char attacker, Char defender, int damage) {
+	public void onHit(G11 staff, Char attacker, Char defender, int damage) {
 		// lvl 0 - 33%
 		// lvl 1 - 50%
 		// lvl 2 - 60%
@@ -94,7 +94,7 @@ public class WandOfCorrosion extends Wand {
 	}
 
 	@Override
-	public void staffFx(MagesStaff.StaffParticle particle) {
+	public void staffFx(G11.StaffParticle particle) {
 		particle.color( ColorMath.random( 0xAAAAAA, 0xFF8800) );
 		particle.am = 0.6f;
 		particle.setLifespan( 1f );

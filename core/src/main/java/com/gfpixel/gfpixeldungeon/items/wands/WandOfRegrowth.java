@@ -31,7 +31,8 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.items.Dewdrop;
 import com.gfpixel.gfpixeldungeon.items.Generator;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.levels.Level;
 import com.gfpixel.gfpixeldungeon.levels.Terrain;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
@@ -166,7 +167,7 @@ public class WandOfRegrowth extends Wand {
 	}
 
 	@Override
-	public void onHit(MagesStaff staff, Char attacker, Char defender, int damage) {
+	public void onHit(G11 staff, Char attacker, Char defender, int damage) {
 		//like pre-nerf vampiric enchantment, except with herbal healing buff
 
 		int level = Math.max( 0, staff.level() );
@@ -242,7 +243,7 @@ public class WandOfRegrowth extends Wand {
 	}
 
 	@Override
-	public void staffFx(MagesStaff.StaffParticle particle) {
+	public void staffFx(G11.StaffParticle particle) {
 		particle.color( ColorMath.random(0x004400, 0x88CC44) );
 		particle.am = 1f;
 		particle.setLifespan(1f);

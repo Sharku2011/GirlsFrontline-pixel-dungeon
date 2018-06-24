@@ -62,7 +62,7 @@ import com.gfpixel.gfpixeldungeon.actors.mobs.Swarm;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Wraith;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Yog;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
@@ -243,7 +243,7 @@ public class WandOfCorruption extends Wand {
 	}
 
 	@Override
-	public void onHit(MagesStaff staff, Char attacker, Char defender, int damage) {
+	public void onHit(G11 staff, Char attacker, Char defender, int damage) {
 		// lvl 0 - 25%
 		// lvl 1 - 40%
 		// lvl 2 - 50%
@@ -263,7 +263,7 @@ public class WandOfCorruption extends Wand {
 	}
 
 	@Override
-	public void staffFx(MagesStaff.StaffParticle particle) {
+	public void staffFx(G11.StaffParticle particle) {
 		particle.color( 0 );
 		particle.am = 0.6f;
 		particle.setLifespan(2f);

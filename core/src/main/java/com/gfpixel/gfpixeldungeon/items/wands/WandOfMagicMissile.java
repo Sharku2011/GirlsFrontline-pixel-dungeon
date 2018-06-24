@@ -27,7 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Recharging;
 import com.gfpixel.gfpixeldungeon.effects.SpellSprite;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
@@ -62,7 +62,7 @@ public class WandOfMagicMissile extends DamageWand {
 	}
 
 	@Override
-	public void onHit(MagesStaff staff, Char attacker, Char defender, int damage) {
+	public void onHit(G11 staff, Char attacker, Char defender, int damage) {
 		Buff.prolong( attacker, Recharging.class, 1 + staff.level()/2f);
 		SpellSprite.show(attacker, SpellSprite.CHARGE);
 

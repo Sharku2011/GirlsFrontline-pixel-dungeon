@@ -28,7 +28,7 @@ import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.Lightning;
 import com.gfpixel.gfpixeldungeon.effects.particles.SparkParticle;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Shocking;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
@@ -87,7 +87,7 @@ public class WandOfLightning extends DamageWand {
 	}
 
 	@Override
-	public void onHit(MagesStaff staff, Char attacker, Char defender, int damage) {
+	public void onHit(G11 staff, Char attacker, Char defender, int damage) {
 		//acts like shocking enchantment
 		new Shocking().proc(staff, attacker, defender, damage);
 	}
@@ -140,7 +140,7 @@ public class WandOfLightning extends DamageWand {
 	}
 
 	@Override
-	public void staffFx(MagesStaff.StaffParticle particle) {
+	public void staffFx(G11.StaffParticle particle) {
 		particle.color(0xFFFFFF);
 		particle.am = 0.6f;
 		particle.setLifespan(0.6f);

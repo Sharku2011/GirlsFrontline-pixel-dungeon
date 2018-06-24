@@ -27,7 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Recharging;
 import com.gfpixel.gfpixeldungeon.effects.SpellSprite;
 import com.gfpixel.gfpixeldungeon.items.Bomb;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
@@ -41,7 +41,7 @@ public class M79 extends DamageWand {
     {
         image = ItemSpriteSheet.M79;
 
-        collisionProperties = Ballistica.STOP_TERRAIN;
+        collisionProperties = Ballistica.STOP_TERRAIN | Ballistica.STOP_CHARS;
 
         unique = true;
         bones = false;
@@ -80,7 +80,7 @@ public class M79 extends DamageWand {
 
 
     @Override
-    public void onHit(MagesStaff staff, Char attacker, Char defender, int damage) {
+    public void onHit(G11 staff, Char attacker, Char defender, int damage) {
         Buff.prolong( attacker, Recharging.class, 1 + staff.level()/2f);
         SpellSprite.show(attacker, SpellSprite.CHARGE);
     }

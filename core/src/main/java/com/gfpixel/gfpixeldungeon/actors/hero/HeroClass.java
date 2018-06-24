@@ -50,7 +50,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Crossbow;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dagger;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Knuckles;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Boomerang;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.ThrowingKnife;
@@ -153,9 +153,9 @@ public enum HeroClass {
 	}
 
 	private static void initMage( Hero hero ) {
-		MagesStaff staff;
+		G11 staff;
 		
-		staff = new MagesStaff(new WandOfMagicMissile());
+		staff = new G11(new WandOfMagicMissile());
 		new ScrollOfRecharging().identify().collect();
 
 		(hero.belongings.weapon = staff).identify();

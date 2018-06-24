@@ -28,7 +28,7 @@ import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
 import com.gfpixel.gfpixeldungeon.actors.blobs.ParalyticGas;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Venomous;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
@@ -81,13 +81,13 @@ public class M84 extends Wand {
     }
 
     @Override
-    public void onHit(MagesStaff staff, Char attacker, Char defender, int damage) {
+    public void onHit(G11 staff, Char attacker, Char defender, int damage) {
         //acts like venomous enchantment
         new Venomous().proc(staff, attacker, defender, damage);
     }
 
     @Override
-    public void staffFx(MagesStaff.StaffParticle particle) {
+    public void staffFx(G11.StaffParticle particle) {
         particle.color( ColorMath.random( 0x8844FF, 0x00FF00) );
         particle.am = 0.6f;
         particle.setLifespan( 1f );

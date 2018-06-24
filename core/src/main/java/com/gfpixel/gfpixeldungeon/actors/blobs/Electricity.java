@@ -31,7 +31,7 @@ import com.gfpixel.gfpixeldungeon.effects.particles.SparkParticle;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.wands.Wand;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
