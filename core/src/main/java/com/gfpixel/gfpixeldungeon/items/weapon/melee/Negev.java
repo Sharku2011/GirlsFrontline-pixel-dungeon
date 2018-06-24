@@ -23,14 +23,20 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class WornShortsword extends MeleeWeapon {
+public class Negev extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.SOMETHING;
+		image = ItemSpriteSheet.NEGEV;
 
-		tier = 1;
-		
-		bones = false;
+		tier = 3;
+		ACC = 0.95f;
+		DLY = 0.2f; //1time 5hit
+	}
+
+	@Override
+	public int max(int lvl) {
+		return  Math.round(2.1f*(tier+1)) +    //5 base, down from 20
+				lvl*Math.round(0.4f*(tier+1));   //+1 per level, down from +2
 	}
 
 }

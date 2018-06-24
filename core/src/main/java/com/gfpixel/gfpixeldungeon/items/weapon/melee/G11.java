@@ -51,7 +51,7 @@ import com.watabou.utils.Random;
 
 import java.util.ArrayList;
 
-public class MagesStaff extends MeleeWeapon {
+public class G11 extends MeleeWeapon {
 
 	private Wand wand;
 
@@ -61,7 +61,7 @@ public class MagesStaff extends MeleeWeapon {
 	private static final float STAFF_SCALE_FACTOR = 0.75f;
 
 	{
-		image = ItemSpriteSheet.MAGES_STAFF;
+		image = ItemSpriteSheet.G11;
 
 		tier = 1;
 
@@ -72,7 +72,7 @@ public class MagesStaff extends MeleeWeapon {
 		bones = false;
 	}
 
-	public MagesStaff() {
+	public G11() {
 		wand = null;
 	}
 
@@ -82,7 +82,7 @@ public class MagesStaff extends MeleeWeapon {
 				lvl*(tier+1);   //scaling unaffected
 	}
 
-	public MagesStaff(Wand wand){
+	public G11(Wand wand){
 		this();
 		wand.identify();
 		wand.cursed = false;
@@ -312,10 +312,10 @@ public class MagesStaff extends MeleeWeapon {
 			if (item != null) {
 
 				if (!item.isIdentified()) {
-					GLog.w(Messages.get(MagesStaff.class, "id_first"));
+					GLog.w(Messages.get(G11.class, "id_first"));
 					return;
 				} else if (item.cursed){
-					GLog.w(Messages.get(MagesStaff.class, "cursed"));
+					GLog.w(Messages.get(G11.class, "cursed"));
 					return;
 				}
 
@@ -330,9 +330,9 @@ public class MagesStaff extends MeleeWeapon {
 									: level();
 					GameScene.show(
 							new WndOptions("",
-									Messages.get(MagesStaff.class, "warning", newLevel),
-									Messages.get(MagesStaff.class, "yes"),
-									Messages.get(MagesStaff.class, "no")) {
+									Messages.get(G11.class, "warning", newLevel),
+									Messages.get(G11.class, "yes"),
+									Messages.get(G11.class, "no")) {
 								@Override
 								protected void onSelect(int index) {
 									if (index == 0) {
@@ -354,7 +354,7 @@ public class MagesStaff extends MeleeWeapon {
 
 			wand.detach(curUser.belongings.backpack);
 
-			GLog.p( Messages.get(MagesStaff.class, "imbue", wand.name()));
+			GLog.p( Messages.get(G11.class, "imbue", wand.name()));
 			imbueWand( wand, curUser );
 
 			updateQuickslot();

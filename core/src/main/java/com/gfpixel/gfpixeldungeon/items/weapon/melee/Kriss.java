@@ -24,10 +24,10 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Sai extends MeleeWeapon {
+public class Kriss extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.SAI;
+		image = ItemSpriteSheet.KRISS;
 
 		tier = 3;
 		DLY = 0.5f; //2x speed

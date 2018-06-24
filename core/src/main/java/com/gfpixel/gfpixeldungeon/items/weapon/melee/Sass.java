@@ -21,25 +21,23 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
-import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class RoundShield extends MeleeWeapon {
+public class Sass extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.ROUND_SHIELD;
+		image = ItemSpriteSheet.SASS;
 
-		tier = 3;
+		tier = 5;
+		DLY = 0.6f; //1.25x speed
+		RCH = 2;    //extra reach
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  3*(tier+1) +    //12 base, down from 20
-				lvl*(tier-1);   //+2 per level, down from +4
+		return   3*(tier+1) +    //24 base, down from 30
+				lvl*Math.round(1f*(tier+1));
 	}
 
-	@Override
-	public int defenseFactor( Char owner ) {
-		return 5+2*level();     //5 extra defence, plus 2 per level;
-	}
 }
+

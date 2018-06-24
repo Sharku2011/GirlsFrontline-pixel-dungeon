@@ -110,6 +110,7 @@ public class Assets {
 	public static final String HYDRA		= "hydra.png";
 	public static final String TYPHOON		= "typhoon.png";
 	public static final String TYPHOOTIN	= "typhootin.png";
+	public static final String ELID = "elid.png";
 
 	public static final String ITEMS	        = "items.png";
 	public static final String TERRAIN_FEATURES	= "terrain_features.png";

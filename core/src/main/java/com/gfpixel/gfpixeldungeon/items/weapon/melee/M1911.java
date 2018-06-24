@@ -21,25 +21,21 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
-import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Quarterstaff extends MeleeWeapon {
+public class M1911 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.QUARTERSTAFF;
+		image = ItemSpriteSheet.M1911;
 
 		tier = 2;
+		RCH = 3;    //lots of extra reach
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  4*(tier+1) +    //12 base, down from 15
+		return  3*(tier+1) +  //9 base, down from 15
 				lvl*(tier+1);   //scaling unchanged
 	}
 
-	@Override
-	public int defenseFactor( Char owner ) {
-		return 3;	//3 extra defence
-	}
 }

@@ -23,19 +23,20 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class WarHammer extends MeleeWeapon {
+public class Wa extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.WAR_HAMMER;
+		image = ItemSpriteSheet.WA;
 
-		tier = 5;
-		ACC = 1.20f; //20% boost to accuracy
+		tier = 3;
+		RCH = 4;    //lots of extra reach
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  4*(tier+1) +    //24 base, down from 30
-				lvl*(tier+1);   //scaling unchanged
+		return  3*(tier+1) +    //12 base, down from 20
+				lvl*(tier);     //+3 per level, down from +4
 	}
 
 }
+

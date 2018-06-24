@@ -23,20 +23,14 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class RunicBlade extends MeleeWeapon {
-
+public class Ks23 extends MeleeWeapon {
+	
 	{
-		image = ItemSpriteSheet.RUNIC_BLADE;
+		image = ItemSpriteSheet.KS23;
 
-		tier = 4;
+		tier = 3;
+		ACC = 1.175f; //17.5% boost to accuracy
 	}
 
-	//Essentially it's a tier 4 weapon, with tier 3 base max damage, and tier 5 scaling.
-	//equal to tier 4 in damage at +5
-
-	@Override
-	public int max(int lvl) {
-		return  5*(tier) +                	//20 base, down from 25
-				Math.round(lvl*(tier+2));	//+6 per level, up from +5
-	}
 }
+

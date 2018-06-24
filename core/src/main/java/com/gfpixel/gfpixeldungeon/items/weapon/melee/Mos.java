@@ -21,21 +21,25 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class HandAxe extends MeleeWeapon {
+public class Mos extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.HAND_AXE;
+		image = ItemSpriteSheet.MOS;
 
-		tier = 2;
-		ACC = 1.32f; //32% boost to accuracy
+		tier = 3;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  4*(tier+1) +    //12 base, down from 15
-				lvl*(tier+1);   //scaling unchanged
+		return  3*(tier+1) +    //12 base, down from 20
+				lvl*(tier-1);   //+2 per level, down from +4
 	}
 
+	@Override
+	public int defenseFactor( Char owner ) {
+		return 5+2*level();     //5 extra defence, plus 2 per level;
+	}
 }

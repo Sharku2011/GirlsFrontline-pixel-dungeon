@@ -23,19 +23,23 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Scimitar extends MeleeWeapon {
+public class M1903 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.SCIMITAR;
+		image = ItemSpriteSheet.M1903;
 
-		tier = 3;
-		DLY = 0.8f; //1.25x speed
+		tier = 2;
+		ACC = 1.75f;
+		DLY = 5f;
+		RCH = 60;
 	}
+
 
 	@Override
 	public int max(int lvl) {
-		return  4*(tier+1) +    //16 base, down from 20
-				lvl*(tier+1);   //scaling unchanged
+		return  Math.round(15.4f*(tier+1)) +    //40 base, up from 35
+				lvl*Math.round(2.1f*(tier+2)); //+4 per level, up from +3
 	}
 
 }
+

@@ -31,6 +31,7 @@ import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
 import com.gfpixel.gfpixeldungeon.items.artifacts.CloakOfShadows;
+import com.gfpixel.gfpixeldungeon.items.bags.MagicalHolster;
 import com.gfpixel.gfpixeldungeon.items.bags.PotionBandolier;
 import com.gfpixel.gfpixeldungeon.items.bags.ScrollHolder;
 import com.gfpixel.gfpixeldungeon.items.bags.VelvetPouch;
@@ -38,11 +39,15 @@ import com.gfpixel.gfpixeldungeon.items.food.Food;
 import com.gfpixel.gfpixeldungeon.items.food.Pasty;
 import com.gfpixel.gfpixeldungeon.items.food.SmallRation;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
+import com.gfpixel.gfpixeldungeon.items.potions.PotionOfInvisibility;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfMindVision;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicMapping;
+import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
+import com.gfpixel.gfpixeldungeon.items.wands.M79;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Crossbow;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dagger;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Knuckles;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
@@ -127,6 +132,7 @@ public enum HeroClass {
 
 	private static void initWarrior( Hero hero ) {
 		(hero.belongings.weapon = new Ump45()).identify();
+		new PotionOfHealing().identify().collect();
 		ThrowingStone stones = new ThrowingStone();
 		stones.identify().quantity(3).collect();
 		Dungeon.quickslot.setSlot(0, stones);
@@ -150,14 +156,15 @@ public enum HeroClass {
 		MagesStaff staff;
 		
 		staff = new MagesStaff(new WandOfMagicMissile());
+		new ScrollOfRecharging().identify().collect();
 
 		(hero.belongings.weapon = staff).identify();
 		hero.belongings.weapon.activate(hero);
 
 		Dungeon.quickslot.setSlot(0, staff);
 
-		new ScrollHolder().collect();
-		Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
+		new MagicalHolster().collect();
+		Dungeon.LimitedDrops.MAGICAL_HOLSTER.drop();
 		new ScrollOfUpgrade().identify();
 	}
 
@@ -167,6 +174,7 @@ public enum HeroClass {
 		CloakOfShadows cloak = new CloakOfShadows();
 		(hero.belongings.misc1 = cloak).identify();
 		hero.belongings.misc1.activate( hero );
+		new PotionOfInvisibility().identify().collect();
 
 		ThrowingKnife knives = new ThrowingKnife();
 		knives.quantity(3).collect();
@@ -174,16 +182,20 @@ public enum HeroClass {
 		Dungeon.quickslot.setSlot(0, cloak);
 		Dungeon.quickslot.setSlot(1, knives);
 
-		new VelvetPouch().collect();
-		Dungeon.LimitedDrops.VELVET_POUCH.drop();
-		new ScrollOfMagicMapping().identify();
+		new ScrollHolder().collect();
+		Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
+		new ScrollOfUpgrade().identify();
 	}
 
 	private static void initHuntress( Hero hero ) {
 
-		(hero.belongings.weapon = new Knuckles()).identify();
+		(hero.belongings.weapon = new Boomerang()).identify();
 		Boomerang boomerang = new Boomerang();
 		boomerang.identify().collect();
+		M79 m79 = new M79();
+		m79.identify().collect();
+		new Crossbow().identify().collect();
+
 
 		Dungeon.quickslot.setSlot(0, boomerang);
 
@@ -191,7 +203,7 @@ public enum HeroClass {
 		Dungeon.LimitedDrops.VELVET_POUCH.drop();
 		new PotionOfMindVision().identify();
 	}
-	
+
 	public String title() {
 		return Messages.get(HeroClass.class, title);
 	}

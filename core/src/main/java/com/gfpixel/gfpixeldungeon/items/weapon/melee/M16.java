@@ -21,21 +21,26 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Whip extends MeleeWeapon {
+public class M16 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.WHIP;
+		image = ItemSpriteSheet.M16;
 
-		tier = 3;
-		RCH = 3;    //lots of extra reach
+		tier = 2;
+		RCH = 2;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  3*(tier+1) +    //12 base, down from 20
-				lvl*(tier);     //+3 per level, down from +4
+		return  2*(tier+2) +    //12 base, down from 20
+				lvl*Math.round(0.8f*(tier+1));   //+2 per level, down from +4
 	}
 
+	@Override
+	public int defenseFactor( Char owner ) {
+		return 2;	//3 extra defence
+	}
 }
