@@ -29,7 +29,6 @@ import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Imp;
 import com.gfpixel.gfpixeldungeon.items.KindOfWeapon;
 import com.gfpixel.gfpixeldungeon.items.food.Food;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gauntlet;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Knuckles;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.sprites.MonkSprite;
@@ -94,7 +93,6 @@ public class Monk extends Mob {
 			
 			if (weapon != null
 					&& !(weapon instanceof Knuckles)
-					&& !(weapon instanceof Gauntlet)
 					&& !weapon.cursed) {
 				if (hitsToDisarm == 0) hitsToDisarm = Random.NormalIntRange(4, 8);
 
