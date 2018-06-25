@@ -42,30 +42,21 @@ import com.gfpixel.gfpixeldungeon.items.armor.MailArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.ScaleArmor;
 import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M16;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MeleeWeapon;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Shortsword;
 import com.gfpixel.gfpixeldungeon.journal.Notes;
 import com.gfpixel.gfpixeldungeon.levels.SewerLevel;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
-import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
 import com.gfpixel.gfpixeldungeon.sprites.GhostSprite;
-import com.gfpixel.gfpixeldungeon.ui.Tag;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.gfpixel.gfpixeldungeon.windows.WndDialog;
-import com.gfpixel.gfpixeldungeon.windows.WndQuest;
 import com.gfpixel.gfpixeldungeon.windows.WndSadGhost;
-import com.gfpixel.gfpixeldungeon.windows.WndStory;
-import com.watabou.input.Touchscreen;
-import com.watabou.noosa.Game;
-import com.watabou.noosa.TouchArea;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 import com.watabou.utils.SparseArray;
 
-import java.lang.reflect.Constructor;
-import java.util.HashMap;
 
 public class Ghost extends NPC {
 
@@ -313,7 +304,7 @@ public class Ghost extends NPC {
 					} while (!(weapon instanceof MeleeWeapon));
 				} catch (Exception e){
 					GirlsFrontlinePixelDungeon.reportException(e);
-					weapon = new Shortsword();
+					weapon = new M16();
 				}
 
 				//50%:+0, 30%:+1, 15%:+2, 5%:+3

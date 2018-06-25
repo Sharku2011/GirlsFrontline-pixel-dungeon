@@ -52,8 +52,8 @@ public class WaterOfTransmutation extends WellWater {
 	@Override
 	protected Item affectItem( Item item ) {
 		
-		if (item instanceof MagesStaff) {
-			item = changeStaff( (MagesStaff)item );
+		if (item instanceof G11) {
+			item = changeStaff( (G11) item );
 		} else if (item instanceof MeleeWeapon) {
 			item = changeWeapon( (MeleeWeapon)item );
 		} else if (item instanceof Scroll) {
@@ -97,7 +97,7 @@ public class WaterOfTransmutation extends WellWater {
 		return Landmark.WELL_OF_TRANSMUTATION;
 	}
 
-	private MagesStaff changeStaff( G11 staff ){
+	private G11 changeStaff( G11 staff ){
 		Class<?extends Wand> wandClass = staff.wandClass();
 
 		if (wandClass == null){

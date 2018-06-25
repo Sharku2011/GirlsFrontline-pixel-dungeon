@@ -23,19 +23,20 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Crossbow extends MeleeWeapon {
+public class Dragunov extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.CROSSBOW;
-
-		//check Dart.class for additional properties
+		image = ItemSpriteSheet.BATTLE_AXE;
 
 		tier = 4;
+		DLY = 0.6f;
+		RCH = 2;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  4*(tier+1) +    //20 base, down from 25
-				lvl*(tier);     //+4 per level, down from +5
+		return  Math.round(3.5f*(tier+1)) +    //20 base, down from 25
+				lvl * Math.round(0.8f * (tier+1));   //scaling unchanged
 	}
+
 }

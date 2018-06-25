@@ -62,15 +62,17 @@ public class M79 extends DamageWand {
     protected void onZap( Ballistica bolt ) {
 
         Char ch = Actor.findChar( bolt.collisionPos );
+
         if (ch != null) {
 
             processSoulMark(ch, chargesPerCast());
             ch.damage(damageRoll(), this);
 
             ch.sprite.burst(0xFFFFFFFF, level() / 2 + 2);
-            new Bomb().explode(bolt.collisionPos, damageStack);
-            damageStack = 0;
         }
+
+        new Bomb().explode(bolt.collisionPos, damageStack);
+        damageStack = 0;
     }
 
     @Override
@@ -95,13 +97,20 @@ public class M79 extends DamageWand {
     }
 
     //@Override
-    public int addStack(int stack){
-        if(damageStack == 0){
-            stack = 1;
-        }
-        damageStack = (float)(stack * 0.10);
-        //Log.d("TEST0909",""+damageStack);
-        return (int)stack;
+    public void addStack() {
+        addStack(1);
+    }
+
+    public void addStack(int charge) {
+        damageStack += charge * 0.10f;
+    }
+
+    public void setDamageStack(int stack) {
+        damageStack = stack * 0.10f;
+    }
+
+    public void setDamageStack(float stack) {
+        damageStack = stack;
     }
 
     @Override

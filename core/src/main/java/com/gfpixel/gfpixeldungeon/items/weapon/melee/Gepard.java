@@ -23,20 +23,19 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class BattleAxe extends MeleeWeapon {
+public class Gepard extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.BATTLE_AXE;
+		image = ItemSpriteSheet.CROSSBOW;
+
+		//check Dart.class for additional properties
 
 		tier = 4;
-		DLY = 0.6f;
-		RCH = 2;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  Math.round(3.5f*(tier+1)) +    //20 base, down from 25
-				lvl * Math.round(0.8f * (tier+1));   //scaling unchanged
+		return  4*(tier+1) +    //20 base, down from 25
+				lvl*(tier);     //+4 per level, down from +5
 	}
-
 }

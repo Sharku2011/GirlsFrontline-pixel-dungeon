@@ -101,7 +101,7 @@ import com.gfpixel.gfpixeldungeon.items.wands.WandOfTransfusion;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AWP;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.C96;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Crossbow;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dp;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G36;
@@ -315,11 +315,10 @@ public class Generator {
 			WEP_T4.classes = new Class<?>[]{
 					Win97.class,
 					Hk416.class,
-					Crossbow.class,
 					AWP.class,
 					AK47.class,
 					GUA91.class,
-					Crossbow.class
+					Gepard.class
 			};
 			WEP_T4.probs = new float[]{ 6, 5, 5, 4, 4, 4, 4 };
 			

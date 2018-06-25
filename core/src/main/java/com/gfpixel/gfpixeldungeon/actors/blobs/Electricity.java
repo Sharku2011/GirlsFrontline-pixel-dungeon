@@ -80,8 +80,8 @@ public class Electricity extends Blob {
 						Item toShock = h.peek();
 						if (toShock instanceof Wand){
 							((Wand) toShock).gainCharge(0.333f);
-						} else if (toShock instanceof MagesStaff){
-							((MagesStaff) toShock).gainCharge(0.333f);
+						} else if (toShock instanceof G11){
+							((G11) toShock).gainCharge(0.333f);
 						}
 					}
 					
