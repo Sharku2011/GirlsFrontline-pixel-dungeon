@@ -101,6 +101,7 @@ import com.gfpixel.gfpixeldungeon.items.wands.WandOfTransfusion;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AWP;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.C96;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dp;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
@@ -131,6 +132,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.Sass;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump40;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Wa;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Win97;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SaigaPlate;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SakuraBlade;
@@ -285,9 +287,11 @@ public class Generator {
 			WEP_T1.classes = new Class<?>[]{
 					Ump45.class,
 					Ump40.class,
+                    Welrod.class,
 					Dp.class,
 					SR3.class,
-					G11.class
+					G11.class,
+                    Cannon.class
 			};
 			WEP_T1.probs = new float[]{ 1, 1, 1, 1, 1, 1, 0 };
 			
