@@ -82,4 +82,12 @@ public class RatKing extends NPC {
 				Messages.get(this, "desc_festive")
 				: super.description();
 	}
+
+	@Override
+	public void notice() {
+		super.notice();
+
+		Dungeon.HUNTINGRABBIT = true;
+
+	}
 }

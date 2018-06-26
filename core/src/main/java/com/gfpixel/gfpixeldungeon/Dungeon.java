@@ -54,6 +54,8 @@ import com.gfpixel.gfpixeldungeon.levels.LastShopLevel;
 import com.gfpixel.gfpixeldungeon.levels.Level;
 import com.gfpixel.gfpixeldungeon.levels.PrisonBossLevel;
 import com.gfpixel.gfpixeldungeon.levels.PrisonLevel;
+import com.gfpixel.gfpixeldungeon.levels.RabbitBossLevel;
+import com.gfpixel.gfpixeldungeon.levels.RabbitLevel;
 import com.gfpixel.gfpixeldungeon.levels.ReCavesBossLevel;
 import com.gfpixel.gfpixeldungeon.levels.ReCavesLevel;
 import com.gfpixel.gfpixeldungeon.levels.SewerBossLevel;
@@ -245,7 +247,9 @@ public class Dungeon {
 	public static boolean isChallenged( int mask ) {
 		return (challenges & mask) != 0;
 	}
-	
+
+	public static boolean HUNTINGRABBIT = false;
+
 	public static Level newLevel() {
 		
 		Dungeon.level = null;
@@ -277,10 +281,18 @@ public class Dungeon {
 		case 7:
 		case 8:
 		case 9:
-			level = new PrisonLevel();
+			if (HUNTINGRABBIT) {
+				level = new RabbitLevel();
+			} else {
+				level = new PrisonLevel();
+			}
 			break;
 		case 10:
-			level = new PrisonBossLevel();
+			if (HUNTINGRABBIT) {
+				level = new RabbitBossLevel();
+			} else {
+				level = new PrisonBossLevel();
+			}
 			break;
 		case 11:
 		case 12:
