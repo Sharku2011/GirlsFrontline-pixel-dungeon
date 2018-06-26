@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.items.Item;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Crossbow;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Bolas;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Boomerang;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.FishingSpear;
@@ -129,7 +129,7 @@ public class MissileSprite extends ItemSprite implements Tweener.Listener {
 		}
 		
 		float speed = SPEED;
-		if (item instanceof Dart && Dungeon.hero.belongings.weapon instanceof Crossbow){
+		if (item instanceof Dart && Dungeon.hero.belongings.weapon instanceof Gepard){
 			speed *= 3f;
 		}
 		PosTweener tweener = new PosTweener( this, to, d.length() / speed );

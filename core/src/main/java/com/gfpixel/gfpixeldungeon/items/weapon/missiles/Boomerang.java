@@ -24,7 +24,9 @@ package com.gfpixel.gfpixeldungeon.items.weapon.missiles;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
+import com.gfpixel.gfpixeldungeon.actors.hero.HeroSubClass;
 import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.items.wands.M79;
 import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
@@ -97,6 +99,12 @@ public class Boomerang extends MissileWeapon {
 	@Override
 	public void rangedHit( Char enemy, int cell ) {
 		circleBack(cell, curUser);
+
+		M79 m79 = curUser.belongings.getItem(M79.class);
+
+		if (m79 != null && curUser.subClass == HeroSubClass.WARDEN) {
+			m79.addStack();
+		}
 	}
 
 	@Override

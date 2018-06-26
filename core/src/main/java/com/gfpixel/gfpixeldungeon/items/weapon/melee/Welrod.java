@@ -27,7 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.utils.Random;
 
-public class Dagger extends MeleeWeapon {
+public class Welrod extends MeleeWeapon {
 	
 	{
 		image = ItemSpriteSheet.DAGGER;

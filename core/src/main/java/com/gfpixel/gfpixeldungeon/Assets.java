@@ -111,6 +111,8 @@ public class Assets {
 	public static final String TYPHOON		= "typhoon.png";
 	public static final String TYPHOOTIN	= "typhootin.png";
 	public static final String ELID = "elid.png";
+	public static final String RIPPER = "Ripper.png";
+	public static final String ELPHELT = "Elphelt.png";
 
 	public static final String ITEMS	        = "items.png";
 	public static final String TERRAIN_FEATURES	= "terrain_features.png";
@@ -118,11 +120,11 @@ public class Assets {
 	public static final String TILES_SEWERS	= "tiles_sewers.png";
 	public static final String TILES_PRISON	= "tiles_prison.png";
 	public static final String TILES_CAVES	= "tiles_caves.png";
-	public static final String TILES_RECAVES	= "tiles_recaves.png";
+	public static final String TILES_RECAVES= "tiles_recaves.png";
 	public static final String TILES_CITY	= "tiles_city.png";
 	public static final String TILES_HALLS	= "tiles_halls.png";
-
-	public static final String TILES_COLDWAR	= "tiles_coldwar.png";
+	public static final String TILES_COLDWAR= "tiles_coldwar.png";
+	public static final String TILES_TEMPLE	= "tiles_temple.png";
 	
 	public static final String WATER_SEWERS	= "water0.png";
 	public static final String WATER_PRISON	= "water1.png";

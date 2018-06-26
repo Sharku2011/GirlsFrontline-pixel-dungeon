@@ -21,26 +21,19 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
-import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Gauntlet extends MeleeWeapon {
-	
+public class M9 extends MeleeWeapon {
+
 	{
-		image = ItemSpriteSheet.SOMETHING;
-		
-		tier = 5;
-		DLY = 0.5f; //2x speed
+		image = ItemSpriteSheet.KNUCKLEDUSTER;
+
+		tier = 1;
 	}
-	
+
 	@Override
 	public int max(int lvl) {
-		return  Math.round(2.5f*(tier+1)) +     //15 base, down from 30
-				lvl*Math.round(0.5f*(tier+1));  //+3 per level, down from +6
-	}
-	
-	@Override
-	public int defenseFactor( Char owner ) {
-		return 5;	//5 extra defence
+		return  4*(tier+1) +    //20 base, down from 25
+				lvl*(tier);     //+4 per level, down from +5
 	}
 }

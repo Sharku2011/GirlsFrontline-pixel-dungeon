@@ -25,7 +25,8 @@ import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Projecting;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Crossbow;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
@@ -55,11 +56,11 @@ public class Dart extends MissileWeapon {
 		return 0;
 	}
 	
-	private static Crossbow bow;
+	private static Gepard bow;
 	
 	private void updateCrossbow(){
-		if (Dungeon.hero.belongings.weapon instanceof Crossbow){
-			bow = (Crossbow) Dungeon.hero.belongings.weapon;
+		if (Dungeon.hero.belongings.weapon instanceof Gepard){
+			bow = (Gepard) Dungeon.hero.belongings.weapon;
 		} else {
 			bow = null;
 		}

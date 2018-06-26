@@ -26,7 +26,7 @@ import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 public class AK47 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.FLAIL;
+		image = ItemSpriteSheet.AK47;
 
 		tier = 4;
 		ACC = 0.9f; //0.9x accuracy

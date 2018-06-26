@@ -30,7 +30,7 @@ import com.watabou.utils.Random;
 public class NagantRevolver extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.DIRK;
+		image = ItemSpriteSheet.NAGANTREVOLVER;
 
 		tier = 2;
 	}

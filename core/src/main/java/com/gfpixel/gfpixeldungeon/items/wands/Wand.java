@@ -39,7 +39,7 @@ import com.gfpixel.gfpixeldungeon.items.bags.Bag;
 import com.gfpixel.gfpixeldungeon.items.bags.MagicalHolster;
 import com.gfpixel.gfpixeldungeon.items.rings.Ring;
 import com.gfpixel.gfpixeldungeon.items.rings.RingOfEnergy;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.CellSelector;
@@ -105,7 +105,7 @@ public abstract class Wand extends Item {
 	
 	protected abstract void onZap( Ballistica attack );
 
-	public abstract void onHit( MagesStaff staff, Char attacker, Char defender, int damage);
+	public abstract void onHit(G11 staff, Char attacker, Char defender, int damage);
 
 	@Override
 	public boolean collect( Bag container ) {
@@ -255,7 +255,7 @@ public abstract class Wand extends Item {
 		Sample.INSTANCE.play( Assets.SND_ZAP );
 	}
 
-	public void staffFx( MagesStaff.StaffParticle particle ){
+	public void staffFx( G11.StaffParticle particle ){
 		particle.color(0xFFFFFF); particle.am = 0.3f;
 		particle.setLifespan( 1f);
 		particle.speed.polar( Random.Float(PointF.PI2), 2f );

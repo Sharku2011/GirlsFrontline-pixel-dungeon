@@ -26,7 +26,7 @@ import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 public class Usas12 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.GREATSWORD;
+		image = ItemSpriteSheet.USAS12;
 
 		DLY = 0.8f;
 		tier=5;

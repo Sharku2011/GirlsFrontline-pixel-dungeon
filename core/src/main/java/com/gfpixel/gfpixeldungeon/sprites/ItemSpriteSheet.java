@@ -22,6 +22,7 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
 import com.watabou.noosa.TextureFilm;
 
 public class ItemSpriteSheet {
@@ -159,15 +160,17 @@ public class ItemSpriteSheet {
 	public static final int M1911        = WEP_TIER2+1;
 	public static final int M1903           = WEP_TIER2+2;
 	public static final int M1A1    = WEP_TIER2+3;
-	public static final int DIRK            = WEP_TIER2+4;
+	public static final int NAGANTREVOLVER      = WEP_TIER2+4;
 	public static final int G36            = WEP_TIER2+5;
+	public static final int TRAVIAE           = WEP_TIER2+6;
 	static{
 		assignItemRect(M16,      15, 16);
 		assignItemRect(M1911,        12, 14);
 		assignItemRect(M1903,           16, 16);
 		assignItemRect(M1A1,    16, 16);
-		assignItemRect(DIRK,            13, 14);
+		assignItemRect(NAGANTREVOLVER,            13, 14);
 		assignItemRect(G36,            16, 16);
+		assignItemRect(TRAVIAE,            14, 13);
 	}
 
 	private static final int WEP_TIER3      =                               xy(1, 8);   //8 slots
@@ -189,32 +192,32 @@ public class ItemSpriteSheet {
 	}
 
 	private static final int WEP_TIER4      =                               xy(9, 8);   //8 slots
-	public static final int WIN97      = WEP_TIER4+0;
-	public static final int BATTLE_AXE      = WEP_TIER4+1;
-	public static final int FLAIL           = WEP_TIER4+2;
-	public static final int HK416     = WEP_TIER4+3;
-	public static final int ASSASSINS_BLADE = WEP_TIER4+4;
+	public static final int WIN97      		= WEP_TIER4+0;
+	public static final int DRAGUNOV      	= WEP_TIER4+1;
+	public static final int AK47         	= WEP_TIER4+2;
+	public static final int HK416     		= WEP_TIER4+3;
+	public static final int GUA91 			= WEP_TIER4+4;
 	public static final int AWP             = WEP_TIER4+5;
 	public static final int CROSSBOW        = WEP_TIER4+6;
 	static{
 		assignItemRect(WIN97,       15, 15);
-		assignItemRect(BATTLE_AXE,      16, 16);
-		assignItemRect(FLAIL,           14, 14);
+		assignItemRect(DRAGUNOV,      16, 16);
+		assignItemRect(AK47,           14, 14);
 		assignItemRect(HK416,     14, 14);
-		assignItemRect(ASSASSINS_BLADE, 14, 15);
+		assignItemRect(GUA91, 14, 15);
 		assignItemRect(AWP,               16, 18);
 		assignItemRect(CROSSBOW,        16, 18);
 	}
 
 	private static final int WEP_TIER5      =                               xy(1, 9);   //8 slots
-	public static final int GREATSWORD      = WEP_TIER5+0;
+	public static final int USAS12      = WEP_TIER5+0;
 	public static final int SASS      = WEP_TIER5+1;
 	public static final int GLAIVE          = WEP_TIER5+2;
 	public static final int GREATAXE        = WEP_TIER5+3;
 	public static final int GREATSHIELD     = WEP_TIER5+4;
 	public static final int LAR              = WEP_TIER5+5;
 	static{
-		assignItemRect(GREATSWORD,  16, 16);
+		assignItemRect(USAS12,  16, 16);
 		assignItemRect(SASS,  16, 16);
 		assignItemRect(GLAIVE,      16, 16);
 		assignItemRect(GREATAXE,    12, 16);

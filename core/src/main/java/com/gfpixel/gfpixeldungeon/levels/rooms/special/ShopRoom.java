@@ -54,14 +54,14 @@ import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRemoveCurse;
 import com.gfpixel.gfpixeldungeon.items.stones.Runestone;
 import com.gfpixel.gfpixeldungeon.items.stones.StoneOfAugmentation;
 import com.gfpixel.gfpixeldungeon.items.wands.Wand;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.BattleAxe;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Greatsword;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.HandAxe;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Longsword;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Mace;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Shortsword;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Sword;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.WarHammer;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dragunov;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Kar98;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ks23;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M16;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1911;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Sass;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Usas12;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Win97;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Bolas;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.FishingSpear;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Javelin;
@@ -169,7 +169,7 @@ public class ShopRoom extends SpecialRoom {
 		
 		switch (Dungeon.depth) {
 		case 6:
-			itemsToSpawn.add( (Random.Int( 2 ) == 0 ? new Shortsword().identify() : new HandAxe()).identify() );
+			itemsToSpawn.add( (Random.Int( 2 ) == 0 ? new M16().identify() : new M1911()).identify() );
 			itemsToSpawn.add( Random.Int( 2 ) == 0 ?
 					new FishingSpear().quantity(2) :
 					new Shuriken().quantity(2));
@@ -177,7 +177,7 @@ public class ShopRoom extends SpecialRoom {
 			break;
 			
 		case 11:
-			itemsToSpawn.add( (Random.Int( 2 ) == 0 ? new Sword().identify() : new Mace()).identify() );
+			itemsToSpawn.add( (Random.Int( 2 ) == 0 ? new Ks23().identify() : new Kar98()).identify() );
 			itemsToSpawn.add( Random.Int( 2 ) == 0 ?
 					new ThrowingSpear().quantity(2) :
 					new Bolas().quantity(2));
@@ -185,7 +185,7 @@ public class ShopRoom extends SpecialRoom {
 			break;
 			
 		case 16:
-			itemsToSpawn.add( (Random.Int( 2 ) == 0 ? new Longsword().identify() : new BattleAxe()).identify() );
+			itemsToSpawn.add( (Random.Int( 2 ) == 0 ? new Win97().identify() : new Dragunov()).identify() );
 			itemsToSpawn.add( Random.Int( 2 ) == 0 ?
 					new Javelin().quantity(2) :
 					new Tomahawk().quantity(2));
@@ -193,7 +193,7 @@ public class ShopRoom extends SpecialRoom {
 			break;
 			
 		case 21:
-			itemsToSpawn.add( Random.Int( 2 ) == 0 ? new Greatsword().identify() : new WarHammer().identify() );
+			itemsToSpawn.add( Random.Int( 2 ) == 0 ? new Usas12().identify() : new Sass().identify() );
 			itemsToSpawn.add( Random.Int(2) == 0 ?
 					new Trident().quantity(2) :
 					new ThrowingHammer().quantity(2));

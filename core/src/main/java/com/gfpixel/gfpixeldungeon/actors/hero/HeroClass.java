@@ -41,17 +41,15 @@ import com.gfpixel.gfpixeldungeon.items.food.SmallRation;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfInvisibility;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfMindVision;
-import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.wands.M79;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Crossbow;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dagger;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Knuckles;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Boomerang;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.ThrowingKnife;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.ThrowingStone;
@@ -133,9 +131,6 @@ public enum HeroClass {
 	private static void initWarrior( Hero hero ) {
 		(hero.belongings.weapon = new Ump45()).identify();
 		new PotionOfHealing().identify().collect();
-		ThrowingStone stones = new ThrowingStone();
-		stones.identify().quantity(3).collect();
-		Dungeon.quickslot.setSlot(0, stones);
 
 		if (hero.belongings.armor != null){
 			hero.belongings.armor.affixSeal(new BrokenSeal());
@@ -146,6 +141,7 @@ public enum HeroClass {
 		new PotionOfHealing().identify();
 
 		if (BuildConfig.DEBUG) 	{
+			new M79().identify().collect();
 			new Cannon().identify().collect();
 			new PlateArmor().identify().upgrade(100).collect();
 		}
@@ -153,9 +149,9 @@ public enum HeroClass {
 	}
 
 	private static void initMage( Hero hero ) {
-		MagesStaff staff;
+		G11 staff;
 		
-		staff = new MagesStaff(new WandOfMagicMissile());
+		staff = new G11(new WandOfMagicMissile());
 		new ScrollOfRecharging().identify().collect();
 
 		(hero.belongings.weapon = staff).identify();
@@ -169,7 +165,7 @@ public enum HeroClass {
 	}
 
 	private static void initRogue( Hero hero ) {
-		(hero.belongings.weapon = new Dagger()).identify();
+		(hero.belongings.weapon = new Welrod()).identify();
 
 		CloakOfShadows cloak = new CloakOfShadows();
 		(hero.belongings.misc1 = cloak).identify();
@@ -194,7 +190,7 @@ public enum HeroClass {
 		boomerang.identify().collect();
 		M79 m79 = new M79();
 		m79.identify().collect();
-		new Crossbow().identify().collect();
+		new Gepard().identify().collect();
 
 
 		Dungeon.quickslot.setSlot(0, boomerang);

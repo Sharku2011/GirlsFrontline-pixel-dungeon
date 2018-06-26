@@ -31,7 +31,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.FlavourBuff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Frost;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.items.Heap;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MagesStaff;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.noosa.audio.Sample;
@@ -102,7 +102,7 @@ public class WandOfFrost extends DamageWand {
 	}
 
 	@Override
-	public void onHit(MagesStaff staff, Char attacker, Char defender, int damage) {
+	public void onHit(G11 staff, Char attacker, Char defender, int damage) {
 		Chill chill = defender.buff(Chill.class);
 		if (chill != null && Random.IntRange(2, 10) <= chill.cooldown()){
 			//need to delay this through an actor so that the freezing isn't broken by taking damage from the staff hit.
@@ -117,7 +117,7 @@ public class WandOfFrost extends DamageWand {
 	}
 
 	@Override
-	public void staffFx(MagesStaff.StaffParticle particle) {
+	public void staffFx(G11.StaffParticle particle) {
 		particle.color(0x88CCFF);
 		particle.am = 0.6f;
 		particle.setLifespan(2f);

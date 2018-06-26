@@ -30,7 +30,7 @@ import com.watabou.utils.Random;
 public class GUA91 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.ASSASSINS_BLADE;
+		image = ItemSpriteSheet.GUA91;
 
 		tier = 4;
 	}

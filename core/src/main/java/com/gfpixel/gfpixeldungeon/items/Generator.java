@@ -101,7 +101,8 @@ import com.gfpixel.gfpixeldungeon.items.wands.WandOfTransfusion;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AWP;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.C96;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Crossbow;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dp;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G36;
@@ -117,7 +118,6 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1903;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1911;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1a1;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Usas12;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.HandAxe;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M99;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Mg42;
@@ -129,21 +129,13 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ntw20;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SAIGA;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SR3;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Sass;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump40;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Wa;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Win97;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Sai;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SaigaPlate;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SakuraBlade;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Scimitar;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Shortsword;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Spear;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Sword;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.WarHammer;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Whip;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.WornShortsword;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Bolas;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.FishingSpear;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Javelin;
@@ -294,10 +286,12 @@ public class Generator {
 			
 			WEP_T1.classes = new Class<?>[]{
 					Ump45.class,
-					Ump40.class,
+					G11.class,
+                    Welrod.class,
+					M9.class,
 					Dp.class,
 					SR3.class,
-					G11.class
+                    Cannon.class
 			};
 			WEP_T1.probs = new float[]{ 1, 1, 1, 1, 1, 1, 0 };
 			
@@ -324,16 +318,11 @@ public class Generator {
 			
 			WEP_T4.classes = new Class<?>[]{
 					Win97.class,
-					BattleAxe.class,
-					Flail.class,
 					Hk416.class,
-					AssassinsBlade.class,
-					Crossbow.class,
 					AWP.class,
 					AK47.class,
-					RunicBlade.class,
 					GUA91.class,
-					Crossbow.class
+					Gepard.class
 			};
 			WEP_T4.probs = new float[]{ 6, 5, 5, 4, 4, 4, 4 };
 			

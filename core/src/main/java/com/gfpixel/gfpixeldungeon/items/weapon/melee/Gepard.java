@@ -23,12 +23,14 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Knuckles extends MeleeWeapon {
+public class Gepard extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.KNUCKLEDUSTER;
+		image = ItemSpriteSheet.CROSSBOW;
 
-		tier = 1;
+		//check Dart.class for additional properties
+
+		tier = 4;
 	}
 
 	@Override
