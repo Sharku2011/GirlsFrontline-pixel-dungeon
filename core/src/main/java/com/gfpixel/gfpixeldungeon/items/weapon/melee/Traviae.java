@@ -21,15 +21,28 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Usas12 extends MeleeWeapon {
+public class Traviae extends MeleeWeapon {
 
-	{
-		image = ItemSpriteSheet.USAS12;
+    {
+        image = ItemSpriteSheet.TRAVIAE;
 
-		DLY = 0.8f;
-		tier=5;
-	}
+        tier=2;
+        DLY = 1.5f;
+        RCH = 2;
+        ACC = 1.27f; //27% boost to accuracy
+    }
 
+    @Override
+    public int max(int lvl) {
+        return  Math.round(7*(tier+1)) +        //35 base, up from 25
+                lvl*Math.round(3.1f*(tier+1));  //+8 per level, up from +5
+    }
+
+    @Override
+    public int defenseFactor( Char owner ) {
+        return 5+2*level();     //6 extra defence, plus 2 per level;
+    }
 }

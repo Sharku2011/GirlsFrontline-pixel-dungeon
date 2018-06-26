@@ -94,6 +94,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.AWP;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dragunov;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.C96;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M99;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dp;
@@ -107,7 +108,6 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.Usas12;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.GUA91;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Hk416;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Kar98;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Knuckles;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Kriss;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ks23;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M16;
@@ -162,7 +162,7 @@ public enum Catalog {
 	}
 	
 	static {
-		WEAPONS.seen.put( Knuckles.class,                   false);
+		WEAPONS.seen.put( M9.class,                   false);
 		WEAPONS.seen.put( Welrod.class,                     false);
 		WEAPONS.seen.put( G11.class,                 false);
 		WEAPONS.seen.put( Ump45.class,                   false);

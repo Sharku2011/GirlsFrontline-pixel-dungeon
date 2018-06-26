@@ -129,7 +129,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ntw20;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SAIGA;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SR3;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Sass;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump40;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Wa;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
@@ -286,11 +286,11 @@ public class Generator {
 			
 			WEP_T1.classes = new Class<?>[]{
 					Ump45.class,
-					Ump40.class,
+					G11.class,
                     Welrod.class,
+					M9.class,
 					Dp.class,
 					SR3.class,
-					G11.class,
                     Cannon.class
 			};
 			WEP_T1.probs = new float[]{ 1, 1, 1, 1, 1, 1, 0 };

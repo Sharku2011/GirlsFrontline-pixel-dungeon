@@ -26,7 +26,7 @@ import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 public class Dragunov extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.BATTLE_AXE;
+		image = ItemSpriteSheet.DRAGUNOV;
 
 		tier = 4;
 		DLY = 0.6f;

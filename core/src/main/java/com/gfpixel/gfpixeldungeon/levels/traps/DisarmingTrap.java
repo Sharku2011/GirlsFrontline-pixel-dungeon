@@ -29,7 +29,6 @@ import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.KindOfWeapon;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Knuckles;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
@@ -66,7 +65,7 @@ public class DisarmingTrap extends Trap{
 			Hero hero = Dungeon.hero;
 			KindOfWeapon weapon = hero.belongings.weapon;
 
-			if (weapon != null && !(weapon instanceof Knuckles) && !weapon.cursed) {
+			if (weapon != null && !weapon.cursed) {
 
 				int cell = Dungeon.level.randomRespawnCell();
 				if (cell != -1) {
