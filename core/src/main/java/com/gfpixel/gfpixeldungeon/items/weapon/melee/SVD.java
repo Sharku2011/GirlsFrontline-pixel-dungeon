@@ -23,10 +23,10 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class BattleAxe extends MeleeWeapon {
+public class SVD extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.BATTLE_AXE;
+		image = ItemSpriteSheet.SVD;
 
 		tier = 4;
 		DLY = 0.6f;
