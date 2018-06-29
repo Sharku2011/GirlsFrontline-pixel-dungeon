@@ -167,13 +167,13 @@ public class WndStartGame extends Window {
 			this.cl = cl;
 			
 			if (cl == HeroClass.WARRIOR){
-				hero = new Image(Assets.WARRIOR, 0, 86, 12, 17);
+				hero = new Image(Assets.WARRIOR, 0, 86, 13, 17);
 			} else if (cl == HeroClass.MAGE){
-				hero = new Image(Assets.MAGE, 0, 86, 12, 17);
+				hero = new Image(Assets.MAGE, 0, 86, 13, 17);
 			} else if (cl == HeroClass.ROGUE){
-				hero = new Image(Assets.ROGUE, 0, 86, 12, 17);
+				hero = new Image(Assets.ROGUE, 0, 86, 13, 17);
 			} else if (cl == HeroClass.HUNTRESS){
-				hero = new Image(Assets.RANGER, 0, 86, 12, 17);
+				hero = new Image(Assets.RANGER, 0, 86, 13, 17);
 			}
 			add(hero);
 			
