@@ -41,7 +41,6 @@ import com.gfpixel.gfpixeldungeon.items.food.SmallRation;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfInvisibility;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfMindVision;
-import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.wands.M79;
@@ -181,7 +180,7 @@ public enum HeroClass {
 
 		new ScrollHolder().collect();
 		Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
-		new ScrollOfMagicMapping().identify().collect();
+		new ScrollOfUpgrade().identify();
 	}
 
 	private static void initHuntress( Hero hero ) {
