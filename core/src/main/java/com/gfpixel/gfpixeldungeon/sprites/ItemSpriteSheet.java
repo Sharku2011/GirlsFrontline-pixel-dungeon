@@ -248,15 +248,17 @@ public class ItemSpriteSheet {
 	
 	public static final int FISHING_SPEAR   = MISSILE_WEP+4;
 	public static final int SHURIKEN        = MISSILE_WEP+5;
-	
+
+	public static final int BOLAS           = MISSILE_WEP+6;
 	public static final int THROWING_SPEAR  = MISSILE_WEP+7;
-	public static final int BOLAS           = MISSILE_WEP+8;
+
+	public static final int GENOISE			= MISSILE_WEP+8;
+
+	public static final int JAVELIN         = MISSILE_WEP+9;
+	public static final int TOMAHAWK        = MISSILE_WEP+10;
 	
-	public static final int JAVELIN         = MISSILE_WEP+10;
-	public static final int TOMAHAWK        = MISSILE_WEP+11;
-	
-	public static final int TRIDENT         = MISSILE_WEP+13;
-	public static final int THROWING_HAMMER = MISSILE_WEP+14;
+	public static final int TRIDENT         = MISSILE_WEP+11;
+	public static final int THROWING_HAMMER = MISSILE_WEP+12;
 	
 	static{
 		assignItemRect(BOOMERANG,       14, 14);
@@ -268,8 +270,10 @@ public class ItemSpriteSheet {
 		assignItemRect(FISHING_SPEAR,   11, 11);
 		assignItemRect(SHURIKEN,        12, 12);
 
-		assignItemRect(THROWING_SPEAR,  13, 12);
 		assignItemRect(BOLAS,           15, 14);
+		assignItemRect(THROWING_SPEAR,  13, 12);
+
+		assignItemRect(GENOISE,			7, 16);
 
 		assignItemRect(JAVELIN,         16, 15);
 		assignItemRect(TOMAHAWK,        13, 13);
