@@ -64,10 +64,7 @@ public class M79 extends DamageWand {
         Char ch = Actor.findChar( bolt.collisionPos );
 
         if (ch != null) {
-
-            processSoulMark(ch, chargesPerCast());
             ch.damage(damageRoll(), this);
-
             ch.sprite.burst(0xFFFFFFFF, level() / 2 + 2);
         }
 
