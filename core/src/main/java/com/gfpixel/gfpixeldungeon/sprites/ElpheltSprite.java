@@ -3,12 +3,15 @@ package com.gfpixel.gfpixeldungeon.sprites;
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.actors.mobs.Hydra;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Elphelt;
 import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.noosa.particles.Emitter;
+import com.watabou.noosa.particles.PixelParticle;
+import com.watabou.utils.PointF;
+import com.watabou.utils.Random;
 
 public class ElpheltSprite extends MobSprite {
 
@@ -53,7 +56,7 @@ public class ElpheltSprite extends MobSprite {
     @Override
     public void link(Char ch) {
         super.link(ch);
-        if (((Hydra)ch).beamCharged) play(charging);
+        if (((Elphelt)ch).beamCharged) play(charging);
     }
 
     @Override
@@ -91,11 +94,48 @@ public class ElpheltSprite extends MobSprite {
             } else {
                 parent.add(new Beam.DeathRay(center(), DungeonTilemap.raisedTileCenterToWorld(zapPos)));
             }
-            ((Hydra)ch).deathGaze();
+            ((Elphelt)ch).deathGaze();
             ch.next();
         } else if (anim == die){
             chargeParticles.killAndErase();
         }
     }
-}
 
+    public static class GenoiseParticle extends PixelParticle.Shrinking {
+
+        public static final Emitter.Factory FACTORY = new Emitter.Factory() {
+            @Override
+            public void emit( Emitter emitter, int index, float x, float y ) {
+                ((ElpheltSprite.GenoiseParticle)emitter.recycle( ElpheltSprite.GenoiseParticle.class )).reset( x, y );
+            }
+        };
+
+        public GenoiseParticle() {
+            super();
+
+            color( 0xFF66FF );
+            lifespan = 0.3f;
+
+            acc.set( 0, +50 );
+        }
+
+        public void reset( float x, float y ) {
+            revive();
+
+            this.x = x;
+            this.y = y;
+
+            left = lifespan;
+
+            size = 4;
+            speed.polar( -Random.Float( PointF.PI ), Random.Float( 32, 48 ) );
+        }
+
+        @Override
+        public void update() {
+            super.update();
+            float p = left / lifespan;
+            am = p > 0.5f ? (1 - p) * 2f : 1;
+        }
+    }
+}
