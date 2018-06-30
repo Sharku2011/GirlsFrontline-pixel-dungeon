@@ -48,6 +48,8 @@ public class Jupiter extends Mob {
         defenseSkill = 30;
         baseSpeed = 1f;
         maxLvl = 26;
+
+        properties.add(Property.IMMOVABLE);
     }
 
     private Ballistica beam;
