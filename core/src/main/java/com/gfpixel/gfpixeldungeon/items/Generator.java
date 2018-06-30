@@ -362,7 +362,7 @@ public class Generator {
 					Dart.class,
 					ThrowingKnife.class
 			};
-			MIS_T1.probs = new float[]{ 1, 1 };
+			MIS_T1.probs = new float[]{ 4, 1 };
 			
 			MIS_T2.classes = new Class<?>[]{
 					FishingSpear.class,
