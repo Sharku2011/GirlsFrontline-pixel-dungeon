@@ -25,13 +25,13 @@ public class ElpheltSprite extends MobSprite {
 
         texture( Assets.ELPHELT );
 
-        TextureFilm frames = new TextureFilm( texture, 18, 22 );
+        TextureFilm frames = new TextureFilm( texture, 18, 19 );
 
         idle = new Animation( 5, true );
         idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 2, 1, 2, 3, 4, 5, 6, 7, 7, 7 );
 
         charging = new Animation( 14, true);
-        charging.frames( frames, 1 );
+        charging.frames( frames, 16 );
 
         chargeParticles = centerEmitter();
         chargeParticles.autoKill = false;
@@ -42,9 +42,9 @@ public class ElpheltSprite extends MobSprite {
         run.frames( frames, 8, 9, 10, 11, 12 );
 
         attack = new Animation( 15, false );
-        attack.frames( frames, 16, 17, 18 );
+        attack.frames( frames, 13, 14, 15 );
         zap = new Animation( 15, false );
-        zap.frames( frames, 13, 14, 15);
+        zap.frames( frames, 17, 17, 19);
 
         die = new Animation( 15, false );
         die.frames( frames, 19, 20, 21, 22, 23, 24 );
