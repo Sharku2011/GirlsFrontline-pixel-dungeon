@@ -1,6 +1,7 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
@@ -18,82 +19,26 @@ import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
+import com.gfpixel.gfpixeldungeon.levels.RabbitBossLevel;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
 import com.gfpixel.gfpixeldungeon.sprites.ElpheltSprite;
+import com.gfpixel.gfpixeldungeon.ui.BossHealthBar;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
+import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Callback;
+import com.watabou.utils.GameMath;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
 public class Elphelt extends Mob {
 
-    private class Genoise extends Actor {
-
-        private int target = -1;
-
-        Genoise(int cell) {
-            target = cell;
-        }
-
-        @Override
-        protected boolean act() {
-
-            Sample.INSTANCE.play( Assets.SND_BLAST );
-
-            if (target >= 0 && Dungeon.level.heroFOV[target]) {
-                CellEmitter.center( target ).burst( BlastParticle.FACTORY, 30 );
-            }
-
-            boolean terrainAffected = false;
-            for (int n : PathFinder.NEIGHBOURS9) {
-                int c = target + n;
-                if (c >= 0 && c < Dungeon.level.length()) {
-                    if (Dungeon.level.heroFOV[c]) {
-                        CellEmitter.get( c ).burst( SmokeParticle.FACTORY, 4 );
-                    }
-
-                    if (Dungeon.level.flamable[c]) {
-                        Dungeon.level.destroy( c );
-                        GameScene.updateMap( c );
-                        terrainAffected = true;
-                    }
-
-                    //destroys items / triggers bombs caught in the blast.
-                    Heap heap = Dungeon.level.heaps.get( c );
-                    if(heap != null)
-                        heap.explode();
-
-                    Char ch = Actor.findChar( c );
-                    if (ch != null) {
-                        //those not at the center of the blast take damage less consistently.
-                        int minDamage = c == target ? 100 : 50;
-                        int maxDamage = c == target ? 120 : 60;
-
-                        int dmg = Random.NormalIntRange( minDamage, maxDamage ) - ch.drRoll();
-                        if (dmg > 0) {
-                            ch.damage( dmg , this );
-                        }
-
-                        if (ch == Dungeon.hero && !ch.isAlive())
-                            Dungeon.fail( Elphelt.this.getClass() );
-                        GLog.n( Messages.get( Elphelt.this, "genoise_kill") );
-                    }
-                }
-            }
-
-            if (terrainAffected) {
-                Dungeon.observe();
-            }
-
-            remove(this);
-            return true;
-        }
-    }
+    private static float TIME_TO_EXPLODE = 2f;
+    private static int POWER_OF_BLAST = 10;
 
     {
         spriteClass = ElpheltSprite.class;
@@ -106,10 +51,6 @@ public class Elphelt extends Mob {
 
         properties.add(Property.BOSS);
     }
-
-    private int phase = 0;
-
-    public int DamageReducer() { return 3; }
 
     @Override
     public int damageRoll() {
@@ -131,31 +72,63 @@ public class Elphelt extends Mob {
         return Random.NormalIntRange(0, 10);
     }
 
-    private Ballistica beam;
+    private Ballistica trace;
     private int beamTarget = -1;
     private int beamCooldown;
+    private int maxStack = 5;
+    private int curStack = maxStack;
+
+    private final float timerDash = 3f;
+    private float cooldownDash = 3f;
     public boolean beamCharged;
+
+    public boolean canBurst = false;
+    public boolean canDash = false;
+    public int phase = 0;
+
+	@Override
+    public void move( int step ) {
+        Dungeon.level.seal();
+        super.move( step );
+    }
+
+    @Override
+    public void notice() {
+        super.notice();
+        BossHealthBar.assignBoss(this);
+        if (!Dungeon.level.locked) {
+            WndDialog.ShowChapter(DialogInfo.ID_SEWER_BOSS);
+        }
+    }
 
     @Override
     protected boolean canAttack( Char enemy ) {
 
-        if (Dungeon.level.distance(pos, enemy.pos) <= 1) {
+        /*
+        if (canBurst && Dungeon.level.adjacent( pos, enemy.pos )) {
             Blast();
             return false;
+        }*/
+
+        switch (phase) {
+            case 0: default:
+            case 1:
+                return super.canAttack(enemy);
+            case 2:
+                return (curStack > 0);
+
+                /*
+                Ballistica aim = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
+                if (enemy.invisible == 0 && !isCharmedBy(enemy) && fieldOfView[enemy.pos] && aim.subPath(1, aim.dist).contains(enemy.pos)){
+                    trace = aim;
+                    beamTarget = aim.collisionPos;
+                    return true;
+                } else
+                    //if the beam is charged, it has to attack, will aim at previous location of target.
+                    return beamCharged;
+                */
         }
 
-        if (beamCooldown == 0) {
-            Ballistica aim = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
-
-            if (enemy.invisible == 0 && !isCharmedBy(enemy) && fieldOfView[enemy.pos] && aim.subPath(1, aim.dist).contains(enemy.pos)){
-                beam = aim;
-                beamTarget = aim.collisionPos;
-                return true;
-            } else
-                //if the beam is charged, it has to attack, will aim at previous location of target.
-                return beamCharged;
-        } else
-            return super.canAttack(enemy);
     }
 
     @Override
@@ -163,37 +136,51 @@ public class Elphelt extends Mob {
         if (beamCharged && state != HUNTING){
             beamCharged = false;
         }
-        if (beam == null && beamTarget != -1) {
-            beam = new Ballistica(pos, beamTarget, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
+        if (trace == null && beamTarget != -1) {
+            trace = new Ballistica(pos, beamTarget, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
             sprite.turnTo(pos, beamTarget);
         }
-        if (beamCooldown > 0)
-            beamCooldown--;
+
+        switch (phase) {
+            case 0: default:
+            case 1:
+                /* 순간 이동속도 증가.
+                if (cooldownDash > 0) {
+                    GLog.i("정상화");
+                    baseSpeed = 1f;
+                    cooldownDash--;
+                } else {
+                    GLog.i("가속!");
+                    baseSpeed = 2f;
+                    cooldownDash = timerDash;
+                }
+                */
+        }
+
+
+
         return super.act();
     }
 
     @Override
     protected boolean doAttack( Char enemy ) {
 
-        if (beamCooldown > 0) {
-            return super.doAttack(enemy);
-        } /*else if (!beamCharged){
-            ((ElpheltSprite)sprite).charge( enemy.pos );
-            spend( attackDelay() );
-            beamCharged = true;
-            return true;
-        } */else {
+	    switch (phase) {
+            case 0: default:
+            case 1:
+                return super.doAttack(enemy);
+            case 2:
+                spend( attackDelay() );
 
-            spend( attackDelay() );
+                trace = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
 
-            beam = new Ballistica(pos, beamTarget, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
-            if (Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[beam.collisionPos] ) {
-                sprite.zap( beam.collisionPos );
-                return false;
-            } else {
-                deathGaze();
-                return true;
-            }
+                if (Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[trace.collisionPos] ) {
+                    sprite.zap( trace.collisionPos );
+                    return false;
+                } else {
+                    fireGenoise();
+                    return true;
+                }
         }
 
     }
@@ -201,26 +188,31 @@ public class Elphelt extends Mob {
     // Reduce damage during charge. Nerf this 4 to 2.
     @Override
     public void damage(int dmg, Object src) {
-        if (beamCharged) dmg /= DamageReducer();
+        int beforeHitHP = HP;
         super.damage(dmg, src);
+        dmg = beforeHitHP - HP;
+
+
     }
 
-    public void deathGaze(){
-        //if (!beamCharged || beamCooldown > 0 || beam == null) return;
+    public void fireGenoise(){
 
         beamCharged = false;
         beamCooldown = 1;
 
+        if (curStack <= 0) {
+            curStack = maxStack;
+            return;
+        }
+
         boolean terrainAffected = false;
 
-        for (int pos : beam.subPath(1, beam.dist)) {
+        for (int pos : trace.subPath(1, trace.dist)) {
 
             if (Dungeon.level.flamable[pos]) {
-
                 Dungeon.level.destroy( pos );
                 GameScene.updateMap( pos );
                 terrainAffected = true;
-
             }
 
             Char ch = Actor.findChar( pos );
@@ -231,15 +223,17 @@ public class Elphelt extends Mob {
             for (int n : PathFinder.NEIGHBOURS8) {
                 int c = pos + n;
                 if ( Blob.volumeAt( c, GooWarn.class ) == 0 ) {
-                    GameScene.add( Blob.seed( c, 3, GooWarn.class) );
+                    GameScene.add( Blob.seed( c, Math.round( 1 + TIME_TO_EXPLODE ), GooWarn.class) );
                 }
             }
 
             if (Blob.volumeAt( pos, GenoiseWarn.class ) == 0) {
-                GameScene.add( Blob.seed( pos, 3, GenoiseWarn.class) );
+                GameScene.add( Blob.seed( pos, Math.round( 1 + TIME_TO_EXPLODE ), GenoiseWarn.class) );
             }
 
-            addDelayed(new Genoise(pos), 2);
+            addDelayed(new Genoise(pos), TIME_TO_EXPLODE);
+
+            curStack = Math.max(curStack-1, 0);
 
             if (hit( this, ch, true )) {
 
@@ -248,10 +242,6 @@ public class Elphelt extends Mob {
                     CellEmitter.center( pos ).burst( PurpleParticle.BURST, Random.IntRange( 1, 2 ) );
                 }
 
-                if (!ch.isAlive() && ch == Dungeon.hero) {
-                    Dungeon.fail( getClass() );
-                    GLog.n( Messages.get(this, "deathgaze_kill") );
-                }
             } else {
                 ch.sprite.showStatus( CharSprite.NEUTRAL,  ch.defenseVerb() );
             }
@@ -261,9 +251,11 @@ public class Elphelt extends Mob {
             Dungeon.observe();
         }
 
-        beam = null;
+        trace = null;
         beamTarget = -1;
     }
+
+
 
     public void Blast() {
         //throws other chars around the center.
@@ -274,8 +266,7 @@ public class Elphelt extends Mob {
 
                 if (ch.isAlive()) {
                     Ballistica trajectory = new Ballistica(ch.pos, ch.pos + i, Ballistica.MAGIC_BOLT);
-                    int strength = 10;
-                    throwChar(ch, trajectory, strength);
+                    throwChar(ch, trajectory, POWER_OF_BLAST);
                 }
             }
         }
@@ -357,11 +348,76 @@ public class Elphelt extends Mob {
         @Override
         public boolean act(boolean enemyInFOV, boolean justAlerted) {
             //even if enemy isn't seen, attack them if the beam is charged
+            /*
             if (beamCharged && enemy != null && canAttack(enemy)) {
                 enemySeen = enemyInFOV;
                 return doAttack(enemy);
-            }
+            }*/
             return super.act(enemyInFOV, justAlerted);
+        }
+    }
+
+    private class Genoise extends Actor {
+
+        private int target = -1;
+
+        Genoise(int cell) {
+            target = cell;
+        }
+
+        @Override
+        protected boolean act() {
+
+            Sample.INSTANCE.play( Assets.SND_BLAST );
+
+            if (target >= 0 && Dungeon.level.heroFOV[target]) {
+                CellEmitter.center( target ).burst( BlastParticle.FACTORY, 30 );
+            }
+
+            boolean terrainAffected = false;
+            for (int n : PathFinder.NEIGHBOURS9) {
+                int c = target + n;
+                if (c >= 0 && c < Dungeon.level.length()) {
+                    if (Dungeon.level.heroFOV[c]) {
+                        CellEmitter.get( c ).burst( SmokeParticle.FACTORY, 4 );
+                    }
+
+                    if (Dungeon.level.flamable[c]) {
+                        Dungeon.level.destroy( c );
+                        GameScene.updateMap( c );
+                        terrainAffected = true;
+                    }
+
+                    //destroys items / triggers bombs caught in the blast.
+                    Heap heap = Dungeon.level.heaps.get( c );
+                    if(heap != null)
+                        heap.explode();
+
+                    Char ch = Actor.findChar( c );
+                    if (ch != null) {
+                        //those not at the center of the blast take damage less consistently.
+                        int minDamage = c == target ? 100 : 50;
+                        int maxDamage = c == target ? 120 : 60;
+
+                        int dmg = Random.NormalIntRange( minDamage, maxDamage ) - ch.drRoll();
+                        if (dmg > 0) {
+                            ch.damage( dmg , this );
+                        }
+
+                        if (ch == Dungeon.hero && !ch.isAlive()) {
+                            Dungeon.fail( Elphelt.this.getClass() );
+                            GLog.n( Messages.get( Elphelt.this, "genoise_kill") );
+                        }
+                    }
+                }
+            }
+
+            if (terrainAffected) {
+                Dungeon.observe();
+            }
+
+            remove(this);
+            return true;
         }
     }
 }

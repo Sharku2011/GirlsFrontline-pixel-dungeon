@@ -44,7 +44,7 @@ public class ElpheltSprite extends MobSprite {
         attack = new Animation( 15, false );
         attack.frames( frames, 13, 14, 15 );
         zap = new Animation( 15, false );
-        zap.frames( frames, 17, 17, 19);
+        zap.frames( frames, 17, 18, 19);
 
         die = new Animation( 15, false );
         die.frames( frames, 19, 20, 21, 22, 23, 24 );
@@ -94,7 +94,7 @@ public class ElpheltSprite extends MobSprite {
             } else {
                 parent.add(new Beam.DeathRay(center(), DungeonTilemap.raisedTileCenterToWorld(zapPos)));
             }
-            ((Elphelt)ch).deathGaze();
+            ((Elphelt)ch).fireGenoise();
             ch.next();
         } else if (anim == die){
             chargeParticles.killAndErase();
