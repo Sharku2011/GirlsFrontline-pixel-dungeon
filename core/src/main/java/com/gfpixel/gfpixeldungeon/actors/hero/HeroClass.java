@@ -36,6 +36,7 @@ import com.gfpixel.gfpixeldungeon.items.bags.PotionBandolier;
 import com.gfpixel.gfpixeldungeon.items.bags.ScrollHolder;
 import com.gfpixel.gfpixeldungeon.items.bags.VelvetPouch;
 import com.gfpixel.gfpixeldungeon.items.food.Food;
+import com.gfpixel.gfpixeldungeon.items.food.Maccol;
 import com.gfpixel.gfpixeldungeon.items.food.Pasty;
 import com.gfpixel.gfpixeldungeon.items.food.SmallRation;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
@@ -112,6 +113,12 @@ public enum HeroClass {
 			new SmallRation().collect();
 		}
 
+		if (BuildConfig.DEBUG) {
+            new Maccol().collect();
+            new Pasty().collect();
+        }
+
+
 	}
 
 	public Badges.Badge masteryBadge() {
@@ -135,7 +142,9 @@ public enum HeroClass {
 		if (hero.belongings.armor != null){
 			hero.belongings.armor.affixSeal(new BrokenSeal());
 		}
-		
+
+		new ThrowingStone().identify().quantity(5).collect();
+
 		new PotionBandolier().collect();
 		Dungeon.LimitedDrops.POTION_BANDOLIER.drop();
 		new PotionOfHealing().identify();

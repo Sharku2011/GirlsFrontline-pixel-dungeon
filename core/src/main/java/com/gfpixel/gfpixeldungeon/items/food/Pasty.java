@@ -21,16 +21,23 @@
 
 package com.gfpixel.gfpixeldungeon.items.food;
 
+import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Badges;
+import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Hunger;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Invisibility;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Recharging;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
+import com.gfpixel.gfpixeldungeon.effects.Flare;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
+import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Holidays;
 
 import java.util.Calendar;
@@ -75,7 +82,33 @@ public class Pasty extends Food {
 		if (action.equals(AC_EAT)){
 			switch( Holidays.getHolidays() ){
 				case NONE:
-					break; //do nothing extra
+					new Flare( 5, 32 ).color( 0xFF0000, true ).show( curUser.sprite, 2f );
+					Sample.INSTANCE.play( Assets.SND_READ );
+					Invisibility.dispel();
+
+					int count = 0;
+					Mob affected = null;
+					for (Mob mob : Dungeon.level.mobs.toArray( new Mob[0] )) {
+						if (Dungeon.level.heroFOV[mob.pos]) {
+							Buff.affect( mob, Terror.class, TIME_TO_EAT ).object = curUser.id();
+
+							if (mob.buff(Terror.class) != null){
+								count++;
+								affected = mob;
+							}
+						}
+					}
+
+					switch (count) {
+						case 0:
+							break;
+						case 1:
+							GLog.n( Messages.get(this, "one", affected.name) );
+							break;
+						default:
+							GLog.n( Messages.get(this, "many") );
+					}
+					break; //으악 미친 씹놈이다 - 민초충 out!
 				case BREAD_INDEPENDENT:
 					if (Badges.getLocal().contains(Badges.Badge.FOOD_EATEN_1))
 						GLog.n(Messages.get(this, "cinnamon_msg"));
