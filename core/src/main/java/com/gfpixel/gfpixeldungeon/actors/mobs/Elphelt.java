@@ -75,8 +75,10 @@ public class Elphelt extends Mob {
     private Ballistica trace;
     private int beamTarget = -1;
     private int beamCooldown;
-    private int maxStack = 5;
-    private int curStack = maxStack;
+
+    private boolean onGenoise = false;
+    private int maxGenoiseStack = 5;
+    private int curGenoiseStack = maxGenoiseStack;
 
     private final float timerDash = 3f;
     private float cooldownDash = 3f;
@@ -113,9 +115,21 @@ public class Elphelt extends Mob {
         switch (phase) {
             case 0: default:
             case 1:
-                return super.canAttack(enemy);
+                if (Dungeon.level.adjacent(pos, enemy.pos)) {
+                    if ( onGenoise ) {
+                        Blast();
+                        return false;
+                    } else {
+                        return super.canAttack(enemy);
+                    }
+                } else {
+                    if ( curGenoiseStack == maxGenoiseStack ) {
+                        onGenoise = true;
+                        return true;
+                    }
+                }
+
             case 2:
-                return (curStack > 0);
 
                 /*
                 Ballistica aim = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
@@ -144,6 +158,7 @@ public class Elphelt extends Mob {
         switch (phase) {
             case 0: default:
             case 1:
+
                 /* 순간 이동속도 증가.
                 if (cooldownDash > 0) {
                     GLog.i("정상화");
@@ -200,8 +215,8 @@ public class Elphelt extends Mob {
         beamCharged = false;
         beamCooldown = 1;
 
-        if (curStack <= 0) {
-            curStack = maxStack;
+        if (curGenoiseStack <= 0) {
+            curGenoiseStack = maxGenoiseStack;
             return;
         }
 
@@ -233,7 +248,7 @@ public class Elphelt extends Mob {
 
             addDelayed(new Genoise(pos), TIME_TO_EXPLODE);
 
-            curStack = Math.max(curStack-1, 0);
+            curGenoiseStack = Math.max(curGenoiseStack-1, 0);
 
             if (hit( this, ch, true )) {
 
