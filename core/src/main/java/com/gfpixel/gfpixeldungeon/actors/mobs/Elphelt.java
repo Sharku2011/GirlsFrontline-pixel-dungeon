@@ -115,6 +115,7 @@ public class Elphelt extends Mob {
         switch (phase) {
             case 0: default:
             case 1:
+                // phase 1. genoise and stalking
                 if (Dungeon.level.adjacent(pos, enemy.pos)) {
                     if ( onGenoise ) {
                         Blast();
@@ -130,6 +131,8 @@ public class Elphelt extends Mob {
                 }
 
             case 2:
+                // phase 2. magnum wedding and tackle
+
 
                 /*
                 Ballistica aim = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
@@ -141,6 +144,7 @@ public class Elphelt extends Mob {
                     //if the beam is charged, it has to attack, will aim at previous location of target.
                     return beamCharged;
                 */
+                return true;
         }
 
     }
@@ -287,6 +291,14 @@ public class Elphelt extends Mob {
         }
 
         spend(1f);
+    }
+
+    public void Tackle() {
+
+	    if (enemy != null) {
+            Ballistica trajectory = new Ballistica( pos,enemy.pos )
+        }
+
     }
 
 
