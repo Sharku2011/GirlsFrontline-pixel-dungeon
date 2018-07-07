@@ -33,6 +33,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.C96;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dp;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G36;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Hk416;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M99;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Mg42;
@@ -114,19 +115,35 @@ public class ChangesScene extends PixelScene {
 		//       v0.6.5
 		//**********************
 
-		ChangeInfo changes = new ChangeInfo("v0.5.0", true, "5.0 변경사항 정리중");
+		ChangeInfo changes = new ChangeInfo("v0.4.3", true, "5.0 변경사항 정리중");
 		changes.hardlight( Window.TITLE_COLOR);
 		infos.add(changes);
 
 		changes.addButton( new ChangeButton(new Image(Assets.ELPHELT, 288, 0, 17, 22), Messages.get(this, "텍스트 준비중"),
-				"뽀잇\n\n" +
+				"분기점 활성화\n\n" +
 
-						"_-_ 작은\n\n" +
-						"_-_ 성기들아.\n\n" +
-						"_-_ 불만이. \n\n" +
-						"_-_ 또 있어요?. \n\n" +
-						"_-_ 의도된 것 입니다."));
+						"_-_ 소녀전선x길티기어 분기점 챕터가 활성화 되었습니다.\n\n" +
+						"_-_ 기존 스테이지에서 특정 조건을 만족할시 다음 챕터에서 분기점 챕터가 활성화됩니다.\n\n" +
+						"_-_ 분기점 챕터를 클리어할시 기존 티어보다 높은 성능을 가진 콜라보 무기를 획득할 수 있습니다. \n\n" +
+						"_-_ 분기점 활성화 조건은 공개하지 않겠습니다. 하지만 찾기 쉬울거에요! 첫번째 분기점인 만큼, 초반 챕터에 분기점이 활성화됩니다!"));
 
+		changes = new ChangeInfo(Messages.get(this, "new"), false, null);
+		changes.hardlight( Window.TITLE_COLOR );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new Gepard(),
+				"_-_ 일부 무기가 수정됬습니다.\n\n" +
+						"_-_ 신규무기 게파드가 추가됬습니다. 게파드는 무기를 장착하고 있을때 50BMG의 데미지가 크게 올라갑니다.\n\n" +
+						"_-_ 소이탄, EMP탄,유탄이 삭제되고 50BMG라는 아이템으로 바뀌었습니다. 삭제된 EMP탄과 소이탄은 솥에서 50BMG와 씨앗을 조합해 만들 수 있습니다.\n\n" +
+						"_-_ UMP45와 M16A1의 데미지가 소폭 상승했습니다. M16A1은 추가로 강화 효율과 방어율이 소폭 상승했습니다."));
+
+		changes.addButton( new ChangeButton(Icons.get(Icons.SHPX), "개발 관련",
+				"_-_ \"UI, 기타 시스템 변경\n\n" +
+
+						"_-_ UI가 크게 개편됬습니다! 좀더 소녀전선에 가까운 UI를 만들기 위해 노력했습니다.\n\n" +
+						"_-_ 투척무기가 개편됬습니다. 많은 투척무기가 추가되었고, 투척무기에 내구도 시스템이 적용됬습니다.\n\n" +
+						"_-_ 수중 정찰기가 있는 방에 1칸의 타일을 깔아둬 실수로 들어가 데미지를 입는 경우를 줄였습니다. \n\n" +
+						"_-_ 세이브슬롯이 10칸으로 증가했습니다."));
 
 		changes = new ChangeInfo("v0.4.0b3e1", true, "긴급수정");
 		changes.hardlight( Window.TITLE_COLOR);
