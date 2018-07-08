@@ -131,19 +131,7 @@ public class Elphelt extends Mob {
                 }
 
             case 2:
-                // phase 2. magnum wedding and tackle
 
-
-                /*
-                Ballistica aim = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
-                if (enemy.invisible == 0 && !isCharmedBy(enemy) && fieldOfView[enemy.pos] && aim.subPath(1, aim.dist).contains(enemy.pos)){
-                    trace = aim;
-                    beamTarget = aim.collisionPos;
-                    return true;
-                } else
-                    //if the beam is charged, it has to attack, will aim at previous location of target.
-                    return beamCharged;
-                */
                 return true;
         }
 
@@ -163,17 +151,6 @@ public class Elphelt extends Mob {
             case 0: default:
             case 1:
 
-                /* 순간 이동속도 증가.
-                if (cooldownDash > 0) {
-                    GLog.i("정상화");
-                    baseSpeed = 1f;
-                    cooldownDash--;
-                } else {
-                    GLog.i("가속!");
-                    baseSpeed = 2f;
-                    cooldownDash = timerDash;
-                }
-                */
         }
 
 
@@ -187,7 +164,9 @@ public class Elphelt extends Mob {
 	    switch (phase) {
             case 0: default:
             case 1:
-                return super.doAttack(enemy);
+                spend( attackDelay() );
+                return Tackle();
+                //return super.doAttack(enemy);
             case 2:
                 spend( attackDelay() );
 
@@ -293,12 +272,28 @@ public class Elphelt extends Mob {
         spend(1f);
     }
 
-    public void Tackle() {
+    public boolean Tackle() {
 
 	    if (enemy != null) {
-            Ballistica trajectory = new Ballistica( pos,enemy.pos )
-        }
+            Ballistica trajectory = new Ballistica( pos, enemy.pos, Ballistica.STOP_TERRAIN );
 
+            int wall = trajectory.collisionPos;
+
+
+
+            throwChar( enemy, trajectory, POWER_OF_BLAST);
+
+
+            /*
+            Actor.addDelayed(new Pushing(this, pos, trajectory.collisionPos, new Callback() {
+                public void call() {
+                    pos = trajectory.collisionPos;
+                    Dungeon.level.press(pos, Elphelt.this, true);
+                }
+            }), 0.1f);
+            */
+        }
+        return true;
     }
 
 
@@ -318,7 +313,6 @@ public class Elphelt extends Mob {
 
         if (newPos == ch.pos) return;
 
-        final int finalDist = dist;
         final int initialpos = ch.pos;
 
         Actor.addDelayed(new Pushing(ch, ch.pos, newPos, new Callback() {
