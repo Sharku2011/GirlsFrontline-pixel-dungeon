@@ -35,6 +35,8 @@ import com.watabou.utils.GameMath;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
+import java.util.List;
+
 public class Elphelt extends Mob {
 
     private static float TIME_TO_EXPLODE = 2f;
@@ -164,7 +166,7 @@ public class Elphelt extends Mob {
 	    switch (phase) {
             case 0: default:
             case 1:
-                spend( attackDelay() );
+                spend( 3f );
                 return Tackle();
                 //return super.doAttack(enemy);
             case 2:
@@ -272,26 +274,48 @@ public class Elphelt extends Mob {
         spend(1f);
     }
 
+    private int chargeTackle = 0;
+	private int maxChargeTackle = 3;
+
     public boolean Tackle() {
 
-	    if (enemy != null) {
-            Ballistica trajectory = new Ballistica( pos, enemy.pos, Ballistica.STOP_TERRAIN );
+	    if (enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0) {
+	        Ballistica traceChar = new Ballistica( pos, enemy.pos, Ballistica.STOP_CHARS );
 
-            int wall = trajectory.collisionPos;
+            if ( traceChar.collisionPos != null) {
+                List<Integer> tacklePath = traceChar.subPath(1, traceChar.dist - 1);
 
+                int blastCenter = -1;
 
-
-            throwChar( enemy, trajectory, POWER_OF_BLAST);
-
-
-            /*
-            Actor.addDelayed(new Pushing(this, pos, trajectory.collisionPos, new Callback() {
-                public void call() {
-                    pos = trajectory.collisionPos;
-                    Dungeon.level.press(pos, Elphelt.this, true);
+                for (int c : tacklePath) {
+                    if ( Blob.volumeAt( c, GenoiseWarn.class ) == 0 ) {
+                        GameScene.add(Blob.seed(c, 2, GenoiseWarn.class));
+                    }
+                    blastCenter = c;
                 }
-            }), 0.1f);
-            */
+
+
+                if (blastCenter > 0) {
+                    if ( Blob.volumeAt( traceChar.collisionPos, GooWarn.class ) == 0 ) {
+                        GameScene.add(Blob.seed(traceChar.collisionPos, 2, GooWarn.class));
+                    }
+                    // collison 판정을 캐릭터와 지형으로 해서 자꾸 역방향으로 팅겨저 나왔던 것, 지형만으로 변경
+                    Ballistica trajectory = new Ballistica( blastCenter, traceChar.collisionPos, Ballistica.STOP_TERRAIN);
+                    throwChar(enemy, trajectory, POWER_OF_BLAST);
+                }
+
+                Actor.addDelayed(new Pushing(this, pos, traceChar.collisionPos, new Callback() {
+                    public void call() {
+                        pos = enemy.pos;
+                        Dungeon.level.press(pos, Elphelt.this, true);
+                    }
+                }), 0.1f);
+
+            }
+
+
+
+
         }
         return true;
     }
