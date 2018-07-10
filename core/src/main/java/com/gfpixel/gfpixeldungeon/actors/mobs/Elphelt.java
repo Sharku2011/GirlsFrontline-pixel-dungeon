@@ -78,16 +78,18 @@ public class Elphelt extends Mob {
     private int beamTarget = -1;
     private int beamCooldown;
 
+    private Ballistica traceRush;
+    private Ballistica traceRebound;
+
     private boolean onGenoise = false;
     private int maxGenoiseStack = 5;
     private int curGenoiseStack = maxGenoiseStack;
 
     private final float timerDash = 3f;
     private float cooldownDash = 3f;
-    public boolean beamCharged;
 
     public boolean canBurst = false;
-    public boolean canDash = false;
+    public boolean canRush = false;
     public int phase = 0;
 
 	@Override
@@ -133,22 +135,76 @@ public class Elphelt extends Mob {
                 }
 
             case 2:
+                if (enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0) {
+                    Ballistica traceRush = new Ballistica(pos, enemy.pos, Ballistica.STOP_TERRAIN);
 
-                return true;
+                    List<Integer> path = traceRush.subPath(1, traceRush.dist);
+
+                    if (path.size() > 1) {
+                        canRush = true;
+                    }
+                    return true;
+
+
+                    int prevCell = pos;
+
+                    for (int c : path) {
+                        final Char ch = findChar(c);
+
+                        if (ch != null) {
+                            Ballistica traceRebound = new Ballistica(prevCell, traceRush.collisionPos, Ballistica.MAGIC_BOLT);
+
+                            final int newPos = traceRebound.collisionPos;
+
+                            if (newPos == ch.pos) {
+                                return true;
+                            }
+
+                            final int initialpos = ch.pos;
+
+                            Actor.addDelayed(new Pushing(ch, ch.pos, newPos, new Callback() {
+                                public void call() {
+                                    if (initialpos != ch.pos) {
+                                        //something cased movement before pushing resolved, cancel to be safe.
+                                        ch.sprite.place(ch.pos);
+                                        return;
+                                    }
+
+                                    ch.pos = newPos;
+
+                                    /*
+                                    if (ch.pos == traceRebound.collisionPos) {
+                                        Paralysis.prolong(ch, Paralysis.class, 3f);
+                                    }
+                                    */
+
+                                    Dungeon.level.press(ch.pos, ch, true);
+                                    if (ch == Dungeon.hero){
+                                        Dungeon.observe();
+                                    }
+                                }
+                            }), -1);
+                        }
+
+                    }
+                }
+
+
+
+
+                return false;
         }
 
     }
 
     @Override
     protected boolean act() {
-        if (beamCharged && state != HUNTING){
-            beamCharged = false;
-        }
+/*
         if (trace == null && beamTarget != -1) {
             trace = new Ballistica(pos, beamTarget, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
             sprite.turnTo(pos, beamTarget);
         }
-
+*/
         switch (phase) {
             case 0: default:
             case 1:
@@ -166,7 +222,7 @@ public class Elphelt extends Mob {
 	    switch (phase) {
             case 0: default:
             case 1:
-                spend( 3f );
+                spend( attackDelay() );
                 return Tackle();
                 //return super.doAttack(enemy);
             case 2:
@@ -197,7 +253,6 @@ public class Elphelt extends Mob {
 
     public void fireGenoise(){
 
-        beamCharged = false;
         beamCooldown = 1;
 
         if (curGenoiseStack <= 0) {
@@ -277,10 +332,20 @@ public class Elphelt extends Mob {
     private int chargeTackle = 0;
 	private int maxChargeTackle = 3;
 
-    public boolean Tackle() {
+	public void WarnTackle(List<Integer> subPath) {
+
+	    for (int c : subPath) {
+            if ( Blob.volumeAt( c, GenoiseWarn.class ) == 0 ) {
+                GameScene.add(Blob.seed(c, 2, GenoiseWarn.class));
+            }
+        }
+
+    }
+
+    public boolean Tackle(List<Integer> subPath) {
 
 	    if (enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0) {
-	        Ballistica traceChar = new Ballistica( pos, enemy.pos, Ballistica.STOP_CHARS );
+	        final Ballistica traceChar = new Ballistica( pos, enemy.pos, Ballistica.STOP_CHARS );
 
             if ( traceChar.collisionPos != null) {
                 List<Integer> tacklePath = traceChar.subPath(1, traceChar.dist - 1);
@@ -300,17 +365,38 @@ public class Elphelt extends Mob {
                         GameScene.add(Blob.seed(traceChar.collisionPos, 2, GooWarn.class));
                     }
                     // collison 판정을 캐릭터와 지형으로 해서 자꾸 역방향으로 팅겨저 나왔던 것, 지형만으로 변경
-                    Ballistica trajectory = new Ballistica( blastCenter, traceChar.collisionPos, Ballistica.STOP_TERRAIN);
-                    throwChar(enemy, trajectory, POWER_OF_BLAST);
+                    final Ballistica trajectory = new Ballistica( blastCenter, traceChar.collisionPos, Ballistica.STOP_TERRAIN);
+
+                    final int newPos = trajectory.collisionPos;
+                    final int initialPos = enemy.pos;
+
+                    Actor.addDelayed(new Pushing(enemy, enemy.pos, newPos, new Callback() {
+                        public void call() {
+                            if (initialPos != enemy.pos) {
+                                //something cased movement before pushing resolved, cancel to be safe.
+                                enemy.sprite.place(enemy.pos);
+                                return;
+                            }
+                            enemy.pos = newPos;
+                            /*
+                            if (enemy.pos == trajectory.collisionPos) {
+                                Paralysis.prolong(enemy, Paralysis.class, 3f);
+                            }
+                            */
+                            Dungeon.level.press(enemy.pos, enemy, true);
+                            if (enemy == Dungeon.hero){
+                                Dungeon.observe();
+                            }
+                        }
+                    }), -1);
+
+                    Actor.addDelayed(new Pushing(this, pos, traceChar.collisionPos, new Callback() {
+                        public void call() {
+                            pos = traceChar.collisionPos;
+                            Dungeon.level.press(pos, Elphelt.this, true);
+                        }
+                    }), -1);
                 }
-
-                Actor.addDelayed(new Pushing(this, pos, traceChar.collisionPos, new Callback() {
-                    public void call() {
-                        pos = enemy.pos;
-                        Dungeon.level.press(pos, Elphelt.this, true);
-                    }
-                }), 0.1f);
-
             }
 
 
