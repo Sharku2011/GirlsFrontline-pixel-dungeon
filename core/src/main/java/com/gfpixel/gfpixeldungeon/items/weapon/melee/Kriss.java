@@ -21,7 +21,11 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
+import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
 public class Kriss extends MeleeWeapon {
@@ -31,6 +35,15 @@ public class Kriss extends MeleeWeapon {
 
 		tier = 3;
 		DLY = 0.5f; //2x speed
+	}
+
+	@Override
+	public int damageRoll(Char owner) {
+		Hero hero = (Hero)owner;
+
+		Buff.affect(hero, Speed.class, 2f);
+
+		return super.damageRoll(owner);
 	}
 
 	@Override
