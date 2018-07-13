@@ -69,12 +69,14 @@ public class Elphelt extends Mob {
         return 1f;
     }
 
+    protected float warnDelay() { return 1f; };
+
     @Override
     public int drRoll() {
         return Random.NormalIntRange(0, 10);
     }
 
-    private Ballistica trace;
+    private Ballistica traceGenoise;
     private int beamTarget = -1;
     private int beamCooldown;
 
@@ -90,6 +92,7 @@ public class Elphelt extends Mob {
 
     public boolean canBurst = false;
     public boolean canRush = false;
+    public boolean maxRush
     public int phase = 0;
 
 	@Override
@@ -106,6 +109,26 @@ public class Elphelt extends Mob {
             WndDialog.ShowChapter(DialogInfo.ID_SEWER_BOSS);
         }
     }
+
+
+    @Override
+    protected boolean act() {
+/*
+        if (trace == null && beamTarget != -1) {
+            trace = new Ballistica(pos, beamTarget, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
+            sprite.turnTo(pos, beamTarget);
+        }
+*/
+        switch (phase) {
+            case 0: default:
+            case 1:
+            case 2:
+                break;
+
+        }
+        return super.act();
+    }
+
 
     @Override
     protected boolean canAttack( Char enemy ) {
@@ -135,16 +158,11 @@ public class Elphelt extends Mob {
                 }
 
             case 2:
-                if (enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0) {
-                    Ballistica traceRush = new Ballistica(pos, enemy.pos, Ballistica.STOP_TERRAIN);
-
-                    List<Integer> path = traceRush.subPath(1, traceRush.dist);
-
-                    if (path.size() > 1) {
-                        canRush = true;
-                    }
+                if (new Ballistica( pos, enemy.pos, Ballistica.PROJECTILE).collisionPos == enemy.pos) {
+                    traceRush = new Ballistica(pos, enemy.pos, Ballistica.STOP_TERRAIN);
+                    canRush = !Dungeon.level.adjacent( enemy.pos, pos );
                     return true;
-
+                }
 
                     int prevCell = pos;
 
@@ -198,45 +216,39 @@ public class Elphelt extends Mob {
     }
 
     @Override
-    protected boolean act() {
-/*
-        if (trace == null && beamTarget != -1) {
-            trace = new Ballistica(pos, beamTarget, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
-            sprite.turnTo(pos, beamTarget);
-        }
-*/
-        switch (phase) {
-            case 0: default:
-            case 1:
-
-        }
-
-
-
-        return super.act();
-    }
-
-    @Override
     protected boolean doAttack( Char enemy ) {
 
 	    switch (phase) {
             case 0: default:
             case 1:
-                spend( attackDelay() );
-                return Tackle();
-                //return super.doAttack(enemy);
+
+                if (canRush) {
+                    List<Integer> path = traceRush.subPath(1, traceRush.dist);
+                    warnTackle( path );
+                    spend( warnDelay() );
+                } else {
+                    // TODO 차후 매그넘 웨딩으로 바꿀 것
+                    super.doAttack( enemy );
+                }
+
+                return true;
+
             case 2:
+
                 spend( attackDelay() );
 
-                trace = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
+                traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
 
-                if (Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[trace.collisionPos] ) {
-                    sprite.zap( trace.collisionPos );
+                if (Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[traceGenoise.collisionPos] ) {
+                    sprite.zap( traceGenoise.collisionPos );
                     return false;
                 } else {
                     fireGenoise();
                     return true;
                 }
+
+
+                return true;
         }
 
     }
@@ -262,7 +274,7 @@ public class Elphelt extends Mob {
 
         boolean terrainAffected = false;
 
-        for (int pos : trace.subPath(1, trace.dist)) {
+        for (int pos : traceGenoise.subPath(1, traceGenoise.dist)) {
 
             if (Dungeon.level.flamable[pos]) {
                 Dungeon.level.destroy( pos );
@@ -306,7 +318,7 @@ public class Elphelt extends Mob {
             Dungeon.observe();
         }
 
-        trace = null;
+        traceGenoise = null;
         beamTarget = -1;
     }
 
@@ -332,7 +344,7 @@ public class Elphelt extends Mob {
     private int chargeTackle = 0;
 	private int maxChargeTackle = 3;
 
-	public void WarnTackle(List<Integer> subPath) {
+	public void warnTackle(List<Integer> subPath) {
 
 	    for (int c : subPath) {
             if ( Blob.volumeAt( c, GenoiseWarn.class ) == 0 ) {
@@ -453,7 +465,6 @@ public class Elphelt extends Mob {
         super.storeInBundle(bundle);
         bundle.put( BEAM_TARGET, beamTarget);
         bundle.put( BEAM_COOLDOWN, beamCooldown );
-        bundle.put( BEAM_CHARGED, beamCharged );
     }
 
     @Override
@@ -462,7 +473,6 @@ public class Elphelt extends Mob {
         if (bundle.contains(BEAM_TARGET))
             beamTarget = bundle.getInt(BEAM_TARGET);
         beamCooldown = bundle.getInt(BEAM_COOLDOWN);
-        beamCharged = bundle.getBoolean(BEAM_CHARGED);
     }
 
     {
