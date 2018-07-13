@@ -91,20 +91,25 @@ public  class DialogInfo
     public static final int ID_PRISON		= 2;
     public static final int ID_PRISON_BOSS	= 200;
 
-    public static final int ID_CAVES		= 3;
-    public static final int ID_CAVES_BOSS	= 300;
+    public static final int ID_RABBIT       = 3;
+    public static final int ID_RABBIT_BOSS  = 300;
 
-    public static final int ID_CITY     	= 4;
-    public static final int ID_CITY_BOSS   	= 400;
+    public static final int ID_CAVES		= 4;
+    public static final int ID_CAVES_BOSS	= 400;
 
-    public static final int ID_RECAVES		= 5;
-    public static final int ID_RECAVES_BOSS	= 500;
+    public static final int ID_CITY     	= 5;
+    public static final int ID_CITY_BOSS   	= 500;
 
-    public static final int ID_HALLS		= 6;
-    public static final int ID_HALLS_BOSS	= 600;
+    public static final int ID_RECAVES		= 6;
+    public static final int ID_RECAVES_BOSS	= 600;
 
-    public static final int ID_COLDWAR		= 7;
-    public static final int ID_COLDWAR_BOSS	= 700;
+    public static final int ID_HALLS		= 7;
+    public static final int ID_HALLS_BOSS	= 700;
+
+    public static final int ID_COLDWAR		= 8;
+    public static final int ID_COLDWAR_BOSS	= 800;
+
+
 
     public static final int ID_STAR15_QUEST = 1000;
     public static final int ID_M16A1_QUEST	= 2000;
@@ -136,6 +141,20 @@ public  class DialogInfo
         STORIES.put( ID_PRISON,
                 new DialogInfo (
                         "prison",
+                        new int[]{UMP9, UMP45, UMP9, G11, HK416, UMP9, UMP45},
+                        new int[]{   0,     2,    2,   1,     2,    1,     1}
+                )
+        );
+        STORIES.put( ID_RABBIT,
+                new DialogInfo (
+                        "huntingrabbit",
+                        new int[]{UMP9, UMP45, UMP9, G11, HK416, UMP9, UMP45},
+                        new int[]{   0,     2,    2,   1,     2,    1,     1}
+                )
+        );
+        STORIES.put( ID_RABBIT_BOSS,
+                new DialogInfo (
+                        "elphelt",
                         new int[]{UMP9, UMP45, UMP9, G11, HK416, UMP9, UMP45},
                         new int[]{   0,     2,    2,   1,     2,    1,     1}
                 )
