@@ -106,7 +106,7 @@ public class Elphelt extends Mob {
         super.notice();
         BossHealthBar.assignBoss(this);
         if (!Dungeon.level.locked) {
-            WndDialog.ShowChapter(DialogInfo.ID_SEWER_BOSS);
+            WndDialog.ShowChapter(DialogInfo.ID_RABBIT_BOSS);
         }
     }
 
@@ -119,8 +119,11 @@ public class Elphelt extends Mob {
             sprite.turnTo(pos, beamTarget);
         }
 */
+        super.act();
+
         switch (phase) {
             case 0: default:
+                break;
             case 1:
             case 2:
                 break;
@@ -140,76 +143,31 @@ public class Elphelt extends Mob {
         }*/
 
         switch (phase) {
-            case 0: default:
+            case 0:
+            default:
             case 1:
-                // phase 1. genoise and stalking
+
+                if (new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE).collisionPos == enemy.pos) {
+                    traceRush = new Ballistica(pos, enemy.pos, Ballistica.STOP_TERRAIN);
+                    canRush = !Dungeon.level.adjacent(enemy.pos, pos);
+                    return true;
+                }
+                return false;
+            case 2:
+                // phase 2. genoise and stalking
                 if (Dungeon.level.adjacent(pos, enemy.pos)) {
-                    if ( onGenoise ) {
+                    if (onGenoise) {
                         Blast();
                         return false;
                     } else {
                         return super.canAttack(enemy);
                     }
                 } else {
-                    if ( curGenoiseStack == maxGenoiseStack ) {
+                    if (curGenoiseStack == maxGenoiseStack) {
                         onGenoise = true;
                         return true;
                     }
                 }
-
-            case 2:
-                if (new Ballistica( pos, enemy.pos, Ballistica.PROJECTILE).collisionPos == enemy.pos) {
-                    traceRush = new Ballistica(pos, enemy.pos, Ballistica.STOP_TERRAIN);
-                    canRush = !Dungeon.level.adjacent( enemy.pos, pos );
-                    return true;
-                }
-
-                    int prevCell = pos;
-
-                    for (int c : path) {
-                        final Char ch = findChar(c);
-
-                        if (ch != null) {
-                            Ballistica traceRebound = new Ballistica(prevCell, traceRush.collisionPos, Ballistica.MAGIC_BOLT);
-
-                            final int newPos = traceRebound.collisionPos;
-
-                            if (newPos == ch.pos) {
-                                return true;
-                            }
-
-                            final int initialpos = ch.pos;
-
-                            Actor.addDelayed(new Pushing(ch, ch.pos, newPos, new Callback() {
-                                public void call() {
-                                    if (initialpos != ch.pos) {
-                                        //something cased movement before pushing resolved, cancel to be safe.
-                                        ch.sprite.place(ch.pos);
-                                        return;
-                                    }
-
-                                    ch.pos = newPos;
-
-                                    /*
-                                    if (ch.pos == traceRebound.collisionPos) {
-                                        Paralysis.prolong(ch, Paralysis.class, 3f);
-                                    }
-                                    */
-
-                                    Dungeon.level.press(ch.pos, ch, true);
-                                    if (ch == Dungeon.hero){
-                                        Dungeon.observe();
-                                    }
-                                }
-                            }), -1);
-                        }
-
-                    }
-                }
-
-
-
-
                 return false;
         }
 

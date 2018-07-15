@@ -20,6 +20,9 @@ public class ElpheltSprite extends MobSprite {
     private Animation charging;
     private Emitter chargeParticles;
 
+    private Animation magnum;
+
+
     public ElpheltSprite() {
         super();
 
@@ -43,6 +46,7 @@ public class ElpheltSprite extends MobSprite {
 
         attack = new Animation( 15, false );
         attack.frames( frames, 13, 14, 15 );
+        // use zap as genoise
         zap = new Animation( 15, false );
         zap.frames( frames, 17, 18, 19);
 
