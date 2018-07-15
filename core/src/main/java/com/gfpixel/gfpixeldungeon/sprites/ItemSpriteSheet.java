@@ -265,7 +265,7 @@ public class ItemSpriteSheet {
 
 		assignItemRect(DART,            11, 11);
 		assignItemRect(THROWING_KNIFE,  16, 14);
-		assignItemRect(THROWING_STONE,  9,  9);
+		assignItemRect(THROWING_STONE,  12,  13);
 
 		assignItemRect(FISHING_SPEAR,   11, 12);
 		assignItemRect(SHURIKEN,        12, 12);
