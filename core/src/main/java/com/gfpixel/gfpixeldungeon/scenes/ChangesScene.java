@@ -115,7 +115,9 @@ public class ChangesScene extends PixelScene {
 		//       v0.6.5
 		//**********************
 
-		ChangeInfo changes = new ChangeInfo("v0.4.3", true, "5.0 변경사항 정리중");
+
+		ChangeInfo changes = new ChangeInfo("v0.5.0", true, "5.0 변경사항 정리중");
+    
 		changes.hardlight( Window.TITLE_COLOR);
 		infos.add(changes);
 
@@ -126,6 +128,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 기존 스테이지에서 특정 조건을 만족할시 다음 챕터에서 분기점 챕터가 활성화됩니다.\n\n" +
 						"_-_ 분기점 챕터를 클리어할시 기존 티어보다 높은 성능을 가진 콜라보 무기를 획득할 수 있습니다. \n\n" +
 						"_-_ 분기점 활성화 조건은 공개하지 않겠습니다. 하지만 찾기 쉬울거에요! 첫번째 분기점인 만큼, 초반 챕터에 분기점이 활성화됩니다!"));
+
 
 		changes = new ChangeInfo(Messages.get(this, "new"), false, null);
 		changes.hardlight( Window.TITLE_COLOR );
@@ -162,7 +165,7 @@ public class ChangesScene extends PixelScene {
 		changes = new ChangeInfo("v0.4.0b3", true, "");
 		changes.hardlight( Window.TITLE_COLOR);
 		infos.add(changes);
-
+		
 		changes = new ChangeInfo(Messages.get(this, "new"), false, null);
 		changes.hardlight( Window.TITLE_COLOR );
 		infos.add(changes);
