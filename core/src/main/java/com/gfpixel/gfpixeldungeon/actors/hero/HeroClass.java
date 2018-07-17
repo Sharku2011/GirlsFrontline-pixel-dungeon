@@ -135,7 +135,8 @@ public enum HeroClass {
 		if (hero.belongings.armor != null){
 			hero.belongings.armor.affixSeal(new BrokenSeal());
 		}
-		
+		ThrowingStone knives = new ThrowingStone();
+		knives.identify().quantity(3).collect();
 		new PotionBandolier().collect();
 		Dungeon.LimitedDrops.POTION_BANDOLIER.drop();
 		new PotionOfHealing().identify();
