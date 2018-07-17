@@ -41,12 +41,12 @@ public class ThrowingKnife extends MissileWeapon {
 	
 	@Override
 	public int min(int lvl) {
-		return 2;
+		return 4;
 	}
 	
 	@Override
 	public int max(int lvl) {
-		return 6;
+		return 8;
 	}
 	
 	@Override
