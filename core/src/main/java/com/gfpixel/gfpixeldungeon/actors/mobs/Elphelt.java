@@ -92,8 +92,15 @@ public class Elphelt extends Mob {
 
     public boolean canBurst = false;
     public boolean canRush = false;
-    public boolean maxRush
+    public boolean maxRush;
     public int phase = 0;
+
+    private class skill {
+        // time to prepare skill
+        public float warmUp = 0;
+        // time to use skill again
+        public float coolDown = 0;
+    }
 
 	@Override
     public void move( int step ) {
@@ -113,13 +120,6 @@ public class Elphelt extends Mob {
 
     @Override
     protected boolean act() {
-/*
-        if (trace == null && beamTarget != -1) {
-            trace = new Ballistica(pos, beamTarget, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
-            sprite.turnTo(pos, beamTarget);
-        }
-*/
-        super.act();
 
         switch (phase) {
             case 0: default:
@@ -136,25 +136,11 @@ public class Elphelt extends Mob {
     @Override
     protected boolean canAttack( Char enemy ) {
 
-        /*
-        if (canBurst && Dungeon.level.adjacent( pos, enemy.pos )) {
-            Blast();
-            return false;
-        }*/
-
         switch (phase) {
             case 0:
             default:
             case 1:
-
-                if (new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE).collisionPos == enemy.pos) {
-                    traceRush = new Ballistica(pos, enemy.pos, Ballistica.STOP_TERRAIN);
-                    canRush = !Dungeon.level.adjacent(enemy.pos, pos);
-                    return true;
-                }
-                return false;
-            case 2:
-                // phase 2. genoise and stalking
+                // phase 1. genoise and stalking
                 if (Dungeon.level.adjacent(pos, enemy.pos)) {
                     if (onGenoise) {
                         Blast();
@@ -167,6 +153,15 @@ public class Elphelt extends Mob {
                         onGenoise = true;
                         return true;
                     }
+                }
+                return false;
+
+            case 2:
+                // rush and magnum wedding
+                if (new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE).collisionPos == enemy.pos) {
+                    traceRush = new Ballistica(pos, enemy.pos, Ballistica.STOP_TERRAIN);
+                    canRush = !Dungeon.level.adjacent(enemy.pos, pos);
+                    return true;
                 }
                 return false;
         }
@@ -206,7 +201,6 @@ public class Elphelt extends Mob {
                 }
 
 
-                return true;
         }
 
     }
