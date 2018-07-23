@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.levels;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Noel;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Wandmaker;
 import com.gfpixel.gfpixeldungeon.effects.Halo;
 import com.gfpixel.gfpixeldungeon.effects.particles.FlameParticle;
@@ -59,7 +60,7 @@ public class RabbitLevel extends RegularLevel {
 	
 	@Override
 	protected ArrayList<Room> initRooms() {
-		return Wandmaker.Quest.spawnRoom(super.initRooms());
+		return Noel.Quest.spawnRoom(super.initRooms());
 	}
 	
 	@Override
