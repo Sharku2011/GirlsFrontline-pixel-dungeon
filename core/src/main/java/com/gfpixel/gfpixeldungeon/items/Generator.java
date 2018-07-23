@@ -446,11 +446,11 @@ public class Generator {
 	// Table of weapon spawn probability by every tier
 	private static final float[][] floorSetWeaponTierProbs = new float[][] {
 			{0, 63, 20, 12,  2,  3},
-			{0, 25, 54, 12,  5,  4},
-			{0, 10, 35, 40,  7,  5},
-			{0,  5, 30, 33, 22,  10},
-			{0,  2,  8, 35, 30, 15},
-			{0,  2,  8, 20, 40, 30},
+			{0, 25, 54, 14,  6,  1},
+			{0, 10, 35, 43,  7,  2},
+			{0,  5, 30, 33, 27,  5},
+			{0,  2,  8, 35, 30, 35},
+			{0,  2,  8, 20, 40, 10}
 	};
 
 	// Table of armor spawn probability by every tier

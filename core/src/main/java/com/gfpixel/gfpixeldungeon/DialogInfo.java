@@ -103,13 +103,14 @@ public  class DialogInfo
     public static final int ID_HALLS		= 6;
     public static final int ID_HALLS_BOSS	= 600;
 
-    public static final int ID_COLDWAR		= 7;
-    public static final int ID_COLDWAR_BOSS	= 700;
+    public static final int ID_RABBIT		= 7;
+    public static final int ID_RABBIT_BOSS	= 700;
 
     public static final int ID_STAR15_QUEST = 1000;
     public static final int ID_M16A1_QUEST	= 2000;
     public static final int ID_PPSH47_QUEST	= 3000;
     public static final int ID_P7_QUEST 	= 4000;
+    public static final int ID_NOEL_QUEST 	= 5000;
 
     // general tag for quest
     public static final int INIT        = 0;
@@ -168,9 +169,9 @@ public  class DialogInfo
                         new int[]{   1,     2,    1,     0,   1,     1,   1,     0}
                 )
         );
-        STORIES.put( ID_COLDWAR,
+        STORIES.put( ID_RABBIT,
                 new DialogInfo (
-                        "coldwar",
+                        "rabbit",
                         new int[]{UMP9, G11, UMP45},
                         new int[]{   2,   1,     1}
                 )
@@ -215,6 +216,20 @@ public  class DialogInfo
                         "m16a1quest.complete",
                         new int[]{M16A1},
                         new int[]{    0}
+                )
+        );
+        STORIES.put( ID_M16A1_QUEST + INPROGRESS,
+                new DialogInfo (
+                        "m16a1quest.inprogress",
+                        new int[]{M16A1, M16A1},
+                        new int[]{    0,     0}
+                )
+        );
+        STORIES.put( ID_NOEL_QUEST,
+                new DialogInfo (
+                        "m16a1quest",
+                        new int[]{UMP45, M16A1, M16A1, HK416, UMP45},
+                        new int[]{    1,     1,     0,     1,     0}
                 )
         );
         STORIES.put( ID_PPSH47_QUEST,
