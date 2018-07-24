@@ -60,7 +60,7 @@ public class ElpheltSprite extends MobSprite {
     @Override
     public void link(Char ch) {
         super.link(ch);
-        if (((Elphelt)ch).beamCharged) play(charging);
+        if (((Elphelt)ch).onGenoise) play(charging);
     }
 
     @Override

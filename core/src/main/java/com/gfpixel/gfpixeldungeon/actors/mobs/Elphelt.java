@@ -41,6 +41,7 @@ public class Elphelt extends Mob {
 
     private static float TIME_TO_EXPLODE = 2f;
     private static int POWER_OF_BLAST = 10;
+    private static int REGEN_OF_GENOISE = 2;
 
     {
         spriteClass = ElpheltSprite.class;
@@ -78,21 +79,23 @@ public class Elphelt extends Mob {
 
     private Ballistica traceGenoise;
     private int beamTarget = -1;
-    private int beamCooldown;
 
     private Ballistica traceRush;
     private Ballistica traceRebound;
 
-    private boolean onGenoise = false;
+    public boolean onGenoise = false;
     private int maxGenoiseStack = 5;
     private int curGenoiseStack = maxGenoiseStack;
 
-    private final float timerDash = 3f;
-    private float cooldownDash = 3f;
+    private int timerRush = 3;
+    private final int COOLDOWN_RUSH = 3;
+    private final int WARMUP_RUSH = 1;
 
     public boolean canBurst = false;
     public boolean canRush = false;
-    public boolean maxRush;
+    public boolean onRush = false;
+
+
     public int phase = 0;
 
     private class skill {
@@ -114,6 +117,9 @@ public class Elphelt extends Mob {
         BossHealthBar.assignBoss(this);
         if (!Dungeon.level.locked) {
             WndDialog.ShowChapter(DialogInfo.ID_RABBIT_BOSS);
+            if (phase < 1) {
+                phase = 1;
+            }
         }
     }
 
@@ -125,6 +131,15 @@ public class Elphelt extends Mob {
             case 0: default:
                 break;
             case 1:
+                if (!onGenoise && curGenoiseStack < maxGenoiseStack)
+                {
+                    // 제누와즈 중이 아니고 스택이 모자란 경우 스택 추가
+                    curGenoiseStack += REGEN_OF_GENOISE;
+                    if (curGenoiseStack >= maxGenoiseStack) {
+                        curGenoiseStack = maxGenoiseStack;
+                    }
+                }
+                break;
             case 2:
                 break;
 
@@ -142,19 +157,27 @@ public class Elphelt extends Mob {
             case 1:
                 // phase 1. genoise and stalking
                 if (Dungeon.level.adjacent(pos, enemy.pos)) {
+                    // 근접
                     if (onGenoise) {
+                        // 제누와즈 시전중
                         Blast();
                         return false;
                     } else {
+                        // 시전중 아닐 때 - 무조건 true라고 봐야함
                         return super.canAttack(enemy);
                     }
                 } else {
-                    if (curGenoiseStack == maxGenoiseStack) {
-                        onGenoise = true;
-                        return true;
+                    // 비근접
+                    if (onGenoise) {
+                        return (new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE).collisionPos == enemy.pos);
+                    } else {
+                        if (curGenoiseStack == maxGenoiseStack) {
+                            onGenoise = true;
+                        }
+                        return false;
                     }
+
                 }
-                return false;
 
             case 2:
                 // rush and magnum wedding
@@ -175,52 +198,78 @@ public class Elphelt extends Mob {
             case 0: default:
             case 1:
 
-                if (canRush) {
-                    List<Integer> path = traceRush.subPath(1, traceRush.dist);
-                    warnTackle( path );
-                    spend( warnDelay() );
-                } else {
-                    // TODO 차후 매그넘 웨딩으로 바꿀 것
-                    super.doAttack( enemy );
-                }
-
-                return true;
-
-            case 2:
-
                 spend( attackDelay() );
 
                 traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
 
-                if (Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[traceGenoise.collisionPos] ) {
-                    sprite.zap( traceGenoise.collisionPos );
-                    return false;
+                if ( onGenoise && curGenoiseStack > 0) {
+                    GLog.i("제누와즈싼다!");
+                    // 엘펠트가 플레이어의 시야 안에 있으면 애니메이션을 재생. true/false 값 리턴은 왜 저렇게 되는지 모르겠음
+                    if (Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[traceGenoise.collisionPos] ) {
+                        sprite.zap( traceGenoise.collisionPos );
+                        return false;
+                    } else {
+                        fireGenoise();
+                        return true;
+                    }
                 } else {
-                    fireGenoise();
-                    return true;
+                    super.doAttack( enemy );
                 }
 
 
+            case 2:
+
+                if (canRush) {
+                    List<Integer> path = traceRush.subPath(1, traceRush.dist);
+
+                    if (onRush) {
+                        return Rush( path );
+                    } else {
+                        warnTackle( path );
+                        spend( warnDelay() );
+                        onRush = true;
+                        return false;
+                    }
+
+                } else {
+                    super.doAttack( enemy );
+                }
+
+                return true;
         }
 
     }
 
-    // Reduce damage during charge. Nerf this 4 to 2.
     @Override
     public void damage(int dmg, Object src) {
-        int beforeHitHP = HP;
-        super.damage(dmg, src);
-        dmg = beforeHitHP - HP;
+        int newHP = HP - dmg;
+        int newDmg = dmg;
 
-
+        switch (phase) {
+            case 0: default:
+            case 1:
+                if ( HP > (HT/2) && newHP < (HT/2)) {
+                    newDmg = HP - HT/2;
+                    changePhase();
+                }
+                break;
+            case 2:
+                if ( HP > (HT/3) && newHP < (HT/3)) {
+                    newDmg = HP - HT/3;
+                }
+                break;
+        }
+        super.damage( newDmg, src );
     }
 
-    public void fireGenoise(){
-
-        beamCooldown = 1;
+    public void fireGenoise() {
 
         if (curGenoiseStack <= 0) {
+            // 혹시라도 제누와즈 스택이 만땅이 아닐 때 호출되면 풀차지 시켜주고 초기화
             curGenoiseStack = maxGenoiseStack;
+            traceGenoise = null;
+            beamTarget = -1;
+            GLog.i("충전");
             return;
         }
 
@@ -253,6 +302,9 @@ public class Elphelt extends Mob {
             addDelayed(new Genoise(pos), TIME_TO_EXPLODE);
 
             curGenoiseStack = Math.max(curGenoiseStack-1, 0);
+            if (curGenoiseStack <= 0) {
+                onGenoise = false;
+            }
 
             if (hit( this, ch, true )) {
 
@@ -270,11 +322,19 @@ public class Elphelt extends Mob {
             Dungeon.observe();
         }
 
+
         traceGenoise = null;
         beamTarget = -1;
     }
 
+    public void changePhase() {
+        if (phase != 2) {
+            phase = 2;
+            //TODO 보스레벨과 통신
 
+            yell("2페이즈!");
+        }
+    }
 
     public void Blast() {
         //throws other chars around the center.
@@ -293,8 +353,6 @@ public class Elphelt extends Mob {
         spend(1f);
     }
 
-    private int chargeTackle = 0;
-	private int maxChargeTackle = 3;
 
 	public void warnTackle(List<Integer> subPath) {
 
@@ -306,7 +364,11 @@ public class Elphelt extends Mob {
 
     }
 
-    public boolean Tackle(List<Integer> subPath) {
+    public boolean Rush(List<Integer> subPath) {
+
+	    if (!onRush) {
+            return false;
+        }
 
 	    if (enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0) {
 	        final Ballistica traceChar = new Ballistica( pos, enemy.pos, Ballistica.STOP_CHARS );
@@ -363,9 +425,6 @@ public class Elphelt extends Mob {
                 }
             }
 
-
-
-
         }
         return true;
     }
@@ -409,14 +468,11 @@ public class Elphelt extends Mob {
     }
 
     private static final String BEAM_TARGET     = "beamTarget";
-    private static final String BEAM_COOLDOWN   = "beamCooldown";
-    private static final String BEAM_CHARGED    = "beamCharged";
 
     @Override
     public void storeInBundle(Bundle bundle) {
         super.storeInBundle(bundle);
         bundle.put( BEAM_TARGET, beamTarget);
-        bundle.put( BEAM_COOLDOWN, beamCooldown );
     }
 
     @Override
@@ -424,7 +480,6 @@ public class Elphelt extends Mob {
         super.restoreFromBundle(bundle);
         if (bundle.contains(BEAM_TARGET))
             beamTarget = bundle.getInt(BEAM_TARGET);
-        beamCooldown = bundle.getInt(BEAM_COOLDOWN);
     }
 
     {
