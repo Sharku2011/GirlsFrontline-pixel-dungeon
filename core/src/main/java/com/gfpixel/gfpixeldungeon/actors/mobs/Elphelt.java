@@ -19,7 +19,6 @@ import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
-import com.gfpixel.gfpixeldungeon.levels.RabbitBossLevel;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
@@ -31,17 +30,18 @@ import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Callback;
-import com.watabou.utils.GameMath;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Elphelt extends Mob {
 
-    private static float TIME_TO_EXPLODE = 2f;
-    private static int POWER_OF_BLAST = 10;
-    private static int REGEN_OF_GENOISE = 2;
+    private static final float TIME_TO_EXPLODE = 2f;
+    private static final int POWER_OF_BLAST = 10;
+    private static final int REGEN_OF_GENOISE = 2;
 
     {
         spriteClass = ElpheltSprite.class;
@@ -78,7 +78,6 @@ public class Elphelt extends Mob {
     }
 
     private Ballistica traceGenoise;
-    private int beamTarget = -1;
 
     private Ballistica traceRush;
     private Ballistica traceRebound;
@@ -91,19 +90,12 @@ public class Elphelt extends Mob {
     private final int COOLDOWN_RUSH = 3;
     private final int WARMUP_RUSH = 1;
 
-    public boolean canBurst = false;
     public boolean canRush = false;
     public boolean onRush = false;
 
+    private Queue<Genoise> GenoiseQueue = new LinkedList<Genoise>();
 
     public int phase = 0;
-
-    private class skill {
-        // time to prepare skill
-        public float warmUp = 0;
-        // time to use skill again
-        public float coolDown = 0;
-    }
 
 	@Override
     public void move( int step ) {
@@ -268,7 +260,6 @@ public class Elphelt extends Mob {
             // 혹시라도 제누와즈 스택이 만땅이 아닐 때 호출되면 풀차지 시켜주고 초기화
             curGenoiseStack = maxGenoiseStack;
             traceGenoise = null;
-            beamTarget = -1;
             GLog.i("충전");
             return;
         }
@@ -299,7 +290,11 @@ public class Elphelt extends Mob {
                 GameScene.add( Blob.seed( pos, Math.round( 1 + TIME_TO_EXPLODE ), GenoiseWarn.class) );
             }
 
-            addDelayed(new Genoise(pos), TIME_TO_EXPLODE);
+            Genoise newGenoise = new Genoise(pos);
+
+            GenoiseQueue.add(newGenoise);
+
+            addDelayed(newGenoise, TIME_TO_EXPLODE);
 
             curGenoiseStack = Math.max(curGenoiseStack-1, 0);
             if (curGenoiseStack <= 0) {
@@ -324,7 +319,6 @@ public class Elphelt extends Mob {
 
 
         traceGenoise = null;
-        beamTarget = -1;
     }
 
     public void changePhase() {
@@ -467,19 +461,36 @@ public class Elphelt extends Mob {
         }), -1);
     }
 
-    private static final String BEAM_TARGET     = "beamTarget";
+    private static final String PHASE           = "phase";
+    private static final String CUR_GENOISE     = "curGenoise";
+    private static final String ONGENOISE       = "onGenoise";
+    private static final String QUEUEGENOISE    = "queueGenoise";
+    private static final String NUMOFGENOISE    = " numGenoise";
+
+    private int numOfGenoise = 0;
 
     @Override
     public void storeInBundle(Bundle bundle) {
         super.storeInBundle(bundle);
-        bundle.put( BEAM_TARGET, beamTarget);
+        bundle.put( PHASE, phase );
+        bundle.put( CUR_GENOISE, curGenoiseStack);
+        bundle.put( ONGENOISE, onGenoise);
+        numOfGenoise = GenoiseQueue.size();
+        for (int i=0; i< numOfGenoise; ++i) {
+            bundle.put( QUEUEGENOISE+String.valueOf(i), ((LinkedList<Genoise>)GenoiseQueue).get(i) );
+        }
     }
 
     @Override
     public void restoreFromBundle(Bundle bundle) {
         super.restoreFromBundle(bundle);
-        if (bundle.contains(BEAM_TARGET))
-            beamTarget = bundle.getInt(BEAM_TARGET);
+        phase = bundle.getInt(PHASE);
+        onGenoise = bundle.getBoolean(ONGENOISE);
+        curGenoiseStack = bundle.getInt(CUR_GENOISE);
+        numOfGenoise = bundle.getInt(NUMOFGENOISE);
+        for (int i=0; i< numOfGenoise; ++i) {
+            addDelayed( (Genoise)bundle.get( QUEUEGENOISE+String.valueOf(i) ), i/1f);
+        }
     }
 
     {
@@ -515,6 +526,15 @@ public class Elphelt extends Mob {
 
         @Override
         protected boolean act() {
+
+            Genoise g = GenoiseQueue.poll();
+
+            if (!(g == Elphelt.Genoise.this)) {
+                remove(Elphelt.Genoise.this);
+                return false;
+            }
+
+            GenoiseQueue.remove();
 
             Sample.INSTANCE.play( Assets.SND_BLAST );
 
@@ -564,7 +584,7 @@ public class Elphelt extends Mob {
                 Dungeon.observe();
             }
 
-            remove(this);
+            remove(Elphelt.Genoise.this);
             return true;
         }
     }
