@@ -465,7 +465,7 @@ public class Elphelt extends Mob {
     private static final String CUR_GENOISE     = "curGenoise";
     private static final String ONGENOISE       = "onGenoise";
     private static final String QUEUEGENOISE    = "queueGenoise";
-    private static final String NUMOFGENOISE    = " numGenoise";
+    private static final String NUMOFGENOISE    = "numGenoise";
 
     private int numOfGenoise = 0;
 
@@ -489,7 +489,7 @@ public class Elphelt extends Mob {
         curGenoiseStack = bundle.getInt(CUR_GENOISE);
         numOfGenoise = bundle.getInt(NUMOFGENOISE);
         for (int i=0; i< numOfGenoise; ++i) {
-            addDelayed( (Genoise)bundle.get( QUEUEGENOISE+String.valueOf(i) ), i/1f);
+            addDelayed( (Genoise)bundle.get( QUEUEGENOISE+String.valueOf(i) ), (i+1)*1f);
         }
     }
 
