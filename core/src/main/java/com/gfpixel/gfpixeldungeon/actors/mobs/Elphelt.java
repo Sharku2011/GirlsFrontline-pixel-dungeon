@@ -33,9 +33,10 @@ import com.watabou.utils.Callback;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
-import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Queue;
 
 public class Elphelt extends Mob {
 
@@ -93,7 +94,11 @@ public class Elphelt extends Mob {
     public boolean canRush = false;
     public boolean onRush = false;
 
-    private Queue<Genoise> GenoiseQueue = new LinkedList<Genoise>();
+    private HashMap<Integer, Integer> GenoisePos = new HashMap<>();
+    private HashMap<Integer, Float> GenoiseTime = new HashMap<>();
+    private HashSet<Genoise> Genoises = new HashSet<>();
+
+
 
     public int phase = 0;
 
@@ -291,10 +296,9 @@ public class Elphelt extends Mob {
             }
 
             Genoise newGenoise = new Genoise(pos);
-
-            GenoiseQueue.add(newGenoise);
-
             addDelayed(newGenoise, TIME_TO_EXPLODE);
+
+            Genoises.add( newGenoise );
 
             curGenoiseStack = Math.max(curGenoiseStack-1, 0);
             if (curGenoiseStack <= 0) {
@@ -464,10 +468,11 @@ public class Elphelt extends Mob {
     private static final String PHASE           = "phase";
     private static final String CUR_GENOISE     = "curGenoise";
     private static final String ONGENOISE       = "onGenoise";
-    private static final String QUEUEGENOISE    = "queueGenoise";
-    private static final String NUMOFGENOISE    = "numGenoise";
+    private static final String GENOISEPOS      = "GenoisePos";
+    private static final String GENOISETIME     = "GenoiseTime";
+    private static final String NUMGENOISE      = "numGenoise";
 
-    private int numOfGenoise = 0;
+    private int NumOfGenoise = 0;
 
     @Override
     public void storeInBundle(Bundle bundle) {
@@ -475,9 +480,16 @@ public class Elphelt extends Mob {
         bundle.put( PHASE, phase );
         bundle.put( CUR_GENOISE, curGenoiseStack);
         bundle.put( ONGENOISE, onGenoise);
-        numOfGenoise = GenoiseQueue.size();
-        for (int i=0; i< numOfGenoise; ++i) {
-            bundle.put( QUEUEGENOISE+String.valueOf(i), ((LinkedList<Genoise>)GenoiseQueue).get(i) );
+
+        NumOfGenoise = Genoises.size();
+        bundle.put( NUMGENOISE, NumOfGenoise );
+
+        Iterator<Genoise> it = Genoises.iterator();
+
+        for (int i=0; i<NumOfGenoise; ++i) {
+            Genoise g = it.next();
+            bundle.put( GENOISEPOS + String.valueOf(i), g.getTarget() );
+            bundle.put( GENOISETIME + String.valueOf(i), g.cooldown() );
         }
     }
 
@@ -487,9 +499,16 @@ public class Elphelt extends Mob {
         phase = bundle.getInt(PHASE);
         onGenoise = bundle.getBoolean(ONGENOISE);
         curGenoiseStack = bundle.getInt(CUR_GENOISE);
-        numOfGenoise = bundle.getInt(NUMOFGENOISE);
-        for (int i=0; i< numOfGenoise; ++i) {
-            addDelayed( (Genoise)bundle.get( QUEUEGENOISE+String.valueOf(i) ), (i+1)*1f);
+
+        GenoisePos.clear();
+        GenoiseTime.clear();
+
+        NumOfGenoise = bundle.getInt( NUMGENOISE );
+
+        for (int i=0; i< NumOfGenoise; ++i) {
+            Genoise g = new Genoise( bundle.getInt(GENOISEPOS + String.valueOf(i) ) );
+            addDelayed( g , bundle.getFloat( GENOISETIME + String.valueOf(i) ) );
+            Genoises.add(g);
         }
     }
 
@@ -524,17 +543,16 @@ public class Elphelt extends Mob {
             target = cell;
         }
 
+        public final int getTarget() { return target; }
+
         @Override
         protected boolean act() {
 
-            Genoise g = GenoiseQueue.poll();
-
-            if (!(g == Elphelt.Genoise.this)) {
-                remove(Elphelt.Genoise.this);
+            if (!Genoises.contains(Elphelt.Genoise.this)) {
                 return false;
             }
 
-            GenoiseQueue.remove();
+            Genoises.remove(Elphelt.Genoise.this);
 
             Sample.INSTANCE.play( Assets.SND_BLAST );
 
@@ -583,6 +601,7 @@ public class Elphelt extends Mob {
             if (terrainAffected) {
                 Dungeon.observe();
             }
+
 
             remove(Elphelt.Genoise.this);
             return true;
