@@ -87,6 +87,10 @@ public class BuffIndicator extends Component {
 	public static final int BERSERK     = 40;
 	public static final int MOMENTUM    = 41;
 	public static final int PREPARATION = 42;
+	public static final int EVASION		= 43;
+	public static final int FIREUP		= 44;
+	public static final int LOCKON		= 45;
+	public static final int RAPIDFIRE	= 46;
 
 	public static final int SIZE	= 7;
 	

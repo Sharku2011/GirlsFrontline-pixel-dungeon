@@ -36,7 +36,7 @@ public class Speed extends FlavourBuff {
 	}
 
 	@Override
-	public int icon() { return BuffIndicator.SACRIFICE; }
+	public int icon() { return BuffIndicator.EVASION; }
 
 	@Override
 	public String toString() {
