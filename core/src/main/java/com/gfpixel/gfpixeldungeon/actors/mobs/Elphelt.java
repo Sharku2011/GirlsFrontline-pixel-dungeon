@@ -94,6 +94,8 @@ public class Elphelt extends Mob {
     public boolean canRush = false;
     public boolean onRush = false;
 
+    public boolean canBlast = false;
+
     private HashMap<Integer, Integer> GenoisePos = new HashMap<>();
     private HashMap<Integer, Float> GenoiseTime = new HashMap<>();
     private HashSet<Genoise> Genoises = new HashSet<>();
@@ -153,11 +155,16 @@ public class Elphelt extends Mob {
             default:
             case 1:
                 // phase 1. genoise and stalking
+
+                if (curGenoiseStack == maxGenoiseStack) {
+                    onGenoise = true;
+                }
+
                 if (Dungeon.level.adjacent(pos, enemy.pos)) {
                     // 근접
                     if (onGenoise) {
                         // 제누와즈 시전중
-                        Blast();
+                        canBlast = true;
                         return false;
                     } else {
                         // 시전중 아닐 때 - 무조건 true라고 봐야함
@@ -165,15 +172,7 @@ public class Elphelt extends Mob {
                     }
                 } else {
                     // 비근접
-                    if (onGenoise) {
-                        return (new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE).collisionPos == enemy.pos);
-                    } else {
-                        if (curGenoiseStack == maxGenoiseStack) {
-                            onGenoise = true;
-                        }
-                        return false;
-                    }
-
+                    return onGenoise && (new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE).collisionPos == enemy.pos);
                 }
 
             case 2:
@@ -197,10 +196,16 @@ public class Elphelt extends Mob {
 
                 spend( attackDelay() );
 
+                if (canBlast) {
+                    Blast();
+                    canBlast = false;
+                    return false;
+                }
+
                 traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
 
                 if ( onGenoise && curGenoiseStack > 0) {
-                    GLog.i("제누와즈싼다!");
+
                     // 엘펠트가 플레이어의 시야 안에 있으면 애니메이션을 재생. true/false 값 리턴은 왜 저렇게 되는지 모르겠음
                     if (Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[traceGenoise.collisionPos] ) {
                         sprite.zap( traceGenoise.collisionPos );
@@ -484,6 +489,8 @@ public class Elphelt extends Mob {
         NumOfGenoise = Genoises.size();
         bundle.put( NUMGENOISE, NumOfGenoise );
 
+        bundle.put( PHASE, phase );
+
         Iterator<Genoise> it = Genoises.iterator();
 
         for (int i=0; i<NumOfGenoise; ++i) {
@@ -505,6 +512,8 @@ public class Elphelt extends Mob {
 
         NumOfGenoise = bundle.getInt( NUMGENOISE );
 
+        phase = bundle.getInt( PHASE );
+
         for (int i=0; i< NumOfGenoise; ++i) {
             Genoise g = new Genoise( bundle.getInt(GENOISEPOS + String.valueOf(i) ) );
             addDelayed( g , bundle.getFloat( GENOISETIME + String.valueOf(i) ) );
@@ -522,18 +531,21 @@ public class Elphelt extends Mob {
         immunities.add( Terror.class );
     }
 
+    /*
     private class Hunting extends Mob.Hunting{
         @Override
         public boolean act(boolean enemyInFOV, boolean justAlerted) {
             //even if enemy isn't seen, attack them if the beam is charged
-            /*
-            if (beamCharged && enemy != null && canAttack(enemy)) {
-                enemySeen = enemyInFOV;
-                return doAttack(enemy);
-            }*/
+
+            //if (beamCharged && enemy != null && canAttack(enemy)) {
+            //    enemySeen = enemyInFOV;
+            //    return doAttack(enemy);
+            //}
+
             return super.act(enemyInFOV, justAlerted);
         }
     }
+    */
 
     private class Genoise extends Actor {
 
