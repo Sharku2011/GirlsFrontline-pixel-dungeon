@@ -96,8 +96,6 @@ public class Elphelt extends Mob {
 
     public boolean canBlast = false;
 
-    private HashMap<Integer, Integer> GenoisePos = new HashMap<>();
-    private HashMap<Integer, Float> GenoiseTime = new HashMap<>();
     private HashSet<Genoise> Genoises = new HashSet<>();
 
 
@@ -130,6 +128,11 @@ public class Elphelt extends Mob {
             case 0: default:
                 break;
             case 1:
+                if (canBlast) {
+                    Blast();
+                    canBlast = false;
+                }
+
                 if (!onGenoise && curGenoiseStack < maxGenoiseStack)
                 {
                     // 제누와즈 중이 아니고 스택이 모자란 경우 스택 추가
@@ -165,7 +168,7 @@ public class Elphelt extends Mob {
                     if (onGenoise) {
                         // 제누와즈 시전중
                         canBlast = true;
-                        return false;
+                        return true;
                     } else {
                         // 시전중 아닐 때 - 무조건 true라고 봐야함
                         return super.canAttack(enemy);
@@ -196,12 +199,6 @@ public class Elphelt extends Mob {
 
                 spend( attackDelay() );
 
-                if (canBlast) {
-                    Blast();
-                    canBlast = false;
-                    return false;
-                }
-
                 traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
 
                 if ( onGenoise && curGenoiseStack > 0) {
@@ -215,9 +212,8 @@ public class Elphelt extends Mob {
                         return true;
                     }
                 } else {
-                    super.doAttack( enemy );
+                    return super.doAttack( enemy );
                 }
-
 
             case 2:
 
@@ -225,6 +221,7 @@ public class Elphelt extends Mob {
                     List<Integer> path = traceRush.subPath(1, traceRush.dist);
 
                     if (onRush) {
+                        spend( attackDelay() );
                         return Rush( path );
                     } else {
                         warnTackle( path );
@@ -353,7 +350,6 @@ public class Elphelt extends Mob {
             }
         }
 
-        spend(1f);
     }
 
 
@@ -504,11 +500,8 @@ public class Elphelt extends Mob {
     public void restoreFromBundle(Bundle bundle) {
         super.restoreFromBundle(bundle);
         phase = bundle.getInt(PHASE);
-        onGenoise = bundle.getBoolean(ONGENOISE);
-        curGenoiseStack = bundle.getInt(CUR_GENOISE);
-
-        GenoisePos.clear();
-        GenoiseTime.clear();
+        onGenoise = bundle.getBoolean( ONGENOISE );
+        curGenoiseStack = bundle.getInt( CUR_GENOISE );
 
         NumOfGenoise = bundle.getInt( NUMGENOISE );
 
