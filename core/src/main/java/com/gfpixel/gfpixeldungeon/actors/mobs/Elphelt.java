@@ -1,6 +1,7 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
@@ -16,6 +17,7 @@ import com.gfpixel.gfpixeldungeon.effects.particles.BlastParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
 import com.gfpixel.gfpixeldungeon.items.Heap;
+import com.gfpixel.gfpixeldungeon.items.food.Maccol;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
@@ -53,6 +55,8 @@ public class Elphelt extends Mob {
         baseSpeed = 1f;
         maxLvl = 20;
 
+        HUNTING = new Hunting();
+
         properties.add(Property.BOSS);
     }
 
@@ -72,7 +76,7 @@ public class Elphelt extends Mob {
     }
 
     protected float warnDelay() { return 1f; }
-    protected float tackleDelay() { return  2f; }
+    protected float bridleExpressDelay() { return  2f; }
 
 
     @Override
@@ -227,16 +231,15 @@ public class Elphelt extends Mob {
             case 2:
                 if (canRush) {
                     if (onRush) {
-                        spend( tackleDelay() );
-                        return Tackle();
+                        spend( bridleExpressDelay() );
+                        return bridleExpress();
                     } else {
                         onRush = true;
                         spend( warnDelay() );
-                        warnTackle();
+                        warnExpress();
                         return false;
                     }
                 } else {
-                    GLog.i("뭔가가 잘못되었음");
                     super.doAttack( enemy );
                 }
 
@@ -358,7 +361,7 @@ public class Elphelt extends Mob {
     }
 
 
-	public void warnTackle() {
+	public void warnExpress() {
 
         List<Integer> pathTackle;
         if ( enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0 ) {
@@ -369,6 +372,8 @@ public class Elphelt extends Mob {
                 // 캐릭터와 엘펠트가 붙어있는 경우
                 // 일단 팅겨내기 -> 아니면 벽까지 돌진하게 만들고 그냥 죽여버리기?
                 Blast();
+                canRush = false;
+                onRush = false;
                 next();
                 return;
             }
@@ -385,70 +390,94 @@ public class Elphelt extends Mob {
                     GameScene.add(Blob.seed(c, 2, GenoiseWarn.class));
                 }
             }
-            dstRush = c;
+
         }
+        dstRush = traceRush.collisionPos;
         next();
 
         return;
     }
 
-    public boolean Tackle() {
+    public boolean bridleExpress() {
 
 	    if (!onRush || dstRush < 0) {
 	        next();
             return false;
         }
 
+        boolean bCrash = false;
+
 	    if (enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0) {
-	        final Ballistica traceChar = new Ballistica( pos, dstRush, Ballistica.STOP_CHARS | Ballistica.STOP_TARGET );
+	        final Ballistica traceChar = new Ballistica( pos, dstRush, Ballistica.STOP_TARGET );
 
-            if ( traceChar.collisionPos != null) {
-                List<Integer> tacklePath = traceChar.subPath(1, traceChar.dist);
+            if ( traceChar.collisionPos > 0) {
+                final List<Integer> tacklePath;
 
-                int prevCell = pos;
+                if ( findChar(traceChar.path.get(traceChar.dist)) != null && Dungeon.level.solid[traceChar.path.get(traceChar.dist+1)] ) {
+                    // 플레이어가 벽에 붙어있을 경우
+                    tacklePath = traceChar.subPath(1, traceChar.dist - 1);
+                } else {
+                    tacklePath = traceChar.subPath(1, traceChar.dist);
+                }
 
-                for(int c : tacklePath) {
-                    Char ch = findChar(c);
-                    if (ch != null) {
-                        final Ballistica trajectory = new Ballistica( prevCell, c, Ballistica.STOP_TERRAIN);
-                        final int newPos = trajectory.path.get( Math.min( trajectory.dist, POWER_OF_BLAST/2) );
+                int prevPos = pos;
+
+                int collisionPos = pos;
+
+                for(final int c : tacklePath) {
+
+                    Char ch = findChar( c );
+
+                    if (ch != null && ch != Elphelt.this) {
+                        final Ballistica trajectory = new Ballistica(prevPos, c, Ballistica.STOP_TERRAIN);
+                        final int newPos = trajectory.path.get(Math.min(trajectory.dist, POWER_OF_BLAST / 2) + 1);
+                        bCrash = true;
                         final Char chr = ch;
 
-                        Actor.addDelayed( new Pushing(chr, chr.pos, newPos, new Callback() {
+                        Actor.addDelayed(new Pushing(chr, chr.pos, newPos, new Callback() {
                             @Override
                             public void call() {
-
-                                if (chr.pos == newPos) {
-                                    Paralysis.prolong(enemy, Paralysis.class, 2f);
-                                }
-
-                                // pushing으로 밀어준 후에 반드시 캐릭터의 위치를 덮어씌워줘야함
                                 chr.pos = newPos;
 
+                                if (chr.pos == trajectory.collisionPos) {
+                                    Paralysis.prolong(chr, Paralysis.class, 2f);
+                                }
+
                                 Dungeon.level.press(chr.pos, chr, true);
-                                if (chr == Dungeon.hero){
+                                if (chr == Dungeon.hero) {
                                     Dungeon.observe();
                                 }
+
+                                GLog.i("Power: " + String.valueOf(Math.min(trajectory.dist, POWER_OF_BLAST / 2)+1));
                             }
-                        }), -1f);
+                        }), 0);
+
+
                     }
+
+                    Actor.addDelayed(new Pushing(Elphelt.this, prevPos, c, new Callback() {
+                        @Override
+                        public void call() {
+                            pos = c;
+                        }
+                    }), 0);
+
+                    if (bCrash) { break; }
                 }
-                Actor.addDelayed(new Pushing(this, pos, dstRush, new Callback() {
-                    @Override
-                    public void call() {
-                        canRush = false;
-                        onRush = false;
-                        pos = dstRush;
-                        timerRush = 0;
-                        traceRush = null;
-                        dstRush = -1;
-                        next();
-                    }
-                }), -1f);
+
+                canRush = false;
+                onRush = false;
+                timerRush = 0;
+                traceRush = null;
+                dstRush = -1;
+                yell("브라이들 익스프레스!");
+                next();
             }
+
+            return true;
         }
 
-        return true;
+        return false;
     }
 
 
@@ -547,21 +576,26 @@ public class Elphelt extends Mob {
         immunities.add( Terror.class );
     }
 
-    /*
+
     private class Hunting extends Mob.Hunting{
         @Override
         public boolean act(boolean enemyInFOV, boolean justAlerted) {
-            //even if enemy isn't seen, attack them if the beam is charged
+            enemySeen = enemyInFOV;
 
-            //if (beamCharged && enemy != null && canAttack(enemy)) {
-            //    enemySeen = enemyInFOV;
-            //    return doAttack(enemy);
-            //}
+            switch (phase) {
+                case 0: default:
+                case 1:
+                case 2:
+                    break;
+            }
+            if (onRush || onGenoise) {
+                return doAttack(enemy);
+            }
 
             return super.act(enemyInFOV, justAlerted);
         }
     }
-    */
+
 
     private class Genoise extends Actor {
 
