@@ -879,9 +879,9 @@ items.weapon.melee.sr3.name=SR-3MP
 items.weapon.melee.sr3.stats_desc=이 무기는 무방비 상태의 적에게 더 강하며, 강화 효율이 높고, 피해를 일부 흡수할수있습니다.
 items.weapon.melee.sr3.desc=_Thx Play With Me!_\n\n 러시아의 단축형 돌격소총 비효르(Vikhr), 9A-91의 원형이며, 크기는 기관단총급으로 작지만 9x39mm 아음속탄을 사용하는게 특징입니다. 무슨 뜻이냐면 맞으면 굉장히 아프다구요!
 
-items.weapon.melee.gua91.name=9A-91
-items.weapon.melee.gua91.stats_desc=이 무기는 무방비 상태의 적에게 더 강합니다.
-items.weapon.melee.gua91.desc=""지휘관, 제 시선에서 벗어날 때에는 제대로 알려주세요?"\n\n러시아의 단축형 돌격소총입니다. 더 작은 크기와 낮은 소음은 기습시 적에게 더 높은 피해를 입힐 수 있습니다.
+items.weapon.melee.assassinsblade.name=9A-91
+items.weapon.melee.assassinsblade.stats_desc=이 무기는 무방비 상태의 적에게 더 강합니다.
+items.weapon.melee.assassinsblade.desc=""지휘관, 제 시선에서 벗어날 때에는 제대로 알려주세요?"\n\n러시아의 단축형 돌격소총입니다. 더 작은 크기와 낮은 소음은 기습시 적에게 더 높은 피해를 입힐 수 있습니다.
 
 items.weapon.melee.groza.name=OTs-14 그로자
 items.weapon.melee.groza.stats_desc=이 무기는 무방비 상태의 적에게 더 강합니다.
@@ -891,59 +891,63 @@ items.weapon.melee.nagant.name=제퓨티의 모신나강
 items.weapon.melee.nagant.stats_desc=긴 사거리를 가지며, 아주 높은 명중률을 가지고있습니다.
 items.weapon.melee.nagant.desc=시공간을 거슬러 과거에 나타난, 3여신계획으로 만들어진 실험체 중 하나인 G-179 제퓨티의 무기입니다. \nE.L.I.D(Euroky Low-emission Infectious Disease) 감염자에게 유효한 타격을 줄수있는 탄환을 사용할 수 있도록 개조됬으며, 이 탄환은 인형 소체는 물론 중장갑을 대상으로도 큰 타격을 입힐수있습니다.
 
-items.weapon.melee.dragunov.name=Dragonov SVD
-items.weapon.melee.dragunov.stats_desc=이 무기는 멀리 떨어진 적을 공격할수있으며, 다른 무기보다 빠릅니다.
-items.weapon.melee.dragunov.desc="스나이퍼 SVD야. 어디보자, 어느 행운아가 나를 맞이한 거야?"\n\n 소련의 반자동 저격소총이자, 동시에 세계 최초로 DMR로 설계된 소총입니다. 아주 강력하지는 않지만, 다른 무기에 비해 빠른 공격속도와 긴 사거리가 떨어지는 데미지를 보완해줍니다. 
+items.weapon.melee.battleaxe.name=Dragonov SVD
+items.weapon.melee.battleaxe.stats_desc=이 무기는 멀리 떨어진 적을 공격할수있으며, 다른 무기보다 빠릅니다.
+items.weapon.melee.battleaxe.desc="스나이퍼 SVD야. 어디보자, 어느 행운아가 나를 맞이한 거야?"\n\n 소련의 반자동 저격소총이자, 동시에 세계 최초로 DMR로 설계된 소총입니다. 아주 강력하지는 않지만, 다른 무기에 비해 빠른 공격속도와 긴 사거리가 떨어지는 데미지를 보완해줍니다. 
 
-items.weapon.melee.gepard.name=게파드 M6 Lynx
-items.weapon.melee.gepard.stats_desc=이 무기는 .50 BMG 탄종의 피해를 증가시키며, 이 무기에 깃든 특성을 .50 BMG 탄종에 실어보낼 수도 있습니다.
-items.weapon.melee.gepard.desc="총알 한 발당 타깃 하나씩 처리하라"는 압박을 계속 받아왔어요......에휴...이렇게 힘든 일을, 어째서 이렇게 약한 제게 맡긴 걸까요...." \n\n 강력한 50구경 탄환를 사용하는 헝가리군의 불펍식 반자동 대물저격총입니다. 불펍식의 한계로 근접전은 어렵지만, 그럭저럭 어느정도는 싸울 수 있습니다. /n/n_이 총을 들고있을때, .50 BMG 탄종을 좀더 강력하게 발사할 수 있게됩니다._ 
+items.weapon.melee.crossbow.name=게파드 M6 Lynx
+items.weapon.melee.crossbow.stats_desc=이 무기는 .50 BMG 탄종의 피해를 증가시키며, 이 무기에 깃든 특성을 .50 BMG 탄종에 실어보낼 수도 있습니다.
+items.weapon.melee.crossbow.desc=강력한 50구경 탄환를 사용하는 헝가리군의 불펍식 반자동 대물저격총입니다. 불펍식의 한계로 근접전은 어렵지만, 그럭저럭 어느정도는 싸울 수 있습니다. /n/n_이 총을 들고있을때, .50 BMG 탄종을 좀더 강력하게 발사할 수 있게됩니다._ 
 
-items.weapon.melee.welrod.name=웰로드 mk.2
-items.weapon.melee.welrod.stats_desc=이 무기는 무방비 상태의 적에게 더 강합니다.
-items.weapon.melee.welrod.desc="박하나!"\n\n 과거 영국 특수부대가 사용한 볼트액션 소음권총입니다. 볼트액션이지만 권총이기 때문에 시원찮은 피해량을 갖고있습니다.
+items.weapon.melee.dagger.name=웰로드 mk.2
+items.weapon.melee.dagger.stats_desc=이 무기는 무방비 상태의 적에게 더 강합니다.
+items.weapon.melee.dagger.desc="박하나!"\n\n 과거 영국 특수부대가 사용한 볼트액션 소음권총입니다. 볼트액션이지만 권총이기 때문에 시원찮은 피해량을 갖고있습니다.
 
-items.weapon.melee.nagantrevolver.name=Nagant M1895
-items.weapon.melee.nagantrevolver.stats_desc=이 무기는 무방비 상태의 적에게 더 강합니다.
-items.weapon.melee.nagantrevolver.desc="돌아왔는가, 어서 오게!"\n\n 소음기를 장착할수있는 소련의 리볼버입니다. 웰로드보다 소음성능이 떨어지지만, 좀더 높은 피해를 입힐 수 있습니다.
+items.weapon.melee.dirk.name=Nagant M1895
+items.weapon.melee.dirk.stats_desc=이 무기는 무방비 상태의 적에게 더 강합니다.
+items.weapon.melee.dirk.desc="돌아왔는가, 어서 오게!"\n\n 소음기를 장착할수있는 소련의 리볼버입니다. 웰로드보다 소음성능이 떨어지지만, 좀더 높은 피해를 입힐 수 있습니다.
 
-items.weapon.melee.ak47.name=AK-47
-items.weapon.melee.ak47.stats_desc=이 무기는 명중률이 낮고 떨어진 적을 공격할 수 있으며, 기습 공격을 할 수 없습니다.
-items.weapon.melee.ak47.desc="아하핫, 드디어 나의 차례구나, 지구를 뒤흔들 성능을 보여줄게!"\n\n 소련군의 제식 소총이자 동구권 돌격소총의 대명사인 소총,\n 7,62-мм автомат Калашникова AK-47입니다. 명중률도 낮고 기습공격또한 불가능하지만, 제대로 적중한다면 치명적입니다. 
+items.weapon.melee.flail.name=AK-47
+items.weapon.melee.flail.stats_desc=이 무기는 명중률이 낮고 떨어진 적을 공격할 수 있으며, 기습 공격을 할 수 없습니다.
+items.weapon.melee.flail.desc="아하핫, 드디어 나의 차례구나, 지구를 뒤흔들 성능을 보여줄게!"\n\n 소련군의 제식 소총이자 동구권 돌격소총의 대명사인 소총,\n 7,62-мм автомат Калашникова AK-47입니다. 명중률도 낮고 기습공격또한 불가능하지만, 제대로 적중한다면 치명적입니다. 
 
-items.weapon.melee.m99.name=M99
-items.weapon.melee.m99.stats_desc=이 무기는 명중률이 높고 떨어진 적을 공격할 수 있으며, 기습 공격을 할 수 없습니다.
-items.weapon.melee.m99.desc=히익 저리가요 페도새끼\n\n .50BMG 반자동 대물저격총, M99입니다. 이 거대한 저격총에 대해 자세히 알려진것은 없지만, 제대로 적중한다면 아주 아플 것 같습니다.
+items.weapon.melee.gauntlet.name=돌 건틀릿
+items.weapon.melee.gauntlet.stats_desc=이 무기는 매우 빠릅니다.\n이 무기는 피해의 일부를 막을 수 있습니다.
+items.weapon.melee.gauntlet.desc=이 무거운 건틀릿은 무거운 마법석으로 덮인 붉은색 천으로 만들어졌습니다. 천이 손을 제대로 감싸며 무거운 마법석이 마치 몸의 일부인 것 처럼 느껴집니다. 이 무거운 무기를 휘두르는데는 큰 힘이 필요하지만, 그만큼의 큰 타격을 보장합니다.
 
-items.weapon.melee.sakurablade.name=영도·사쿠라 후부키
-items.weapon.melee.sakurablade.stats_desc=이 무기는 매우 무겁습니다.
-items.weapon.melee.sakurablade.desc="다른 세계에서 온 장검" \n\n예전부터 야에 신사에 모셔진 영도. 야에 사쿠라가 붕괴의 의지에 조종당하고 있을 때 이 칼으로 죄가 없는 사람들을 참살하였기 때문에 영도는 요도·적염앵이 되었다. 후에 야에 사쿠라의 혼이 정화된 뒤 영도로 돌아왔다.
+items.weapon.melee.glaive.name=M99
+items.weapon.melee.glaive.stats_desc=이 무기는 명중률이 높고 떨어진 적을 공격할 수 있으며, 기습 공격을 할 수 없습니다.
+items.weapon.melee.glaive.desc=히익 저리가요 페도새끼\n\n .50BMG 반자동 대물저격총, M99입니다. 이 거대한 저격총에 대해 자세히 알려진것은 없지만, 제대로 적중한다면 아주 아플 것 같습니다.
 
-items.weapon.melee.saigaplate.name=사이가의 방탄판
-items.weapon.melee.saigaplate.stats_desc=이 무기는 엄청난 피해를 막을 수 있습니다. 강화할수록 막는 피해가 늘어납니다.
-items.weapon.melee.saigaplate.desc=사이가-12의 좌측 방탄판입니다. 방어용으로는 훌륭하지만 공격 수단으로는 조금 부족합니다.
+items.weapon.melee.greataxe.name=영도·사쿠라 후부키
+items.weapon.melee.greataxe.stats_desc=이 무기는 매우 무겁습니다.
+items.weapon.melee.greataxe.desc="다른 세계에서 온 장검" \n\n예전부터 야에 신사에 모셔진 영도. 야에 사쿠라가 붕괴의 의지에 조종당하고 있을 때 이 칼으로 죄가 없는 사람들을 참살하였기 때문에 영도는 요도·적염앵이 되었다. 후에 야에 사쿠라의 혼이 정화된 뒤 영도로 돌아왔다.
 
-items.weapon.melee.usas12.name=S&T USAS-12
-items.weapon.melee.usas12.desc="예상했던 것보다 빠른걸...아아...매너는 뭐, 간신히 합격 수준이시네요. 앞으로 잘 부탁해요!" \n\n다목적 전자동 산탄총, USAS-12입니다. 12게이지 산탄을 사용하며 다른 산탄총들보다 아주 조금 공격속도가 빠릅니다.
+items.weapon.melee.greatshield.name=사이가의 방탄판
+items.weapon.melee.greatshield.stats_desc=이 무기는 엄청난 피해를 막을 수 있습니다. 강화할수록 막는 피해가 늘어납니다.
+items.weapon.melee.greatshield.desc=사이가-12의 좌측 방탄판입니다. 방어용으로는 훌륭하지만 공격 수단으로는 조금 부족합니다.
+
+items.weapon.melee.greatsword.name=S&T USAS-12
+items.weapon.melee.greatsword.desc="예상했던 것보다 빠른걸...아아...매너는 뭐, 간신히 합격 수준이시네요. 앞으로 잘 부탁해요!" \n\n다목적 전자동 산탄총, USAS-12입니다. 12게이지 산탄을 사용하며 다른 산탄총들보다 아주 조금 공격속도가 빠릅니다.
 
 items.weapon.melee.saiga.name=Saiga-12
 items.weapon.melee.saiga.stats_desc= 이 무기는 피해를 일부 흡수할 수 있습니다.
 items.weapon.melee.saiga.desc="저는 Saiga-12 입니다! 지휘관님, 저희 앞길을 막는 쓰레기는 모조리 날려버리겠습니다!" \n\n AK 47을 기반으로 만든 반자동 전투산탄총, 사이가12입니다. 다른 산탄총들처럼 평균적인 데미지를 가지고 있지만 적의 피해를 일부 흡수할 수 있어, 최전방에서 선두로 싸우는데 최적화 되있습니다.
 
-items.weapon.melee.m1911.name=콜트 M1911
-items.weapon.melee.m1911.stats_desc=이 무기는 긴 공격범위를 가집니다.
-items.weapon.melee.m1911.desc="세상에, 이거 우리 할아버지가 쓰던 권총이잖아!" \n\n 자동권총의 전설이자 전세계적으로 사랑받는 오래된 권총 콜트 M1911입니다. 아주 강력하진 않지만, 긴 사거리가 단점을 보완해줍니다.
+items.weapon.melee.handaxe.name=콜트 M1911
+items.weapon.melee.handaxe.stats_desc=이 무기는 긴 공격범위를 가집니다.
+items.weapon.melee.handaxe.desc="세상에, 이거 우리 할아버지가 쓰던 권총이잖아!" \n\n 자동권총의 전설이자 전세계적으로 사랑받는 오래된 권총 콜트 M1911입니다. 아주 강력하진 않지만, 긴 사거리가 단점을 보완해줍니다.
 
 items.weapon.melee.knuckles.name=베레타 M9
 items.weapon.melee.knuckles.stats_desc=이 권총은 매우 빠르게 공격할 수 있습니다.
 items.weapon.melee.knuckles.desc=엠구나노! 이탈리아에서 만든 과거 네이비 씰의 제식권총으로, 다른 권총보다 조금 사격속도가 빠릅니다. 
 
-items.weapon.melee.win97.name=윈체스터 M1897
-items.weapon.melee.win97.desc="지휘관님, 저는 M1897이라고 해요. 전투든 청소든 뭐든 전부 노력할게요!!"\n\n일명 트렌치 건, 미국의 펌프액션 산탄총입니다. 안정적인 데미지를 가지고있지만, 별다른 특징은 없습니다.
+items.weapon.melee.longsword.name=윈체스터 M1897
+items.weapon.melee.longsword.desc="지휘관님, 저는 M1897이라고 해요. 전투든 청소든 뭐든 전부 노력할게요!!"\n\n일명 트렌치 건, 미국의 펌프액션 산탄총입니다. 안정적인 데미지를 가지고있지만, 별다른 특징은 없습니다.
 
-items.weapon.melee.kar98.name=Kar98k
-items.weapon.melee.kar98.stats_desc=이 무기는 멀리 떨어진 적을 공격할수있으며, 다른 무기보다 빠릅니다.
-items.weapon.melee.kar98.desc="마우저 카라비너 98 Kurz가 당신을 위해 있는 힘을 다하겠습니다. 당신에게 방해되는 것은 한 번에 처리해버릴게요."\n\n Gew98을 단축화시킨 독일 국방군의 볼트액션 소총입니다. 오랜 시간이 흘러도 많은 사람에게 사랑받는 소총 중 하나로, 긴 사거리와 빠른 공격속도를 자랑합니다.\n\n 소문에 의하면 이 소총을 숭배하는 집단이 있다고 합니다. 아 정말 무섭다
+items.weapon.melee.mace.name=Kar98k
+items.weapon.melee.mace.stats_desc=이 무기는 멀리 떨어진 적을 공격할수있으며, 다른 무기보다 빠릅니다.
+items.weapon.melee.mace.desc="마우저 카라비너 98 Kurz가 당신을 위해 있는 힘을 다하겠습니다. 당신에게 방해되는 것은 한 번에 처리해버릴게요."\n\n Gew98을 단축화시킨 독일 국방군의 볼트액션 소총입니다. 오랜 시간이 흘러도 많은 사람에게 사랑받는 소총 중 하나로, 긴 사거리와 빠른 공격속도를 자랑합니다.\n\n 소문에 의하면 이 소총을 숭배하는 집단이 있다고 합니다. 아 정말 무섭다
 
 items.weapon.melee.g36.name=H&K G36
 items.weapon.melee.g36.stats_desc=이 무기는 강화 효율이 높고 조금 빠른 공격속도를 가집니다.
@@ -965,56 +969,56 @@ items.weapon.melee.dp.name=DP-28
 items.weapon.melee.dp.stats_desc=이 무기는 다른 무기보다 압도적으로 빠릅니다.
 items.weapon.melee.dp.desc="LMG MOUNTED AND LOADED! Весомый аргумент готов." \n\n7.62x54mmR 47발들이 원반형 탄창을 사용하는 데그챠료프 보병기관총입니다. 머리가 나쁜 인간이라도 쉽게 사용할 수 있을만큼 단순하며, 가볍고 매우 높은 신뢰도와 내구성을 자랑합니다. 탄창만 빼고요! 
 
-items.weapon.melee.g11.name=H&K G11
-items.weapon.melee.g11.ac_imbue=장전한다
-items.weapon.melee.g11.ac_zap=발사한다
-items.weapon.melee.g11.prompt=장전할 탄환을 선택하세요
-items.weapon.melee.g11.imbue=당신은 당신의 탄창에 %s을 장전했다.
-items.weapon.melee.g11.conflict=상반되는 총탄이 탄창의 차탄을 없애 버렸다.
-items.weapon.melee.g11.id_first=먼저 탄환을 감정해야 합니다.
-items.weapon.melee.g11.cursed=감염된 탄환을 사용할 수 없습니다.
-items.weapon.melee.g11.warning=정말로 이 탄환을 탄창에 장전하시겠습니까? 현재 탄창에 장전된 모든 탄환이 사라집니다.\n\n장전될 탄환이 장전된 탄환보다 강화 수치가 높다면, 탄환의 강화 수치에 기관단총의 강화 수치를 1만큼 가져옵니다.\n\n이 장전으로 +%d 강화된 탄창을 얻게 됩니다.
-items.weapon.melee.g11.yes=네, 그렇게 하겠습니다.
-items.weapon.melee.g11.no=아니오,  생각을 바꾸었습니다.
-items.weapon.melee.g11.desc=G11이 항상 들고다니는 돌격소총입니다. 평소엔 배게로 사용하는듯 하며 핸드가드 쪽엔 침자국이 있습니다. G11은 다양한 탄환을 장전할수있지만, 탄환을 따로 직접 구해서 장전해야합니다.
-items.weapon.melee.g11.no_wand=이 돌격소총에는 현재 탄환이 장전되있지 있지 않습니다. _다른 탄환을 장전_ 해야 발사할수있습니다.
-items.weapon.melee.g11.has_wand=이 돌격소총에는 현재 _%s가_ 장전됬습니다.
+items.weapon.melee.magesstaff.name=H&K G11
+items.weapon.melee.magesstaff.ac_imbue=장전한다
+items.weapon.melee.magesstaff.ac_zap=발사한다
+items.weapon.melee.magesstaff.prompt=장전할 탄환을 선택하세요
+items.weapon.melee.magesstaff.imbue=당신은 당신의 탄창에 %s을 장전했다.
+items.weapon.melee.magesstaff.conflict=상반되는 총탄이 탄창의 차탄을 없애 버렸다.
+items.weapon.melee.magesstaff.id_first=먼저 탄환을 감정해야 합니다.
+items.weapon.melee.magesstaff.cursed=감염된 탄환을 사용할 수 없습니다.
+items.weapon.melee.magesstaff.warning=정말로 이 탄환을 탄창에 장전하시겠습니까? 현재 탄창에 장전된 모든 탄환이 사라집니다.\n\n장전될 탄환이 장전된 탄환보다 강화 수치가 높다면, 탄환의 강화 수치에 기관단총의 강화 수치를 1만큼 가져옵니다.\n\n이 장전으로 +%d 강화된 탄창을 얻게 됩니다.
+items.weapon.melee.magesstaff.yes=네, 그렇게 하겠습니다.
+items.weapon.melee.magesstaff.no=아니오,  생각을 바꾸었습니다.
+items.weapon.melee.magesstaff.desc=G11이 항상 들고다니는 돌격소총입니다. 평소엔 배게로 사용하는듯 하며 핸드가드 쪽엔 침자국이 있습니다. G11은 다양한 탄환을 장전할수있지만, 탄환을 따로 직접 구해서 장전해야합니다.
+items.weapon.melee.magesstaff.no_wand=이 돌격소총에는 현재 탄환이 장전되있지 있지 않습니다. _다른 탄환을 장전_ 해야 발사할수있습니다.
+items.weapon.melee.magesstaff.has_wand=이 돌격소총에는 현재 _%s가_ 장전됬습니다.
 
 items.weapon.melee.meleeweapon.stats_known=이 _%1$d단계_ 무기는 _%2$d-%3$d의 피해_ 를 입히며 _힘이 %4$d이상_ 이어야 제대로 다룰 수 있습니다.
 items.weapon.melee.meleeweapon.stats_unknown=보통 이 _%1$d단계_ 무기는 _%2$d-%3$d의 피해_ 를 입히며 _힘이 %4$d이상_ 이어야 제대로 다룰 수 있습니다.
 items.weapon.melee.meleeweapon.probably_too_heavy=아마도 이 무기는 당신에게 너무 무거울 것입니다.
 items.weapon.melee.meleeweapon.stats_desc=
 
-items.weapon.melee.m16.name=M16A1
-items.weapon.melee.m16.stats_desc=이 무기는 멀리 떨어진 적을 공격할 수 있으며, 조금 느리고 기습공격을 할 수 없지만 적당한 피해를 막을 수 있습니다. 강화할수록 막는 피해가 늘어납니다.
-items.weapon.melee.m16.desc="좋았어! 빨리 임무 완수하고 한잔 마시러 가자고!" \n\nM14를 대체하기 위해 만들어진 미 육군 과거 제식소총이자 한국 예비군의 소총입니다. 튼튼한 동시에 빠른 탄속으로 조금 멀리 떨어진 적을 공격할 수 있습니다.
+items.weapon.melee.shortsword.name=M16A1
+items.weapon.melee.shortsword.stats_desc=이 무기는 멀리 떨어진 적을 공격할 수 있으며, 조금 느리고 기습공격을 할 수 없지만 적당한 피해를 막을 수 있습니다. 강화할수록 막는 피해가 늘어납니다.
+items.weapon.melee.shortsword.desc="좋았어! 빨리 임무 완수하고 한잔 마시러 가자고!" \n\nM14를 대체하기 위해 만들어진 미 육군 과거 제식소총이자 한국 예비군의 소총입니다. 튼튼한 동시에 빠른 탄속으로 조금 멀리 떨어진 적을 공격할 수 있습니다.
 
-items.weapon.melee.m1a1.name=톰슨 M1A1
-items.weapon.melee.m1a1.stats_desc=이 무기는 피해의 일부를 막을 수 있습니다.
-items.weapon.melee.m1a1.desc="보스, 이제야 돌아온 건가."\n\n 톰슨은 126년전 2차 세계대전 당시 미군의 기관단총이였습니다. 비싸고, 기관총과 맞먹는 무게가 모든걸 깎아먹었지만요.\n\n 누군가의 수집품으로, 상당한 마개조를 거쳐 그럭저럭 실전에서 쓸만한 정도가 됬습니다.
+items.weapon.melee.quarterstaff.name=톰슨 M1A1
+items.weapon.melee.quarterstaff.stats_desc=이 무기는 피해의 일부를 막을 수 있습니다.
+items.weapon.melee.quarterstaff.desc="보스, 이제야 돌아온 건가."\n\n 톰슨은 126년전 2차 세계대전 당시 미군의 기관단총이였습니다. 비싸고, 기관총과 맞먹는 무게가 모든걸 깎아먹었지만요.\n\n 누군가의 수집품으로, 상당한 마개조를 거쳐 그럭저럭 실전에서 쓸만한 정도가 됬습니다.
 
-items.weapon.melee.mos.name=모스버그의 방탄판
-items.weapon.melee.mos.stats_desc=이 무기는 상당한 피해를 막을 수 있습니다. 강화할수록 막는 피해가 늘어납니다.
-items.weapon.melee.mos.desc=모스버그 590의 방탄판입니다. 그 인형도 작전에 참가했던걸까요? 순수한 방어용이지만, 위기에 몰렸을 때에는 그럭저럭 괜찮은 무기도 됩니다.
+items.weapon.melee.roundshield.name=모스버그의 방탄판
+items.weapon.melee.roundshield.stats_desc=이 무기는 상당한 피해를 막을 수 있습니다. 강화할수록 막는 피해가 늘어납니다.
+items.weapon.melee.roundshield.desc=모스버그 590의 방탄판입니다. 그 인형도 작전에 참가했던걸까요? 순수한 방어용이지만, 위기에 몰렸을 때에는 그럭저럭 괜찮은 무기도 됩니다.
 
-items.weapon.melee.hk416.name=H&K HK416
-items.weapon.melee.hk416.stats_desc=이 무기는 강화의 효율이 더 높습니다.
-items.weapon.melee.hk416.desc="HK416. 제대로 기억해 주세요, 지휘관.."\n\nH&K사에서 만든 AR-15의 개량형으로, M4보다 더 작은 크기에 좀더 높은 신뢰성을 갖고있습니다.
+items.weapon.melee.runicblade.name=H&K HK416
+items.weapon.melee.runicblade.stats_desc=이 무기는 강화의 효율이 더 높습니다.
+items.weapon.melee.runicblade.desc="HK416. 제대로 기억해 주세요, 지휘관.."\n\nH&K사에서 만든 AR-15의 개량형으로, M4보다 더 작은 크기에 좀더 높은 신뢰성을 갖고있습니다.
 
-items.weapon.melee.kriss.name=크리스 벡터
-items.weapon.melee.kriss.stats_desc=이 기관단총은 매우 빠릅니다.\n이 기관단총은 피해의 일부를 막을 수 있습니다.
-items.weapon.melee.kriss.desc="안심해, 순식간에 죽여줄테니 어떤 아픔도 느끼지 못할거야."\n\n KRISS사에서 개발한 최신형 기관단총입니다. 이 기관단총의 사격속도는 매우 빠르며, 일부 피해를 막아낼수있습니다. 튼튼하거든요! 하지만 피해량은 많이 낮습니다.
+items.weapon.melee.sai.name=크리스 벡터
+items.weapon.melee.sai.stats_desc=이 기관단총은 매우 빠릅니다.\n이 기관단총은 피해의 일부를 막을 수 있습니다.
+items.weapon.melee.sai.desc="안심해, 순식간에 죽여줄테니 어떤 아픔도 느끼지 못할거야."\n\n KRISS사에서 개발한 최신형 기관단총입니다. 이 기관단총의 사격속도는 매우 빠르며, 일부 피해를 막아낼수있습니다. 튼튼하거든요! 하지만 피해량은 많이 낮습니다.
 
-items.weapon.melee.negev.name=IWI Negev
-items.weapon.melee.negev.stats_desc=이 무기는 다른 무기보다 압도적으로 빠릅니다.
-items.weapon.melee.negev.desc="Rush B, Cyka blyat! Why you buy NEGEV?!" \n\n 분대지원화기 갈릴 ARM을 대체하기 위해 만들어진 5.56mm 경기관총입니다. 매우 낮은 데미지를 가지지만, 5번의 빠른 공격은 낮은 데미지를 보충하기엔 충분합니다.
+items.weapon.melee.scimitar.name=IWI Negev
+items.weapon.melee.scimitar.stats_desc=이 무기는 다른 무기보다 압도적으로 빠릅니다.
+items.weapon.melee.scimitar.desc="Rush B, Cyka blyat! Why you buy NEGEV?!" \n\n 분대지원화기 갈릴 ARM을 대체하기 위해 만들어진 5.56mm 경기관총입니다. 매우 낮은 데미지를 가지지만, 5번의 빠른 공격은 낮은 데미지를 보충하기엔 충분합니다.
 
-items.weapon.melee.m1903.name=스프링필드 M1903
-items.weapon.melee.m1903.stats_desc=이 무기는 다른 무기들보다 심각하게 느립니다. 신중히 공격하십시오.\n문으로 가로막히지 않았다면, 거리에 상관없이 시야에 들어온 적을 공격할 수 있습니다.
-items.weapon.melee.m1903.desc="우리 전춘협은 당신을 필요로 합니다." \n\n저격용 망원 조준경이 달린 미국의 볼트액션 소총입니다. 아주 멀리 있는 적에게 큰 피해를 입힐 수 있지만, 다음 공격에 아주 긴 시간이 걸립니다.
+items.weapon.melee.spear.name=스프링필드 M1903
+items.weapon.melee.spear.stats_desc=이 무기는 다른 무기들보다 심각하게 느립니다. 신중히 공격하십시오.\n문으로 가로막히지 않았다면, 거리에 상관없이 시야에 들어온 적을 공격할 수 있습니다.
+items.weapon.melee.spear.desc="우리 전춘협은 당신을 필요로 합니다." \n\n저격용 망원 조준경이 달린 미국의 볼트액션 소총입니다. 아주 멀리 있는 적에게 큰 피해를 입힐 수 있지만, 다음 공격에 아주 긴 시간이 걸립니다.
 
-items.weapon.melee.ks23.name=KS-23
-items.weapon.melee.ks23.desc=ZSU-23-4 쉴카의 포신으로 만든 산탄총입니다. 강선이 새겨져있어 슬러그샷을 사용하기에 좋습니다만.. 23mm구경에 맞는 탄환이 12게이지밖에 없네요.
+items.weapon.melee.sword.name=KS-23
+items.weapon.melee.sword.desc=ZSU-23-4 쉴카의 포신으로 만든 산탄총입니다. 강선이 새겨져있어 슬러그샷을 사용하기에 좋습니다만.. 23mm구경에 맞는 탄환이 12게이지밖에 없네요.
 
 items.weapon.melee.awp.name=AWP L96
 items.weapon.melee.awp.stats_desc=이 무기는 다른 무기들보다 심각하게 느립니다. 신중히 공격하십시오.\n문으로 가로막히지 않았다면, 거리에 상관없이 시야에 들어온 적을 공격할 수 있습니다.
@@ -1028,58 +1032,58 @@ items.weapon.melee.mg42.name=H&K MG4
 items.weapon.melee.mg42.stats_desc=이 무기는 다른 무기보다 압도적으로 빠릅니다.
 items.weapon.melee.mg42.desc="준비만전이에요!" \n\n Heckler & Koch Maschinengewehr 4, FN사가 개발한 FN 미니미의 인기에 자극받은 H&K가 1999년에 개발을 시작해서 2001년에 마친 경기관총입니다. \n H&K 최초의 가스작동식 경기관총으로, 탄피 및 금속 링크 배출구 개량 및 새로운 안전장치 개발, 접이식 개머리판 도입 등 미니미의 단점을 개선했습니다.
 
-items.weapon.melee.sass.name=Super SASS
-items.weapon.melee.sass.stats_desc=이 무기는 멀리 떨어진 적을 공격할수있으며, 다른 무기보다 빠릅니다.
-items.weapon.melee.sass.desc="지휘관님, Super SASS 지금 막 도착했습니다! 아직 신입이라 부족한 게 많지만, 지도편달 잘 부탁드려요!"\n\nAR-10의 개량형인 민수용 저격소총입니다. 고속사격 반동제어를 위해 많은 힘을 필요로 하지만, 공격력은 다른 무기에 비해 조금 떨어집니다.
+items.weapon.melee.warhammer.name=Super SASS
+items.weapon.melee.warhammer.stats_desc=이 무기는 멀리 떨어진 적을 공격할수있으며, 다른 무기보다 빠릅니다.
+items.weapon.melee.warhammer.desc="지휘관님, Super SASS 지금 막 도착했습니다! 아직 신입이라 부족한 게 많지만, 지도편달 잘 부탁드려요!"\n\nAR-10의 개량형인 민수용 저격소총입니다. 고속사격 반동제어를 위해 많은 힘을 필요로 하지만, 공격력은 다른 무기에 비해 조금 떨어집니다.
 
-items.weapon.melee.wa.name=WA2000
-items.weapon.melee.wa.stats_desc=이 무기는 긴 공격범위를 가집니다.
-items.weapon.melee.wa.desc="너 말이야, 어디 갔던 거야? 그렇게나 내 얼굴이 보기 싫은 거야?"\n\n 독일의 발터사에서 개발한 경찰용 불펍 저격소총입니다. 소구경 고속탄을 사용해 굉장히 긴 사정거리를 갖게됬지만, 형편없는 피해량을 자랑합니다.
+items.weapon.melee.whip.name=WA2000
+items.weapon.melee.whip.stats_desc=이 무기는 긴 공격범위를 가집니다.
+items.weapon.melee.whip.desc="너 말이야, 어디 갔던 거야? 그렇게나 내 얼굴이 보기 싫은 거야?"\n\n 독일의 발터사에서 개발한 경찰용 불펍 저격소총입니다. 소구경 고속탄을 사용해 굉장히 긴 사정거리를 갖게됬지만, 형편없는 피해량을 자랑합니다.
 
 items.weapon.melee.wornshortsword.name=COP .357
 items.weapon.melee.wornshortsword.desc="나 이거 알아! 팀...뭐더라? 에서 나오는 총이야!" \n\n 쿼드베럴 데린저 권총입니다. 12게이지를 장전할수있게 개조하려 했지만 구경이 작은 관계로 12게이지 탄환을 4개로 나눈 3게이지로 줄어버렸습니다!
 
 
 ###missile weapons
-items.weapon.missiles.darts.blindingdart.name=.50 BMG(섬광)
-items.weapon.missiles.darts.blindingdart.desc=이 탄환의 탄두 부분은 실명초 추출물이 발려 있어 맞은 적을 잠시 동안 실명시킵니다. 하지만 적의 방향 감각을 상실시키지 않아서 여전히 당신이 있던 곳을 기억할 것입니다.
+items.weapon.missiles.darts.blindingdart.name=실명 다트
+items.weapon.missiles.darts.blindingdart.desc=이 다트의 끝부분은 실명초 추출물이 발려 있어 맞은 적을 잠시 동안 실명시킵니다. 하지만 적의 방향 감각을 상실시키지 않아서 여전히 당신이 있던 곳을 기억할 것입니다.
 
-items.weapon.missiles.darts.chillingdart.name=.50 BMG(빙결)
-items.weapon.missiles.darts.chillingdart.desc=이 탄환의 탄두 부분은 눈꽃송이 추출물이 발려 있어 맞은 적을 잠시 동안 냉동시킵니다.
+items.weapon.missiles.darts.chillingdart.name=냉동 다트
+items.weapon.missiles.darts.chillingdart.desc=이 다트의 끝부분은 눈꽃송이 추출물이 발려 있어 맞은 적을 잠시 동안 냉동시킵니다.
 
-items.weapon.missiles.darts.dart.name=.50 BMG
-items.weapon.missiles.darts.dart.desc=12.7mm구경의 중기관총 탄환입니다.
-items.weapon.missiles.darts.dart.durability=이 50구경 총탄은 부서지지 않으며, 씨앗과 조합해 특수한 효과를 가진 탄환을 만들 수 있지 한 번 맞춘 후에는 다시 특수 효과를 발동시킬 수 없습니다.
+items.weapon.missiles.darts.dart.name=다트
+items.weapon.missiles.darts.dart.desc=끝부분에 금속 가시가 달린 나무 막대로써 손목의 튕김으로 쉽게 날려보내  적들에게 꽂을 수 있도록 만들어졌습니다.
+items.weapon.missiles.darts.dart.durability=다트는 단순한 구조와 작은 크기로 인해 절대 부서지지 않습니다. 하지만 특수 효과를 가진 다트들은 한 번 맞춘 후에는 다시 특수 효과를 발동시킬 수 없습니다.
 
-items.weapon.missiles.darts.displacingdart.name=.50 BMG(위치변환)
-items.weapon.missiles.darts.displacingdart.desc=이 탄환의 탄두 부분은 미명초 추출물이 발려 있어 맞은 적을 짧은 거리로 순간이동시킵니다.
+items.weapon.missiles.darts.displacingdart.name=변위 다트
+items.weapon.missiles.darts.displacingdart.desc=이 다트의 끝부분은 미명초 추출물이 발려 있어 맞은 적을 짧은 거리로 순간이동시킵니다.
 
-items.weapon.missiles.darts.healingdart.name=.50 BMG(치유)
-items.weapon.missiles.darts.healingdart.desc=이 탄환의 탄두 부분은 태양초 추출물이 발려 있어 대상을 급속도로 치유합니다. 하지만 탄환 자체가 주는 피해는 사라지지 않습니다.
+items.weapon.missiles.darts.healingdart.name=치유 다트
+items.weapon.missiles.darts.healingdart.desc=이 다트의 끝부분은 태양초 추출물이 발려 있어 대상을 급속도로 치유합니다. 하지만 다트 자체가 주는 피해는 사라지지 않습니다.
 
-items.weapon.missiles.darts.holydart.name=.50 BMG(우버)
-items.weapon.missiles.darts.holydart.desc=이 탄환의 탄두 부분은 별꽃 추출물이 발려 있어 대상의 전투력을 대폭 증가시킵니다. 하지만 탄환 자체가 주는 피해는 사라지지 않습니다.
+items.weapon.missiles.darts.holydart.name=신성 다트
+items.weapon.missiles.darts.holydart.desc=이 다트의 끝부분은 별꽃 추출물이 발려 있어 대상의 전투력을 대폭 증가시킵니다. 하지만 다트 자체가 주는 피해는 사라지지 않습니다.
 
-items.weapon.missiles.darts.paralyticdart.name=.50 BMG(마비)
-items.weapon.missiles.darts.paralyticdart.desc=이 탄환의 탄두 부분은 뱀뿌리 추출물이 발려 있어 맞은 적을 잠시 동안 기절시킵니다.
+items.weapon.missiles.darts.paralyticdart.name=마비 다트
+items.weapon.missiles.darts.paralyticdart.desc=이 다트의 끝부분은 뱀뿌리 추출물이 발려 있어 맞은 적을 잠시 동안 기절시킵니다.
 
-items.weapon.missiles.darts.incendiarydart.name=.50 BMG(소이)
-items.weapon.missiles.darts.incendiarydart.desc=이 탄환의 탄두 부분은 화염초 추출물이 발려 있어 충격을 주면 밝은 빛으로 타오릅니다.
+items.weapon.missiles.darts.incendiarydart.name=인화성 다트
+items.weapon.missiles.darts.incendiarydart.desc=이 다트의 끝부분은 화염초 추출물이 발려 있어 충격을 주면 밝은 빛으로 타오릅니다.
 
-items.weapon.missiles.darts.poisondart.name=.50 BMG(맹독)
-items.weapon.missiles.darts.poisondart.desc=이 탄환의 탄두 부분은 눈꽃송이 추출물이 발려 있어 맞은 적을 중독시킵니다.
+items.weapon.missiles.darts.poisondart.name=독 다트
+items.weapon.missiles.darts.poisondart.desc=이 다트의 끝부분은 눈꽃송이 추출물이 발려 있어 맞은 적을 중독시킵니다.
 
-items.weapon.missiles.darts.rotdart.name=.50 BMG(붕괴)
-items.weapon.missiles.darts.rotdart.desc=이 사악한 탄환의 끝부분은 썩은열매 추출물이 발려 있어 닿은 대상을 산성으로 녹여 버립니다. 강력한 적들은 대부분의 효과를 무시하지만, 일반적인 적들을 손쉽게 쓰러트릴 정도의 효과를 가지고 있습니다.
+items.weapon.missiles.darts.rotdart.name=부패 다트
+items.weapon.missiles.darts.rotdart.desc=이 사악한 다트의 끝부분은 썩은열매 추출물이 발려 있어 닿은 대상을 산성으로 녹여 버립니다. 강력한 적들은 대부분의 효과를 무시하지만, 일반적인 적들을 손쉽게 쓰러트릴 정도의 효과를 가지고 있습니다.
 
-items.weapon.missiles.darts.shockingdart.name=.50 BMG(감전)
-items.weapon.missiles.darts.shockingdart.desc=이 탄환의 탄두 부분은 폭풍덩굴 추출물이 발려 있어 맞은 적에게 전기 충격을 발생시킵니다.
+items.weapon.missiles.darts.shockingdart.name=전격 다트
+items.weapon.missiles.darts.shockingdart.desc=이 다트의 끝부분은 폭풍덩굴 추출물이 발려 있어 맞은 적에게 전기 충격을 발생시킵니다.
 
-items.weapon.missiles.darts.sleepdart.name=.50 BMG(마취)
-items.weapon.missiles.darts.sleepdart.desc=이 탄환의 탄두 부분은 꿈풀 추출물이 달려 있어 맞은 대상을 얕은 잠에 빠지게 합니다.
+items.weapon.missiles.darts.sleepdart.name=수면 다트
+items.weapon.missiles.darts.sleepdart.desc=이 다트의 끝부분은 꿈풀 추출물이 달려 있어 맞은 대상을 얕은 잠에 빠지게 합니다.
 
-items.weapon.missiles.dart.name=.50 BMG
-items.weapon.missiles.dart.desc=12.7mm구경의 중기관총 탄환입니다. 뇌관을 직접 손으로 격발해 사격할 수 있지만, 위력이 크게 떨어집니다. 
+items.weapon.missiles.dart.name=유탄
+items.weapon.missiles.dart.desc=이 간단한 금속 덩어리는 적에게 날려 피해를 줄 수 있도록 만들어졌습니다.
 
 items.weapon.missiles.bolas.name=올가미
 items.weapon.missiles.bolas.desc=이 특이한 투척 무기는 비교적 약한 피해를 입히지만 대상을 감속시키는 데는 제격입니다.
@@ -1092,7 +1096,10 @@ items.weapon.missiles.curaredart.name=EMP
 items.weapon.missiles.curaredart.desc=이 초록빛 탄두는 맞은 적에게 큰 피해를 주지는 않지만 대상을 마비시켜 일정 시간동안 움직일 수 없게 만들어 버립니다.
 
 items.weapon.missiles.fishingspear.name=작살
-items.weapon.missiles.fishingspear.desc=수중 정찰기들을 잡기 위한 작은 투창입니다. 무기로도 그럭저럭 사용할 수 있습니다.
+items.weapon.missiles.fishingspear.desc=물고기들을 잡기 위한 작은 투창입니다. 무기로도 그럭저럭 사용할 수 있습니다.
+
+items.weapon.missiles.incendiarydart.name=소이탄
+items.weapon.missiles.incendiarydart.desc=이 유탄의 탄두는 여전히 적들에게 날릴 수 있게 만들어졌으며, 몸체에 담긴 불안정한 화합물은 밝은 불빛으로 폭발한다.
 
 items.weapon.missiles.javelin.name=투척용 죽창
 items.weapon.missiles.javelin.desc=날아가면서 무게가 실리는 이 기다란 대나무 창은 가벼워보이지만 그렇지 않습니다. \n\n 핫하 죽어라!
@@ -1108,14 +1115,14 @@ items.weapon.missiles.shuriken.desc=회전하며 날아가는 이 유탄은 적�
 items.weapon.missiles.throwinghammer.name=둠해머
 items.weapon.missiles.throwinghammer.desc=이 묵직한 망치는 적에게 던지기 위해 만들어졌습니다. 주는 피해는 비교적 부족하지만, 튼튼하고 매끈한 무쇠로 만들어져 내구성이 높고 적에게 달라붙지 않습니다.
 
-items.weapon.missiles.throwingknife.name=안데르센의 총검
-items.weapon.missiles.throwingknife.desc="Speak with DEAD, Sector 13th Iscariot"\n\n 이 기다란 총검은 바람을 가르며 목표의 목을 가르기에도 적합합니다. 무방비 상태의 적들에게 가장 효과적입니다.
+items.weapon.missiles.throwingknife.name=투척용 칼
+items.weapon.missiles.throwingknife.desc=이 가벼운 칼들은 바람을 가르며 목표의 목을 가르기에도 적합합니다. 무방비 상태의 적들에게 가장 효과적입니다. 
 
 items.weapon.missiles.throwingspear.name=투척용 쿠크리
 items.weapon.missiles.throwingspear.desc=무거운 날을 가진 네팔 구르카족의 다목적 칼입니다. 나무를 베거나, 고기를 자르거나, 아니면 던져서 적의 머리를 쪼개는데도 사용할 수 있습니다. \n\n 무방비 상태의 적들에게 가장 효과적입니다
 
-items.weapon.missiles.throwingstone.name=M9 총검
-items.weapon.missiles.throwingstone.desc=이 총검은 무겁고 날카롭지만 투척용으로 쓸만한 무기는 아닙니다. 던질게 없으면 이런거라도 던져야하지 않을까요?
+items.weapon.missiles.throwingstone.name=투척용 돌
+items.weapon.missiles.throwingstone.desc=이 돌멩이들은 일반적인 돌보다 더 강하게 던질 수 있도록 가공되었습니다. 잘 만들어졌긴 하지만 여전히 믿음직한 무기는 아닙니다.
 
 items.weapon.missiles.tomahawk.name=투척용 도끼
 items.weapon.missiles.tomahawk.desc=이 투척 도끼는 톱니 모양 날을 하고 있어 던지기에 꽤나 까다롭습니다. 하지만 제대로 맞춘다면 대상을 출혈시킬 수 있을 것입니다.
