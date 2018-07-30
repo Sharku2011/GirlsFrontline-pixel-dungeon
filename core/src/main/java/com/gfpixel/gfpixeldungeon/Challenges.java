@@ -31,6 +31,7 @@ import com.gfpixel.gfpixeldungeon.items.food.Food;
 import com.gfpixel.gfpixeldungeon.items.food.Maccol;
 import com.gfpixel.gfpixeldungeon.items.food.SmallRation;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
+import com.gfpixel.gfpixeldungeon.items.potions.PotionOfStrength;
 
 public class Challenges {
 
@@ -42,7 +43,7 @@ public class Challenges {
 	public static final int SWARM_INTELLIGENCE	= 16;
 	public static final int DARKNESS			= 32;
 	public static final int NO_SCROLLS		    = 64;
-	public static final int DUMMY_1				= 128;
+	public static final int NO_STRENGTH				= 128;
 	public static final int DUMMY_2				= 256;
 	public static final int DUMMY_3				= 512;
 
@@ -56,13 +57,13 @@ public class Challenges {
 			"swarm_intelligence",
 			"darkness",
 			"no_scrolls",
-			"dummy1",
+			"no_strength",
 			"dummy2",
 			"dummy3"
 	};
 
 	public static final int[] MASKS = {
-			NO_FOOD, NO_ARMOR, NO_HEALING, NO_HERBALISM, SWARM_INTELLIGENCE, DARKNESS, NO_SCROLLS, DUMMY_1, DUMMY_2, DUMMY_3
+			NO_FOOD, NO_ARMOR, NO_HEALING, NO_HERBALISM, SWARM_INTELLIGENCE, DARKNESS, NO_SCROLLS, NO_STRENGTH, DUMMY_2, DUMMY_3
 	};
 
 	public static boolean isItemBlocked( Item item ){
@@ -97,6 +98,14 @@ public class Challenges {
 			}
 		}
 
+		if (Dungeon.isChallenged(NO_STRENGTH)){
+			if (item instanceof PotionOfStrength){
+				return true;
+			} else if (item instanceof Blandfruit
+					&& ((Blandfruit) item).potionAttrib instanceof PotionOfStrength){
+				return true;
+			}
+		}
 		return false;
 
 	}
