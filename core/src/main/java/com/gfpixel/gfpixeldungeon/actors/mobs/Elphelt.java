@@ -360,14 +360,14 @@ public class Elphelt extends Mob {
 
     }
 
+    private List<Integer> bridlePath;
 
 	public void warnExpress() {
 
-        List<Integer> pathTackle;
         if ( enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0 ) {
             traceRush = new Ballistica( pos, enemy.pos, Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
             if (traceRush.dist > 2) {
-                pathTackle = traceRush.subPath(1, traceRush.dist);
+                bridlePath = traceRush.subPath(1, traceRush.dist);
             } else {
                 // 캐릭터와 엘펠트가 붙어있는 경우
                 // 일단 팅겨내기 -> 아니면 벽까지 돌진하게 만들고 그냥 죽여버리기?
@@ -380,11 +380,10 @@ public class Elphelt extends Mob {
         } else {
 	        traceRush = new Ballistica( pos, Dungeon.level.randomDestination(), Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
 
-	        pathTackle = traceRush.subPath(1, traceRush.dist);
+            bridlePath = traceRush.subPath(1, traceRush.dist);
         }
 
-
-	    for (int c : pathTackle) {
+	    for (int c : bridlePath) {
             if ( Blob.volumeAt( c, GenoiseWarn.class ) == 0 ) {
                 if (Blob.volumeAt(c, GenoiseWarn.class) == 0) {
                     GameScene.add(Blob.seed(c, 2, GenoiseWarn.class));
@@ -394,20 +393,73 @@ public class Elphelt extends Mob {
         }
         dstRush = traceRush.collisionPos;
         next();
-
-        return;
     }
 
-    public boolean bridleExpress() {
+    private boolean bridleExpress() {
 
 	    if (!onRush || dstRush < 0) {
 	        next();
             return false;
         }
 
+
+
         boolean bCrash = false;
 
+	    int procPos = pos;
+
+	    for (int c : bridlePath) {
+	        final Char ch = findChar(c);
+
+	        if (ch != null) {
+	            final Ballistica traceChar = new Ballistica( c, traceRush.path.get(traceRush.dist+1), Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
+
+	            final int newPos = traceChar.path.get(Math.min(3, traceChar.dist));
+
+	            bCrash = (traceChar.dist > 2);
+
+	            Actor.addDelayed( new Pushing(ch, ch.pos, newPos, new Callback() {
+                    @Override
+                    public void call() {
+                        ch.pos = newPos;
+                        if (traceChar.collisionPos == newPos) {
+                            Paralysis.prolong(ch, Paralysis.class, 2f);
+                        }
+
+                        Dungeon.level.press(ch.pos, ch, true);
+                        if (ch == Dungeon.hero) {
+                            Dungeon.observe();
+                        }
+                    }
+                }), 0f );
+	            break;
+            }
+
+            if (!bCrash) {
+                procPos = c;
+            }
+        }
+
+        final int finalPos = procPos;
+
+        Actor.addDelayed( new Pushing(Elphelt.this, pos, finalPos, new Callback() {
+            @Override
+            public void call() {
+                pos = finalPos;
+                canRush = false;
+                onRush = false;
+                timerRush = 0;
+                traceRush = null;
+                dstRush = -1;
+                bridlePath.clear();
+                yell("브라이들 익스프레스!");
+                next();
+            }
+        }), 0f);
+
+/*
 	    if (enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0) {
+	        //
 	        final Ballistica traceChar = new Ballistica( pos, dstRush, Ballistica.STOP_TARGET );
 
             if ( traceChar.collisionPos > 0) {
@@ -476,8 +528,8 @@ public class Elphelt extends Mob {
 
             return true;
         }
-
-        return false;
+*/
+        return true;
     }
 
 
