@@ -184,27 +184,27 @@ windows.wnddialog.prison44 =HK416
 windows.wnddialog.prison55 =UMP9
 windows.wnddialog.prison66 =UMP45
 
-windows.wnddialog.huntingrabbit0 = ....이상하다..
-windows.wnddialog.huntingrabbit1 = 9, 무슨 문제 있어?
-windows.wnddialog.huntingrabbit2 = 지휘부랑 통신 연결이 불안정해. 아무래도 근처에 뭔가 방해전파가 2개 있는거같은데, 이 전파는 철혈이 사용하던 전파랑은 조금 달라.
-windows.wnddialog.huntingrabbit3 = 뭔가... 뭔가 엄청 귀찮은 일이 시작될 것 같은 예감이 드는데...
-windows.wnddialog.huntingrabbit4 = 잠시만 전파 영역 밖으로 다녀올게. 지휘부의 그 친구라면 뭔가 알지도 몰라.
-windows.wnddialog.huntingrabbit5 = 아키텍트 그 녀석이 제대로 말해줄지 의문인데. 
-windows.wnddialog.huntingrabbit6 = 다녀왔어! 아키텍트가 이건 철혈의 전파가 아니래. 헬리안 씨도 처음 보는거라고 하고... \n\n아, 그리고 우리가 한번 가서 알아보래. 45 언니의 전자전 능력이면 이 전파를 분석하는데 도움이 될거라고 했어.
-windows.wnddialog.huntingrabbit7 = 추가 보수 얘기는 꺼냈겠지?
-windows.wnddialog.huntingrabbit8 = 물론이지, 우리 원래 임무 보수의 30%를 추가로 주겠대. 정찰에 가까운 임무니 그 정도면 충분할거같다고.
-windows.wnddialog.huntingrabbit9 = 나쁘지 않네~ 자, 가자!
+windows.wnddialog.rabbit0 = ....이상하다..
+windows.wnddialog.rabbit1 = 9, 무슨 문제 있어?
+windows.wnddialog.rabbit2 = 지휘부랑 통신 연결이 불안정해. 아무래도 근처에 뭔가 방해전파가 2개 있는거같은데, 이 전파는 철혈이 사용하던 전파랑은 조금 달라.
+windows.wnddialog.rabbit3 = 뭔가... 뭔가 엄청 귀찮은 일이 시작될 것 같은 예감이 드는데...
+windows.wnddialog.rabbit4 = 잠시만 전파 영역 밖으로 다녀올게. 지휘부의 그 친구라면 뭔가 알지도 몰라.
+windows.wnddialog.rabbit5 = 아키텍트 그 녀석이 제대로 말해줄지 의문인데. 
+windows.wnddialog.rabbit6 = 다녀왔어! 아키텍트가 이건 철혈의 전파가 아니래. 헬리안 씨도 처음 보는거라고 하고... \n\n아, 그리고 우리가 한번 가서 알아보래. 45 언니의 전자전 능력이면 이 전파를 분석하는데 도움이 될거라고 했어.
+windows.wnddialog.rabbit7 = 추가 보수 얘기는 꺼냈겠지?
+windows.wnddialog.rabbit8 = 물론이지, 우리 원래 임무 보수의 30%를 추가로 주겠대. 정찰에 가까운 임무니 그 정도면 충분할거같다고.
+windows.wnddialog.rabbit9 = 나쁘지 않네~ 자, 가자!
 
-windows.wnddialog.huntingrabbit00 =UMP9
-windows.wnddialog.huntingrabbit11 =UMP45
-windows.wnddialog.huntingrabbit22 =UMP9
-windows.wnddialog.huntingrabbit33 =G11
-windows.wnddialog.huntingrabbit44 =UMP9
-windows.wnddialog.huntingrabbit55 =HK416
-windows.wnddialog.huntingrabbit66 =UMP9
-windows.wnddialog.huntingrabbit77 =UMP45
-windows.wnddialog.huntingrabbit88 =UMP9
-windows.wnddialog.huntingrabbit99 =UMP45
+windows.wnddialog.rabbit00 =UMP9
+windows.wnddialog.rabbit11 =UMP45
+windows.wnddialog.rabbit22 =UMP9
+windows.wnddialog.rabbit33 =G11
+windows.wnddialog.rabbit44 =UMP9
+windows.wnddialog.rabbit55 =HK416
+windows.wnddialog.rabbit66 =UMP9
+windows.wnddialog.rabbit77 =UMP45
+windows.wnddialog.rabbit88 =UMP9
+windows.wnddialog.rabbit99 =UMP45
 
 windows.wnddialog.caves0 = ... 저기 45.
 windows.wnddialog.caves1 = 왜?
@@ -380,6 +380,8 @@ windows.wnddialog.m16a1.berry44=UMP45
 windows.wnddialog.m16a1.inprogress00=M16A1
 windows.wnddialog.m16a1.complete00=M16A1
 
+windows.wnddialog.uroboros0=감히 구식 인형 따위가, %s! 덤벼보아라, 단숨에 끝내주마!
+
 windows.wnddialog.noelquest.branch1.0=....그래, 내가 "가마" 안으로 떨어지고 난 후에...
 windows.wnddialog.noelquest.branch1.1=언니, 아까 말한 전파중 하나는 이 애가 내고있던건가봐. 저기, 넌 누구니?
 windows.wnddialog.noelquest.branch1.2=네.. 네? 저 말인가요? 제 이름은 노엘 버밀리온이라고 합니다! 그런데 여러분은..? 그리고, 여긴 어딘가요? 혹시... 지금이 몇년도인지 가르쳐줄수있나요?
@@ -497,3 +499,6 @@ windows.wnddialog.p7questgolems_proc00 = P7
 windows.wnddialog.p7questmonks_proc00 = P7
 
 windows.wnddialog.p7questcompleted00 = P7
+
+
+windows.wnddialog.destroyer0=이 그리폰 꼬맹이들이! 좋아, 이제 더이상 드리머에게 놀림받지 않도록, 네 녀석들을 이곳에 묻어버리겠어!
