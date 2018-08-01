@@ -35,6 +35,7 @@ import com.watabou.utils.Callback;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -42,7 +43,7 @@ import java.util.List;
 public class Elphelt extends Mob {
 
     private static final float TIME_TO_EXPLODE = 2f;
-    private static final int POWER_OF_BLAST = 6;
+    private static final int POWER_OF_BLAST = 4;
     private static final int REGEN_OF_GENOISE = 2;
     private static final int RANGE_MAGNUM = 2;
 
@@ -212,14 +213,19 @@ public class Elphelt extends Mob {
 
                 spend( attackDelay() );
 
+                if (enemy == null) {
+                    onGenoise = false;
+                    return true;
+                }
+
                 traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.STOP_TARGET | Ballistica.STOP_TERRAIN);
 
                 if ( onGenoise && curGenoiseStack > 0) {
 
-                    // 엘펠트가 플레이어의 시야 안에 있으면 애니메이션을 재생. true/false 값 리턴은 왜 저렇게 되는지 모르겠음
+                    // 엘펠트가 플레이어의 시야 안에 있으면 애니메이션을 재생. true/false 값 리턴은 투사체가 날아가는데 시간이 걸릴 시 애니메이션 보여주는용(false일 때)
                     if (Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[traceGenoise.collisionPos] ) {
                         sprite.zap( traceGenoise.collisionPos );
-                        return false;
+                        return true;
                     } else {
                         fireGenoise();
                         return true;
@@ -237,10 +243,11 @@ public class Elphelt extends Mob {
                         onRush = true;
                         spend( warnDelay() );
                         warnExpress();
-                        return false;
+                        return true;
                     }
                 } else {
-                    super.doAttack( enemy );
+                    // 매그넘 웨딩 필요
+                    //super.doAttack( enemy );
                 }
 
                 return true;
@@ -362,11 +369,11 @@ public class Elphelt extends Mob {
 
     private List<Integer> bridlePath;
 
-	public void warnExpress() {
+	private void warnExpress() {
 
         if ( enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0 ) {
             traceRush = new Ballistica( pos, enemy.pos, Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
-            if (traceRush.dist > 2) {
+            if (traceRush.dist > 1) {
                 bridlePath = traceRush.subPath(1, traceRush.dist);
             } else {
                 // 캐릭터와 엘펠트가 붙어있는 경우
@@ -402,7 +409,14 @@ public class Elphelt extends Mob {
             return false;
         }
 
-
+        if (traceRush == null) {
+            if ( enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0 ) {
+                traceRush = new Ballistica( pos, dstRush, Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
+            } else {
+                traceRush = new Ballistica( pos, Dungeon.level.randomDestination(), Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
+            }
+            bridlePath = traceRush.subPath(1, traceRush.dist);
+        }
 
         boolean bCrash = false;
 
@@ -413,15 +427,24 @@ public class Elphelt extends Mob {
 
 	        if (ch != null) {
 	            final Ballistica traceChar = new Ballistica( c, traceRush.path.get(traceRush.dist+1), Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
-
-	            final int newPos = traceChar.path.get(Math.min(3, traceChar.dist));
+                Char rebounce = findChar(traceChar.collisionPos);
+	            final int newPos = traceChar.path.get(
+	                    Math.min(
+	                            POWER_OF_BLAST,
+                        (rebounce != null) ? traceChar.dist : traceChar.dist - 1
+                        )
+                );
 
 	            bCrash = (traceChar.dist > 2);
 
+	            // 이동경로에서 부딫힌 적을 튕겨냄
 	            Actor.addDelayed( new Pushing(ch, ch.pos, newPos, new Callback() {
                     @Override
                     public void call() {
                         ch.pos = newPos;
+
+                        ch.damage( Random.NormalIntRange(12,24), Elphelt.this );
+
                         if (traceChar.collisionPos == newPos) {
                             Paralysis.prolong(ch, Paralysis.class, 2f);
                         }
@@ -441,7 +464,7 @@ public class Elphelt extends Mob {
         }
 
         final int finalPos = procPos;
-
+        // 엘펠트 돌진
         Actor.addDelayed( new Pushing(Elphelt.this, pos, finalPos, new Callback() {
             @Override
             public void call() {
@@ -453,83 +476,19 @@ public class Elphelt extends Mob {
                 dstRush = -1;
                 bridlePath.clear();
                 yell("브라이들 익스프레스!");
-                next();
             }
-        }), 0f);
+        }), -1f);
 
-/*
-	    if (enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0) {
-	        //
-	        final Ballistica traceChar = new Ballistica( pos, dstRush, Ballistica.STOP_TARGET );
-
-            if ( traceChar.collisionPos > 0) {
-                final List<Integer> tacklePath;
-
-                if ( findChar(traceChar.path.get(traceChar.dist)) != null && Dungeon.level.solid[traceChar.path.get(traceChar.dist+1)] ) {
-                    // 플레이어가 벽에 붙어있을 경우
-                    tacklePath = traceChar.subPath(1, traceChar.dist - 1);
-                } else {
-                    tacklePath = traceChar.subPath(1, traceChar.dist);
-                }
-
-                int prevPos = pos;
-
-                int collisionPos = pos;
-
-                for(final int c : tacklePath) {
-
-                    Char ch = findChar( c );
-
-                    if (ch != null && ch != Elphelt.this) {
-                        final Ballistica trajectory = new Ballistica(prevPos, c, Ballistica.STOP_TERRAIN);
-                        final int newPos = trajectory.path.get(Math.min(trajectory.dist, POWER_OF_BLAST / 2) + 1);
-                        bCrash = true;
-                        final Char chr = ch;
-
-                        Actor.addDelayed(new Pushing(chr, chr.pos, newPos, new Callback() {
-                            @Override
-                            public void call() {
-                                chr.pos = newPos;
-
-                                if (chr.pos == trajectory.collisionPos) {
-                                    Paralysis.prolong(chr, Paralysis.class, 2f);
-                                }
-
-                                Dungeon.level.press(chr.pos, chr, true);
-                                if (chr == Dungeon.hero) {
-                                    Dungeon.observe();
-                                }
-
-                                GLog.i("Power: " + String.valueOf(Math.min(trajectory.dist, POWER_OF_BLAST / 2)+1));
-                            }
-                        }), 0);
-
-
-                    }
-
-                    Actor.addDelayed(new Pushing(Elphelt.this, prevPos, c, new Callback() {
-                        @Override
-                        public void call() {
-                            pos = c;
-                        }
-                    }), 0);
-
-                    if (bCrash) { break; }
-                }
-
-                canRush = false;
-                onRush = false;
-                timerRush = 0;
-                traceRush = null;
-                dstRush = -1;
-                yell("브라이들 익스프레스!");
-                next();
-            }
-
-            return true;
-        }
-*/
         return true;
+    }
+
+    private void magnumWedding() {
+
+	    Ballistica trajectory = new Ballistica( pos, enemy.pos, Ballistica.PROJECTILE );
+
+
+
+
     }
 
 
@@ -577,6 +536,13 @@ public class Elphelt extends Mob {
     private static final String GENOISETIME     = "GenoiseTime";
     private static final String NUMGENOISE      = "numGenoise";
 
+    private static final String CANBRIDLE       = "canBridle";
+    private static final String ONBRIDLE        = "onBridle";
+    private static final String BRIDLETIME      = "BridleTime";
+    private static final String BRIDLEPATH      = "BridlePath";
+    private static final String BRIDLEDST       = "BridleDst";
+
+
     private int NumOfGenoise = 0;
 
     @Override
@@ -598,6 +564,18 @@ public class Elphelt extends Mob {
             bundle.put( GENOISEPOS + String.valueOf(i), g.getTarget() );
             bundle.put( GENOISETIME + String.valueOf(i), g.cooldown() );
         }
+
+        bundle.put( BRIDLETIME, timerRush );
+        bundle.put( CANBRIDLE, canRush );
+        bundle.put( ONBRIDLE, onRush );
+        if (onRush) {
+            bundle.put( BRIDLEDST, dstRush );
+            int[] tmp = new int[bridlePath.size()];
+            for (int i = 0; i < bridlePath.size(); ++i) {
+                tmp[i] = bridlePath.get(i);
+            }
+            bundle.put( BRIDLEPATH, tmp );
+        }
     }
 
     @Override
@@ -615,6 +593,18 @@ public class Elphelt extends Mob {
             Genoise g = new Genoise( bundle.getInt(GENOISEPOS + String.valueOf(i) ) );
             addDelayed( g , bundle.getFloat( GENOISETIME + String.valueOf(i) ) );
             Genoises.add(g);
+        }
+
+        timerRush = bundle.getInt( BRIDLETIME );
+        canRush = bundle.getBoolean( CANBRIDLE );
+        onRush = bundle.getBoolean( ONBRIDLE );
+        if (onRush) {
+            dstRush = bundle.getInt( BRIDLEDST );
+            int[] tmp = bundle.getIntArray( BRIDLEPATH );
+            bridlePath = new ArrayList<Integer>();
+            for (int c : tmp) {
+                bridlePath.add(c);
+            }
         }
     }
 
