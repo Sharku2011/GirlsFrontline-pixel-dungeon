@@ -353,7 +353,7 @@ public abstract class Char extends Actor {
 			timeScale *= buff( Chill.class ).speedFactor();
 		}
 		if (buff( Speed.class ) != null) {
-			timeScale *= 2.0f;
+			timeScale *= ( 1.0f + Speed.getMultiplier() );
 		}
 		
 		super.spend( time / timeScale );

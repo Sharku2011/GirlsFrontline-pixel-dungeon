@@ -3,19 +3,28 @@ package com.gfpixel.gfpixeldungeon.sprites;
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.actors.mobs.Hydra;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Elphelt;
 import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.noosa.particles.Emitter;
+import com.watabou.noosa.particles.PixelParticle;
+import com.watabou.utils.PointF;
+import com.watabou.utils.Random;
 
 public class ElpheltSprite extends MobSprite {
 
     private int zapPos;
 
     private Animation charging;
+    private Animation genoise;
+    private Animation blast;
+
     private Emitter chargeParticles;
+
+    private Animation magnum;
+
 
     public ElpheltSprite() {
         super();
@@ -35,13 +44,20 @@ public class ElpheltSprite extends MobSprite {
         chargeParticles.pour(MagicMissile.MagicParticle.ATTRACTING, 0.05f);
         chargeParticles.on = false;
 
+        blast = new Animation( 15, false );
+        blast.frames( frames, 7 );
+
         run = new Animation( 15, true );
         run.frames( frames, 8, 9, 10, 11, 12 );
 
         attack = new Animation( 15, false );
         attack.frames( frames, 13, 14, 15 );
+
+        genoise = new Animation( 30, false );
+        genoise.frames( frames, 16, 17, 18, 19, 18, 17, 16);
+
         zap = new Animation( 15, false );
-        zap.frames( frames, 17, 17, 19);
+        zap.frames( frames, 13, 14, 15);
 
         die = new Animation( 15, false );
         die.frames( frames, 19, 20, 21, 22, 23, 24 );
@@ -53,7 +69,7 @@ public class ElpheltSprite extends MobSprite {
     @Override
     public void link(Char ch) {
         super.link(ch);
-        if (((Hydra)ch).beamCharged) play(charging);
+        if (((Elphelt)ch).onGenoise || ((Elphelt)ch).onRush) play(charging);
     }
 
     @Override
@@ -66,6 +82,15 @@ public class ElpheltSprite extends MobSprite {
     public void charge( int pos ){
         turnTo(ch.pos, pos);
         play(charging);
+    }
+
+    public void blast() {
+        play( blast );
+    }
+
+    public void genoise( int pos ) {
+        turnTo( ch.pos, pos );
+        play( genoise );
     }
 
     @Override
@@ -91,11 +116,54 @@ public class ElpheltSprite extends MobSprite {
             } else {
                 parent.add(new Beam.DeathRay(center(), DungeonTilemap.raisedTileCenterToWorld(zapPos)));
             }
-            ((Hydra)ch).deathGaze();
+
             ch.next();
         } else if (anim == die){
             chargeParticles.killAndErase();
+        } else if (anim == genoise) {
+            ((Elphelt)ch).fireGenoise();
+            ch.next();
+        } else if (anim == blast) {
+            ((Elphelt)ch).Blast();
+            ch.next();
+        }
+    }
+
+    public static class GenoiseParticle extends PixelParticle.Shrinking {
+
+        public static final Emitter.Factory FACTORY = new Emitter.Factory() {
+            @Override
+            public void emit( Emitter emitter, int index, float x, float y ) {
+                ((ElpheltSprite.GenoiseParticle)emitter.recycle( ElpheltSprite.GenoiseParticle.class )).reset( x, y );
+            }
+        };
+
+        public GenoiseParticle() {
+            super();
+
+            color( 0xFF66FF );
+            lifespan = 0.3f;
+
+            acc.set( 0, +50 );
+        }
+
+        public void reset( float x, float y ) {
+            revive();
+
+            this.x = x;
+            this.y = y;
+
+            left = lifespan;
+
+            size = 4;
+            speed.polar( -Random.Float( PointF.PI ), Random.Float( 32, 48 ) );
+        }
+
+        @Override
+        public void update() {
+            super.update();
+            float p = left / lifespan;
+            am = p > 0.5f ? (1 - p) * 2f : 1;
         }
     }
 }
-

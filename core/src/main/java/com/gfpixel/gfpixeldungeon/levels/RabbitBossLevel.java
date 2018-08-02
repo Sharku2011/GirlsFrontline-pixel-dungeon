@@ -28,6 +28,7 @@ import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Elphelt;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Tengu;
 import com.gfpixel.gfpixeldungeon.items.Heap;
@@ -62,14 +63,13 @@ public class RabbitBossLevel extends Level {
 
 	private enum State{
 		START,
-		FIGHT_START,
-		MAZE,
-		FIGHT_ARENA,
+		PHASE1,
+		PHASE2,
 		WON
 	}
 	
 	private State state;
-	private Tengu tengu;
+	private Elphelt elphelt;
 
 	//keep track of that need to be removed as the level is changed. We dump 'em back into the level at the end.
 	private ArrayList<Item> storedItems = new ArrayList<>();
@@ -85,14 +85,14 @@ public class RabbitBossLevel extends Level {
 	}
 	
 	private static final String STATE	        = "state";
-	private static final String TENGU	        = "tengu";
+	private static final String ELPHELT	        = "elphelt";
 	private static final String STORED_ITEMS    = "storeditems";
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {
 		super.storeInBundle(bundle);
 		bundle.put( STATE, state );
-		bundle.put( TENGU, tengu );
+		bundle.put( ELPHELT, elphelt );
 		bundle.put( STORED_ITEMS, storedItems);
 	}
 	
@@ -101,13 +101,13 @@ public class RabbitBossLevel extends Level {
 		super.restoreFromBundle(bundle);
 		state = bundle.getEnum( STATE, State.class );
 
-		//in some states tengu won't be in the world, in others he will be.
-		if (state == State.START || state == State.MAZE) {
-			tengu = (Tengu)bundle.get( TENGU );
+		//in some states elphelt won't be in the world, in others she will be.
+		if (state != State.WON) {
+			elphelt = (Elphelt)bundle.get( ELPHELT );
 		} else {
 			for (Mob mob : mobs){
-				if (mob instanceof Tengu) {
-					tengu = (Tengu) mob;
+				if (mob instanceof Elphelt) {
+					elphelt = (Elphelt) mob;
 					break;
 				}
 			}
@@ -144,7 +144,7 @@ public class RabbitBossLevel extends Level {
 	
 	@Override
 	protected void createMobs() {
-		tengu = new Tengu(); //We want to keep track of tengu independently of other mobs, he's not always in the level.
+		elphelt = new Elphelt(); //We want to keep track of elphelt independently of other mobs, he's not always in the level.
 	}
 	
 	public Actor respawner() {
@@ -179,17 +179,18 @@ public class RabbitBossLevel extends Level {
 		super.press(cell, ch);
 
 		if (ch == Dungeon.hero){
-			//hero enters tengu's chamber
+			//hero enters elphelt's chamber
 			if (state == State.START
 					&& (new EmptyRoom().set(2, 25, 8, 32)).inside(cellToPoint(cell))){
 				progress();
 			}
 
-			//hero finishes the maze
+			/*hero finishes the maze
 			else if (state == State.MAZE
 					&& (new EmptyRoom().set(4, 0, 7, 4)).inside(cellToPoint(cell))){
 				progress();
 			}
+			*/
 		}
 	}
 
@@ -268,7 +269,7 @@ public class RabbitBossLevel extends Level {
 			}
 		}
 		for (Mob mob : Dungeon.level.mobs.toArray(new Mob[Dungeon.level.mobs.size()])){
-			if (mob != tengu && (safeArea == null || !safeArea.inside(cellToPoint(mob.pos)))){
+			if (mob != elphelt && (safeArea == null || !safeArea.inside(cellToPoint(mob.pos)))){
 				mob.destroy();
 				if (mob.sprite != null)
 					mob.sprite.killAndErase();
@@ -286,6 +287,9 @@ public class RabbitBossLevel extends Level {
 			//moving to the beginning of the fight
 			case START:
 				seal();
+
+
+
 				set(5 + 25 * 32, Terrain.LOCKED_DOOR);
 				GameScene.updateMap(5 + 25 * 32);
 
@@ -298,24 +302,24 @@ public class RabbitBossLevel extends Level {
 					}
 				}
 				
-				tengu.state = tengu.HUNTING;
-				tengu.pos = 5 + 28*32; //in the middle of the fight room
-				GameScene.add( tengu );
-				tengu.notice();
+				elphelt.state = elphelt.HUNTING;
+				elphelt.pos = 5 + 28*32; //in the middle of the fight room
+				GameScene.add( elphelt );
+				elphelt.notice();
 
-				state = State.FIGHT_START;
+				state = State.PHASE1;
 				break;
 
 			//halfway through, move to the maze
-			case FIGHT_START:
+			case PHASE1:
 
 				changeMap(MAP_MAZE);
 				clearEntities((Room) new EmptyRoom().set(0, 5, 8, 32)); //clear the entrance
 
-				Actor.remove(tengu);
-				mobs.remove(tengu);
+				Actor.remove(elphelt);
+				mobs.remove(elphelt);
 				TargetHealthIndicator.instance.target(null);
-				tengu.sprite.kill();
+				elphelt.sprite.kill();
 
 				Room maze = new MazeRoom();
 				maze.set(10, 1, 31, 29);
@@ -329,42 +333,10 @@ public class RabbitBossLevel extends Level {
 				GameScene.flash(0xFFFFFF);
 				Sample.INSTANCE.play(Assets.SND_BLAST);
 
-				state = State.MAZE;
+				state = State.PHASE2;
 				break;
 
-			//maze beaten, moving to the arena
-			case MAZE:
-				Dungeon.hero.interrupt();
-				Dungeon.hero.pos += 9+3*32;
-				Dungeon.hero.sprite.interruptMotion();
-				Dungeon.hero.sprite.place(Dungeon.hero.pos);
-
-				changeMap(MAP_ARENA);
-				clearEntities( (Room) new EmptyRoom().set(0, 0, 10, 4)); //clear all but the area right around the teleport spot
-				
-				//if any allies are left over, move them along the same way as the hero
-				for (Mob m : mobs){
-					if (m.alignment == Char.Alignment.ALLY) {
-						m.pos += 9 + 3 * 32;
-						m.sprite().place(m.pos);
-					}
-				}
-
-				tengu.state = tengu.HUNTING;
-				do {
-					tengu.pos = Random.Int(length());
-				} while (solid[tengu.pos] || distance(tengu.pos, Dungeon.hero.pos) < 8);
-				GameScene.add(tengu);
-				tengu.notice();
-				
-				GameScene.flash(0xFFFFFF);
-				Sample.INSTANCE.play(Assets.SND_BLAST);
-
-				state = State.FIGHT_ARENA;
-				break;
-
-			//arena ended, fight over.
-			case FIGHT_ARENA:
+			case PHASE2:
 				unseal();
 
 				CustomTiledVisual vis = new exitVisual();
@@ -382,8 +354,8 @@ public class RabbitBossLevel extends Level {
 				Dungeon.hero.sprite.interruptMotion();
 				Dungeon.hero.sprite.place(Dungeon.hero.pos);
 
-				tengu.pos = 5+28*32;
-				tengu.sprite.place(5 + 28 * 32);
+				elphelt.pos = 5+28*32;
+				elphelt.sprite.place(5 + 28 * 32);
 				
 				//remove all mobs, but preserve allies
 				ArrayList<Mob> allies = new ArrayList<>();
@@ -405,7 +377,7 @@ public class RabbitBossLevel extends Level {
 					mobs.add(m);
 				}
 
-				tengu.die(Dungeon.hero);
+				elphelt.die(Dungeon.hero);
 
 				for (Item item : storedItems)
 					drop(item, randomPrisonCell());
@@ -421,7 +393,7 @@ public class RabbitBossLevel extends Level {
 	@Override
 	public Group addVisuals() {
 		super.addVisuals();
-		PrisonLevel.addPrisonVisuals(this, visuals);
+		RabbitLevel.addPrisonVisuals(this, visuals);
 		return visuals;
 	}
 
@@ -510,35 +482,35 @@ public class RabbitBossLevel extends Level {
 
 	private static final int[] MAP_ARENA =
 			{       W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W, W, W,
-					W, W, e, e, e, e, e, e, e, e, e, e, e, W, W, W, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W, W,
-					W, e, e, e, e, e, W, e, e, e, e, e, W, W, M, W, W, e, e, e, e, e, W, e, e, e, e, e, W, W, W, W,
-					W, e, e, e, e, e, W, e, e, e, e, W, W, e, e, e, W, W, e, e, e, e, W, e, e, e, e, e, W, W, W, W,
-					W, e, e, e, e, W, W, e, e, e, e, e, D, e, e, e, D, e, e, e, e, e, W, W, e, e, e, e, W, W, W, W,
-					W, e, e, W, W, W, M, e, e, e, e, W, W, e, e, e, W, W, e, e, e, e, M, W, W, W, e, e, W, W, W, W,
-					W, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W, W, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W,
-					W, e, e, e, e, e, e, e, e, e, e, e, e, W, W, W, e, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W,
-					W, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, W, W, W, W,
-					W, e, e, e, e, e, e, e, e, W, W, e, e, e, e, e, e, e, W, W, e, e, e, e, e, e, e, e, W, W, W, W,
-					W, e, e, e, W, e, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, e, W, e, e, e, W, W, W, W,
-					W, e, e, W, W, D, W, W, e, e, e, e, W, e, e, e, W, e, e, e, e, W, W, D, W, W, e, e, W, W, W, W,
-					W, e, W, W, e, e, e, W, W, e, e, e, e, e, e, e, e, e, e, e, W, W, e, e, e, W, W, e, W, W, W, W,
-					W, e, W, W, e, e, e, W, W, e, e, e, e, e, M, e, e, e, e, e, W, W, e, e, e, W, W, e, W, W, W, W,
-					W, e, W, W, e, e, e, W, W, e, e, e, e, e, e, e, e, e, e, e, W, W, e, e, e, W, W, e, W, W, W, W,
-					W, e, e, W, W, D, W, W, e, e, e, e, W, e, e, e, W, e, e, e, e, W, W, D, W, W, e, e, W, W, W, W,
-					W, e, e, e, W, e, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, e, W, e, e, e, W, W, W, W,
-					W, e, e, e, e, e, e, e, e, W, W, e, e, e, e, e, e, e, W, W, e, e, e, e, e, e, e, e, W, W, W, W,
-					W, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, W, W, W, W,
-					W, e, e, e, e, e, e, e, e, e, e, e, e, W, W, W, e, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W,
-					W, e, e, e, e, e, e, e, e, e, e, e, W, W, M, W, W, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W,
-					W, e, e, W, W, W, W, e, e, e, e, W, W, e, e, e, W, W, e, e, e, e, W, W, W, W, e, e, W, W, W, W,
-					W, e, e, e, e, M, W, e, e, e, e, e, D, e, e, e, D, e, e, e, e, e, W, M, e, e, e, e, W, W, W, W,
-					W, e, e, e, e, e, W, e, e, e, e, W, W, e, e, e, W, W, e, e, e, e, W, e, e, e, e, e, W, W, W, W,
-					W, e, e, e, e, e, W, e, e, e, e, e, W, W, W, W, W, e, e, e, e, e, W, e, e, e, e, e, W, W, W, W,
-					W, W, e, e, e, e, e, e, e, e, e, e, e, W, W, W, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W, W,
-					W, W, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, W, W, W, W, W,
-					W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, W, W,
+					W, e, W, e, e, W, e, e, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, e, e, W, W, e, e, e, W, W,
+					W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, W, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, W,
+					W, e, e, W, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, W, e, e, W, e, e, W, e, e, W, W,
+					W, W, W, e, e, W, e, e, W, e, e, e, W, W, W, W, W, W, W, e, e, e, W, W, e, e, e, e, W, W, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, W, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, W, W,
+					W, W, W, W, W, e, e, e, W, e, e, W, e, e, W, W, W, e, e, e, e, W, W, e, e, e, W, W, W, W, W, W,
+					W, e, e, e, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, W, e, e, W, e, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, W, W, e, e, W, e, e, e, e, W, e, e, W, e, e, e, W, W, e, e, e, e, W, e, e, W, e, e, W, W,
+					W, W, e, e, W, e, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
+					W, e, e, e, W, e, W, e, e, e, W, e, e, e, e, M, e, e, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
+					W, e, e, e, W, e, W, e, e, e, W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, e, W, e, e, W, W, W,
+					W, e, e, W, e, e, W, e, e, e, e, W, W, e, e, e, W, e, e, W, e, e, e, e, W, e, e, W, W, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, e, W, e, e, W, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, e, e, e, W, W,
+					W, W, W, W, W, e, e, e, W, W, e, e, e, e, W, W, W, e, e, W, e, e, W, e, e, e, W, W, W, W, W, W,
+					W, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, W, W, e, e, e, e, W, W, e, e, e, W, W, W, W, W, W, W, e, e, e, W, e, e, W, e, e, W, W, W, W,
+					W, e, e, W, e, e, W, e, e, W, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, W, e, e, W, W,
+					W, e, e, e, e, e, e, e, e, e, W, e, e, e, W, W, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, W,
+					W, e, e, e, W, W, e, e, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, e, e, W, e, e, W, e, W, W,
+					W, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
 					W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
 					W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W};
 

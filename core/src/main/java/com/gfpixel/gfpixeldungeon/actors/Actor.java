@@ -66,7 +66,9 @@ public abstract class Actor implements Bundlable {
 			this.time = now + time;
 		}
 	}
-	
+
+	public final float getTime() { return time; }
+
 	public float cooldown() {
 		return time - now;
 	}

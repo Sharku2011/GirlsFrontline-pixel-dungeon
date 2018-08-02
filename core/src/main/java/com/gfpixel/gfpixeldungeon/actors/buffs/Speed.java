@@ -21,8 +21,31 @@
 
 package com.gfpixel.gfpixeldungeon.actors.buffs;
 
+import com.gfpixel.gfpixeldungeon.messages.Messages;
+import com.gfpixel.gfpixeldungeon.ui.BuffIndicator;
+
 public class Speed extends FlavourBuff {
 	
 	public static final float DURATION = 10f;
-	
+
+	private static float MULTIPLIER = 1f;
+
+	public static float getMultiplier() { return MULTIPLIER; }
+	public static void setMultiplier(float newMult) {
+		MULTIPLIER = Math.max(0.1f, newMult);
+	}
+
+	@Override
+	public int icon() { return BuffIndicator.EVASION; }
+
+	@Override
+	public String toString() {
+		return Messages.get(this, "name");
+	}
+
+	@Override
+	public String desc() {
+		return Messages.get(this, "desc", Math.round(MULTIPLIER * 100), dispTurns());
+	}
+
 }

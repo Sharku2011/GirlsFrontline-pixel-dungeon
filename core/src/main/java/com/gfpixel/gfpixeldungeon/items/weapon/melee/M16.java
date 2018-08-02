@@ -41,6 +41,6 @@ public class M16 extends MeleeWeapon {
 
 	@Override
 	public int defenseFactor( Char owner ) {
-		return 2;	//3 extra defence
+		return 3 + level();
 	}
 }

@@ -21,18 +21,33 @@
 
 package com.gfpixel.gfpixeldungeon.items.food;
 
+import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Hunger;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
+import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
 public class Maccol extends Food {
 
     {
+        TIME_TO_EAT = 1.5f;
+
         image = ItemSpriteSheet.MACCOL;
         energy = Hunger.HUNGRY/2f;
+
+
     }
 
     @Override
     public int price() {
         return 10 * quantity;
+    }
+
+    @Override
+    public void execute( Hero hero, String action ) {
+        super.execute(hero, action);
+
+        Buff.affect(hero, Speed.class, Speed.DURATION);
     }
 }

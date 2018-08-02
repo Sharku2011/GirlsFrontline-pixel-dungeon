@@ -25,6 +25,7 @@ import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
@@ -54,6 +55,7 @@ public class Cannon extends MeleeWeapon {
             Hero hero = (Hero)owner;
             Char enemy = hero.enemy();
             Buff.affect(hero, Light.class, 10);
+            Buff.affect(hero, Speed.class, 10);
             //Dungeon.Flag = true;
             if (enemy instanceof Mob && ((Mob) enemy).surprisedBy(hero)) {
                 //deals 75% toward max to max on surprise, instead of min to max.

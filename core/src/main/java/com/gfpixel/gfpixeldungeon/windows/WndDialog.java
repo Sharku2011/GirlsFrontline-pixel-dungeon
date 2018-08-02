@@ -58,7 +58,7 @@ public class WndDialog extends Window {
         int chromeWidth = PixelScene.uiCamera.width - 2 * MARGIN_X;
 
         avatar = new Image( Assets.EMOTION );
-        avatar.frame( AvatarWidth * dialog.EmotionArray[0], 1 + (AvatarHeight + 1) * dialog.CharacterArray[0], AvatarWidth, AvatarHeight );
+        avatar.frame( AvatarWidth * (dialog.CharacterArray[0].x * 3 + dialog.EmotionArray[0]), 1 + (AvatarHeight + 1) * dialog.CharacterArray[0].y, AvatarWidth, AvatarHeight );
 
         avatar.scale.set(AvatarScaleMultiplier);
         avatar.x = MARGIN_X / 2;
@@ -73,7 +73,7 @@ public class WndDialog extends Window {
         chrome.y = avatar.height();
         chrome.size(chromeWidth, chromeHeight);
 
-        nametag = PixelScene.renderText( DialogInfo.NAMES[dialog.CharacterArray[0]], 8 );
+        nametag = PixelScene.renderText( DialogInfo.NAMES[dialog.CharacterArray[0].x][dialog.CharacterArray[0].y], 8 );
         nametag.invert();
         nametag.hardlight(0x2B7BB9);
 
@@ -104,11 +104,11 @@ public class WndDialog extends Window {
                          dialogStep += 1;
                          tf.text(Messages.get( WndDialog.class, dialog.ID + dialog.BRANCH + dialogStep));
 
-                         nametag.text( DialogInfo.NAMES[dialog.CharacterArray[dialogStep]] );
+                         nametag.text( DialogInfo.NAMES[dialog.CharacterArray[dialogStep].x][dialog.CharacterArray[dialogStep].y] );
 
                          avatar.frame(
-                                 AvatarWidth * dialog.EmotionArray[dialogStep],
-                                 1 + (AvatarHeight+1) * dialog.CharacterArray[dialogStep],
+                                 AvatarWidth * (3 * dialog.CharacterArray[dialogStep].x + dialog.EmotionArray[dialogStep]),
+                                 1 + (AvatarHeight+1) * dialog.CharacterArray[dialogStep].y,
                                  AvatarWidth,
                                  AvatarHeight
                          );
