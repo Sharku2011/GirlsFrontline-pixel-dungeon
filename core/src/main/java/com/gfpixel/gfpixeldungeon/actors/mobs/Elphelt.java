@@ -137,7 +137,7 @@ public class Elphelt extends Mob {
                 break;
             case 1:
                 if (canBlast) {
-                    Blast();
+                    ((ElpheltSprite)sprite).blast();
                     canBlast = false;
                 }
 
@@ -190,7 +190,8 @@ public class Elphelt extends Mob {
                     }
                 } else {
                     // 비근접
-                    return onGenoise && (new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE).collisionPos == enemy.pos);
+                    Ballistica tmp = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
+                    return onGenoise && (tmp.collisionPos == enemy.pos) && (tmp.collisionPos != pos);
                 }
 
             case 2:
@@ -224,7 +225,7 @@ public class Elphelt extends Mob {
 
                     // 엘펠트가 플레이어의 시야 안에 있으면 애니메이션을 재생. true/false 값 리턴은 투사체가 날아가는데 시간이 걸릴 시 애니메이션 보여주는용(false일 때)
                     if (Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[traceGenoise.collisionPos] ) {
-                        sprite.zap( traceGenoise.collisionPos );
+                        ((ElpheltSprite)sprite).genoise( traceGenoise.collisionPos );
                         return true;
                     } else {
                         fireGenoise();
@@ -283,7 +284,14 @@ public class Elphelt extends Mob {
             // 혹시라도 제누와즈 스택이 만땅이 아닐 때 호출되면 풀차지 시켜주고 초기화
             curGenoiseStack = maxGenoiseStack;
             traceGenoise = null;
-            GLog.i("충전");
+            //GLog.i("충전");
+            return;
+        }
+
+        if ( Dungeon.level.adjacent(pos, traceGenoise.collisionPos) ) {
+            onGenoise = false;
+            traceGenoise = null;
+            ((ElpheltSprite)sprite).blast();
             return;
         }
 
@@ -378,15 +386,14 @@ public class Elphelt extends Mob {
             } else {
                 // 캐릭터와 엘펠트가 붙어있는 경우
                 // 일단 팅겨내기 -> 아니면 벽까지 돌진하게 만들고 그냥 죽여버리기?
-                Blast();
+                ((ElpheltSprite)sprite).blast();
                 canRush = false;
                 onRush = false;
-                next();
+
                 return;
             }
         } else {
 	        traceRush = new Ballistica( pos, Dungeon.level.randomDestination(), Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
-
             bridlePath = traceRush.subPath(1, traceRush.dist);
         }
 
@@ -398,7 +405,10 @@ public class Elphelt extends Mob {
             }
 
         }
+
         dstRush = traceRush.collisionPos;
+        ((ElpheltSprite)sprite).charge(dstRush);
+
         next();
     }
 

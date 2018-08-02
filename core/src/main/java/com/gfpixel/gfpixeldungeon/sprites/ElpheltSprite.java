@@ -18,6 +18,9 @@ public class ElpheltSprite extends MobSprite {
     private int zapPos;
 
     private Animation charging;
+    private Animation genoise;
+    private Animation blast;
+
     private Emitter chargeParticles;
 
     private Animation magnum;
@@ -41,14 +44,20 @@ public class ElpheltSprite extends MobSprite {
         chargeParticles.pour(MagicMissile.MagicParticle.ATTRACTING, 0.05f);
         chargeParticles.on = false;
 
+        blast = new Animation( 15, false );
+        blast.frames( frames, 7 );
+
         run = new Animation( 15, true );
         run.frames( frames, 8, 9, 10, 11, 12 );
 
         attack = new Animation( 15, false );
         attack.frames( frames, 13, 14, 15 );
-        // use zap as genoise
+
+        genoise = new Animation( 30, false );
+        genoise.frames( frames, 16, 17, 18, 19, 18, 17, 16);
+
         zap = new Animation( 15, false );
-        zap.frames( frames, 17, 18, 19);
+        zap.frames( frames, 13, 14, 15);
 
         die = new Animation( 15, false );
         die.frames( frames, 19, 20, 21, 22, 23, 24 );
@@ -75,6 +84,15 @@ public class ElpheltSprite extends MobSprite {
         play(charging);
     }
 
+    public void blast() {
+        play( blast );
+    }
+
+    public void genoise( int pos ) {
+        turnTo( ch.pos, pos );
+        play( genoise );
+    }
+
     @Override
     public void play(Animation anim) {
         chargeParticles.on = anim == charging;
@@ -98,10 +116,16 @@ public class ElpheltSprite extends MobSprite {
             } else {
                 parent.add(new Beam.DeathRay(center(), DungeonTilemap.raisedTileCenterToWorld(zapPos)));
             }
-            ((Elphelt)ch).fireGenoise();
+
             ch.next();
         } else if (anim == die){
             chargeParticles.killAndErase();
+        } else if (anim == genoise) {
+            ((Elphelt)ch).fireGenoise();
+            ch.next();
+        } else if (anim == blast) {
+            ((Elphelt)ch).Blast();
+            ch.next();
         }
     }
 
