@@ -1,5 +1,6 @@
 package com.gfpixel.gfpixeldungeon;
 
+import com.watabou.utils.Point;
 import com.watabou.utils.SparseArray;
 
 import java.util.HashSet;
@@ -8,11 +9,11 @@ public  class DialogInfo
 {
     public final String ID;
     public final int LENGTH;
-    public int[] CharacterArray;
+    public Point[] CharacterArray;
     public int[] EmotionArray;
     public String BRANCH;
 
-    public DialogInfo(String newID, int[] Chrs) {
+    public DialogInfo(String newID, Point[] Chrs) {
         this.ID = newID;
         this.CharacterArray = Chrs;
         this.EmotionArray = new int[Chrs.length];
@@ -20,7 +21,7 @@ public  class DialogInfo
         this.BRANCH = "";
     }
 
-    public DialogInfo(String newID, int[] Chrs, int[] Emos) {
+    public DialogInfo(String newID, Point[] Chrs, int[] Emos) {
         this.ID = newID;
         this.CharacterArray = Chrs;
 
@@ -42,7 +43,7 @@ public  class DialogInfo
         this.BRANCH = "";
     }
 
-    public DialogInfo(String newID, int[] Chrs, int[] Emos, String option) {
+    public DialogInfo(String newID, Point[] Chrs, int[] Emos, String option) {
 
         this.ID = newID;
         this.CharacterArray = Chrs;
@@ -69,20 +70,40 @@ public  class DialogInfo
         this.BRANCH = "."+newOption+".";
     }
 
-    private static final int G11         = 0;
-    private static final int UMP45       = 1;
-    private static final int UMP9        = 2;
-    private static final int HK416       = 3;
-    private static final int P7          = 4;
-    private static final int STAR15      = 5;
-    private static final int M16A1       = 6;
-    private static final int JEPUTY      = 7;
-    private static final int PPSH47      = 8;
-    private static final int DESTROYER   = 9;
-    private static final int DREAMER     = 10;
+    private static final int GRIFFON    = 0;
+    private static final int QUEST      = 1;
+    private static final int RABBIT     = 2;
+    private static final int SANGVIS    = 3;
 
-    public static final String[] NAMES = new String[] {
-            "G11", "UMP45", "UMP9", "HK416", "P7", "ST-AR 15", "M16A1", "제퓨티", "Ppsh-47", "디스트로이어", "드리머"
+    private static final Point G11          = new Point(GRIFFON, 0);
+    private static final Point UMP45        = new Point(GRIFFON, 1);
+    private static final Point UMP9         = new Point(GRIFFON, 2);
+    private static final Point HK416        = new Point(GRIFFON, 3);
+    private static final Point UMP40        = new Point(GRIFFON, 4);
+
+    private static final Point STAR15       = new Point(QUEST, 0);
+    private static final Point M16A1        = new Point(QUEST, 1);
+    private static final Point PPSH47       = new Point(QUEST, 2);
+    private static final Point P7           = new Point(QUEST, 3);
+
+    private static final Point ELPHELT      = new Point(RABBIT, 0);
+    private static final Point JEPUTY       = new Point(RABBIT, 1);
+    private static final Point NOEL         = new Point(RABBIT, 2);
+
+    private static final Point EXECUTIONER  = new Point(SANGVIS, 0);
+    // TODO emotion.png에서 우로보로스의 스프라이트 위치를 1열 2번째에서 다른 위치로 변경
+    private static final Point UROBOROS     = new Point(SANGVIS, 3);
+
+    private static final Point DESTROYER    = new Point(SANGVIS, 1);
+    private static final Point DREAMER      = new Point(SANGVIS, 2);
+
+    private static final Point TYPHOON      = new Point(SANGVIS, 4);
+
+    public static final String[][] NAMES = new String[][] {
+            {"G11", "UMP45", "UMP9", "HK416", "UMP40"},
+            {"ST-AR 15", "M16A1", "Ppsh-47", "P7"},
+            {"엘펠트 발렌타인", "제퓨티", "노엘"},
+            {"익스큐셔너", "디스트로이어", "드리머", "우로보로스", "타이푼"}
     };
 
     public static final int ID_SEWER		= 1;
@@ -129,159 +150,173 @@ public  class DialogInfo
         STORIES.put( ID_SEWER,
                 new DialogInfo (
                         "sewer",
-                        new int[]{UMP45, UMP9, UMP45, HK416, UMP45, G11, HK416, G11},
+                        new Point[]{UMP45, UMP9, UMP45, HK416, UMP45, G11, HK416, G11},
                         new int[]{    0,    1,     2,     2,     2,   1,     1,   2} )
         );
         STORIES.put( ID_SEWER_BOSS,
                 new DialogInfo (
                         "excutioner",
-                        new int[]{DESTROYER},
+                        new Point[]{DESTROYER},
                         new int[]{        0} )
         );
         STORIES.put( ID_PRISON,
                 new DialogInfo (
                         "prison",
-                        new int[]{UMP9, UMP45, UMP9, G11, HK416, UMP9, UMP45},
+                        new Point[]{UMP9, UMP45, UMP9, G11, HK416, UMP9, UMP45},
                         new int[]{   0,     2,    2,   1,     2,    1,     1}
                 )
         );
         STORIES.put( ID_RABBIT,
                 new DialogInfo (
                         "rabbit",
-                        new int[]{UMP9, G11, UMP45},
-                        new int[]{   2,   1,     1}
+                        new Point[]{UMP9, G11, UMP45},
+                        new int[]  {   2,   1,     1}
                 )
         );
         STORIES.put( ID_RABBIT_BOSS,
                 new DialogInfo (
                         "elphelt",
-                        new int[]{UMP9, UMP45, UMP9, G11, HK416, UMP9, UMP45},
-                        new int[]{   0,     2,    2,   1,     2,    1,     1}
+                        new Point[]{ELPHELT, ELPHELT},
+                        new int[]  {      1,       1}
+                )
+        );
+        STORIES.put( ID_RABBIT_BOSS + INPROGRESS,
+                new DialogInfo (
+                        "elphelt.inprogress",
+                        new Point[]{ELPHELT},
+                        new int[]  {      0}
+                )
+        );
+        STORIES.put( ID_RABBIT_BOSS + COMPLETE,
+                new DialogInfo (
+                        "elphelt.complete",
+                        new Point[]{ELPHELT},
+                        new int[]  {      0}
                 )
         );
         STORIES.put( ID_CAVES,
                 new DialogInfo (
                         "caves",
-                        new int[]{G11, UMP45, G11, UMP45, G11, HK416, UMP9, HK416, G11},
-                        new int[]{  0,     2,   0,     1,   2,     1,    0,     1,   0}
+                        new Point[]{G11, UMP45, G11, UMP45, G11, HK416, UMP9, HK416, G11},
+                        new int[]  {  0,     2,   0,     1,   2,     1,    0,     1,   0}
                 )
         );
         STORIES.put( ID_CITY,
                 new DialogInfo (
                         "city",
-                        new int[]{HK416, UMP45, UMP9, G11, HK416, UMP9, UMP45, DESTROYER, UMP45, UMP9},
+                        new Point[]{HK416, UMP45, UMP9, G11, HK416, UMP9, UMP45, DESTROYER, UMP45, UMP9},
                         new int[]{    2,     2,    2,   1,     1,    0,     0,         0,     2,    0}
                 )
         );
         STORIES.put( ID_RECAVES,
                 new DialogInfo(
                         "recaves",
-                        new int[]{DESTROYER, DREAMER, DESTROYER, DREAMER, DESTROYER, DREAMER, DREAMER, DESTROYER, G11, UMP45},
+                        new Point[]{DESTROYER, DREAMER, DESTROYER, DREAMER, DESTROYER, DREAMER, DREAMER, DESTROYER, G11, UMP45},
                         new int[]{        1,       2,         1,       1,         1,       1,       0,         2,   1,     0}
                 )
         );
         STORIES.put( ID_HALLS,
                 new DialogInfo (
                         "halls",
-                        new int[]{UMP9, UMP45, UMP9, HK416, G11, HK416, G11, UMP45},
+                        new Point[]{UMP9, UMP45, UMP9, HK416, G11, HK416, G11, UMP45},
                         new int[]{   1,     2,    1,     0,   1,     1,   1,     0}
                 )
         );
         STORIES.put( ID_STAR15_QUEST,
                 new DialogInfo (
                         "star15quest",
-                        new int[]{UMP45, UMP9, STAR15, STAR15, STAR15},
+                        new Point[]{UMP45, UMP9, STAR15, STAR15, STAR15},
                         new int[]{    0,     2,      0,      1,     0}
                 )
         );
         STORIES.put( ID_STAR15_QUEST + INPROGRESS,
                 new DialogInfo(
                         "star15quest.inprogress",
-                        new int[]{STAR15},
+                        new Point[]{STAR15},
                         new int[]{     0}
                 )
         );
         STORIES.put( ID_STAR15_QUEST + COMPLETE,
                 new DialogInfo(
                         "star15quest.complete",
-                        new int[]{STAR15},
+                        new Point[]{STAR15},
                         new int[]{     1}
                 )
         );
         STORIES.put( ID_M16A1_QUEST,
                 new DialogInfo (
                         "m16a1quest",
-                        new int[]{UMP45, M16A1, M16A1, HK416, UMP45},
+                        new Point[]{UMP45, M16A1, M16A1, HK416, UMP45},
                         new int[]{    1,     1,     0,     1,     0}
                 )
         );
         STORIES.put( ID_M16A1_QUEST + INPROGRESS,
                 new DialogInfo (
                         "m16a1quest.inprogress",
-                        new int[]{M16A1, M16A1},
+                        new Point[]{M16A1, M16A1},
                         new int[]{    0,     0}
                 )
         );
         STORIES.put( ID_M16A1_QUEST + COMPLETE,
                 new DialogInfo (
                         "m16a1quest.complete",
-                        new int[]{M16A1},
+                        new Point[]{M16A1},
                         new int[]{    0}
                 )
         );
         STORIES.put( ID_M16A1_QUEST + INPROGRESS,
                 new DialogInfo (
                         "m16a1quest.inprogress",
-                        new int[]{M16A1, M16A1},
+                        new Point[]{M16A1, M16A1},
                         new int[]{    0,     0}
                 )
         );
         STORIES.put( ID_NOEL_QUEST,
                 new DialogInfo (
                         "m16a1quest",
-                        new int[]{UMP45, M16A1, M16A1, HK416, UMP45},
+                        new Point[]{UMP45, M16A1, M16A1, HK416, UMP45},
                         new int[]{    1,     1,     0,     1,     0}
                 )
         );
         STORIES.put( ID_PPSH47_QUEST,
                 new DialogInfo (
                         "ppsh47quest",
-                        new int[]{HK416, PPSH47, UMP9, PPSH47, PPSH47},
+                        new Point[]{HK416, PPSH47, UMP9, PPSH47, PPSH47},
                         new int[]{    0,      1,    1,       0,     1}
                 )
         );
         STORIES.put( ID_PPSH47_QUEST + INPROGRESS,
                 new DialogInfo (
                         "ppsh47quest.inprogress",
-                        new int[]{PPSH47},
+                        new Point[]{PPSH47},
                         new int[]{    0}
                 )
         );
         STORIES.put( ID_PPSH47_QUEST + COMPLETE,
                 new DialogInfo (
                         "ppsh47quest.complete",
-                        new int[]{PPSH47},
+                        new Point[]{PPSH47},
                         new int[]{    1}
                 )
         );
         STORIES.put( ID_P7_QUEST,
                 new DialogInfo (
                         "p7quest",
-                        new int[]{P7, UMP9, P7, P7, P7},
+                        new Point[]{P7, UMP9, P7, P7, P7},
                         new int[]{ 1,    0,  0,  1,  0}
                 )
         );
         STORIES.put( ID_P7_QUEST + INPROGRESS,
                 new DialogInfo (
                         "p7quest.inprogress",
-                        new int[]{P7},
+                        new Point[]{P7},
                         new int[]{    0}
                 )
         );
         STORIES.put( ID_P7_QUEST + COMPLETE,
                 new DialogInfo (
                         "p7quest.complete",
-                        new int[]{P7},
+                        new Point[]{P7},
                         new int[]{    1}
                 )
         );
