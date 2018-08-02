@@ -25,9 +25,18 @@ import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.plants.Sungrass;
+import com.gfpixel.gfpixeldungeon.items.armor.HuntressArmor;
+import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
 import com.gfpixel.gfpixeldungeon.items.bags.MagicalHolster;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfExperience;
+import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
 import com.gfpixel.gfpixeldungeon.items.rings.RingOfMight;
+import com.gfpixel.gfpixeldungeon.items.rings.RingOfSharpshooting;
+import com.gfpixel.gfpixeldungeon.items.rings.RingOfElements;
+import com.gfpixel.gfpixeldungeon.items.rings.RingOfEvasion;
+import com.gfpixel.gfpixeldungeon.items.artifacts.TimekeepersHourglass;
+import com.gfpixel.gfpixeldungeon.items.artifacts.TalismanOfForesight;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfTransfusion;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.C96;
@@ -116,39 +125,131 @@ public class ChangesScene extends PixelScene {
 		//**********************
 
 
-		ChangeInfo changes = new ChangeInfo("v0.5.0", true, "5.0 변경사항 정리중");
-    
+		ChangeInfo changes = new ChangeInfo("v0.4.6", true, "");
 		changes.hardlight( Window.TITLE_COLOR);
 		infos.add(changes);
-
-		changes.addButton( new ChangeButton(new Image(Assets.ELPHELT, 288, 0, 17, 22), Messages.get(this, "텍스트 준비중"),
-				"분기점 활성화\n\n" +
-
-						"_-_ 소녀전선x길티기어 분기점 챕터가 활성화 되었습니다.\n\n" +
-						"_-_ 기존 스테이지에서 특정 조건을 만족할시 다음 챕터에서 분기점 챕터가 활성화됩니다.\n\n" +
-						"_-_ 분기점 챕터를 클리어할시 기존 티어보다 높은 성능을 가진 콜라보 무기를 획득할 수 있습니다. \n\n" +
-						"_-_ 분기점 활성화 조건은 공개하지 않겠습니다. 하지만 찾기 쉬울거에요! 첫번째 분기점인 만큼, 초반 챕터에 분기점이 활성화됩니다!"));
-
 
 		changes = new ChangeInfo(Messages.get(this, "new"), false, null);
 		changes.hardlight( Window.TITLE_COLOR );
 		infos.add(changes);
 
+
+		changes.addButton( new ChangeButton(new Image(Assets.ELPHELT, 288, 0, 17, 22), "분기점",
+				"_-_1번 분기점 활성화. \n\n" +
+						"_-_ 소녀전선&길티기어 분기점 챕터가 활성화 되었습니다.\n\n" +
+						"_-_ 기존 스테이지에서 특정 조건을 만족할시 다음 챕터에서 분기점 챕터가 활성화됩니다.\n\n" +
+						"_-_ 분기점 챕터를 클리어할시 기존 티어보다 높은 성능을 가진 콜라보 무기와 콜라보 클리어 뱃지를 획득할 수 있습니다. \n\n" +
+						"_-_ 분기점 활성화 조건은 공개하지 않겠습니다. 하지만 찾기 쉬울거에요! 첫번째 분기점인 만큼, 초반 챕터에 분기점이 활성화됩니다!"));
+
+		changes.addButton( new ChangeButton(new MagicalHolster(), //이부분을 저주함정이나 저주받은 외골격 이미지로 바꿔주세요
+				"_-_ 여러 종류의 저주가 추가됬습니다.\n\n" +
+						"_-_ 친화적인 저주 - 무기 저주. 타격시 때때로 적과 자신을 동시에 교란시킨다.\n\n" +
+						"_-_ 탄성의 저주 - 무기 저주. 피해량이 0이 되는 대신, 맞은 적을 튕겨낸다.\n\n" +
+						"_-_ 쿵쾅의 저주 - 방어구 저주. 문을 통과하는 데에 걸리는 턴 수를 늘린다.\n\n" +
+						"_-_ 과다성장의 저주 - 방어구 저주. 피격시 때때로 임의의 씨앗 효과가 발휘된다."));
+
 		changes.addButton( new ChangeButton(new Gepard(),
 				"_-_ 일부 무기가 수정됬습니다.\n\n" +
-						"_-_ 신규무기 게파드가 추가됬습니다. 게파드는 무기를 장착하고 있을때 50BMG의 데미지가 크게 올라갑니다.\n\n" +
-						"_-_ 소이탄, EMP탄,유탄이 삭제되고 50BMG라는 아이템으로 바뀌었습니다. 삭제된 EMP탄과 소이탄은 솥에서 50BMG와 씨앗을 조합해 만들 수 있습니다.\n\n" +
+						"_-_ 신규무기 게파드가 추가됬습니다. 게파드는 무기를 장착하고 있을때 50구경의 데미지가 크게 올라갑니다.\n\n" +
+						"_-_ 소이탄, EMP탄,유탄이 삭제되고 50구경라는 아이템으로 바뀌었습니다. 삭제된 EMP탄과 소이탄은 솥에서 50구경과 씨앗을 조합해 만들 수 있습니다.\n\n" +
+						"_-_ 크리스 벡터의 데미지 막기가 삭제된 대신, 어떤 방법으로든 무기를 사용하면 2턴동안 모든 행동이 빨라지는 가속 버프를 받게됩니다.\n\n" +
+						"_-_ PG 가스탄이 붕괴가스로 바뀌었습니다. 기존의 독가스 대신 붕괴가스를 발사하며, 붕괴가스에 노출되면 산성효과와 비슷한 피해를 입게됩니다.\n\n" +
 						"_-_ UMP45와 M16A1의 데미지가 소폭 상승했습니다. M16A1은 추가로 강화 효율과 방어율이 소폭 상승했습니다."));
 
 		changes.addButton( new ChangeButton(Icons.get(Icons.SHPX), "개발 관련",
-				"_-_ \"UI, 기타 시스템 변경\n\n" +
+				"_-_ \"시스템 변경\n\n" +
 
 						"_-_ UI가 크게 개편됬습니다! 좀더 소녀전선에 가까운 UI를 만들기 위해 노력했습니다.\n\n" +
+						"_-_ 스코어 시스템이 추가됬습니다.\n\n" +
+						"_-_ 힘 포션이 드랍되지 않는 도전모드가 추가됬습니다.\n\n" +
+						"_-_  새로운 뱃지들이 추가됬습니다.\n\n" +
 						"_-_ 투척무기가 개편됬습니다. 많은 투척무기가 추가되었고, 투척무기에 내구도 시스템이 적용됬습니다.\n\n" +
 						"_-_ 수중 정찰기가 있는 방에 1칸의 타일을 깔아둬 실수로 들어가 데미지를 입는 경우를 줄였습니다. \n\n" +
 						"_-_ 세이브슬롯이 10칸으로 증가했습니다."));
 
-		changes = new ChangeInfo("v0.4.0b3e1", true, "긴급수정");
+		changes = new ChangeInfo(Messages.get(this, "changes"), false, null);
+		changes.hardlight( CharSprite.WARNING );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new PlateArmor(),
+				"_-_ 장비 특성들이 바뀌었습니다.\n\n" +
+						"_-_ 행운 특성이 2배 피해를 가할 확률이 60%에서 50%로 감소한 대신 0배 피해를 가한 경우, 다음 공격이 2배 피해를 가할 확률이 증가합니다.\n\n" +
+						"_-_ 흐릿함- 방어도 패널티가 제거되고 흐릿함 효과가 감소\n\n" +
+						"_-_ 속박- 제공되는 자연의 갑옷수치가 증가, 강화수치가 높을수록 속박시간 감소\n\n" +
+						"_-_ 전위- 자가피해 삭제 및 총탄 충전량 증가\n\n" +
+						"_-_ 헤비아머- 회피가 0으로 되는대신 회피에 비례해 방어력이 증가함\n\n" +
+						"_-_ 신속- 방어력 패널티 제거, 주변에 적이 없을때만 이속증가 부여\n\n" +
+						"_-_ 점성- 나올확률이 증가하고 헤비아머가 나올 확률이 감소"));
+
+		changes.addButton( new ChangeButton(new MagicalHolster(),
+				"_-_ IOP 대용량 탄창에 투척무기를 보관할수있습니다\n\n" +
+						"_-_ 탄창에 보관된 투척무기는 20%의 내구도를 추가로 가지게 됩니다."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.RING_RUBY, null), new RingOfSharpshooting().trueName(),
+				"저격의 도트사이트 변경\n\n" +
+						"_-_ 투척 공격에 대한 추가 명중률 제거\n\n" +
+						"_-_ 투척 무기가 소모되지 않을 확률 제거, 대신 원거리 무기의 내구도를 증가시킴\n\n" +
+						"_-_ 투척 무기의 피해량을 강화 수치에 비례하여 증가시키는 효과 추가"));
+
+		changes = new ChangeInfo(Messages.get(this, "buffs"), false, null);
+		changes.hardlight( CharSprite.POSITIVE );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton( new Image(Assets.HUNTRESS, 0, 34, 13, 17), "",
+				"HK416 상향.\n\n" +
+						"_-_모든 투척무기 내구도가  50% 추가됨\n\n" +
+						"IOP 탄창이 제공하는 투척무기 내구도 20% 증가와 기본 능력이 곱연산으로 중첩되 80%의 추가 내구도를 가지게 됩니다."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.RING_OPAL, null), new RingOfElements().trueName(),
+				"원소의 도트사이트 상향\n\n" +
+						"_-_ 이전보다 더 많은 원소/원거리 효과에 대응하여 발동\n\n" +
+						"_-_ 높은 강화 수치에서 약화 효과의 지속 시간과 피해량이 기존보다 상당히 감소\n\n" +
+						"_-_이제 원소/마법 피해에 저항할 확률 대신 원소/마법 피해를 강화 레벨에 비례하여 감소시키는 효과를 부여"));
+
+		changes.addButton( new ChangeButton(new TimekeepersHourglass (),
+				"_-_ 회중시계 상향.\n\n" +
+						"_-_ 충전수가 절반으로 감소\n\n" +
+						"_-_ 충전수 1당 주변의 시간을 멈추는 정도가 2배로 증가\n\n" +
+						"_-_ 낮은 강화 레벨에서 충전 속도가 증가, +10에 도달시 이전과 동일"));
+
+		changes.addButton( new ChangeButton(new TalismanOfForesight(),
+				"_-_ 안경이 갓경됨.\n\n" +
+						"_-_ 충전 속도가 +0에서 20% 증가, 강화 레벨에 따라 기존에 비해 충전 속도가 더 많이 증가하며 최종적으로 +10에서 50% 증가\n\n" +
+						"_-_ 함정을 찾아내는 것을 통해 얻는 보너스 충전치는 변경 없음"));
+
+		changes = new ChangeInfo(Messages.get(this, "nerfs"), false, null);
+		changes.hardlight( CharSprite.NEGATIVE );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new Image(Assets.WARRIOR, 0, 34, 15, 17), "너프",
+				"투신 변경 및 하향\n\n" +
+						"_-_ 격노(죽음 유예)하기 위한 레벨이 2에서 3으로 증가\n\n" +
+						"_-_ 물리 피해를 입을때마다 분노 버프가 쌓이며 버프에 비례해 자신의 물리공격력이 50%까지 증가, 버프는 시간이 지날수록 줄어들지만 체력이 낮을수록 느리게 감소\n\n" +
+						"_-_ 격노하기 위해선 분노 버프가 100%이여야 하며 이 상태에서 추가 피해량이 50%로 감소함.\n\n" +
+						"_-_ 격노후 회복중엔 분노 버프가 쌓이지 않음.."));
+
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.RING_EMERALD, null), new RingOfEvasion().trueName(),
+				"회피의 도트사이트 하향\n\n" +
+						"_-_ 더 이상 적들에게 감지될 확률을 낮추지 않음\n\n" +
+						"_-_정찰병이나 신속함의 특성의 효과와 중첩되는 정도 감소 -계산식이 곱연산에서 합연산으로 바뀜."));
+
+		changes.addButton( new ChangeButton(new HuntressArmor(),
+				"_-_ UMP9 & HK416의 외골격 하향.\n\n" +
+						"_-_ UMP9 - 연막탄 범위가 8칸으로 제한되며, 효과가 벽을 관통하지 않도록 변경\n\n" +
+						"_-_ HK416 - 살상류탄의 범위가 12칸으로 제한됨"));
+
+		changes.addButton( new ChangeButton(new PotionOfHealing(),
+				"_-_ 수복포션 드랍 하향.\n\n" +
+						"_-_ 수복물약 드랍 몹에게 수복물약을 얻은 경우 이후 같은 몹에게 수복물약을 얻을 확률이 감소함"));
+
+		changes.addButton( new ChangeButton(new PotionOfHealing (), //이부분 태양초 씨앗 이미지로 바꿔주세요
+				"_-_ 태양초 & 뱀뿌리 - 하향.\n\n" +
+						"_-_ 태양초의 회복 속도 대폭 감소, 레벨이 높을 수록 더 많이 감소하여 최대 기존의 40% 속도까지 줄어든다.\n\n" +
+						"_-_ 태양초의 회복을 받는 도중 피격당해도 회복량이 줄지 않는다.\n\n" +
+						"_-_ 태양초의 회복을 받는 도중 체력이 가득 차도 효과가 바로 끝나지 않는다.\n\n" +
+						"_-_ 뱀뿌리의 피해 흡수 비율이 기존의 50%에서 층 수에 비례하도록 변경"));
+
+		changes = new ChangeInfo("v0.4.0b3e1", true, "긴급 수정");
 		changes.hardlight( Window.TITLE_COLOR);
 		infos.add(changes);
 
@@ -165,7 +266,7 @@ public class ChangesScene extends PixelScene {
 		changes = new ChangeInfo("v0.4.0b3", true, "");
 		changes.hardlight( Window.TITLE_COLOR);
 		infos.add(changes);
-		
+
 		changes = new ChangeInfo(Messages.get(this, "new"), false, null);
 		changes.hardlight( Window.TITLE_COLOR );
 		infos.add(changes);

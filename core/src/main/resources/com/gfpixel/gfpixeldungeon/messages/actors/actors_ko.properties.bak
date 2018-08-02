@@ -147,11 +147,8 @@ actors.buffs.levitation.desc=1회용 제트팩의 힘이 당신을 공중으로 
 actors.buffs.light.name=발광
 actors.buffs.light.desc=가장 어두운 던전에서라도, 당신 곁에 있는 밝은 불빛은 매우 든든한 존재입니다.\n\n불빛은 어둠을 몰아 내며, 주변 환경에 구애받지 않고 시야를 더 넓혀줍니다.\n\n발광 효과는 %s턴 동안 지속됩니다.
 
-actors.buffs.speed.name=시간 증폭
-actors.buffs.speed.desc=내면에서 타오르는 신비로운 힘이 당신을 주변보다 빠르게 움직이게 합니다.\n\n시간을 다른 이들보다 더 효율적으로 사용합니다. 모든 행동이 _%d_ %% 더 빨라집니다. \n\n신속 효과는 %s턴 동안 지속됩니다.
-
 actors.buffs.lockedfloor.name=층이 잠겨있음
-actors.buffs.lockedfloor.desc=현재 층이 잠겨 있어 당신은 나갈 수 없습니다!\n\n층이 잠겨있는 동안 당신은 배고픔이 증가하지 않고 굶주림 피해를 입지 않습니다. 더하여 이 층의 보스를 물리치러 나아가지 않는 이상 재생 효과는 멈춥니다.\n\n또 층이 잠겨있는 동안 강화되지 않은 쾌속 수복권으로 수복한다면 해당 층을 재시작하게됩니다.\n\n잠금을 풀기 위해 이 층의 보스를 물리치십시오.
+actors.buffs.lockedfloor.desc=현재 층이 잠겨 있어 당신은 나갈 수 없습니다!\n\n층이 잠겨있는 동안 당신은 배고픔이 증가하지 않고 굶주림 피해를 입지 않습니다. 더하여 이 층의 보스를 물리치러 나아가지 않는 이상 재생 효과는 멈춥니다.\n\n또 층이 잠겨있는 동안 축복받지 않은 앙크로 부활한다면 해당 층을 재시작하게됩니다.\n\n잠금을 풀기 위해 이 층의 보스를 물리치십시오.
 
 actors.buffs.magicalsleep.name=마법의 수면
 actors.buffs.magicalsleep.toohealthy=너무 건강한 당신은 수면의 욕구에 저항했다.
@@ -555,14 +552,11 @@ actors.mobs.swarm.name=옵저버
 actors.mobs.swarm.def_verb=회피
 actors.mobs.swarm.desc=작지만 자가복제로 적을 제압하는 소형 정찰기입니다. 모든 물리형 공격은 옵저버를 두 개의 기체로 분열시키지만. 피해량은 그대로입니다.
 
-actors.mobs.elphelt.name=엘펠트 발렌타인
-actors.mobs.elphelt.desc=결혼하고 싶어 발정난 미친년입니다. 꼴에 싸움도 잘해서 졌다간 따먹힐지도 모릅니다. 당신이 남자건 여자건 말이죠. 물론, 빵붕이는 예외입니다.
-
 actors.mobs.tengu.name=우로보로스
 actors.mobs.tengu.notice_mine=감히 구식 인형 따위가, %s!
-actors.mobs.tengu.notice_face=이번엔 얼마나 버틸 수 있을까?
+actors.mobs.tengu.notice_face=덤벼라, %s!
 actors.mobs.tengu.interesting=후후. 재밌어지겠는걸!
-actors.mobs.tengu.defeated=읏... 아무것도 보이지 않아.. 후회없는... 싸움이였다...
+actors.mobs.tengu.defeated=나.. 또 격파된거야...?
 actors.mobs.tengu.rankings_desc=우로보로스에게 격파당함
 actors.mobs.tengu.desc=제작될 때부터 수천개의 다른 AI와 경쟁을 벌여 선발된 인형으로,\n\n단거리 돌파 및 방어 작전이 특기이며, 지능과 작전 능력이 매우 높습니다.\n\n그녀는 함정, 속임수, 그리고 정확한 원거리 공격으로 이곳 아래로 가는 인형을 상대할 것입니다. 그 인형은 바로 당신이죠.
 
