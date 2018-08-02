@@ -110,11 +110,11 @@ public  class DialogInfo
     public static final int ID_COLDWAR_BOSS	= 800;
 
 
-
     public static final int ID_STAR15_QUEST = 1000;
     public static final int ID_M16A1_QUEST	= 2000;
     public static final int ID_PPSH47_QUEST	= 3000;
     public static final int ID_P7_QUEST 	= 4000;
+    public static final int ID_NOEL_QUEST 	= 5000;
 
     // general tag for quest
     public static final int INIT        = 0;
@@ -147,9 +147,9 @@ public  class DialogInfo
         );
         STORIES.put( ID_RABBIT,
                 new DialogInfo (
-                        "huntingrabbit",
-                        new int[]{UMP9, UMP45, UMP9, G11, HK416, UMP9, UMP45},
-                        new int[]{   0,     2,    2,   1,     2,    1,     1}
+                        "rabbit",
+                        new int[]{UMP9, G11, UMP45},
+                        new int[]{   2,   1,     1}
                 )
         );
         STORIES.put( ID_RABBIT_BOSS,
@@ -185,13 +185,6 @@ public  class DialogInfo
                         "halls",
                         new int[]{UMP9, UMP45, UMP9, HK416, G11, HK416, G11, UMP45},
                         new int[]{   1,     2,    1,     0,   1,     1,   1,     0}
-                )
-        );
-        STORIES.put( ID_COLDWAR,
-                new DialogInfo (
-                        "coldwar",
-                        new int[]{UMP9, G11, UMP45},
-                        new int[]{   2,   1,     1}
                 )
         );
         STORIES.put( ID_STAR15_QUEST,
@@ -234,6 +227,20 @@ public  class DialogInfo
                         "m16a1quest.complete",
                         new int[]{M16A1},
                         new int[]{    0}
+                )
+        );
+        STORIES.put( ID_M16A1_QUEST + INPROGRESS,
+                new DialogInfo (
+                        "m16a1quest.inprogress",
+                        new int[]{M16A1, M16A1},
+                        new int[]{    0,     0}
+                )
+        );
+        STORIES.put( ID_NOEL_QUEST,
+                new DialogInfo (
+                        "m16a1quest",
+                        new int[]{UMP45, M16A1, M16A1, HK416, UMP45},
+                        new int[]{    1,     1,     0,     1,     0}
                 )
         );
         STORIES.put( ID_PPSH47_QUEST,
