@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.watabou.noosa.TextureFilm;
 
 public class ItemSpriteSheet {
@@ -137,7 +138,7 @@ public class ItemSpriteSheet {
 	private static final int WEP_TIER1      =                               xy(1, 7);   //8 slots
 	public static final int UMP45         	= WEP_TIER1+0;
 	public static final int DP             	= WEP_TIER1+1;
-	public static final int KNUCKLEDUSTER   = WEP_TIER1+2;
+	public static final int M9   = WEP_TIER1+2;
 	public static final int UMP40          	= WEP_TIER1+3;
 	public static final int DAGGER          = WEP_TIER1+4;
 	public static final int G11             = WEP_TIER1+5;
@@ -146,7 +147,7 @@ public class ItemSpriteSheet {
 	static{
 		assignItemRect(UMP45, 15, 16);
 		assignItemRect(DP,     15, 16);
-		assignItemRect(KNUCKLEDUSTER,   15, 10);
+		assignItemRect(M9,   16, 16);
 		assignItemRect(UMP40, 			   16, 16);
 		assignItemRect(DAGGER,          12, 13);
 		assignItemRect(G11,     15, 16);

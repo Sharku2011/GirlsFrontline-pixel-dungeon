@@ -26,7 +26,7 @@ import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 public class M9 extends MeleeWeapon {
 
 	{
-		image = ItemSpriteSheet.KNUCKLEDUSTER;
+		image = ItemSpriteSheet.M9;
 
 		tier = 1;
 	}
