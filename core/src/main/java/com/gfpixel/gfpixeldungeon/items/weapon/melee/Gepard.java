@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Gepard extends MeleeWeapon {
+public class Gepard extends Launcher {
 
 	{
 		image = ItemSpriteSheet.CROSSBOW;

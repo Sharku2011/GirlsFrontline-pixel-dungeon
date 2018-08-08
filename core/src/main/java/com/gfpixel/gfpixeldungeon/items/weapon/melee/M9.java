@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class M9 extends MeleeWeapon {
+public class M9 extends Launcher {
 
 	{
 		image = ItemSpriteSheet.KNUCKLEDUSTER;
