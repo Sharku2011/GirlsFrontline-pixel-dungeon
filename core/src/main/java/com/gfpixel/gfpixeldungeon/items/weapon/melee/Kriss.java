@@ -27,6 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
+import com.watabou.utils.GameMath;
 
 public class Kriss extends MeleeWeapon {
 
@@ -41,7 +42,17 @@ public class Kriss extends MeleeWeapon {
 	public int damageRoll(Char owner) {
 		Hero hero = (Hero)owner;
 
-		Buff.affect(hero, Speed.class, 2f);
+		Speed buffSpeed = Dungeon.hero.buff(Speed.class);
+
+		float times = 2.0f;
+
+		if (buffSpeed != null) {
+			times -= buffSpeed.cooldown();
+
+			GameMath.gate( 0.0f, times, 2.0f );
+		}
+
+		Buff.affect(hero, Speed.class, times);
 
 		return super.damageRoll(owner);
 	}
