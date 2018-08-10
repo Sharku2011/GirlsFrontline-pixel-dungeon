@@ -29,7 +29,7 @@ public class NAGANT extends MeleeWeapon {
         image = ItemSpriteSheet.NAGANT;
 
         tier = 6;
-        ACC = 10f;
+        ACC = 100f;
         RCH = 3;
     }
 

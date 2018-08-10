@@ -34,7 +34,7 @@ public class M1911 extends MeleeWeapon {
 
 	@Override
 	public int max(int lvl) {
-		return  3*(tier+1) +  //9 base, down from 15
+		return  2*(tier+1) +  //9 base, down from 15
 				lvl*(tier+1);   //scaling unchanged
 	}
 

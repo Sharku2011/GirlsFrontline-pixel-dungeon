@@ -30,6 +30,7 @@ public class Dp extends MeleeWeapon {
 
         tier = 1;
         DLY = 0.2f; //1time 5hit
+        ACC = 3f;
     }
 
     @Override

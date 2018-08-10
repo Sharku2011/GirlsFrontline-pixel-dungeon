@@ -29,6 +29,7 @@ public class M9 extends Launcher {
 		image = ItemSpriteSheet.M9;
 
 		tier = 1;
+		DLY = 1.25f;
 	}
 
 	@Override

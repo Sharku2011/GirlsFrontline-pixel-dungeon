@@ -103,9 +103,14 @@ public class Berserk extends Buff {
 	}
 
 	public int damageFactor(int dmg){
-		float bonus = Math.min(1.5f, 1f + (power / 2f));
+		float bonus = Math.min(3f, 2f + (power / 3f));
 		return Math.round(dmg * bonus);
 	}
+
+	//public int damageFactor(int dmg){
+		//float bonus = Math.min(1.5f, 1f + (power / 2f));
+		//return Math.round(dmg * bonus);
+	//}
 
 	public boolean berserking(){
 		if (target.HP == 0 && state == State.NORMAL && power >= 1f){
