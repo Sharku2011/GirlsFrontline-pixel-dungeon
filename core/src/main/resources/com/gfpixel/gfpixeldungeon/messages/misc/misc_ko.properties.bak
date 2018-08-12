@@ -92,5 +92,7 @@ challenges.darkness=어둠 속으로
 challenges.darkness_desc=던전이 어두워야 던전이라 할 수 있겠지요!\n\n- 평소 시야가 크게 감소합니다.\n- 횃불이 매 층마다 등장합니다.\n- 발광 버프의 지속시간이 감소합니다.
 challenges.no_scrolls=금지된 디스크
 challenges.no_scrolls_desc=몇몇 디스크가 희귀해졌습니다. 네, 당신이 가장 필요로 하는 그 디스크입니다.\n\n- 던전에서 생성되는 강화의 디스크가 절반으로 줄어듭니다.
+challenges.no_strength=필멸자
+challenges.no_strength_desc="날 봐라, 나약한 것들아! 날 보고 배우란 말이다!"\n\n- 힘의 물약이 드랍되지 않습니다.
 
 rankings$record.something=죽었음 암튼 무언가에 의해 죽었음
