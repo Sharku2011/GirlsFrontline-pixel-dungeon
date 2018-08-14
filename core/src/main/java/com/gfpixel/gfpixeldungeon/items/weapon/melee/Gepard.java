@@ -31,7 +31,7 @@ public class Gepard extends Launcher {
 		//check Dart.class for additional properties
 
 		tier = 4;
-		DLY = 1.25f;
+		DLY = 1.15f;
 	}
 
 	@Override

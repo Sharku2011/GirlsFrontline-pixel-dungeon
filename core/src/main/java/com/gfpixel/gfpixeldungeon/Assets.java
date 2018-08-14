@@ -112,6 +112,7 @@ public class Assets {
 	public static final String TYPHOOTIN	= "typhootin.png";
 	public static final String ELID = "elid.png";
 	public static final String RIPPER = "Ripper.png";
+	public static final String JAGUAR = "Jaguar.png";
 	public static final String ELPHELT = "Elphelt.png";
 
 	public static final String ITEMS	        = "items.png";

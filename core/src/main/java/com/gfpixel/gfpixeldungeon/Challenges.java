@@ -46,7 +46,7 @@ public class Challenges {
 	public static final int NO_SCROLLS		    = 64;
 	public static final int NO_STRENGTH				= 128;
 	public static final int NO_ANKH				= 256;
-	public static final int DUMMY_3				= 512;
+	public static final int INFLATION				= 512;
 
 	public static final int MAX_VALUE           = 1023;
 
@@ -60,11 +60,11 @@ public class Challenges {
 			"no_scrolls",
 			"no_strength",
 			"no_ankh",
-			"dummy3"
+			"inflation"
 	};
 
 	public static final int[] MASKS = {
-			NO_FOOD, NO_ARMOR, NO_HEALING, NO_HERBALISM, SWARM_INTELLIGENCE, DARKNESS, NO_SCROLLS, NO_STRENGTH, NO_ANKH, DUMMY_3
+			NO_FOOD, NO_ARMOR, NO_HEALING, NO_HERBALISM, SWARM_INTELLIGENCE, DARKNESS, NO_SCROLLS, NO_STRENGTH, NO_ANKH, INFLATION
 	};
 
 	public static boolean isItemBlocked( Item item ){
@@ -109,6 +109,12 @@ public class Challenges {
 		}
 
 		if (Dungeon.isChallenged(NO_ANKH)){
+			if (item instanceof Ankh) {
+				return true;
+			}
+		}
+
+		if (Dungeon.isChallenged(INFLATION)){
 			if (item instanceof Ankh) {
 				return true;
 			}

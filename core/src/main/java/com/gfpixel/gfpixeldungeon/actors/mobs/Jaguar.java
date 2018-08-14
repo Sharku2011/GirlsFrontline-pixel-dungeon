@@ -1,19 +1,18 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
-import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.effects.Speck;
-import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
-import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
-import com.gfpixel.gfpixeldungeon.sprites.BatSprite;
-import com.gfpixel.gfpixeldungeon.sprites.RipperSprite;
+import com.gfpixel.gfpixeldungeon.sprites.JaguarSprite;
 import com.watabou.utils.Random;
 
-public class Ripper extends Mob {
+/**
+ * Created by Android SDK on 2018-08-15.
+ */
+
+public class Jaguar extends Mob {
 
     {
-        spriteClass = RipperSprite.class;
+        spriteClass = JaguarSprite.class;
 
         HP = HT = 30;
         defenseSkill = 30;
