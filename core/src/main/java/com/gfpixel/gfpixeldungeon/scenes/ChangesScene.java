@@ -25,6 +25,7 @@ import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.plants.Plant;
 import com.gfpixel.gfpixeldungeon.plants.Sungrass;
 import com.gfpixel.gfpixeldungeon.items.armor.HuntressArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
@@ -242,7 +243,7 @@ public class ChangesScene extends PixelScene {
 				"_-_ 수복포션 드랍 하향.\n\n" +
 						"_-_ 수복물약 드랍 몹에게 수복물약을 얻은 경우 이후 같은 몹에게 수복물약을 얻을 확률이 감소함"));
 
-		changes.addButton( new ChangeButton(new PotionOfHealing (), //이부분 태양초 씨앗 이미지로 바꿔주세요
+		changes.addButton( new ChangeButton(new Sungrass.Seed(),
 				"_-_ 태양초 & 뱀뿌리 - 하향.\n\n" +
 						"_-_ 태양초의 회복 속도 대폭 감소, 레벨이 높을 수록 더 많이 감소하여 최대 기존의 40% 속도까지 줄어든다.\n\n" +
 						"_-_ 태양초의 회복을 받는 도중 피격당해도 회복량이 줄지 않는다.\n\n" +
