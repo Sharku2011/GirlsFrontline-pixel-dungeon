@@ -437,15 +437,18 @@ public class Elphelt extends Mob {
 
 	        if (ch != null) {
 	            final Ballistica traceChar = new Ballistica( c, traceRush.path.get(traceRush.dist+1), Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
-                Char rebounce = findChar(traceChar.collisionPos);
+                Char collideChar = findChar(traceChar.collisionPos);
+                if (collideChar != null) {
+                    GLog.i(collideChar.name);
+                }
+                // 캐릭터에 부딪힌 경우 날아갈 위치는 해당 캐릭터의 위치까지, 벽에 부딪힌 경우는
+                int dist = (collideChar != null && collideChar != this) ? traceChar.dist : traceChar.dist - 1;
+
 	            final int newPos = traceChar.path.get(
-	                    Math.min(
-	                            POWER_OF_BLAST,
-                        (rebounce != null) ? traceChar.dist : traceChar.dist - 1
-                        )
+	                    Math.min( POWER_OF_BLAST, dist )
                 );
 
-	            bCrash = (traceChar.dist > 2);
+	            bCrash = (dist > 1);
 
 	            // 이동경로에서 부딫힌 적을 튕겨냄
 	            Actor.addDelayed( new Pushing(ch, ch.pos, newPos, new Callback() {
@@ -540,7 +543,7 @@ public class Elphelt extends Mob {
     }
 
     private static final String PHASE           = "phase";
-    private static final String CUR_GENOISE     = "curGenoise";
+    private static final String CURGENOISE     = "curGenoise";
     private static final String ONGENOISE       = "onGenoise";
     private static final String GENOISEPOS      = "GenoisePos";
     private static final String GENOISETIME     = "GenoiseTime";
@@ -559,7 +562,7 @@ public class Elphelt extends Mob {
     public void storeInBundle(Bundle bundle) {
         super.storeInBundle(bundle);
         bundle.put( PHASE, phase );
-        bundle.put( CUR_GENOISE, curGenoiseStack);
+        bundle.put( CURGENOISE, curGenoiseStack);
         bundle.put( ONGENOISE, onGenoise);
 
         NumOfGenoise = Genoises.size();
@@ -593,7 +596,7 @@ public class Elphelt extends Mob {
         super.restoreFromBundle(bundle);
         phase = bundle.getInt(PHASE);
         onGenoise = bundle.getBoolean( ONGENOISE );
-        curGenoiseStack = bundle.getInt( CUR_GENOISE );
+        curGenoiseStack = bundle.getInt( CURGENOISE );
 
         NumOfGenoise = bundle.getInt( NUMGENOISE );
 
