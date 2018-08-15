@@ -437,6 +437,7 @@ public class Elphelt extends Mob {
 
 	        if (ch != null) {
 	            final Ballistica traceChar = new Ballistica( c, traceRush.path.get(traceRush.dist+1), Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
+	            final Ballistica traceWall = new Ballistica( c, traceRush.path.get(traceRush.dist+1), Ballistica.STOP_TERRAIN);
                 Char collideChar = findChar(traceChar.collisionPos);
                 if (collideChar != null) {
                     GLog.i(collideChar.name);
