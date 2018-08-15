@@ -11,7 +11,7 @@ public class JaguarSprite extends MobSprite {
 
         texture(Assets.JAGUAR );
 
-        TextureFilm frames = new TextureFilm( texture, 16, 15 );
+        TextureFilm frames = new TextureFilm( texture, 15, 15 );
 
         idle = new Animation( 8, true );
         idle.frames( frames, 0, 1 );
