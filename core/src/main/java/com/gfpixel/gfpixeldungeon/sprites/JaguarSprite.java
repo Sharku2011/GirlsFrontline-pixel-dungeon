@@ -16,13 +16,13 @@ public class JaguarSprite extends MobSprite {
         idle = new Animation( 8, true );
         idle.frames( frames, 0, 1 );
 
-        run = new Animation( 12, true );
+        run = new Animation( 8, true );
         run.frames( frames, 0, 1, 0, 1 );
 
-        attack = new Animation( 12, false );
+        attack = new Animation( 10, false );
         attack.frames( frames, 1, 2, 3 );
 
-        die = new Animation( 12, false );
+        die = new Animation( 8, false );
         die.frames( frames, 4, 5, 6 );
 
         play( idle );

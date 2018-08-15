@@ -13,8 +13,8 @@ public class RipperSprite extends MobSprite {
 
         TextureFilm frames = new TextureFilm( texture, 13, 16 );
 
-        idle = new Animation( 8, true );
-        idle.frames( frames, 0, 1 );
+        idle = new Animation( 5, true );
+        idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 );
 
         run = new Animation( 12, true );
         run.frames( frames, 2, 3, 4, 5 );
