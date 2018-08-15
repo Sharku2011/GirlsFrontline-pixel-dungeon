@@ -49,19 +49,16 @@ public class Bestiary {
 			case 2:
 				//3x rat, 3x gnoll
 				return new ArrayList<>(Arrays.asList(Rat.class, Rat.class, Rat.class,
-						Gnoll.class, Gnoll.class, Gnoll.class,
-						Ripper.class, Ripper.class, Ripper.class));
+						Gnoll.class, Gnoll.class, Gnoll.class));
 			case 3:
 				//2x rat, 4x gnoll, 1x crab, 1x swarm
 				return new ArrayList<>(Arrays.asList(Rat.class, Rat.class,
 						Gnoll.class, Gnoll.class, Gnoll.class, Gnoll.class,
-						Crab.class, Swarm.class,
-						Ripper.class, Ripper.class, Ripper.class));
+						Crab.class, Swarm.class));
 			case 4:
 				//1x rat, 2x gnoll, 3x crab, 1x swarm
 				return new ArrayList<>(Arrays.asList(Rat.class,
 						Gnoll.class, Gnoll.class,
-						Ripper.class, Ripper.class,
 						Crab.class, Crab.class, Crab.class,
 						Swarm.class));
 				
@@ -95,11 +92,13 @@ public class Bestiary {
 				//5x bat, 1x brute
 				return new ArrayList<>(Arrays.asList(
 						Bat.class, Bat.class, Bat.class, Bat.class, Bat.class,
+						Ripper.class, Ripper.class, Ripper.class,
 						Brute.class));
 			case 12:
 				//5x bat, 5x brute, 1x spinner
 				return new ArrayList<>(Arrays.asList(
 						Bat.class, Bat.class, Bat.class, Bat.class, Bat.class,
+						Ripper.class, Ripper.class, Ripper.class,
 						Brute.class, Brute.class, Brute.class, Brute.class, Brute.class,
 						Spinner.class));
 			case 13:

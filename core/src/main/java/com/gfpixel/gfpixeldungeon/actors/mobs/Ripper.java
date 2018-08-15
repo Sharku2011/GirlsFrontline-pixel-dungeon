@@ -15,7 +15,7 @@ public class Ripper extends Mob {
     {
         spriteClass = RipperSprite.class;
 
-        HP = HT = 30;
+        HP = HT = 20;
         defenseSkill = 30;
         baseSpeed = 1.2f;
 
