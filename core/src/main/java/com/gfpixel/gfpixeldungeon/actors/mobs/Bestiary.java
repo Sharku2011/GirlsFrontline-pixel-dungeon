@@ -35,7 +35,26 @@ public class Bestiary {
 		Random.shuffle(mobs);
 		return mobs;
 	}
-	
+
+	private class Theme {
+		int ThemeID = 0;
+		ArrayList<Class<? extends Mob>> MobRotation;
+
+		Theme(int newThemeID, ArrayList<Class<? extends Mob>> newMobRotation) {
+			ThemeID = newThemeID;
+			MobRotation = newMobRotation;
+		}
+	}
+
+
+
+
+
+
+
+
+
+
 	//returns a rotation of standard mobs, unshuffled.
 	private static ArrayList<Class<? extends Mob>> standardMobRotation( int depth ){
 		switch(depth){
