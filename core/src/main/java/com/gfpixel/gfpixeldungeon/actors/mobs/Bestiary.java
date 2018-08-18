@@ -45,7 +45,7 @@ public class Bestiary {
 				//10x rat
 				return new ArrayList<Class<? extends Mob>>(Arrays.asList(
 						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
-						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class));
+						Rat.class, Rat.class, Rat.class, Golem.class, Rat.class));
 			case 2:
 				//3x rat, 3x gnoll
 				return new ArrayList<>(Arrays.asList(Rat.class, Rat.class, Rat.class,
@@ -66,24 +66,24 @@ public class Bestiary {
 			case 6:
 				//3x skeleton, 1x thief, 1x swarm
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class, Jaguar.class, Jaguar.class, Jaguar.class,
+						Thief.class, Jaguar.class, Jaguar.class, Ripper.class,
 						Swarm.class));
 			case 7:
 				//3x skeleton, 1x thief, 1x shaman, 1x guard
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class, Jaguar.class, Jaguar.class, Jaguar.class,
+						Thief.class, Jaguar.class, Jaguar.class, Ripper.class,
 						Shaman.class,
 						Guard.class));
 			case 8:
 				//3x skeleton, 1x thief, 2x shaman, 2x guard
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class, Jaguar.class, Jaguar.class, Jaguar.class,
+						Thief.class, Jaguar.class, Jaguar.class, Ripper.class,
 						Shaman.class, Shaman.class,
 						Guard.class, Guard.class));
 			case 9:
 				//3x skeleton, 1x thief, 2x shaman, 3x guard
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class, Jaguar.class, Jaguar.class, Jaguar.class,
+						Thief.class, Jaguar.class, Jaguar.class, Ripper.class,
 						Shaman.class, Shaman.class,
 						Guard.class, Guard.class, Guard.class));
 				

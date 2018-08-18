@@ -24,7 +24,9 @@ package com.gfpixel.gfpixeldungeon.actors.mobs;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Amok;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Sleep;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
@@ -221,7 +223,11 @@ public class Eye extends Mob {
 	}
 	
 	{
-		immunities.add( Terror.class );
+		{
+			immunities.add( Amok.class );
+			immunities.add( Terror.class );
+			immunities.add( Sleep.class );
+		}
 	}
 
 	private class Hunting extends Mob.Hunting{
