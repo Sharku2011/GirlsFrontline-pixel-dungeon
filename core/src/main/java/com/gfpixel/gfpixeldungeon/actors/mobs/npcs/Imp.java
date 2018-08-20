@@ -215,7 +215,7 @@ public class Imp extends NPC {
 				alternative = Random.Int( 2 ) == 0;
 				
 				given = false;
-				
+
 				do {
 					reward = (Ring)Generator.random( Generator.Category.RING );
 				} while (reward.cursed);
@@ -226,8 +226,7 @@ public class Imp extends NPC {
 		
 		public static void process( Mob mob ) {
 			if (spawned && given && !completed) {
-				if ((alternative && mob instanceof Monk) ||
-					(!alternative && mob instanceof Golem)) {
+				if ((alternative && mob instanceof Monk)) {
 					
 					Dungeon.level.drop( new DwarfToken(), mob.pos ).sprite.drop();
 				}

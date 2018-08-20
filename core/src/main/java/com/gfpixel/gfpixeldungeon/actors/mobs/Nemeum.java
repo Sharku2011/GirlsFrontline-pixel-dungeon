@@ -34,40 +34,40 @@ import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
-import com.gfpixel.gfpixeldungeon.sprites.hydraSprite;
+import com.gfpixel.gfpixeldungeon.sprites.NemeumSprite;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
-public class Hydra extends Mob {
+public class Nemeum extends Mob {
 
     {
-        spriteClass = hydraSprite.class;
+        spriteClass = NemeumSprite.class;
 
-        HP = HT = 231;
+        HP = HT = 50;
         EXP = 19;
-        defenseSkill = 15;
-        baseSpeed = 1f;
-        maxLvl = 36;
+        defenseSkill = 5;
+        baseSpeed = 0.8f;
+        maxLvl = 17;
 
         properties.add(Property.INORGANIC);
     }
-
+// 사거리는 2칸으로 조정해주세요
     public int DamageReducer() { return 3; }
 
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange(25, 35);
+        return Random.NormalIntRange(15, 25);
     }
 
     @Override
     public int attackSkill( Char target ) {
-        return 30;
+        return 20;
     }
 
     @Override
     protected float attackDelay() {
-        return 0.5f;
+        return 2f;
     }
 
     @Override
@@ -114,10 +114,10 @@ public class Hydra extends Mob {
     @Override
     protected boolean doAttack( Char enemy ) {
 
-        if (beamCooldown > 0) {
+        if (beamCooldown > 2) {
             return super.doAttack(enemy);
         } else if (!beamCharged){
-            ((hydraSprite)sprite).charge( enemy.pos );
+            ((NemeumSprite)sprite).charge( enemy.pos );
             spend( attackDelay()*2f );
             beamCharged = true;
             return true;
@@ -169,7 +169,7 @@ public class Hydra extends Mob {
             }
 
             if (hit( this, ch, true )) {
-                ch.damage( Random.NormalIntRange( 30, 50 ), this );
+                ch.damage( Random.NormalIntRange( 15, 25 ), this );
 
                 if (Dungeon.level.heroFOV[pos]) {
                     ch.sprite.flash();

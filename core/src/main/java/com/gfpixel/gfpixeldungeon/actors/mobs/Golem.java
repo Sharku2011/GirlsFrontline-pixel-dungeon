@@ -24,10 +24,7 @@ package com.gfpixel.gfpixeldungeon.actors.mobs;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.actors.buffs.Amok;
-import com.gfpixel.gfpixeldungeon.actors.buffs.Sleep;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
-import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Imp;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
@@ -37,9 +34,7 @@ import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
-import com.gfpixel.gfpixeldungeon.sprites.EyeSprite;
 import com.gfpixel.gfpixeldungeon.sprites.GolemSprite;
-import com.gfpixel.gfpixeldungeon.sprites.JupiterSprite;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
@@ -58,14 +53,11 @@ public class Golem extends Mob {
 		properties.add(Property.INORGANIC);
 	}
 
-	private Ballistica beam;
-	private int beamTarget = -1;
-	private int beamCooldown;
-	public boolean beamCharged;
+	public int DamageReducer() { return 3; }
 
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 20, 30 );
+		return Random.NormalIntRange(25, 35);
 	}
 
 	@Override
@@ -74,15 +66,19 @@ public class Golem extends Mob {
 	}
 
 	@Override
-	public int drRoll() {
-		return Random.NormalIntRange(0, 7);
+	protected float attackDelay() {
+		return 0.5f;
 	}
 
 	@Override
-	public void move( int step ) {
-
-
+	public int drRoll() {
+		return Random.NormalIntRange(0, 10);
 	}
+
+	private Ballistica beam;
+	private int beamTarget = -1;
+	private int beamCooldown;
+	public boolean beamCharged;
 
 	@Override
 	protected boolean canAttack( Char enemy ) {
@@ -118,11 +114,11 @@ public class Golem extends Mob {
 	@Override
 	protected boolean doAttack( Char enemy ) {
 
-		if (beamCooldown > 3) {
+		if (beamCooldown > 0) {
 			return super.doAttack(enemy);
 		} else if (!beamCharged){
-			((JupiterSprite)sprite).charge( enemy.pos );
-			spend( attackDelay()*4f );
+			((GolemSprite)sprite).charge( enemy.pos );
+			spend( attackDelay()*2f );
 			beamCharged = true;
 			return true;
 		} else {
@@ -141,10 +137,10 @@ public class Golem extends Mob {
 
 	}
 
-	// Reduce damage during charge. Nerf this 5 to 2. How about amplify damage during chage?
+	// Reduce damage during charge. Nerf this 4 to 2.
 	@Override
 	public void damage(int dmg, Object src) {
-		if (beamCharged) dmg /= 2;
+		if (beamCharged) dmg /= DamageReducer();
 		super.damage(dmg, src);
 	}
 
@@ -153,7 +149,7 @@ public class Golem extends Mob {
 			return;
 
 		beamCharged = false;
-		beamCooldown = 1;
+		beamCooldown = Random.IntRange(3, 6);
 
 		boolean terrainAffected = false;
 
@@ -173,7 +169,7 @@ public class Golem extends Mob {
 			}
 
 			if (hit( this, ch, true )) {
-				ch.damage( Random.NormalIntRange( 10, 15 ), this );
+				ch.damage( Random.NormalIntRange( 30, 50 ), this );
 
 				if (Dungeon.level.heroFOV[pos]) {
 					ch.sprite.flash();
@@ -239,5 +235,4 @@ public class Golem extends Mob {
 			return super.act(enemyInFOV, justAlerted);
 		}
 	}
-
 }
