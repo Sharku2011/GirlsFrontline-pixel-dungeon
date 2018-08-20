@@ -64,28 +64,28 @@ public class HeroSprite extends CharSprite {
 
 		TextureFilm film = new TextureFilm( tiers(), ((Hero)ch).tier(), FRAME_WIDTH, FRAME_HEIGHT );
 		
-		idle = new Animation( 1, true );
-		idle.frames( film, 0, 0, 0, 1, 0, 0, 1, 1 );
+		idle = new Animation( 2, true );
+		idle.frames( film, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 2, 3, 4, 4, 4, 5, 5, 5, 5, 4, 4, 4, 5, 5, 5, 5, 4, 4, 4, 5, 5, 5, 5, 3, 3, 2, 2, 0, 0, 0, 0 );
 		
 		run = new Animation( RUN_FRAMERATE, true );
-		run.frames( film, 2, 3, 4, 5, 6, 7 );
+		run.frames( film, 6, 7, 8, 9, 10, 11 );
 		
 		die = new Animation( 20, false );
-		die.frames( film, 8, 9, 10, 11, 12, 11 );
+		die.frames( film, 12, 13, 14, 15 );
 		
 		attack = new Animation( 15, false );
-		attack.frames( film, 13, 14, 15, 0 );
+		attack.frames( film, 17, 18, 19, 1 );
 		
 		zap = attack.clone();
 		
 		operate = new Animation( 8, false );
-		operate.frames( film, 16, 17, 16, 17 );
-		
+		operate.frames( film, 20, 21, 20, 21 );
+
 		fly = new Animation( 1, true );
-		fly.frames( film, 18 );
+		fly.frames( film, 22 );
 
 		read = new Animation( 20, false );
-		read.frames( film, 19, 20, 20, 20, 20, 20, 20, 20, 20, 19 );
+		read.frames( film, 23, 24, 24, 24, 24, 24, 24, 24, 24, 23 );
 		
 		if (ch.isAlive())
 			idle();
