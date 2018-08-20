@@ -223,11 +223,12 @@ public class Imp extends NPC {
 				reward.cursed = true;
 			}
 		}
-		
+
 		public static void process( Mob mob ) {
 			if (spawned && given && !completed) {
-				if ((alternative && mob instanceof Monk)) {
-					
+				if ((alternative && mob instanceof Monk) ||
+						(!alternative && mob instanceof Golem)) {
+
 					Dungeon.level.drop( new DwarfToken(), mob.pos ).sprite.drop();
 				}
 			}
