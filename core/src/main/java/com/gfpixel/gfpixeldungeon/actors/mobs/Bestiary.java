@@ -21,14 +21,11 @@
 
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
-import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.watabou.utils.Random;
-import com.watabou.utils.SparseArray;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import
 
 public class Bestiary {
 	
@@ -40,7 +37,7 @@ public class Bestiary {
 		return mobs;
 	}
 
-	public static SparseArray<MobRotation> StandardMobRotations;
+
 
 	// Names of each themes. Every theme is consist of 5 floors(4 regular level, 1 boss level)
 	public enum Themes {
@@ -55,39 +52,6 @@ public class Bestiary {
 	}
 
 	public static final int FLOORS_PER_THEME = 5;
-
-	private class MobRotation {
-		ArrayList<Class<? extends Mob>>[] MobRotations;
-
-		MobRotation(ArrayList<Class<? extends Mob>>[] newMobRotations) throws Exception{
-			if (newMobRotations.length != FLOORS_PER_THEME - 1) {
-				System.out.println("Mob Rotations should be " + String.valueOf(FLOORS_PER_THEME - 1) + "" + newMobRotations.length);
-				throw new Exception();
-			}
-			MobRotations = newMobRotations;
-		}
-	}
-
-	static {
-		StandardMobRotations.put(DialogInfo.ID_SEWER,
-				new MobRotation( new ArrayList<Class<? extends Mob>>[] {
-					ArrayList(Arrays.asList(
-							Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
-							Rat.class, Rat.class, Rat.class, Rat.class, Elphelt.class
-					)),
-				}
-
-
-
-
-				));
-
-	}
-
-
-
-
-
 
 
 
