@@ -64,8 +64,8 @@ public class HeroSprite extends CharSprite {
 
 		TextureFilm film = new TextureFilm( tiers(), ((Hero)ch).tier(), FRAME_WIDTH, FRAME_HEIGHT );
 		
-		idle = new Animation( 2, true );
-		idle.frames( film, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 2, 3, 4, 4, 4, 5, 5, 5, 5, 4, 4, 4, 5, 5, 5, 5, 4, 4, 4, 5, 5, 5, 5, 3, 3, 2, 2, 0, 0, 0, 0 );
+		idle = new Animation( 3, true );
+		idle.frames( film, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 2, 3, 4, 4, 4, 5, 5, 5, 5, 4, 4, 4, 5, 5, 5, 5, 4, 4, 4, 5, 5, 5, 5, 3, 3, 2, 2, 0, 0, 0, 0 );
 		
 		run = new Animation( RUN_FRAMERATE, true );
 		run.frames( film, 6, 7, 8, 9, 10, 11 );
@@ -74,7 +74,7 @@ public class HeroSprite extends CharSprite {
 		die.frames( film, 12, 13, 14, 15 );
 		
 		attack = new Animation( 15, false );
-		attack.frames( film, 17, 18, 19, 1 );
+		attack.frames( film, 17, 18, 19, 0 );
 		
 		zap = attack.clone();
 		
