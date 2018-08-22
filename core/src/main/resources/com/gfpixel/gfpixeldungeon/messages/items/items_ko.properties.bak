@@ -329,6 +329,17 @@ items.artifacts.unstablespellbook.desc_cursed=감염당한 USB는 당신의 마�
 items.artifacts.unstablespellbook.desc_index=이 USB의 공간은 아직 넉넉합니다. 그리고 USB에 저장되지 않은 부분은 다음과 같습니다:
 items.artifacts.unstablespellbook.desc_empowered=USB에 추가한 디스크가 힘으로 빛납니다. 해당 디스크의 능력은 USB에 넣기 전 보다 더욱 강력한 능력을 사용할 것입니다.
 
+items.artifacts.towcall.name=중화기반 호출(ATW)
+items.artifacts.towcall.desc=그리폰 산하의 중화기반을 호출합니다. 호출된 중화기반은 플레이어를 따라다니면서 거리를 두고 강력한 지원공격을 할것입니다. \n\n 하지만 중화기반은 적의 공격에 매우 취약하고 기동성이 낮으며 호출 대기시간이 길기 때문에 신중하게 결정해야합니다.
+items.artifacts.towcall.desc_worn=매우 느리지만 묵직한 초장거리 관통공격을 하는 대전차화기반입니다. 평범한 보병은 한번의 사격으로 소멸시킬 수 있으며, 엘리트나 보스급 적에게도 매우 유효한 피해를 입힐 수 있습니다.
+
+items.artifacts.aglcall.name=중화기반 호출(AGL)
+items.artifacts.aglcall.desc=그리폰 산하의 중화기반을 호출합니다. 호출된 중화기반은 플레이어를 따라다니면서 거리를 두고 강력한 지원공격을 할것입니다. \n\n 하지만 중화기반은 적의 공격에 매우 취약하고 기동성이 낮으며 호출 대기시간이 길기 때문에 신중하게 결정해야합니다.
+items.artifacts.aglcall.desc_worn=빠르게 적을 타격하는 중거리 자동유탄발사기반입니다. 빠른 사격속도로 여러 적을 제압하기 좋습니다.
+
+items.artifacts.mtrcall.name=중화기반 호출(MTR)
+items.artifacts.mtrcall.desc=그리폰 산하의 중화기반을 호출합니다. 호출된 중화기반은 플레이어를 따라다니면서 거리를 두고 강력한 지원공격을 할것입니다. \n\n 하지만 중화기반은 적의 공격에 매우 취약하고 기동성이 낮으며 호출 대기시간이 길기 때문에 신중하게 결정해야합니다.
+items.artifacts.mtrcall.desc_worn=느리지만 광범위 폭발피해를 입히는 박격포반입니다. 폭발력은 강력하지만, 자신과 박격포반 소녀들이 폭발에 휘말리지 않도록 조심해주세요. 바닥에 떨어진 아이템도 함께 말이죠!
 
 
 ###bags
