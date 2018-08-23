@@ -438,12 +438,16 @@ public class Elphelt extends Mob {
 	        if (ch != null) {
 	            final Ballistica traceChar = new Ballistica( c, traceRush.path.get(traceRush.dist+1), Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
 	            final Ballistica traceWall = new Ballistica( c, traceRush.path.get(traceRush.dist+1), Ballistica.STOP_TERRAIN);
+
+
                 Char collideChar = findChar(traceChar.collisionPos);
+
                 if (collideChar != null) {
                     GLog.i(collideChar.name);
                 }
+
                 // 캐릭터에 부딪힌 경우 날아갈 위치는 해당 캐릭터의 위치까지, 벽에 부딪힌 경우는
-                int dist = (collideChar != null && collideChar != this) ? traceChar.dist : traceChar.dist - 1;
+                int dist = (collideChar != null && collideChar != this) ? traceChar.dist : traceChar.dist;
 
 	            final int newPos = traceChar.path.get(
 	                    Math.min( POWER_OF_BLAST, dist )
