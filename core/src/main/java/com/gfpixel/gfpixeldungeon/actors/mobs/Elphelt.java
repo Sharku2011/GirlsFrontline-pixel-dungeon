@@ -1,7 +1,6 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
@@ -17,15 +16,17 @@ import com.gfpixel.gfpixeldungeon.effects.particles.BlastParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
 import com.gfpixel.gfpixeldungeon.items.Heap;
-import com.gfpixel.gfpixeldungeon.items.food.Maccol;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
+import com.gfpixel.gfpixeldungeon.levels.Terrain;
+import com.gfpixel.gfpixeldungeon.levels.features.Door;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
 import com.gfpixel.gfpixeldungeon.sprites.ElpheltSprite;
+import com.gfpixel.gfpixeldungeon.tiles.DungeonTerrainTilemap;
 import com.gfpixel.gfpixeldungeon.ui.BossHealthBar;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.gfpixel.gfpixeldungeon.windows.WndDialog;
@@ -39,6 +40,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+
 
 public class Elphelt extends Mob {
 
@@ -161,12 +163,16 @@ public class Elphelt extends Mob {
                 break;
         }
 
+        GLog.i(String.valueOf(state));
+
         return super.act();
     }
 
 
     @Override
     protected boolean canAttack( Char enemy ) {
+
+	    GLog.i("캔어택 호출 / ");
 
         switch (phase) {
             case 0:
@@ -369,6 +375,7 @@ public class Elphelt extends Mob {
                 if (ch.isAlive()) {
                     Ballistica trajectory = new Ballistica(ch.pos, ch.pos + i, Ballistica.MAGIC_BOLT);
                     throwChar(ch, trajectory, POWER_OF_BLAST);
+                    // 2페이즈에서 엘펠트 / 캐릭터 / 적 이렇게 딱 붙어있을 경우 엘펠트가 멍청이가 되는 경우가 있음 - 어차피 보스전
                 }
             }
         }
@@ -379,6 +386,7 @@ public class Elphelt extends Mob {
 
 	private void warnExpress() {
 
+	    /*
         if ( enemy != null && enemy.isAlive() && fieldOfView[enemy.pos] && enemy.invisible <= 0 ) {
             traceRush = new Ballistica( pos, enemy.pos, Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
             if (traceRush.dist > 1) {
@@ -396,6 +404,21 @@ public class Elphelt extends Mob {
 	        traceRush = new Ballistica( pos, Dungeon.level.randomDestination(), Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
             bridlePath = traceRush.subPath(1, traceRush.dist);
         }
+        */
+
+
+        traceRush = new Ballistica( pos, target, Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
+        if (traceRush.dist > 1) {
+            bridlePath = traceRush.subPath(1, traceRush.dist);
+        } else {
+            // 캐릭터와 엘펠트가 붙어있는 경우
+            // 일단 팅겨내기 -> 아니면 벽까지 돌진하게 만들고 그냥 죽여버리기?
+            ((ElpheltSprite)sprite).blast();
+            canRush = false;
+            onRush = false;
+
+            return;
+        }
 
 	    for (int c : bridlePath) {
             if ( Blob.volumeAt( c, GenoiseWarn.class ) == 0 ) {
@@ -405,6 +428,8 @@ public class Elphelt extends Mob {
             }
 
         }
+
+        GLog.i("경고!");
 
         dstRush = traceRush.collisionPos;
         ((ElpheltSprite)sprite).charge(dstRush);
@@ -436,22 +461,29 @@ public class Elphelt extends Mob {
 	        final Char ch = findChar(c);
 
 	        if (ch != null) {
+	            // 튕겨나갈 경로 계산
 	            final Ballistica traceChar = new Ballistica( c, traceRush.path.get(traceRush.dist+1), Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
-	            final Ballistica traceWall = new Ballistica( c, traceRush.path.get(traceRush.dist+1), Ballistica.STOP_TERRAIN);
-
 
                 Char collideChar = findChar(traceChar.collisionPos);
 
-                if (collideChar != null) {
-                    GLog.i(collideChar.name);
+                // 0. 아무것도 안충돌
+                // 1. 지형에 충돌
+                // 2. 다른 캐릭터에 충돌
+                int collideTag = 0;
+
+                if ( traceChar.dist <= POWER_OF_BLAST ) {
+                    if ( collideChar != null && Dungeon.level.distance(ch.pos, collideChar.pos) == traceChar.dist ) {
+                        collideTag = 2;
+                    } else {
+                        collideTag = 1;
+                    }
                 }
 
-                // 캐릭터에 부딪힌 경우 날아갈 위치는 해당 캐릭터의 위치까지, 벽에 부딪힌 경우는
-                int dist = (collideChar != null && collideChar != this) ? traceChar.dist : traceChar.dist;
 
-	            final int newPos = traceChar.path.get(
-	                    Math.min( POWER_OF_BLAST, dist )
-                );
+                // 캐릭터에 부딪힌 경우 날아갈 위치는 해당 캐릭터의 위치까지, 벽에 부딪힌 경우는
+                int dist = (collideTag >=2) ? Math.max(traceChar.dist - 1, 0) : traceChar.dist;
+
+	            final int newPos = traceChar.path.get( dist );
 
 	            bCrash = (dist > 1);
 
@@ -486,7 +518,13 @@ public class Elphelt extends Mob {
         Actor.addDelayed( new Pushing(Elphelt.this, pos, finalPos, new Callback() {
             @Override
             public void call() {
+                if (Dungeon.level.map[pos] == Terrain.OPEN_DOOR) {
+                    Door.leave( pos );
+                }
                 pos = finalPos;
+                if (Dungeon.level.map[pos] == Terrain.DOOR) {
+                    Door.enter( pos );
+                }
                 canRush = false;
                 onRush = false;
                 timerRush = 0;
@@ -641,18 +679,27 @@ public class Elphelt extends Mob {
         @Override
         public boolean act(boolean enemyInFOV, boolean justAlerted) {
             enemySeen = enemyInFOV;
-
             switch (phase) {
                 case 0: default:
                 case 1:
-                case 2:
                     break;
+                case 2:
+                    if (enemyInFOV) {
+                        target = enemy.pos;
+                    } else {
+                        target = Dungeon.level.randomDestination();
+                    }
+                    doAttack( enemy );
+                    return true;
             }
-            if (onRush || onGenoise) {
+            GLog.i(String.valueOf(phase));
+            GLog.i(String.valueOf(onRush));
+            if (canAttack( enemy ) && onRush || onGenoise) {
                 return doAttack(enemy);
+            } else {
+                spend( TICK );
             }
-
-            return super.act(enemyInFOV, justAlerted);
+            return true;
         }
     }
 
