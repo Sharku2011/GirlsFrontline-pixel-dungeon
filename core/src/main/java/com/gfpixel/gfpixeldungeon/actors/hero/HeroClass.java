@@ -50,7 +50,10 @@ import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Kriss;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1903;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ntw20;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Boomerang;
@@ -154,6 +157,9 @@ public enum HeroClass {
 		if (BuildConfig.DEBUG) 	{
 			new M79().identify().collect();
 			new Cannon().identify().collect();
+			new Kriss().identify().collect();
+			new M1903().identify().collect();
+			new Ntw20().identify().upgrade(100).collect();
 			new PlateArmor().identify().upgrade(100).collect();
 		}
 

@@ -44,12 +44,12 @@ public class Kriss extends MeleeWeapon {
 
 		Speed buffSpeed = Dungeon.hero.buff(Speed.class);
 
-		float times = 1.8f;
+		float times = 1.5f;
 
 		if (buffSpeed != null) {
 			times -= buffSpeed.cooldown();
 
-			GameMath.gate( 0.0f, times, 1.8f );
+			GameMath.gate( 0.0f, times, 1.5f );
 		}
 
 		Buff.affect(hero, Speed.class, times);
