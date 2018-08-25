@@ -35,7 +35,7 @@ public class Kriss extends MeleeWeapon {
 		image = ItemSpriteSheet.KRISS;
 
 		tier = 3;
-		DLY = 1f; //2x speed
+		DLY = 0.9f; //2x speed
 	}
 
 	@Override
@@ -44,12 +44,12 @@ public class Kriss extends MeleeWeapon {
 
 		Speed buffSpeed = Dungeon.hero.buff(Speed.class);
 
-		float times = 1.5f;
+		float times = 1.7f;
 
 		if (buffSpeed != null) {
 			times -= buffSpeed.cooldown();
 
-			GameMath.gate( 0.0f, times, 1.5f );
+			GameMath.gate( 0.0f, times, 1.7f );
 		}
 
 		Buff.affect(hero, Speed.class, times);
