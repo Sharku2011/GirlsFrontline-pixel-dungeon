@@ -48,7 +48,7 @@ public class TowSprite extends MobSprite {
         idle = new Animation( 5, true );
         idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 0 );
 
-        charging = new Animation( 19, true);
+        charging = new Animation( 18, true);
         charging.frames( frames, 1 );
 
         chargeParticles = centerEmitter();
@@ -60,11 +60,11 @@ public class TowSprite extends MobSprite {
         run.frames( frames, 1, 2, 3, 4, 5 );
 
         attack = new Animation( 8, false );
-        attack.frames( frames,  20,21,18);
+        attack.frames( frames,  19, 20, 21, 18);
         zap = attack.clone();
 
-        die = new Animation( 8, false );
-        die.frames( frames, 6, 7, 8 );
+        die = new Animation( 5, false );
+        die.frames( frames, 22, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36 );
 
         play( idle );
     }

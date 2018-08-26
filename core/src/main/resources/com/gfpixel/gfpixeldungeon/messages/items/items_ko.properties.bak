@@ -1038,8 +1038,8 @@ items.weapon.melee.hk416.stats_desc=이 무기는 강화의 효율이 더 높습
 items.weapon.melee.hk416.desc="HK416. 제대로 기억해 주세요, 지휘관.."\n\nH&K사에서 만든 AR-15의 개량형으로, M4보다 더 작은 크기에 좀더 높은 신뢰성을 갖고있습니다.
 
 items.weapon.melee.kriss.name=크리스 벡터
-items.weapon.melee.kriss.stats_desc=이 기관단총은 매우 빠릅니다.\n이 기관단총은 피해의 일부를 막을 수 있습니다.
-items.weapon.melee.kriss.desc="안심해, 순식간에 죽여줄테니 어떤 아픔도 느끼지 못할거야."\n\n KRISS사에서 개발한 최신형 기관단총입니다. 이 기관단총의 사격속도는 매우 빠르며, 일부 피해를 막아낼수있습니다. 튼튼하거든요! 하지만 피해량은 많이 낮습니다.
+items.weapon.melee.kriss.stats_desc=이 기관단총으로 타격할때마다, 특수한 버프가 적용됩니다.
+items.weapon.melee.kriss.desc="안심해, 순식간에 죽여줄테니 어떤 아픔도 느끼지 못할거야."\n\n KRISS사에서 개발한 최신형 기관단총입니다. 이 기관단총을 쏠때마다 좀더 빠르게 기동할 수 있으며, 모든 시간에 관련된 것들이 두배로 증폭됩니다.
 
 items.weapon.melee.negev.name=IWI Negev
 items.weapon.melee.negev.stats_desc=이 무기는 다른 무기보다 압도적으로 빠릅니다.

@@ -68,6 +68,8 @@ public class ItemSpriteSheet {
 	public static final int SANDBAG         = UNCOLLECTIBLE+3;
 	public static final int DBL_BOMB        = UNCOLLECTIBLE+4;
 	public static final int GUIDE_PAGE      = UNCOLLECTIBLE+5;
+	public static final int MEMORY      = UNCOLLECTIBLE+6;
+
 	static{
 		assignItemRect(GOLD,        15, 13);
 		assignItemRect(DEWDROP,     10, 10);
@@ -75,6 +77,7 @@ public class ItemSpriteSheet {
 		assignItemRect(SANDBAG,     10, 10);
 		assignItemRect(DBL_BOMB,    14, 13);
 		assignItemRect(GUIDE_PAGE,  10, 11);
+		assignItemRect(MEMORY,  8, 8);
 	}
 
 	private static final int CONTAINERS     =                               xy(1, 3);   //16 slots
@@ -389,6 +392,9 @@ public class ItemSpriteSheet {
 	public static final int ARTIFACT_ROSE1      = ARTIFACTS+20;
 	public static final int ARTIFACT_ROSE2      = ARTIFACTS+21;
 	public static final int ARTIFACT_ROSE3      = ARTIFACTS+22;
+	public static final int TOWCALL      = ARTIFACTS+23;
+	public static final int AGLCALL      = ARTIFACTS+24;
+	public static final int MTRCALL      = ARTIFACTS+25;
 	static{
 		assignItemRect(ARTIFACT_CLOAK,      16,  14);
 		assignItemRect(ARTIFACT_ARMBAND,    16, 13);
@@ -413,6 +419,9 @@ public class ItemSpriteSheet {
 		assignItemRect(ARTIFACT_ROSE1,      14, 14);
 		assignItemRect(ARTIFACT_ROSE2,      14, 14);
 		assignItemRect(ARTIFACT_ROSE3,      14, 14);
+		assignItemRect(TOWCALL,               7, 14);
+		assignItemRect(AGLCALL,               7, 14);
+		assignItemRect(MTRCALL,               7, 14);
 	}
 	                                                                                    //32 free slots
 
