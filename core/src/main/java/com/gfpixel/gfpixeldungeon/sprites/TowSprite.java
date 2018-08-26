@@ -22,12 +22,21 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.effects.Speck;
-import com.gfpixel.gfpixeldungeon.effects.particles.ShaftParticle;
-import com.watabou.glwrap.Blending;
+import com.gfpixel.gfpixeldungeon.actors.Actor;
+import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Tow;
+import com.gfpixel.gfpixeldungeon.effects.Beam;
+import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
+import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.watabou.noosa.TextureFilm;
+import com.watabou.noosa.particles.Emitter;
 
 public class TowSprite extends MobSprite {
+
+    private int zapPos;
+
+    private Animation charging;
+    private Emitter chargeParticles;
 
     public TowSprite() {
         super();
@@ -37,36 +46,74 @@ public class TowSprite extends MobSprite {
         TextureFilm frames = new TextureFilm( texture, 50, 25 );
 
         idle = new Animation( 5, true );
-        idle.frames( frames, 0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 0 );
+        idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 0 );
+
+        charging = new Animation( 19, true);
+        charging.frames( frames, 1 );
+
+        chargeParticles = centerEmitter();
+        chargeParticles.autoKill = false;
+        chargeParticles.pour(MagicMissile.MagicParticle.ATTRACTING, 0.05f);
+        chargeParticles.on = false;
 
         run = new Animation( 10, true );
         run.frames( frames, 1, 2, 3, 4, 5 );
 
-        attack = new Animation( 10, false );
-        attack.frames( frames, 2, 2, 2 );
+        attack = new Animation( 8, false );
+        attack.frames( frames,  20,21,18);
+        zap = attack.clone();
 
         die = new Animation( 8, false );
-        die.frames( frames, 0, 0, 0, 0, 0 );
+        die.frames( frames, 6, 7, 8 );
 
         play( idle );
     }
 
     @Override
-    public void draw() {
-        Blending.setLightMode();
-        super.draw();
-        Blending.setNormalMode();
+    public void link(Char ch) {
+        super.link(ch);
+        //if (((Tow)ch).beamCharged) play(charging);
     }
 
     @Override
-    public void die() {
-        super.die();
-        emitter().start( ShaftParticle.FACTORY, 0.3f, 4 );
-        emitter().start( Speck.factory( Speck.LIGHT ), 0.2f, 3 );
+    public void update() {
+        super.update();
+        chargeParticles.pos(center());
+        chargeParticles.visible = visible;
+    }
+
+    public void charge( int pos ){
+        turnTo(ch.pos, pos);
+        play(charging);
     }
 
     @Override
-    public int blood() {
-        return 0xFFFFFF;
+    public void play(Animation anim) {
+        chargeParticles.on = anim == charging;
+        super.play(anim);
+    }
+
+    @Override
+    public void zap( int pos ) {
+        zapPos = pos;
+        super.zap( pos );
+    }
+
+    @Override
+    public void onComplete( Animation anim ) {
+        super.onComplete( anim );
+
+        if (anim == zap) {
+            idle();
+            if (Actor.findChar(zapPos) != null){
+                parent.add(new Beam.DeathRay(center(), Actor.findChar(zapPos).sprite.center()));
+            } else {
+                parent.add(new Beam.DeathRay(center(), DungeonTilemap.raisedTileCenterToWorld(zapPos)));
+            }
+           // ((Tow)ch).deathGaze();
+            ch.next();
+        } else if (anim == die){
+            chargeParticles.killAndErase();
+        }
     }
 }

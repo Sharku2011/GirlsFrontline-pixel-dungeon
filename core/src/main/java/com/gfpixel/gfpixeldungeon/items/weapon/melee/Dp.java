@@ -29,14 +29,14 @@ public class Dp extends MeleeWeapon {
         image = ItemSpriteSheet.DP;
 
         tier = 1;
-        DLY = 0.2f; //1time 5hit
+        DLY = 0.2f; //1time 10hit
         ACC = 3f;
     }
 
     @Override
     public int max(int lvl) {
         return  Math.round(2.1f*(tier+1)) +    //5 base, down from 20
-                lvl*Math.round(0.4f*(tier+1));   //+1 per level, down from +2
+                lvl*Math.round(0.5f*(tier+1));   //+1 per level, down from +2
     }
 
 }

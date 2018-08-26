@@ -31,6 +31,7 @@ import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
 import com.gfpixel.gfpixeldungeon.items.artifacts.CloakOfShadows;
+import com.gfpixel.gfpixeldungeon.items.artifacts.DriedRose;
 import com.gfpixel.gfpixeldungeon.items.bags.MagicalHolster;
 import com.gfpixel.gfpixeldungeon.items.bags.PotionBandolier;
 import com.gfpixel.gfpixeldungeon.items.bags.ScrollHolder;
@@ -155,11 +156,10 @@ public enum HeroClass {
 		new PotionOfHealing().identify();
 
 		if (BuildConfig.DEBUG) 	{
-			new M79().identify().collect();
+			new DriedRose().identify().collect();
 			new Cannon().identify().collect();
-			new Kriss().identify().collect();
-			new M1903().identify().collect();
-			new Ntw20().identify().upgrade(100).collect();
+			new Kriss().identify().upgrade(3).collect();
+			new M1903().identify().upgrade(3).collect();
 			new PlateArmor().identify().upgrade(100).collect();
 		}
 
