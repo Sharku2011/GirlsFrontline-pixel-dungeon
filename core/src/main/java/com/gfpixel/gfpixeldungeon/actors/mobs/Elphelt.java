@@ -494,7 +494,8 @@ public class Elphelt extends Mob {
                     public void call() {
                         ch.pos = newPos;
 
-                        ch.damage( Random.NormalIntRange(5,10), Elphelt.this );
+                        // 2테마 보스에 맞는 데미지
+                        ch.damage( Random.NormalIntRange(30,50) - ch.drRoll(), Elphelt.this );
 
                         if (traceChar.collisionPos == newPos) {
                             Paralysis.prolong(ch, Paralysis.class, 2f);
@@ -543,8 +544,10 @@ public class Elphelt extends Mob {
 
 	    Ballistica trajectory = new Ballistica( pos, enemy.pos, Ballistica.PROJECTILE );
 
-	    int damage = Random.NormalIntRange(2,5)
-        enemy.drRoll();
+	    int damage = Random.NormalIntRange(2,5);
+        enemy.damage(damage -  enemy.drRoll(), Elphelt.this );
+        
+        // TODO 확률로 3턴 지속 or 1~3턴 지속 매혹 부여
 
     }
 
