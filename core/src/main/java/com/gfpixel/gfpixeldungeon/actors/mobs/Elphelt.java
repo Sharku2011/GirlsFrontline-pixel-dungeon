@@ -8,6 +8,7 @@ import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
 import com.gfpixel.gfpixeldungeon.actors.blobs.GenoiseWarn;
 import com.gfpixel.gfpixeldungeon.actors.blobs.GooWarn;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
@@ -493,7 +494,7 @@ public class Elphelt extends Mob {
                     public void call() {
                         ch.pos = newPos;
 
-                        ch.damage( Random.NormalIntRange(12,24), Elphelt.this );
+                        ch.damage( Random.NormalIntRange(5,10), Elphelt.this );
 
                         if (traceChar.collisionPos == newPos) {
                             Paralysis.prolong(ch, Paralysis.class, 2f);
@@ -538,12 +539,12 @@ public class Elphelt extends Mob {
         return true;
     }
 
-    private void magnumWedding() {
+    private void magnumWedding( Char enemy ) {
 
 	    Ballistica trajectory = new Ballistica( pos, enemy.pos, Ballistica.PROJECTILE );
 
-
-
+	    int damage = Random.NormalIntRange(2,5)
+        enemy.drRoll();
 
     }
 
@@ -671,6 +672,7 @@ public class Elphelt extends Mob {
     }
 
     {
+        immunities.add( Charm.class );
         immunities.add( Terror.class );
     }
 
