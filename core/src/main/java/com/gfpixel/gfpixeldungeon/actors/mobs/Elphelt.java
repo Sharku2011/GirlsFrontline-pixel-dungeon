@@ -13,7 +13,9 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.Pushing;
+import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.effects.particles.BlastParticle;
+import com.gfpixel.gfpixeldungeon.effects.particles.BloodParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
 import com.gfpixel.gfpixeldungeon.items.Heap;
@@ -27,7 +29,6 @@ import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
 import com.gfpixel.gfpixeldungeon.sprites.ElpheltSprite;
-import com.gfpixel.gfpixeldungeon.tiles.DungeonTerrainTilemap;
 import com.gfpixel.gfpixeldungeon.ui.BossHealthBar;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.gfpixel.gfpixeldungeon.windows.WndDialog;
@@ -540,15 +541,28 @@ public class Elphelt extends Mob {
         return true;
     }
 
-    private void magnumWedding( Char enemy ) {
 
-	    Ballistica trajectory = new Ballistica( pos, enemy.pos, Ballistica.PROJECTILE );
+    private boolean magnumWedding( Ballistica beam ) {
+
+	    //Ballistica trajectory = new Ballistica( pos, enemy.pos, Ballistica.PROJECTILE );
+
+        if ( beam == null || findChar(beam.collisionPos) == null || Dungeon.level.distance(pos, beam.collisionPos) > 5 ) {
+            return false;
+        }
+
+        for (int c : beam.subPath(0, beam.dist))
+            CellEmitter.center(c).burst( BloodParticle.BURST, 1 );
+
 
 	    int damage = Random.NormalIntRange(2,5);
         enemy.damage(damage -  enemy.drRoll(), Elphelt.this );
-        
+
         // TODO 확률로 3턴 지속 or 1~3턴 지속 매혹 부여
 
+        enemy.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 5 );
+
+
+        return true;
     }
 
 
