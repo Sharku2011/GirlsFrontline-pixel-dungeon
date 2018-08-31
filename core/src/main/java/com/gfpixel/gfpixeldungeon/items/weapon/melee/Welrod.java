@@ -39,7 +39,7 @@ public class Welrod extends MeleeWeapon {
 
 	@Override
 	public int max(int lvl) {
-		return  4*(tier+1) +    //8 base, down from 10
+		return  2*(tier+1) +    //4 base, down from 10
 				lvl*(tier+1);   //scaling unchanged
 	}
 	
@@ -52,7 +52,7 @@ public class Welrod extends MeleeWeapon {
 				//deals 85% toward max to max on surprise, instead of min to max.
 				int diff = max() - min();
 				int damage = augment.damageFactor(Random.NormalIntRange(
-						min() + Math.round(diff*0.85f),
+						min() + Math.round(diff*2.2f),
 						max()));
 				int exStr = hero.STR() - STRReq();
 				if (exStr > 0) {
