@@ -105,24 +105,31 @@ public class Bestiary {
 				}
 			}
 		};
-		final MobRotations MR_HUNTINGRABBIT	= new MobRotations( 1 ) {
+		final MobRotations MR_HUNTINGRABBIT   = new MobRotations( 1 ) {
 			@Override
 			public ArrayList<Class<? extends Mob>> getRotation(int floor) {
 				switch (floor % 5) {
 					case 0:default:
 						return null;
 					case 1:
-						return new ArrayList<Class<? extends Mob>>(Arrays.asList(
-								Rat.class));
+						return new ArrayList<>(Arrays.asList(
+								Ripper.class, Ripper.class, Ripper.class,
+								Shaman.class));
 					case 2:
-						return new ArrayList<Class<? extends Mob>>(Arrays.asList(
-								Rat.class));
+						return new ArrayList<>(Arrays.asList(
+								Ripper.class, Ripper.class, Ripper.class,
+								Shaman.class,
+								Jaguar));
 					case 3:
-						return new ArrayList<Class<? extends Mob>>(Arrays.asList(
-								Rat.class));
+						return new ArrayList<>(Arrays.asList(
+								Ripper.class, Ripper.class,
+								Shaman.class,
+								Jaguar, Jaguar));
 					case 4:
-						return new ArrayList<Class<? extends Mob>>(Arrays.asList(
-								Rat.class));
+						return new ArrayList<>(Arrays.asList(
+								Ripper.class, Ripper.class,
+								Shaman.class,
+								Jaguar, Jaguar));
 				}
 			}
 		};
