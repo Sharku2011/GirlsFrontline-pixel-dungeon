@@ -52,7 +52,7 @@ public class Welrod extends MeleeWeapon {
 				//deals 85% toward max to max on surprise, instead of min to max.
 				int diff = max() - min();
 				int damage = augment.damageFactor(Random.NormalIntRange(
-						min() + Math.round(diff*2.2f),
+						min() + Math.round(diff*2.5f),
 						max()));
 				int exStr = hero.STR() - STRReq();
 				if (exStr > 0) {
