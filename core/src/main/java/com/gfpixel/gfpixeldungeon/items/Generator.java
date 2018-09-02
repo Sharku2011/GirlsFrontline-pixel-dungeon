@@ -387,7 +387,7 @@ public class Generator {
 					ThrowingHammer.class
 			};
 			MIS_T5.probs = new float[]{ 4, 3 };
-			
+
 			FOOD.classes = new Class<?>[]{
 					Food.class,
 					Maccol.class,

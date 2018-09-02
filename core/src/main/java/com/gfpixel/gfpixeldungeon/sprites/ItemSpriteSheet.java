@@ -409,9 +409,9 @@ public class ItemSpriteSheet {
 		assignItemRect(ARTIFACT_HORN2,      15, 15);
 		assignItemRect(ARTIFACT_HORN3,      15, 15);
 		assignItemRect(ARTIFACT_HORN4,      15, 15);
-		assignItemRect(ARTIFACT_CHALICE1,   12, 15);
-		assignItemRect(ARTIFACT_CHALICE2,   12, 15);
-		assignItemRect(ARTIFACT_CHALICE3,   12, 15);
+		assignItemRect(ARTIFACT_CHALICE1,   16, 15);
+		assignItemRect(ARTIFACT_CHALICE2,   16, 15);
+		assignItemRect(ARTIFACT_CHALICE3,   16, 15);
 		assignItemRect(ARTIFACT_SANDALS,    16, 6 );
 		assignItemRect(ARTIFACT_SHOES,      16, 6 );
 		assignItemRect(ARTIFACT_BOOTS,      16, 9 );
