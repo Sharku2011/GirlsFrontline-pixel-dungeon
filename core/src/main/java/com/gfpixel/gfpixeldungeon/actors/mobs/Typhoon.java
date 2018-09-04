@@ -7,6 +7,7 @@ import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
+import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfPsionicBlast;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
@@ -190,7 +191,7 @@ public class Typhoon extends Hydra {
     }
 
     {
-        resistances.add( WandOfDisintegration.class );
+        resistances.add( ScrollOfPsionicBlast.class );
         resistances.add( Grim.class );
         resistances.add( Vampiric.class );
     }
