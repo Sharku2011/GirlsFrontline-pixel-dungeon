@@ -22,19 +22,21 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.watabou.noosa.TextureFilm;
 
 public class ItemSpriteSheet {
 
-	private static final int WIDTH = 16;
+	private static int WIDTH = 16;
 
 	public static TextureFilm film = new TextureFilm( Assets.ITEMS, 16, 16 );
 
 	private static int xy(int x, int y){
 		x -= 1; y -= 1;
-		return x + WIDTH*y;
+		if(y != 11) {
+			return x + WIDTH * y;
+		}else{
+			return x + 16 * y;
+		}
 	}
 
 	private static final int PLACEHOLDERS   =                               xy(1, 1);   //16 slots

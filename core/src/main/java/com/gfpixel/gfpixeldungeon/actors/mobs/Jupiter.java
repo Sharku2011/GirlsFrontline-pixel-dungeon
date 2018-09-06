@@ -116,7 +116,7 @@ public class Jupiter extends Mob {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((JupiterSprite)sprite).charge( enemy.pos );
-            spend( attackDelay()*3f );
+            spend( attackDelay()*5f );
             beamCharged = true;
             return true;
         } else {

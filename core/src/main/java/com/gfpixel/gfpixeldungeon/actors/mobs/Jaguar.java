@@ -38,9 +38,4 @@ public class Jaguar extends Mob {
     public int drRoll() {
         return Random.NormalIntRange(0, 5);
     }
-
-    @Override
-    protected float attackDelay() {
-        return 0.5f;
-    }
 }

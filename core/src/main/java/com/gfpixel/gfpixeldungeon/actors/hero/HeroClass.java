@@ -54,6 +54,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Kriss;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1903;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.NAGANT;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ntw20;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
@@ -159,7 +160,7 @@ public enum HeroClass {
 			new DriedRose().identify().collect();
 			new Cannon().identify().collect();
 			new Kriss().identify().upgrade(3).collect();
-			new M1903().identify().upgrade(3).collect();
+			new NAGANT().identify().upgrade(3).collect();
 			new PlateArmor().identify().upgrade(100).collect();
 		}
 
