@@ -47,6 +47,7 @@ import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.wands.M79;
+import com.gfpixel.gfpixeldungeon.items.wands.M84;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
@@ -160,7 +161,7 @@ public enum HeroClass {
 			new DriedRose().identify().collect();
 			new Cannon().identify().collect();
 			new Kriss().identify().upgrade(3).collect();
-			new NAGANT().identify().upgrade(3).collect();
+			new M84().identify().upgrade(3).collect();
 			new PlateArmor().identify().upgrade(100).collect();
 		}
 
@@ -200,6 +201,10 @@ public enum HeroClass {
 		new ScrollHolder().collect();
 		Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
 		new ScrollOfMagicMapping().identify();
+
+		if (BuildConfig.DEBUG) 	{
+			new Ntw20().identify().collect();
+		}
 	}
 
 	private static void initHuntress( Hero hero ) {
@@ -212,6 +217,7 @@ public enum HeroClass {
 
 
 		Dungeon.quickslot.setSlot(0, boomerang);
+		Dungeon.quickslot.setSlot(2, m79);
 
 		new VelvetPouch().collect();
 		Dungeon.LimitedDrops.VELVET_POUCH.drop();

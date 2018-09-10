@@ -22,7 +22,7 @@ public class Ntw20 extends MeleeWeapon {
     @Override
     public int max(int lvl) {
         return  Math.round(17.4f*(tier+1)) +    //40 base, up from 35
-                lvl*Math.round(3.1f*(tier+5)); //+4 per level, up from +3
+                lvl*Math.round(4.1f*(tier+5)); //+4 per level, up from +3
     }
 
 }

@@ -66,24 +66,24 @@ public class Bestiary {
 			case 6:
 				//3x skeleton, 1x thief, 1x swarm
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class, Jaguar.class, Jaguar.class, Ripper.class,
+						Thief.class,
 						Swarm.class));
 			case 7:
 				//3x skeleton, 1x thief, 1x shaman, 1x guard
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class, Jaguar.class, Jaguar.class, Ripper.class,
+						Thief.class,
 						Shaman.class,
 						Guard.class));
 			case 8:
 				//3x skeleton, 1x thief, 2x shaman, 2x guard
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class, Jaguar.class, Jaguar.class, Ripper.class,
+						Thief.class,
 						Shaman.class, Shaman.class,
 						Guard.class, Guard.class));
 			case 9:
 				//3x skeleton, 1x thief, 2x shaman, 3x guard
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class, Jaguar.class, Jaguar.class, Ripper.class,
+						Thief.class,
 						Shaman.class, Shaman.class,
 						Guard.class, Guard.class, Guard.class));
 				
@@ -92,13 +92,11 @@ public class Bestiary {
 				//5x bat, 1x brute
 				return new ArrayList<>(Arrays.asList(
 						Bat.class, Bat.class, Bat.class, Bat.class, Bat.class,
-						Ripper.class, Ripper.class, Ripper.class,
 						Brute.class));
 			case 12:
 				//5x bat, 5x brute, 1x spinner
 				return new ArrayList<>(Arrays.asList(
 						Bat.class, Bat.class, Bat.class, Bat.class, Bat.class,
-						Ripper.class, Ripper.class, Ripper.class,
 						Brute.class, Brute.class, Brute.class, Brute.class, Brute.class,
 						Spinner.class));
 			case 13:

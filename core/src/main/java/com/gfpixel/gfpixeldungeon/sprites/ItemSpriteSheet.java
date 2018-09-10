@@ -232,17 +232,17 @@ public class ItemSpriteSheet {
 	}
 
 	private static final int WEP_TIER6      =                               xy(1, 12);
-	public static final int NTW20            = WEP_TIER6+0;
+	public static final int GROZA            = WEP_TIER6+0;
 	public static final int MG42			= WEP_TIER6+1;
 	public static final int SAIGA			= WEP_TIER6+2;
 	public static final int NAGANT			= WEP_TIER6+3;
-	public static final int GROZA			= WEP_TIER6+4;
+	public static final int NTW20			= WEP_TIER6+4;
 	static{
-		assignItemRect(NTW20,     17, 17);
-		assignItemRect(MG42,     17, 17);
-		assignItemRect(SAIGA,     17, 17);
-		assignItemRect(NAGANT,     17, 17);
-		assignItemRect(GROZA,     17, 17);
+		assignItemRect(GROZA,     16, 17);
+		assignItemRect(MG42,     16, 17);
+		assignItemRect(SAIGA,     16, 17);
+		assignItemRect(NAGANT,     16, 17);
+		assignItemRect(NTW20,     19, 19);
 	}
 
 	private static final int MISSILE_WEP    =                               xy(1, 5);  //16 slots. 3 per tier + boomerang
