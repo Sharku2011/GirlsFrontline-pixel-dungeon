@@ -924,7 +924,7 @@ items.weapon.melee.groza.stats_desc=이 무기는 무방비 상태의 적에게 
 items.weapon.melee.groza.desc="맞춰 볼까... 그 얼굴을 보아하니, 업무 이야기는 아닌 것 같네."\n\n 러시아의 불펍 자동소총입니다. 야전에 특화되있고 이 소총을 사용하기위해 많은 힘을 필요로 하지만, 그만큼 제대로 적중하면 치명적입니다.
 
 items.weapon.melee.nagant.name=제퓨티의 모신나강
-items.weapon.melee.nagant.stats_desc=긴 사거리를 가지며, _절대로 빗나가지 않습니다._
+items.weapon.melee.nagant.stats_desc=멀리 떨어진 적을 공격할 수 있으며, _공격이 절대로 빗나가지 않습니다._
 items.weapon.melee.nagant.desc=시공간을 거슬러 과거에 나타난, 3여신계획으로 만들어진 실험체 중 하나인 G-179 제퓨티의 무기입니다. \nE.L.I.D(Euroky Low-emission Infectious Disease) 감염자에게 유효한 타격을 줄수있는 탄환을 사용할 수 있도록 개조됬으며, 이 탄환은 인형 소체는 물론 중장갑을 대상으로도 큰 타격을 입힐수있습니다.
 
 items.weapon.melee.dragunov.name=Dragonov SVD
@@ -1072,8 +1072,9 @@ items.weapon.melee.wa.name=WA2000
 items.weapon.melee.wa.stats_desc=이 무기는 긴 공격범위를 가집니다.
 items.weapon.melee.wa.desc="너 말이야, 어디 갔던 거야? 그렇게나 내 얼굴이 보기 싫은 거야?"\n\n 독일의 발터사에서 개발한 경찰용 불펍 저격소총입니다. 소구경 고속탄을 사용해 굉장히 긴 사정거리를 갖게됬지만, 형편없는 피해량을 자랑합니다.
 
-items.weapon.melee.wornshortsword.name=COP .357
-items.weapon.melee.wornshortsword.desc="나 이거 알아! 팀...뭐더라? 에서 나오는 총이야!" \n\n 쿼드베럴 데린저 권총입니다. 12게이지를 장전할수있게 개조하려 했지만 구경이 작은 관계로 12게이지 탄환을 4개로 나눈 3게이지로 줄어버렸습니다!
+items.weapon.melee.traviae.name=미스 트라비아에
+items.weapon.melee.traviae.stats_desc=이 무기는 조금 떨어진 적을 공격가능하며 공격을 일부 흡수합니다. 또한 50구경을 좀더 강력하게 발사할 수 있습니다.
+items.weapon.melee.traviae.desc="여자란 언제나 "사랑"이라는 전쟁터 위에 서있답니다! 아수라장을 거쳐온 수 만큼은 지지않는다구요!" \n\n 엘펠트가 사용하는 "키프로스 프로젝트"에 의해 완성된 총화기 형태의 무기 중 하나입니다. 많은 양의 피해를 막을 수 있는 동시에 살짝 떨어진 거리의 적을 공격할수있으며, 50구경을 좀더 강력하게 발사할 수 있게 됩니다.
 
 
 ###missile weapons
