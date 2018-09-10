@@ -31,7 +31,7 @@ import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 public class Maccol extends Food {
 
     {
-        TIME_TO_EAT = 1.5f;
+        TIME_TO_EAT = 1f;
 
         image = ItemSpriteSheet.MACCOL;
         energy = Hunger.HUNGRY/2f;
@@ -39,15 +39,15 @@ public class Maccol extends Food {
 
     }
 
-    @Override
-    public int price() {
-        return 10 * quantity;
-    }
+    //@Override
+    //public int price() {
+       // return 10 * quantity;
+    //}
 
-    @Override
-    public void execute( Hero hero, String action ) {
-        super.execute(hero, action);
+    //@Override
+    //public void execute( Hero hero, String action ) {
+        //super.execute(hero, action);
 
-        Buff.affect(hero, Speed.class, Speed.DURATION);
-    }
+        //Buff.affect(hero, Speed.class, Speed.DURATION);
+   // }
 }
