@@ -57,6 +57,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1903;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.NAGANT;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ntw20;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Traviae;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Boomerang;
@@ -204,6 +205,7 @@ public enum HeroClass {
 
 		if (BuildConfig.DEBUG) 	{
 			new Ntw20().identify().collect();
+			new Traviae().identify().collect();
 		}
 	}
 
