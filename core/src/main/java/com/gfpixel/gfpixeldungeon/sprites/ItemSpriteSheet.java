@@ -168,6 +168,7 @@ public class ItemSpriteSheet {
 	public static final int M1A1    = WEP_TIER2+3;
 	public static final int NAGANTREVOLVER      = WEP_TIER2+4;
 	public static final int G36            = WEP_TIER2+5;
+	public static final int TRAVIAE           = WEP_TIER2+6;
 	static{
 		assignItemRect(M16,      15, 16);
 		assignItemRect(M1911,        12, 14);
@@ -175,6 +176,7 @@ public class ItemSpriteSheet {
 		assignItemRect(M1A1,    16, 16);
 		assignItemRect(NAGANTREVOLVER,            13, 14);
 		assignItemRect(G36,            16, 16);
+		assignItemRect(TRAVIAE,            15, 15);
 	}
 
 	private static final int WEP_TIER3      =                               xy(1, 8);   //8 slots
@@ -185,7 +187,6 @@ public class ItemSpriteSheet {
 	public static final int KRISS             = WEP_TIER3+4;
 	public static final int WA            = WEP_TIER3+5;
 	public static final int C96            = WEP_TIER3+6;
-	public static final int TRAVIAE           = WEP_TIER3+7;
 	static{
 		assignItemRect(KS23,           16, 16);
 		assignItemRect(KAR98,            15, 15);
@@ -194,7 +195,6 @@ public class ItemSpriteSheet {
 		assignItemRect(KRISS,             16, 16);
 		assignItemRect(WA,            14, 14);
 		assignItemRect(C96,            8, 12);
-		assignItemRect(TRAVIAE,            15, 15);
 	}
 
 	private static final int WEP_TIER4      =                               xy(9, 8);   //8 slots

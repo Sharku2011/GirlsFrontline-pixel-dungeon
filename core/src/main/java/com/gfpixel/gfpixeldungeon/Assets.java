@@ -76,12 +76,12 @@ public class Assets {
 	public static final String BAT			= "bat.png";
 	public static final String BRUTE		= "brute.png";
 	public static final String SPINNER		= "spinner.png";
-	public static final String DM300		= "dm300.png";
+	public static final String GEGAR		= "gegar.png";
 	public static final String WRAITH		= "wraith.png";
 	public static final String ELEMENTAL	= "elemental.png";
 	public static final String MONK			= "monk.png";
 	public static final String WARLOCK		= "warlock.png";
-	public static final String GOLEM		= "golem.png";
+	public static final String MANTI		= "manti.png";
 	public static final String UNDEAD		= "undead.png";
 	public static final String KING			= "king.png";
 	public static final String STATUE		= "statue.png";

@@ -28,16 +28,16 @@ public class Traviae extends Launcher {
     {
         image = ItemSpriteSheet.TRAVIAE;
 
-        tier=3;
-        DLY = 1.5f;
+        tier=2;
+        DLY = 1.2f;
         RCH = 2;
-        ACC = 1.27f; //27% boost to accuracy
+        ACC = 1.3f; //27% boost to accuracy
     }
 
     @Override
     public int max(int lvl) {
-        return  Math.round(3*(tier+1)) +        //35 base, up from 25
-                lvl*Math.round(2.1f*(tier+1));  //+8 per level, up from +5
+        return  Math.round(5*(tier+1)) +        //35 base, up from 25
+                lvl*Math.round(2.5f*(tier+1));  //+8 per level, up from +5
     }
 
     @Override

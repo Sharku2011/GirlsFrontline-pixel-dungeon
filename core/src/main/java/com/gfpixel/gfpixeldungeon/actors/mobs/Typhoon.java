@@ -31,8 +31,7 @@ public class Typhoon extends Hydra {
         baseSpeed = 0.6f;
         maxLvl = 36;
 
-        properties.add(Property.DEMONIC);
-        properties.add(Property.UNDEAD);
+        properties.add(Property.ARMO);
     }
 
     @Override

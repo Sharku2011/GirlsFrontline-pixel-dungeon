@@ -22,6 +22,7 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.effects.particles.ElmoParticle;
 import com.watabou.noosa.TextureFilm;
 
@@ -30,35 +31,53 @@ public class GolemSprite extends MobSprite {
 	public GolemSprite() {
 		super();
 
-		texture( Assets.GOLEM );
+		texture( Assets.MANTI );
 
-		TextureFilm frames = new TextureFilm( texture, 16, 16 );
+		TextureFilm frames = new TextureFilm( texture, 25, 25 );
 
-		idle = new Animation( 4, true );
+		idle = new Animation( 2, true );
+		idle.frames( frames, 0, 0, 0, 0 );
+
+		run = new Animation( 10, true );
+		run.frames( frames, 1, 2, 3, 4, 5 );
+
+		attack = new Animation( 30, false );
+		attack.frames( frames, 6, 0, 7, 0 , 6, 0, 7 );
+
+		die = new Animation( 10, false );
+		die.frames( frames, 8, 9 );
+
+		/*
+		TextureFilm frames = new TextureFilm( texture, 22, 20 );
+
+		idle = new Animation( 10, true );
 		idle.frames( frames, 0, 1 );
 
-		run = new Animation( 12, true );
-		run.frames( frames, 2, 3, 4, 5 );
+		run = new Animation( 10, true );
+		run.frames( frames, 2, 3 );
 
-		attack = new Animation( 10, false );
-		attack.frames( frames, 6, 7, 8 );
+		attack = new Animation( 15, false );
+		attack.frames( frames, 4, 5, 6 );
 
-		die = new Animation( 15, false );
-		die.frames( frames, 9, 10, 11, 12, 13 );
+		die = new Animation( 20, false );
+		die.frames( frames, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 8 );
+		*/
 
 		play( idle );
 	}
 
 	@Override
-	public int blood() {
-		return 0xFF80706c;
+	public void onComplete( Animation anim ) {
+
+		super.onComplete( anim );
+
+		if (anim == die) {
+			emitter().burst( Speck.factory( Speck.WOOL ), 15 );
+		}
 	}
 
 	@Override
-	public void onComplete( Animation anim ) {
-		if (anim == die) {
-			emitter().burst( ElmoParticle.FACTORY, 4 );
-		}
-		super.onComplete( anim );
+	public int blood() {
+		return 0xFFFFFF88;
 	}
 }

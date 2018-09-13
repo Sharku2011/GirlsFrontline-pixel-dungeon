@@ -24,6 +24,7 @@ package com.gfpixel.gfpixeldungeon.actors.mobs;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
@@ -46,6 +47,7 @@ public class Jupiter extends Mob {
 
         HP = HT = 85;
         defenseSkill = 30;
+        viewDistance = Light.DISTANCE;
         baseSpeed = 1f;
         maxLvl = 26;
 

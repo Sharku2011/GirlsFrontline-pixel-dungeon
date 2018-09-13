@@ -283,15 +283,15 @@ actors.hero.herosubclass.berserker=투신
 actors.hero.herosubclass.berserker_desc=_투신_ 은 받은 피해에 비례해 추가 피해를 입힙니다. \n격노한 상태에서, 그는 탈진을 무릅쓰고 짧은 시간동안 죽음을 유예할 수 있습니다.
 actors.hero.herosubclass.warlock=해커 G11
 actors.hero.herosubclass.warlock_desc=_해커 G11_ 은 적에게 마법 막대를 사용함으로써 영혼 표식을 걸 확률이 있습니다. 표식이 걸린 적들은 물리 피해를 입을 때 마다 해커 G11의 체력과 허기를 충족시킵니다.
-actors.hero.herosubclass.battlemage=호크아이 G11
+actors.hero.herosubclass.battlemage=호크아이
 actors.hero.herosubclass.battlemage_desc=_호크아이 G11_ 은 자신의 돌격소총로 물리 공격을 할 때, 돌격소총가 흡수한 특성에 따른 추가 효과를 줄 수 있습니다. 또한 피해를 입힐 때 마다 추가 탄환을 장전할 수 있습니다.
-actors.hero.herosubclass.assassin=암살자 UMP9
+actors.hero.herosubclass.assassin=암살자
 actors.hero.herosubclass.assassin_desc=_암살자 UMP9_ 는 투명화 상태가 되면 다음 공격을 신중하게 준비합니다. 투명화 한 시간이 길어질수록 더욱 강력한 공격을 할 수 있습니다.
-actors.hero.herosubclass.freerunner=정찰병 UMP9
+actors.hero.herosubclass.freerunner=정찰병
 actors.hero.herosubclass.freerunner_desc=_정찰병 UMP9_ 는 이동할 때 마다 가속력을 쌓습니다. 가속력이 높을수록 이동속도와 회피가 증가하지만, 움직이지 않으면 가속력이 급속도로 줄어듭니다.
-actors.hero.herosubclass.sniper=저격수 HK416
+actors.hero.herosubclass.sniper=저격수
 actors.hero.herosubclass.sniper_desc=_저격수 HK416_ 는 적의 방어가 취약한 곳을 파악하여, 투척 공격을 할 때 대상의 방어를 무시할 수 있습니다.
-actors.hero.herosubclass.warden=유탄수 HK416
+actors.hero.herosubclass.warden=유탄수
 actors.hero.herosubclass.warden_desc=_유탄수 HK416_ 는 M79의 40mm유탄의 살상력을 극대화 하여, 자신의 도끼로 적을 타격할때마다 유탄의 데미지를 크게 올립니다. 또한 자연의 힘과 강한 유대를 맺어, 이슬에서 추가로 체력을 화복하고, 긴 수풀을 밟았을 때 추가 방어를 얻으며, 식물에서 씨앗과 이슬이 더 자주 나옵니다.
 
 
@@ -407,12 +407,12 @@ actors.mobs.crab.name=브루트
 actors.mobs.crab.def_verb=막음
 actors.mobs.crab.desc=순찰로봇의 경보에 의해 빠르게 방어작전에 투입된 인형입니다. 이 인형들은 매우 빠르며, 두개의 단도로 적의 공격을 가끔씩 막아냅니다.
 
-actors.mobs.dm300.name=만티코어
-actors.mobs.dm300.notice=무단 침입자 감지.
-actors.mobs.dm300.defeated=임무 실패. 동력 차단...
+actors.mobs.dm300.name=게이저
+actors.mobs.dm300.notice=가여운 녀석... 앞으로 무슨 일이 생길지, 아무 것도 모르는군.
+actors.mobs.dm300.defeated=아키...텍트...
 actors.mobs.dm300.repair=만티코어는 스스로를 수리했다!
-actors.mobs.dm300.rankings_desc=만티코어에게 박살남
-actors.mobs.dm300.desc=이 전쟁기계는 과거 군부에 의해 만들어졌습니다. 높은 원거리능력과 자가수복능력, 튼튼한 내구성으로 아군의 방패가 될 예정이었지만, 철혈폭동 이후, 철혈은 이 기계들을 노획했고, 성능 실험과 개량 후 대량 생산에 들어갈 예정이라고 합니다.
+actors.mobs.dm300.rankings_desc=게이저에게 썰려나감
+actors.mobs.dm300.desc=게이저는 주로 지휘 작전과인원의 배치를 맡고 있습니다. 결코 낮지 않은 작전능력을 가지고 있으며, 직접 작전을 지휘할수도 있습니다. 지위는 비교적 높으며, 에이전트가 직접 관리합니다. 매사에 진지하며, 빈틈이 없으며 맡은 일은 최선을 다해 처리합니다. 언행중에는 엄격하지만 가지런한 느낌을 주며 설령 적이라 하더라도 원칙과 예절을 중요시 합니다. \n\n 그리폰에 포로로 잡힌 아키텍트를 그리워하고있습니다.
 
 actors.mobs.typhootin.name=티폰 프로토타입
 actors.mobs.typhootin.notice=미확인 인형 4기 감지. 섬멸 모드로 전환.

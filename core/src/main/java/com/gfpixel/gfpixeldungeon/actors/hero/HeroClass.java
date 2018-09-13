@@ -48,6 +48,7 @@ import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.wands.M79;
 import com.gfpixel.gfpixeldungeon.items.wands.M84;
+import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
@@ -162,7 +163,7 @@ public enum HeroClass {
 			new DriedRose().identify().collect();
 			new Cannon().identify().collect();
 			new Kriss().identify().upgrade(3).collect();
-			new M84().identify().upgrade(3).collect();
+			new WandOfDisintegration().identify().upgrade().collect();
 			new PlateArmor().identify().upgrade(100).collect();
 		}
 

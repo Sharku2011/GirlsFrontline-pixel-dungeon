@@ -41,7 +41,7 @@ public class Ump45 extends MeleeWeapon {
 
     @Override
     public int defenseFactor( Char owner ) {
-        return 1;	//3 extra defence
+        return 2;	//3 extra defence
     }
 
 }

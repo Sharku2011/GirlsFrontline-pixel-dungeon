@@ -24,6 +24,7 @@ package com.gfpixel.gfpixeldungeon.actors.mobs;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
@@ -47,10 +48,11 @@ public class Hydra extends Mob {
         HP = HT = 231;
         EXP = 19;
         defenseSkill = 15;
+        viewDistance = Light.DISTANCE;
         baseSpeed = 1f;
         maxLvl = 36;
 
-        properties.add(Property.INORGANIC);
+        properties.add(Property.ARMO);
     }
 
     public int DamageReducer() { return 3; }

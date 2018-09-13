@@ -98,21 +98,22 @@ public class Bestiary {
 				return new ArrayList<>(Arrays.asList(
 						Bat.class, Bat.class, Bat.class, Bat.class, Bat.class,
 						Brute.class, Brute.class, Brute.class, Brute.class, Brute.class,
+						Nemeum.class,
 						Spinner.class));
 			case 13:
 				//1x bat, 3x brute, 1x shaman, 1x spinner
 				return new ArrayList<>(Arrays.asList(
 						Bat.class,
 						Brute.class, Brute.class, Brute.class,
-						Shaman.class,
+						Nemeum.class, Nemeum.class,
 						Spinner.class));
 			case 14:
 				//1x bat, 3x brute, 1x shaman, 4x spinner
 				return new ArrayList<>(Arrays.asList(
 						Bat.class,
 						Brute.class, Brute.class, Brute.class,
-						Shaman.class,
-						Spinner.class, Spinner.class, Spinner.class, Spinner.class));
+						Nemeum.class, Nemeum.class, Nemeum.class,
+						Spinner.class, Spinner.class, Spinner.class));
 				
 			// City
 			case 16:
@@ -148,17 +149,13 @@ public class Bestiary {
 				return new ArrayList<>(Arrays.asList(
 						Goliath.class, Goliath.class, Goliath.class,
 						Aegis.class, Aegis.class, Aegis.class,
-						Jupiter.class, Jupiter.class,
-						Aegis.class,
-						Scorpio.class));
+						Jupiter.class, Jupiter.class));
 			case 23:
 				//2x succubus, 4x evil eye, 2x scorpio
 				return new ArrayList<>(Arrays.asList(
 						Goliath.class, Goliath.class, Goliath.class,
 						Aegis.class, Aegis.class, Aegis.class,
-						Jupiter.class, Jupiter.class,
-						Aegis.class,
-						Scorpio.class));
+						Jupiter.class, Jupiter.class));
 			case 24:
 				//1x succubus, 2x evil eye, 3x scorpio
 				return new ArrayList<>(Arrays.asList(

@@ -50,7 +50,7 @@ public class Nemeum extends Mob {
         baseSpeed = 0.8f;
         maxLvl = 17;
 
-        properties.add(Property.INORGANIC);
+        properties.add(Property.ARMO);
     }
 // 사거리는 2칸으로 조정해주세요
     public int DamageReducer() { return 3; }
@@ -67,7 +67,7 @@ public class Nemeum extends Mob {
 
     @Override
     protected float attackDelay() {
-        return 2f;
+        return 1f;
     }
 
     @Override
@@ -114,7 +114,7 @@ public class Nemeum extends Mob {
     @Override
     protected boolean doAttack( Char enemy ) {
 
-        if (beamCooldown > 2) {
+        if (beamCooldown > 1) {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((NemeumSprite)sprite).charge( enemy.pos );
@@ -215,7 +215,6 @@ public class Nemeum extends Mob {
     }
 
     {
-        resistances.add( WandOfDisintegration.class );
         resistances.add( Grim.class );
         resistances.add( Vampiric.class );
     }
