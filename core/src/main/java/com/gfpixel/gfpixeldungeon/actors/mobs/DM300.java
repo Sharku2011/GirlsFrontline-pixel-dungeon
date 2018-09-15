@@ -57,7 +57,7 @@ public class DM300 extends Mob {
 	{
 		spriteClass = DM300Sprite.class;
 		
-		HP = HT = 200;
+		HP = HT = 270;
 		EXP = 30;
 		defenseSkill = 18;
 		
@@ -70,7 +70,7 @@ public class DM300 extends Mob {
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 20, 25 );
+		return Random.NormalIntRange( 20, 30 );
 	}
 	
 	@Override

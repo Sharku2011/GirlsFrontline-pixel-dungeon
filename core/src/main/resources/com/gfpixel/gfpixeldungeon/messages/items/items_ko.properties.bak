@@ -202,7 +202,7 @@ items.artifacts.driedrose$petal.levelup=STAR-15에게 기억의 일부를 되찾
 items.artifacts.driedrose$petal.desc=메모리의 파편으로, 조금만 손보면 사용할수있을거같다.
 items.artifacts.driedrose$ghosthero.name=STAR-15
 items.artifacts.driedrose$ghosthero.def_verb=회피
-items.artifacts.driedrose$ghosthero.hello=좋아, 같이 해보자고 %s.
+items.artifacts.driedrose$ghosthero.hello=좋아, 다들 전투배치! 놈들에게 크게 한방 먹여주자고. %s 씨!
 items.artifacts.driedrose$ghosthero.introduce=내 영혼은 이 단검에 묶여있어. 인형인 나에게 왜 영혼이라는게 있는진 모르겠지만.\n\n지휘부로 돌아가서 다시 내 동료들을 볼순 없지만,훌쩍... 네 덕에 내 사명을 완수할 두 번째 기회를 얻었어. 가능하다면 네 부름에 응해 같이 싸워줄 거야.\n\n부디 넌 나처럼 되지 않기를...
 items.artifacts.driedrose$ghosthero.desc=허약해 보이는 인간 모양의 영체다. 당신이 가지고 있는 단검에 힘이 묶여 있는 듯 하다.\n\n이 영체은 그리 친근하진 않지만 여기 전장에서 유일한 말동무가 될 것이다.
 items.artifacts.driedrose$wndghosthero.title=STAR-15의 장비
@@ -843,7 +843,7 @@ items.weapon.curses.displacing.name=변위의 %s
 items.weapon.curses.displacing.desc=변위의 무기는 혼돈스러운 공간이동 마법이 깃들어 있습니다. 이따금 상대를 현재 층의 무작위 위치로 보내버립니다.
 
 items.weapon.curses.elastic.name=탄성의 %s
-items.weapon.curses.elastic.desc=탄성의 무기는 어떠한 공격도 입힐 수 없지만, 적을 짧은 거리 밀쳐낼 수 있습니다.
+items.weapon.curses.elastic.desc=탄성의 무기는 어떠한 공격도 입힐 수 없지만, 적을 짧게 밀쳐낼 수 있습니다.
 
 items.weapon.curses.exhausting.name=탈진의 %s
 items.weapon.curses.exhausting.desc=탈진의 무기는 휘두르는데 많은 힘이 듭니다. 이따금 착용자를 일시적으로 약화시킵니다.

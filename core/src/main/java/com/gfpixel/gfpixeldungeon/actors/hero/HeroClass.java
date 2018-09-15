@@ -162,7 +162,7 @@ public enum HeroClass {
 		if (BuildConfig.DEBUG) 	{
 			new DriedRose().identify().collect();
 			new Cannon().identify().collect();
-			new Kriss().identify().upgrade(3).collect();
+			new Ntw20().identify().upgrade(60).collect();
 			new WandOfDisintegration().identify().upgrade().collect();
 			new PlateArmor().identify().upgrade(100).collect();
 		}

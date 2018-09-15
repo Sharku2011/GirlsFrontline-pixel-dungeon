@@ -118,5 +118,6 @@ public class hydraSprite extends MobSprite {
             chargeParticles.killAndErase();
         }
     }
+
 }
 
