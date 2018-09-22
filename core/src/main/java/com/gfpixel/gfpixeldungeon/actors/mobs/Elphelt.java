@@ -407,8 +407,6 @@ public class Elphelt extends Mob {
             bridlePath = traceRush.subPath(1, traceRush.dist);
         }
 
-        boolean bCrash = false;
-
 	    int procPos = pos;
 
 	    for (int c : bridlePath) {
@@ -433,13 +431,11 @@ public class Elphelt extends Mob {
                     }
                 }
 
-
-                // 캐릭터에 부딪힌 경우 날아갈 위치는 해당 캐릭터의 위치까지, 벽에 부딪힌 경우는
-                int dist = (collideTag >=2) ? Math.max(traceChar.dist - 1, 0) : traceChar.dist;
+                // 벽에 부딪힌 경우는 충돌 위치까지
+                // 캐릭터에 부딪힌 경우 날아갈 위치는 해당 캐릭터의 위치-1까지
+                int dist = (collideTag < 2) ? traceChar.dist : Math.max(traceChar.dist - 1, 0);
 
 	            final int newPos = traceChar.path.get( dist );
-
-	            bCrash = (dist > 1);
 
 	            final int initialPos = ch.pos;
 
@@ -468,12 +464,11 @@ public class Elphelt extends Mob {
                         }
                     }
                 }), 0f );
+
 	            break;
             }
 
-            if (!bCrash) {
-                procPos = c;
-            }
+            procPos = c;
         }
 
         final int finalPos = procPos;
@@ -494,7 +489,7 @@ public class Elphelt extends Mob {
                 traceRush = null;
                 dstRush = -1;
                 bridlePath.clear();
-                yell( Random.Int(1) == 0 ? "브라이들 익스프레스!" : "2번 대사");
+                yell( Random.Int(2) == 0 ? "브라이들 익스프레스!" : "내 사랑을 받아주세요!");
             }
         }), -1f);
 
@@ -511,14 +506,12 @@ public class Elphelt extends Mob {
         for (int c : beam.subPath(0, beam.dist))
             CellEmitter.center(c).burst( BloodParticle.BURST, 1 );
 
-
 	    int damage = Random.NormalIntRange(2,5);
-        enemy.damage(damage -  enemy.drRoll(), Elphelt.this );
+        enemy.damage(damage - enemy.drRoll(), Elphelt.this );
 
         // TODO 확률로 3턴 지속 or 1~3턴 지속 매혹 부여
 
         enemy.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 5 );
-
 
         return true;
     }
