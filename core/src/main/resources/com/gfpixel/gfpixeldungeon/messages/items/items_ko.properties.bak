@@ -200,9 +200,9 @@ items.artifacts.driedrose$petal.no_room=메모리가 들어갈 공간이 없어�
 items.artifacts.driedrose$petal.maxlevel=STAR-15가 모든 기억을 되찾았다!!
 items.artifacts.driedrose$petal.levelup=STAR-15에게 기억의 일부를 되찾아줬다.
 items.artifacts.driedrose$petal.desc=메모리의 파편으로, 조금만 손보면 사용할수있을거같다.
-items.artifacts.driedrose$ghosthero.name=대전차화기반
+items.artifacts.driedrose$ghosthero.name=STAR-15
 items.artifacts.driedrose$ghosthero.def_verb=회피
-items.artifacts.driedrose$ghosthero.hello=좋아, 다들 전투배치! 놈들에게 크게 한방 먹여주자고. %s 씨!
+items.artifacts.driedrose$ghosthero.hello=좋아, 같이 해보자고 %s.
 items.artifacts.driedrose$ghosthero.introduce=내 영혼은 이 단검에 묶여있어. 인형인 나에게 왜 영혼이라는게 있는진 모르겠지만.\n\n지휘부로 돌아가서 다시 내 동료들을 볼순 없지만,훌쩍... 네 덕에 내 사명을 완수할 두 번째 기회를 얻었어. 가능하다면 네 부름에 응해 같이 싸워줄 거야.\n\n부디 넌 나처럼 되지 않기를...
 items.artifacts.driedrose$ghosthero.desc=허약해 보이는 인간 모양의 영체다. 당신이 가지고 있는 단검에 힘이 묶여 있는 듯 하다.\n\n이 영체은 그리 친근하진 않지만 여기 전장에서 유일한 말동무가 될 것이다.
 items.artifacts.driedrose$wndghosthero.title=STAR-15의 장비
@@ -1048,6 +1048,10 @@ items.weapon.melee.negev.desc="Rush B, Cyka blyat! Why you buy NEGEV?!" \n\n 분
 items.weapon.melee.m1903.name=스프링필드 M1903
 items.weapon.melee.m1903.stats_desc=이 무기는 다른 무기들보다 심각하게 느립니다. 신중히 공격하십시오.\n문으로 가로막히지 않았다면, 거리에 상관없이 시야에 들어온 적을 공격할 수 있습니다.
 items.weapon.melee.m1903.desc="우리 전춘협은 당신을 필요로 합니다." \n\n저격용 망원 조준경이 달린 미국의 볼트액션 소총입니다. 아주 멀리 있는 적에게 큰 피해를 입힐 수 있지만, 다음 공격에 아주 긴 시간이 걸립니다.
+
+items.weapon.melee.towproto.name=토우
+items.weapon.melee.towproto.stats_desc=이 무기는 다른 무기들보다 심각하게 느립니다. 신중히 공격하십시오.\n문으로 가로막히지 않았다면, 거리에 상관없이 시야에 들어온 적을 공격할 수 있습니다.
+items.weapon.melee.towproto.desc=대전차반 실험용 무기
 
 items.weapon.melee.ks23.name=KS-23
 items.weapon.melee.ks23.desc=ZSU-23-4 쉴카의 포신으로 만든 산탄총입니다. 강선이 새겨져있어 슬러그샷을 사용하기에 좋습니다만.. 23mm구경에 맞는 탄환이 12게이지밖에 없네요.

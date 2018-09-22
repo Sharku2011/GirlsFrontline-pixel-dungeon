@@ -58,6 +58,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1903;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.NAGANT;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ntw20;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.TowProto;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Traviae;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
@@ -160,9 +161,10 @@ public enum HeroClass {
 		new PotionOfHealing().identify();
 
 		if (BuildConfig.DEBUG) 	{
-			new DriedRose().identify().collect();
 			new Cannon().identify().collect();
-			new Ntw20().identify().upgrade(60).collect();
+			new DriedRose().identify().collect();
+			new TowProto().identify().collect();
+			new ScrollOfUpgrade().identify().quantity(5).collect();
 			new WandOfDisintegration().identify().upgrade().collect();
 			new PlateArmor().identify().upgrade(100).collect();
 		}
@@ -205,6 +207,10 @@ public enum HeroClass {
 		new ScrollOfMagicMapping().identify();
 
 		if (BuildConfig.DEBUG) 	{
+
+			new DriedRose().identify().collect();
+			new TowProto().identify().collect();
+			new ScrollOfUpgrade().identify().quantity(5).collect();
 			new Ntw20().identify().collect();
 			new Traviae().identify().collect();
 		}
@@ -225,6 +231,14 @@ public enum HeroClass {
 		new VelvetPouch().collect();
 		Dungeon.LimitedDrops.VELVET_POUCH.drop();
 		new PotionOfMindVision().identify();
+
+		if (BuildConfig.DEBUG) 	{
+
+			new DriedRose().identify().collect();
+			new TowProto().identify().collect();
+			new ScrollOfUpgrade().identify().quantity(5).collect();
+			new Traviae().identify().collect();
+		}
 	}
 
 	public String title() {

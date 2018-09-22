@@ -46,7 +46,7 @@ public class TowSprite extends MobSprite {
         TextureFilm frames = new TextureFilm( texture, 50, 20 );
 
         idle = new Animation( 5, true );
-        idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 0 );
+        idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 0 );
 
         charging = new Animation( 18, true);
         charging.frames( frames, 1 );
@@ -59,7 +59,7 @@ public class TowSprite extends MobSprite {
         run = new Animation( 10, true );
         run.frames( frames, 1, 2, 3, 4, 5 );
 
-        attack = new Animation( 15, false );
+        attack = new Animation( 8, false );
         attack.frames( frames,  19, 19, 20, 20, 21, 18);
         zap = attack.clone();
 

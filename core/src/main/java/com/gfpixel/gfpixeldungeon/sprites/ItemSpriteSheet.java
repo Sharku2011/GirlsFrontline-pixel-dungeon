@@ -70,7 +70,7 @@ public class ItemSpriteSheet {
 	public static final int SANDBAG         = UNCOLLECTIBLE+3;
 	public static final int DBL_BOMB        = UNCOLLECTIBLE+4;
 	public static final int GUIDE_PAGE      = UNCOLLECTIBLE+5;
-	public static final int MEMORY      = UNCOLLECTIBLE+6;
+	public static final int MEMORY1      = UNCOLLECTIBLE+6;
 
 	static{
 		assignItemRect(GOLD,        15, 13);
@@ -79,7 +79,7 @@ public class ItemSpriteSheet {
 		assignItemRect(SANDBAG,     10, 10);
 		assignItemRect(DBL_BOMB,    14, 13);
 		assignItemRect(GUIDE_PAGE,  10, 11);
-		assignItemRect(MEMORY,  8, 8);
+		assignItemRect(MEMORY1,  8, 8);
 	}
 
 	private static final int CONTAINERS     =                               xy(1, 3);   //16 slots
@@ -169,6 +169,7 @@ public class ItemSpriteSheet {
 	public static final int NAGANTREVOLVER      = WEP_TIER2+4;
 	public static final int G36            = WEP_TIER2+5;
 	public static final int TRAVIAE           = WEP_TIER2+6;
+	public static final int TOWPROTO          = WEP_TIER2+7;
 	static{
 		assignItemRect(M16,      15, 16);
 		assignItemRect(M1911,        12, 14);
@@ -177,6 +178,7 @@ public class ItemSpriteSheet {
 		assignItemRect(NAGANTREVOLVER,            13, 14);
 		assignItemRect(G36,            16, 16);
 		assignItemRect(TRAVIAE,            15, 15);
+		assignItemRect(TOWPROTO,            16, 18);
 	}
 
 	private static final int WEP_TIER3      =                               xy(1, 8);   //8 slots
