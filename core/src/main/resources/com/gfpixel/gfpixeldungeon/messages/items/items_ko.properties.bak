@@ -240,7 +240,7 @@ items.artifacts.hornofplenty.reject=이게 대체 뭐지? 이것 좀 먹어보�
 items.artifacts.hornofplenty.maxlevel=당신의 요정은 먹을 수 있는 모든 음식을 흡수했다!
 items.artifacts.hornofplenty.levelup=당신의 요정은 음식을 흡수하고 더욱 강해졌다!
 items.artifacts.hornofplenty.feed=요정이 당신이 음식을 흡수했다.
-items.artifacts.hornofplenty.desc=이 요정은 불 수는 없지만, 곁에 둔 후 경험치를 얻음에 따라 음식을 만들어내는 것 같습니다.
+items.artifacts.hornofplenty.desc=이 요정은 곁에 둔 후 경험치를 얻음에 따라 음식을 만들어내는 것 같습니다.
 items.artifacts.hornofplenty.desc_hint=아마도 음식을 요정에게 줌으로써 그 힘을 더 키울 수 있을 것 같습니다.
 items.artifacts.hornofplenty.desc_cursed=감염당한 요정은 당신의 옆에 붙어 버렸습니다. 음식을 생산하기 보다는 먹어치우려고 합니다.
 
@@ -1126,7 +1126,7 @@ items.weapon.missiles.bolas.name=올가미
 items.weapon.missiles.bolas.desc=이 특이한 투척 무기는 비교적 약한 피해를 입히지만 대상을 감속시키는 데는 제격입니다.
 
 items.weapon.missiles.boomerang.name=Cz75의 투척도끼
-items.weapon.missiles.boomerang.desc=상대적으로 가볍지만 날카로운 이 도끼는 적에게 던지면 던진 사람의 손으로 되돌아옵니다. 착용해서 쓸수도 있습니다!
+items.weapon.missiles.boomerang.desc=상대적으로 가볍지만 날카로운 이 도끼는 적에게 던지면 던진 사람의 손으로 되돌아옵니다. \n\n_착용해서 쓸수도 있으며, 퀵 슬롯에 등록해두면 좀 더 편하게 던질 수 있습니다!_
 items.weapon.missiles.boomerang.durability=투척도끼는 그 단단한 구조로 인해 절대로 부서지지 않습니다.
 
 items.weapon.missiles.curaredart.name=EMP

@@ -161,7 +161,7 @@ public class ItemSpriteSheet {
 
 	}
 
-	private static final int WEP_TIER2      =                               xy(9, 7);   //8 slots
+	private static final int WEP_TIER2      =                               xy(1, 8);   //8 slots
 	public static final int M16      = WEP_TIER2+0;
 	public static final int M1911        = WEP_TIER2+1;
 	public static final int M1903           = WEP_TIER2+2;
@@ -181,7 +181,7 @@ public class ItemSpriteSheet {
 		assignItemRect(TOWPROTO,            16, 18);
 	}
 
-	private static final int WEP_TIER3      =                               xy(1, 8);   //8 slots
+	private static final int WEP_TIER3      =                               xy(1, 9);   //8 slots
 	public static final int KS23           = WEP_TIER3+0;
 	public static final int KAR98            = WEP_TIER3+1;
 	public static final int NEGEV        = WEP_TIER3+2;
@@ -199,7 +199,7 @@ public class ItemSpriteSheet {
 		assignItemRect(C96,            8, 12);
 	}
 
-	private static final int WEP_TIER4      =                               xy(9, 8);   //8 slots
+	private static final int WEP_TIER4      =                               xy(9, 9);   //8 slots
 	public static final int WIN97      		= WEP_TIER4+0;
 	public static final int DRAGUNOV      	= WEP_TIER4+1;
 	public static final int AK47         	= WEP_TIER4+2;
@@ -217,7 +217,7 @@ public class ItemSpriteSheet {
 		assignItemRect(CROSSBOW,        16, 18);
 	}
 
-	private static final int WEP_TIER5      =                               xy(1, 9);   //8 slots
+	private static final int WEP_TIER5      =                               xy(1, 10);   //8 slots
 	public static final int USAS12      = WEP_TIER5+0;
 	public static final int SASS      = WEP_TIER5+1;
 	public static final int GLAIVE          = WEP_TIER5+2;

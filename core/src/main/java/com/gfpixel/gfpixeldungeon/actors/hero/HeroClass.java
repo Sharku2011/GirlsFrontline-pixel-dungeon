@@ -160,14 +160,14 @@ public enum HeroClass {
 		Dungeon.LimitedDrops.POTION_BANDOLIER.drop();
 		new PotionOfHealing().identify();
 
-		if (BuildConfig.DEBUG) 	{
-			new Cannon().identify().collect();
-			new DriedRose().identify().collect();
-			new TowProto().identify().collect();
-			new ScrollOfUpgrade().identify().quantity(5).collect();
-			new WandOfDisintegration().identify().upgrade().collect();
-			new PlateArmor().identify().upgrade(100).collect();
-		}
+		//if (BuildConfig.DEBUG) 	{
+			//new Cannon().identify().collect();
+			//new DriedRose().identify().collect();
+			//new TowProto().identify().collect();
+			//new ScrollOfUpgrade().identify().quantity(5).collect();
+			//new WandOfDisintegration().identify().upgrade().collect();
+			//new PlateArmor().identify().upgrade(100).collect();
+		//}
 
 	}
 
@@ -206,39 +206,37 @@ public enum HeroClass {
 		Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
 		new ScrollOfMagicMapping().identify();
 
-		if (BuildConfig.DEBUG) 	{
+		//if (BuildConfig.DEBUG) 	{
 
-			new DriedRose().identify().collect();
-			new TowProto().identify().collect();
-			new ScrollOfUpgrade().identify().quantity(5).collect();
-			new Ntw20().identify().collect();
-			new Traviae().identify().collect();
-		}
+			//new DriedRose().identify().collect();
+			//new TowProto().identify().collect();
+			//new ScrollOfUpgrade().identify().quantity(5).collect();
+			//new Ntw20().identify().collect();
+			//new Traviae().identify().collect();
+		//}
 	}
 
 	private static void initHuntress( Hero hero ) {
 
-		(hero.belongings.weapon = new M9()).identify();
-		Boomerang boomerang = new Boomerang();
-		boomerang.identify().collect();
+		(hero.belongings.weapon = new Boomerang()).identify();
 		M79 m79 = new M79();
 		m79.identify().collect();
 
 
-		Dungeon.quickslot.setSlot(0, boomerang);
+
 		Dungeon.quickslot.setSlot(2, m79);
 
 		new VelvetPouch().collect();
 		Dungeon.LimitedDrops.VELVET_POUCH.drop();
 		new PotionOfMindVision().identify();
 
-		if (BuildConfig.DEBUG) 	{
+		//if (BuildConfig.DEBUG) 	{
 
-			new DriedRose().identify().collect();
-			new TowProto().identify().collect();
-			new ScrollOfUpgrade().identify().quantity(5).collect();
-			new Traviae().identify().collect();
-		}
+			//new DriedRose().identify().collect();
+			//new TowProto().identify().collect();
+			//new ScrollOfUpgrade().identify().quantity(5).collect();
+			//new Traviae().identify().collect();
+		//}
 	}
 
 	public String title() {

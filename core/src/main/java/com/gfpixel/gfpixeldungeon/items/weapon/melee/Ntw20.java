@@ -14,7 +14,7 @@ public class Ntw20 extends MeleeWeapon {
 
         tier = 6;
         ACC = 1.75f;
-        DLY = 5f;
+        DLY = 9f;
         RCH = 50;
     }
 
