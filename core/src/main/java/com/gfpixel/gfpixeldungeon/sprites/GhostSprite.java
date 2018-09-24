@@ -22,7 +22,6 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.effects.particles.ShaftParticle;
 import com.watabou.glwrap.Blending;
@@ -33,24 +32,30 @@ public class GhostSprite extends MobSprite {
 	public GhostSprite() {
 		super();
 
-		texture( Assets.TOW );
+		texture( Assets.GHOST );
 
-		TextureFilm frames = new TextureFilm( texture, 50, 20 );
+		TextureFilm frames = new TextureFilm( texture, 14, 15 );
 
 		idle = new Animation( 5, true );
-		idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 0 );
+		idle.frames( frames, 0, 1 );
 
 		run = new Animation( 10, true );
-		run.frames( frames, 1, 2, 3, 4, 5 );
+		run.frames( frames, 0, 1 );
 
-		attack = new Animation( 8, false );
-		attack.frames( frames,  19, 19, 20, 20, 21, 18);
-		zap = attack.clone();
+		attack = new Animation( 10, false );
+		attack.frames( frames, 0, 2, 3 );
 
-		die = new Animation( 7, false );
-		die.frames( frames, 22, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36 );
+		die = new Animation( 8, false );
+		die.frames( frames, 0, 4, 5, 6, 7 );
 
 		play( idle );
+	}
+
+	@Override
+	public void draw() {
+		Blending.setLightMode();
+		super.draw();
+		Blending.setNormalMode();
 	}
 
 	@Override
@@ -59,7 +64,7 @@ public class GhostSprite extends MobSprite {
 		emitter().start( ShaftParticle.FACTORY, 0.3f, 4 );
 		emitter().start( Speck.factory( Speck.LIGHT ), 0.2f, 3 );
 	}
-	
+
 	@Override
 	public int blood() {
 		return 0xFFFFFF;

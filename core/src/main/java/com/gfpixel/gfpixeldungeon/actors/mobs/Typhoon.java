@@ -4,7 +4,10 @@ import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.blobs.ToxicGas;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Vertigo;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfPsionicBlast;
@@ -25,13 +28,16 @@ public class Typhoon extends Hydra {
     {
         spriteClass = TyphoonSprite.class;
 
-        HP = HT = 1800;
-        EXP = 100;
+        HP = HT = 3200;
+        EXP = 200;
         defenseSkill = 5;
-        baseSpeed = 0.6f;
-        maxLvl = 36;
+        baseSpeed = 0.8f;
+        maxLvl = 40;
 
         properties.add(Property.ARMO);
+
+
+        flying = true;
     }
 
     @Override
@@ -190,12 +196,17 @@ public class Typhoon extends Hydra {
     }
 
     {
-        resistances.add( ScrollOfPsionicBlast.class );
+        resistances.add( ToxicGas.class );
         resistances.add( Grim.class );
+        resistances.add( ScrollOfPsionicBlast.class );
         resistances.add( Vampiric.class );
     }
 
+
+
     {
+        immunities.add( Paralysis.class );
+        immunities.add( Vertigo.class );
         immunities.add( Terror.class );
     }
 

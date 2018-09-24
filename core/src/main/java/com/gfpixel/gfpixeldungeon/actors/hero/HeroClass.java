@@ -124,10 +124,10 @@ public enum HeroClass {
 			new SmallRation().collect();
 		}
 
-		if (BuildConfig.DEBUG) {
-            new Maccol().collect();
-            new Pasty().collect();
-        }
+		//if (BuildConfig.DEBUG) {
+            //new Maccol().collect();
+            //new Pasty().collect();
+        //}
 
 
 	}
