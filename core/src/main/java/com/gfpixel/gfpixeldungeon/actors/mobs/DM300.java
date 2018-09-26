@@ -131,7 +131,7 @@ public class DM300 extends Mob {
 		}
 	}
 
-	private final int damageCap = 20;
+	private final int damageCap = 40;
 
 	@Override
 	public void damage(int dmg, Object src) {
