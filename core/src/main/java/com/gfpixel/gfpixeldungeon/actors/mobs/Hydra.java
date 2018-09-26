@@ -55,7 +55,7 @@ public class Hydra extends Mob {
         properties.add(Property.ARMO);
     }
 
-    public int DamageReducer() { return 3; }
+    public int DamageReducer() { return 2; }
 
     @Override
     public int damageRoll() {
