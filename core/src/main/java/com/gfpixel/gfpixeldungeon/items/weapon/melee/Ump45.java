@@ -31,7 +31,7 @@ public class Ump45 extends MeleeWeapon {
 
         tier = 1;
         RCH = 1;
-        ACC = 0.85f;
+        ACC = 0.6f;
     }
 
     @Override

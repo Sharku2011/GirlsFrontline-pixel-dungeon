@@ -53,7 +53,7 @@ public class Nemeum extends Mob {
         properties.add(Property.ARMO);
     }
 // 사거리는 2칸으로 조정해주세요
-    public int DamageReducer() { return 3; }
+    public int DamageReducer() { return 1; }
 
     @Override
     public int damageRoll() {

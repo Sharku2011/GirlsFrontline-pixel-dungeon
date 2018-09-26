@@ -27,6 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Hydra;
 import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
+import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.noosa.particles.Emitter;
@@ -105,6 +106,9 @@ public class hydraSprite extends MobSprite {
     public void onComplete( Animation anim ) {
         super.onComplete( anim );
 
+        if (anim == die) {
+            emitter().burst( Speck.factory( Speck.WOOL ), 15 );
+        }
         if (anim == zap) {
             idle();
             if (Actor.findChar(zapPos) != null){

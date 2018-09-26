@@ -22,6 +22,7 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.watabou.noosa.MovieClip;
 import com.watabou.noosa.TextureFilm;
 
@@ -50,7 +51,18 @@ public class GreatCrabSprite extends MobSprite {
 	}
 
 	@Override
+	public void onComplete( Animation anim ) {
+
+		super.onComplete( anim );
+
+		if (anim == die) {
+			emitter().burst( Speck.factory( Speck.WOOL ), 15 );
+		}
+	}
+
+	@Override
 	public int blood() {
-		return 0xFFFFEA80;
+		return 0xFFFFFF88;
 	}
 }
+

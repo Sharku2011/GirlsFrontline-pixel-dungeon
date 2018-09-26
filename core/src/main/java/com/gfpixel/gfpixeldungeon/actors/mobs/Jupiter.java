@@ -45,13 +45,13 @@ public class Jupiter extends Mob {
     {
         spriteClass = JupiterSprite.class;
 
-        HP = HT = 85;
+        HP = HT = 55;
         defenseSkill = 30;
         viewDistance = Light.DISTANCE;
         baseSpeed = 1f;
         maxLvl = 26;
 
-        properties.add(Property.IMMOVABLE);
+        properties.add(Property.ARMO);
     }
 
     private Ballistica beam;
@@ -118,7 +118,7 @@ public class Jupiter extends Mob {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((JupiterSprite)sprite).charge( enemy.pos );
-            spend( attackDelay()*5f );
+            spend( attackDelay()*7f );
             beamCharged = true;
             return true;
         } else {

@@ -464,9 +464,9 @@ actors.mobs.jaguar.desc="장착되어 있는 스마트 시스템이 포탄의 �
 actors.mobs.gnolltrickster.name=예거 A형
 actors.mobs.gnolltrickster.desc=철혈 인형중에서도 엘리트에 속하는 인형입니다...만, 아직 양산전의 시제품입니다. 원래대로라면 파괴될 예정이었지만, 침입자에 대한 데이터를 수집하기 위해 하수구에 투입되었습니다.. \n\n얼핏 보이는 망토 안에는 철혈에서 만들어진 다양한 탄환이 보입니다. 확실히 맞는다면 단순한 피해로만 끝나진 않을 것 같네요.
 
-actors.mobs.golem.name=네메움 D형
+actors.mobs.golem.name=만티코어
 actors.mobs.golem.def_verb=방어
-actors.mobs.golem.desc=군에서 발주하기로 한 표준 군용 인형입니다. 출고 전에 철혈에게 감염당했기 때문에 적으로 변했고, 현대의 군용 화력 시스템을 탑재하고 있습니다. 방어형으로 개량된 기체기 때문에, 적의 공격을 가끔 방어할 수 있습니다.
+actors.mobs.golem.desc="뛰어난 작품에는 언제나 스캔들이 따라붙기 마련이야. 만티코어의 설계 특허를 가지고 3개의 회사가 지금 법정 공방을 벌이고 있어." \n\n 군에서 발주하기로 한 표준 군용 병기입니다. 출고 전에 철혈에게 침입당했기 때문에 적으로 변했고, 당대의 군용 돌격 무기와 장갑을 탑재하고 있으며, 적을 두려움에 떨게 하는 강력한 원거리 공격과 뛰어난 방어 능력을 갖추고 있습니다.
 
 actors.mobs.elid.name=ELID D형
 actors.mobs.elid.def_verb=방어
@@ -474,7 +474,7 @@ actors.mobs.elid.desc="잘 들어 제퓨티, 저 사람...들은 보통 무기�
 
 actors.mobs.nemeum.name=네메움
 actors.mobs.nemeum.deathgaze_kill=파킨-
-actors.mobs.nemeum.desc="방어력이 좋지 않은 건 철혈이 화력 시스템이 있는 곳만 침입했기 때문이야. 나머지 부품은 다른 공장에서 아직 조립되기를 기다리고 있어." \n\n 군에서 발주하기로 한 표준 군용 병기입니다. 출고 전에 철혈에게 침입당했기 때문에 적으로 변했고, 현대의 군용 화력 시스템을 탑재하고 있습니다. 충전을 통해 살상력을 높일 수 있지만, 사격속도와 방어력은 비교적 낮습니다.
+actors.mobs.nemeum.desc="방어력이 좋지 않은 건 철혈이 화력 시스템이 있는 곳만 침입했기 때문이야. 나머지 부품은 다른 공장에서 아직 조립되기를 기다리고 있어." \n\n현대의 군용 화력 시스템을 탑재하고 있습니다. 충전을 통해 살상력을 높일 수 있지만, 사격속도와 방어력은 비교적 낮습니다.
 
 actors.mobs.goo.name=엑스큐서너
 actors.mobs.goo.notice=도전하러 온 게 네놈들이냐? 그럼, 날뛰어보자!
