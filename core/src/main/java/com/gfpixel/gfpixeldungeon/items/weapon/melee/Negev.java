@@ -29,14 +29,14 @@ public class Negev extends MeleeWeapon {
 		image = ItemSpriteSheet.NEGEV;
 
 		tier = 3;
-		ACC = 0.95f;
+		ACC = 0.9f;
 		DLY = 0.2f; //1time 5hit
 	}
 
 	@Override
 	public int max(int lvl) {
 		return  Math.round(2.1f*(tier+1)) +    //5 base, down from 20
-				lvl*Math.round(0.4f*(tier+1));   //+1 per level, down from +2
+				lvl*Math.round(0.3f*(tier+2));   //+1 per level, down from +2
 	}
 
 }
