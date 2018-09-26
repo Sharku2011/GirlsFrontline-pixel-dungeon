@@ -105,10 +105,7 @@ public class ElpheltSprite extends MobSprite {
                 }
             }
         );
-
         Sample.INSTANCE.play(Assets.SND_ZAP);
-
-
     }
 
     @Override
@@ -132,15 +129,13 @@ public class ElpheltSprite extends MobSprite {
         } else if (anim == die){
             chargeParticles.killAndErase();
         } else if (anim == genoise && ((Elphelt)ch).getTraceGenoise() != null) {
-            charge( ((Elphelt)ch).getTraceGenoise().collisionPos );
+            charge( ((Elphelt)ch).genoiseDst );
         } else if (anim == blast) {
             ((Elphelt)ch).Blast();
         }
-
         if (ch != null) {
             ch.next();
         }
-
         super.onComplete( anim );
     }
 
