@@ -8,9 +8,11 @@ import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
 import com.gfpixel.gfpixeldungeon.actors.blobs.GenoiseWarn;
 import com.gfpixel.gfpixeldungeon.actors.blobs.GooWarn;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
+import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.effects.Pushing;
@@ -81,8 +83,9 @@ public class Elphelt extends Mob {
         return 1f;
     }
 
-    protected float warnDelay() { return 1f; }
-    protected float bridleExpressDelay() { return  2f; }
+    private float warnDelay() { return 1f; }
+    private float bridleExpressDelay() { return  1f; }
+    private float magnumDelay() { return 2f; }
 
 
     @Override
@@ -91,13 +94,13 @@ public class Elphelt extends Mob {
     }
 
     private Ballistica traceGenoise;
-
+    private Ballistica traceMagnum;
     private Ballistica traceRush;
 
     public final Ballistica getTraceGenoise() {
         return traceGenoise;
     }
-
+    public final Ballistica getTraceMagnum() { return traceMagnum; }
     public final Ballistica getTraceRush() {
         return traceRush;
     }
@@ -110,7 +113,6 @@ public class Elphelt extends Mob {
 
     private int timerRush = 3;
     private final int COOLDOWN_RUSH = 3;
-    private final int WARMUP_RUSH = 1;
 
     public boolean canRush = false;
     public boolean onRush = false;
@@ -151,7 +153,6 @@ public class Elphelt extends Mob {
 
                 if (!onGenoise && curGenoiseStack < maxGenoiseStack)
                 {
-                    // 제누와즈 중이 아니고 스택이 모자란 경우 스택 추가
                     curGenoiseStack += REGEN_OF_GENOISE;
                     if (curGenoiseStack >= maxGenoiseStack) {
                         curGenoiseStack = maxGenoiseStack;
@@ -184,36 +185,38 @@ public class Elphelt extends Mob {
         switch (phase) {
             case 0:
             default:
+                return super.canAttack(enemy);
             case 1:
-                // phase 1. genoise and stalking
-
-                if (curGenoiseStack == maxGenoiseStack) {
+                // check genoise stack
+                if (curGenoiseStack <= 0)
+                {
+                    curGenoiseStack = 0;
+                    onGenoise = false;
+                } else if (curGenoiseStack >= maxGenoiseStack) {
+                    curGenoiseStack = maxGenoiseStack;
                     onGenoise = true;
                 }
 
-                if ( Dungeon.level.adjacent(pos, enemy.pos) ) {
-                    // 근접
-                    if (onGenoise) {
-                        // 제누와즈 시전중
-                        canBlast = true;
-                        return true;
-                    } else {
-                        // 시전중 아닐 때 - 무조건 true라고 봐야함
-                        return super.canAttack(enemy);
+                if ( onGenoise ) {
+                    traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
+                    // 착탄 위치와 근접했을 때, 자신만 맞을 경우 뒤로 후퇴
+                    if ( Dungeon.level.distance(pos, enemy.pos) <= 1 ) {
+                        Char ch = findChar( traceGenoise.collisionPos );
+                        return (ch != this);
                     }
                 } else {
-                    // 비근접
-                    traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
-                    return onGenoise && findChar(traceGenoise.collisionPos) != null && (traceGenoise.collisionPos != pos);
+                    super.canAttack(enemy);
                 }
-
             case 2:
                 // rush and magnum wedding
                 if (timerRush >= COOLDOWN_RUSH) {
                     timerRush = COOLDOWN_RUSH;
                     canRush = true;
+                    traceMagnum = null;
+                } else {
+                    traceMagnum = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
                 }
-                return canRush; //|| (Dungeon.level.distance(pos, enemy.pos) <= RANGE_MAGNUM);
+                return canRush || ( findChar(traceMagnum.collisionPos) == enemy && (Dungeon.level.distance(pos, enemy.pos) <= RANGE_MAGNUM) );
         }
 
     }
@@ -236,7 +239,7 @@ public class Elphelt extends Mob {
                     if (canBlast) {
                         canBlast = false;
                         ((ElpheltSprite)sprite).blast();
-                        //칭겨내기를 써도 제누와즈 스택을 소모
+                        //팅겨내기를 써도 제누와즈 스택을 소모
                         curGenoiseStack = Math.max(curGenoiseStack - 1, 0);
                         return true;
                     }
@@ -256,22 +259,28 @@ public class Elphelt extends Mob {
             case 2:
                 if (canRush) {
                     if (onRush) {
+                        // 브라이들 러시 발동
                         spend( bridleExpressDelay() );
-                        return bridleExpress();
+                        bridleExpress();
+                        return true;
                     } else {
+                        // 경고 궤적 표시
                         onRush = true;
                         spend( warnDelay() );
                         warnExpress();
                         return true;
                     }
                 } else {
-                    // 매그넘 웨딩 필요
-                    //super.doAttack( enemy );
+                    spend( magnumDelay() );
+                    if ( Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[traceMagnum.collisionPos] ) {
+                        sprite.zap( traceMagnum.collisionPos );
+                    } else {
+                        magnumWedding( traceMagnum );
+                    }
+                    sprite.parent.add(new Beam.DeathRay(sprite.center(), findChar(traceMagnum.collisionPos).sprite.center()));
+                    return true;
                 }
-
-                return true;
         }
-
     }
 
     @Override
@@ -382,7 +391,6 @@ public class Elphelt extends Mob {
                     GameScene.add(Blob.seed(c, 2, GenoiseWarn.class));
                 }
             }
-
         }
 
         dstRush = traceRush.collisionPos;
@@ -391,11 +399,11 @@ public class Elphelt extends Mob {
         next();
     }
 
-    private boolean bridleExpress() {
+    private void bridleExpress() {
 
 	    if (!onRush || dstRush < 0) {
 	        next();
-            return false;
+            return;
         }
 
         if (traceRush == null) {
@@ -489,31 +497,37 @@ public class Elphelt extends Mob {
                 traceRush = null;
                 dstRush = -1;
                 bridlePath.clear();
-                yell( Random.Int(2) == 0 ? "브라이들 익스프레스!" : "내 사랑을 받아주세요!");
+
+                yell( Elphelt.this.enemy != null ? "브라이들 익스프레스!" : "어디있나요, 달링!");
             }
         }), -1f);
 
-        return true;
     }
 
 
-    private boolean magnumWedding( Ballistica beam ) {
+    public void magnumWedding( Ballistica beam ) {
 
-        if ( beam == null || findChar(beam.collisionPos) == null || Dungeon.level.distance(pos, beam.collisionPos) > 5 ) {
-            return false;
+        if ( beam == null || findChar(beam.collisionPos) == null || Dungeon.level.distance(pos, beam.collisionPos) > RANGE_MAGNUM ) {
+            // 에러케이스
+            return;
         }
 
         for (int c : beam.subPath(0, beam.dist))
             CellEmitter.center(c).burst( BloodParticle.BURST, 1 );
 
 	    int damage = Random.NormalIntRange(2,5);
-        enemy.damage(damage - enemy.drRoll(), Elphelt.this );
 
-        // TODO 확률로 3턴 지속 or 1~3턴 지속 매혹 부여
+	    Char ch = findChar(beam.collisionPos);
+	    if (ch != null) {
+            ch.damage(damage - ch.drRoll(), Elphelt.this );
 
-        enemy.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 5 );
+            ch.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 5 );
 
-        return true;
+            //  1~3턴 지속 매혹 부여
+            Buff.affect( ch, Charm.class, (float)Random.IntRange(1, 3) );
+        }
+
+        return;
     }
 
 
@@ -648,6 +662,7 @@ public class Elphelt extends Mob {
     }
 
     {
+        immunities.add( Paralysis.class );
         immunities.add( Charm.class );
         immunities.add( Terror.class );
     }
@@ -659,29 +674,67 @@ public class Elphelt extends Mob {
             enemySeen = enemyInFOV;
             switch (phase) {
                 case 0: default:
+                    return true;
                 case 1:
                     if (enemyInFOV) {
-                        traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
-                        genoiseDst = traceGenoise.collisionPos;
+                        if (canAttack( enemy )) {
+                            if ( onGenoise ) {
+                                genoiseDst = traceGenoise.collisionPos;
+                                doAttack( enemy );
+                            }
+                        } else {
+                            if ( onGenoise ) {
+                                int oldPos = pos;
+                                if (target != -1 && getCloser( target )) {
+                                    spend( 1 / speed() );
+                                    return moveSprite( oldPos,  pos );
+                                } else {
+                                    if (enemySeen) {
+                                        // 벽에 끼이면 랜덤 위치로 텔레포트
+                                        int newPos;
+                                        do {
+                                            newPos = Random.Int(Dungeon.level.length());
+                                        } while (
+                                                // 벽이나 플레이어로부터 거리가 8 이상이나 다른 캐릭터가 있는 곳을 제외한 곳으로 이동
+                                                Dungeon.level.solid[newPos] ||
+                                                        Dungeon.level.distance(newPos, enemy.pos) > 8 ||
+                                                        Actor.findChar(newPos) != null);
+                                        sprite.move( pos, newPos );
+                                        move( newPos );
+                                    }
+                                }
+                            }
+                        }
                     } else {
-
+                        if (enemy == null) {
+                            state = WANDERING;
+                            target = Dungeon.level.randomDestination();
+                            return true;
+                        } else {
+                            int oldPos = pos;
+                            if (target != -1 && getCloser( target )) {
+                                spend( 1 / speed() );
+                                return moveSprite( oldPos,  pos );
+                            } else {
+                                spend( TICK );
+                                sprite.showLost();
+                                state = WANDERING;
+                                target = Dungeon.level.randomDestination();
+                                return true;
+                            }
+                        }
                     }
-                    break;
                 case 2:
                     if (enemyInFOV) {
                         target = enemy.pos;
                     } else {
                         target = Dungeon.level.randomDestination();
                     }
-                    doAttack( enemy );
+                    if (canAttack( enemy )) {
+                        doAttack( enemy );
+                    }
                     return true;
             }
-            if (canAttack( enemy ) && onRush || onGenoise) {
-                return doAttack(enemy);
-            } else {
-                spend( TICK );
-            }
-            return true;
         }
     }
 
