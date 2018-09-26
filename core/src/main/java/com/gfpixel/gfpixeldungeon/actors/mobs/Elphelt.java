@@ -97,18 +97,14 @@ public class Elphelt extends Mob {
     private Ballistica traceMagnum;
     private Ballistica traceRush;
 
-    public final Ballistica getTraceGenoise() {
-        return traceGenoise;
-    }
-    public final Ballistica getTraceMagnum() { return traceMagnum; }
-    public final Ballistica getTraceRush() {
-        return traceRush;
-    }
+    public final Ballistica getTraceGenoise()   { return traceGenoise; }
+    public final Ballistica getTraceMagnum()    { return traceMagnum; }
+    public final Ballistica getTraceRush()      { return traceRush; }
 
     public boolean onGenoise = false;
     private int maxGenoiseStack = 5;
     private int curGenoiseStack = maxGenoiseStack;
-    private int genoiseDst = -1;
+    public int genoiseDst = -1;
 
 
     private int timerRush = 3;
@@ -150,7 +146,6 @@ public class Elphelt extends Mob {
             case 0: default:
                 break;
             case 1:
-
                 if (!onGenoise && curGenoiseStack < maxGenoiseStack)
                 {
                     curGenoiseStack += REGEN_OF_GENOISE;
@@ -159,7 +154,6 @@ public class Elphelt extends Mob {
                     }
                 }
                 break;
-
             case 2:
                 if (!onRush && !canRush) {
                     timerRush += 1;
@@ -170,7 +164,6 @@ public class Elphelt extends Mob {
                 }
                 break;
         }
-
         return super.act();
     }
 
@@ -183,8 +176,7 @@ public class Elphelt extends Mob {
         }
 
         switch (phase) {
-            case 0:
-            default:
+            case 0: default:
                 return super.canAttack(enemy);
             case 1:
                 // check genoise stack
@@ -196,16 +188,17 @@ public class Elphelt extends Mob {
                     curGenoiseStack = maxGenoiseStack;
                     onGenoise = true;
                 }
-
+                GLog.i("onGenoise: "+String.valueOf(onGenoise));
+                GLog.i("curGenoiseStack: "+String.valueOf(curGenoiseStack));
                 if ( onGenoise ) {
                     traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
                     // 착탄 위치와 근접했을 때, 자신만 맞을 경우 뒤로 후퇴
-                    if ( Dungeon.level.distance(pos, enemy.pos) <= 1 ) {
+                    if ( traceGenoise.dist <= 1 ) {
                         Char ch = findChar( traceGenoise.collisionPos );
                         return (ch != this);
                     }
                 } else {
-                    super.canAttack(enemy);
+                    return super.canAttack(enemy);
                 }
             case 2:
                 // rush and magnum wedding
@@ -227,35 +220,21 @@ public class Elphelt extends Mob {
 	    switch (phase) {
             case 0: default:
             case 1:
-
                 if (enemy == null) {
                     onGenoise = false;
                     return true;
                 }
-
                 spend( attackDelay() );
-
-                if ( onGenoise && curGenoiseStack > 0) {
-                    if (canBlast) {
-                        canBlast = false;
-                        ((ElpheltSprite)sprite).blast();
-                        //팅겨내기를 써도 제누와즈 스택을 소모
-                        curGenoiseStack = Math.max(curGenoiseStack - 1, 0);
-                        return true;
-                    }
-
-                    // 엘펠트가 플레이어의 시야 안에 있으면 애니메이션을 재생. true/false 값 리턴은 투사체가 날아가는데 시간이 걸릴 시 애니메이션 보여주는용(false일 때)
-                    if ( Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[traceGenoise.collisionPos] ) {
+                if ( genoiseDst > 0 ) {
+                    if ( Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[genoiseDst] ) {
                         ((ElpheltSprite)sprite).genoise( genoiseDst );
                     } else {
                         fireGenoise( genoiseDst );
                     }
-
                     return true;
                 } else {
                     return super.doAttack( enemy );
                 }
-
             case 2:
                 if (canRush) {
                     if (onRush) {
@@ -334,9 +313,6 @@ public class Elphelt extends Mob {
         Genoises.add( newGenoise );
 
         curGenoiseStack = Math.max(curGenoiseStack-1, 0);
-        if (curGenoiseStack <= 0) {
-            onGenoise = false;
-        }
 
         if (terrainAffected) {
             Dungeon.observe();
@@ -671,6 +647,7 @@ public class Elphelt extends Mob {
     private class Hunting extends Mob.Hunting{
         @Override
         public boolean act(boolean enemyInFOV, boolean justAlerted) {
+            GLog.i("상태머신 act 호출");
             enemySeen = enemyInFOV;
             switch (phase) {
                 case 0: default:
@@ -679,16 +656,22 @@ public class Elphelt extends Mob {
                     if (enemyInFOV) {
                         if (canAttack( enemy )) {
                             if ( onGenoise ) {
+                                // 제누와즈 발사중, 공격 가능
                                 genoiseDst = traceGenoise.collisionPos;
-                                doAttack( enemy );
+                            } else {
+                                // 제누와즈 발사중 아님, 공격 가능
+                                genoiseDst = -1;
                             }
+                            return doAttack(enemy);
                         } else {
                             if ( onGenoise ) {
+                                // 제누와즈 발사중이지만 발사할 수 없을 때
                                 int oldPos = pos;
                                 if (target != -1 && getCloser( target )) {
                                     spend( 1 / speed() );
                                     return moveSprite( oldPos,  pos );
                                 } else {
+                                    spend( TICK );
                                     if (enemySeen) {
                                         // 벽에 끼이면 랜덤 위치로 텔레포트
                                         int newPos;
@@ -701,7 +684,18 @@ public class Elphelt extends Mob {
                                                         Actor.findChar(newPos) != null);
                                         sprite.move( pos, newPos );
                                         move( newPos );
+                                        return true;
                                     }
+                                }
+                            } else {
+                                // 제누와즈 발사중 아님, 공격도 불가능
+                                int oldPos = pos;
+                                if (target != -1 && getCloser( target )) {
+                                    spend( 1 / speed() );
+                                    return moveSprite( oldPos,  pos );
+                                } else {
+                                    spend( TICK );
+                                    return true;
                                 }
                             }
                         }
@@ -724,6 +718,7 @@ public class Elphelt extends Mob {
                             }
                         }
                     }
+                    return true;
                 case 2:
                     if (enemyInFOV) {
                         target = enemy.pos;
