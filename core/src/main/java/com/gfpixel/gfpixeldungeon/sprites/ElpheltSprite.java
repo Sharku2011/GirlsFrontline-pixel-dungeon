@@ -1,13 +1,9 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Elphelt;
-import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
-import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
-import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.particles.Emitter;
@@ -91,20 +87,21 @@ public class ElpheltSprite extends MobSprite {
         play( blast );
     }
 
-    public void genoise( final int cell ) {
-        turnTo( ch.pos, cell );
+    public void genoise( int pos ) {
+        turnTo( ch.pos, pos );
         play( genoise );
 
         // show cursed wand effect - CursedWand.fx()
+        final int tpos = pos;
         MagicMissile.boltFromChar(
             parent,
             MagicMissile.RAINBOW,
             this,
-            cell,
+            pos,
             new Callback() {
                 @Override
                 public void call() {
-                    ((Elphelt)ch).fireGenoise( cell );
+                    ((Elphelt)ch).fireGenoise( tpos );
                 }
             }
         );
@@ -132,18 +129,15 @@ public class ElpheltSprite extends MobSprite {
 
         if (anim == zap) {
             idle();
-            if (Actor.findChar(zapPos) != null){
-                parent.add(new Beam.DeathRay(center(), Actor.findChar(zapPos).sprite.center()));
-            } else {
-                parent.add(new Beam.DeathRay(center(), DungeonTilemap.raisedTileCenterToWorld(zapPos)));
-            }
-            ch.next();
         } else if (anim == die){
             chargeParticles.killAndErase();
         } else if (anim == genoise && ((Elphelt)ch).getTraceGenoise() != null) {
             charge( ((Elphelt)ch).getTraceGenoise().collisionPos );
         } else if (anim == blast) {
             ((Elphelt)ch).Blast();
+        }
+
+        if (ch != null) {
             ch.next();
         }
 
