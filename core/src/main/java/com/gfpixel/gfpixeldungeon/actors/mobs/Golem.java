@@ -21,8 +21,10 @@
 
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
+import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Amok;
+import com.gfpixel.gfpixeldungeon.actors.buffs.LockedFloor;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Sleep;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Imp;
@@ -61,6 +63,14 @@ public class Golem extends Mob {
 	@Override
 	public int drRoll() {
 		return Random.NormalIntRange(0, 12);
+	}
+
+	private final int damageCap = 40;
+
+	@Override
+	public void damage(int dmg, Object src) {
+		int finalDmg = Math.max(dmg, damageCap);
+		super.damage(finalDmg, src);
 	}
 
 	@Override
