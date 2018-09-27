@@ -14,12 +14,10 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
-import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.effects.Pushing;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.effects.particles.BlastParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.BloodParticle;
-import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
@@ -30,7 +28,6 @@ import com.gfpixel.gfpixeldungeon.levels.features.Door;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
-import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
 import com.gfpixel.gfpixeldungeon.sprites.ElpheltSprite;
 import com.gfpixel.gfpixeldungeon.ui.BossHealthBar;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
@@ -45,6 +42,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+
+import static com.gfpixel.gfpixeldungeon.Dungeon.hero;
 
 
 public class Elphelt extends Mob {
@@ -226,11 +225,21 @@ public class Elphelt extends Mob {
                 }
                 spend( attackDelay() );
                 if ( genoiseDst > 0 ) {
+                    if (Dungeon.level.adjacent(pos, genoiseDst)) {
+                        Blast();
+                        return true;
+                    }
+
                     if ( Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[genoiseDst] ) {
                         ((ElpheltSprite)sprite).genoise( genoiseDst );
                     } else {
                         fireGenoise( genoiseDst );
                     }
+
+                    if (genoiseDst == Dungeon.hero.pos) {
+                        Dungeon.hero.interrupt();
+                    }
+                    
                     return true;
                 } else {
                     return super.doAttack( enemy );
@@ -267,20 +276,11 @@ public class Elphelt extends Mob {
         int newHP = HP - dmg;
         int newDmg = dmg;
 
-        switch (phase) {
-            case 0: default:
-            case 1:
-                if ( HP > (HT/2) && newHP <= (HT/2)) {
-                    newDmg = HP - HT/2;
-                    changePhase();
-                }
-                break;
-            case 2:
-                if ( HP > (HT/3) && newHP <= (HT/3)) {
-                    newDmg = HP - HT/3;
-                }
-                break;
+        if ( HP > (HT/2) && newHP <= (HT/2)) {
+            newDmg = HP - HT/2;
+            changePhase();
         }
+
         super.damage( newDmg, src );
     }
 
@@ -340,8 +340,13 @@ public class Elphelt extends Mob {
                     // 2페이즈에서 엘펠트 / 캐릭터 / 적 이렇게 딱 붙어있을 경우 엘펠트가 멍청이가 되는 경우가 있음 - 어차피 보스전
                 }
                 ch.next();
+                if (ch == Dungeon.hero) {
+                    Dungeon.hero.interrupt();
+                }
             }
         }
+        curGenoiseStack = Math.max(curGenoiseStack-1, 0);
+        next();
     }
 
     private List<Integer> bridlePath;
@@ -354,7 +359,7 @@ public class Elphelt extends Mob {
         } else {
             // 캐릭터와 엘펠트가 붙어있는 경우
             // 일단 팅겨내기 -> 아니면 벽까지 돌진하게 만들고 그냥 죽여버리기?
-            ((ElpheltSprite)sprite).blast();
+
             canRush = false;
             onRush = false;
 
@@ -443,7 +448,7 @@ public class Elphelt extends Mob {
                         }
 
                         Dungeon.level.press(ch.pos, ch, true);
-                        if (ch == Dungeon.hero) {
+                        if (ch == hero) {
                             Dungeon.observe();
                         }
                     }
@@ -538,7 +543,7 @@ public class Elphelt extends Mob {
                     Paralysis.prolong(ch, Paralysis.class, 2.5f);
                 }
                 Dungeon.level.press(ch.pos, ch, true);
-                if (ch == Dungeon.hero){
+                if (ch == hero){
                     Dungeon.observe();
                 }
             }
@@ -789,7 +794,7 @@ public class Elphelt extends Mob {
                             ch.damage( dmg , this );
                         }
 
-                        if (ch == Dungeon.hero && !ch.isAlive()) {
+                        if (ch == hero && !ch.isAlive()) {
                             Dungeon.fail( Elphelt.this.getClass() );
                             GLog.n( Messages.get( Elphelt.this, "genoise_kill") );
                         }
