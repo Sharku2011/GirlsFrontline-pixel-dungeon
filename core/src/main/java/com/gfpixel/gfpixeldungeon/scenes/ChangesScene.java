@@ -26,6 +26,7 @@ import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Negev;
 import com.gfpixel.gfpixeldungeon.plants.Plant;
 import com.gfpixel.gfpixeldungeon.plants.Sungrass;
 import com.gfpixel.gfpixeldungeon.items.armor.HuntressArmor;
@@ -261,6 +262,10 @@ public class ChangesScene extends PixelScene {
 						"_-_ UMP9 - 연막탄 범위가 8칸으로 제한되며, 효과가 벽을 관통하지 않도록 변경\n\n" +
 						"_-_ HK416 - 살상류탄의 범위가 12칸으로 제한됨"));
 
+		changes.addButton( new ChangeButton(new Negev(),
+				"_-_ MG계열 하향.\n\n" +
+						"_-_ MG계열(공격속도가 기본 5회 이상인 무기) 무기들의 명중률과 기습공격이 조정됬습니다.\n\n" +
+						"_-_ 최대 30%의 명중률 패널티를 가지며, 공격력은 그대로지만 기습공격시 60%의 피해만 입힐 수 있게 됩니다."));
 		changes.addButton( new ChangeButton(new PotionOfHealing(),
 				"_-_ 수복포션 드랍 하향.\n\n" +
 						"_-_ 수복물약 드랍 몹에게 수복물약을 얻은 경우 이후 같은 몹에게 수복물약을 얻을 확률이 감소함"));
