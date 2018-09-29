@@ -28,9 +28,9 @@ public class Typhoon extends Hydra {
     {
         spriteClass = TyphoonSprite.class;
 
-        HP = HT = 3200;
-        EXP = 200;
-        defenseSkill = 5;
+        HP = HT = 3500;
+        EXP = 300;
+        defenseSkill = 0;
         baseSpeed = 0.8f;
         maxLvl = 40;
 
@@ -41,7 +41,7 @@ public class Typhoon extends Hydra {
     }
 
     @Override
-    public int DamageReducer() { return 4; }
+    public int DamageReducer() { return 2; }
 
     @Override
     public int damageRoll() {
@@ -150,7 +150,7 @@ public class Typhoon extends Hydra {
             }
 
             if (hit( this, ch, true )) {
-                ch.damage( Random.NormalIntRange( 30, 50 ), this );
+                ch.damage( Random.NormalIntRange( 40, 60 ), this );
 
                 if (Dungeon.level.heroFOV[pos]) {
                     ch.sprite.flash();

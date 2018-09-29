@@ -60,7 +60,7 @@ public class Challenges {
 			"no_scrolls",
 			"no_strength",
 			"no_ankh",
-			"inflation"
+			//"inflation"
 	};
 
 	public static final int[] MASKS = {
@@ -114,11 +114,11 @@ public class Challenges {
 			}
 		}
 
-		if (Dungeon.isChallenged(INFLATION)){
-			if (item instanceof Ankh) {
-				return true;
-			}
-		}
+		//if (Dungeon.isChallenged(INFLATION)){
+			//if (item instanceof Ankh) {
+			//	return true;
+			//}
+		//}
 		return false;
 
 

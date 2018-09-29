@@ -92,7 +92,7 @@ actors.buffs.combo.slam_desc=이제 _강타_ 가 가능합니다. 이 공격은 
 actors.buffs.combo.crush_prompt=으깨버릴 대상을 선택\n엄청난 피해를 줌.
 actors.buffs.combo.crush_desc=이제 _으깨기_ 가 가능합니다. 이 잔혹한 공격은 _매우 지속적으로 커다란 피해를 입힙니다._ 높은 체력을 가진 강력한 적을 제압할 때 효과적입니다!
 actors.buffs.combo.fury_prompt=분노 폭발 대상을 선택\n매우 빠르게 여러번 공격
-actors.buffs.combo.fury_desc=이제 _분노 폭발_ 이 가능합니다. 이 잔혹한 공격은 감소된 피해량으로 _현재 연속 타격 수치만큼 적을 공격합니다._ 매 공격마다 무기에 걸린 마법을 발동시킬 수 있으므로, 그런 무기를 사용할때 매우 효과적입니다!
+actors.buffs.combo.fury_desc=이제 _분노 폭발_ 이 가능합니다. 이 잔혹한 공격은 감소된 피해량으로 _현재 연속 타격 수치만큼 적을 공격합니다._ 매 공격마다 무기에 걸린 특성을 발동시킬 수 있으므로, 그런 무기를 사용할때 매우 효과적입니다!
 actors.buffs.combo.desc=파이터들은 싸움에 탄력을 더함으로써, 공격시 추가 피해를 입힙니다. 연속적인 공격을 성공시킴으로써 연속 수치를 높힐 수 있습니다. 그러나 일정 시간 동안 공격을 성공시키지 못하거나, 공격이 빗나가거나, 아이템을 사용하면 연속 타격 수치가 초기화됩니다.\n\n연속 타격을 많이 성공시키면 절대 빗나가지 않는 필살기를 사용할 수 있습니다! 연속 수치가 2, 4, 6, 8, 10일때 각각의 특수한 필살기를 사용할 수 있으며, 이를 사용하면 연속 타격 수치가 초기화됩니다.
 
 actors.buffs.corruption.name=우산
@@ -106,7 +106,7 @@ actors.buffs.doom.name=파멸
 actors.buffs.doom.desc=온 세상이 당신을 죽기를 바라는데, 어찌 계속 살아갈 수 있을까요?\n\n파멸당한 캐릭터는 모든 피해를 두 배로 입게 됩니다.\n\n파멸은 영구적으로 지속되며, 오직 죽어야만 끝이 납니다.
 
 actors.buffs.drowsy.name=졸림
-actors.buffs.drowsy.desc=마법의 힘이 잠을 쏟아지게 만들었습니다.\n\n피해를 받거나 최대 체력을 유지함으로써 졸음에 대항할 수 있습니다.\n\n몇턴 후, 대상은 깊은 마법의 잠 속으로 빠지게 됩니다.
+actors.buffs.drowsy.desc=기계적 힘이 잠을 쏟아지게 만들었습니다.\n\n피해를 받거나 최대 체력을 유지함으로써 졸음에 대항할 수 있습니다.\n\n몇턴 후, 대상은 깊은 기계적 잠 속으로 빠지게 됩니다.
 
 actors.buffs.earthimbue.name=대지와 동화함
 actors.buffs.earthimbue.desc=당신은 대지의 힘과 하나가 되었습니다!\n\n적에게 가하는 모든 물리 공격은 지속시간 동안 적들을 묶이게 만듭니다.\n\n대지와 동화함 효과는 %s턴 동안 지속됩니다.
@@ -122,7 +122,7 @@ actors.buffs.fury.name=분노
 actors.buffs.fury.heromsg=당신은 분노에 휩싸였다!
 actors.buffs.fury.desc=당신은 화가 났습니다. 그리고 적들은 화가 난 당신에게서 도망치는게 좋을 것입니다.\n\n거대한 분노가 당신 속에서 타오르며, 당신이 가하는 물리 공격력을 50%% 증가시킵니다.\n\n분노 효과는 당신의 체력이 50%% 이하로 떨어지면 항상 발동됩니다.
 
-actors.buffs.blobimmunity.name=정화의 보호막
+actors.buffs.blobimmunity.name=천상의 보호막
 actors.buffs.blobimmunity.desc=어떤 기묘한 힘이 얇은 보호막을 형성했습니다. 공기 중의 모든 해로운 효과를 받지 않게 됩니다.\n\n보호막이 유지되는 동안 모든 지역 효과를 받지 않게 됩니다.\n\n보호막은 %s턴 동안 유지됩니다.
 
 actors.buffs.healing.value=%+dHP
@@ -153,11 +153,11 @@ actors.buffs.speed.desc=내면에서 타오르는 신비로운 힘이 당신을 
 actors.buffs.lockedfloor.name=층이 잠겨있음
 actors.buffs.lockedfloor.desc=현재 층이 잠겨 있어 당신은 나갈 수 없습니다!\n\n층이 잠겨있는 동안 당신은 배고픔이 증가하지 않고 굶주림 피해를 입지 않습니다. 더하여 이 층의 보스를 물리치러 나아가지 않는 이상 재생 효과는 멈춥니다.\n\n또 층이 잠겨있는 동안 강화되지 않은 쾌속 수복권으로 수복한다면 해당 층을 재시작하게됩니다.\n\n잠금을 풀기 위해 이 층의 보스를 물리치십시오.
 
-actors.buffs.magicalsleep.name=마법의 수면
+actors.buffs.magicalsleep.name=기계적 수면
 actors.buffs.magicalsleep.toohealthy=너무 건강한 당신은 수면의 욕구에 저항했다.
-actors.buffs.magicalsleep.fallasleep=당신은 깊은 마법의 잠에 빠졌다.
+actors.buffs.magicalsleep.fallasleep=당신은 깊은 기계적 잠에 빠졌다.
 actors.buffs.magicalsleep.wakeup=당신은 생기있고 건강한 기분으로 깨어났다.
-actors.buffs.magicalsleep.desc=이 캐릭터는 깊은 마법의 수면에 빠져 자연적으로는 일어날 수 없습니다.\n\n마법의 수면은 일반 수면과 다를 것이 없지만, 오직 피해를 입어야만 깨어날 수 있다는 것이 차이점입니다.\n\n영웅에게 걸린 마법 숙면은 치유의 힘이 깃들어 있어, 자는 동안 체력을 빠른 속도로 회복시킵니다.
+actors.buffs.magicalsleep.desc=이 캐릭터는 깊은 기계적 수면에 빠져 자연적으로는 일어날 수 없습니다.\n\n기계적 수면은 일반 수면과 다를 것이 없지만, 오직 피해를 입어야만 깨어날 수 있다는 것이 차이점입니다.\n\n영웅에게 걸린 숙면은 치유의 힘이 깃들어 있어, 자는 동안 체력을 빠른 속도로 회복시킵니다.
 
 actors.buffs.mindvision.name=심안
 actors.buffs.mindvision.desc=당신은 인공위성의 지원을 받아 이 층의 모든 대체 핵심코어가 있는 대상을 탐지할 수 있게 되었습니다.\n\n심안 효과가 지속되는 동안 현재 층에 있는 모든 캐릭터들을 볼 수 있습니다. 이 효과로 보여진 적들은 시야 내의 캐릭터에게 효과가 있는 디스크 발동 대상에 포함됩니다.\n\n심안 효과는 %s턴 동안 지속됩니다.
@@ -196,17 +196,17 @@ actors.buffs.preparation.no_target=공격할 대상이 없다.
 actors.buffs.preparation.out_of_reach=사정거리 바깥의 적을 공격할 수 없다.
 
 actors.buffs.recharging.name=충전
-actors.buffs.recharging.desc=에너지가 당신에게 통하며 마법 막대와 돌격소총를 빠르게 충전시킵니다.\n\n이 효과는 기존의 충전 속도에 더하여, 매 턴마다 1/4의 충전량을 추가로 충전시킵니다.\n\n충전 효과는 %s턴 동안 지속됩니다.
+actors.buffs.recharging.desc=에너지가 당신에게 통하며 총탄과 돌격소총를 빠르게 충전시킵니다.\n\n이 효과는 기존의 충전 속도에 더하여, 매 턴마다 1/4의 충전량을 추가로 충전시킵니다.\n\n충전 효과는 %s턴 동안 지속됩니다.
 
 actors.buffs.roots.name=속박
 actors.buffs.roots.heromsg=당신은 움직일 수 없다!
-actors.buffs.roots.desc=속박(마법 속박이든 자연적 속박이든)은 당신의 발을 묶어, 그 자리에 서 있게 합니다.\n\n속박은 대상을 그 자리에 묶어 이동할 수 없게 하지만, 다른 행동은 여전히 할 수 있습니다.\n\n속박 효과는 %s턴 동안 지속됩니다.
+actors.buffs.roots.desc=속박은 당신의 발을 묶어, 그 자리에 서 있게 합니다.\n\n속박은 대상을 그 자리에 묶어 이동할 수 없게 하지만, 다른 행동은 여전히 할 수 있습니다.\n\n속박 효과는 %s턴 동안 지속됩니다.
 
 actors.buffs.shadows.name=그림자 숨기
-actors.buffs.shadows.desc=당신은 주변의 그림자에 동화되어, 투명해졌으며 느린 신진대사를 가지게 되었습니다.\n\n투명화가 적용되는 동안, 적들은 당신을 공격하거나 따라올 수 없습니다. 대부분의 물리적인 공격이나 마법 효과(주문서나 마법 막대 등)는 즉시 투명화를 취소합니다. 또한, 그림자에 숨는 동안에는 덜 배고파집니다.\n\n직접 그림자에서 빠져나오거나, 적이 당신에게 다가오기 전까지는 계속 그림자에 숨게될 것입니다.
+actors.buffs.shadows.desc=당신은 주변의 그림자에 동화되어, 투명해졌으며 느린 신진대사를 가지게 되었습니다.\n\n투명화가 적용되는 동안, 적들은 당신을 공격하거나 따라올 수 없습니다. 대부분의 물리적인 공격이나 마법 효과(주문서나 총탄 등)는 즉시 투명화를 취소합니다. 또한, 그림자에 숨는 동안에는 덜 배고파집니다.\n\n직접 그림자에서 빠져나오거나, 적이 당신에게 다가오기 전까지는 계속 그림자에 숨게될 것입니다.
 
 actors.buffs.slow.name=느려짐
-actors.buffs.slow.desc=느려지는 마법은 목표의 시간에 영향을 주어, 다른 모든 것이 매우 빠르게 움직이는 것처럼 보이게 합니다.\n\n느려진 캐릭터는 모든 행동에 두 배의 시간이 필요합니다.\n\n느려짐 효과는 %s턴 동안 지속됩니다.
+actors.buffs.slow.desc=느려지는 효과는 목표의 시간에 영향을 주어, 다른 모든 것이 매우 빠르게 움직이는 것처럼 보이게 합니다.\n\n느려진 캐릭터는 모든 행동에 두 배의 시간이 필요합니다.\n\n느려짐 효과는 %s턴 동안 지속됩니다.
 
 actors.buffs.snipersmark.name=저격수 HK416의 표식
 actors.buffs.snipersmark.desc=저격수 HK416는 가까운 목표물에 정신을 집중하여 그 대상을 공격할 때 추가 공격 속도와 방어력 관통을 얻습니다,\n\n표식은 저격수 HK416가 목표를 바꾸거나, 대상을 그만 공격하거나, 대상이 죽을 때 까지 계속됩니다.
@@ -282,7 +282,7 @@ actors.hero.herosubclass.gladiator_desc=_파이터_ 는 근접 공격을 성공�
 actors.hero.herosubclass.berserker=투신
 actors.hero.herosubclass.berserker_desc=_투신_ 은 받은 피해에 비례해 추가 피해를 입힙니다. \n격노한 상태에서, 그는 탈진을 무릅쓰고 짧은 시간동안 죽음을 유예할 수 있습니다.
 actors.hero.herosubclass.warlock=해커 G11
-actors.hero.herosubclass.warlock_desc=_해커 G11_ 은 적에게 마법 막대를 사용함으로써 영혼 표식을 걸 확률이 있습니다. 표식이 걸린 적들은 물리 피해를 입을 때 마다 해커 G11의 체력과 허기를 충족시킵니다.
+actors.hero.herosubclass.warlock_desc=_해커 G11_ 은 적에게 총탄을 사용함으로써 영혼 표식을 걸 확률이 있습니다. 표식이 걸린 적들은 물리 피해를 입을 때 마다 해커 G11의 체력과 허기를 충족시킵니다.
 actors.hero.herosubclass.battlemage=호크아이
 actors.hero.herosubclass.battlemage_desc=_호크아이 G11_ 은 자신의 돌격소총로 물리 공격을 할 때, 돌격소총가 흡수한 특성에 따른 추가 효과를 줄 수 있습니다. 또한 피해를 입힐 때 마다 추가 탄환을 장전할 수 있습니다.
 actors.hero.herosubclass.assassin=암살자

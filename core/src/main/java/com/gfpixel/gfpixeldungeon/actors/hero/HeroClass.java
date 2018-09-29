@@ -160,14 +160,14 @@ public enum HeroClass {
 		Dungeon.LimitedDrops.POTION_BANDOLIER.drop();
 		new PotionOfHealing().identify();
 
-		//if (BuildConfig.DEBUG) 	{
-			//new Cannon().identify().collect();
-			//new DriedRose().identify().collect();
-			//new TowProto().identify().collect();
-			//new ScrollOfUpgrade().identify().quantity(5).collect();
-			//new WandOfDisintegration().identify().upgrade().collect();
-			//new PlateArmor().identify().upgrade(100).collect();
-		//}
+		if (BuildConfig.DEBUG) 	{
+			new Cannon().identify().collect();
+			new  DriedRose().identify().collect();
+			new TowProto().identify().collect();
+			new ScrollOfUpgrade().identify().quantity(5).collect();
+			new WandOfDisintegration().identify().upgrade().collect();
+			new PlateArmor().identify().upgrade(100).collect();
+		}
 
 	}
 

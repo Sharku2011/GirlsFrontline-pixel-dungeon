@@ -29,9 +29,9 @@ public class Traviae extends Launcher {
         image = ItemSpriteSheet.TRAVIAE;
 
         tier=2;
-        DLY = 1.2f;
+        DLY = 0.8f;
         RCH = 2;
-        ACC = 1.3f; //27% boost to accuracy
+        ACC = 1.5f; //27% boost to accuracy
     }
 
     @Override

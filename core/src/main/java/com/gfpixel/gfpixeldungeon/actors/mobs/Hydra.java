@@ -45,17 +45,17 @@ public class Hydra extends Mob {
     {
         spriteClass = hydraSprite.class;
 
-        HP = HT = 231;
+        HP = HT = 400;
         EXP = 19;
-        defenseSkill = 15;
+        defenseSkill = 0;
         viewDistance = Light.DISTANCE;
-        baseSpeed = 1f;
+        baseSpeed = 0.9f;
         maxLvl = 36;
 
         properties.add(Property.ARMO);
     }
 
-    public int DamageReducer() { return 2; }
+    public int DamageReducer() { return 1; }
 
     @Override
     public int damageRoll() {

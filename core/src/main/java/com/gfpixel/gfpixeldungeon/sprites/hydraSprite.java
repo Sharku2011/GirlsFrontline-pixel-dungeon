@@ -44,7 +44,7 @@ public class hydraSprite extends MobSprite {
 
         texture( Assets.HYDRA );
 
-        TextureFilm frames = new TextureFilm( texture, 25, 25 );
+        TextureFilm frames = new TextureFilm( texture, 25, 19 );
 
         idle = new Animation( 2, true );
         idle.frames( frames, 0, 0, 0, 0 );
@@ -61,9 +61,9 @@ public class hydraSprite extends MobSprite {
         run.frames( frames, 1, 2, 3, 4, 5 );
 
         attack = new Animation( 10, false );
-        attack.frames( frames, 8, 9 );
+        attack.frames( frames, 6, 7, 6, 7 );
         zap = new Animation( 15, false );
-        zap.frames( frames, 6, 7, 6, 7 );
+        zap.frames( frames, 8, 9 );
 
         die = new Animation( 10, false );
         die.frames( frames, 0, 4, 4, 10, 10, 10, 11 );
@@ -106,9 +106,7 @@ public class hydraSprite extends MobSprite {
     public void onComplete( Animation anim ) {
         super.onComplete( anim );
 
-        if (anim == die) {
-            emitter().burst( Speck.factory( Speck.WOOL ), 15 );
-        }
+
         if (anim == zap) {
             idle();
             if (Actor.findChar(zapPos) != null){
