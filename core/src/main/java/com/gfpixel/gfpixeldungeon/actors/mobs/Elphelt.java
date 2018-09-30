@@ -35,6 +35,7 @@ import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Callback;
+import com.watabou.utils.GameMath;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
@@ -84,7 +85,7 @@ public class Elphelt extends Mob {
 
     private float warnDelay() { return 1f; }
     private float bridleExpressDelay() { return  1f; }
-    private float magnumDelay() { return 2f; }
+    private float magnumDelay() { return 3f; }
 
 
     @Override
@@ -204,7 +205,7 @@ public class Elphelt extends Mob {
                 } else {
                     traceMagnum = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
                 }
-                return canRush || ( findChar(traceMagnum.collisionPos) == enemy && (Dungeon.level.distance(pos, enemy.pos) <= RANGE_MAGNUM) );
+                return onRush || canRush || ( timerRush <= 1 && findChar(traceMagnum.collisionPos) == enemy && (Dungeon.level.distance(pos, enemy.pos) <= RANGE_MAGNUM) );
         }
 
     }
@@ -238,9 +239,11 @@ public class Elphelt extends Mob {
                     return super.doAttack( enemy );
                 }
             case 2:
-                spend(TICK);
-                return true;
-                /*
+                if (enemy == null)
+                {
+                    spend( TICK );
+                    return true;
+                }
                 if (canRush) {
                     if (onRush) {
                         // 브라이들 러시 발동
@@ -259,12 +262,12 @@ public class Elphelt extends Mob {
                     if ( Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[traceMagnum.collisionPos] ) {
                         sprite.zap( traceMagnum.collisionPos );
                     } else {
-                        magnumWedding( traceMagnum );
+                        magnumWedding();
                     }
                     sprite.parent.add(new Beam.DeathRay(sprite.center(), findChar(traceMagnum.collisionPos).sprite.center()));
                     return true;
                 }
-                */
+
         }
     }
 
@@ -282,7 +285,6 @@ public class Elphelt extends Mob {
     }
 
     public void fireGenoise( int pos ) {
-
         boolean terrainAffected = false;
 
         for (int c : traceGenoise.subPath(1, traceGenoise.dist)) {
@@ -531,29 +533,22 @@ public class Elphelt extends Mob {
     }
 
 
-    public void magnumWedding( Ballistica beam ) {
+    public void magnumWedding() {
 
-        if ( beam == null || findChar(beam.collisionPos) == null || Dungeon.level.distance(pos, beam.collisionPos) > RANGE_MAGNUM ) {
-            // 에러케이스
-            return;
-        }
-
-        for (int c : beam.subPath(0, beam.dist))
+        for (int c : traceMagnum.subPath(0, traceMagnum.dist))
             CellEmitter.center(c).burst( BloodParticle.BURST, 1 );
 
-	    int damage = Random.NormalIntRange(2,5);
+	    int damage = Random.NormalIntRange(12,20);
 
-	    Char ch = findChar(beam.collisionPos);
+	    Char ch = findChar(traceMagnum.collisionPos);
 	    if (ch != null) {
             ch.damage(damage - ch.drRoll(), Elphelt.this );
-
             ch.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 5 );
-
-            //  1~3턴 지속 매혹 부여
-            Buff.affect( ch, Charm.class, (float)Random.IntRange(1, 3) );
+            //  3턴 지속 매혹 부여
+            if (Random.IntRange(0,99) >= 40) {
+                Buff.affect( ch, Charm.class, magnumDelay() );
+            }
         }
-
-        return;
     }
 
     private static final String PHASE           = "phase";
@@ -658,10 +653,6 @@ public class Elphelt extends Mob {
         @Override
         public boolean act(boolean enemyInFOV, boolean justAlerted) {
 
-            if (enemy != null) {
-                GLog.i("적: " + enemy.name);
-            }
-
             enemySeen = enemyInFOV;
             switch (phase) {
                 case 0: default:
@@ -671,7 +662,6 @@ public class Elphelt extends Mob {
                 case 1:
                     if (enemy == null) {
                         spend( TICK );
-                        GLog.i("못찾겠다");
                         state = WANDERING;
                         target = Dungeon.level.randomDestination();
                         return true;
@@ -700,14 +690,29 @@ public class Elphelt extends Mob {
                         }
                     }
                 case 2:
-                    GLog.i("2");
-                    if (enemyInFOV) {
-                        target = enemy.pos;
+                    if (canAttack(enemy)) {
+                        if (enemyInFOV) {
+                            target = enemy.pos;
+                        } else {
+                            target = Dungeon.level.randomDestination();
+                        }
+                        doAttack( enemy );
+                        return true;
                     } else {
-                        target = Dungeon.level.randomDestination();
+                        int oldPos = pos;
+                        if (target != -1 && getCloser( target )) {
+                            spend( 1 / speed() );
+                            return moveSprite( oldPos, pos );
+                        } else {
+                            spend( TICK );
+                            sprite.showLost();
+                            if (!enemyInFOV) {
+                                state = WANDERING;
+                                target = Dungeon.level.randomDestination();
+                            }
+                            return true;
+                        }
                     }
-                    doAttack( enemy );
-                    return true;
             }
         }
     }

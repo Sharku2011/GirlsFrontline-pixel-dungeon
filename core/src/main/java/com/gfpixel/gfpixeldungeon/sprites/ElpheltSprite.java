@@ -43,9 +43,6 @@ public class ElpheltSprite extends MobSprite {
         chargeParticles.pour(MagicMissile.MagicParticle.ATTRACTING, 0.05f);
         chargeParticles.on = false;
 
-        blast = new Animation( 12, false );
-        blast.frames( frames, 7, 7, 7, 7, 7, 7 );
-
         run = new Animation( 15, true );
         run.frames( frames, 8, 9, 10, 11, 12 );
 
@@ -83,10 +80,6 @@ public class ElpheltSprite extends MobSprite {
         play(charging);
     }
 
-    public void blast() {
-        play( blast );
-    }
-
     public void genoise( int pos ) {
         turnTo( ch.pos, pos );
         play( genoise );
@@ -117,6 +110,9 @@ public class ElpheltSprite extends MobSprite {
     @Override
     public void zap( int pos ) {
         zapPos = pos;
+        if (((Elphelt)ch).phase == 2) {
+            ((Elphelt)ch).magnumWedding();
+        }
         super.zap( zapPos );
     }
 
@@ -130,8 +126,6 @@ public class ElpheltSprite extends MobSprite {
             chargeParticles.killAndErase();
         } else if (anim == genoise && ((Elphelt)ch).getTraceGenoise() != null) {
             charge( ((Elphelt)ch).genoiseDst );
-        } else if (anim == blast) {
-            ((Elphelt)ch).Blast();
         }
         if (ch != null) {
             ch.next();
