@@ -73,6 +73,7 @@ public class Notes {
 		
 		GHOST,
 		WANDMAKER,
+		NOEL,
 		TROLL,
 		IMP;
 		

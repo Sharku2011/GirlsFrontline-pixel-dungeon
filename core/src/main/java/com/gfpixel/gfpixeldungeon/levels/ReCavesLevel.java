@@ -23,6 +23,8 @@ package com.gfpixel.gfpixeldungeon.levels;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Bestiary;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Hydra;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Blacksmith;
 import com.gfpixel.gfpixeldungeon.levels.painters.CavesPainter;
 import com.gfpixel.gfpixeldungeon.levels.painters.Painter;
@@ -57,6 +59,11 @@ public class ReCavesLevel extends RegularLevel {
         color2 = 0xb9d661;
 
         viewDistance = Math.min(5, viewDistance);
+
+        initMobRotations = Bestiary.MR_RECAVES;
+
+        RareMobs.put(Hydra.class, 0.02f);
+        RareMobFloor.add(4);
     }
 
     @Override

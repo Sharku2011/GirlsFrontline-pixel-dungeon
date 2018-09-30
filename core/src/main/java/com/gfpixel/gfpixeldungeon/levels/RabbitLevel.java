@@ -23,12 +23,16 @@ package com.gfpixel.gfpixeldungeon.levels;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Bat;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Bestiary;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Brute;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Noel;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Wandmaker;
 import com.gfpixel.gfpixeldungeon.effects.Halo;
 import com.gfpixel.gfpixeldungeon.effects.particles.FlameParticle;
 import com.gfpixel.gfpixeldungeon.levels.painters.Painter;
 import com.gfpixel.gfpixeldungeon.levels.painters.PrisonPainter;
+import com.gfpixel.gfpixeldungeon.levels.painters.RabbitPainter;
 import com.gfpixel.gfpixeldungeon.levels.rooms.Room;
 import com.gfpixel.gfpixeldungeon.levels.traps.AlarmTrap;
 import com.gfpixel.gfpixeldungeon.levels.traps.BurningTrap;
@@ -56,6 +60,13 @@ public class RabbitLevel extends RegularLevel {
 	{
 		color1 = 0x6a723d;
 		color2 = 0x88924c;
+
+		initMobRotations = Bestiary.MR_HUNTINGRABBIT;
+
+		RareMobs.put(Bat.class, 0.02f);
+		RareMobs.put(Brute.class, 0.005f);
+		RareMobFloor.add(3);
+		RareMobFloor.add(4);
 	}
 	
 	@Override
@@ -77,7 +88,7 @@ public class RabbitLevel extends RegularLevel {
 	
 	@Override
 	protected Painter painter() {
-		return new PrisonPainter()
+		return new RabbitPainter()
 				.setWater(feeling == Feeling.WATER ? 0.90f : 0.30f, 4)
 				.setGrass(feeling == Feeling.GRASS ? 0.80f : 0.20f, 3)
 				.setTraps(nTraps(), trapClasses(), trapChances());

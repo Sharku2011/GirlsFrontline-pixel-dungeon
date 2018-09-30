@@ -27,17 +27,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Bestiary {
-	
+	/*
 	public static ArrayList<Class<? extends Mob>> getMobRotation( int depth ) {
-		ArrayList<Class<? extends Mob>> mobs = standardMobRotation( depth );
+
+		ArrayList<Class<? extends Mob>> mobs = getRotation( depth % 5 );
 		addRareMobs(depth, mobs);
 		swapMobAlts(mobs);
 		Random.shuffle(mobs);
 		return mobs;
 	}
+	*/
+
+	public static final MobRotations MR_SEWER;
+	public static final MobRotations MR_PRISON;
+	public static final MobRotations MR_HUNTINGRABBIT;
+	public static final MobRotations MR_CAVES;
+	public static final MobRotations MR_CITY;
+	public static final MobRotations MR_RECAVES;
+	public static final MobRotations MR_HALLS;
+
 
 	static {
-		final MobRotations MR_SEWER			= new MobRotations( 0 ) {
+
+		MR_SEWER								= new MobRotations( 0 ) {
 			@Override
 			public ArrayList<Class<? extends Mob>> getRotation(int floor) {
 				switch ( floor % 5 ) {
@@ -69,7 +81,7 @@ public class Bestiary {
 				}
 			}
 		};
-		final MobRotations MR_PRISON		= new MobRotations( 1 ) {
+		MR_PRISON		= new MobRotations( 1 ) {
 			@Override
 			public ArrayList<Class<? extends Mob>> getRotation(int floor) {
 				switch (floor % 5) {
@@ -105,7 +117,7 @@ public class Bestiary {
 				}
 			}
 		};
-		final MobRotations MR_HUNTINGRABBIT   = new MobRotations( 1 ) {
+		MR_HUNTINGRABBIT   = new MobRotations( 1 ) {
 			@Override
 			public ArrayList<Class<? extends Mob>> getRotation(int floor) {
 				switch (floor % 5) {
@@ -119,21 +131,21 @@ public class Bestiary {
 						return new ArrayList<>(Arrays.asList(
 								Ripper.class, Ripper.class, Ripper.class,
 								Shaman.class,
-								Jaguar));
+								Jaguar.class));
 					case 3:
 						return new ArrayList<>(Arrays.asList(
 								Ripper.class, Ripper.class,
 								Shaman.class,
-								Jaguar, Jaguar));
+								Jaguar.class, Jaguar.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
 								Ripper.class, Ripper.class,
 								Shaman.class,
-								Jaguar, Jaguar));
+								Jaguar.class, Jaguar.class));
 				}
 			}
 		};
-		final MobRotations MR_CAVES			= new MobRotations( 2 ) {
+		MR_CAVES			= new MobRotations( 2 ) {
 			@Override
 			public ArrayList<Class<? extends Mob>> getRotation(int floor) {
 				switch (floor % 5) {
@@ -166,7 +178,7 @@ public class Bestiary {
 				}
 			}
 		};
-		final MobRotations MR_CITY			= new MobRotations( 3 ) {
+		MR_CITY			= new MobRotations( 3 ) {
 			@Override
 			public ArrayList<Class<? extends Mob>> getRotation(int floor) {
 				switch (floor % 5) {
@@ -201,7 +213,7 @@ public class Bestiary {
 				}
 			}
 		};
-		final MobRotations MR_RECAVES		= new MobRotations( 4 ) {
+		MR_RECAVES		= new MobRotations( 4 ) {
 			@Override
 			public ArrayList<Class<? extends Mob>> getRotation(int floor) {
 				switch (floor) {
@@ -224,7 +236,7 @@ public class Bestiary {
 				}
 			}
 		};
-		final MobRotations MR_HALL			= new MobRotations( 5 ) {
+		MR_HALLS			= new MobRotations( 5 ) {
 			@Override
 			public ArrayList<Class<? extends Mob>> getRotation(int floor) {
 				switch (floor) {
@@ -257,165 +269,10 @@ public class Bestiary {
 			}
 		};
 	}
-
-
-	//returns a rotation of standard mobs, unshuffled.
-	private static ArrayList<Class<? extends Mob>> standardMobRotation( int depth ){
-		switch(depth){
-			
-			// Sewers
-			case 1: default:
-				//10x rat
-				return new ArrayList<>(Arrays.asList(
-						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
-						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class));
-			case 2:
-				//3x rat, 3x gnoll
-				return new ArrayList<>(Arrays.asList(Rat.class, Rat.class, Rat.class,
-						Gnoll.class, Gnoll.class, Gnoll.class));
-			case 3:
-				//2x rat, 4x gnoll, 1x crab, 1x swarm
-				return new ArrayList<>(Arrays.asList(Rat.class, Rat.class,
-						Gnoll.class, Gnoll.class, Gnoll.class, Gnoll.class,
-						Crab.class, Swarm.class));
-			case 4:
-				//1x rat, 2x gnoll, 3x crab, 1x swarm
-				return new ArrayList<>(Arrays.asList(Rat.class,
-						Gnoll.class, Gnoll.class,
-						Crab.class, Crab.class, Crab.class,
-						Swarm.class));
-				
-			// Prison
-			case 6:
-				//3x skeleton, 1x thief, 1x swarm
-				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class,
-						Swarm.class));
-			case 7:
-				//3x skeleton, 1x thief, 1x shaman, 1x guard
-				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class,
-						Shaman.class,
-						Guard.class));
-			case 8:
-				//3x skeleton, 1x thief, 2x shaman, 2x guard
-				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class,
-						Shaman.class, Shaman.class,
-						Guard.class, Guard.class));
-			case 9:
-				//3x skeleton, 1x thief, 2x shaman, 3x guard
-				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
-						Thief.class,
-						Shaman.class, Shaman.class,
-						Guard.class, Guard.class, Guard.class));
-				
-			// Caves
-			case 11:
-				//5x bat, 1x brute
-				return new ArrayList<>(Arrays.asList(
-						Bat.class, Bat.class, Bat.class, Bat.class, Bat.class,
-						Brute.class));
-			case 12:
-				//5x bat, 5x brute, 1x spinner
-				return new ArrayList<>(Arrays.asList(
-						Bat.class, Bat.class, Bat.class, Bat.class, Bat.class,
-						Brute.class, Brute.class, Brute.class, Brute.class, Brute.class,
-						Nemeum.class,
-						Spinner.class));
-			case 13:
-				//1x bat, 3x brute, 1x shaman, 1x spinner
-				return new ArrayList<>(Arrays.asList(
-						Bat.class,
-						Brute.class, Brute.class, Brute.class,
-						Nemeum.class, Nemeum.class,
-						Spinner.class));
-			case 14:
-				//1x bat, 3x brute, 1x shaman, 4x spinner
-				return new ArrayList<>(Arrays.asList(
-						Bat.class,
-						Brute.class, Brute.class, Brute.class,
-						Nemeum.class, Nemeum.class, Nemeum.class,
-						Spinner.class, Spinner.class, Spinner.class));
-				
-			// City
-			case 16:
-				//5x elemental, 5x warlock, 1x monk
-				return new ArrayList<>(Arrays.asList(
-						Elemental.class, Elemental.class, Elemental.class, Elemental.class, Elemental.class,
-						Warlock.class, Warlock.class, Warlock.class, Warlock.class, Warlock.class,
-						Monk.class));
-			case 17:
-				//2x elemental, 2x warlock, 2x monk
-				return new ArrayList<>(Arrays.asList(
-						Elemental.class, Elemental.class,
-						Warlock.class, Warlock.class,
-						Monk.class, Monk.class));
-			case 18:
-				//1x elemental, 1x warlock, 2x monk, 1x golem
-				return new ArrayList<>(Arrays.asList(
-						Elemental.class,
-						Warlock.class,
-						Monk.class, Monk.class,
-						Golem.class));
-			case 19:
-				//1x elemental, 1x warlock, 2x monk, 3x golem
-				return new ArrayList<>(Arrays.asList(
-						Elemental.class,
-						Warlock.class,
-						Monk.class, Monk.class,
-						Golem.class, Golem.class, Golem.class));
-				
-			// Halls
-			case 22:
-				//3x succubus, 3x evil eye
-				return new ArrayList<>(Arrays.asList(
-						Goliath.class, Goliath.class, Goliath.class,
-						Aegis.class, Aegis.class, Aegis.class,
-						Jupiter.class, Jupiter.class));
-			case 23:
-				//2x succubus, 4x evil eye, 2x scorpio
-				return new ArrayList<>(Arrays.asList(
-						Goliath.class, Goliath.class, Goliath.class,
-						Aegis.class, Aegis.class, Aegis.class,
-						Jupiter.class, Jupiter.class));
-			case 24:
-				//1x succubus, 2x evil eye, 3x scorpio
-				return new ArrayList<>(Arrays.asList(
-						Goliath.class, Goliath.class, Goliath.class, Goliath.class,
-						Aegis.class, Aegis.class, Aegis.class,
-						Jupiter.class, Jupiter.class,
-						Hydra.class));
-			case 26:
-				return new ArrayList<>(Arrays.asList(
-						Cyclops.class, Cyclops.class,Cyclops.class, Cyclops.class,
-						Succubus.class,Succubus.class,
-						Jupiter.class));
-			case 27:
-				return new ArrayList<>(Arrays.asList(
-						Cyclops.class, Cyclops.class,Cyclops.class,
-						Succubus.class,Succubus.class,
-						Jupiter.class, Jupiter.class,
-						Hydra.class));
-			case 28:
-				return new ArrayList<>(Arrays.asList(
-						Cyclops.class, Cyclops.class,
-						Succubus.class, Jupiter.class,
-						Hydra.class, Hydra.class, Hydra.class,
-						Hydra.class, Hydra.class, Hydra.class));
-			case 29:
-				return new ArrayList<>(Arrays.asList(
-						Cyclops.class,
-						Hydra.class, Hydra.class, Hydra.class,
-						Hydra.class, Hydra.class, Hydra.class,
-						Hydra.class, Hydra.class, Hydra.class));
-		}
-		
-	}
-	
+	/*
 	//has a chance to add a rarely spawned mobs to the rotation
 	public static void addRareMobs( int depth, ArrayList<Class<?extends Mob>> rotation ){
-		
+
 		switch (depth){
 			// Sewers
 			default:
@@ -451,11 +308,11 @@ public class Bestiary {
 				if (Random.Float() < 0.02f) rotation.add(Succubus.class);
 				return;
 			case 24:
-				if (Random.Float() < 0.02f) rotation.add(Typhoon.class);
+				if (Random.Float() < 0.02f) rotation.add(Hydra.class);
 				return;
 		}
 	}
-	
+
 	//switches out regular mobs for their alt versions when appropriate
 	private static void swapMobAlts(ArrayList<Class<?extends Mob>> rotation){
 		for (int i = 0; i < rotation.size(); i++){
@@ -478,4 +335,5 @@ public class Bestiary {
 			}
 		}
 	}
+	*/
 }
