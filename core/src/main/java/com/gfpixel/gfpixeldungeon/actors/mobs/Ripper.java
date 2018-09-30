@@ -17,11 +17,12 @@ public class Ripper extends Mob {
 
         HP = HT = 15;
         defenseSkill = 20;
+        baseSpeed = 1.1f;
 
         EXP = 7;
         maxLvl = 15;
         loot = new PotionOfHealing();
-        lootChance = 0.1f; //by default, see die()
+        lootChance = 0.1667f; //by default, see die()
     }
 
     @Override
