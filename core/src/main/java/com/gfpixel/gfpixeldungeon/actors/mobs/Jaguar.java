@@ -1,6 +1,7 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.items.Generator;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
 import com.gfpixel.gfpixeldungeon.sprites.JaguarSprite;
 import com.watabou.utils.Random;
@@ -20,8 +21,8 @@ public class Jaguar extends Mob {
 
         EXP = 7;
         maxLvl = 15;
-        loot = new PotionOfHealing();
-        lootChance = 0.1667f; //by default, see die()
+        loot = Generator.Category.WEAPON;
+        lootChance = 0.15f;
     }
 
     @Override
