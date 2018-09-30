@@ -28,7 +28,9 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Awareness;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
 import com.gfpixel.gfpixeldungeon.actors.buffs.MindVision;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Bestiary;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
+import com.gfpixel.gfpixeldungeon.actors.mobs.MobRotations;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Blacksmith;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Ghost;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Imp;
@@ -191,7 +193,9 @@ public class Dungeon {
 	public static int version;
 
 	public static long seed;
-	
+
+	public static SparseArray<MobRotations> DungeonThemes = new SparseArray<>();
+
 	public static void init() {
 
 		version = Game.versionCode;
@@ -248,7 +252,24 @@ public class Dungeon {
 		return (challenges & mask) != 0;
 	}
 
-	public static boolean HUNTINGRABBIT = false;
+	public static boolean bHUNTINGRABBIT = false;
+
+	// Names of each themes. Every theme is consist of 5 floors(4 regular level, 1 boss level)
+	public enum eThemes {
+		NONE,
+		SEWER,
+		PRISON,
+		HUNTINGRABBIT,
+		CAVES,
+		CITY,
+		RECAVES,
+		HALL,
+		LAST
+	}
+
+
+
+
 
 	public static Level newLevel() {
 		
@@ -281,14 +302,14 @@ public class Dungeon {
 		case 7:
 		case 8:
 		case 9:
-			if (HUNTINGRABBIT) {
+			if (bHUNTINGRABBIT) {
 				level = new RabbitLevel();
 			} else {
 				level = new PrisonLevel();
 			}
 			break;
 		case 10:
-			if (HUNTINGRABBIT) {
+			if (bHUNTINGRABBIT) {
 				level = new RabbitBossLevel();
 			} else {
 				level = new PrisonBossLevel();
