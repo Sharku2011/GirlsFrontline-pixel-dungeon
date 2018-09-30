@@ -119,17 +119,17 @@ public class Bestiary {
 						return new ArrayList<>(Arrays.asList(
 								Ripper.class, Ripper.class, Ripper.class,
 								Shaman.class,
-								Jaguar));
+								Jaguar.class));
 					case 3:
 						return new ArrayList<>(Arrays.asList(
 								Ripper.class, Ripper.class,
 								Shaman.class,
-								Jaguar, Jaguar));
+								Jaguar.class, Jaguar.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
 								Ripper.class, Ripper.class,
 								Shaman.class,
-								Jaguar, Jaguar));
+								Jaguar.class, Jaguar.class));
 				}
 			}
 		};
@@ -266,7 +266,7 @@ public class Bestiary {
 			// Sewers
 			case 1: default:
 				//10x rat
-				return new ArrayList<>(Arrays.asList(
+				return new ArrayList<Class<? extends Mob> >(Arrays.asList(
 						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
 						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class));
 			case 2:
@@ -410,7 +410,7 @@ public class Bestiary {
 						Hydra.class, Hydra.class, Hydra.class,
 						Hydra.class, Hydra.class, Hydra.class));
 		}
-		
+
 	}
 	
 	//has a chance to add a rarely spawned mobs to the rotation
