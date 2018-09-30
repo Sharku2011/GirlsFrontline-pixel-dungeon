@@ -39,7 +39,6 @@ import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Callback;
-import com.watabou.utils.GameMath;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
@@ -193,8 +192,6 @@ public class Elphelt extends Mob {
                     curGenoiseStack = maxGenoiseStack;
                     onGenoise = true;
                 }
-                GLog.i("onGenoise: "+String.valueOf(onGenoise));
-                GLog.i("curGenoiseStack: "+String.valueOf(curGenoiseStack));
                 if ( onGenoise ) {
                     traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
                     genoiseDst = traceGenoise.collisionPos;

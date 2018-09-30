@@ -288,15 +288,6 @@ public class RabbitBossLevel extends Level {
 			//halfway through, move to the maze
 			case PHASE1:
 
-				Actor.remove(elphelt);
-				mobs.remove(elphelt);
-				TargetHealthIndicator.instance.target(null);
-				elphelt.sprite.kill();
-
-				buildFlagMaps();
-				cleanWalls();
-				GameScene.resetMap();
-
 				GameScene.flash(0xFFFFFF);
 				Sample.INSTANCE.play(Assets.SND_BLAST);
 
@@ -305,10 +296,17 @@ public class RabbitBossLevel extends Level {
 
 			case PHASE2:
 
+
+
 				Dungeon.hero.interrupt();
 				Dungeon.hero.pos = entrance;
 				Dungeon.hero.sprite.interruptMotion();
 				Dungeon.hero.sprite.place(Dungeon.hero.pos);
+
+				Actor.remove(elphelt);
+				mobs.remove(elphelt);
+				TargetHealthIndicator.instance.target(null);
+				elphelt.sprite.kill();
 
 				elphelt.pos = 16+15*32;
 				elphelt.die(Dungeon.hero);

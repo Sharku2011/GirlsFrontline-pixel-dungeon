@@ -29,6 +29,7 @@ import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.items.BrokenSeal;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
+import com.gfpixel.gfpixeldungeon.items.armor.MageArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
 import com.gfpixel.gfpixeldungeon.items.artifacts.CloakOfShadows;
 import com.gfpixel.gfpixeldungeon.items.artifacts.DriedRose;
@@ -185,6 +186,10 @@ public enum HeroClass {
 		new MagicalHolster().collect();
 		Dungeon.LimitedDrops.MAGICAL_HOLSTER.drop();
 		new ScrollOfUpgrade().identify();
+
+		if (BuildConfig.DEBUG) {
+			new MageArmor().identify().collect();
+		}
 	}
 
 	private static void initRogue( Hero hero ) {

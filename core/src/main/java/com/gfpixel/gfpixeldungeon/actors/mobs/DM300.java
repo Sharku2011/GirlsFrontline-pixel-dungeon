@@ -99,14 +99,13 @@ public class DM300 extends Mob {
 	}
 
 	public void magnum() {
-		for (int c : aim.subPath(0, aim.dist))
-			CellEmitter.center(c).burst( BloodParticle.BURST, 1 );
-
-		int damage = Random.NormalIntRange(12,20);
-
+		for (int c : aim.subPath(0, aim.dist)) {
+			CellEmitter.center(c).burst(BloodParticle.BURST, 1);
+		}
+		
 		Char ch = findChar(aim.collisionPos);
 		if (ch != null) {
-			ch.damage(damage - ch.drRoll(), DM300.this );
+			ch.damage(damageRoll() - ch.drRoll(), DM300.this );
 			ch.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 5 );
 		}
 	}
