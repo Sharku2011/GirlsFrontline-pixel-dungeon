@@ -30,11 +30,9 @@ import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Elphelt;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
-import com.gfpixel.gfpixeldungeon.actors.mobs.Tengu;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.keys.IronKey;
-import com.gfpixel.gfpixeldungeon.levels.rooms.MazeRoom;
 import com.gfpixel.gfpixeldungeon.levels.rooms.Room;
 import com.gfpixel.gfpixeldungeon.levels.rooms.standard.EmptyRoom;
 import com.gfpixel.gfpixeldungeon.levels.traps.GrippingTrap;
@@ -62,7 +60,7 @@ public class RabbitBossLevel extends Level {
 	}
 
 	private enum State{
-		START,
+		READY,
 		PHASE1,
 		PHASE2,
 		WON
@@ -70,7 +68,6 @@ public class RabbitBossLevel extends Level {
 	
 	private State state;
 	private Elphelt elphelt;
-	//17*32+14
 
 	//keep track of that need to be removed as the level is changed. We dump 'em back into the level at the end.
 	private ArrayList<Item> storedItems = new ArrayList<>();
@@ -124,14 +121,14 @@ public class RabbitBossLevel extends Level {
 		
 		setSize(32, 32);
 		
-		map = MAP_ARENA.clone();
+		map = MAP_START.clone();
 
 		buildFlagMaps();
 		cleanWalls();
 
-		state = State.START;
+		state = State.READY;
 		entrance = 16+13*32;
-		exit = 31;
+		exit = 16+11*32;
 
 		resetTraps();
 
@@ -158,21 +155,8 @@ public class RabbitBossLevel extends Level {
 		if (item != null) {
 			drop( item, randomRespawnCell() ).type = Heap.Type.REMAINS;
 		}
-		drop(new IronKey(10), randomPrisonCell());
 	}
 
-	private int randomPrisonCell(){
-		int pos = 1+8*32; //initial position at top-left room
-
-		//randomly assign a room.
-		pos += Random.Int(4)*(4*32); //one of the 4 rows
-		pos += Random.Int(2)*6; // one of the 2 columns
-
-		//and then a certain tile in that room.
-		pos += Random.Int(3) + Random.Int(3)*32;
-
-		return pos;
-	}
 
 	@Override
 	public void press( int cell, Char ch ) {
@@ -181,23 +165,15 @@ public class RabbitBossLevel extends Level {
 
 		if (ch == Dungeon.hero){
 			//hero enters elphelt's chamber
-			if (state == State.START
-					&& (new EmptyRoom().set(2, 25, 8, 32)).inside(cellToPoint(cell))){
+			if (state == State.READY) {
 				progress();
 			}
-
-			/*hero finishes the maze
-			else if (state == State.MAZE
-					&& (new EmptyRoom().set(4, 0, 7, 4)).inside(cellToPoint(cell))){
-				progress();
-			}
-			*/
 		}
 	}
 
 	@Override
 	public int randomRespawnCell() {
-		return 5+2*32 + PathFinder.NEIGHBOURS8[Random.Int(8)]; //random cell adjacent to the entrance.
+		return entrance + PathFinder.NEIGHBOURS8[Random.Int(8)]; //random cell adjacent to the entrance.
 	}
 	
 	@Override
@@ -286,25 +262,23 @@ public class RabbitBossLevel extends Level {
 	public void progress(){
 		switch (state){
 			//moving to the beginning of the fight
-			case START:
-				seal();
+			case READY:
 
+				changeMap(MAP_ARENA);
 
-
-				set(5 + 25 * 32, Terrain.LOCKED_DOOR);
-				GameScene.updateMap(5 + 25 * 32);
+				GameScene.updateMap(entrance);
 
 				for (Mob m : mobs){
 					//bring the first ally with you
 					if (m.alignment == Char.Alignment.ALLY){
-						m.pos = 5 + 25 * 32; //they should immediately walk out of the door
+						m.pos = randomRespawnCell(); //they should immediately walk out of the door
 						m.sprite.place(m.pos);
 						break;
 					}
 				}
 				
 				elphelt.state = elphelt.HUNTING;
-				elphelt.pos = 17 + 14*32; //in the middle of the fight room
+				elphelt.pos = 14+17*32; //in the middle of the fight room
 				GameScene.add( elphelt );
 				elphelt.notice();
 
@@ -314,19 +288,11 @@ public class RabbitBossLevel extends Level {
 			//halfway through, move to the maze
 			case PHASE1:
 
-				changeMap(MAP_ARENA);
-				clearEntities((Room) new EmptyRoom().set(0, 5, 8, 32)); //clear the entrance
-
 				Actor.remove(elphelt);
 				mobs.remove(elphelt);
 				TargetHealthIndicator.instance.target(null);
 				elphelt.sprite.kill();
 
-				Room maze = new MazeRoom();
-				maze.set(10, 1, 31, 29);
-				maze.connected.put(null, new Room.Door(10, 2));
-				maze.connected.put(maze, new Room.Door(20, 29));
-				maze.paint(this);
 				buildFlagMaps();
 				cleanWalls();
 				GameScene.resetMap();
@@ -338,55 +304,30 @@ public class RabbitBossLevel extends Level {
 				break;
 
 			case PHASE2:
-				unseal();
-
-				CustomTiledVisual vis = new exitVisual();
-				vis.pos(11, 8);
-				customTiles.add(vis);
-				((GameScene)GirlsFrontlinePixelDungeon.scene()).addCustomTile(vis);
-
-				vis = new exitVisualWalls();
-				vis.pos(11, 8);
-				customWalls.add(vis);
-				((GameScene)GirlsFrontlinePixelDungeon.scene()).addCustomWall(vis);
 
 				Dungeon.hero.interrupt();
-				Dungeon.hero.pos = 5+27*32;
+				Dungeon.hero.pos = entrance;
 				Dungeon.hero.sprite.interruptMotion();
 				Dungeon.hero.sprite.place(Dungeon.hero.pos);
 
-				elphelt.pos = 5+28*32;
-				elphelt.sprite.place(5 + 28 * 32);
-				
-				//remove all mobs, but preserve allies
-				ArrayList<Mob> allies = new ArrayList<>();
-				for(Mob m : mobs.toArray(new Mob[0])){
-					if (m.alignment == Char.Alignment.ALLY){
-						allies.add(m);
-						mobs.remove(m);
-					}
-				}
-				clearEntities(null);
-				
-				changeMap(MAP_END);
-				
-				for (Mob m : allies){
-					do{
-						m.pos = Random.IntRange(3, 7) + Random.IntRange(26, 30)*32;
-					} while (findMob(m.pos) != null);
-					m.sprite().place(m.pos);
-					mobs.add(m);
-				}
-
+				elphelt.pos = 16+15*32;
 				elphelt.die(Dungeon.hero);
 
-				for (Item item : storedItems)
-					drop(item, randomPrisonCell());
-				
+				for (int col=14; col<17; ++col) {
+					Item item = Dungeon.level.heaps.get(col+9*32).peek();
+					if (item != null) {
+						drop(item, randomRespawnCell());
+					}
+				}
+
 				GameScene.flash(0xFFFFFF);
 				Sample.INSTANCE.play(Assets.SND_BLAST);
 				
 				state = State.WON;
+				break;
+			case WON:
+				changeMap(MAP_END);
+				unseal();
 				break;
 		}
 	}
@@ -414,7 +355,7 @@ public class RabbitBossLevel extends Level {
 	//TODO if I ever need to store more static maps I should externalize them instead of hard-coding
 	//Especially as I means I won't be limited to legal identifiers
 
-	private static final int[] MAP_ARENA =
+	private static final int[] MAP_START =
 			{       W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
 					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
 					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, W, W,
@@ -429,6 +370,40 @@ public class RabbitBossLevel extends Level {
 					W, e, e, e, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, W, e, e, W, e, e, e, e, e, e, W, W,
 					W, e, e, e, e, e, W, e, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
 					W, e, W, W, e, e, W, e, e, e, e, W, e, e, W, e, E, e, W, W, e, e, e, e, W, e, e, W, e, e, W, W,
+					W, W, e, e, W, e, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
+					W, e, e, e, W, e, W, e, e, e, W, e, e, e, e, M, e, e, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
+					W, e, e, e, W, e, W, e, e, e, W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, e, W, e, e, W, W, W,
+					W, e, e, W, e, e, W, e, e, e, e, W, W, e, T, e, W, e, e, W, e, e, e, e, W, e, e, W, W, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, e, W, e, e, W, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, e, e, e, W, W,
+					W, W, W, W, W, e, e, e, W, W, e, e, e, e, W, W, W, e, e, W, e, e, W, e, e, e, W, W, W, W, W, W,
+					W, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, W, W, e, e, e, e, W, W, e, e, e, W, W, W, W, W, W, W, e, e, e, W, e, e, W, e, e, W, W, W, W,
+					W, e, e, W, e, e, W, e, e, W, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, W, e, e, W, W,
+					W, e, e, e, e, e, e, e, e, e, W, e, e, e, W, W, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, W,
+					W, e, e, e, W, W, e, e, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, e, e, W, e, e, W, e, W, W,
+					W, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+					W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W};
+
+	private static final int[] MAP_ARENA =
+			{       W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, W, W,
+					W, e, W, e, e, W, e, e, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, e, e, W, W, e, e, e, W, W,
+					W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, W, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, W,
+					W, e, e, W, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, W, e, e, W, e, e, W, e, e, W, W,
+					W, W, W, e, e, W, e, e, W, e, e, e, W, W, W, W, W, W, W, e, e, e, W, W, e, e, e, e, W, W, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, W, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, W, W,
+					W, W, W, W, W, e, e, e, W, e, e, W, e, e, W, W, W, e, e, e, e, W, W, e, e, e, W, W, W, W, W, W,
+					W, e, e, e, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, W, e, e, W, e, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, W, W, e, e, W, e, e, e, e, W, e, e, W, e, e, e, W, W, e, e, e, e, W, e, e, W, e, e, W, W,
 					W, W, e, e, W, e, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
 					W, e, e, e, W, e, W, e, e, e, W, e, e, e, e, M, e, e, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
 					W, e, e, e, W, e, W, e, e, e, W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, e, W, e, e, W, W, W,
@@ -449,110 +424,36 @@ public class RabbitBossLevel extends Level {
 					W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W};
 
 	private static final int[] MAP_END =
-			{       W, W, W, W, W, M, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, W, e, E, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, W, W, D, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, W, W, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, M, W, W, e, W, W, M, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, W, e, W, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, D, e, D, e, e, e, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, W, e, W, e, e, e, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, M, W, W, e, W, W, M, e, W, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, W, e, W, e, e, e, e, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, D, e, D, e, e, e, e, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, W, e, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, M, W, W, e, W, W, e, e, e, e, e, e, e, e, e, e, e, e, e, X, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, W, e, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, D, e, D, e, e, e, W, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, W, e, W, e, e, e, e, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, M, W, W, e, W, W, e, W, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, W, e, W, e, e, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, D, e, D, e, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, e, e, e, W, e, W, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, W, W, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, W, W, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, M, W, D, W, M, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, T, T, T, T, T, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, T, T, T, T, T, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, T, T, P, T, T, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, T, T, T, T, T, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-					W, W, W, T, T, T, T, T, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+			{       W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, W, W,
+					W, e, W, e, e, W, e, e, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, e, e, W, W, e, e, e, W, W,
+					W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, W, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, W,
+					W, e, e, W, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, W, e, e, W, e, e, W, e, e, W, W,
+					W, W, W, e, e, W, e, e, W, e, e, e, W, W, W, W, W, W, W, e, e, e, W, W, e, e, e, e, W, W, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, W, e, e, e, e, W, e, e, e, W, W, W, e, e, e, e, e, e, e, e, W, e, e, e, e, W, W,
+					W, W, W, W, W, e, e, e, W, e, e, W, e, e, W, X, W, e, e, e, e, W, W, e, e, e, W, W, W, W, W, W,
+					W, e, e, e, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, W, e, e, W, e, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, e, e, W, e, E, e, e, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, W, W, e, e, W, e, e, e, e, W, e, e, W, e, e, e, W, W, e, e, e, e, W, e, e, W, e, e, W, W,
+					W, W, e, e, W, e, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
+					W, e, e, e, W, e, W, e, e, e, W, e, e, e, e, M, e, e, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
+					W, e, e, e, W, e, W, e, e, e, W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, e, W, e, e, W, W, W,
+					W, e, e, W, e, e, W, e, e, e, e, W, W, e, e, e, W, e, e, W, e, e, e, e, W, e, e, W, W, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, e, W, e, e, W, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, e, e, e, W, W,
+					W, W, W, W, W, e, e, e, W, W, e, e, e, e, W, W, W, e, e, W, e, e, W, e, e, e, W, W, W, W, W, W,
+					W, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, W, W, e, e, e, e, W, W, e, e, e, W, W, W, W, W, W, W, e, e, e, W, e, e, W, e, e, W, W, W, W,
+					W, e, e, W, e, e, W, e, e, W, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, W, e, e, W, W,
+					W, e, e, e, e, e, e, e, e, e, W, e, e, e, W, W, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, W,
+					W, e, e, e, W, W, e, e, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, e, e, W, e, e, W, e, W, W,
+					W, e, e, W, e, e, W, e, e, e, W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
+					W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
 					W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W};
-
-
-	public static class exitVisual extends CustomTiledVisual {
-
-		private static short[] render = new short[]{
-				0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,
-				0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-				0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-				0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,
-				0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-				0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-				1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-				1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		};
-
-		public exitVisual() {
-			super(Assets.PRISON_EXIT);
-		}
-
-		@Override
-		public CustomTiledVisual create() {
-			tileW = 12;
-			tileH = 14;
-			mapSimpleImage(0, 0);
-			return super.create();
-		}
-
-		@Override
-		protected boolean needsRender(int pos) {
-			return render[pos] != 0;
-		}
-	}
-
-	public static class exitVisualWalls extends CustomTiledVisual {
-		private static short[] render = new short[]{
-				0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
-				0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
-				0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-				1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		};
-
-		public exitVisualWalls() {
-			super(Assets.PRISON_EXIT);
-		}
-
-		@Override
-		public CustomTiledVisual create() {
-			tileW = 12;
-			tileH = 14;
-			mapSimpleImage(4, 0);
-			return super.create();
-		}
-
-		@Override
-		protected boolean needsRender(int pos) {
-			return render[pos] != 0;
-		}
-	}
 }

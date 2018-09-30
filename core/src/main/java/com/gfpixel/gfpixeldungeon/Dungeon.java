@@ -252,24 +252,7 @@ public class Dungeon {
 		return (challenges & mask) != 0;
 	}
 
-	public static boolean bHUNTINGRABBIT = false;
-
-	// Names of each themes. Every theme is consist of 5 floors(4 regular level, 1 boss level)
-	public enum eThemes {
-		NONE,
-		SEWER,
-		PRISON,
-		HUNTINGRABBIT,
-		CAVES,
-		CITY,
-		RECAVES,
-		HALL,
-		LAST
-	}
-
-
-
-
+	public static boolean HUNTINGRABBIT = false;
 
 	public static Level newLevel() {
 		
@@ -302,14 +285,14 @@ public class Dungeon {
 		case 7:
 		case 8:
 		case 9:
-			if (bHUNTINGRABBIT) {
+			if (HUNTINGRABBIT) {
 				level = new RabbitLevel();
 			} else {
 				level = new PrisonLevel();
 			}
 			break;
 		case 10:
-			if (bHUNTINGRABBIT) {
+			if (HUNTINGRABBIT) {
 				level = new RabbitBossLevel();
 			} else {
 				level = new PrisonBossLevel();
@@ -499,6 +482,8 @@ public class Dungeon {
 	private static final String CHAPTERS	= "chapters";
 	private static final String QUESTS		= "quests";
 	private static final String BADGES		= "badges";
+
+	private static final String FLAG_HUNTINGRABBIT = "f_rabbit";
 	
 	public static void saveGame( int save ) throws IOException {
 		try {
@@ -511,6 +496,7 @@ public class Dungeon {
 			bundle.put( HERO, hero );
 			bundle.put( GOLD, gold );
 			bundle.put( DEPTH, depth );
+			bundle.put( FLAG_HUNTINGRABBIT, HUNTINGRABBIT );
 
 			for (int d : droppedItems.keyArray()) {
 				bundle.put(Messages.format(DROPPED, d), droppedItems.get(d));
@@ -603,6 +589,8 @@ public class Dungeon {
 
 		quickslot.reset();
 		QuickSlotButton.reset();
+
+		HUNTINGRABBIT = bundle.getBoolean(FLAG_HUNTINGRABBIT);
 
 		Dungeon.challenges = bundle.getInt( CHALLENGES );
 		

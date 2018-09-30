@@ -347,9 +347,17 @@ public class GameScene extends PixelScene {
 					}
                     break;
                 case 6:
-					if (!Dungeon.chapters.contains(DialogInfo.ID_PRISON)) {
-						WndDialog.ShowChapter( DialogInfo.ID_PRISON );
+                	if (Dungeon.HUNTINGRABBIT) {
+						if (!Dungeon.chapters.contains(DialogInfo.ID_RABBIT)) {
+							WndDialog.ShowChapter( DialogInfo.ID_RABBIT );
+						}
+					} else {
+						if (!Dungeon.chapters.contains(DialogInfo.ID_PRISON)) {
+							WndDialog.ShowChapter( DialogInfo.ID_PRISON );
+						}
 					}
+
+
                     break;
                 case 11:
 					if (!Dungeon.chapters.contains(DialogInfo.ID_CAVES)) {
