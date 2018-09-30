@@ -38,24 +38,15 @@ public class Kriss extends MeleeWeapon {
 		DLY = 0.5f; //2x speed
 	}
 
-	//@Override
-	//public int damageRoll(Char owner) {
-		//Hero hero = (Hero)owner;
+	@Override
+	public int damageRoll(Char owner) {
+		if (owner instanceof Hero) {
+			Buff.prolong(owner, Speed.class, 1.75f);
+		}
 
-		//Speed buffSpeed = Dungeon.hero.buff(Speed.class);
 
-		//float times = 1.7f;
-
-		//if (buffSpeed != null) {
-			//times -= buffSpeed.cooldown();
-
-			//GameMath.gate( 0.0f, times, 1.7f );
-		//}
-
-		//Buff.affect(hero, Speed.class, times);
-
-		//return super.damageRoll(owner);
-	//}
+		return super.damageRoll(owner);
+	}
 
 	@Override
 	public int max(int lvl) {

@@ -27,6 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Burning;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Roots;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.effects.particles.ElmoParticle;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
@@ -48,7 +49,9 @@ public class MageArmor extends ClassArmor {
 			}
 		}
 
-		curUser.HP -= (curUser.HP / 3);
+		curUser.HP -= (curUser.HP / 5 * 2);
+
+		Buff.prolong(Dungeon.hero, Speed.class, 2f);
 		
 		curUser.spend( Actor.TICK );
 		curUser.sprite.operate( curUser.pos );

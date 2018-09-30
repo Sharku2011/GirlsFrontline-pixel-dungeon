@@ -47,8 +47,6 @@ public class WndSelectGameInProgress extends Window {
 
         ArrayList<GamesInProgress.Info> games = GamesInProgress.checkAll();
 
-        //final int slotCount = Math.min( GamesInProgress.MAX_SLOTS, games.size() );
-
         squad = new ScrollPane( new Component() ) {
             @Override
             public void onClick( float x, float y ) {
@@ -62,10 +60,10 @@ public class WndSelectGameInProgress extends Window {
 
         Component content = squad.content();
 
-        int slotIndex = 1;
 
+        int slotNumber = 0;
+        GLog.i(String.valueOf(games.size()));
         for (GamesInProgress.Info info : games) {
-
             SaveSlot newSlot = new SaveSlot( info ) {
                 @Override
                 public void onClick() {
@@ -74,24 +72,24 @@ public class WndSelectGameInProgress extends Window {
             };
             Slots.add( newSlot );
             content.add( newSlot );
-            newSlot.setPos( 5 + (newSlot.width() + MARGIN) * ((slotIndex-1) % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * ((slotIndex-1) / SlotsToDisplay.x) );
-
-            GLog.i(String.valueOf(info.slot));
-
-            slotIndex++;
+            newSlot.setPos( 5 + (newSlot.width() + MARGIN) * ((slotNumber) % SlotsToDisplay.x),
+                            MARGIN + (newSlot.height() + MARGIN) * ((slotNumber) / SlotsToDisplay.x) );
+            ++slotNumber;
         }
 
-        if (slotIndex <= GamesInProgress.MAX_SLOTS) {
-            final int finalLastSlot = slotIndex;
+        final int newSlotIndex = GamesInProgress.firstEmpty();
+
+        if (newSlotIndex > 0) {
             SaveSlot newSlot = new SaveSlot( new GamesInProgress.Info() ) {
                 @Override
                 public void onClick() {
-                    GirlsFrontlinePixelDungeon.scene().add( new WndStartGame( finalLastSlot ) );
+                    GirlsFrontlinePixelDungeon.scene().add( new WndStartGame( newSlotIndex ) );
                 }
             };
             Slots.add( newSlot );
             content.add( newSlot );
-            newSlot.setPos( 5 + (Slots.get(0).width() + MARGIN) * ((finalLastSlot-1) % SlotsToDisplay.x), MARGIN + (newSlot.height() + MARGIN) * ((finalLastSlot-1) / SlotsToDisplay.x) );
+            newSlot.setPos( 5 + (Slots.get(0).width() + MARGIN) * ((games.size()) % SlotsToDisplay.x),
+                            MARGIN + (newSlot.height() + MARGIN) * ((games.size()) / SlotsToDisplay.x) );
         }
 
         add(squad);
@@ -253,7 +251,7 @@ public class WndSelectGameInProgress extends Window {
                 challengeMarks[ i ].visible = ((Info.challenges) & Challenges.MASKS[i]) != 0 ;
             }
 
-            int procTheme = Math.min( Info.heroClass == HeroClass.NONE ? 0 : Info.maxDepth/5 + 1, 6 );
+            int procTheme = Math.min( Info.heroClass == HeroClass.NONE ? 0 : (Info.maxDepth-1)/5 + 1, 6 );
 
             for (int i = 0; i < procTheme; ++i) {
                 add(depthEmmiters[i]);

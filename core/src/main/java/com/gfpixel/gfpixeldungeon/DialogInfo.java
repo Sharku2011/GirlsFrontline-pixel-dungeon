@@ -285,7 +285,21 @@ public  class DialogInfo
                 new DialogInfo (
                         "noelquest",
                         new Point[]{NOEL, UMP9, NOEL, UMP9, NOEL, UMP45, NOEL},
-                        new int[]{    0,     1,     0,     1,     2,     0}
+                        new int[]  {   0,    1,    2,    1,    1,     0,    0}
+                )
+        );
+        STORIES.put( ID_NOEL_QUEST + INPROGRESS,
+                new DialogInfo (
+                        "noelquest.inprogress",
+                        new Point[]{NOEL},
+                        new int[]{    0}
+                )
+        );
+        STORIES.put( ID_NOEL_QUEST + COMPLETE,
+                new DialogInfo (
+                        "noelquest.complete",
+                        new Point[]{NOEL},
+                        new int[]{    1}
                 )
         );
         STORIES.put( ID_PPSH47_QUEST,

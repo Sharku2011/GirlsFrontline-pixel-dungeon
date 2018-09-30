@@ -18,7 +18,7 @@ public class NoelSprite extends MobSprite {
     public NoelSprite() {
         super();
 
-        texture( Assets.MAKER );
+        texture( Assets.NOEL );
 
         TextureFilm frames = new TextureFilm( texture, 13, 14 );
 
