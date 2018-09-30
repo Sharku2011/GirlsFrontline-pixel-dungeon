@@ -556,49 +556,6 @@ public class Elphelt extends Mob {
         return;
     }
 
-
-    public static boolean throwChar(final Char ch, final Ballistica trajectory, int power){
-        int dist = Math.min(trajectory.dist, power);
-
-        if (ch.properties().contains(Char.Property.BOSS))
-            dist = 0;
-
-        if (dist == 0 || ch.properties().contains(Char.Property.IMMOVABLE)) return true;
-
-        if (Actor.findChar(trajectory.path.get(dist)) != null){
-            dist--;
-        }
-
-        final int newPos = trajectory.path.get(dist);
-
-        if (newPos == ch.pos) {
-            return false;
-        }
-
-        final int initialpos = ch.pos;
-
-        Actor.addDelayed(new Pushing(ch, ch.pos, newPos, new Callback() {
-            public void call() {
-                if (initialpos != ch.pos) {
-                    GLog.i("throwChar 에러케이스");
-                    //something cased movement before pushing resolved, cancel to be safe.
-                    ch.sprite.place(ch.pos);
-                    return;
-                }
-                ch.pos = newPos;
-                if (ch.pos == trajectory.collisionPos) {
-                    Paralysis.prolong(ch, Paralysis.class, 2.5f);
-                }
-                Dungeon.level.press(ch.pos, ch, true);
-                if (ch == hero){
-                    Dungeon.observe();
-                }
-            }
-        }), -1);
-
-        return true;
-    }
-
     private static final String PHASE           = "phase";
     private static final String CURGENOISE      = "curGenoise";
     private static final String ONGENOISE       = "onGenoise";
@@ -808,6 +765,9 @@ public class Elphelt extends Mob {
 
                         int dmg = Random.NormalIntRange( minDamage, maxDamage ) - ch.drRoll();
                         if (dmg > 0) {
+                            if (ch instanceof Elphelt) {
+                                dmg /= 10;
+                            }
                             ch.damage( dmg , this );
                         }
 
