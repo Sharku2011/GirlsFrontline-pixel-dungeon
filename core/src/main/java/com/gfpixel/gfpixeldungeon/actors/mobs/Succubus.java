@@ -31,6 +31,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Sleep;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfLullaby;
+import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfTeleportation;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.sprites.SuccubusSprite;
@@ -56,10 +57,10 @@ public class Succubus extends Mob {
 		EXP = 12;
 		maxLvl = 25;
 		
-		loot = new ScrollOfLullaby();
+		loot = new ScrollOfMagicalInfusion();
 		lootChance = 0.05f;
 
-		properties.add(Property.DEMONIC);
+		properties.add(Property.ARMO);
 	}
 	
 	@Override

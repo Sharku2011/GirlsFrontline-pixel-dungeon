@@ -76,12 +76,12 @@ public class Assets {
 	public static final String BAT			= "bat.png";
 	public static final String BRUTE		= "brute.png";
 	public static final String SPINNER		= "spinner.png";
-	public static final String DM300		= "dm300.png";
+	public static final String GEGAR		= "gegar.png";
 	public static final String WRAITH		= "wraith.png";
 	public static final String ELEMENTAL	= "elemental.png";
 	public static final String MONK			= "monk.png";
 	public static final String WARLOCK		= "warlock.png";
-	public static final String GOLEM		= "golem.png";
+	public static final String MANTI		= "manti.png";
 	public static final String UNDEAD		= "undead.png";
 	public static final String KING			= "king.png";
 	public static final String STATUE		= "statue.png";
@@ -112,7 +112,10 @@ public class Assets {
 	public static final String TYPHOOTIN	= "typhootin.png";
 	public static final String ELID = "elid.png";
 	public static final String RIPPER = "Ripper.png";
+	public static final String JAGUAR = "Jaguar.png";
+	public static final String NEMEUM = "nemeum.png";
 	public static final String ELPHELT = "Elphelt.png";
+	public static final String TOW = "tow.png";
 
 	public static final String ITEMS	        = "items.png";
 	public static final String TERRAIN_FEATURES	= "terrain_features.png";
@@ -153,6 +156,7 @@ public class Assets {
 	
 	public static final String THEME	= "theme.ogg";
 	public static final String TUNE		= "game.ogg";
+	public static final String TUNE_1		= "game_1.ogg";
 	public static final String HAPPY	= "surface.ogg";
 	
 	public static final String SND_CLICK	= "snd_click.mp3";

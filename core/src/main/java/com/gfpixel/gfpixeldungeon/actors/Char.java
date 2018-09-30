@@ -545,6 +545,7 @@ public abstract class Char extends Actor {
 				new HashSet<Class>( Arrays.asList(Corruption.class) )),
 		MINIBOSS ( new HashSet<Class>(),
 				new HashSet<Class>( Arrays.asList(Corruption.class) )),
+		ARMO,
 		UNDEAD,
 		DEMONIC,
 		INORGANIC ( new HashSet<Class>(),

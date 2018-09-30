@@ -15,9 +15,9 @@ public class Ripper extends Mob {
     {
         spriteClass = RipperSprite.class;
 
-        HP = HT = 30;
-        defenseSkill = 30;
-        baseSpeed = 1f;
+        HP = HT = 15;
+        defenseSkill = 20;
+        baseSpeed = 1.1f;
 
         EXP = 7;
         maxLvl = 15;
@@ -27,16 +27,21 @@ public class Ripper extends Mob {
 
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange( 5, 12 );
+        return Random.NormalIntRange( 5, 7 );
     }
 
     @Override
     public int attackSkill( Char target ) {
-        return 12;
+        return 7;
     }
 
     @Override
     public int drRoll() {
         return Random.NormalIntRange(0, 5);
+    }
+
+    @Override
+    protected float attackDelay() {
+        return 0.5f;
     }
 }

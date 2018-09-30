@@ -4,9 +4,13 @@ import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.blobs.ToxicGas;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Vertigo;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
+import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfPsionicBlast;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
@@ -24,18 +28,20 @@ public class Typhoon extends Hydra {
     {
         spriteClass = TyphoonSprite.class;
 
-        HP = HT = 1800;
-        EXP = 100;
-        defenseSkill = 5;
-        baseSpeed = 0.6f;
-        maxLvl = 36;
+        HP = HT = 3500;
+        EXP = 300;
+        defenseSkill = 0;
+        baseSpeed = 0.8f;
+        maxLvl = 40;
 
-        properties.add(Property.DEMONIC);
-        properties.add(Property.UNDEAD);
+        properties.add(Property.ARMO);
+
+
+        flying = true;
     }
 
     @Override
-    public int DamageReducer() { return 4; }
+    public int DamageReducer() { return 2; }
 
     @Override
     public int damageRoll() {
@@ -144,7 +150,7 @@ public class Typhoon extends Hydra {
             }
 
             if (hit( this, ch, true )) {
-                ch.damage( Random.NormalIntRange( 30, 50 ), this );
+                ch.damage( Random.NormalIntRange( 40, 60 ), this );
 
                 if (Dungeon.level.heroFOV[pos]) {
                     ch.sprite.flash();
@@ -190,12 +196,17 @@ public class Typhoon extends Hydra {
     }
 
     {
-        resistances.add( WandOfDisintegration.class );
+        resistances.add( ToxicGas.class );
         resistances.add( Grim.class );
+        resistances.add( ScrollOfPsionicBlast.class );
         resistances.add( Vampiric.class );
     }
 
+
+
     {
+        immunities.add( Paralysis.class );
+        immunities.add( Vertigo.class );
         immunities.add( Terror.class );
     }
 

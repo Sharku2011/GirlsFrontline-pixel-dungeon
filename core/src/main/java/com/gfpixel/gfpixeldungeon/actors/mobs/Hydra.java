@@ -24,6 +24,7 @@ package com.gfpixel.gfpixeldungeon.actors.mobs;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
@@ -44,17 +45,17 @@ public class Hydra extends Mob {
     {
         spriteClass = hydraSprite.class;
 
-        HP = HT = 231;
+        HP = HT = 400;
         EXP = 19;
-        defenseSkill = 15;
-        baseSpeed = 1f;
+        defenseSkill = 0;
+        viewDistance = Light.DISTANCE;
+        baseSpeed = 0.9f;
         maxLvl = 36;
 
-        properties.add(Property.DEMONIC);
-        properties.add(Property.UNDEAD);
+        properties.add(Property.ARMO);
     }
 
-    public int DamageReducer() { return 3; }
+    public int DamageReducer() { return 1; }
 
     @Override
     public int damageRoll() {

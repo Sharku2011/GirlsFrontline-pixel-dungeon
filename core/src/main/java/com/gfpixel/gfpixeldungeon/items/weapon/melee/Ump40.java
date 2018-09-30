@@ -16,7 +16,7 @@ public class Ump40 extends MeleeWeapon {
         image = ItemSpriteSheet.UMP40;
 
         tier = 1;
-        RCH = 3;
+        RCH = 5;
     }
     public Char owner;
     public ArrayList<Item> items = new ArrayList<Item>();

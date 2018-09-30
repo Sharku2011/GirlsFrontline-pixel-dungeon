@@ -410,12 +410,12 @@ windows.wnddialog.noel.complete00=noel
 windows.wnddialog.elphelt0=그래, 이 사람이에요! 이 사람이 그때 절 "관측"한 "관측자"에요!
 windows.wnddialog.elphelt1=앗! 엘펠트 발렌타인, 쓸모없는 인형들을 학살하겠습니다!
 
-windows.wnddialog.elphelt0= .......아, 인간이신 건가요? 죄송합니다! 죄송합니다아아!! \n\n 저...그게.. 이곳에 떨어진 후에 거대한 총을 들고있는 분이 이곳에 다가오는 사람들을 막아내면 좋은 남자를 만나게 해준다고 하셔서...
-windows.wnddialog.elphelt1=...그냥 무지막지하게 강한 변태같은데. 노엘, 가서 뭐라고 말 좀 해봐.
-windows.wnddialog.elphelt2=당신 역시 다른 세계에서 온게 맞죠? 그때 저를 본 "관측자"만 있다면 원래 세계로 돌아갈 수 있어요! 좋아요, 그 텔레포트로 가죠!
-windows.wnddialog.elphelt3=하지만.. 저는 이 분들에게 큰 민폐를 끼쳤는데... 아!
+windows.wnddialog.elphelt.inprogress0= .......아, 인간이신 건가요? 죄송합니다! 죄송합니다아아!! \n\n 저...그게.. 이곳에 떨어진 후에 거대한 총을 들고있는 분이 이곳에 다가오는 사람들을 막아내면 좋은 남자를 만나게 해준다고 하셔서...
+windows.wnddialog.elphelt.inprogress1=...그냥 무지막지하게 강한 변태같은데. 노엘, 가서 뭐라고 말 좀 해봐.
+windows.wnddialog.elphelt.inprogress2=당신 역시 다른 세계에서 온게 맞죠? 그때 저를 본 "관측자"만 있다면 원래 세계로 돌아갈 수 있어요! 좋아요, 그 텔레포트로 가죠!
+windows.wnddialog.elphelt.inprogress3=하지만.. 저는 이 분들에게 큰 민폐를 끼쳤는데... 아!
 
-windows.wnddialog.elphelt0=저기, 이게 있다면 어느정도 도움이 될지도 몰라요! 제게 나쁜짓을 시킨 그 사람에게 꼭 제 뜻을 전해주기바래요. 그럼 이만!
+windows.wnddialog.elphelt.complete0=저기, 이게 있다면 어느정도 도움이 될지도 몰라요! 제게 나쁜짓을 시킨 그 사람에게 꼭 제 뜻을 전해주기바래요. 그럼 이만!
 
 windows.wnddialog.ppsh47quest.branch1.0=네가 왜 여기있는거지?
 windows.wnddialog.ppsh47quest.branch1.1=아, 안녕하세요! 404 소대원 분들, 페르시카가 당신들이 온다고 미리 알려줬어요.
@@ -462,6 +462,8 @@ windows.wnddialog.ppsh47quest.branch.ing00 = PPSH
 windows.wnddialog.ppsh47quest.branch.completed00 = PPSH
 
 windows.wnddialog.ppsh47quest.branch.get_lost00 = PPSH
+
+windows.wnddialog.gager0=무릎을 꿇어라. 아니면 이 총알을 한 방 맞을 거냐? 어느 쪽인지 선택해라.
 
 windows.wnddialog.p7quest.branch1.0 = 뭐야, 404 소대가 여기는 웬 일이야?
 windows.wnddialog.p7quest.branch1.1 = 작전중이야. 미안하지만 작전 내용은 말해줄수없어.

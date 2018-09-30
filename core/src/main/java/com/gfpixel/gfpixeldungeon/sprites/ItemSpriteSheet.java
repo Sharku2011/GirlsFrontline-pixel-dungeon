@@ -22,18 +22,21 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
 import com.watabou.noosa.TextureFilm;
 
 public class ItemSpriteSheet {
 
-	private static final int WIDTH = 16;
+	private static int WIDTH = 16;
 
 	public static TextureFilm film = new TextureFilm( Assets.ITEMS, 16, 16 );
 
 	private static int xy(int x, int y){
 		x -= 1; y -= 1;
-		return x + WIDTH*y;
+		if(y != 11) {
+			return x + WIDTH * y;
+		}else{
+			return x + 16 * y;
+		}
 	}
 
 	private static final int PLACEHOLDERS   =                               xy(1, 1);   //16 slots
@@ -67,6 +70,8 @@ public class ItemSpriteSheet {
 	public static final int SANDBAG         = UNCOLLECTIBLE+3;
 	public static final int DBL_BOMB        = UNCOLLECTIBLE+4;
 	public static final int GUIDE_PAGE      = UNCOLLECTIBLE+5;
+	public static final int MEMORY1      = UNCOLLECTIBLE+6;
+
 	static{
 		assignItemRect(GOLD,        15, 13);
 		assignItemRect(DEWDROP,     10, 10);
@@ -74,6 +79,7 @@ public class ItemSpriteSheet {
 		assignItemRect(SANDBAG,     10, 10);
 		assignItemRect(DBL_BOMB,    14, 13);
 		assignItemRect(GUIDE_PAGE,  10, 11);
+		assignItemRect(MEMORY1,  8, 8);
 	}
 
 	private static final int CONTAINERS     =                               xy(1, 3);   //16 slots
@@ -137,7 +143,7 @@ public class ItemSpriteSheet {
 	private static final int WEP_TIER1      =                               xy(1, 7);   //8 slots
 	public static final int UMP45         	= WEP_TIER1+0;
 	public static final int DP             	= WEP_TIER1+1;
-	public static final int KNUCKLEDUSTER   = WEP_TIER1+2;
+	public static final int M9   = WEP_TIER1+2;
 	public static final int UMP40          	= WEP_TIER1+3;
 	public static final int DAGGER          = WEP_TIER1+4;
 	public static final int G11             = WEP_TIER1+5;
@@ -146,7 +152,7 @@ public class ItemSpriteSheet {
 	static{
 		assignItemRect(UMP45, 15, 16);
 		assignItemRect(DP,     15, 16);
-		assignItemRect(KNUCKLEDUSTER,   15, 10);
+		assignItemRect(M9,   16, 16);
 		assignItemRect(UMP40, 			   16, 16);
 		assignItemRect(DAGGER,          12, 13);
 		assignItemRect(G11,     15, 16);
@@ -155,7 +161,7 @@ public class ItemSpriteSheet {
 
 	}
 
-	private static final int WEP_TIER2      =                               xy(9, 7);   //8 slots
+	private static final int WEP_TIER2      =                               xy(1, 8);   //8 slots
 	public static final int M16      = WEP_TIER2+0;
 	public static final int M1911        = WEP_TIER2+1;
 	public static final int M1903           = WEP_TIER2+2;
@@ -163,6 +169,7 @@ public class ItemSpriteSheet {
 	public static final int NAGANTREVOLVER      = WEP_TIER2+4;
 	public static final int G36            = WEP_TIER2+5;
 	public static final int TRAVIAE           = WEP_TIER2+6;
+	public static final int TOWPROTO          = WEP_TIER2+7;
 	static{
 		assignItemRect(M16,      15, 16);
 		assignItemRect(M1911,        12, 14);
@@ -170,10 +177,11 @@ public class ItemSpriteSheet {
 		assignItemRect(M1A1,    16, 16);
 		assignItemRect(NAGANTREVOLVER,            13, 14);
 		assignItemRect(G36,            16, 16);
-		assignItemRect(TRAVIAE,            14, 13);
+		assignItemRect(TRAVIAE,            15, 15);
+		assignItemRect(TOWPROTO,            16, 18);
 	}
 
-	private static final int WEP_TIER3      =                               xy(1, 8);   //8 slots
+	private static final int WEP_TIER3      =                               xy(1, 9);   //8 slots
 	public static final int KS23           = WEP_TIER3+0;
 	public static final int KAR98            = WEP_TIER3+1;
 	public static final int NEGEV        = WEP_TIER3+2;
@@ -191,7 +199,7 @@ public class ItemSpriteSheet {
 		assignItemRect(C96,            8, 12);
 	}
 
-	private static final int WEP_TIER4      =                               xy(9, 8);   //8 slots
+	private static final int WEP_TIER4      =                               xy(9, 9);   //8 slots
 	public static final int WIN97      		= WEP_TIER4+0;
 	public static final int DRAGUNOV      	= WEP_TIER4+1;
 	public static final int AK47         	= WEP_TIER4+2;
@@ -209,7 +217,7 @@ public class ItemSpriteSheet {
 		assignItemRect(CROSSBOW,        16, 18);
 	}
 
-	private static final int WEP_TIER5      =                               xy(1, 9);   //8 slots
+	private static final int WEP_TIER5      =                               xy(1, 10);   //8 slots
 	public static final int USAS12      = WEP_TIER5+0;
 	public static final int SASS      = WEP_TIER5+1;
 	public static final int GLAIVE          = WEP_TIER5+2;
@@ -226,17 +234,17 @@ public class ItemSpriteSheet {
 	}
 
 	private static final int WEP_TIER6      =                               xy(1, 12);
-	public static final int NTW20            = WEP_TIER6+0;
+	public static final int GROZA            = WEP_TIER6+0;
 	public static final int MG42			= WEP_TIER6+1;
 	public static final int SAIGA			= WEP_TIER6+2;
 	public static final int NAGANT			= WEP_TIER6+3;
-	public static final int GROZA			= WEP_TIER6+4;
+	public static final int NTW20			= WEP_TIER6+4;
 	static{
-		assignItemRect(NTW20,     17, 17);
-		assignItemRect(MG42,     17, 17);
-		assignItemRect(SAIGA,     17, 17);
-		assignItemRect(NAGANT,     17, 17);
-		assignItemRect(GROZA,     17, 17);
+		assignItemRect(GROZA,     16, 17);
+		assignItemRect(MG42,     16, 17);
+		assignItemRect(SAIGA,     16, 17);
+		assignItemRect(NAGANT,     16, 17);
+		assignItemRect(NTW20,     19, 19);
 	}
 
 	private static final int MISSILE_WEP    =                               xy(1, 5);  //16 slots. 3 per tier + boomerang
@@ -388,6 +396,9 @@ public class ItemSpriteSheet {
 	public static final int ARTIFACT_ROSE1      = ARTIFACTS+20;
 	public static final int ARTIFACT_ROSE2      = ARTIFACTS+21;
 	public static final int ARTIFACT_ROSE3      = ARTIFACTS+22;
+	public static final int TOWCALL      = ARTIFACTS+23;
+	public static final int AGLCALL      = ARTIFACTS+24;
+	public static final int MTRCALL      = ARTIFACTS+25;
 	static{
 		assignItemRect(ARTIFACT_CLOAK,      16,  14);
 		assignItemRect(ARTIFACT_ARMBAND,    16, 13);
@@ -402,9 +413,9 @@ public class ItemSpriteSheet {
 		assignItemRect(ARTIFACT_HORN2,      15, 15);
 		assignItemRect(ARTIFACT_HORN3,      15, 15);
 		assignItemRect(ARTIFACT_HORN4,      15, 15);
-		assignItemRect(ARTIFACT_CHALICE1,   12, 15);
-		assignItemRect(ARTIFACT_CHALICE2,   12, 15);
-		assignItemRect(ARTIFACT_CHALICE3,   12, 15);
+		assignItemRect(ARTIFACT_CHALICE1,   16, 15);
+		assignItemRect(ARTIFACT_CHALICE2,   16, 15);
+		assignItemRect(ARTIFACT_CHALICE3,   16, 15);
 		assignItemRect(ARTIFACT_SANDALS,    16, 6 );
 		assignItemRect(ARTIFACT_SHOES,      16, 6 );
 		assignItemRect(ARTIFACT_BOOTS,      16, 9 );
@@ -412,6 +423,9 @@ public class ItemSpriteSheet {
 		assignItemRect(ARTIFACT_ROSE1,      14, 14);
 		assignItemRect(ARTIFACT_ROSE2,      14, 14);
 		assignItemRect(ARTIFACT_ROSE3,      14, 14);
+		assignItemRect(TOWCALL,               7, 14);
+		assignItemRect(AGLCALL,               7, 14);
+		assignItemRect(MTRCALL,               7, 14);
 	}
 	                                                                                    //32 free slots
 

@@ -92,18 +92,16 @@ public  class DialogInfo
 
     private static final Point EXECUTIONER  = new Point(SANGVIS, 0);
     // TODO emotion.png에서 우로보로스의 스프라이트 위치를 1열 2번째에서 다른 위치로 변경
-    private static final Point UROBOROS     = new Point(SANGVIS, 3);
-
-    private static final Point DESTROYER    = new Point(SANGVIS, 1);
-    private static final Point DREAMER      = new Point(SANGVIS, 2);
-
-    private static final Point TYPHOON      = new Point(SANGVIS, 4);
+    private static final Point UROBOROS     = new Point(SANGVIS, 1);
+    private static final Point GEGAR      = new Point(SANGVIS, 2);
+    private static final Point DESTROYER    = new Point(SANGVIS, 3);
+    private static final Point DREAMER      = new Point(SANGVIS, 4);
 
     public static final String[][] NAMES = new String[][] {
             {"G11", "UMP45", "UMP9", "HK416", "UMP40"},
             {"ST-AR 15", "M16A1", "Ppsh-47", "P7"},
             {"엘펠트 발렌타인", "제퓨티", "노엘"},
-            {"익스큐셔너", "디스트로이어", "드리머", "우로보로스", "타이푼"}
+            {"익스큐셔너", "우로보로스", "게이저", "디스트로이어", "드리머"}
     };
 
     public static final int ID_SEWER		= 1;
@@ -156,7 +154,7 @@ public  class DialogInfo
         STORIES.put( ID_SEWER_BOSS,
                 new DialogInfo (
                         "excutioner",
-                        new Point[]{DESTROYER},
+                        new Point[]{EXECUTIONER},
                         new int[]{        0} )
         );
         STORIES.put( ID_PRISON,
@@ -166,25 +164,31 @@ public  class DialogInfo
                         new int[]{   0,     2,    2,   1,     2,    1,     1}
                 )
         );
+        STORIES.put( ID_PRISON_BOSS,
+                new DialogInfo (
+                        "uroboros",
+                        new Point[]{UROBOROS},
+                        new int[]{        0} )
+        );
         STORIES.put( ID_RABBIT,
                 new DialogInfo (
                         "rabbit",
-                        new Point[]{UMP9, G11, UMP45},
-                        new int[]  {   2,   1,     1}
+                        new Point[]{UMP9, UMP45, UMP9, G11, UMP9, HK416, UMP9, UMP45, UMP9, UMP45},
+                        new int[]  {   0,   2,    1,   1,   1,   2,   1,   2,   1,   1}
                 )
         );
         STORIES.put( ID_RABBIT_BOSS,
                 new DialogInfo (
                         "elphelt",
-                        new Point[]{ELPHELT, ELPHELT},
+                        new Point[]{NOEL, ELPHELT},
                         new int[]  {      1,       1}
                 )
         );
         STORIES.put( ID_RABBIT_BOSS + INPROGRESS,
                 new DialogInfo (
                         "elphelt.inprogress",
-                        new Point[]{ELPHELT},
-                        new int[]  {      0}
+                        new Point[]{ELPHELT, HK416, NOEL, ELPHELT},
+                        new int[]  {      2,    2,  0,  0}
                 )
         );
         STORIES.put( ID_RABBIT_BOSS + COMPLETE,
@@ -200,6 +204,12 @@ public  class DialogInfo
                         new Point[]{G11, UMP45, G11, UMP45, G11, HK416, UMP9, HK416, G11},
                         new int[]  {  0,     2,   0,     1,   2,     1,    0,     1,   0}
                 )
+        );
+        STORIES.put( ID_CAVES_BOSS,
+                new DialogInfo (
+                        "gegar",
+                        new Point[]{GEGAR},
+                        new int[]{        0} )
         );
         STORIES.put( ID_CITY,
                 new DialogInfo (
@@ -273,9 +283,9 @@ public  class DialogInfo
         );
         STORIES.put( ID_NOEL_QUEST,
                 new DialogInfo (
-                        "m16a1quest",
-                        new Point[]{UMP45, M16A1, M16A1, HK416, UMP45},
-                        new int[]{    1,     1,     0,     1,     0}
+                        "noelquest",
+                        new Point[]{NOEL, UMP9, NOEL, UMP9, NOEL, UMP45, NOEL},
+                        new int[]{    0,     1,     0,     1,     2,     0}
                 )
         );
         STORIES.put( ID_PPSH47_QUEST,

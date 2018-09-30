@@ -39,7 +39,7 @@ public class Aegis extends Mob {
     {
         spriteClass = AegisSprite.class;
 
-        HP = HT = 400;
+        HP = HT = 300;
         EXP = 15;
         defenseSkill = 5;
         baseSpeed = 0.8f;
