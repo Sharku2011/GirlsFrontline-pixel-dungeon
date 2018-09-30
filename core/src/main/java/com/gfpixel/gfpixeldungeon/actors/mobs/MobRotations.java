@@ -1,10 +1,7 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
-import com.gfpixel.gfpixeldungeon.Dungeon;
-
 import java.util.ArrayList;
 
-import static com.gfpixel.gfpixeldungeon.Dungeon.Themes.SEWER;
 
 public class MobRotations {
     public int Tier = -1;

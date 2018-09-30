@@ -23,6 +23,9 @@ package com.gfpixel.gfpixeldungeon.levels;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Bestiary;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Elemental;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Monk;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Blacksmith;
 import com.gfpixel.gfpixeldungeon.levels.painters.CavesPainter;
 import com.gfpixel.gfpixeldungeon.levels.painters.Painter;
@@ -57,6 +60,14 @@ public class CavesLevel extends RegularLevel {
 		color2 = 0xb9d661;
 
 		viewDistance = Math.min(6, viewDistance);
+
+		initMobRotations = Bestiary.MR_CAVES;
+
+		RareMobs.put(Elemental.class, 0.02f);
+		RareMobs.put(Monk.class, 0.01f);
+		RareMobFloor.add(3);
+		RareMobFloor.add(4);
+
 	}
 	
 	@Override

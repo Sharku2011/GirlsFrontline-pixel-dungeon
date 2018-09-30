@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.levels;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Bestiary;
 import com.gfpixel.gfpixeldungeon.items.Torch;
 import com.gfpixel.gfpixeldungeon.levels.painters.HallsPainter;
 import com.gfpixel.gfpixeldungeon.levels.painters.Painter;
@@ -55,11 +56,12 @@ import com.watabou.utils.Random;
 public class HallsLevel extends RegularLevel {
 
 	{
-		
 		viewDistance = Math.min( 30 - Dungeon.depth, viewDistance );
 		
 		color1 = 0x801500;
 		color2 = 0xa68521;
+
+		initMobRotations = Bestiary.MR_HALLS;
 	}
 	
 	@Override

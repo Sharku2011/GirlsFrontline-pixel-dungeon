@@ -23,6 +23,9 @@ package com.gfpixel.gfpixeldungeon.levels;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Bestiary;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Skeleton;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Thief;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Ghost;
 import com.gfpixel.gfpixeldungeon.effects.Ripple;
 import com.gfpixel.gfpixeldungeon.items.DewVial;
@@ -54,6 +57,12 @@ public class SewerLevel extends RegularLevel {
 	{
 		color1 = 0x48763c;
 		color2 = 0x59994a;
+
+		initMobRotations = Bestiary.MR_SEWER;
+
+		RareMobs.put(Skeleton.class, 0.01f);
+		RareMobs.put(Thief.class, 0.01f);
+		RareMobFloor.add(4);
 	}
 	
 	@Override

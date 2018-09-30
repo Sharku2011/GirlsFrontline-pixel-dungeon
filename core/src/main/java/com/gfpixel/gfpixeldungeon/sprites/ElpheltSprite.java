@@ -1,15 +1,14 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Elphelt;
-import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
-import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.watabou.noosa.TextureFilm;
+import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.particles.Emitter;
 import com.watabou.noosa.particles.PixelParticle;
+import com.watabou.utils.Callback;
 import com.watabou.utils.PointF;
 import com.watabou.utils.Random;
 
@@ -44,16 +43,13 @@ public class ElpheltSprite extends MobSprite {
         chargeParticles.pour(MagicMissile.MagicParticle.ATTRACTING, 0.05f);
         chargeParticles.on = false;
 
-        blast = new Animation( 15, false );
-        blast.frames( frames, 7 );
-
         run = new Animation( 15, true );
         run.frames( frames, 8, 9, 10, 11, 12 );
 
         attack = new Animation( 15, false );
         attack.frames( frames, 13, 14, 15 );
 
-        genoise = new Animation( 30, false );
+        genoise = new Animation( 8, false );
         genoise.frames( frames, 16, 17, 18, 19, 18, 17, 16);
 
         zap = new Animation( 15, false );
@@ -84,13 +80,25 @@ public class ElpheltSprite extends MobSprite {
         play(charging);
     }
 
-    public void blast() {
-        play( blast );
-    }
-
     public void genoise( int pos ) {
         turnTo( ch.pos, pos );
         play( genoise );
+
+        // show cursed wand effect - CursedWand.fx()
+        final int tpos = pos;
+        MagicMissile.boltFromChar(
+            parent,
+            MagicMissile.RAINBOW,
+            this,
+            pos,
+            new Callback() {
+                @Override
+                public void call() {
+                    ((Elphelt)ch).fireGenoise( tpos );
+                }
+            }
+        );
+        Sample.INSTANCE.play(Assets.SND_ZAP);
     }
 
     @Override
@@ -102,7 +110,10 @@ public class ElpheltSprite extends MobSprite {
     @Override
     public void zap( int pos ) {
         zapPos = pos;
-        super.zap( pos );
+        if (((Elphelt)ch).phase == 2) {
+            ((Elphelt)ch).magnumWedding();
+        }
+        super.zap( zapPos );
     }
 
     @Override
@@ -111,22 +122,15 @@ public class ElpheltSprite extends MobSprite {
 
         if (anim == zap) {
             idle();
-            if (Actor.findChar(zapPos) != null){
-                parent.add(new Beam.DeathRay(center(), Actor.findChar(zapPos).sprite.center()));
-            } else {
-                parent.add(new Beam.DeathRay(center(), DungeonTilemap.raisedTileCenterToWorld(zapPos)));
-            }
-
-            ch.next();
         } else if (anim == die){
             chargeParticles.killAndErase();
-        } else if (anim == genoise) {
-            ((Elphelt)ch).fireGenoise();
-            ch.next();
-        } else if (anim == blast) {
-            ((Elphelt)ch).Blast();
+        } else if (anim == genoise && ((Elphelt)ch).getTraceGenoise() != null) {
+            charge( ((Elphelt)ch).genoiseDst );
+        }
+        if (ch != null) {
             ch.next();
         }
+        super.onComplete( anim );
     }
 
     public static class GenoiseParticle extends PixelParticle.Shrinking {

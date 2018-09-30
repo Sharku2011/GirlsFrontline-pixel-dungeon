@@ -23,6 +23,9 @@ package com.gfpixel.gfpixeldungeon.levels;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Bat;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Bestiary;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Brute;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Wandmaker;
 import com.gfpixel.gfpixeldungeon.effects.Halo;
 import com.gfpixel.gfpixeldungeon.effects.particles.FlameParticle;
@@ -55,6 +58,13 @@ public class PrisonLevel extends RegularLevel {
 	{
 		color1 = 0x6a723d;
 		color2 = 0x88924c;
+
+		initMobRotations = Bestiary.MR_PRISON;
+
+		RareMobs.put(Bat.class, 0.02f);
+		RareMobs.put(Brute.class, 0.005f);
+		RareMobFloor.add(3);
+		RareMobFloor.add(4);
 	}
 	
 	@Override
