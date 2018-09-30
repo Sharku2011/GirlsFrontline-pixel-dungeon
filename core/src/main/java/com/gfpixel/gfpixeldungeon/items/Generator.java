@@ -293,7 +293,7 @@ public class Generator {
 					SR3.class,
                     Cannon.class
 			};
-			WEP_T1.probs = new float[]{ 1, 1, 1, 1, 1, 1, 0 };
+			WEP_T1.probs = new float[]{ 1, 0, 1, 1, 1, 1, 0 };
 			
 			WEP_T2.classes = new Class<?>[]{
 					M16.class,
@@ -303,7 +303,7 @@ public class Generator {
 					G36.class,
 					NagantRevolver.class
 			};
-			WEP_T2.probs = new float[]{ 6, 5, 5, 4, 4, 2 };
+			WEP_T2.probs = new float[]{ 5, 4, 5, 4, 4, 4 };
 			
 			WEP_T3.classes = new Class<?>[]{
 					Ks23.class,
@@ -324,7 +324,7 @@ public class Generator {
 					GUA91.class,
 					Gepard.class
 			};
-			WEP_T4.probs = new float[]{ 6, 5, 5, 4, 4, 4, 4 };
+			WEP_T4.probs = new float[]{ 6, 5, 5, 5, 4, 6, 1 };
 			
 			WEP_T5.classes = new Class<?>[]{
 					Sass.class,
@@ -334,7 +334,7 @@ public class Generator {
 					SakuraBlade.class,
 					SaigaPlate.class
 			};
-			WEP_T5.probs = new float[]{ 6, 5, 5, 4, 4, 4 };
+			WEP_T5.probs = new float[]{ 6, 3, 5, 4, 6, 4 };
 
 			WEP_T6.classes = new Class<?>[]{
 					SAIGA.class,
@@ -343,7 +343,7 @@ public class Generator {
 					GROZA.class,
 					NAGANT.class
 			};
-			WEP_T6.probs = new float[]{ 2, 3, 2, 2, 1 };
+			WEP_T6.probs = new float[]{ 2, 3, 2, 2, 0 };
 			
 			//see Generator.randomArmor
 			ARMOR.classes = new Class<?>[]{
@@ -387,7 +387,7 @@ public class Generator {
 					ThrowingHammer.class
 			};
 			MIS_T5.probs = new float[]{ 4, 3 };
-			
+
 			FOOD.classes = new Class<?>[]{
 					Food.class,
 					Maccol.class,

@@ -29,7 +29,7 @@ public class Win97 extends MeleeWeapon {
 		image = ItemSpriteSheet.WIN97;
 
 		tier = 4;
-		ACC = 1.175f; //17.5% boost to accuracy
+		ACC = 2f; //17.5% boost to accuracy
 	}
 
 }

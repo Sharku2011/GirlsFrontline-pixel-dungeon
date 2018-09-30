@@ -336,7 +336,7 @@ public class WndStartGame extends Window {
 							break;
 						case HUNTRESS:
 							heroItem.icon(new ItemSprite(ItemSpriteSheet.BOOMERANG, null));
-							heroLoadout.icon(new ItemSprite(ItemSpriteSheet.KNUCKLEDUSTER, null));
+							heroLoadout.icon(new ItemSprite(ItemSpriteSheet.M79, null));
 							heroMisc.icon(new ItemSprite(ItemSpriteSheet.DART, null));
 							break;
 					}

@@ -21,6 +21,7 @@
 
 package com.gfpixel.gfpixeldungeon;
 
+import com.gfpixel.gfpixeldungeon.items.Ankh;
 import com.gfpixel.gfpixeldungeon.items.Dewdrop;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.Armor;
@@ -44,8 +45,8 @@ public class Challenges {
 	public static final int DARKNESS			= 32;
 	public static final int NO_SCROLLS		    = 64;
 	public static final int NO_STRENGTH				= 128;
-	public static final int DUMMY_2				= 256;
-	public static final int DUMMY_3				= 512;
+	public static final int NO_ANKH				= 256;
+	public static final int INFLATION				= 512;
 
 	public static final int MAX_VALUE           = 1023;
 
@@ -58,12 +59,12 @@ public class Challenges {
 			"darkness",
 			"no_scrolls",
 			"no_strength",
-			"dummy2",
-			"dummy3"
+			"no_ankh",
+			//"inflation"
 	};
 
 	public static final int[] MASKS = {
-			NO_FOOD, NO_ARMOR, NO_HEALING, NO_HERBALISM, SWARM_INTELLIGENCE, DARKNESS, NO_SCROLLS, NO_STRENGTH, DUMMY_2, DUMMY_3
+			NO_FOOD, NO_ARMOR, NO_HEALING, NO_HERBALISM, SWARM_INTELLIGENCE, DARKNESS, NO_SCROLLS, NO_STRENGTH, NO_ANKH, INFLATION
 	};
 
 	public static boolean isItemBlocked( Item item ){
@@ -106,7 +107,20 @@ public class Challenges {
 				return true;
 			}
 		}
+
+		if (Dungeon.isChallenged(NO_ANKH)){
+			if (item instanceof Ankh) {
+				return true;
+			}
+		}
+
+		//if (Dungeon.isChallenged(INFLATION)){
+			//if (item instanceof Ankh) {
+			//	return true;
+			//}
+		//}
 		return false;
+
 
 	}
 

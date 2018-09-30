@@ -26,9 +26,11 @@ import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 public class M9 extends Launcher {
 
 	{
-		image = ItemSpriteSheet.KNUCKLEDUSTER;
+		image = ItemSpriteSheet.M9;
 
 		tier = 1;
+		ACC = 2f;
+		DLY = 1.1f;
 	}
 
 	@Override

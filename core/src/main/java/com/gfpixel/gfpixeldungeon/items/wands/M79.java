@@ -99,11 +99,11 @@ public class M79 extends DamageWand {
     }
 
     public void addStack(int charge) {
-        damageStack += charge * 0.10f;
+        damageStack += charge * 0.15f;
     }
 
     public void setDamageStack(int stack) {
-        damageStack = stack * 0.10f;
+        damageStack = stack * 0.15f;
     }
 
     public void setDamageStack(float stack) {

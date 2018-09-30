@@ -31,6 +31,7 @@ import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
 import com.gfpixel.gfpixeldungeon.items.artifacts.CloakOfShadows;
+import com.gfpixel.gfpixeldungeon.items.artifacts.DriedRose;
 import com.gfpixel.gfpixeldungeon.items.bags.MagicalHolster;
 import com.gfpixel.gfpixeldungeon.items.bags.PotionBandolier;
 import com.gfpixel.gfpixeldungeon.items.bags.ScrollHolder;
@@ -42,13 +43,23 @@ import com.gfpixel.gfpixeldungeon.items.food.SmallRation;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfInvisibility;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfMindVision;
+import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.wands.M79;
+import com.gfpixel.gfpixeldungeon.items.wands.M84;
+import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Kriss;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1903;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.NAGANT;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ntw20;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.TowProto;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Traviae;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Boomerang;
@@ -113,10 +124,10 @@ public enum HeroClass {
 			new SmallRation().collect();
 		}
 
-		if (BuildConfig.DEBUG) {
-            new Maccol().collect();
-            new Pasty().collect();
-        }
+		//if (BuildConfig.DEBUG) {
+            //new Maccol().collect();
+            //new Pasty().collect();
+        //}
 
 
 	}
@@ -150,8 +161,11 @@ public enum HeroClass {
 		new PotionOfHealing().identify();
 
 		if (BuildConfig.DEBUG) 	{
-			new M79().identify().collect();
 			new Cannon().identify().collect();
+			new  DriedRose().identify().collect();
+			new TowProto().identify().collect();
+			new ScrollOfUpgrade().identify().quantity(5).collect();
+			new WandOfDisintegration().identify().upgrade().collect();
 			new PlateArmor().identify().upgrade(100).collect();
 		}
 
@@ -180,6 +194,7 @@ public enum HeroClass {
 		(hero.belongings.misc1 = cloak).identify();
 		hero.belongings.misc1.activate( hero );
 		new PotionOfInvisibility().identify().collect();
+		new Welrod().identify().upgrade(3).collect();
 
 		ThrowingKnife knives = new ThrowingKnife();
 		knives.quantity(3).collect();
@@ -189,24 +204,39 @@ public enum HeroClass {
 
 		new ScrollHolder().collect();
 		Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
-		new ScrollOfUpgrade().identify();
+		new ScrollOfMagicMapping().identify();
+
+		//if (BuildConfig.DEBUG) 	{
+
+			//new DriedRose().identify().collect();
+			//new TowProto().identify().collect();
+			//new ScrollOfUpgrade().identify().quantity(5).collect();
+			//new Ntw20().identify().collect();
+			//new Traviae().identify().collect();
+		//}
 	}
 
 	private static void initHuntress( Hero hero ) {
 
 		(hero.belongings.weapon = new Boomerang()).identify();
-		Boomerang boomerang = new Boomerang();
-		boomerang.identify().collect();
 		M79 m79 = new M79();
 		m79.identify().collect();
-		new Gepard().identify().collect();
 
 
-		Dungeon.quickslot.setSlot(0, boomerang);
+
+		Dungeon.quickslot.setSlot(2, m79);
 
 		new VelvetPouch().collect();
 		Dungeon.LimitedDrops.VELVET_POUCH.drop();
 		new PotionOfMindVision().identify();
+
+		//if (BuildConfig.DEBUG) 	{
+
+			//new DriedRose().identify().collect();
+			//new TowProto().identify().collect();
+			//new ScrollOfUpgrade().identify().quantity(5).collect();
+			//new Traviae().identify().collect();
+		//}
 	}
 
 	public String title() {

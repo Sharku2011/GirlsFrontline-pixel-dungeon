@@ -25,8 +25,20 @@ import com.gfpixel.gfpixeldungeon.Bones;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
-import com.gfpixel.gfpixeldungeon.actors.mobs.Bestiary;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Acidic;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Albino;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Bandit;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Brute;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Hydra;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
+import com.gfpixel.gfpixeldungeon.actors.mobs.MobRotations;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Monk;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Rat;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Scorpio;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Senior;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Shielded;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Thief;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Typhoon;
 import com.gfpixel.gfpixeldungeon.items.Generator;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.Item;
@@ -58,6 +70,8 @@ import com.watabou.utils.Random;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 
 public abstract class RegularLevel extends Level {
@@ -70,6 +84,11 @@ public abstract class RegularLevel extends Level {
 	protected Room roomExit;
 	
 	public int secretDoors;
+
+	protected MobRotations initMobRotations = null;
+
+	protected HashMap<Class<? extends Mob>, Float> RareMobs = new HashMap<>();
+	protected HashSet<Integer> RareMobFloor = new HashSet<>();
 	
 	@Override
 	protected boolean build() {
@@ -176,14 +195,47 @@ public abstract class RegularLevel extends Level {
 				return 2 + Dungeon.depth % 5 + Random.Int(5);
 		}
 	}
-	
+
+	protected void addRareMobs() {
+	    for ( HashMap.Entry<Class<? extends Mob>, Float> pair : RareMobs.entrySet() ) {
+            if (Random.Float() < pair.getValue() ) {
+                mobsToSpawn.add(pair.getKey());
+            }
+        }
+	}
+    protected void swapMobAlts() {
+        for (int i = 0; i < mobsToSpawn.size(); i++){
+            if (Random.Int( 50 ) == 0) {
+                Class<? extends Mob> cl = mobsToSpawn.get(i);
+                if (cl == Rat.class) {
+                    cl = Albino.class;
+                } else if (cl == Thief.class) {
+                    cl = Bandit.class;
+                } else if (cl == Brute.class) {
+                    cl = Shielded.class;
+                } else if (cl == Monk.class) {
+                    cl = Senior.class;
+                } else if (cl == Scorpio.class) {
+                    cl = Acidic.class;
+                } else if (cl == Hydra.class) {
+                    cl = Typhoon.class;
+                }
+                mobsToSpawn.set(i, cl);
+            }
+        }
+	}
+
 	private ArrayList<Class<?extends Mob>> mobsToSpawn = new ArrayList<>();
 	
 	@Override
 	public Mob createMob() {
-		if (mobsToSpawn == null || mobsToSpawn.isEmpty())
-			mobsToSpawn = Bestiary.getMobRotation(Dungeon.depth);
-		
+		if (mobsToSpawn == null || mobsToSpawn.isEmpty()) {
+            mobsToSpawn = initMobRotations.getRotation(Dungeon.depth);
+            if ( !RareMobs.isEmpty() && RareMobFloor.contains(Dungeon.depth % 5) ) {
+                addRareMobs();
+            }
+            swapMobAlts();
+        }
 		try {
 			return mobsToSpawn.remove(0).newInstance();
 		} catch (Exception e) {

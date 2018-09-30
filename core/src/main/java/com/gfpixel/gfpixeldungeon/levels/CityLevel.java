@@ -23,6 +23,8 @@ package com.gfpixel.gfpixeldungeon.levels;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Bestiary;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Succubus;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Imp;
 import com.gfpixel.gfpixeldungeon.levels.painters.CityPainter;
 import com.gfpixel.gfpixeldungeon.levels.painters.Painter;
@@ -54,6 +56,11 @@ public class CityLevel extends RegularLevel {
 	{
 		color1 = 0x4b6636;
 		color2 = 0xf2f2f2;
+
+		initMobRotations = Bestiary.MR_CITY;
+
+		RareMobs.put(Succubus.class, 0.02f);
+		RareMobFloor.add(4);
 	}
 	
 	@Override

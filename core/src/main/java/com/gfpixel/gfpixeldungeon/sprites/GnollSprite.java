@@ -22,6 +22,7 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.watabou.noosa.TextureFilm;
 
 public class GnollSprite extends MobSprite {
@@ -30,21 +31,30 @@ public class GnollSprite extends MobSprite {
 		super();
 		
 		texture( Assets.GNOLL );
-		
-		TextureFilm frames = new TextureFilm( texture, 12, 15 );
-		
-		idle = new Animation( 2, true );
-		idle.frames( frames, 0, 0, 0, 1, 0, 0, 1, 1 );
-		
-		run = new Animation( 12, true );
-		run.frames( frames, 4, 5, 6, 7 );
-		
-		attack = new Animation( 12, false );
-		attack.frames( frames, 2, 3, 0 );
-		
-		die = new Animation( 12, false );
-		die.frames( frames, 8, 9, 10 );
-		
+
+		TextureFilm frames = new TextureFilm( texture, 15, 13 );
+
+		idle = new Animation( 8, true );
+		idle.frames( frames, 0, 1 );
+
+		run = new Animation( 8, true );
+		run.frames( frames, 0, 1, 0, 1 );
+
+		attack = new Animation( 15, false );
+		attack.frames( frames, 1, 2, 3, 2, 3 );
+
+		die = new Animation( 8, false );
+		die.frames( frames, 4, 5, 6 );
+
 		play( idle );
+	}
+	@Override
+	public void onComplete( Animation anim ) {
+
+		super.onComplete( anim );
+
+		if (anim == die) {
+			emitter().burst( Speck.factory( Speck.WOOL ), 15 );
+		}
 	}
 }

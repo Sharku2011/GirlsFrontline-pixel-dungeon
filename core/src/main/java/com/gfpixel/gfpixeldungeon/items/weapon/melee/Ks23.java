@@ -29,7 +29,7 @@ public class Ks23 extends MeleeWeapon {
 		image = ItemSpriteSheet.KS23;
 
 		tier = 3;
-		ACC = 1.175f; //17.5% boost to accuracy
+		ACC = 2f; //17.5% boost to accuracy
 	}
 
 }

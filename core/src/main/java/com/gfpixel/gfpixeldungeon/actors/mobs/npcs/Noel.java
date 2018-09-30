@@ -43,6 +43,7 @@ import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.NoelSprite;
 import com.gfpixel.gfpixeldungeon.sprites.WandmakerSprite;
 import com.gfpixel.gfpixeldungeon.windows.WndDialog;
+import com.gfpixel.gfpixeldungeon.windows.WndNoel;
 import com.gfpixel.gfpixeldungeon.windows.WndQuest;
 import com.gfpixel.gfpixeldungeon.windows.WndWandmaker;
 import com.watabou.utils.Bundlable;
@@ -91,17 +92,17 @@ public class Noel extends NPC {
 
         // 퀘스트 진행 검사
         if (Quest.given) {
-            final Item item = Dungeon.hero.belongings.getItem( Quest.TARGETS.get(Quest.type));
+            final Item item = Dungeon.hero.belongings.getItem( Quest.TARGETS.get(0));
 
             // 퀘스트 완료
             if (item != null) {
 
-                int DialogID = DialogInfo.ID_M16A1_QUEST + DialogInfo.COMPLETE;
+                int DialogID = DialogInfo.ID_NOEL_QUEST + DialogInfo.COMPLETE;
                 WndDialog wnd = new WndDialog( DialogID ) {
                     @Override
                     protected void onFinish()
                     {
-                        GameScene.show(new WndWandmaker((Wandmaker) this.npc, item));
+                        GameScene.show(new WndNoel((Noel) this.npc, item));
                     }
                 };
 
@@ -110,7 +111,7 @@ public class Noel extends NPC {
 
             } else {
                 // 진행중 대사 출력
-                int DialogID = DialogInfo.ID_M16A1_QUEST + DialogInfo.INPROGRESS;
+                int DialogID = DialogInfo.ID_NOEL_QUEST + DialogInfo.INPROGRESS;
 
                 WndDialog.setBRANCH(DialogID, Quest.type);
                 WndDialog.ShowChapter(DialogID);
@@ -124,7 +125,7 @@ public class Noel extends NPC {
             WndDialog.setBRANCH(DialogID, Quest.type);
             WndDialog.ShowChapter(DialogID);
 
-            Notes.add( Notes.Landmark.WANDMAKER );
+            Notes.add( Notes.Landmark.NOEL );
             Quest.given = true;
         }
 
@@ -141,9 +142,7 @@ public class Noel extends NPC {
         private static SparseArray<Class<? extends Item>> TARGETS = new SparseArray<>();
 
         static {
-            TARGETS.put(1, CorpseDust.class);
-            TARGETS.put(2, Embers.class);
-            TARGETS.put(3, Rotberry.Seed.class);
+            TARGETS.put(0, Embers.class);
         }
 
         private static boolean spawned;
@@ -155,7 +154,6 @@ public class Noel extends NPC {
 
         public static void reset() {
             spawned = false;
-            type = 0;
 
             wand1 = null;
             wand2 = null;
@@ -164,7 +162,6 @@ public class Noel extends NPC {
         private static final String NODE		= "noel";
 
         private static final String SPAWNED		= "spawned";
-        private static final String TYPE		= "type";
         private static final String GIVEN		= "given";
         private static final String WAND1		= "wand1";
         private static final String WAND2		= "wand2";
@@ -178,18 +175,12 @@ public class Noel extends NPC {
             node.put( SPAWNED, spawned );
 
             if (spawned) {
-
-                node.put( TYPE, type );
-
                 node.put( GIVEN, given );
 
                 node.put( WAND1, wand1 );
                 node.put( WAND2, wand2 );
 
-                if (type == 2){
-                    node.put( RITUALPOS, CeremonialCandle.ritualPos );
-                }
-
+                node.put( RITUALPOS, CeremonialCandle.ritualPos );
             }
 
             bundle.put( NODE, node );
@@ -201,16 +192,12 @@ public class Noel extends NPC {
 
             if (!node.isNull() && (spawned = node.getBoolean( SPAWNED ))) {
 
-                type = node.getInt(TYPE);
-
                 given = node.getBoolean( GIVEN );
 
                 wand1 = (Wand)node.get( WAND1 );
                 wand2 = (Wand)node.get( WAND2 );
 
-                if (type == 2){
-                    CeremonialCandle.ritualPos = node.getInt( RITUALPOS );
-                }
+                CeremonialCandle.ritualPos = node.getInt( RITUALPOS );
 
             } else {
                 reset();
@@ -219,12 +206,12 @@ public class Noel extends NPC {
 
         private static boolean questRoomSpawned;
 
-        public static void spawnWandmaker( Level level, Room room ) {
+        public static void spawnNoel( Level level, Room room ) {
             if (questRoomSpawned) {
 
                 questRoomSpawned = false;
 
-                Wandmaker npc = new Wandmaker();
+                Noel npc = new Noel();
                 do {
                     npc.pos = level.pointToCell(room.random());
                 } while (npc.pos == level.entrance);
@@ -248,25 +235,10 @@ public class Noel extends NPC {
 
         public static ArrayList<Room> spawnRoom( ArrayList<Room> rooms) {
             questRoomSpawned = false;
-            if (!spawned && (type != 0 || (Dungeon.depth > 6 && Random.Int( 10 - Dungeon.depth ) == 0))) {
+            if (!spawned && (Dungeon.depth == 7)) {
 
-                // decide between 1,2, or 3 for quest type.
-                if (type == 0) type = Random.Int(3)+1;
-
-                switch (type){
-                    case 1: default:
-                        rooms.add(new MassGraveRoom());
-                        break;
-                    case 2:
-                        rooms.add(new RitualSiteRoom());
-                        break;
-                    case 3:
-                        rooms.add(new RotGardenRoom());
-                        break;
-                }
-
+                rooms.add(new RitualSiteRoom());
                 questRoomSpawned = true;
-
             }
             return rooms;
         }
@@ -275,7 +247,7 @@ public class Noel extends NPC {
             wand1 = null;
             wand2 = null;
 
-            Notes.remove( Notes.Landmark.WANDMAKER );
+            Notes.remove( Notes.Landmark.NOEL );
         }
     }
 }

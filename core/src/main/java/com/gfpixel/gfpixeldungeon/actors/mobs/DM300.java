@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.actors.mobs;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Badges;
+import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
@@ -45,6 +46,7 @@ import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.DM300Sprite;
 import com.gfpixel.gfpixeldungeon.ui.BossHealthBar;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
+import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
@@ -55,7 +57,7 @@ public class DM300 extends Mob {
 	{
 		spriteClass = DM300Sprite.class;
 		
-		HP = HT = 200;
+		HP = HT = 270;
 		EXP = 30;
 		defenseSkill = 18;
 		
@@ -68,7 +70,7 @@ public class DM300 extends Mob {
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 20, 25 );
+		return Random.NormalIntRange( 20, 30 );
 	}
 	
 	@Override
@@ -131,7 +133,7 @@ public class DM300 extends Mob {
 		}
 	}
 
-	private final int damageCap = 40;
+	private final int damageCap = 50;
 
 	@Override
 	public void damage(int dmg, Object src) {
@@ -158,12 +160,14 @@ public class DM300 extends Mob {
 		
 		yell( Messages.get(this, "defeated") );
 	}
-	
+
 	@Override
 	public void notice() {
 		super.notice();
 		BossHealthBar.assignBoss(this);
-		yell( Messages.get(this, "notice") );
+		if (!Dungeon.level.locked) {
+			WndDialog.ShowChapter(DialogInfo.ID_CAVES_BOSS);
+		}
 	}
 	
 	{

@@ -24,6 +24,7 @@ package com.gfpixel.gfpixeldungeon.actors.mobs;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
@@ -44,12 +45,13 @@ public class Jupiter extends Mob {
     {
         spriteClass = JupiterSprite.class;
 
-        HP = HT = 85;
+        HP = HT = 55;
         defenseSkill = 30;
+        viewDistance = Light.DISTANCE;
         baseSpeed = 1f;
         maxLvl = 26;
 
-        properties.add(Property.IMMOVABLE);
+        properties.add(Property.ARMO);
     }
 
     private Ballistica beam;
@@ -116,7 +118,7 @@ public class Jupiter extends Mob {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((JupiterSprite)sprite).charge( enemy.pos );
-            spend( attackDelay()*3f );
+            spend( attackDelay()*7f );
             beamCharged = true;
             return true;
         } else {

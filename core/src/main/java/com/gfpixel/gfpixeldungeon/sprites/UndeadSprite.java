@@ -23,33 +23,40 @@ package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.Actor;
+import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Eye;
+import com.gfpixel.gfpixeldungeon.effects.Beam;
+import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
+import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.watabou.noosa.TextureFilm;
+import com.watabou.noosa.particles.Emitter;
 
 public class UndeadSprite extends MobSprite {
-	
+
 	public UndeadSprite() {
 		super();
-		
+
 		texture( Assets.UNDEAD );
-		
+
 		TextureFilm frames = new TextureFilm( texture, 12, 16 );
-		
+
 		idle = new Animation( 12, true );
 		idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3 );
-		
+
 		run = new Animation( 15, true );
 		run.frames( frames, 4, 5, 6, 7, 8, 9 );
-		
+
 		attack = new Animation( 15, false );
 		attack.frames( frames, 14, 15, 16 );
-		
+
 		die = new Animation( 12, false );
 		die.frames( frames, 10, 11, 12, 13 );
-		
+
 		play( idle );
 	}
-	
+
 	@Override
 	public void die() {
 		super.die();
@@ -57,7 +64,7 @@ public class UndeadSprite extends MobSprite {
 			emitter().burst( Speck.factory( Speck.BONE ), 3 );
 		}
 	}
-	
+
 	@Override
 	public int blood() {
 		return 0xFFcccccc;

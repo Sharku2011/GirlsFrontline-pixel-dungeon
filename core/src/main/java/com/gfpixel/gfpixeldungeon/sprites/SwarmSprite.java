@@ -22,6 +22,7 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.watabou.noosa.TextureFilm;
 
 public class SwarmSprite extends MobSprite {
@@ -47,9 +48,13 @@ public class SwarmSprite extends MobSprite {
 		
 		play( idle );
 	}
-	
 	@Override
-	public int blood() {
-		return 0xFF8BA077;
+	public void onComplete( Animation anim ) {
+
+		super.onComplete( anim );
+
+		if (anim == die) {
+			emitter().burst( Speck.factory( Speck.WOOL ), 15 );
+		}
 	}
 }

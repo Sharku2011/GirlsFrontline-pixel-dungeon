@@ -30,21 +30,22 @@ public class DM300Sprite extends MobSprite {
 	public DM300Sprite() {
 		super();
 		
-		texture( Assets.DM300 );
+		texture( Assets.GEGAR );
 
-		TextureFilm frames = new TextureFilm( texture, 25, 25 );
+		TextureFilm frames = new TextureFilm( texture, 24, 18 );
 
 		idle = new Animation( 2, true );
-		idle.frames( frames, 0, 0, 0, 0 );
+		idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 10 );
 
-		run = new Animation( 10, true );
+		run = new Animation( 15, true );
 		run.frames( frames, 1, 2, 3, 4, 5 );
 
-		attack = new Animation( 15, false );
-		attack.frames( frames, 6, 7 );
+		attack = new Animation( 20, false );
+		attack.frames( frames, 7, 6, 7, 6 );
+		//돌진 전 대기동작은 8, 돌진 후 동작은 9
 
-		die = new Animation( 10, false );
-		die.frames( frames, 8, 9 );
+		die = new Animation( 2, false );
+		die.frames( frames, 10, 11, 12 );
 
 		/*
 		TextureFilm frames = new TextureFilm( texture, 22, 20 );

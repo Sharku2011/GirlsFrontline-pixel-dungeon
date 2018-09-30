@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class WndSelectGameInProgress extends Window {
 
-    public static float SLOT_SCALE = 140 / 52f;
+    public static float SLOT_SCALE = 105 / 45f;
 
     public static int DISPWIDTH;
     public static int DISPHEIGHT;
@@ -182,7 +182,7 @@ public class WndSelectGameInProgress extends Window {
                 depthEmmiters[i] = new Emitter();
             }
 
-            name = PixelScene.renderText( 8 );
+            name = PixelScene.renderText( 7 );
             level = PixelScene.renderText( 7 );
             score = PixelScene.renderText( 8 );
             depth = PixelScene.renderText( 7 );

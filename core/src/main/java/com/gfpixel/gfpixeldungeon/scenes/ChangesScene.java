@@ -25,6 +25,8 @@ import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Negev;
 import com.gfpixel.gfpixeldungeon.plants.Plant;
 import com.gfpixel.gfpixeldungeon.plants.Sungrass;
 import com.gfpixel.gfpixeldungeon.items.armor.HuntressArmor;
@@ -135,33 +137,42 @@ public class ChangesScene extends PixelScene {
 		infos.add(changes);
 
 
-		changes.addButton( new ChangeButton(new Image(Assets.ELPHELT, 288, 0, 17, 22), "분기점",
+		changes.addButton( new ChangeButton(new Image(Assets.ELPHELT, 288, 0, 18, 19), "분기점",
 				"_-_1번 분기점 활성화. \n\n" +
-						"_-_ 소녀전선&길티기어 분기점 챕터가 활성화 되었습니다.\n\n" +
+						"_-_ 소녀전선&길티기어&블레이블루 분기점 챕터가 활성화 되었습니다.\n\n" +
 						"_-_ 기존 스테이지에서 특정 조건을 만족할시 다음 챕터에서 분기점 챕터가 활성화됩니다.\n\n" +
 						"_-_ 분기점 챕터를 클리어할시 기존 티어보다 높은 성능을 가진 콜라보 무기와 콜라보 클리어 뱃지를 획득할 수 있습니다. \n\n" +
 						"_-_ 분기점 활성화 조건은 공개하지 않겠습니다. 하지만 찾기 쉬울거에요! 첫번째 분기점인 만큼, 초반 챕터에 분기점이 활성화됩니다!"));
+
+		changes.addButton( new ChangeButton(new Image(Assets.GEGAR, 0, 0, 24, 18), "신규 보스",
+				"_-_3챕터 보스 변경. \n\n" +
+						"_-_ 3챕터 보스가 만티코어가 필드 몬스터로 바뀐 관계로 새로운 보스가 추가 됐습니다.\n\n" +
+						"_-_ 게이저는 기존의 만티코어와 다른 공격패턴을 가지고있으며, 꽤나 위협적입니다."));
 
 		changes.addButton( new ChangeButton(new MagicalHolster(), //이부분을 저주함정이나 저주받은 외골격 이미지로 바꿔주세요
 				"_-_ 여러 종류의 저주가 추가됬습니다.\n\n" +
 						"_-_ 친화적인 저주 - 무기 저주. 타격시 때때로 적과 자신을 동시에 교란시킨다.\n\n" +
 						"_-_ 탄성의 저주 - 무기 저주. 피해량이 0이 되는 대신, 맞은 적을 튕겨낸다.\n\n" +
-						"_-_ 쿵쾅의 저주 - 방어구 저주. 문을 통과하는 데에 걸리는 턴 수를 늘린다.\n\n" +
+						"_-_ 육중함의 저주 - 방어구 저주. 문을 통과하는 데에 걸리는 턴 수를 늘린다.\n\n" +
 						"_-_ 과다성장의 저주 - 방어구 저주. 피격시 때때로 임의의 씨앗 효과가 발휘된다."));
+
+		changes.addButton( new ChangeButton(new WandOfDisintegration(),
+				"_-_ 장갑 속성이 정의됬습니다.\n\n" +
+						"_-_ 장갑 속성은 철갑탄에 3배 피해를 입습니다.\n\n" +
+						"_-_ 장갑 속성은 강력한 공격과 높은 체력을 가지고 있지만 대체로 느린 이동속도를 가지고 있으며, 방어력이 낮거나 없기 때문에 공격이 더 잘 명중하며 높은 데미지를 입힐 수 있습니다."));
+
 
 		changes.addButton( new ChangeButton(new Gepard(),
 				"_-_ 일부 무기가 수정됬습니다.\n\n" +
-						"_-_ 신규무기 게파드가 추가됬습니다. 게파드는 무기를 장착하고 있을때 50구경의 데미지가 크게 올라갑니다.\n\n" +
+						"_-_ 신규무기 게파드와 SRS가 추가됬습니다. 게파드는 무기를 장착하고 있을때 50구경의 데미지가 크게 올라갑니다.\n\n" +
 						"_-_ 소이탄, EMP탄,유탄이 삭제되고 50구경라는 아이템으로 바뀌었습니다. 삭제된 EMP탄과 소이탄은 솥에서 50구경과 씨앗을 조합해 만들 수 있습니다.\n\n" +
-						"_-_ 크리스 벡터의 데미지 막기가 삭제된 대신, 어떤 방법으로든 무기를 사용하면 2턴동안 모든 행동이 빨라지는 가속 버프를 받게됩니다.\n\n" +
-						"_-_ PG 가스탄이 붕괴가스로 바뀌었습니다. 기존의 독가스 대신 붕괴가스를 발사하며, 붕괴가스에 노출되면 산성효과와 비슷한 피해를 입게됩니다.\n\n" +
+						"_-_ PG 가스탄이 붕괴액으로 바뀌었습니다. 기존의 독가스 대신 붕괴가스를 발사하며, 붕괴가스에 노출되면 산성효과와 비슷한 피해를 입게됩니다.\n\n" +
 						"_-_ UMP45와 M16A1의 데미지가 소폭 상승했습니다. M16A1은 추가로 강화 효율과 방어율이 소폭 상승했습니다."));
 
 		changes.addButton( new ChangeButton(Icons.get(Icons.SHPX), "개발 관련",
 				"_-_ \"시스템 변경\n\n" +
 
 						"_-_ UI가 크게 개편됬습니다! 좀더 소녀전선에 가까운 UI를 만들기 위해 노력했습니다.\n\n" +
-						"_-_ 스코어 시스템이 추가됬습니다.\n\n" +
 						"_-_ 힘 포션이 드랍되지 않는 도전모드가 추가됬습니다.\n\n" +
 						"_-_  새로운 뱃지들이 추가됬습니다.\n\n" +
 						"_-_ 투척무기가 개편됬습니다. 많은 투척무기가 추가되었고, 투척무기에 내구도 시스템이 적용됬습니다.\n\n" +
@@ -192,14 +203,26 @@ public class ChangesScene extends PixelScene {
 						"_-_ 투척 무기가 소모되지 않을 확률 제거, 대신 원거리 무기의 내구도를 증가시킴\n\n" +
 						"_-_ 투척 무기의 피해량을 강화 수치에 비례하여 증가시키는 효과 추가"));
 
+		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 16, 16), "변경",
+				"네메움과 만티코어가 개편됬습니다.\n\n" +
+						"_-_ 네메움은 이제 챕터 3 구간에 등장하며, 짧은 시간동안 장전한 뒤 지형과 외골격의 방어율을 무시하는 붕괴광선을 발사합니다.\n\n" +
+						"_-_ 만티코어는 이제 챕터 4 구간 필드 몬스터로 등장합니다. 만티코어는 방어력이 없고 조금 느린 대신, 높은 체력을 가지고 있으며 지정된 피해량 이상의 피해를 입힐수 없습니다."));
+
 		changes = new ChangeInfo(Messages.get(this, "buffs"), false, null);
 		changes.hardlight( CharSprite.POSITIVE );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton( new Image(Assets.HUNTRESS, 0, 34, 13, 17), "",
+		changes.addButton( new ChangeButton( new Image(Assets.HUNTRESS, 0, 34, 13, 17), "상향",
 				"HK416 상향.\n\n" +
 						"_-_모든 투척무기 내구도가  50% 추가됨\n\n" +
+						"_-_M79 유탄발사기의 매커니즘이 바뀌어 적이 아니라 벽 등을 맞춰도 폭발해 스플래시 데미지를 줄 수 있도록 변경되었습니다.\n\n" +
 						"IOP 탄창이 제공하는 투척무기 내구도 20% 증가와 기본 능력이 곱연산으로 중첩되 80%의 추가 내구도를 가지게 됩니다."));
+
+		changes.addButton( new ChangeButton( new Image(Assets.MAGE, 0, 34, 13, 17), "리워크",
+				"G11 외골격 리워크.\n\n" +
+						"_-_G11의 외골격 스킬이 액티브에서 버프로 바뀌었습니다.\n\n" +
+						"_-_G11의 외골격 스킬이 주변의 적을 화상 상태로 만드는 쓸모없는 능력에서 가속이라는 버프를 받게 됩니다.\n\n" +
+						"가속은 체력의 50%를 깎는 높은 비용을 가지지만, 3턴동안 시간과 관련된 모든 능력이 증폭됩니다. 공격속도, 이동속도, 가속을 포함한 모든 버프 지속 시간까지 일시적으로 증가해, 짧은 시간동안 강력하고 다양한 전술을 펼칠 수 있습니다."));
 
 		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.RING_OPAL, null), new RingOfElements().trueName(),
 				"원소의 도트사이트 상향\n\n" +
@@ -239,6 +262,10 @@ public class ChangesScene extends PixelScene {
 						"_-_ UMP9 - 연막탄 범위가 8칸으로 제한되며, 효과가 벽을 관통하지 않도록 변경\n\n" +
 						"_-_ HK416 - 살상류탄의 범위가 12칸으로 제한됨"));
 
+		changes.addButton( new ChangeButton(new Negev(),
+				"_-_ MG계열 하향.\n\n" +
+						"_-_ MG계열(공격속도가 기본 5회 이상인 무기) 무기들의 명중률과 기습공격이 조정됬습니다.\n\n" +
+						"_-_ 최대 30%의 명중률 패널티를 가지며, 공격력은 그대로지만 기습공격시 60%의 피해만 입힐 수 있게 됩니다."));
 		changes.addButton( new ChangeButton(new PotionOfHealing(),
 				"_-_ 수복포션 드랍 하향.\n\n" +
 						"_-_ 수복물약 드랍 몹에게 수복물약을 얻은 경우 이후 같은 몹에게 수복물약을 얻을 확률이 감소함"));

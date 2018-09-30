@@ -41,17 +41,17 @@ public class ThrowingKnife extends MissileWeapon {
 	
 	@Override
 	public int min(int lvl) {
-		return 4;
+		return 3;
 	}
 	
 	@Override
 	public int max(int lvl) {
-		return 8;
+		return 7;
 	}
 	
 	@Override
 	public int STRReq(int lvl) {
-		return 9;
+		return 8;
 	}
 	
 	private Char enemy;
@@ -70,7 +70,7 @@ public class ThrowingKnife extends MissileWeapon {
 				//deals 75% toward max to max on surprise, instead of min to max.
 				int diff = max() - min();
 				int damage = augment.damageFactor(Random.NormalIntRange(
-						min() + Math.round(diff*0.75f),
+						min() + Math.round(diff*0.95f),
 						max()));
 				damage = Math.round(damage * RingOfSharpshooting.damageMultiplier( hero ));
 				int exStr = hero.STR() - STRReq();

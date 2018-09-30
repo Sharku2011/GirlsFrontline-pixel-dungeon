@@ -38,6 +38,8 @@ public class Cyclops extends Mob {
         defenseSkill = 60;
         baseSpeed = 1f;
         maxLvl = 36;
+
+        properties.add(Property.ARMO);
     }
 
     private boolean enraged = false;
