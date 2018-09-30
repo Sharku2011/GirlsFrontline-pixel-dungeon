@@ -28,27 +28,18 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.items.Generator;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.quest.CeremonialCandle;
-import com.gfpixel.gfpixeldungeon.items.quest.CorpseDust;
 import com.gfpixel.gfpixeldungeon.items.quest.Embers;
 import com.gfpixel.gfpixeldungeon.items.wands.Wand;
 import com.gfpixel.gfpixeldungeon.journal.Notes;
 import com.gfpixel.gfpixeldungeon.levels.Level;
 import com.gfpixel.gfpixeldungeon.levels.rooms.Room;
-import com.gfpixel.gfpixeldungeon.levels.rooms.special.MassGraveRoom;
-import com.gfpixel.gfpixeldungeon.levels.rooms.special.RotGardenRoom;
 import com.gfpixel.gfpixeldungeon.levels.rooms.standard.RitualSiteRoom;
-import com.gfpixel.gfpixeldungeon.messages.Messages;
-import com.gfpixel.gfpixeldungeon.plants.Rotberry;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.NoelSprite;
-import com.gfpixel.gfpixeldungeon.sprites.WandmakerSprite;
+import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.gfpixel.gfpixeldungeon.windows.WndNoel;
-import com.gfpixel.gfpixeldungeon.windows.WndQuest;
-import com.gfpixel.gfpixeldungeon.windows.WndWandmaker;
-import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
-import com.watabou.utils.Random;
 import com.watabou.utils.SparseArray;
 
 import java.util.ArrayList;
@@ -89,7 +80,7 @@ public class Noel extends NPC {
     public boolean interact() {
 
         sprite.turnTo( pos, Dungeon.hero.pos );
-
+        GLog.i(String.valueOf(CeremonialCandle.ritualPos));
         // 퀘스트 진행 검사
         if (Quest.given) {
             final Item item = Dungeon.hero.belongings.getItem( Quest.TARGETS.get(0));
@@ -135,9 +126,7 @@ public class Noel extends NPC {
     public static class Quest {
 
         private static int type;
-        // 1 = corpse dust quest
         // 2 = elemental embers quest
-        // 3 = rotberry quest
 
         private static SparseArray<Class<? extends Item>> TARGETS = new SparseArray<>();
 
@@ -175,6 +164,7 @@ public class Noel extends NPC {
             node.put( SPAWNED, spawned );
 
             if (spawned) {
+                GLog.i("퀘스트 저장됨");
                 node.put( GIVEN, given );
 
                 node.put( WAND1, wand1 );
@@ -200,6 +190,8 @@ public class Noel extends NPC {
                 CeremonialCandle.ritualPos = node.getInt( RITUALPOS );
 
             } else {
+                GLog.i(String.valueOf(!node.isNull()));
+                GLog.i(String.valueOf(spawned));
                 reset();
             }
         }

@@ -30,17 +30,20 @@ import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
 import com.gfpixel.gfpixeldungeon.actors.blobs.ToxicGas;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
 import com.gfpixel.gfpixeldungeon.actors.buffs.LockedFloor;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
+import com.gfpixel.gfpixeldungeon.effects.particles.BloodParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.ElmoParticle;
 import com.gfpixel.gfpixeldungeon.items.artifacts.CapeOfThorns;
 import com.gfpixel.gfpixeldungeon.items.artifacts.LloydsBeacon;
 import com.gfpixel.gfpixeldungeon.items.keys.SkeletonKey;
 import com.gfpixel.gfpixeldungeon.levels.Level;
 import com.gfpixel.gfpixeldungeon.levels.Terrain;
+import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.DM300Sprite;
@@ -66,8 +69,48 @@ public class DM300 extends Mob {
 
 		properties.add(Property.BOSS);
 		properties.add(Property.INORGANIC);
+
+
 	}
-	
+
+	private final int RANGE = 3;
+	private Ballistica aim;
+
+	@Override
+	protected boolean canAttack( Char enemy ) {
+		if (enemy == null) { return false; }
+		aim = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
+		return aim.collisionPos == enemy.pos && aim.dist <= RANGE;
+	}
+
+	@Override
+	protected boolean doAttack( Char enemy ) {
+		boolean visible = Dungeon.level.heroFOV[pos];
+
+		if (visible) {
+			sprite.attack( enemy.pos );
+		} else {
+			magnum();
+		}
+
+		spend( attackDelay() );
+
+		return !visible;
+	}
+
+	public void magnum() {
+		for (int c : aim.subPath(0, aim.dist))
+			CellEmitter.center(c).burst( BloodParticle.BURST, 1 );
+
+		int damage = Random.NormalIntRange(12,20);
+
+		Char ch = findChar(aim.collisionPos);
+		if (ch != null) {
+			ch.damage(damage - ch.drRoll(), DM300.this );
+			ch.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 5 );
+		}
+	}
+
 	@Override
 	public int damageRoll() {
 		return Random.NormalIntRange( 20, 30 );

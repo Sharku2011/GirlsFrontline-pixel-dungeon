@@ -1,6 +1,7 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
@@ -12,6 +13,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
+import com.gfpixel.gfpixeldungeon.actors.hero.HeroSubClass;
 import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.Pushing;
@@ -20,9 +22,11 @@ import com.gfpixel.gfpixeldungeon.effects.particles.BlastParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.BloodParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
 import com.gfpixel.gfpixeldungeon.items.Heap;
+import com.gfpixel.gfpixeldungeon.items.TomeOfMastery;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
+import com.gfpixel.gfpixeldungeon.levels.RabbitBossLevel;
 import com.gfpixel.gfpixeldungeon.levels.Terrain;
 import com.gfpixel.gfpixeldungeon.levels.features.Door;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
@@ -276,12 +280,38 @@ public class Elphelt extends Mob {
         int newHP = HP - dmg;
         int newDmg = dmg;
 
-        if ( HP > (HT/2) && newHP <= (HT/2)) {
-            newDmg = HP - HT/2;
-            changePhase();
+        if (newHP == 0 && HP <= HT/2) {
+            ((RabbitBossLevel)Dungeon.level).progress();
+            return;
         }
 
+        if ( HP > (HT/2) && newHP <= (HT/2)) {
+            newDmg = HP - HT/2;
+
+            phase = 2;
+            yell("2페이즈!");
+
+            sprite.idle();
+            ((RabbitBossLevel)Dungeon.level).progress();
+        }
         super.damage( newDmg, src );
+    }
+
+    @Override
+    public void die( Object cause ) {
+
+        if (Dungeon.hero.subClass == HeroSubClass.NONE) {
+            Dungeon.level.drop( new TomeOfMastery(), pos ).sprite.drop();
+        }
+
+        GameScene.bossSlain();
+        super.die( cause );
+
+        Badges.validateBossSlain();
+
+        WndDialog.ShowChapter(DialogInfo.ID_RABBIT_BOSS + DialogInfo.COMPLETE);
+
+        yell( Messages.get(this, "defeated") );
     }
 
     public void fireGenoise( int pos ) {
@@ -318,14 +348,6 @@ public class Elphelt extends Mob {
         }
     }
 
-    public void changePhase() {
-        if (phase != 2) {
-            phase = 2;
-            //TODO 보스레벨과 통신
-            sprite.idle();
-            yell("2페이즈!");
-        }
-    }
 
     public void Blast() {
         //throws other chars around the center.
@@ -694,7 +716,12 @@ public class Elphelt extends Mob {
                         if (enemyInFOV) {
                             target = enemy.pos;
                         } else {
-                            target = Dungeon.level.randomDestination();
+                            int cell;
+                            do {
+                                cell = Random.Int( Dungeon.level.length() );
+                            } while ( Dungeon.level.distance(cell, enemy.pos) <= 8 && !Dungeon.level.passable[cell]);
+
+                            target = cell;
                         }
                         doAttack( enemy );
                         return true;

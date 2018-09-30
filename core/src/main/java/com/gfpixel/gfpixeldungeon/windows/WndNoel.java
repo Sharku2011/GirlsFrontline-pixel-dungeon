@@ -51,7 +51,7 @@ public class WndNoel extends Window {
 
         IconTitle titlebar = new IconTitle();
         titlebar.icon(new NoelSprite());
-        titlebar.label("원하는 탄환을 가져 가라고.");
+        titlebar.label("원하는 탄환을 가져 가세요.");
         titlebar.setRect(0, 0, WIDTH, 0);
         add( titlebar );
 
