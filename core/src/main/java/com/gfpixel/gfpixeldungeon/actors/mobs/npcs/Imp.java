@@ -97,7 +97,7 @@ public class Imp extends NPC {
 		if (Quest.given) {
 
 			final DwarfToken tokens = Dungeon.hero.belongings.getItem( DwarfToken.class );
-			if (tokens != null && (tokens.quantity() >= 8 || (!Quest.alternative && tokens.quantity() >= 6))) {
+			if (tokens != null && (tokens.quantity() >= 8 || (!Quest.alternative && tokens.quantity() >= 4))) {
 				// 퀘스트 완료
 				DialogID += DialogInfo.COMPLETE;
 				WndDialog wnd = new WndDialog(DialogID) {
