@@ -91,7 +91,7 @@ windows.wndranking$statstab.ankhs=사용한 앙크 수
 
 windows.wndresurrect.message=당신은 죽었습니다. 하지만 다시 작전구역에 도전할 수 있는 기회가 주어졌습니다. 작전을 계속하시겠습니까? 하지만 착용하지 않은 장비들은 모두 사라집니다.
 windows.wndresurrect.yes=네, 속행하겠습니다!
-windows.wndresurrect.no=아니오, 실패를 인정합니다.
+windows.wndresurrect.no=아니오, 패배를 인정합니다.
 
 windows.wndsadghost.rat_title=옛 동료에게 안식을 줬다.
 windows.wndsadghost.gnoll_title=저격수를 격파했다
@@ -382,15 +382,15 @@ windows.wnddialog.m16a1.complete00=M16A1
 
 windows.wnddialog.uroboros0=감히 구식 인형 따위가, %s! 덤벼보아라, 단숨에 끝내주마!
 
-windows.wnddialog.noelquest.branch1.0=....그래, 내가 "가마" 안으로 떨어지고 난 후에...
-windows.wnddialog.noelquest.branch1.1=언니, 아까 말한 전파중 하나는 이 애가 내고있던건가봐. 저기, 넌 누구니?
-windows.wnddialog.noelquest.branch1.2=네.. 네? 저 말인가요? 제 이름은 노엘 버밀리온이라고 합니다! 그런데 여러분은..? 그리고, 여긴 어딘가요? 혹시... 지금이 몇년도인지 가르쳐줄수있나요?
-windows.wnddialog.noelquest.branch1.3=2062년, 우리 소속은 말해줄 수 없어. 여긴 S18 작전구역인데 이렇게 위험한 곳에서 뭐하는거야?
-windows.wnddialog.noelquest.branch1.4=뭐, 뭐라구요?! 그럼 100년이나 과거로 왔단 말이야?! 호, 혹시 긴 토끼귀를 가진 녀석 못보셨나요?! 그 녀석만 찾으면 원래 세계로 돌아갈 수 있어!
-windows.wnddialog.noelquest.branch1.5=이상한 전파가 너 말고 하나 더 잡히긴 하는데 그 녀석일지도 모르지. 잘 됐다. 우린 지금 그 전파를 알아내야하는데, 협력해줄래?
-windows.wnddialog.noelquest.branch1.6=알겠습니다. 그런데 갑작스럽지만 배터리 4개를 구해 제가 타고 온 텔레포터에 설치해주시겠어요? 미리 텔레포터를 회전시켜놔야겠어요. \n\n 그리고 혹시 텔레포터에서 뭔가 나온다면, 녀석을 잡아 전리품을 가져다 주세요.
+windows.wnddialog.noelquest.branch0.0=....그래, 내가 "가마" 안으로 떨어지고 난 후에...
+windows.wnddialog.noelquest.branch0.1=언니, 아까 말한 전파중 하나는 이 애가 내고있던건가봐. 저기, 넌 누구니?
+windows.wnddialog.noelquest.branch0.2=네.. 네? 저 말인가요? 제 이름은 노엘 버밀리온이라고 합니다! 그런데 여러분은..? 그리고, 여긴 어딘가요? 혹시... 지금이 몇년도인지 가르쳐줄수있나요?
+windows.wnddialog.noelquest.branch0.3=2062년, 우리 소속은 말해줄 수 없어. 여긴 S18 작전구역인데 이렇게 위험한 곳에서 뭐하는거야?
+windows.wnddialog.noelquest.branch0.4=뭐, 뭐라구요?! 그럼 100년이나 과거로 왔단 말이야?! 호, 혹시 긴 토끼귀를 가진 녀석 못보셨나요?! 그 녀석만 찾으면 원래 세계로 돌아갈 수 있어!
+windows.wnddialog.noelquest.branch0.5=이상한 전파가 너 말고 하나 더 잡히긴 하는데 그 녀석일지도 모르지. 잘 됐다. 우린 지금 그 전파를 알아내야하는데, 협력해줄래?
+windows.wnddialog.noelquest.branch0.6=알겠습니다. 그런데 갑작스럽지만 배터리 4개를 구해 제가 타고 온 텔레포터에 설치해주시겠어요? 미리 텔레포터를 회전시켜놔야겠어요. \n\n 그리고 혹시 텔레포터에서 뭔가 나온다면, 녀석을 잡아 전리품을 가져다 주세요.
 
-windows.wnddialog.noelquest.inprogress.branch1.0=못 찾겠다면 _텔레포터 배터리_ 4개를 모아서 텔레포터로 가주세요. 분명 이 층에 있어요!
+windows.wnddialog.noelquest.inprogress.branch0.0=못 찾겠다면 _텔레포터 배터리_ 4개를 모아서 텔레포터로 가주세요. 분명 이 층에 있어요!
 
 windows.wnddialog.noelquest.complete0=어때요? 텔레포터는 잘 작동하던가요? \n\n.....으와앗! 역시 텔레포터 근처에 이상한 녀석이 있었구나.. 죄송해요! 이걸 가져가주세요. 분명 녀석과 싸울때 도움이 될지도 몰라요.
 
@@ -404,8 +404,9 @@ windows.wnddialog.noel.embers66=NOEL
 
 
 windows.wnddialog.noel.inprogress00=noel
-
 windows.wnddialog.noel.complete00=noel
+
+windows.wnddnoel.farewell=그 
 
 windows.wnddialog.elphelt0=그래, 이 사람이에요! 이 사람이 그때 절 "관측"한 "관측자"에요!
 windows.wnddialog.elphelt1=앗! 엘펠트 발렌타인, 쓸모없는 인형들을 학살하겠습니다!
@@ -415,7 +416,11 @@ windows.wnddialog.elphelt.inprogress1=...그냥 무지막지하게 강한 변태
 windows.wnddialog.elphelt.inprogress2=당신 역시 다른 세계에서 온게 맞죠? 그때 저를 본 "관측자"만 있다면 원래 세계로 돌아갈 수 있어요! 좋아요, 그 텔레포트로 가죠!
 windows.wnddialog.elphelt.inprogress3=하지만.. 저는 이 분들에게 큰 민폐를 끼쳤는데... 아!
 
-windows.wnddialog.elphelt.complete0=저기, 이게 있다면 어느정도 도움이 될지도 몰라요! 제게 나쁜짓을 시킨 그 사람에게 꼭 제 뜻을 전해주기바래요. 그럼 이만!
+windows.wnddialog.elphelt.complete0= .......아, 인형이신 건가요? 죄송합니다! 죄송합니다아아!! \n\n 저...그게.. 이곳에 떨어진 후에 거대한 총을 들고있는 분이 이곳에 다가오는 사람들을 막아내면 좋은 남자를 만나게 해준다고 하셔서...
+windows.wnddialog.elphelt.complete1=...그냥 무지막지하게 강한 변태같은데. 노엘, 가서 뭐라고 말 좀 해봐.
+windows.wnddialog.elphelt.complete2=당신 역시 다른 세계에서 온게 맞죠? 그때 저를 본 "관측자"만 있다면 원래 세계로 돌아갈 수 있어요! 좋아요, 그 텔레포트로 가죠!
+windows.wnddialog.elphelt.complete3=하지만.. 저는 이 분들에게 큰 민폐를 끼쳤는데 그냥 가기에는... 아!
+windows.wnddialog.elphelt.complete4=저기, 이게 있다면 어느정도 도움이 될지도 몰라요! 저를 속인 그 사람에게 꼭 제 뜻을 전해주시길 바래요. 그럼 이만!
 
 windows.wnddialog.ppsh47quest.branch1.0=네가 왜 여기있는거지?
 windows.wnddialog.ppsh47quest.branch1.1=아, 안녕하세요! 404 소대원 분들, 페르시카가 당신들이 온다고 미리 알려줬어요.
@@ -463,7 +468,7 @@ windows.wnddialog.ppsh47quest.branch.completed00 = PPSH
 
 windows.wnddialog.ppsh47quest.branch.get_lost00 = PPSH
 
-windows.wnddialog.gager0=무릎을 꿇어라. 아니면 이 총알을 한 방 맞을 거냐? 어느 쪽인지 선택해라.
+windows.wnddialog.gegar0=무릎을 꿇어라. 아니면 이 총알을 한 방 맞을 거냐? 어느 쪽인지 선택해라.
 
 windows.wnddialog.p7quest.branch1.0 = 뭐야, 404 소대가 여기는 웬 일이야?
 windows.wnddialog.p7quest.branch1.1 = 작전중이야. 미안하지만 작전 내용은 말해줄수없어.
@@ -475,11 +480,11 @@ windows.wnddialog.p7quest.branch2.0 = 뭐야 404가 여기는 웬 일이야?
 windows.wnddialog.p7quest.branch2.1 = 작전중이야. 미안하지만 작전 내용은 말해줄수없어.
 windows.wnddialog.p7quest.branch2.2 = 음, 그렇구나. 저기, 부탁좀 들어줄수있어?
 windows.wnddialog.p7quest.branch2.3 = 난 여기서 유료 보급을 시작할 생각이야. \n\n 그런데 몇몇 철혈때문에 보급이 어렵단 말이야..
-windows.wnddialog.p7quest.branch2.4 = 그래서 말인데, 네메움 6마리를 잡아 증거로 계급장을 가져다줬으면 해!
+windows.wnddialog.p7quest.branch2.4 = 그래서 말인데, 만티코어 4마리를 잡아 증거로 계급장을 가져다줬으면 해!
 
 windows.wnddialog.p7quest.inprogress.branch1.0 = 아직 안죽었구나! 다행이다~ \n\n 녀석들, 가끔 공격을 튕겨내니까 더 주의하는게 좋을거야.
 
-windows.wnddialog.p7quest.inprogress.branch2.0 = 아직 안죽었구나! 다행이다~ \n\n 녀석들, 일반 인형보단 강하니까 최대한 단시간에 잡는게 좋을거야.
+windows.wnddialog.p7quest.inprogress.branch2.0 = 아직 안죽었구나! 다행이다~ \n\n 녀석들, 너무 강력한 피해는 적게 받으니 인내심을 가지고 공격해야 할거야.
 
 windows.wnddialog.p7quest.complete0 = 우와아! 진짜로 해치워왔잖아.. \n\n 사실 너희는 못할 줄 알았거든. 사과겸 감사의 답례로 이 도트사이트를 줄게!
 
