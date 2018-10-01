@@ -15,16 +15,16 @@ public class Jaguar extends Mob {
     {
         spriteClass = JaguarSprite.class;
 
-        HP = HT = 30;
-        defenseSkill = 5;
-        baseSpeed = 1f;
+        HP = HT = 70;
+        defenseSkill = 25;
+        baseSpeed = 0.9f;
 
-        EXP = 7;
-        maxLvl = 15;
+        EXP = 11;
+        maxLvl = 21;
         loot = Generator.Category.WEAPON;
         lootChance = 0.15f;
     }
-
+//공격속도 2턴에 1번 제누와즈 발사, 착탄후 1턴후 폭발하며 폭발에 적중시 약화상태가 됨. 폭발 반경 내에 아이템은 사라지지않음. 근접했을때도 제누와즈를 발사함.
     @Override
     public int damageRoll() {
         return Random.NormalIntRange( 5, 12 );

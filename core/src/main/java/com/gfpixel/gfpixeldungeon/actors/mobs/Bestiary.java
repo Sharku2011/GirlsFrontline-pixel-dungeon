@@ -163,23 +163,23 @@ public class Bestiary {
 					case 2:
 						//5x bat, 5x brute, 1x spinner
 						return new ArrayList<>(Arrays.asList(
-								Bat.class, Bat.class, Bat.class, Bat.class, Bat.class,
+								Bat.class, Bat.class, Bat.class, Bat.class,
 								Brute.class, Brute.class, Brute.class, Brute.class,
-								Spinner.class,
+								Spinner.class,Spinner.class,
                                 Nemeum.class));
 					case 3:
 						//1x bat, 3x brute, 1x shaman, 1x spinner
 						return new ArrayList<>(Arrays.asList(
-								Bat.class,
+								Bat.class, Bat.class,
 								Brute.class, Brute.class, Brute.class,
-                                Spinner.class,
-                                Nemeum.class));
+                                Spinner.class,Spinner.class,
+                                Nemeum.class, Nemeum.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
 								Bat.class,
 								Brute.class, Brute.class, Brute.class,
                                 Spinner.class,Spinner.class,
-                                Nemeum.class,Nemeum.class));
+                                Nemeum.class,Nemeum.class,Nemeum.class));
 				}
 			}
 		};
