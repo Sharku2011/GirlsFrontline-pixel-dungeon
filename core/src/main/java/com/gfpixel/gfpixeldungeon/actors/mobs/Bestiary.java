@@ -132,20 +132,20 @@ public class Bestiary {
 						return new ArrayList<>(Arrays.asList(
                                 Skeleton.class, Skeleton.class, Skeleton.class,
 								Ripper.class, Ripper.class,
-								Shaman.class,
-								Jaguar.class));
+								Shaman.class,Shaman.class,
+								Spinner.class));
 					case 3:
 						return new ArrayList<>(Arrays.asList(
                                 Skeleton.class, Skeleton.class,
 								Ripper.class, Ripper.class,
 								Shaman.class,
-								Jaguar.class, Jaguar.class));
+								Spinner.class,Spinner.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
                                 Skeleton.class, Skeleton.class,
 								Ripper.class, Ripper.class,Ripper.class,
 								Shaman.class,
-								Jaguar.class, Jaguar.class));
+								Spinner.class,Spinner.class));
 				}
 			}
 		};
@@ -165,20 +165,20 @@ public class Bestiary {
 						return new ArrayList<>(Arrays.asList(
 								Bat.class, Bat.class, Bat.class, Bat.class,
 								Brute.class, Brute.class, Brute.class, Brute.class,
-								Spinner.class,Spinner.class,
+								Shaman.class, Shaman.class,
                                 Nemeum.class));
 					case 3:
 						//1x bat, 3x brute, 1x shaman, 1x spinner
 						return new ArrayList<>(Arrays.asList(
 								Bat.class, Bat.class,
 								Brute.class, Brute.class, Brute.class,
-                                Spinner.class,Spinner.class,
+								Shaman.class, Shaman.class,
                                 Nemeum.class, Nemeum.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
 								Bat.class,
 								Brute.class, Brute.class, Brute.class,
-                                Spinner.class,Spinner.class,
+								Shaman.class, Shaman.class,
                                 Nemeum.class,Nemeum.class,Nemeum.class));
 				}
 			}

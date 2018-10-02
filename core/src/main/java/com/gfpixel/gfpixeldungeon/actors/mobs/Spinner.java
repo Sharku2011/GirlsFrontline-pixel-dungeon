@@ -37,8 +37,8 @@ public class Spinner extends Mob {
 	{
 		spriteClass = SpinnerSprite.class;
 
-		HP = HT = 50;
-		defenseSkill = 14;
+		HP = HT = 10;
+		defenseSkill = 5;
 
 		EXP = 9;
 		maxLvl = 16;
@@ -51,12 +51,17 @@ public class Spinner extends Mob {
 
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange(10, 25);
+		return Random.NormalIntRange(5, 10);
 	}
 
 	@Override
 	public int attackSkill(Char target) {
-		return 20;
+		return 6;
+	}
+
+	@Override
+	protected float attackDelay() {
+		return 0.5f;
 	}
 
 	@Override
