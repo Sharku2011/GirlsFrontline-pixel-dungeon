@@ -18,11 +18,8 @@ public class ElpheltSprite extends MobSprite {
 
     private Animation charging;
     private Animation genoise;
-    private Animation blast;
 
     private Emitter chargeParticles;
-
-    private Animation magnum;
 
 
     public ElpheltSprite() {
@@ -127,9 +124,11 @@ public class ElpheltSprite extends MobSprite {
         } else if (anim == genoise && ((Elphelt)ch).getTraceGenoise() != null) {
             charge( ((Elphelt)ch).genoiseDst );
         }
+
         if (ch != null) {
             ch.next();
         }
+
         super.onComplete( anim );
     }
 

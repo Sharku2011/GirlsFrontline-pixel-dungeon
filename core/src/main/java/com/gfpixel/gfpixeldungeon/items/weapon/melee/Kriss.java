@@ -43,8 +43,6 @@ public class Kriss extends MeleeWeapon {
 		if (owner instanceof Hero) {
 			Buff.prolong(owner, Speed.class, 1.75f);
 		}
-
-
 		return super.damageRoll(owner);
 	}
 
