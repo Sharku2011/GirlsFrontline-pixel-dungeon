@@ -998,7 +998,7 @@ items.weapon.melee.lar.stats_desc=이 무기는 빠르고 정확하며 먼 거�
 items.weapon.melee.lar.desc="다시 만났네 지휘관. 왜 그래? 쓸쓸한 얼굴 하고. 잠시 못 만났을 뿐이잖아." \n\n M1911을 강력한 .50 Action Express 탄환을 사용할 수 있도록 개량한 대구경 권총입니다. 빠르고 정확한 동시에 먼 거리를 공격할 수 있으며, 기습에 특화되어있지만 강화 효율이 크게 떨어집니다. 
 
 items.weapon.melee.dp.name=DP-28
-items.weapon.melee.dp.stats_desc=이 무기는 다른 무기보다 압도적으로 빠릅니다.
+items.weapon.melee.dp.stats_desc=이 무기는 다른 무기보다 압도적으로 빠르지만 명중률이 낮고 기습공격시 데미지가 떨어집니다.
 items.weapon.melee.dp.desc="LMG MOUNTED AND LOADED! Весомый аргумент готов." \n\n7.62x54mmR 47발들이 원반형 탄창을 사용하는 데그챠료프 보병기관총입니다. 머리가 나쁜 인간이라도 쉽게 사용할 수 있을만큼 단순하며, 가볍고 매우 높은 신뢰도와 내구성을 자랑합니다. 탄창만 빼고요! 
 
 items.weapon.melee.g11.name=H&K G11
@@ -1042,7 +1042,7 @@ items.weapon.melee.kriss.stats_desc=이 기관단총으로 타격할때마다, �
 items.weapon.melee.kriss.desc="안심해, 순식간에 죽여줄테니 어떤 아픔도 느끼지 못할거야."\n\n KRISS사에서 개발한 최신형 기관단총입니다. 이 기관단총을 쏠때마다 좀더 빠르게 기동할 수 있으며, 모든 시간에 관련된 것들이 두배로 증폭됩니다.
 
 items.weapon.melee.negev.name=IWI Negev
-items.weapon.melee.negev.stats_desc=이 무기는 다른 무기보다 압도적으로 빠릅니다.
+items.weapon.melee.negev.stats_desc=이 무기는 다른 무기보다 압도적으로 빠르지만 명중률이 낮고 기습공격시 데미지가 떨어집니다.
 items.weapon.melee.negev.desc="Rush B, Cyka blyat! Why you buy NEGEV?!" \n\n 분대지원화기 갈릴 ARM을 대체하기 위해 만들어진 5.56mm 경기관총입니다. 매우 낮은 데미지를 가지지만, 5번의 빠른 공격은 낮은 데미지를 보충하기엔 충분합니다.
 
 items.weapon.melee.m1903.name=스프링필드 M1903
@@ -1065,7 +1065,7 @@ items.weapon.melee.ntw20.stats_desc=이 무기는 다른 무기들보다 심각�
 items.weapon.melee.ntw20.desc="강철의 벽이라 해도, 내가 뚫을 수 있다는 걸 보여주지." \n\n 남아프리카 공국의 차량 거치용 20mm 대물저격총. NTW-20입니다. 바렛의 50구경보다 강력한 20x110mm 탄환을 사용하며, 적절한 강화를 거친 NTW-20은 한번의 명중으로 대부분의 기갑병기를 무력화시킬 수 있을만큼 강력합니다. 그게 정규군이라도요.
 
 items.weapon.melee.mg42.name=H&K MG4
-items.weapon.melee.mg42.stats_desc=이 무기는 다른 무기보다 압도적으로 빠릅니다.
+items.weapon.melee.mg42.stats_desc=이 무기는 다른 무기보다 압도적으로 빠르지만 명중률이 낮고 기습공격시 데미지가 떨어집니다.
 items.weapon.melee.mg42.desc="준비만전이에요!" \n\n Heckler & Koch Maschinengewehr 4, FN사가 개발한 FN 미니미의 인기에 자극받은 H&K가 1999년에 개발을 시작해서 2001년에 마친 경기관총입니다. \n H&K 최초의 가스작동식 경기관총으로, 탄피 및 금속 링크 배출구 개량 및 새로운 안전장치 개발, 접이식 개머리판 도입 등 미니미의 단점을 개선했습니다.
 
 items.weapon.melee.sass.name=Super SASS

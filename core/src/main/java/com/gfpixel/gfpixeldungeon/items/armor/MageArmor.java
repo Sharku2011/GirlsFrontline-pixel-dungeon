@@ -51,7 +51,7 @@ public class MageArmor extends ClassArmor {
 
 		curUser.HP -= (curUser.HP / 5 * 2);
 
-		Buff.prolong(Dungeon.hero, Speed.class, 2f);
+		Buff.prolong(Dungeon.hero, Speed.class, 2.5f);
 		
 		curUser.spend( Actor.TICK );
 		curUser.sprite.operate( curUser.pos );
