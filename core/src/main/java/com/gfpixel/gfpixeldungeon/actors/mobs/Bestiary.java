@@ -125,21 +125,25 @@ public class Bestiary {
 						return null;
 					case 1:
 						return new ArrayList<>(Arrays.asList(
-								Ripper.class, Ripper.class, Ripper.class,
+                                Skeleton.class, Skeleton.class, Skeleton.class,
+								Ripper.class, Ripper.class,
 								Shaman.class));
 					case 2:
 						return new ArrayList<>(Arrays.asList(
-								Ripper.class, Ripper.class, Ripper.class,
+                                Skeleton.class, Skeleton.class, Skeleton.class,
+								Ripper.class, Ripper.class,
 								Shaman.class,
 								Jaguar.class));
 					case 3:
 						return new ArrayList<>(Arrays.asList(
+                                Skeleton.class, Skeleton.class,
 								Ripper.class, Ripper.class,
 								Shaman.class,
 								Jaguar.class, Jaguar.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
-								Ripper.class, Ripper.class,
+                                Skeleton.class, Skeleton.class,
+								Ripper.class, Ripper.class,Ripper.class,
 								Shaman.class,
 								Jaguar.class, Jaguar.class));
 				}
@@ -159,22 +163,23 @@ public class Bestiary {
 					case 2:
 						//5x bat, 5x brute, 1x spinner
 						return new ArrayList<>(Arrays.asList(
-								Bat.class, Bat.class, Bat.class, Bat.class, Bat.class,
-								Brute.class, Brute.class, Brute.class, Brute.class, Brute.class,
-								Spinner.class));
+								Bat.class, Bat.class, Bat.class, Bat.class,
+								Brute.class, Brute.class, Brute.class, Brute.class,
+								Spinner.class,Spinner.class,
+                                Nemeum.class));
 					case 3:
 						//1x bat, 3x brute, 1x shaman, 1x spinner
 						return new ArrayList<>(Arrays.asList(
-								Bat.class,
+								Bat.class, Bat.class,
 								Brute.class, Brute.class, Brute.class,
-								Shaman.class,
-								Spinner.class));
+                                Spinner.class,Spinner.class,
+                                Nemeum.class, Nemeum.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
 								Bat.class,
 								Brute.class, Brute.class, Brute.class,
-								Shaman.class,
-								Spinner.class, Spinner.class, Spinner.class, Spinner.class));
+                                Spinner.class,Spinner.class,
+                                Nemeum.class,Nemeum.class,Nemeum.class));
 				}
 			}
 		};
@@ -225,14 +230,12 @@ public class Bestiary {
 						return new ArrayList<>(Arrays.asList(
 								Goliath.class, Goliath.class, Goliath.class,
 								Aegis.class, Aegis.class, Aegis.class, Aegis.class,
-								Jupiter.class, Jupiter.class,
-								Scorpio.class));
+								Jupiter.class, Jupiter.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
 								Goliath.class, Goliath.class, Goliath.class, Goliath.class,
 								Aegis.class, Aegis.class, Aegis.class,
-								Jupiter.class, Jupiter.class,
-								Scorpio.class));
+								Jupiter.class, Jupiter.class));
 				}
 			}
 		};

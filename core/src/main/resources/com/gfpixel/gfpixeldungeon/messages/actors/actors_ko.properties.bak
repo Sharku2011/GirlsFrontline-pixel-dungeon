@@ -572,7 +572,15 @@ actors.mobs.swarm.def_verb=회피
 actors.mobs.swarm.desc=작지만 자가복제로 적을 제압하는 소형 정찰기입니다. 모든 물리형 공격은 옵저버를 두 개의 기체로 분열시키지만. 피해량은 그대로입니다.
 
 actors.mobs.elphelt.name=엘펠트 발렌타인
-actors.mobs.elphelt.desc=결혼하고 싶어 발정난 미친년입니다. 꼴에 싸움도 잘해서 졌다간 따먹힐지도 모릅니다. 당신이 남자건 여자건 말이죠. 물론, 빵붕이는 예외입니다.
+<<<<<<< HEAD
+actors.mobs.elphelt.desc=엘펠트 발렌타인입니다. 23짜리 떡장갑이라서 같은 콜라보캐인 노엘과는 반대로 망샷 고정멤버로 들어가곤 합니다.
+=======
+actors.mobs.elphelt.2페이즈=최종병기! 매그넘 웨딩!!
+actors.mobs.elphelt.돌진=조준합니다!
+actors.mobs.elphelt.desc=여기 보세요~ 미래의 서방님들~ 저는 엘펠트 밸런타인이에요! 비록 인형을 말살하기 위한 목적으로 만들어졌지만... 행복한 가정을 꾸리고 싶답니다! 이세계에서 이상적인 남편감을 찾을 수 있을려나요? 아아 망상이 멈추질 않네요... 앗! 코피가!
+actors.mobs.elphelt.genoise_kill=사랑의 힘이 너무 강했다...
+actors.mobs.elphelt.defeated=멋진 강함이시네요. 제가 졌어요!
+>>>>>>> Sharku-Beastiary
 
 actors.mobs.tengu.name=우로보로스
 actors.mobs.tengu.notice_mine=감히 구식 인형 따위가, %s!
