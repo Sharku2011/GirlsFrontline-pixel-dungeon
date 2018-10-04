@@ -242,6 +242,9 @@ public class Dungeon {
 		Generator.initArtifacts();
 		hero = new Hero();
 		hero.live();
+
+		// initialize flags
+		HUNTINGRABBIT = false;
 		
 		Badges.reset();
 		
@@ -252,7 +255,7 @@ public class Dungeon {
 		return (challenges & mask) != 0;
 	}
 
-	public static boolean HUNTINGRABBIT = false;
+	public static boolean HUNTINGRABBIT;
 
 	public static Level newLevel() {
 		
