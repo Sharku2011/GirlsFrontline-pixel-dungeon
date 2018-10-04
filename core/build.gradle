@@ -2,13 +2,12 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.3"
-
+    buildToolsVersion '28.0.3'
     defaultConfig {
         resConfigs "en_US", "cs", "tr", "ca", "ko", "pl", "it",
                 "eo", "ru", "zh_CN", "de", "fr", "es", "pt", "fi", "hu", "in"
+        minSdkVersion 8
     }
-
     buildTypes {
         debug {
             applicationIdSuffix ".indev"
