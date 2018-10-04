@@ -99,15 +99,13 @@ public class DM300 extends Mob {
 	}
 
 	public void magnum() {
-		for (int c : aim.subPath(0, aim.dist))
-			CellEmitter.center(c).burst( BloodParticle.BURST, 1 );
-
-		int damage = Random.NormalIntRange(12,20);
+		for (int c : aim.subPath(0, aim.dist)) {
+			CellEmitter.center(c).burst(BloodParticle.BURST, 1);
+		}
 
 		Char ch = findChar(aim.collisionPos);
 		if (ch != null) {
-			ch.damage(damage - ch.drRoll(), DM300.this );
-			ch.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 5 );
+			ch.damage(damageRoll() - ch.drRoll(), DM300.this );
 		}
 	}
 
@@ -125,15 +123,7 @@ public class DM300 extends Mob {
 	public int drRoll() {
 		return Random.NormalIntRange(0, 10);
 	}
-	
-	@Override
-	public boolean act() {
-		
-		GameScene.add( Blob.seed( pos, 30, ToxicGas.class ) );
-		
-		return super.act();
-	}
-	
+
 	@Override
 	public void move( int step ) {
 		super.move( step );
@@ -159,8 +149,6 @@ public class DM300 extends Mob {
 		
 		if (Dungeon.level.heroFOV[cell]) {
 			CellEmitter.get( cell ).start( Speck.factory( Speck.ROCK ), 0.07f, 10 );
-			Camera.main.shake( 3, 0.7f );
-			Sample.INSTANCE.play( Assets.SND_ROCKS );
 			
 			if (Dungeon.level.water[cell]) {
 				GameScene.ripple( cell );
@@ -180,8 +168,7 @@ public class DM300 extends Mob {
 
 	@Override
 	public void damage(int dmg, Object src) {
-		int finalDmg = Math.max(dmg, damageCap);
-		super.damage(finalDmg, src);
+		super.damage(dmg, src);
 		LockedFloor lock = Dungeon.hero.buff(LockedFloor.class);
 		if (lock != null && !isImmune(src.getClass())) lock.addTime(dmg*1.5f);
 	}

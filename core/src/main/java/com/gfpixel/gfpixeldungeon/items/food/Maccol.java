@@ -39,15 +39,17 @@ public class Maccol extends Food {
 
     }
 
-    //@Override
-    //public int price() {
-       // return 10 * quantity;
-    //}
+    @Override
+    public int price() {
+        return 10 * quantity;
+    }
 
-    //@Override
-    //public void execute( Hero hero, String action ) {
-        //super.execute(hero, action);
+    @Override
+    public void execute( Hero hero, String action ) {
+        super.execute(hero, action);
+        if (action == AC_EAT) {
+            Buff.affect(hero, Speed.class, 5.f);
+        }
 
-        //Buff.affect(hero, Speed.class, Speed.DURATION);
-   // }
+   }
 }

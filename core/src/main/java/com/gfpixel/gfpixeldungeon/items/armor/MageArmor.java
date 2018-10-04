@@ -41,22 +41,19 @@ public class MageArmor extends ClassArmor {
 	
 	@Override
 	public void doSpecial() {
-		
-		for (Mob mob : Dungeon.level.mobs.toArray(new Mob[0])) {
-			if (Dungeon.level.heroFOV[mob.pos]) {
-				Buff.affect( mob, Burning.class ).reignite( mob );
-				Buff.prolong( mob, Roots.class, 3 );
-			}
-		}
 
-		curUser.HP -= (curUser.HP / 5 * 2);
+		curUser.HP -= (curUser.HP / 5 * 3);
 
+<<<<<<< HEAD
 		Buff.prolong(Dungeon.hero, Speed.class, 2.5f);
+=======
+		Buff.prolong(Dungeon.hero, Speed.class, 1.5f);
+>>>>>>> master
 		
 		curUser.spend( Actor.TICK );
 		curUser.sprite.operate( curUser.pos );
 		curUser.busy();
-		
+
 		curUser.sprite.centerEmitter().start( ElmoParticle.FACTORY, 0.15f, 4 );
 		Sample.INSTANCE.play( Assets.SND_READ );
 	}
