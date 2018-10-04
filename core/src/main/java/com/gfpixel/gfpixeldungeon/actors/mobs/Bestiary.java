@@ -127,24 +127,24 @@ public class Bestiary {
 						return new ArrayList<>(Arrays.asList(
                                 Skeleton.class, Skeleton.class, Skeleton.class,
 								Ripper.class, Ripper.class,
-								Shaman.class));
+								Jager.class));
 					case 2:
 						return new ArrayList<>(Arrays.asList(
                                 Skeleton.class, Skeleton.class, Skeleton.class,
 								Ripper.class, Ripper.class,
-								Shaman.class,
+								Jager.class,
 								Jaguar.class));
 					case 3:
 						return new ArrayList<>(Arrays.asList(
                                 Skeleton.class, Skeleton.class,
 								Ripper.class, Ripper.class,
-								Shaman.class,
+								Jager.class,
 								Jaguar.class, Jaguar.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
                                 Skeleton.class, Skeleton.class,
 								Ripper.class, Ripper.class,Ripper.class,
-								Shaman.class,
+								Jager.class,
 								Jaguar.class, Jaguar.class));
 				}
 			}
