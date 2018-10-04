@@ -95,7 +95,7 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 30, 16, 45, 26 ) );
 			break;
 		case SHPX:
-			icon.frame( icon.texture.uvRect( 56, 49, 70, 54 ) );
+			icon.frame( icon.texture.uvRect( 56, 49, 70, 63 ) );
 			break;
 		case WARRIOR:
 			icon.frame( icon.texture.uvRect( 0, 29, 16, 45 ) );
