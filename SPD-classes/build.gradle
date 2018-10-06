@@ -1,12 +1,11 @@
 apply plugin: 'com.android.library'
-
 android {
     compileSdkVersion 27
-    buildToolsVersion '28.0.2'
+    buildToolsVersion '28.0.3'
     defaultConfig {
         minSdkVersion 8
     }
-    task ndkBuild(type: Exec){
+    task ndkBuild(type: Exec) {
         description "builds JNI libs from source. " +
                 "This requires the Android NDK and is optional as precompiled libs are provided."
 
@@ -14,7 +13,7 @@ android {
         def ndkDir = android.ndkDirectory
 
         //Need to execute through cmd on windows systems
-        if (System.properties["os.name"].toLowerCase().contains("windows")){
+        if (System.properties["os.name"].toLowerCase().contains("windows")) {
             executable "cmd"
             args "/c", "$ndkDir${File.separator}ndk-build",
                     "NDK_PROJECT_PATH=$root/src/main/jniSources",
@@ -31,4 +30,6 @@ android {
 
         }
     }
+}
+dependencies {
 }

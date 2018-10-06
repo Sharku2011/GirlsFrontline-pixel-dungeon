@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+
     compileSdkVersion 27
     buildToolsVersion '28.0.3'
     defaultConfig {
@@ -12,6 +13,9 @@ android {
         debug {
             applicationIdSuffix ".indev"
             versionNameSuffix '-개발버전'
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
         }
         release {
             shrinkResources true
