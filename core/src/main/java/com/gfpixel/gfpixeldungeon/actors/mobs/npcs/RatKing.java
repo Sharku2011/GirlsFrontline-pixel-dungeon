@@ -21,7 +21,6 @@
 
 package com.gfpixel.gfpixeldungeon.actors.mobs.npcs;
 
-import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
@@ -88,8 +87,7 @@ public class RatKing extends NPC {
 	@Override
 	public void notice() {
 		super.notice();
-
-		if (!Dungeon.chapters.contains(DialogInfo.ID_PRISON) && Challenges.numOfChallenges() >= 2) {
+		if (!Dungeon.chapters.contains(DialogInfo.ID_PRISON)) {
 			Dungeon.HUNTINGRABBIT = true;
 		}
 
