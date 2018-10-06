@@ -134,6 +134,7 @@ public enum HeroClass {
 			new WandOfDisintegration().identify().upgrade().collect();
 			new PlateArmor().identify().upgrade(50).collect();
 			new Maccol().collect();
+			new ArmorKit().collect();
 		}
 
 
