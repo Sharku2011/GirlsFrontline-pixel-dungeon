@@ -45,7 +45,7 @@ public class AboutScene extends PixelScene {
 
 	private static final String TXT_SHPX =
 			"Code, & Graphics: NamSek\n" +
-			"Code: Lycoris";
+			"Code: Sharku";
 
 	private static final String LNK_SHPX = "www.pixiv.net/member.php?id=14086167";
 

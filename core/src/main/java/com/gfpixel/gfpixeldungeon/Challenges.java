@@ -67,6 +67,17 @@ public class Challenges {
 			NO_FOOD, NO_ARMOR, NO_HEALING, NO_HERBALISM, SWARM_INTELLIGENCE, DARKNESS, NO_SCROLLS, NO_STRENGTH, NO_ANKH, INFLATION
 	};
 
+	public static int numOfChallenges() {
+
+		int challenges = 0;
+
+		for (int mask : MASKS) {
+			challenges += Dungeon.isChallenged(mask) ? 1 : 0;
+		}
+
+		return challenges;
+	}
+
 	public static boolean isItemBlocked( Item item ){
 		if (Dungeon.isChallenged(NO_FOOD)){
 			if (item instanceof Food ) {
