@@ -26,6 +26,7 @@ import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.BuildConfig;
 import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.items.ArmorKit;
 import com.gfpixel.gfpixeldungeon.items.BrokenSeal;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
@@ -125,10 +126,15 @@ public enum HeroClass {
 			new SmallRation().collect();
 		}
 
-		//if (BuildConfig.DEBUG) {
-            //new Maccol().collect();
-            //new Pasty().collect();
-        //}
+		if (BuildConfig.DEBUG) 	{
+			new Cannon().identify().collect();
+			new DriedRose().identify().collect();
+			new TowProto().identify().collect();
+			new ScrollOfUpgrade().identify().quantity(5).collect();
+			new WandOfDisintegration().identify().upgrade().collect();
+			new PlateArmor().identify().upgrade(50).collect();
+			new Maccol().collect();
+		}
 
 
 	}
@@ -161,15 +167,6 @@ public enum HeroClass {
 		Dungeon.LimitedDrops.POTION_BANDOLIER.drop();
 		new PotionOfHealing().identify();
 
-		if (BuildConfig.DEBUG) 	{
-			new Cannon().identify().collect();
-			new  DriedRose().identify().collect();
-			new TowProto().identify().collect();
-			new ScrollOfUpgrade().identify().quantity(5).collect();
-			new WandOfDisintegration().identify().upgrade().collect();
-			new PlateArmor().identify().upgrade(100).collect();
-		}
-
 	}
 
 	private static void initMage( Hero hero ) {
@@ -187,9 +184,7 @@ public enum HeroClass {
 		Dungeon.LimitedDrops.MAGICAL_HOLSTER.drop();
 		new ScrollOfUpgrade().identify();
 
-		if (BuildConfig.DEBUG) {
-			new MageArmor().identify().collect();
-		}
+
 	}
 
 	private static void initRogue( Hero hero ) {
@@ -211,14 +206,6 @@ public enum HeroClass {
 		Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
 		new ScrollOfMagicMapping().identify();
 
-		//if (BuildConfig.DEBUG) 	{
-
-			//new DriedRose().identify().collect();
-			//new TowProto().identify().collect();
-			//new ScrollOfUpgrade().identify().quantity(5).collect();
-			//new Ntw20().identify().collect();
-			//new Traviae().identify().collect();
-		//}
 	}
 
 	private static void initHuntress( Hero hero ) {
@@ -227,21 +214,12 @@ public enum HeroClass {
 		M79 m79 = new M79();
 		m79.identify().collect();
 
-
-
 		Dungeon.quickslot.setSlot(2, m79);
 
 		new VelvetPouch().collect();
 		Dungeon.LimitedDrops.VELVET_POUCH.drop();
 		new PotionOfMindVision().identify();
 
-		//if (BuildConfig.DEBUG) 	{
-
-			//new DriedRose().identify().collect();
-			//new TowProto().identify().collect();
-			//new ScrollOfUpgrade().identify().quantity(5).collect();
-			//new Traviae().identify().collect();
-		//}
 	}
 
 	public String title() {
