@@ -162,7 +162,9 @@ public enum HeroClass {
 			hero.belongings.armor.affixSeal(new BrokenSeal());
 		}
 
-		new ThrowingStone().identify().quantity(3).collect();
+		ThrowingStone stone = new ThrowingStone();
+		stone.identify().quantity(3).collect();
+		Dungeon.quickslot.setSlot(0, stone);
 
 		new PotionBandolier().collect();
 		Dungeon.LimitedDrops.POTION_BANDOLIER.drop();
