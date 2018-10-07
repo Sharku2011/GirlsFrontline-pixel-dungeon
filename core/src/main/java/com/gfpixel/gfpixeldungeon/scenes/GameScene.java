@@ -165,8 +165,14 @@ public class GameScene extends PixelScene {
 			GirlsFrontlinePixelDungeon.switchNoFade(TitleScene.class);
 			return;
 		}
-		
-		Music.INSTANCE.play( Assets.TUNE, true );
+
+		// TODO 나중에 분기점 여럿 넣을 경우를 대비하여 테마별로 다룰 수 있게 할 것
+		if (Dungeon.HUNTINGRABBIT && Dungeon.depth >= 6 && Dungeon.depth <= 10) {
+			Music.INSTANCE.play( Assets.TUNE_1, true );
+		} else {
+			Music.INSTANCE.play( Assets.TUNE, true );
+		}
+
 
 		SPDSettings.lastClass(Dungeon.hero.heroClass.ordinal());
 		
