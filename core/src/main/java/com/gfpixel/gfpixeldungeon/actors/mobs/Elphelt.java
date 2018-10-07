@@ -49,8 +49,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.gfpixel.gfpixeldungeon.Dungeon.hero;
-import static com.gfpixel.gfpixeldungeon.Dungeon.level;
 
 
 public class Elphelt extends Mob {
@@ -413,7 +411,7 @@ public class Elphelt extends Mob {
                                 Paralysis.prolong(fch, Paralysis.class, 2.5f);
                             }
                             Dungeon.level.press(fch.pos, fch, true);
-                            if (fch == hero){
+                            if (fch == Dungeon.hero){
                                 Dungeon.observe();
                             }
                         }
@@ -528,7 +526,7 @@ public class Elphelt extends Mob {
                         }
 
                         Dungeon.level.press(ch.pos, ch, true);
-                        if (ch == hero) {
+                        if (ch == Dungeon.hero) {
                             Dungeon.observe();
                         }
                     }
@@ -816,7 +814,7 @@ public class Elphelt extends Mob {
                             ch.damage( dmg , this );
                         }
 
-                        if (ch == hero && !ch.isAlive()) {
+                        if (ch == Dungeon.hero && !ch.isAlive()) {
                             Dungeon.fail( Elphelt.this.getClass() );
                             GLog.n( Messages.get( Elphelt.this, "genoise_kill") );
                         }
