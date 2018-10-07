@@ -197,7 +197,6 @@ public enum HeroClass {
 		(hero.belongings.misc1 = cloak).identify();
 		hero.belongings.misc1.activate( hero );
 		new PotionOfInvisibility().identify().collect();
-		new Welrod().identify().upgrade(3).collect();
 
 		ThrowingKnife knives = new ThrowingKnife();
 		knives.quantity(3).collect();
