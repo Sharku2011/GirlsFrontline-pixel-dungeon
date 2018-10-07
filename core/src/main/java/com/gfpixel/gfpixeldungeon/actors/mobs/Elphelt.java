@@ -11,6 +11,7 @@ import com.gfpixel.gfpixeldungeon.actors.blobs.GenoiseWarn;
 import com.gfpixel.gfpixeldungeon.actors.blobs.GooWarn;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
+import com.gfpixel.gfpixeldungeon.actors.buffs.LockedFloor;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.actors.hero.HeroSubClass;
@@ -26,6 +27,7 @@ import com.gfpixel.gfpixeldungeon.items.TomeOfMastery;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Traviae;
 import com.gfpixel.gfpixeldungeon.levels.RabbitBossLevel;
 import com.gfpixel.gfpixeldungeon.levels.Terrain;
 import com.gfpixel.gfpixeldungeon.levels.features.Door;
@@ -48,6 +50,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import static com.gfpixel.gfpixeldungeon.Dungeon.hero;
+import static com.gfpixel.gfpixeldungeon.Dungeon.level;
 
 
 public class Elphelt extends Mob {
@@ -62,7 +65,7 @@ public class Elphelt extends Mob {
 
         HP = HT = 600;
         EXP = 100;
-        defenseSkill = 35;
+        defenseSkill = 0;
         baseSpeed = 1f;
         maxLvl = 20;
 
@@ -87,8 +90,8 @@ public class Elphelt extends Mob {
     }
 
     private float warnDelay() { return 1f; }
-    private float bridleExpressDelay() { return  1f; }
-    private float magnumDelay() { return 3f; }
+    private float bridleExpressDelay() { return  1.5f; }
+    private float magnumDelay() { return 1.5f; }
 
 
     @Override
@@ -134,14 +137,14 @@ public class Elphelt extends Mob {
     public void notice() {
         super.notice();
         BossHealthBar.assignBoss(this);
+
         if (!Dungeon.level.locked) {
             WndDialog.ShowChapter(DialogInfo.ID_RABBIT_BOSS);
-            if (phase < 1) {
-                phase = 1;
-            }
+            phase = 1;
+            spend(TICK);
+            Dungeon.level.seal();
         }
     }
-
 
     @Override
     protected boolean act() {
@@ -167,14 +170,11 @@ public class Elphelt extends Mob {
                 }
                 break;
         }
-
         return super.act();
     }
 
-
     @Override
     protected boolean canAttack( Char enemy ) {
-
 	    if (enemy == null) {
 	        return false;
         }
@@ -192,6 +192,7 @@ public class Elphelt extends Mob {
                     curGenoiseStack = maxGenoiseStack;
                     onGenoise = true;
                 }
+
                 if ( onGenoise ) {
                     traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
                     genoiseDst = traceGenoise.collisionPos;
@@ -199,14 +200,19 @@ public class Elphelt extends Mob {
                 return onGenoise || super.canAttack( enemy );
             case 2:
                 // rush and magnum wedding
+                if (onRush) {
+                    return true;
+                }
                 if (timerRush >= COOLDOWN_RUSH) {
                     timerRush = COOLDOWN_RUSH;
-                    canRush = true;
+                    traceRush = new Ballistica( pos, target, Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
+                    canRush = findChar(traceRush.collisionPos) != null;
                     traceMagnum = null;
+                    return canRush;
                 } else {
                     traceMagnum = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
+                    return ( timerRush <= 1 && findChar(traceMagnum.collisionPos) == enemy && (Dungeon.level.distance(pos, enemy.pos) <= RANGE_MAGNUM) );
                 }
-                return onRush || canRush || ( timerRush <= 1 && findChar(traceMagnum.collisionPos) == enemy && (Dungeon.level.distance(pos, enemy.pos) <= RANGE_MAGNUM) );
         }
 
     }
@@ -219,9 +225,10 @@ public class Elphelt extends Mob {
             case 1:
                 if (enemy == null) {
                     onGenoise = false;
+                    spend( TICK );
                     return true;
                 }
-                spend( attackDelay() );
+
                 if ( genoiseDst > 0 ) {
                     if (Dungeon.level.adjacent(pos, genoiseDst)) {
                         Blast();
@@ -232,6 +239,7 @@ public class Elphelt extends Mob {
                     } else {
                         fireGenoise( genoiseDst );
                     }
+                    spend( attackDelay() );
                     if (genoiseDst == Dungeon.hero.pos) {
                         Dungeon.hero.interrupt();
                     }
@@ -252,6 +260,10 @@ public class Elphelt extends Mob {
                         bridleExpress();
                         return true;
                     } else {
+                        if (Dungeon.level.adjacent(pos, enemy.pos)) {
+                            Blast();
+                            return true;
+                        }
                         // 경고 궤적 표시
                         onRush = true;
                         spend( warnDelay() );
@@ -260,15 +272,13 @@ public class Elphelt extends Mob {
                     }
                 } else {
                     spend( magnumDelay() );
-                    if ( Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[traceMagnum.collisionPos] ) {
-                        sprite.zap( traceMagnum.collisionPos );
+                    if ( Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[enemy.pos] ) {
+                        sprite.zap( enemy.pos );
                     } else {
                         magnumWedding();
                     }
-                    sprite.parent.add(new Beam.DeathRay(sprite.center(), findChar(traceMagnum.collisionPos).sprite.center()));
                     return true;
                 }
-
         }
     }
 
@@ -277,7 +287,8 @@ public class Elphelt extends Mob {
         int newHP = HP - dmg;
         int newDmg = dmg;
 
-        if (newHP == 0 && HP <= HT/2) {
+        // die
+        if (newHP <= 0 && HP <= HT/2) {
             ((RabbitBossLevel)Dungeon.level).progress();
             return;
         }
@@ -285,12 +296,13 @@ public class Elphelt extends Mob {
         if ( HP > (HT/2) && newHP <= (HT/2)) {
             newDmg = HP - HT/2;
 
-            phase = 2;
-            yell("2페이즈!");
-
             sprite.idle();
             ((RabbitBossLevel)Dungeon.level).progress();
         }
+
+        LockedFloor lock = Dungeon.hero.buff(LockedFloor.class);
+        if (lock != null) lock.addTime(dmg*2);
+
         super.damage( newDmg, src );
     }
 
@@ -300,11 +312,13 @@ public class Elphelt extends Mob {
         if (Dungeon.hero.subClass == HeroSubClass.NONE) {
             Dungeon.level.drop( new TomeOfMastery(), pos ).sprite.drop();
         }
+        Dungeon.level.drop( new Traviae(), pos).sprite.drop();
 
         GameScene.bossSlain();
         super.die( cause );
 
         Badges.validateBossSlain();
+
 
         WndDialog.ShowChapter(DialogInfo.ID_RABBIT_BOSS + DialogInfo.COMPLETE);
 
@@ -412,6 +426,7 @@ public class Elphelt extends Mob {
             }
         }
         curGenoiseStack = Math.max(curGenoiseStack-1, 0);
+        spend(attackDelay());
         next();
     }
 
@@ -419,16 +434,11 @@ public class Elphelt extends Mob {
 
 	private void warnExpress() {
 
-        traceRush = new Ballistica( pos, target, Ballistica.STOP_CHARS | Ballistica.STOP_TERRAIN );
         if (traceRush.dist > 1) {
             bridlePath = traceRush.subPath(1, traceRush.dist);
         } else {
-            // 캐릭터와 엘펠트가 붙어있는 경우
-            // 일단 팅겨내기 -> 아니면 벽까지 돌진하게 만들고 그냥 죽여버리기?
-
             canRush = false;
             onRush = false;
-
             return;
         }
 
@@ -442,6 +452,10 @@ public class Elphelt extends Mob {
 
         dstRush = traceRush.collisionPos;
         ((ElpheltSprite)sprite).charge(dstRush);
+
+        if (Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[dstRush]) {
+            Dungeon.hero.interrupt();
+        }
 
         next();
     }
@@ -551,23 +565,26 @@ public class Elphelt extends Mob {
 
     }
 
-
     public void magnumWedding() {
 
-        for (int c : traceMagnum.subPath(0, traceMagnum.dist))
-            CellEmitter.center(c).burst( BloodParticle.BURST, 1 );
+        if (traceMagnum == null) { return; }
 
-	    int damage = Random.NormalIntRange(12,20);
+	    int damage = Random.NormalIntRange(25,35) / traceMagnum.dist;
 
 	    Char ch = findChar(traceMagnum.collisionPos);
 	    if (ch != null) {
             ch.damage(damage - ch.drRoll(), Elphelt.this );
             ch.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 5 );
             //  3턴 지속 매혹 부여
-            if (Random.IntRange(0,99) >= 40) {
+            if (Random.Int(RANGE_MAGNUM) <= traceMagnum.dist) {
                 Buff.affect( ch, Charm.class, magnumDelay() );
             }
         }
+
+        for (int c : traceMagnum.subPath(0, traceMagnum.dist))
+            CellEmitter.center(c).burst( BloodParticle.BURST, 1 );
+
+        sprite.parent.add(new Beam.DeathRay(sprite.center(), findChar(traceMagnum.collisionPos).sprite.center()));
     }
 
     private static final String PHASE           = "phase";
@@ -716,12 +733,11 @@ public class Elphelt extends Mob {
                             int cell;
                             do {
                                 cell = Random.Int( Dungeon.level.length() );
-                            } while ( Dungeon.level.distance(cell, enemy.pos) <= 8 && !Dungeon.level.passable[cell]);
+                            } while ( Dungeon.level.distance(cell, enemy.pos) >= 8 && !Dungeon.level.passable[cell]);
 
                             target = cell;
                         }
-                        doAttack( enemy );
-                        return true;
+                        return doAttack(enemy);
                     } else {
                         int oldPos = pos;
                         if (target != -1 && getCloser( target )) {
