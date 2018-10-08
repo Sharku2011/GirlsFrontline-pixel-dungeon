@@ -82,9 +82,4 @@ public class Point {
 			return false;
 		}
 	}
-
-	@Override
-	public String toString() {
-		return "x: "+x+"/y: "+y;
-	}
 }

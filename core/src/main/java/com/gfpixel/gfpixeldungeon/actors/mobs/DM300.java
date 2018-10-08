@@ -85,7 +85,6 @@ public class DM300 extends Mob {
 
 	@Override
 	protected boolean doAttack( Char enemy ) {
-
 		boolean visible = Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[aim.collisionPos];
 
 		if (visible) {
@@ -108,8 +107,6 @@ public class DM300 extends Mob {
 		if (ch != null) {
 			ch.damage(damageRoll() - ch.drRoll(), DM300.this );
 		}
-
-		next();
 	}
 
 	@Override
