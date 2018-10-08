@@ -36,12 +36,12 @@ public class ThrowingStone extends MissileWeapon {
 	
 	@Override
 	public int min(int lvl) {
-		return 5;
+		return 2;
 	}
 	
 	@Override
 	public int max(int lvl) {
-		return 9;
+		return 7;
 	}
 	
 	@Override

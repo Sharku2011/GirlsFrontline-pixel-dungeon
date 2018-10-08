@@ -85,7 +85,8 @@ public class DM300 extends Mob {
 
 	@Override
 	protected boolean doAttack( Char enemy ) {
-		boolean visible = Dungeon.level.heroFOV[pos];
+
+		boolean visible = Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[aim.collisionPos];
 
 		if (visible) {
 			sprite.attack( enemy.pos );
@@ -107,6 +108,8 @@ public class DM300 extends Mob {
 		if (ch != null) {
 			ch.damage(damageRoll() - ch.drRoll(), DM300.this );
 		}
+
+		next();
 	}
 
 	@Override
@@ -148,8 +151,6 @@ public class DM300 extends Mob {
 		int cell = cells[Random.Int( cells.length )];
 		
 		if (Dungeon.level.heroFOV[cell]) {
-			CellEmitter.get( cell ).start( Speck.factory( Speck.ROCK ), 0.07f, 10 );
-			
 			if (Dungeon.level.water[cell]) {
 				GameScene.ripple( cell );
 			} else if (Dungeon.level.map[cell] == Terrain.EMPTY) {

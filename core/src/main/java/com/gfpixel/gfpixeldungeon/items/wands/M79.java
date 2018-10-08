@@ -3,7 +3,7 @@
  * Copyright (C) 2012-2015 Oleg Dolya
  *
  * Girls Frontline Pixel Dungeon
- * Copyright (C) 2018-2018 Lycoris
+ * Copyright (C) 2018-2018 Sharku
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

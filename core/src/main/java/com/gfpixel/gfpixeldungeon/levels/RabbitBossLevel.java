@@ -23,8 +23,8 @@ package com.gfpixel.gfpixeldungeon.levels;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Bones;
+import com.gfpixel.gfpixeldungeon.BuildConfig;
 import com.gfpixel.gfpixeldungeon.Dungeon;
-import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
@@ -32,17 +32,15 @@ import com.gfpixel.gfpixeldungeon.actors.mobs.Elphelt;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.Item;
-import com.gfpixel.gfpixeldungeon.items.keys.IronKey;
 import com.gfpixel.gfpixeldungeon.levels.rooms.Room;
-import com.gfpixel.gfpixeldungeon.levels.rooms.standard.EmptyRoom;
 import com.gfpixel.gfpixeldungeon.levels.traps.GrippingTrap;
 import com.gfpixel.gfpixeldungeon.levels.traps.Trap;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.plants.Plant;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
-import com.gfpixel.gfpixeldungeon.tiles.CustomTiledVisual;
 import com.gfpixel.gfpixeldungeon.ui.TargetHealthIndicator;
 import com.gfpixel.gfpixeldungeon.utils.BArray;
+import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.noosa.Group;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundlable;
@@ -127,8 +125,8 @@ public class RabbitBossLevel extends Level {
 		cleanWalls();
 
 		state = State.READY;
-		entrance = 16+13*32;
-		exit = 16+11*32;
+		entrance = 15+12*32;
+		exit = 15+17*32;
 
 		resetTraps();
 
@@ -157,25 +155,28 @@ public class RabbitBossLevel extends Level {
 		}
 	}
 
+	@Override
+	public int randomRespawnCell() {
+		return entrance + PathFinder.NEIGHBOURS8[Random.Int(8)]; //random cell adjacent to the entrance.
+	}
 
 	@Override
 	public void press( int cell, Char ch ) {
 
 		super.press(cell, ch);
 
-		if (ch == Dungeon.hero){
-			//hero enters elphelt's chamber
+		if (BuildConfig.DEBUG) {
+			GLog.i(cellToPoint(cell).toString());
+		}
+
+		if (ch == Dungeon.hero) {
+			//hero enters tengu's chamber
 			if (state == State.READY) {
 				progress();
 			}
 		}
 	}
 
-	@Override
-	public int randomRespawnCell() {
-		return entrance + PathFinder.NEIGHBOURS8[Random.Int(8)]; //random cell adjacent to the entrance.
-	}
-	
 	@Override
 	public String tileName( int tile ) {
 		switch (tile) {
@@ -264,23 +265,14 @@ public class RabbitBossLevel extends Level {
 			//moving to the beginning of the fight
 			case READY:
 
-				changeMap(MAP_ARENA);
+				elphelt.state = elphelt.SLEEPING;
+				elphelt.phase = 1;
+				elphelt.pos = exit; //in the middle of the fight room
 
-				GameScene.updateMap(entrance);
-
-				for (Mob m : mobs){
-					//bring the first ally with you
-					if (m.alignment == Char.Alignment.ALLY){
-						m.pos = randomRespawnCell(); //they should immediately walk out of the door
-						m.sprite.place(m.pos);
-						break;
-					}
-				}
-				
-				elphelt.state = elphelt.HUNTING;
-				elphelt.pos = 14+17*32; //in the middle of the fight room
 				GameScene.add( elphelt );
-				elphelt.notice();
+
+				changeMap(MAP_ARENA);
+				GameScene.updateMap(entrance);
 
 				state = State.PHASE1;
 				break;
@@ -292,39 +284,35 @@ public class RabbitBossLevel extends Level {
 				Sample.INSTANCE.play(Assets.SND_BLAST);
 
 				state = State.PHASE2;
+				elphelt.phase = 2;
 				break;
 
 			case PHASE2:
 
+				GameScene.flash(0xFFFFFF);
+				Sample.INSTANCE.play(Assets.SND_BLAST);
 
+				changeMap(MAP_END);
+				clearEntities(null);
+
+				GameScene.updateMap(entrance);
+				GameScene.updateMap(exit);
 
 				Dungeon.hero.interrupt();
 				Dungeon.hero.pos = entrance;
 				Dungeon.hero.sprite.interruptMotion();
 				Dungeon.hero.sprite.place(Dungeon.hero.pos);
 
-				Actor.remove(elphelt);
-				mobs.remove(elphelt);
-				TargetHealthIndicator.instance.target(null);
-				elphelt.sprite.kill();
-
-				elphelt.pos = 16+15*32;
+				elphelt.pos = 15+15*32;	// center of map
 				elphelt.die(Dungeon.hero);
 
-				for (int col=14; col<17; ++col) {
-					Item item = Dungeon.level.heaps.get(col+9*32).peek();
-					if (item != null) {
-						drop(item, randomRespawnCell());
-					}
-				}
+				Actor.remove(elphelt);
+				mobs.remove(elphelt);
 
-				GameScene.flash(0xFFFFFF);
-				Sample.INSTANCE.play(Assets.SND_BLAST);
+				TargetHealthIndicator.instance.target(null);
+				elphelt.sprite.kill();
 				
 				state = State.WON;
-				break;
-			case WON:
-				changeMap(MAP_END);
 				unseal();
 				break;
 		}
@@ -366,13 +354,13 @@ public class RabbitBossLevel extends Level {
 					W, e, e, e, e, W, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, W, W,
 					W, W, W, W, W, e, e, e, W, e, e, W, e, e, W, W, W, e, e, e, e, W, W, e, e, e, W, W, W, W, W, W,
 					W, e, e, e, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, W, e, e, W, e, e, e, e, e, e, W, W,
-					W, e, e, e, e, e, W, e, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
-					W, e, W, W, e, e, W, e, e, e, e, W, e, e, W, e, E, e, W, W, e, e, e, e, W, e, e, W, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, e, e, W, e, E, e, e, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, W, W, e, e, W, e, e, e, e, W, e, e, W, e, e, e, W, W, e, e, e, e, W, e, e, W, e, e, W, W,
 					W, W, e, e, W, e, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
 					W, e, e, e, W, e, W, e, e, e, W, e, e, e, e, M, e, e, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
 					W, e, e, e, W, e, W, e, e, e, W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, e, W, e, e, W, W, W,
-					W, e, e, W, e, e, W, e, e, e, e, W, W, e, T, e, W, e, e, W, e, e, e, e, W, e, e, W, W, e, W, W,
-					W, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, W, e, e, W, e, e, e, e, W, W, e, e, e, W, e, e, W, e, e, e, e, W, e, e, W, W, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, e, e, e, e, T, e, W, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
 					W, e, e, e, e, e, e, W, e, e, W, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, e, e, e, W, W,
 					W, W, W, W, W, e, e, e, W, W, e, e, e, e, W, W, W, e, e, W, e, e, W, e, e, e, W, W, W, W, W, W,
 					W, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, W, W,
@@ -431,16 +419,16 @@ public class RabbitBossLevel extends Level {
 					W, W, W, e, e, W, e, e, W, e, e, e, W, W, W, W, W, W, W, e, e, e, W, W, e, e, e, e, W, W, W, W,
 					W, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, W,
 					W, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, e, e, e, e, W, e, e, e, W, e, e, e, e, e, W, W,
-					W, e, e, e, e, W, e, e, e, e, W, e, e, e, W, W, W, e, e, e, e, e, e, e, e, W, e, e, e, e, W, W,
-					W, W, W, W, W, e, e, e, W, e, e, W, e, e, W, X, W, e, e, e, e, W, W, e, e, e, W, W, W, W, W, W,
+					W, e, e, e, e, W, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, W, W,
+					W, W, W, W, W, e, e, e, W, e, e, W, e, e, W, W, W, e, e, e, e, W, W, e, e, e, W, W, W, W, W, W,
 					W, e, e, e, e, e, e, W, e, e, e, e, e, W, e, e, e, W, e, e, W, e, e, W, e, e, e, e, e, e, W, W,
 					W, e, e, e, e, e, W, e, e, e, e, e, e, W, e, E, e, e, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
 					W, e, W, W, e, e, W, e, e, e, e, W, e, e, W, e, e, e, W, W, e, e, e, e, W, e, e, W, e, e, W, W,
 					W, W, e, e, W, e, W, e, e, e, W, e, e, e, e, e, e, W, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
-					W, e, e, e, W, e, W, e, e, e, W, e, e, e, e, M, e, e, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
+					W, e, e, e, W, e, W, e, e, e, W, e, e, e, e, P, e, e, e, e, W, e, e, e, W, e, W, e, e, e, W, W,
 					W, e, e, e, W, e, W, e, e, e, W, e, e, W, e, e, e, e, e, e, W, e, e, e, W, e, W, e, e, W, W, W,
 					W, e, e, W, e, e, W, e, e, e, e, W, W, e, e, e, W, e, e, W, e, e, e, e, W, e, e, W, W, e, W, W,
-					W, e, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
+					W, e, e, e, e, e, W, e, e, e, e, e, e, e, e, X, e, W, e, e, e, e, e, e, W, e, e, e, e, e, W, W,
 					W, e, e, e, e, e, e, W, e, e, W, e, e, W, e, e, e, W, e, e, e, e, e, W, e, e, e, e, e, e, W, W,
 					W, W, W, W, W, e, e, e, W, W, e, e, e, e, W, W, W, e, e, W, e, e, W, e, e, e, W, W, W, W, W, W,
 					W, e, e, e, e, W, e, e, e, e, e, e, e, e, e, e, e, e, e, e, W, e, e, e, e, W, e, e, e, e, W, W,

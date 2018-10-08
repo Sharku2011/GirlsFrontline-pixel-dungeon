@@ -221,10 +221,15 @@ public class Bestiary {
 		MR_RECAVES		= new MobRotations( 4 ) {
 			@Override
 			public ArrayList<Class<? extends Mob>> getRotation(int floor) {
-				switch (floor) {
+				switch (floor % 5) {
 					case 0: case 1: default:
 						return null;
 					case 2:
+						//3x Goliath, 4x Aegis, 2x Jupiter, 1x Scorpio
+						return new ArrayList<>(Arrays.asList(
+								Goliath.class, Goliath.class, Goliath.class,
+								Aegis.class, Aegis.class, Aegis.class, Aegis.class,
+								Jupiter.class, Jupiter.class));
 					case 3:
 						//3x Goliath, 4x Aegis, 2x Jupiter, 1x Scorpio
 						return new ArrayList<>(Arrays.asList(
@@ -242,7 +247,7 @@ public class Bestiary {
 		MR_HALLS			= new MobRotations( 5 ) {
 			@Override
 			public ArrayList<Class<? extends Mob>> getRotation(int floor) {
-				switch (floor) {
+				switch (floor % 5) {
 					case 0:default:
 						return null;
 					case 1:
@@ -272,71 +277,4 @@ public class Bestiary {
 			}
 		};
 	}
-	/*
-	//has a chance to add a rarely spawned mobs to the rotation
-	public static void addRareMobs( int depth, ArrayList<Class<?extends Mob>> rotation ){
-
-		switch (depth){
-			// Sewers
-			default:
-				return;
-			case 4:
-				if (Random.Float() < 0.01f) rotation.add(Skeleton.class);
-				if (Random.Float() < 0.01f) rotation.add(Thief.class);
-				return;
-				
-			// Prison
-			case 6:
-				if (Random.Float() < 0.2f)  rotation.add(Shaman.class);
-				return;
-			case 8:
-				if (Random.Float() < 0.02f) rotation.add(Bat.class);
-				return;
-			case 9:
-				if (Random.Float() < 0.02f) rotation.add(Bat.class);
-				if (Random.Float() < 0.01f) rotation.add(Brute.class);
-				return;
-				
-			// Caves
-			case 13:
-				if (Random.Float() < 0.02f) rotation.add(Elemental.class);
-				return;
-			case 14:
-				if (Random.Float() < 0.02f) rotation.add(Elemental.class);
-				if (Random.Float() < 0.01f) rotation.add(Monk.class);
-				return;
-				
-			// City
-			case 19:
-				if (Random.Float() < 0.02f) rotation.add(Succubus.class);
-				return;
-			case 24:
-				if (Random.Float() < 0.02f) rotation.add(Hydra.class);
-				return;
-		}
-	}
-
-	//switches out regular mobs for their alt versions when appropriate
-	private static void swapMobAlts(ArrayList<Class<?extends Mob>> rotation){
-		for (int i = 0; i < rotation.size(); i++){
-			if (Random.Int( 50 ) == 0) {
-				Class<? extends Mob> cl = rotation.get(i);
-				if (cl == Rat.class) {
-					cl = Albino.class;
-				} else if (cl == Thief.class) {
-					cl = Bandit.class;
-				} else if (cl == Brute.class) {
-					cl = Shielded.class;
-				} else if (cl == Monk.class) {
-					cl = Senior.class;
-				} else if (cl == Scorpio.class) {
-					cl = Acidic.class;
-				} else if (cl == Hydra.class) {
-					cl = Typhoon.class;
-				}
-				rotation.set(i, cl);
-			}
-		}
-	}
-	*/
 }

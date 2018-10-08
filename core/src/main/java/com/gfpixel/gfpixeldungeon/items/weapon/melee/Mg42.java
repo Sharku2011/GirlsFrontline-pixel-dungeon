@@ -16,7 +16,7 @@ public class Mg42 extends MeleeWeapon {
         image = ItemSpriteSheet.MG42;
 
         tier = 6;
-        ACC = 0.7f;
+        ACC = 0.6f;
         DLY = 0.1f;
     }
 
@@ -35,7 +35,7 @@ public class Mg42 extends MeleeWeapon {
                 //deals 85% toward max to max on surprise, instead of min to max.
                 int diff = max() - min();
                 int damage = augment.damageFactor(Random.NormalIntRange(
-                        min() + Math.round(diff*0.4f),
+                        min() + Math.round(diff*0.5f),
                         max()));
                 int exStr = hero.STR() - STRReq();
                 if (exStr > 0) {
