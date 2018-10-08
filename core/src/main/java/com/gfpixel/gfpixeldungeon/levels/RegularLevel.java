@@ -247,7 +247,7 @@ public abstract class RegularLevel extends Level {
 	@Override
 	protected void createMobs() {
 		//on floor 1, 10 rats are created so the player can get level 2.
-		int mobsToSpawn = Dungeon.depth == 1 ? 10 : nMobs();
+		int mobCountToSpawn = Dungeon.depth == 1 ? 10 : nMobs();
 
 		ArrayList<Room> stdRooms = new ArrayList<>();
 		for (Room room : rooms) {
@@ -260,7 +260,7 @@ public abstract class RegularLevel extends Level {
 		Random.shuffle(stdRooms);
 		Iterator<Room> stdRoomIter = stdRooms.iterator();
 
-		while (mobsToSpawn > 0) {
+		while (mobCountToSpawn > 0) {
 			if (!stdRoomIter.hasNext())
 				stdRoomIter = stdRooms.iterator();
 			Room roomToSpawn = stdRoomIter.next();
@@ -269,16 +269,16 @@ public abstract class RegularLevel extends Level {
 			mob.pos = pointToCell(roomToSpawn.random());
 
 			if (findMob(mob.pos) == null && passable[mob.pos] && mob.pos != exit) {
-				mobsToSpawn--;
+				mobCountToSpawn--;
 				mobs.add(mob);
 
 				//TODO: perhaps externalize this logic into a method. Do I want to make mobs more likely to clump deeper down?
-				if (mobsToSpawn > 0 && Random.Int(4) == 0){
+				if (mobCountToSpawn > 0 && Random.Int(4) == 0){
 					mob = createMob();
 					mob.pos = pointToCell(roomToSpawn.random());
 
 					if (findMob(mob.pos)  == null && passable[mob.pos] && mob.pos != exit) {
-						mobsToSpawn--;
+						mobCountToSpawn--;
 						mobs.add(mob);
 					}
 				}

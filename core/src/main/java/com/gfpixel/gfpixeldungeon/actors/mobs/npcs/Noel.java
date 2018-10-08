@@ -80,7 +80,7 @@ public class Noel extends NPC {
     public boolean interact() {
 
         sprite.turnTo( pos, Dungeon.hero.pos );
-        GLog.i(String.valueOf(CeremonialCandle.ritualPos));
+        
         // 퀘스트 진행 검사
         if (Quest.given) {
             final Item item = Dungeon.hero.belongings.getItem( Quest.TARGETS.get(0));
