@@ -12,14 +12,16 @@
 build/
 release/
 
-#build output files
+# Build output files
 core/debug/
 core/release/
 
 # Local configuration file (sdk path, etc)
 local.properties
 
-#intellij project files
+# intellij project files
 *.iml
 *.idea
 
+# Apk Key file
+keystore.properties
