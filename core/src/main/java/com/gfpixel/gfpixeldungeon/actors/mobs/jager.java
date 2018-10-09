@@ -13,7 +13,7 @@ public class Jager extends Warlock {
 
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange( 6, 12 );
+        return Random.NormalIntRange( 6, 13 );
     }
 
     @Override
