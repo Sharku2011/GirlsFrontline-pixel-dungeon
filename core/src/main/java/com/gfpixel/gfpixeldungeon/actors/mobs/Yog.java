@@ -103,20 +103,16 @@ public class Yog extends Mob {
 		return super.act();
 	}
 
-	private static final int damageCap = 50;
-
 	@Override
 	public void damage( int dmg, Object src ) {
 
 		HashSet<Mob> fists = new HashSet<>();
 
-		for (Mob mob : Dungeon.level.mobs) {
-			if (mob instanceof RottingFist || mob instanceof BurningFist) {
+		for (Mob mob : Dungeon.level.mobs)
+			if (mob instanceof RottingFist || mob instanceof BurningFist)
 				fists.add( mob );
-			}
-		}
 
-		dmg = Math.min( dmg >> fists.size(), damageCap ) ;
+		dmg >>= fists.size();
 		
 		super.damage( dmg, src );
 
