@@ -39,9 +39,9 @@ public class MageArmor extends ClassArmor {
 	@Override
 	public void doSpecial() {
 
-		curUser.HP -= (curUser.HP / 5 * 3);
+		curUser.HP -= (curUser.HP / 10 * 7);
 
-		Buff.prolong(Dungeon.hero, Speed.class, 2.5f);
+		Buff.prolong(Dungeon.hero, Speed.class, 3.5f);
 		
 		curUser.spend( Actor.TICK );
 		curUser.sprite.operate( curUser.pos );
