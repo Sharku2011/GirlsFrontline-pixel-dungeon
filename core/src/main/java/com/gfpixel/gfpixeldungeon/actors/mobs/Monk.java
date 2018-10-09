@@ -51,28 +51,27 @@ public class Monk extends Mob {
 
 		properties.add(Property.UNDEAD);
 	}
-
+	
 	@Override
 	public int damageRoll() {
 		return Random.NormalIntRange( 12, 25 );
 	}
-
+	
 	@Override
 	public int attackSkill( Char target ) {
 		return 30;
 	}
-
+	
 	@Override
 	protected float attackDelay() {
 		return 0.5f;
 	}
-
+	
 	@Override
 	public int drRoll() {
 		return Random.NormalIntRange(0, 2);
 	}
-
-
+	
 	@Override
 	public void rollToDropLoot() {
 		Imp.Quest.process( this );

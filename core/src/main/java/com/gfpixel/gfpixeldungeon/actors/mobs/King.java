@@ -258,8 +258,8 @@ public class King extends Mob {
 		{
 			spriteClass = UndeadSprite.class;
 
-			HP = HT = 30;
-			defenseSkill = 10;
+			HP = HT = 28;
+			defenseSkill = 15;
 
 			EXP = 0;
 
@@ -282,17 +282,12 @@ public class King extends Mob {
 
 		@Override
 		public int damageRoll() {
-			return Random.NormalIntRange( 10, 15 );
+			return Random.NormalIntRange( 15, 25 );
 		}
 
 		@Override
 		public int attackSkill( Char target ) {
 			return 16;
-		}
-
-		@Override
-		protected float attackDelay() {
-			return 0.5f;
 		}
 
 		@Override
