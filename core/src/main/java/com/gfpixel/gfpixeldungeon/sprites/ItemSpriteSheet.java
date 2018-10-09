@@ -149,16 +149,17 @@ public class ItemSpriteSheet {
 	public static final int G11             = WEP_TIER1+5;
 	public static final int SR3             = WEP_TIER1+6;
 	public static final int CANNON         	= WEP_TIER1+7;
+	public static final int SRS        	= WEP_TIER1+8;
 	static{
 		assignItemRect(UMP45, 15, 16);
 		assignItemRect(DP,     15, 16);
-		assignItemRect(M9,   16, 16);
+		assignItemRect(M9,   11, 16);
 		assignItemRect(UMP40, 			   16, 16);
 		assignItemRect(DAGGER,          12, 13);
 		assignItemRect(G11,     15, 16);
 		assignItemRect(SR3,     15, 16);
-		assignItemRect(CANNON,     17, 15);
-
+		assignItemRect(CANNON,     15, 15);
+		assignItemRect(SRS,     16, 16);
 	}
 
 	private static final int WEP_TIER2      =                               xy(1, 8);   //8 slots
