@@ -266,13 +266,13 @@ public class ChangesScene extends PixelScene {
 				"_-_ MG계열 하향.\n\n" +
 						"_-_ MG계열(공격속도가 기본 5회 이상인 무기) 무기들의 명중률과 기습공격이 조정됬습니다.\n\n" +
 						"_-_ 최대 30%의 명중률 패널티를 가지며, 공격력은 그대로지만 기습공격시 60%의 피해만 입힐 수 있게 됩니다."));
-		changes.addButton( new ChangeButton(new PotionOfHealing(),
+        changes.addButton( new ChangeButton(new ItemSprite(ItemSpriteSheet.POTION_MAGENTA, null), new PotionOfHealing().trueName(),
 				"_-_ 수복포션 드랍 하향.\n\n" +
 						"_-_ 수복물약 드랍 몹에게 수복물약을 얻은 경우 이후 같은 몹에게 수복물약을 얻을 확률이 감소함"));
 
 		changes.addButton( new ChangeButton(new Sungrass.Seed(),
 				"_-_ 태양초 & 뱀뿌리 - 하향.\n\n" +
-						"_-_ 태양초의 회복 속도 대폭 감소, 레벨이 높을 수록 더 많이 감소하여 최대 기존의 40% 속도까지 줄어든다.\n\n" +
+						"_-_ 태양초의 회복 속도 대폭 감소, 레벨이 높을 수록 더 많이 감소하여 최대 기존의 40% 속도까지 감소합니다.\n\n" +
 						"_-_ 태양초의 회복을 받는 도중 피격당해도 회복량이 줄지 않는다.\n\n" +
 						"_-_ 태양초의 회복을 받는 도중 체력이 가득 차도 효과가 바로 끝나지 않는다.\n\n" +
 						"_-_ 뱀뿌리의 피해 흡수 비율이 기존의 50%에서 층 수에 비례하도록 변경"));

@@ -52,6 +52,7 @@ import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.TowProto;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
@@ -203,10 +204,14 @@ public enum HeroClass {
 
 	private static void initHuntress( Hero hero ) {
 
-		(hero.belongings.weapon = new Boomerang()).identify();
+		(hero.belongings.weapon = new M9()).identify();
+        Boomerang boomerang = new Boomerang();
+        boomerang.identify().collect();
+
 		M79 m79 = new M79();
 		m79.identify().collect();
 
+        Dungeon.quickslot.setSlot(0, boomerang);
 		Dungeon.quickslot.setSlot(2, m79);
 
 		new VelvetPouch().collect();
