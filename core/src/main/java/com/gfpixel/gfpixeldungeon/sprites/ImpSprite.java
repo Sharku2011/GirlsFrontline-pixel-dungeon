@@ -34,18 +34,18 @@ public class ImpSprite extends MobSprite {
 		
 		texture( Assets.IMP );
 		
-		TextureFilm frames = new TextureFilm( texture, 12, 14 );
+		TextureFilm frames = new TextureFilm( texture, 12, 16 );
 		
-		idle = new Animation( 10, true );
+		idle = new Animation( 5, true );
 		idle.frames( frames,
-			0, 1, 2, 3, 0, 1, 2, 3, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-			0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 3, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4 );
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 5, 5, 5, 5, 5, 6, 6, 6, 5, 5, 5, 5, 5, 6, 6, 6, 5, 5, 5, 5, 5,
+				5, 5, 5, 5, 5, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 5, 5, 5, 5, 5, 4, 4, 3, 3, 2, 2, 1, 1, 0, 0);
 		
 		run = new Animation( 20, true );
 		run.frames( frames, 0 );
 		
-		die = new Animation( 10, false );
-		die.frames( frames, 0, 3, 2, 1, 0, 3, 2, 1, 0 );
+		die = new Animation( 5, false );
+		die.frames( frames, 0, 1, 2, 3, 5, 5, 5);
 		
 		play( idle );
 	}
