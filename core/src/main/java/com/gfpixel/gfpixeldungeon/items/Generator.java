@@ -190,8 +190,7 @@ public class Generator {
 		MIS_T3  ( 0,    MissileWeapon.class ),
 		MIS_T4  ( 0,    MissileWeapon.class ),
 		MIS_T5  ( 0,    MissileWeapon.class ),
-		MIS_T6  ( 0,    MissileWeapon.class ),
-
+		
 		POTION	( 20,   Potion.class ),
 		SCROLL	( 20,   Scroll.class ),
 		
@@ -458,21 +457,21 @@ public class Generator {
 
 	// Table of armor spawn probability by every tier
 	private static final float[][] floorSetArmorTierProbs = new float[][] {
-			{0, 65, 20, 10, 5, 0 },
-			{0, 25, 50, 15, 10, 0},
-			{0, 12, 33, 40, 15, 0},
-			{0,  5, 15, 60, 20, 0},
-			{0,  2,  8, 40, 50, 0},
-			{0,  0,  5, 15, 80, 0}
+			{0, 65, 20, 10, 5 },
+			{0, 25, 50, 15, 10},
+			{0, 12, 33, 40, 15},
+			{0,  5, 15, 60, 20},
+			{0,  2,  8, 40, 50},
+			{0,  0,  5, 15, 80}
 	};
 
 	private static final float[][] floorSetMissileTierProbs = new float[][] {
-			{0, 65, 20, 10, 5, 0 },
-			{0, 25, 50, 15, 10, 0},
-			{0, 12, 33, 40, 15, 0},
-			{0,  5, 15, 60, 20, 0},
-			{0,  2,  8, 40, 50, 0},
-			{0,  0,  5, 15, 80, 0}
+			{0, 65, 20, 10, 5 },
+			{0, 25, 50, 15, 10},
+			{0, 12, 33, 40, 15},
+			{0,  5, 15, 60, 20},
+			{0,  2,  8, 40, 50},
+			{0,  0,  5, 15, 80}
 	};
 	
 	private static HashMap<Category,Float> categoryProbs = new LinkedHashMap<>();

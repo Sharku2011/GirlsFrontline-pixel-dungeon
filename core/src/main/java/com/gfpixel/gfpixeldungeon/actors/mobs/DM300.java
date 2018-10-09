@@ -108,7 +108,10 @@ public class DM300 extends Mob {
 		if (ch != null) {
 			ch.damage(damageRoll() - ch.drRoll(), DM300.this );
 		}
+	}
 
+	@Override
+	public void onAttackComplete() {
 		next();
 	}
 
