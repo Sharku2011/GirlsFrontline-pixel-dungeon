@@ -149,6 +149,7 @@ public class ItemSpriteSheet {
 	public static final int G11             = WEP_TIER1+5;
 	public static final int SR3             = WEP_TIER1+6;
 	public static final int CANNON         	= WEP_TIER1+7;
+	public static final int SRS         	= WEP_TIER1+8;
 	static{
 		assignItemRect(UMP45, 15, 16);
 		assignItemRect(DP,     15, 16);
@@ -157,7 +158,8 @@ public class ItemSpriteSheet {
 		assignItemRect(DAGGER,          12, 13);
 		assignItemRect(G11,     15, 16);
 		assignItemRect(SR3,     15, 16);
-		assignItemRect(CANNON,     17, 15);
+		assignItemRect(CANNON,     15, 15);
+		assignItemRect(SRS, 			   16, 16);
 
 	}
 

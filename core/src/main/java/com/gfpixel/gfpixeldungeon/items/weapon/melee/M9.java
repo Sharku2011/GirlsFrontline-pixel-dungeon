@@ -23,19 +23,19 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class M9 extends Launcher {
+public class M9 extends MeleeWeapon {
 
 	{
 		image = ItemSpriteSheet.M9;
 
 		tier = 1;
-		ACC = 2f;
+		RCH = 3;
 		DLY = 1.1f;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  4*(tier+1) +    //20 base, down from 25
+		return  3*(tier+1) +    //20 base, down from 25
 				lvl*(tier);     //+4 per level, down from +5
 	}
 }

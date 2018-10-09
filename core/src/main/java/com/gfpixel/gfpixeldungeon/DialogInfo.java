@@ -184,18 +184,11 @@ public  class DialogInfo
                         new int[]  {      1,       1}
                 )
         );
-        STORIES.put( ID_RABBIT_BOSS + INPROGRESS,
-                new DialogInfo (
-                        "elphelt.inprogress",
-                        new Point[]{ELPHELT, HK416, NOEL, ELPHELT},
-                        new int[]  {      2,    2,  0,  0}
-                )
-        );
         STORIES.put( ID_RABBIT_BOSS + COMPLETE,
                 new DialogInfo (
                         "elphelt.complete",
-                        new Point[]{ELPHELT},
-                        new int[]  {      0}
+                        new Point[]{ELPHELT, HK416, NOEL, ELPHELT},
+                        new int[]  {      2,    2,  0,  1}
                 )
         );
         STORIES.put( ID_CAVES,

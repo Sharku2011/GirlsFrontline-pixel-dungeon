@@ -23,21 +23,19 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class NAGANT extends MeleeWeapon {
+public class SRS extends Launcher {
 
     {
-        image = ItemSpriteSheet.NAGANT;
+        image = ItemSpriteSheet.SRS;
 
-        tier = 6;
-        ACC = 1000f;
-        RCH = 4;
+        tier = 1;
+        ACC = 2f;
+        DLY = 1.1f;
     }
-
 
     @Override
     public int max(int lvl) {
-        return  Math.round(4.5f*(tier+1)) +   //20 base, down from 25
-                lvl*(tier+1);   //scaling unchanged
+        return  4*(tier+1) +    //20 base, down from 25
+                lvl*(tier);     //+4 per level, down from +5
     }
-
 }
