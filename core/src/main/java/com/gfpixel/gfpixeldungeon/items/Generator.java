@@ -325,7 +325,7 @@ public class Generator {
 					GUA91.class,
 					Gepard.class
 			};
-			WEP_T4.probs = new float[]{ 6, 5, 5, 5, 4, 6, 1 };
+			WEP_T4.probs = new float[]{ 6, 5, 5, 5, 4, 6 };
 			
 			WEP_T5.classes = new Class<?>[]{
 					Sass.class,
