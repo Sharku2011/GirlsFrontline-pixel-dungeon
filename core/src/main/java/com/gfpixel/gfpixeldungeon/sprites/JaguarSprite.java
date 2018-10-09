@@ -2,6 +2,7 @@ package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Jaguar;
 import com.watabou.noosa.TextureFilm;
 
 public class JaguarSprite extends MobSprite {
@@ -26,5 +27,12 @@ public class JaguarSprite extends MobSprite {
         die.frames( frames, 4, 5, 6 );
 
         play( idle );
+    }
+
+    @Override
+    public void attack(int cell) {
+        super.attack(cell);
+
+        ((Jaguar)ch).fireBomb(cell);
     }
 }
