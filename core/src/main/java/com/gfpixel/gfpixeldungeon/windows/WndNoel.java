@@ -22,20 +22,12 @@
 package com.gfpixel.gfpixeldungeon.windows;
 
 import com.gfpixel.gfpixeldungeon.Dungeon;
-import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
-import com.gfpixel.gfpixeldungeon.actors.hero.HeroClass;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Noel;
 import com.gfpixel.gfpixeldungeon.items.Item;
-import com.gfpixel.gfpixeldungeon.items.quest.CorpseDust;
-import com.gfpixel.gfpixeldungeon.items.quest.Embers;
 import com.gfpixel.gfpixeldungeon.items.wands.Wand;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
-import com.gfpixel.gfpixeldungeon.plants.Rotberry;
-import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
-import com.gfpixel.gfpixeldungeon.sprites.ItemSprite;
 import com.gfpixel.gfpixeldungeon.sprites.NoelSprite;
 import com.gfpixel.gfpixeldungeon.ui.RedButton;
-import com.gfpixel.gfpixeldungeon.ui.RenderedTextMultiline;
 import com.gfpixel.gfpixeldungeon.ui.Window;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 
@@ -91,11 +83,6 @@ public class WndNoel extends Window {
 
         String farewellMsg = Messages.get(this, "farewell");
 
-
-        if (Dungeon.hero.heroClass == HeroClass.HUNTRESS)
-        {
-            farewellMsg += Messages.get(this, "farewell_hk416");
-        }
         noel.yell( farewellMsg );
 
         noel.destroy();
