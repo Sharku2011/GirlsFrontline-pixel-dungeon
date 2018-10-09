@@ -28,10 +28,6 @@ import com.watabou.utils.Random;
 
 import java.util.HashSet;
 
-/**
- * Created by Android SDK on 2018-08-15.
- */
-
 public class Jaguar extends Mob {
 
     {
@@ -104,7 +100,7 @@ public class Jaguar extends Mob {
 //공격속도 2턴에 1번 제누와즈 발사, 착탄후 1턴후 폭발하며 폭발에 적중시 약화상태가 됨. 폭발 반경 내에 아이템은 사라지지않음. 근접했을때도 제누와즈를 발사함.
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange( 5, 12 );
+        return Random.NormalIntRange( 6, 12 );
     }
 
     @Override
@@ -179,6 +175,13 @@ public class Jaguar extends Mob {
                     Char ch = Actor.findChar( c );
                     if (ch == Dungeon.hero) {
                         Buff.prolong(ch, Weakness.class, Weakness.DURATION / 2f);
+
+                        ch.damage(damageRoll() - ch.drRoll(), this );
+
+                        if (ch == Dungeon.hero && !ch.isAlive()) {
+                            Dungeon.fail( Jaguar.this.getClass() );
+                            break;
+                        }
                     }
                 }
             }
@@ -192,9 +195,9 @@ public class Jaguar extends Mob {
             Char ch = Actor.findChar(target);
             if (ch != null) {
 
-                int dmg = damageRoll() - ch.drRoll();
+                int dmg = damageRoll() * 2;
                 if (ch == Jaguar.this) {
-                    dmg /= 2;
+                    dmg /= 4;
                 }
 
                 ch.damage( dmg,this );
