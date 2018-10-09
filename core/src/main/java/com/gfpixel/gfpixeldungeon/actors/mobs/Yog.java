@@ -103,8 +103,6 @@ public class Yog extends Mob {
 		return super.act();
 	}
 
-	private static final int damageCap = 50;
-
 	@Override
 	public void damage( int dmg, Object src ) {
 
@@ -114,7 +112,7 @@ public class Yog extends Mob {
 			if (mob instanceof RottingFist || mob instanceof BurningFist)
 				fists.add( mob );
 
-		dmg = Math.min( dmg >> fists.size(), damageCap ) ;
+		dmg >>= fists.size();
 		
 		super.damage( dmg, src );
 

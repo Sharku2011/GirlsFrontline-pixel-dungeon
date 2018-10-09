@@ -51,12 +51,17 @@ public class Spinner extends Mob {
 
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange(10, 25);
+		return Random.NormalIntRange( 10, 25 );
 	}
 
 	@Override
 	public int attackSkill(Char target) {
 		return 20;
+	}
+
+	@Override
+	protected float attackDelay() {
+		return 0.5f;
 	}
 
 	@Override
