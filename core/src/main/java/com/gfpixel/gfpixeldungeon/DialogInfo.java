@@ -101,7 +101,7 @@ public  class DialogInfo
             {"G11", "UMP45", "UMP9", "HK416", "UMP40"},
             {"ST-AR 15", "M16A1", "Ppsh-47", "P7"},
             {"엘펠트 발렌타인", "제퓨티", "노엘"},
-            {"익스큐셔너", "우로보로스", "게이저", "디스트로이어", "드리머"}
+            {"엑스큐셔너", "우로보로스", "게이저", "디스트로이어", "드리머"}
     };
 
     public static final int ID_SEWER		= 1;
@@ -277,8 +277,8 @@ public  class DialogInfo
         STORIES.put( ID_NOEL_QUEST,
                 new DialogInfo (
                         "noelquest",
-                        new Point[]{NOEL, UMP9, NOEL, UMP9, NOEL, UMP45, NOEL},
-                        new int[]  {   0,    1,    2,    1,    1,     0,    0}
+                        new Point[]{NOEL, UMP9, NOEL, UMP9, NOEL, UMP45, NOEL, NOEL},
+                        new int[]  {   0,    1,    2,    1,    1,     0,    0,  1}
                 )
         );
         STORIES.put( ID_NOEL_QUEST + INPROGRESS,
