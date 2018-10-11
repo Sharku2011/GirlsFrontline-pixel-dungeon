@@ -138,14 +138,14 @@ public class ChangesScene extends PixelScene {
 
 
 		changes.addButton( new ChangeButton(new Image(Assets.ELPHELT, 288, 0, 18, 19), "분기점",
-				"_-_1번 분기점 활성화. \n\n" +
+				"_-_ 1번 분기점 활성화. \n\n" +
 						"_-_ 소녀전선&길티기어&블레이블루 분기점 챕터가 활성화 되었습니다.\n\n" +
 						"_-_ 기존 스테이지에서 특정 조건을 만족할시 다음 챕터에서 분기점 챕터가 활성화됩니다.\n\n" +
 						"_-_ 분기점 챕터를 클리어할시 기존 티어보다 높은 성능을 가진 콜라보 무기와 콜라보 클리어 뱃지를 획득할 수 있습니다. \n\n" +
 						"_-_ 분기점 활성화 조건은 공개하지 않겠습니다. 하지만 찾기 쉬울거에요! 첫번째 분기점인 만큼, 초반 챕터에 분기점이 활성화됩니다!"));
 
 		changes.addButton( new ChangeButton(new Image(Assets.GEGAR, 0, 0, 24, 18), "신규 보스",
-				"_-_3챕터 보스 변경. \n\n" +
+				"_-_ 3챕터 보스 변경. \n\n" +
 						"_-_ 3챕터 보스가 만티코어가 필드 몬스터로 바뀐 관계로 새로운 보스가 추가 됐습니다.\n\n" +
 						"_-_ 게이저는 기존의 만티코어와 다른 공격패턴을 가지고있으며, 꽤나 위협적입니다."));
 
@@ -160,7 +160,6 @@ public class ChangesScene extends PixelScene {
 				"_-_ 장갑 속성이 정의됬습니다.\n\n" +
 						"_-_ 장갑 속성은 철갑탄에 3배 피해를 입습니다.\n\n" +
 						"_-_ 장갑 속성은 강력한 공격과 높은 체력을 가지고 있지만 대체로 느린 이동속도를 가지고 있으며, 방어력이 낮거나 없기 때문에 공격이 더 잘 명중하며 높은 데미지를 입힐 수 있습니다."));
-
 
 		changes.addButton( new ChangeButton(new Gepard(),
 				"_-_ 일부 무기가 수정됬습니다.\n\n" +
@@ -222,7 +221,7 @@ public class ChangesScene extends PixelScene {
 				"G11 외골격 리워크.\n\n" +
 						"_-_G11의 외골격 스킬이 액티브에서 버프로 바뀌었습니다.\n\n" +
 						"_-_G11의 외골격 스킬이 주변의 적을 화상 상태로 만드는 쓸모없는 능력에서 가속이라는 버프를 받게 됩니다.\n\n" +
-						"가속은 체력의 50%를 깎는 높은 비용을 가지지만, 3턴동안 시간과 관련된 모든 능력이 증폭됩니다. 공격속도, 이동속도, 가속을 포함한 모든 버프 지속 시간까지 일시적으로 증가해, 짧은 시간동안 강력하고 다양한 전술을 펼칠 수 있습니다."));
+						"가속은 G11의 체력을 거의 죽음에 가까운 90%를 소모하지만, 4턴동안 시간과 관련된 모든 능력이 증폭됩니다. 공격속도, 이동속도, 가속을 포함한 모든 버프 지속 시간까지 일시적으로 증가해, 짧은 시간동안 강력하고 다양한 전술을 펼칠 수 있습니다."));
 
 		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.RING_OPAL, null), new RingOfElements().trueName(),
 				"원소의 도트사이트 상향\n\n" +
@@ -250,7 +249,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 격노(죽음 유예)하기 위한 레벨이 2에서 3으로 증가\n\n" +
 						"_-_ 물리 피해를 입을때마다 분노 버프가 쌓이며 버프에 비례해 자신의 물리공격력이 50%까지 증가, 버프는 시간이 지날수록 줄어들지만 체력이 낮을수록 느리게 감소\n\n" +
 						"_-_ 격노하기 위해선 분노 버프가 100%이여야 하며 이 상태에서 추가 피해량이 50%로 감소함.\n\n" +
-						"_-_ 격노후 회복중엔 분노 버프가 쌓이지 않음.."));
+						"_-_ 격노후 회복중엔 분노 버프가 쌓이지 않음."));
 
 		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.RING_EMERALD, null), new RingOfEvasion().trueName(),
 				"회피의 도트사이트 하향\n\n" +
@@ -265,7 +264,7 @@ public class ChangesScene extends PixelScene {
 		changes.addButton( new ChangeButton(new Negev(),
 				"_-_ MG계열 하향.\n\n" +
 						"_-_ MG계열(공격속도가 기본 5회 이상인 무기) 무기들의 명중률과 기습공격이 조정됬습니다.\n\n" +
-						"_-_ 최대 30%의 명중률 패널티를 가지며, 공격력은 그대로지만 기습공격시 60%의 피해만 입힐 수 있게 됩니다."));
+						"_-_ 최대 40%의 명중률 패널티를 가지며, 공격력은 그대로지만 기습공격시 60%의 피해만 입힐 수 있게 됩니다."));
         changes.addButton( new ChangeButton(new ItemSprite(ItemSpriteSheet.POTION_MAGENTA, null), new PotionOfHealing().trueName(),
 				"_-_ 수복포션 드랍 하향.\n\n" +
 						"_-_ 수복물약 드랍 몹에게 수복물약을 얻은 경우 이후 같은 몹에게 수복물약을 얻을 확률이 감소함"));
