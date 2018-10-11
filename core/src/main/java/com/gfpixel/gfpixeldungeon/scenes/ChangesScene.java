@@ -219,8 +219,8 @@ public class ChangesScene extends PixelScene {
 
 		changes.addButton( new ChangeButton( new Image(Assets.MAGE, 0, 34, 13, 17), "리워크",
 				"G11 외골격 리워크.\n\n" +
-						"_-_G11의 외골격 스킬이 액티브에서 버프로 바뀌었습니다.\n\n" +
-						"_-_G11의 외골격 스킬이 주변의 적을 화상 상태로 만드는 쓸모없는 능력에서 가속이라는 버프를 받게 됩니다.\n\n" +
+						"_-_ G11의 외골격 스킬이 액티브에서 버프로 바뀌었습니다.\n\n" +
+						"_-_ G11의 외골격 스킬이 주변의 적을 화상 상태로 만드는 쓸모없는 능력에서 가속이라는 버프를 받게 됩니다.\n\n" +
 						"가속은 G11의 체력을 거의 죽음에 가까운 90%를 소모하지만, 4턴동안 시간과 관련된 모든 능력이 증폭됩니다. 공격속도, 이동속도, 가속을 포함한 모든 버프 지속 시간까지 일시적으로 증가해, 짧은 시간동안 강력하고 다양한 전술을 펼칠 수 있습니다."));
 
 		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.RING_OPAL, null), new RingOfElements().trueName(),
