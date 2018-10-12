@@ -24,10 +24,14 @@ package com.gfpixel.gfpixeldungeon.scenes;
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
+import com.gfpixel.gfpixeldungeon.items.Generator;
 import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.items.armor.curses.Bulk;
 import com.gfpixel.gfpixeldungeon.items.potions.Potion;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
+import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Negev;
+import com.gfpixel.gfpixeldungeon.levels.traps.CursingTrap;
 import com.gfpixel.gfpixeldungeon.plants.Plant;
 import com.gfpixel.gfpixeldungeon.plants.Sungrass;
 import com.gfpixel.gfpixeldungeon.items.armor.HuntressArmor;
@@ -152,7 +156,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 3챕터 보스가 만티코어가 필드 몬스터로 바뀐 관계로 새로운 보스가 추가 됐습니다.\n\n" +
 						"_-_ 게이저는 기존의 만티코어와 다른 공격패턴을 가지고있으며, 아직 미완성이므로 추후 새로운 패턴이 추가 될 예정입니다."));
 
-		changes.addButton( new ChangeButton(new MagicalHolster(), //이부분을 저주함정이나 저주받은 외골격 이미지로 바꿔주세요
+		changes.addButton( new ChangeButton(new ItemSprite(ItemSpriteSheet.ARMOR_CLOTH, new Bulk().glowing()), "신규 저주",//이부분을 저주함정이나 저주받은 외골격 이미지로 바꿔주세요
 				"_-_ 여러 종류의 저주가 추가됬습니다.\n\n" +
 						"_-_ 친화적인 저주 - 무기 저주. 타격시 때때로 적과 자신을 동시에 교란시킨다.\n\n" +
 						"_-_ 탄성의 저주 - 무기 저주. 피해량이 0이 되는 대신, 맞은 적을 튕겨낸다.\n\n" +
