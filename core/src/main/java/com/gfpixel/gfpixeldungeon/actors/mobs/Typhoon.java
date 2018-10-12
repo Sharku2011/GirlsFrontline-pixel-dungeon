@@ -29,7 +29,7 @@ public class Typhoon extends Hydra {
         spriteClass = TyphoonSprite.class;
 
         HP = HT = 3500;
-        EXP = 300;
+        EXP = 500;
         defenseSkill = 0;
         baseSpeed = 0.8f;
         maxLvl = 40;
