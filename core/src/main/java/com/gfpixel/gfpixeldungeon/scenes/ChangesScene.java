@@ -147,7 +147,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 현재 보스 Ai 버그가 해결되지 않은 상태입니다. 다음 버전에서 수정될 예정이니 양해바랍니다."));
 
 
-		changes.addButton( new ChangeButton(new Image(Assets.GEGAR, 0, 0, 24, 18), "신규 보스",
+		changes.addButton( new ChangeButton(new Image(Assets.GAGER, 0, 0, 24, 18), "신규 보스",
 				"_-_ 3챕터 보스 변경. \n\n" +
 						"_-_ 3챕터 보스가 만티코어가 필드 몬스터로 바뀐 관계로 새로운 보스가 추가 됐습니다.\n\n" +
 						"_-_ 게이저는 기존의 만티코어와 다른 공격패턴을 가지고있으며, 아직 미완성이므로 추후 새로운 패턴이 추가 될 예정입니다."));
