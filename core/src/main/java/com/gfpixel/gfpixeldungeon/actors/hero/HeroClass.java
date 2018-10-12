@@ -41,12 +41,17 @@ import com.gfpixel.gfpixeldungeon.items.food.Food;
 import com.gfpixel.gfpixeldungeon.items.food.Maccol;
 import com.gfpixel.gfpixeldungeon.items.food.Pasty;
 import com.gfpixel.gfpixeldungeon.items.food.SmallRation;
+import com.gfpixel.gfpixeldungeon.items.potions.PotionOfExperience;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfInvisibility;
+import com.gfpixel.gfpixeldungeon.items.potions.PotionOfMight;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfMindVision;
+import com.gfpixel.gfpixeldungeon.items.potions.PotionOfStrength;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicMapping;
+import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
+import com.gfpixel.gfpixeldungeon.items.stones.StoneOfEnchantment;
 import com.gfpixel.gfpixeldungeon.items.wands.M79;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
@@ -118,14 +123,30 @@ public enum HeroClass {
 		}
 
 		if (BuildConfig.DEBUG) 	{
+			new PotionBandolier().collect();
+			new VelvetPouch().collect();
+			new MagicalHolster().collect();
+			new ScrollHolder().collect();
+
+			Dungeon.LimitedDrops.POTION_BANDOLIER.drop();
+			Dungeon.LimitedDrops.VELVET_POUCH.drop();
+			Dungeon.LimitedDrops.MAGICAL_HOLSTER.drop();
+			Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
+
 			new Cannon().identify().collect();
 			new DriedRose().identify().collect();
 			new TowProto().identify().collect();
 			new ScrollOfUpgrade().identify().quantity(5).collect();
+			new StoneOfEnchantment().quantity(100).collect();
+			new ScrollOfMagicalInfusion().identify().quantity(10).collect();
 			new WandOfDisintegration().identify().upgrade().collect();
 			new PlateArmor().identify().upgrade(50).collect();
 			new Maccol().collect();
 			new ArmorKit().collect();
+			new PotionOfHealing().identify().quantity(5).collect();
+			new PotionOfExperience().identify().quantity(30).collect();
+			new PotionOfMight().identify().quantity(12).collect();
+			new PotionOfStrength().identify().quantity(12).collect();
 		}
 
 
@@ -157,8 +178,11 @@ public enum HeroClass {
 		stone.identify().quantity(3).collect();
 		Dungeon.quickslot.setSlot(0, stone);
 
-		new PotionBandolier().collect();
-		Dungeon.LimitedDrops.POTION_BANDOLIER.drop();
+		if (!BuildConfig.DEBUG) {
+			new PotionBandolier().collect();
+			Dungeon.LimitedDrops.POTION_BANDOLIER.drop();
+		}
+
 		new PotionOfHealing().identify();
 
 	}
@@ -174,8 +198,10 @@ public enum HeroClass {
 
 		Dungeon.quickslot.setSlot(0, staff);
 
-		new MagicalHolster().collect();
-		Dungeon.LimitedDrops.MAGICAL_HOLSTER.drop();
+		if (!BuildConfig.DEBUG) {
+			new MagicalHolster().collect();
+			Dungeon.LimitedDrops.MAGICAL_HOLSTER.drop();
+		}
 		new ScrollOfUpgrade().identify();
 
 
@@ -195,8 +221,10 @@ public enum HeroClass {
 		Dungeon.quickslot.setSlot(0, cloak);
 		Dungeon.quickslot.setSlot(1, knives);
 
-		new ScrollHolder().collect();
-		Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
+		if (!BuildConfig.DEBUG) {
+			new ScrollHolder().collect();
+			Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
+		}
 		new ScrollOfMagicMapping().identify();
 
 	}
@@ -209,8 +237,10 @@ public enum HeroClass {
 
 		Dungeon.quickslot.setSlot(2, m79);
 
-		new VelvetPouch().collect();
-		Dungeon.LimitedDrops.VELVET_POUCH.drop();
+		if (!BuildConfig.DEBUG) {
+			new VelvetPouch().collect();
+			Dungeon.LimitedDrops.VELVET_POUCH.drop();
+		}
 		new PotionOfMindVision().identify();
 
 	}
