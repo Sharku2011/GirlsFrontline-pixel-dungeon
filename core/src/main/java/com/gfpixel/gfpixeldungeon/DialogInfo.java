@@ -93,7 +93,7 @@ public  class DialogInfo
     private static final Point EXECUTIONER  = new Point(SANGVIS, 0);
     // TODO emotion.png에서 우로보로스의 스프라이트 위치를 1열 2번째에서 다른 위치로 변경
     private static final Point UROBOROS     = new Point(SANGVIS, 1);
-    private static final Point GEGAR      = new Point(SANGVIS, 2);
+    private static final Point GAGER        = new Point(SANGVIS, 2);
     private static final Point DESTROYER    = new Point(SANGVIS, 3);
     private static final Point DREAMER      = new Point(SANGVIS, 4);
 
@@ -207,8 +207,8 @@ public  class DialogInfo
         );
         STORIES.put( ID_CAVES_BOSS,
                 new DialogInfo (
-                        "gegar",
-                        new Point[]{GEGAR},
+                        "dm300",
+                        new Point[]{GAGER},
                         new int[]{        0} )
         );
         STORIES.put( ID_CITY,
