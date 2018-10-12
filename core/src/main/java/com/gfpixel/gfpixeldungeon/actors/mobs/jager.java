@@ -7,17 +7,17 @@ public class Jager extends Warlock {
         HP = HT = 20;
         defenseSkill = 8;
 
-        EXP = 71;
-        maxLvl = 11;
+        EXP = 6;
+        maxLvl = 14;
     }
 
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange( 6, 12 );
+        return Random.NormalIntRange( 3, 7 );
     }
 
     @Override
     public int drRoll() {
-        return Random.NormalIntRange(0, 4);
+        return Random.NormalIntRange(1, 2);
     }
 }
