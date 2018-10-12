@@ -30,7 +30,7 @@ public class NAGANT extends MeleeWeapon {
 
         tier = 6;
         ACC = 1000f;
-        RCH = 3;
+        RCH = 4;
     }
 
 

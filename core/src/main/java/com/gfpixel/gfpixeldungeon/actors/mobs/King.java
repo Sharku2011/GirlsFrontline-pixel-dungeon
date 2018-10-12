@@ -291,7 +291,7 @@ public class King extends Mob {
 
 		@Override
 		public int attackSkill( Char target ) {
-			return 16;
+			return 19;
 		}
 
 		@Override

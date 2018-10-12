@@ -33,7 +33,7 @@ public class Negev extends MeleeWeapon {
 		image = ItemSpriteSheet.NEGEV;
 
 		tier = 3;
-		ACC = 0.7f;
+		ACC = 0.65f;
 		DLY = 0.2f; //1time 5hit
 	}
 

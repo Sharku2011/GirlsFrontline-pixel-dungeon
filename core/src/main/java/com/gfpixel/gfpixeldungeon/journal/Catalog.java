@@ -96,6 +96,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.C96;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M99;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SRS;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dp;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
@@ -169,6 +170,7 @@ public enum Catalog {
 		WEAPONS.seen.put( Ump40.class,                   false);
 		WEAPONS.seen.put( Dp.class,                   false);
 		WEAPONS.seen.put( SR3.class,                   false);
+		WEAPONS.seen.put( SRS.class,                   false);
 		WEAPONS.seen.put( Boomerang.class,                  false);
 		WEAPONS.seen.put( M16.class,                 false);
 		WEAPONS.seen.put( M1911.class,                    false);
@@ -199,7 +201,6 @@ public enum Catalog {
 		WEAPONS.seen.put( Mg42.class,                     false);
 		WEAPONS.seen.put( Ntw20.class,                   false);
 		WEAPONS.seen.put( GROZA.class,                false);
-		WEAPONS.seen.put( NAGANT.class,                        false);
 	
 		ARMOR.seen.put( ClothArmor.class,                   false);
 		ARMOR.seen.put( LeatherArmor.class,                 false);

@@ -45,7 +45,7 @@ public class Jupiter extends Mob {
     {
         spriteClass = JupiterSprite.class;
 
-        HP = HT = 55;
+        HP = HT = 110;
         defenseSkill = 30;
         viewDistance = Light.DISTANCE;
         baseSpeed = 1f;
