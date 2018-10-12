@@ -23,19 +23,18 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class M1911 extends MeleeWeapon {
+public class SRS extends Launcher {
 
-	{
-		image = ItemSpriteSheet.M1911;
+    {
+        image = ItemSpriteSheet.SRS;
 
-		tier = 2;
-		RCH = 3;    //lots of extra reach
-	}
+        tier = 1;
+        ACC = 2f;
+    }
 
-	@Override
-	public int max(int lvl) {
-		return  2*(tier+2) +  //9 base, down from 15
-				lvl*(tier+1);   //scaling unchanged
-	}
-
+    @Override
+    public int max(int lvl) {
+        return  4*(tier+1) +    //20 base, down from 25
+                lvl*(tier);     //+4 per level, down from +5
+    }
 }

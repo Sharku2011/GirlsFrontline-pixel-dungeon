@@ -25,6 +25,7 @@ import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.items.potions.Potion;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Negev;
 import com.gfpixel.gfpixeldungeon.plants.Plant;
@@ -222,7 +223,7 @@ public class ChangesScene extends PixelScene {
 				"G11 외골격 리워크.\n\n" +
 						"_-_G11의 외골격 스킬이 액티브에서 버프로 바뀌었습니다.\n\n" +
 						"_-_G11의 외골격 스킬이 주변의 적을 화상 상태로 만드는 쓸모없는 능력에서 가속이라는 버프를 받게 됩니다.\n\n" +
-						"가속은 체력의 50%를 깎는 높은 비용을 가지지만, 3턴동안 시간과 관련된 모든 능력이 증폭됩니다. 공격속도, 이동속도, 가속을 포함한 모든 버프 지속 시간까지 일시적으로 증가해, 짧은 시간동안 강력하고 다양한 전술을 펼칠 수 있습니다."));
+						"가속은 체력의 70%를 깎는 높은 비용을 가지지만, 3턴동안 시간과 관련된 모든 능력이 증폭됩니다. 공격속도, 이동속도, 가속을 포함한 모든 버프 지속 시간까지 일시적으로 증가해, 짧은 시간동안 강력하고 다양한 전술을 펼칠 수 있습니다."));
 
 		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.RING_OPAL, null), new RingOfElements().trueName(),
 				"원소의 도트사이트 상향\n\n" +
@@ -266,13 +267,13 @@ public class ChangesScene extends PixelScene {
 				"_-_ MG계열 하향.\n\n" +
 						"_-_ MG계열(공격속도가 기본 5회 이상인 무기) 무기들의 명중률과 기습공격이 조정됬습니다.\n\n" +
 						"_-_ 최대 30%의 명중률 패널티를 가지며, 공격력은 그대로지만 기습공격시 60%의 피해만 입힐 수 있게 됩니다."));
-		changes.addButton( new ChangeButton(new PotionOfHealing(),
+		changes.addButton( new ChangeButton(new ItemSprite(ItemSpriteSheet.POTION_MAGENTA, null), new PotionOfHealing().trueName(),
 				"_-_ 수복포션 드랍 하향.\n\n" +
 						"_-_ 수복물약 드랍 몹에게 수복물약을 얻은 경우 이후 같은 몹에게 수복물약을 얻을 확률이 감소함"));
 
 		changes.addButton( new ChangeButton(new Sungrass.Seed(),
 				"_-_ 태양초 & 뱀뿌리 - 하향.\n\n" +
-						"_-_ 태양초의 회복 속도 대폭 감소, 레벨이 높을 수록 더 많이 감소하여 최대 기존의 40% 속도까지 줄어든다.\n\n" +
+						"_-_ 태양초의 회복 속도 대폭 감소, 레벨이 높을 수록 더 많이 감소하여 최대 기존의 40% 속도까지 감소합니다.\n\n" +
 						"_-_ 태양초의 회복을 받는 도중 피격당해도 회복량이 줄지 않는다.\n\n" +
 						"_-_ 태양초의 회복을 받는 도중 체력이 가득 차도 효과가 바로 끝나지 않는다.\n\n" +
 						"_-_ 뱀뿌리의 피해 흡수 비율이 기존의 50%에서 층 수에 비례하도록 변경"));

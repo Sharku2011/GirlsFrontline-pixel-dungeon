@@ -76,7 +76,7 @@ public class Assets {
 	public static final String BAT			= "bat.png";
 	public static final String BRUTE		= "brute.png";
 	public static final String SPINNER		= "spinner.png";
-	public static final String GEGAR		= "gegar.png";
+	public static final String GAGER		= "gager.png";
 	public static final String WRAITH		= "wraith.png";
 	public static final String ELEMENTAL	= "elemental.png";
 	public static final String MONK			= "monk.png";

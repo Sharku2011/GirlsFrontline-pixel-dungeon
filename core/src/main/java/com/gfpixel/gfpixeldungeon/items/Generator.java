@@ -117,6 +117,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.M16;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1903;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1911;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1a1;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SRS;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Usas12;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M99;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MeleeWeapon;
@@ -189,7 +190,7 @@ public class Generator {
 		MIS_T3  ( 0,    MissileWeapon.class ),
 		MIS_T4  ( 0,    MissileWeapon.class ),
 		MIS_T5  ( 0,    MissileWeapon.class ),
-		
+
 		POTION	( 20,   Potion.class ),
 		SCROLL	( 20,   Scroll.class ),
 		
@@ -291,9 +292,10 @@ public class Generator {
 					M9.class,
 					Dp.class,
 					SR3.class,
-                    Cannon.class
+                    Cannon.class,
+					SRS.class
 			};
-			WEP_T1.probs = new float[]{ 1, 0, 1, 1, 1, 1, 0 };
+			WEP_T1.probs = new float[]{ 1, 0, 1, 1, 1, 1, 0, 1 };
 			
 			WEP_T2.classes = new Class<?>[]{
 					M16.class,
@@ -455,7 +457,7 @@ public class Generator {
 
 	// Table of armor spawn probability by every tier
 	private static final float[][] floorSetArmorTierProbs = new float[][] {
-			{0, 65, 20, 10, 5 },
+			{0, 65, 20, 10,  5},
 			{0, 25, 50, 15, 10},
 			{0, 12, 33, 40, 15},
 			{0,  5, 15, 60, 20},
@@ -464,7 +466,7 @@ public class Generator {
 	};
 
 	private static final float[][] floorSetMissileTierProbs = new float[][] {
-			{0, 65, 20, 10, 5 },
+			{0, 65, 20, 10,  5},
 			{0, 25, 50, 15, 10},
 			{0, 12, 33, 40, 15},
 			{0,  5, 15, 60, 20},

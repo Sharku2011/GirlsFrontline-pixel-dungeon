@@ -31,7 +31,7 @@ public class DM300Sprite extends MobSprite {
 	public DM300Sprite() {
 		super();
 		
-		texture( Assets.GEGAR );
+		texture( Assets.GAGER );
 
 		TextureFilm frames = new TextureFilm( texture, 24, 18 );
 

@@ -10,7 +10,9 @@ actors.blobs.foliage.desc=지하 정원의 어둠에 한 줄기 빛이 내리쬔
 
 actors.blobs.freezing.desc=여기의 공기는 유난히 추운 것 같다.
 
-actors.blobs.goowarn.desc=여기에 어두운 에너지가 도사리고 있는 것 같다!
+actors.blobs.goowarn.desc=여기에 불길한 에너지가 도사리고 있는 것 같다!
+
+actors.blobs.genoisewarn.desc=여기에 강력한 에너지가 휘몰아칠 것 같다!
 
 actors.blobs.paralyticgas.desc=여기에 마비 가스 구름이 소용돌이치고 있다.
 
@@ -376,7 +378,9 @@ actors.mobs.npcs.wandmaker.reminder_berry=썩은열매 씨앗은 아직이야 %s
 actors.mobs.npcs.wandmaker.def_verb=흡수됨
 actors.mobs.npcs.wandmaker.desc=Anti_Rain의 큰언니, M16A1입니다. 다리를 다쳐 약간 난감한 표정을 하고 있습니다. 지금 그녀는 역장방패로 보호받고 있습니다.
 
-
+actors.mobs.npcs.wandmaker.name=노엘 버밀리온
+actors.mobs.npcs.wandmaker.def_verb=흡수됨
+actors.mobs.npcs.wandmaker.desc=Anti_제 이름은 노엘·버밀리온입니다. 전쟁 고아에서 병사로 육성되었고, 사상병기 No.3-마총·벨베르크를 보유하고 있으며, 제12소체... 「아오」의 계승자예요. 비록 전투 장소가 같지 않지만... 절 믿어주세요. 어떤 것도 변하지 않도록 제가 지켜내 보이겠어요!
 
 ###mobs
 actors.mobs.acidic.name=네메움 H형
@@ -410,7 +414,6 @@ actors.mobs.crab.desc=순찰로봇의 경보에 의해 빠르게 방어작전에
 actors.mobs.dm300.name=게이저
 actors.mobs.dm300.notice=가여운 녀석... 앞으로 무슨 일이 생길지, 아무 것도 모르는군.
 actors.mobs.dm300.defeated=아키...텍트...
-actors.mobs.dm300.repair=만티코어는 스스로를 수리했다!
 actors.mobs.dm300.rankings_desc=게이저에게 썰려나감
 actors.mobs.dm300.desc=게이저는 주로 지휘 작전과인원의 배치를 맡고 있습니다. 결코 낮지 않은 작전능력을 가지고 있으며, 직접 작전을 지휘할수도 있습니다. 지위는 비교적 높으며, 에이전트가 직접 관리합니다. 매사에 진지하며, 빈틈이 없으며 맡은 일은 최선을 다해 처리합니다. 언행중에는 엄격하지만 가지런한 느낌을 주며 설령 적이라 하더라도 원칙과 예절을 중요시 합니다. \n\n 그리폰에 포로로 잡힌 아키텍트를 그리워하고있습니다.
 
@@ -573,7 +576,6 @@ actors.mobs.swarm.desc=작지만 자가복제로 적을 제압하는 소형 정�
 
 actors.mobs.elphelt.name=엘펠트 발렌타인
 <<<<<<< HEAD
-actors.mobs.elphelt.desc=엘펠트 발렌타인입니다. 23짜리 떡장갑이라서 같은 콜라보캐인 노엘과는 반대로 망샷 고정멤버로 들어가곤 합니다.
 =======
 actors.mobs.elphelt.2페이즈=최종병기! 매그넘 웨딩!!
 actors.mobs.elphelt.돌진=조준합니다!
@@ -604,6 +606,12 @@ actors.mobs.wraith.name=사이버 망령
 actors.mobs.wraith.def_verb=회피
 actors.mobs.wraith.desc=사이머 망령은 자신의 하드를 스캔한 자를 쫓는 복수심 가득한 영혼입니다. 완전한 영체로 이루어져 있어 일반적인 무기로 공격하는 것은 매우 힘듭니다.
 
+======필드보스
+
+actors.mobs.scarecrow.name=스케어크로우
+actors.mobs.scarecrow.desc="나는 전투보다 정찰 임무를 수행하는 편이 나은데…라고 중얼거리며 많은 사람을 다치게 하지. 그래서 나는 그저 허수아비처럼, 제자리에 서 있는 채로, 모두와 임무를 수행하기만 하면 충분해.." \n\n 철혈 선두 작전 인형 중 하나로, 엑스큐서너와 자주 공동 작전을 벌입니다. 그녀는 공중에 살짝 떠다니며, 출혈을 일으키는 빠른 공격과 저급 작전유닛과는 차원이 다른 내구성을 가집니다. _상황이 불리하다면 도망을 주저하지 마십시오._
+
+===========
 actors.mobs.yog.name=속박된 M4A1
 actors.mobs.yog.notice=도와줘... 도와줘... 누가 나좀....
 actors.mobs.yog.defeated=드디어... 자유로구나...
