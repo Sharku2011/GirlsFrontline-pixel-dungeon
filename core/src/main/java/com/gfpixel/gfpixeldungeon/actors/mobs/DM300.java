@@ -107,6 +107,10 @@ public class DM300 extends Mob {
 		Char ch = findChar(aim.collisionPos);
 		if (ch != null) {
 			ch.damage(damageRoll() - ch.drRoll(), DM300.this );
+
+			if (ch == Dungeon.hero && !ch.isAlive()) {
+				Dungeon.fail( this.getClass() );
+			}
 		}
 	}
 
