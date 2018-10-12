@@ -48,7 +48,7 @@ public class Jaguar extends Mob {
     private static final int RANGE = 8;
 
     @Override
-    protected float attackDelay() { return 2f; }
+    protected float attackDelay() { return 3f; }
 
     @Override
     public boolean canAttack(Char enemy) {
@@ -100,7 +100,7 @@ public class Jaguar extends Mob {
 //공격속도 2턴에 1번 제누와즈 발사, 착탄후 1턴후 폭발하며 폭발에 적중시 약화상태가 됨. 폭발 반경 내에 아이템은 사라지지않음. 근접했을때도 제누와즈를 발사함.
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange( 6, 12 );
+        return Random.NormalIntRange( 3, 5 );
     }
 
     @Override
@@ -164,19 +164,20 @@ public class Jaguar extends Mob {
             }
 
             boolean terrainAffected = false;
-            for (int n : PathFinder.NEIGHBOURS9) {
+            for (int n : PathFinder.NEIGHBOURS8) {
                 int c = target + n;
                 if (c >= 0 && c < Dungeon.level.length()) {
                     if (Dungeon.level.heroFOV[c]) {
                         CellEmitter.get( c ).burst( SmokeParticle.FACTORY, 4 );
                     }
 
-
                     Char ch = Actor.findChar( c );
-                    if (ch == Dungeon.hero) {
-                        Buff.prolong(ch, Weakness.class, Weakness.DURATION / 2f);
-
+                    if (ch.alignment == Alignment.ALLY) {
                         ch.damage(damageRoll() - ch.drRoll(), this );
+
+                        if (Random.Int(5) < 1) {
+                            Buff.prolong(ch, Weakness.class, 4f);
+                        }
 
                         if (ch == Dungeon.hero && !ch.isAlive()) {
                             Dungeon.fail( Jaguar.this.getClass() );
@@ -195,15 +196,16 @@ public class Jaguar extends Mob {
             Char ch = Actor.findChar(target);
             if (ch != null) {
 
-                int dmg = damageRoll() * 2;
-                if (ch == Jaguar.this) {
-                    dmg /= 4;
-                }
+                int dmg = damageRoll() * 3;
 
-                ch.damage( dmg,this );
+                ch.damage( dmg,Jaguar.this );
 
-                if (ch == Dungeon.hero && !ch.isAlive()) {
-                    Dungeon.fail( Jaguar.this.getClass() );
+                if (ch.alignment == Alignment.ALLY) {
+                    Buff.prolong(ch, Weakness.class, 8f);
+
+                    if (ch == Dungeon.hero && !ch.isAlive()) {
+                        Dungeon.fail( Jaguar.this.getClass() );
+                    }
                 }
             }
 
