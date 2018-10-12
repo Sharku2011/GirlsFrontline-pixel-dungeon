@@ -34,6 +34,7 @@ import com.gfpixel.gfpixeldungeon.actors.mobs.MobRotations;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Blacksmith;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Ghost;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Imp;
+import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Noel;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Wandmaker;
 import com.gfpixel.gfpixeldungeon.items.Ankh;
 import com.gfpixel.gfpixeldungeon.items.Generator;
@@ -235,6 +236,7 @@ public class Dungeon {
 		
 		Ghost.Quest.reset();
 		Wandmaker.Quest.reset();
+		Noel.Quest.reset();
 		Blacksmith.Quest.reset();
 		Imp.Quest.reset();
 

@@ -36,7 +36,6 @@ import com.gfpixel.gfpixeldungeon.levels.rooms.Room;
 import com.gfpixel.gfpixeldungeon.levels.rooms.standard.RitualSiteRoom;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.NoelSprite;
-import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.gfpixel.gfpixeldungeon.windows.WndNoel;
 import com.watabou.utils.Bundle;
@@ -91,8 +90,7 @@ public class Noel extends NPC {
                 int DialogID = DialogInfo.ID_NOEL_QUEST + DialogInfo.COMPLETE;
                 WndDialog wnd = new WndDialog( DialogID ) {
                     @Override
-                    protected void onFinish()
-                    {
+                    protected void onFinish() {
                         GameScene.show(new WndNoel((Noel) this.npc, item));
                     }
                 };
@@ -104,7 +102,7 @@ public class Noel extends NPC {
                 // 진행중 대사 출력
                 int DialogID = DialogInfo.ID_NOEL_QUEST + DialogInfo.INPROGRESS;
 
-                WndDialog.setBRANCH(DialogID, Quest.type);
+                WndDialog.setBRANCH(DialogID, 0);
                 WndDialog.ShowChapter(DialogID);
 
             }
@@ -113,7 +111,7 @@ public class Noel extends NPC {
             // 퀘스트 수주
             int DialogID = DialogInfo.ID_NOEL_QUEST;
 
-            WndDialog.setBRANCH(DialogID, Quest.type);
+            WndDialog.setBRANCH(DialogID, 0);
             WndDialog.ShowChapter(DialogID);
 
             Notes.add( Notes.Landmark.NOEL );
@@ -124,9 +122,6 @@ public class Noel extends NPC {
     }
 
     public static class Quest {
-
-        private static int type;
-        // 2 = elemental embers quest
 
         private static SparseArray<Class<? extends Item>> TARGETS = new SparseArray<>();
 
@@ -164,7 +159,6 @@ public class Noel extends NPC {
             node.put( SPAWNED, spawned );
 
             if (spawned) {
-                GLog.i("퀘스트 저장됨");
                 node.put( GIVEN, given );
 
                 node.put( WAND1, wand1 );
@@ -190,8 +184,6 @@ public class Noel extends NPC {
                 CeremonialCandle.ritualPos = node.getInt( RITUALPOS );
 
             } else {
-                GLog.i(String.valueOf(!node.isNull()));
-                GLog.i(String.valueOf(spawned));
                 reset();
             }
         }

@@ -37,14 +37,11 @@ import com.gfpixel.gfpixeldungeon.levels.rooms.Room;
 import com.gfpixel.gfpixeldungeon.levels.rooms.special.MassGraveRoom;
 import com.gfpixel.gfpixeldungeon.levels.rooms.special.RotGardenRoom;
 import com.gfpixel.gfpixeldungeon.levels.rooms.standard.RitualSiteRoom;
-import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.plants.Rotberry;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.WandmakerSprite;
 import com.gfpixel.gfpixeldungeon.windows.WndDialog;
-import com.gfpixel.gfpixeldungeon.windows.WndQuest;
 import com.gfpixel.gfpixeldungeon.windows.WndWandmaker;
-import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 import com.watabou.utils.SparseArray;
@@ -98,8 +95,7 @@ public class Wandmaker extends NPC {
 				int DialogID = DialogInfo.ID_M16A1_QUEST + DialogInfo.COMPLETE;
 				WndDialog wnd = new WndDialog( DialogID ) {
 					@Override
-					protected void onFinish()
-					{
+					protected void onFinish() {
 						GameScene.show(new WndWandmaker((Wandmaker) this.npc, item));
 					}
 				};
