@@ -21,24 +21,19 @@
 
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
-import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
 import com.gfpixel.gfpixeldungeon.actors.blobs.ToxicGas;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
-import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
 import com.gfpixel.gfpixeldungeon.actors.buffs.LockedFloor;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
-import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.effects.particles.BloodParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.ElmoParticle;
-import com.gfpixel.gfpixeldungeon.items.artifacts.CapeOfThorns;
 import com.gfpixel.gfpixeldungeon.items.artifacts.LloydsBeacon;
 import com.gfpixel.gfpixeldungeon.items.keys.SkeletonKey;
 import com.gfpixel.gfpixeldungeon.levels.Level;
@@ -50,8 +45,6 @@ import com.gfpixel.gfpixeldungeon.sprites.DM300Sprite;
 import com.gfpixel.gfpixeldungeon.ui.BossHealthBar;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.gfpixel.gfpixeldungeon.windows.WndDialog;
-import com.watabou.noosa.Camera;
-import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
@@ -63,14 +56,14 @@ public class DM300 extends Mob {
 		HP = HT = 270;
 		EXP = 30;
 		defenseSkill = 18;
-		
+
+		/*
 		loot = new CapeOfThorns();
 		lootChance = 0.333f;
+		*/
 
 		properties.add(Property.BOSS);
 		properties.add(Property.INORGANIC);
-
-
 	}
 
 	private final int RANGE = 3;
@@ -187,7 +180,7 @@ public class DM300 extends Mob {
 		super.die( cause );
 		
 		GameScene.bossSlain();
-		Dungeon.level.drop( new SkeletonKey( Dungeon.depth  ), pos ).sprite.drop();
+		Dungeon.level.drop( new SkeletonKey( Dungeon.depth ), pos ).sprite.drop();
 		
 		Badges.validateBossSlain();
 

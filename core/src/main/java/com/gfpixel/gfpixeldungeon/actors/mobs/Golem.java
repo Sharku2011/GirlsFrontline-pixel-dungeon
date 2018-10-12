@@ -21,13 +21,12 @@
 
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
-import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Amok;
-import com.gfpixel.gfpixeldungeon.actors.buffs.LockedFloor;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Sleep;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Imp;
+import com.gfpixel.gfpixeldungeon.items.artifacts.CapeOfThorns;
 import com.gfpixel.gfpixeldungeon.sprites.GolemSprite;
 import com.watabou.utils.Random;
 
@@ -36,11 +35,14 @@ public class Golem extends Mob {
 	{
 		spriteClass = GolemSprite.class;
 
-		HP = HT = 300;
+		HP = HT = 150;
 		defenseSkill = 0;
 		baseSpeed = 0.9f;
 		EXP = 15;
 		maxLvl = 25;
+
+		loot = new CapeOfThorns();
+		lootChance = 0.02f;
 
 		properties.add(Property.ARMO);
 	}
