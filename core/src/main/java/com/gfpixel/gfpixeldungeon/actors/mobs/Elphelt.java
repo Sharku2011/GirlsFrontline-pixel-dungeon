@@ -811,7 +811,7 @@ public class Elphelt extends Mob {
                             if (ch instanceof Elphelt) {
                                 dmg /= 10;
                             }
-                            ch.damage( dmg , this );
+                            ch.damage( dmg , Elphelt.this );
                         }
 
                         if (ch == Dungeon.hero && !ch.isAlive()) {
