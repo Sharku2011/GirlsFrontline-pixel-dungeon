@@ -145,7 +145,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 분기점 챕터를 클리어할시 기존 티어보다 높은 성능을 가진 콜라보 무기와 콜라보 클리어 뱃지를 획득할 수 있습니다. \n\n" +
 						"_-_ 분기점 활성화 조건은 공개하지 않겠습니다. 하지만 찾기 쉬울거에요! 첫번째 분기점인 만큼, 초반 챕터에 분기점이 활성화됩니다!"));
 
-		changes.addButton( new ChangeButton(new Image(Assets.GEGAR, 0, 0, 24, 18), "신규 보스",
+		changes.addButton( new ChangeButton(new Image(Assets.GAGER, 0, 0, 24, 18), "신규 보스",
 				"_-_3챕터 보스 변경. \n\n" +
 						"_-_ 3챕터 보스가 만티코어가 필드 몬스터로 바뀐 관계로 새로운 보스가 추가 됐습니다.\n\n" +
 						"_-_ 게이저는 기존의 만티코어와 다른 공격패턴을 가지고있으며, 꽤나 위협적입니다."));
