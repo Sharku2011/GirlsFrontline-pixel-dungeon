@@ -48,7 +48,7 @@ public class Maccol extends Food {
     public void execute( Hero hero, String action ) {
         super.execute(hero, action);
         if (action == AC_EAT) {
-            Buff.affect(hero, Speed.class, 5.f);
+            Buff.affect(hero, Speed.class, 3.f);
         }
 
    }
