@@ -99,7 +99,7 @@ public class DM300 extends Mob {
 
 		Char ch = findChar(aim.collisionPos);
 		if (ch != null) {
-			ch.damage(damageRoll() - ch.drRoll(), DM300.this );
+			ch.damage(Math.max(damageRoll() - ch.drRoll(), 0), DM300.this );
 
 			if (ch == Dungeon.hero && !ch.isAlive()) {
 				Dungeon.fail( this.getClass() );
@@ -164,8 +164,6 @@ public class DM300 extends Mob {
 			Buff.prolong( ch, Paralysis.class, 2 );
 		}
 	}
-
-	private final int damageCap = 50;
 
 	@Override
 	public void damage(int dmg, Object src) {
