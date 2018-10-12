@@ -22,6 +22,7 @@
 package com.gfpixel.gfpixeldungeon.items.bags;
 
 import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.items.Stylus;
 import com.gfpixel.gfpixeldungeon.items.stones.Runestone;
 import com.gfpixel.gfpixeldungeon.plants.Plant;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
@@ -36,7 +37,7 @@ public class VelvetPouch extends Bag {
 	
 	@Override
 	public boolean grab( Item item ) {
-		return item instanceof Plant.Seed || item instanceof Runestone;
+		return item instanceof Plant.Seed || item instanceof Runestone || item instanceof Stylus;
 	}
 	
 	@Override
