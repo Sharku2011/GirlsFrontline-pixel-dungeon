@@ -209,13 +209,21 @@ public  class DialogInfo
                 new DialogInfo (
                         "dm300",
                         new Point[]{GAGER},
-                        new int[]{        0} )
+                        new int[]  {    0}
+                )
         );
         STORIES.put( ID_CITY,
                 new DialogInfo (
                         "city",
                         new Point[]{HK416, UMP45, UMP9, G11, HK416, UMP9, UMP45, DESTROYER, UMP45, UMP9},
                         new int[]{    2,     2,    2,   1,     1,    0,     0,         0,     2,    0}
+                )
+        );
+        STORIES.put( ID_CITY_BOSS,
+                new DialogInfo(
+                        "destroyer",
+                        new Point[]{DESTROYER},
+                        new int[]{0}
                 )
         );
         STORIES.put( ID_RECAVES,
