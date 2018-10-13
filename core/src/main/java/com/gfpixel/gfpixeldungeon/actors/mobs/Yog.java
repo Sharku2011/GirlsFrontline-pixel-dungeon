@@ -103,7 +103,7 @@ public class Yog extends Mob {
 		return super.act();
 	}
 
-	private static final int damageCap = 50;
+	private static final int damageCap = 30;
 
 	@Override
 	public void damage( int dmg, Object src ) {
