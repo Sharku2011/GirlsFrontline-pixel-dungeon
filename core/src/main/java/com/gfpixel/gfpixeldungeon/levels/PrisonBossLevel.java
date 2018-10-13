@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.levels;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Bones;
+import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
@@ -44,6 +45,7 @@ import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.tiles.CustomTiledVisual;
 import com.gfpixel.gfpixeldungeon.ui.TargetHealthIndicator;
 import com.gfpixel.gfpixeldungeon.utils.BArray;
+import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.watabou.noosa.Group;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundlable;
@@ -301,6 +303,9 @@ public class PrisonBossLevel extends Level {
 				tengu.state = tengu.HUNTING;
 				tengu.pos = 5 + 28*32; //in the middle of the fight room
 				GameScene.add( tengu );
+
+				WndDialog.ShowChapter(DialogInfo.ID_CITY_BOSS);
+
 				tengu.notice();
 
 				state = State.FIGHT_START;
