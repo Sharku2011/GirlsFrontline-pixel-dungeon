@@ -237,7 +237,7 @@ public class King extends Mob {
 	public void notice() {
 		super.notice();
 		BossHealthBar.assignBoss(this);
-		if (!Dungeon.level.locked) {
+		if (!Dungeon.chapters.contains(DialogInfo.ID_CITY_BOSS)) {
 			WndDialog.ShowChapter(DialogInfo.ID_CITY_BOSS);
 		}
 	}
