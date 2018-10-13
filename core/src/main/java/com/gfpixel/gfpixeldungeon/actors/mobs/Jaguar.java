@@ -172,7 +172,7 @@ public class Jaguar extends Mob {
                     }
 
                     Char ch = Actor.findChar( c );
-                    if (ch.alignment == Alignment.ALLY) {
+                    if (ch != null && ch.alignment == Alignment.ALLY) {
                         ch.damage(damageRoll() - ch.drRoll(), this );
 
                         if (Random.Int(5) < 1) {
