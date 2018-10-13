@@ -166,7 +166,7 @@ public class RabbitBossLevel extends Level {
 		super.press(cell, ch);
 
 		if (BuildConfig.DEBUG) {
-			GLog.i(cellToPoint(cell).toString());
+			//GLog.i(cellToPoint(cell).toString());
 		}
 
 		if (ch == Dungeon.hero) {
