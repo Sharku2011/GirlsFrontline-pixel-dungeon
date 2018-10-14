@@ -29,7 +29,7 @@ public class M9 extends MeleeWeapon {
 		image = ItemSpriteSheet.M9;
 
 		tier = 1;
-		ACC = 0.55f;
+		ACC = 0.5f;
 	}
 
 	@Override
