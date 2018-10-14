@@ -304,7 +304,7 @@ public class PrisonBossLevel extends Level {
 				tengu.pos = 5 + 28*32; //in the middle of the fight room
 				GameScene.add( tengu );
 
-				WndDialog.ShowChapter(DialogInfo.ID_CITY_BOSS);
+				WndDialog.ShowChapter(DialogInfo.ID_PRISON_BOSS);
 
 				tengu.notice();
 
