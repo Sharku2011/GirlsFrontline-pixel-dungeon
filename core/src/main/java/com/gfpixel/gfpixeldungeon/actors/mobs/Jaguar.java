@@ -9,24 +9,17 @@ import com.gfpixel.gfpixeldungeon.actors.blobs.GenoiseWarn;
 import com.gfpixel.gfpixeldungeon.actors.blobs.GooWarn;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Weakness;
-import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.BlastParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
 import com.gfpixel.gfpixeldungeon.items.Generator;
-import com.gfpixel.gfpixeldungeon.items.Heap;
-import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
-import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.JaguarSprite;
 import com.gfpixel.gfpixeldungeon.utils.BArray;
-import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
-
-import java.util.HashSet;
 
 public class Jaguar extends Mob {
 

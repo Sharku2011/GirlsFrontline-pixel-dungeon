@@ -21,6 +21,7 @@
 
 package com.gfpixel.gfpixeldungeon.items.bags;
 
+import com.gfpixel.gfpixeldungeon.items.Ankh;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.Stylus;
 import com.gfpixel.gfpixeldungeon.items.stones.Runestone;
@@ -37,7 +38,10 @@ public class VelvetPouch extends Bag {
 	
 	@Override
 	public boolean grab( Item item ) {
-		return item instanceof Plant.Seed || item instanceof Runestone || item instanceof Stylus;
+		// 씨앗
+		// 증강석(고급 장비 교정권), 인챈트석(특성 장비 교정권)
+		// 수복 계약
+		return item instanceof Plant.Seed || item instanceof Runestone || item instanceof Stylus || item instanceof Ankh;
 	}
 	
 	@Override
