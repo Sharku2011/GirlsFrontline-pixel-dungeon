@@ -28,7 +28,6 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Awareness;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
 import com.gfpixel.gfpixeldungeon.actors.buffs.MindVision;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
-import com.gfpixel.gfpixeldungeon.actors.mobs.Bestiary;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.actors.mobs.MobRotations;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Blacksmith;
