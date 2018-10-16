@@ -165,10 +165,6 @@ public class RabbitBossLevel extends Level {
 
 		super.press(cell, ch);
 
-		if (BuildConfig.DEBUG) {
-			GLog.i(cellToPoint(cell).toString());
-		}
-
 		if (ch == Dungeon.hero) {
 			//hero enters tengu's chamber
 			if (state == State.READY) {
@@ -266,7 +262,6 @@ public class RabbitBossLevel extends Level {
 			case READY:
 
 				elphelt.state = elphelt.SLEEPING;
-				elphelt.phase = 1;
 				elphelt.pos = exit; //in the middle of the fight room
 
 				GameScene.add( elphelt );
