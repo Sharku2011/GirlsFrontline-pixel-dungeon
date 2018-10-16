@@ -29,12 +29,13 @@ public class M9 extends MeleeWeapon {
 		image = ItemSpriteSheet.M9;
 
 		tier = 1;
-		ACC = 0.5f;
+		ACC = 0.53f;
+        DLY = 0.333f;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  7*(tier+1) +    //20 base, down from 25
+		return  2*(tier+1) +    //20 base, down from 25
 				lvl*(tier);     //+4 per level, down from +5
 	}
 }

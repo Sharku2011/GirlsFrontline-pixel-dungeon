@@ -58,6 +58,7 @@ import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Thunder;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.TowProto;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
@@ -135,8 +136,7 @@ public enum HeroClass {
 			Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
 
 			new Cannon().identify().collect();
-			new DriedRose().identify().collect();
-			new TowProto().identify().collect();
+            new Thunder().identify().collect();
 			new ScrollOfUpgrade().identify().quantity(5).collect();
 			new StoneOfEnchantment().quantity(100).collect();
 			new ScrollOfMagicalInfusion().identify().quantity(10).collect();

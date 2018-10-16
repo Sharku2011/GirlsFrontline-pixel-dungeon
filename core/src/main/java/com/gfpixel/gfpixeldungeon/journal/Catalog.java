@@ -94,9 +94,11 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.AWP;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dragunov;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.C96;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Lar;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M99;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SRS;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Thunder;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Dp;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
@@ -171,6 +173,7 @@ public enum Catalog {
 		WEAPONS.seen.put( Dp.class,                   false);
 		WEAPONS.seen.put( SR3.class,                   false);
 		WEAPONS.seen.put( SRS.class,                   false);
+		WEAPONS.seen.put( Thunder.class,				false);
 		WEAPONS.seen.put( Boomerang.class,                  false);
 		WEAPONS.seen.put( M16.class,                 false);
 		WEAPONS.seen.put( M1911.class,                    false);
@@ -197,6 +200,7 @@ public enum Catalog {
 		WEAPONS.seen.put( M99.class,                     false);
 		WEAPONS.seen.put( SakuraBlade.class,                   false);
 		WEAPONS.seen.put( SaigaPlate.class,                false);
+		WEAPONS.seen.put( Lar.class,         			       false);
 		WEAPONS.seen.put( SAIGA.class,                        false);
 		WEAPONS.seen.put( Mg42.class,                     false);
 		WEAPONS.seen.put( Ntw20.class,                   false);

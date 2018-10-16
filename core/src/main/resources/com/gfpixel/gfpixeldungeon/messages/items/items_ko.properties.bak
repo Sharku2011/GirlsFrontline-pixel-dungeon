@@ -346,8 +346,8 @@ items.artifacts.towcall.desc_cursed=고장난 호출기가 당신의 팬티 속�
 items.artifacts.towcall$memory.name=고급 메모리
 items.artifacts.towcall$memory.no_rose=중화기반에게 줄 메모리가 없다.
 items.artifacts.towcall$memory.no_room=메모리가 들어갈 공간이 없어서 버릴 수 밖에 없었다.
-items.artifacts.towcall$memory.maxlevel=중화기반이 최대로 업그레이드 됬다!
-items.artifacts.towcall$memory.levelup=중화기반이 업그레이드 됬다.
+items.artifacts.towcall$memory.maxlevel=중화기반이 최대로 업그레이드 되었다!
+items.artifacts.towcall$memory.levelup=중화기반이 업그레이드 되었다.
 items.artifacts.towcall$memory.desc=고급 메모리의 파편으로, 조금만 손보면 사용할수있을거같다.
 items.artifacts.towcall$tow.name=대전차화기반
 items.artifacts.towcall$tow.def_verb=회피
@@ -374,8 +374,8 @@ items.bags.potionbandolier.desc=이 두꺼운 보관대는 당신의 가슴팍�
 items.bags.scrollholder.name=디스크 보관함
 items.bags.scrollholder.desc=이 원통형 보관함은 단순하고 싸구려지만, 당신이 가진 디스크들을 넣기에 충분합니다.\n\n이 보관함은 불에 타지 않는 재료로 만들어졌습니다. 따라서 이 안에 보관된 디스크도 불붙을 걱정이 없습니다.
 
-items.bags.velvetpouch.name=씨앗 주머니
-items.bags.velvetpouch.desc=이 작은 벨벳 주머니는 씨앗이라면 무엇이든지 담을 수 있습니다. 아주 편리하지요.
+items.bags.velvetpouch.name=벨벳 주머니
+items.bags.velvetpouch.desc=이 작은 벨벳 주머니는 씨앗을 비롯한 작은 물건들이라면 무엇이든지 담을 수 있습니다. 아주 편리하지요.
 
 items.bags.magicalholster.name=IOP 대용량 탄창
 items.bags.magicalholster.desc=IOP사의 자동화기 계열 전술소녀를 위한 대용량 탄창입니다. 많은 탄약들을 이 안에 안전하게 보관할수있죠.\n\n간단한 자동장전장치가 내부에 있어 수납한 총알들이 조금 더 빨리 장전됩니다.\n\n또한 자신이 원하는 무기를 스스로 꺼내서 제공합니다.\n\n탄창에 적용된 기술로 인해, 특수 탄환의 충전이 약간 빨라지며 발사체 무기들을 조금 더 오래 발사할 수 있습니다.
@@ -583,7 +583,7 @@ items.rings.ring.emerald=이오텍 (에메랄드)
 items.rings.ring.sapphire=레드닷 (사파이어)
 items.rings.ring.quartz=이오텍 (수정)
 items.rings.ring.agate=레드닷 (아게이트)
-items.rings.ring.equip_cursed=이 도트 사이트를 장착하는 순간, 뭔가 잘못됬다는것을 느꼈다!
+items.rings.ring.equip_cursed=이 도트 사이트를 장착하는 순간, 뭔가 잘못되었다는것을 느꼈다!
 items.rings.ring.unknown_desc=보석의 색으로 마킹된 IOP사의 광학장비입니다. 이걸 장착했을 때 어떤 일이 일어날까요?
 items.rings.ring.known=이것은 %s 입니다.
 items.rings.ring.identify=당신은 이 광학장비가 무엇인지 알 만큼 충분히 익숙해졌습니다. 이것은 %s입니다.
@@ -914,8 +914,8 @@ items.weapon.melee.ump45.stats_desc=이 기관단총은 명중률이 낮으며 �
 items.weapon.melee.ump45.desc="시작해, 9. 제대로 보라구."\n\n45ACP 탄종을 사용하는 UMP45의 기본 무장입니다. 준수한 데미지에 적당한 내구성으로 피해를 일부 막아낼수있습니다.
 
 items.weapon.melee.m9.name=IWI 제리코 941
-items.weapon.melee.m9.stats_desc=이 권총은 조금 떨어진 적을 공격할 수 있지만, 공격속도가 조금 느립니다.
-items.weapon.melee.m9.desc=이스라엘의 41 Action Express 탄종을 사용하는 권총입니다. 권총 치고는 매우 고압력인 탄환을 사용해 사거리가 늘어났지만, 약간의 반동 또한 늘어났습니다.
+items.weapon.melee.m9.stats_desc=강력하지만 명중률이 크게 떨어집니다.
+items.weapon.melee.m9.desc=이스라엘의 41 Action Express 탄종을 사용하는 권총입니다. 권총 치고는 매우 고압력인 탄환을 사용해 관통력이 크게 올라갔지만, 높은 반동으로 인해 명중률이 크게 떨어졌습니다.
 
 items.weapon.melee.sr3.name=SR-3MP
 items.weapon.melee.sr3.stats_desc=이 무기는 무방비 상태의 적에게 더 강하며, 강화 효율이 높고, 피해를 일부 흡수할수있습니다.
