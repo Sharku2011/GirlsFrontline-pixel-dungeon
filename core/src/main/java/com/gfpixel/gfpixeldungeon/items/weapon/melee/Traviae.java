@@ -22,16 +22,45 @@
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
+import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
+import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.items.bags.Bag;
+import com.gfpixel.gfpixeldungeon.items.wands.Wand;
+import com.gfpixel.gfpixeldungeon.items.wands.WandOfGenoise;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
+import com.watabou.noosa.particles.Emitter;
+
+import java.util.ArrayList;
 
 public class Traviae extends Launcher {
     {
         image = ItemSpriteSheet.TRAVIAE;
 
+        defaultAction = AC_ZAP;
+        usesTargeting = true;
+
+        unique = true;
+        bones = false;
+
         tier=2;
         DLY = 0.8f;
         RCH = 2;
         ACC = 1.5f; //27% boost to accuracy
+    }
+
+    private Wand wand;
+
+    public static final String AC_ZAP	= "ZAP";
+    private static final float STAFF_SCALE_FACTOR = 0.75f;
+
+    public Traviae(){
+        Wand wand = new WandOfGenoise();
+        wand.identify();
+        wand.cursed = false;
+        this.wand = wand;
+        wand.maxCharges = 1;
+        wand.curCharges = wand.maxCharges;
     }
 
     @Override
@@ -44,4 +73,99 @@ public class Traviae extends Launcher {
     public int defenseFactor( Char owner ) {
         return 5+2*level();     //6 extra defence, plus 2 per level;
     }
+
+    @Override
+    public ArrayList<String> actions(Hero hero) {
+        ArrayList<String> actions = super.actions(hero);
+        actions.add(AC_ZAP);
+
+        return actions;
+    }
+
+    @Override
+    public void activate( Char ch ) {
+        if(wand != null) wand.charge( ch, STAFF_SCALE_FACTOR );
+    }
+
+    @Override
+    public void execute(Hero hero, String action) {
+
+        super.execute(hero, action);
+
+        if (action.equals(AC_ZAP)){
+            wand.execute(hero, AC_ZAP);
+        }
+    }
+
+    @Override
+    public Emitter emitter() {
+        if (wand == null) return null;
+        Emitter emitter = new Emitter();
+        emitter.pos(12.5f, 3);
+        emitter.fillTarget = false;
+        emitter.pour(StaffParticleFactory, 0.1f);
+        return emitter;
+    }
+
+    @Override
+    public boolean collect( Bag container ) {
+        if (super.collect(container)) {
+            if (container.owner != null) {
+                wand.charge(container.owner, STAFF_SCALE_FACTOR);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void gainCharge( float amt ){
+        if (wand != null){
+            wand.gainCharge(amt);
+        }
+    }
+
+    @Override
+    public Item upgrade(boolean enchant) {
+        super.upgrade( enchant );
+
+        if (wand != null) {
+            wand.upgrade();
+            wand.curCharges = 1;
+            updateQuickslot();
+        }
+
+        return this;
+    }
+
+    @Override
+    public String status() {
+        return wand.status();
+    }
+
+    @Override
+    public int price() {
+        return 0;
+    }
+
+    private final Emitter.Factory StaffParticleFactory = new Emitter.Factory() {
+        @Override
+        //reimplementing this is needed as instance creation of new staff particles must be within this class.
+        public void emit(Emitter emitter, int index, float x, float y ) {
+            StaffParticle c = (StaffParticle)emitter.getFirstAvailable(StaffParticle.class);
+            if (c == null) {
+                c = new StaffParticle();
+                emitter.add(c);
+            }
+            c.reset(x, y);
+        }
+
+        @Override
+        //some particles need light mode, others don't
+        public boolean lightMode() {
+            return wand.curCharges != 0;
+        }
+    };
+
+
 }
