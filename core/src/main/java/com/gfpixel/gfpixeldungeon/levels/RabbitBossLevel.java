@@ -300,12 +300,6 @@ public class RabbitBossLevel extends Level {
 
 				elphelt.pos = 15+15*32;	// center of map
 				elphelt.die(Dungeon.hero);
-
-				Actor.remove(elphelt);
-				mobs.remove(elphelt);
-
-				TargetHealthIndicator.instance.target(null);
-				elphelt.sprite.kill();
 				
 				state = State.WON;
 				unseal();

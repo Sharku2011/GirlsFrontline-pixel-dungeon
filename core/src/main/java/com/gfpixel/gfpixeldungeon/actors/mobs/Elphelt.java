@@ -192,11 +192,6 @@ public class Elphelt extends Mob {
                     curGenoiseStack = maxGenoiseStack;
                     onGenoise = true;
                 }
-
-                if ( onGenoise ) {
-                    traceGenoise = new Ballistica(pos, enemy.pos, Ballistica.PROJECTILE);
-                    genoiseDst = traceGenoise.collisionPos;
-                }
                 return onGenoise || super.canAttack( enemy );
             case 2:
                 // rush and magnum wedding
@@ -230,8 +225,11 @@ public class Elphelt extends Mob {
                     return true;
                 }
 
+                traceGenoise = new Ballistica(pos, target, Ballistica.PROJECTILE);
+                genoiseDst = traceGenoise.collisionPos;
+
                 if ( genoiseDst > 0 ) {
-                    if (Dungeon.level.adjacent(pos, genoiseDst)) {
+                    if (Dungeon.level.adjacent(pos, enemy.pos)) {
                         Blast();
                         return true;
                     }
@@ -412,7 +410,7 @@ public class Elphelt extends Mob {
                             }
                             fch.pos = newPos;
                             if (fch.pos == trajectory.collisionPos) {
-                                Paralysis.prolong(fch, Paralysis.class, 2.5f);
+                                Paralysis.prolong(fch, Paralysis.class, 3.0f);
                             }
                             Dungeon.level.press(fch.pos, fch, true);
                             if (fch == Dungeon.hero){
@@ -716,6 +714,15 @@ public class Elphelt extends Mob {
                         if (enemyInFOV && enemy != null)
                         {
                             target = enemy.pos;
+                        } else {
+                            if (onGenoise) {
+                                int cell;
+                                do {
+                                    cell = Random.Int( Dungeon.level.length() );
+                                } while ( Dungeon.level.distance(cell, target) > 2 && !Dungeon.level.passable[cell]);
+
+                                target = cell;
+                            }
                         }
                         return doAttack( enemy );
                     } else {
@@ -726,8 +733,8 @@ public class Elphelt extends Mob {
                             return moveSprite( oldPos, pos );
                         } else {
                             spend( TICK );
-                            sprite.showLost();
                             if (!enemyInFOV) {
+                                sprite.showLost();
                                 state = WANDERING;
                                 target = Dungeon.level.randomDestination();
                             }
@@ -742,8 +749,10 @@ public class Elphelt extends Mob {
                             int cell;
                             do {
                                 cell = Random.Int( Dungeon.level.length() );
-                            } while ( Dungeon.level.distance(cell, enemy.pos) <= 8 && !Dungeon.level.passable[cell]);
-
+                            } while ( Dungeon.level.distance(cell, enemy.pos) > 6 && !Dungeon.level.passable[cell]);
+                            if (Random.Int(6) == 0) {
+                                yell("숨지 말아요, 달링!");
+                            }
                             target = cell;
                         }
                         return doAttack(enemy);
@@ -757,6 +766,12 @@ public class Elphelt extends Mob {
                             if (!enemyInFOV) {
                                 state = WANDERING;
                                 target = Dungeon.level.randomDestination();
+                                sprite.showLost();
+                                if (Random.Int(3) == 0) {
+                                    yell("어디에 있나요, 달링!");
+                                }
+                            } else {
+                                target = enemy.pos;
                             }
                             return true;
                         }
