@@ -58,9 +58,12 @@ import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Kriss;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1903;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SAIGA;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.TowProto;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Traviae;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Boomerang;
@@ -153,6 +156,9 @@ public enum HeroClass {
 			new PotionOfStrength().identify().quantity(12).collect();
 			new PotionOfInvisibility().identify().quantity(10).collect();
 			new SAIGA().identify().collect();
+			new Kriss().identify().collect();
+			new Traviae().identify().collect();
+			new M1903().identify().collect();
 		}
 	}
 
