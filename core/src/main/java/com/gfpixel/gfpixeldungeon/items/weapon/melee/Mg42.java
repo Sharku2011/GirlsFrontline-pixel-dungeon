@@ -16,7 +16,7 @@ public class Mg42 extends MeleeWeapon {
         image = ItemSpriteSheet.MG42;
 
         tier = 6;
-        ACC = 0.3f;
+        ACC = 0.35f;
         DLY = 0.1f;
     }
 

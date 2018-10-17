@@ -22,6 +22,9 @@
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Cripple;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
@@ -35,6 +38,16 @@ public class Thunder extends MeleeWeapon {
         tier = 1;
         ACC = 0.09f;
         DLY = 2f;
+        //RCH = 3;
+    }
+
+
+    @Override
+    public int damageRoll(Char owner) {
+        if (owner instanceof Hero) {
+            Buff.prolong(owner, Cripple.class, 6f);
+        }
+        return super.damageRoll(owner);
     }
 
     @Override
