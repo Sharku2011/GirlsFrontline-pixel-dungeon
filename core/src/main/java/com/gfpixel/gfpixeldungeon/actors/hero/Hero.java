@@ -88,6 +88,7 @@ import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Kriss;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M99;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.gfpixel.gfpixeldungeon.journal.Notes;
@@ -398,7 +399,8 @@ public class Hero extends Char {
 	public boolean canSurpriseAttack(){
 		if (belongings.weapon == null || !(belongings.weapon instanceof Weapon))    return true;
 		if (STR() < ((Weapon)belongings.weapon).STRReq())                           return false;
-		if (belongings.weapon instanceof AK47 ||
+		if (belongings.weapon instanceof Kriss ||
+			belongings.weapon instanceof AK47 ||
 			belongings.weapon instanceof M99)                                     return false;
 
 		return true;
@@ -1532,13 +1534,13 @@ public class Hero extends Char {
 						} else if (cursed) {
 							chance = 0f;
 							
-						//unintentional trap detection scales from 40% at floor 0 to 30% at floor 25
+						//unintentional trap detection scales from 40% at floor 0 to 20% at floor 30
 						} else if (Dungeon.level.map[p] == Terrain.SECRET_TRAP) {
-							chance = 0.4f - (Dungeon.depth / 250f);
+							chance = 0.4f - (Dungeon.depth / 150f);
 							
-						//unintentional door detection scales from 20% at floor 0 to 0% at floor 20
+						//unintentional door detection scales from 25% at floor 0 to 0% at floor 25
 						} else {
-							chance = 0.2f - (Dungeon.depth / 100f);
+							chance = 0.25f - (Dungeon.depth / 100f);
 						}
 						
 						if (Random.Float() < chance) {
