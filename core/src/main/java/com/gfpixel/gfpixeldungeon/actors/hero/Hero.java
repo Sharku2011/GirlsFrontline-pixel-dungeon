@@ -1532,13 +1532,13 @@ public class Hero extends Char {
 						} else if (cursed) {
 							chance = 0f;
 							
-						//unintentional trap detection scales from 40% at floor 0 to 30% at floor 25
+						//unintentional trap detection scales from 40% at floor 0 to 20% at floor 30
 						} else if (Dungeon.level.map[p] == Terrain.SECRET_TRAP) {
-							chance = 0.4f - (Dungeon.depth / 250f);
+							chance = 0.4f - (Dungeon.depth / 150f);
 							
-						//unintentional door detection scales from 20% at floor 0 to 0% at floor 20
+						//unintentional door detection scales from 25% at floor 0 to 0% at floor 25
 						} else {
-							chance = 0.2f - (Dungeon.depth / 100f);
+							chance = 0.25f - (Dungeon.depth / 100f);
 						}
 						
 						if (Random.Float() < chance) {
