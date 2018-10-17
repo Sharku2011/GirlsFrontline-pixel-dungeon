@@ -154,6 +154,7 @@ public enum HeroClass {
 			new PotionOfExperience().identify().quantity(30).collect();
 			new PotionOfMight().identify().quantity(12).collect();
 			new PotionOfStrength().identify().quantity(12).collect();
+			new PotionOfInvisibility().identify().quantity(10).collect();
 		}
 
 
