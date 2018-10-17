@@ -29,6 +29,7 @@ import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.items.ArmorKit;
 import com.gfpixel.gfpixeldungeon.items.BrokenSeal;
 import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.items.TomeOfMastery;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
 import com.gfpixel.gfpixeldungeon.items.artifacts.CloakOfShadows;
@@ -58,6 +59,7 @@ import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SAIGA;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.TowProto;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod;
@@ -137,20 +139,21 @@ public enum HeroClass {
 			new Cannon().identify().collect();
 			new DriedRose().identify().collect();
 			new TowProto().identify().collect();
-			new ScrollOfUpgrade().identify().quantity(5).collect();
+			new ScrollOfUpgrade().identify().quantity(25).collect();
 			new StoneOfEnchantment().quantity(100).collect();
 			new ScrollOfMagicalInfusion().identify().quantity(10).collect();
 			new WandOfDisintegration().identify().upgrade().collect();
 			new PlateArmor().identify().upgrade(50).collect();
 			new Maccol().collect();
 			new ArmorKit().collect();
+			new TomeOfMastery().collect();
 			new PotionOfHealing().identify().quantity(5).collect();
 			new PotionOfExperience().identify().quantity(30).collect();
 			new PotionOfMight().identify().quantity(12).collect();
 			new PotionOfStrength().identify().quantity(12).collect();
+			new PotionOfInvisibility().identify().quantity(10).collect();
+			new SAIGA().identify().collect();
 		}
-
-
 	}
 
 	public Badges.Badge masteryBadge() {
