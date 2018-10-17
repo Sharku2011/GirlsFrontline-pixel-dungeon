@@ -27,6 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
+import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
@@ -124,7 +125,7 @@ public class WandOfDisintegration extends DamageWand {
 	}
 
 	@Override
-	public void staffFx(G11.StaffParticle particle) {
+	public void staffFx(StaffParticle particle) {
 		particle.color(0x220022);
 		particle.am = 0.6f;
 		particle.setLifespan(1f);

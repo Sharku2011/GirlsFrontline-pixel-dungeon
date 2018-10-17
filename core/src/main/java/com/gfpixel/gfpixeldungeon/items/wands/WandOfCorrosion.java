@@ -32,6 +32,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Ooze;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.effects.particles.CorrosionParticle;
+import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
@@ -94,7 +95,7 @@ public class WandOfCorrosion extends Wand {
 	}
 
 	@Override
-	public void staffFx(G11.StaffParticle particle) {
+	public void staffFx(StaffParticle particle) {
 		particle.color( ColorMath.random( 0xAAAAAA, 0xFF8800) );
 		particle.am = 0.6f;
 		particle.setLifespan( 1f );

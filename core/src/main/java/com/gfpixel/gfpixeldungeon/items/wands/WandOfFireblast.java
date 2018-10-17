@@ -32,6 +32,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Burning;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Cripple;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
+import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Blazing;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
@@ -197,7 +198,7 @@ public class WandOfFireblast extends DamageWand {
 	}
 
 	@Override
-	public void staffFx(G11.StaffParticle particle) {
+	public void staffFx(StaffParticle particle) {
 		particle.color( 0xEE7722 );
 		particle.am = 0.5f;
 		particle.setLifespan(0.6f);

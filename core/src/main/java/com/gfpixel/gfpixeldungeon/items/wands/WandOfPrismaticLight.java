@@ -35,6 +35,7 @@ import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.effects.particles.RainbowParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.ShadowParticle;
+import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
@@ -149,7 +150,7 @@ public class WandOfPrismaticLight extends DamageWand {
 	}
 
 	@Override
-	public void staffFx(G11.StaffParticle particle) {
+	public void staffFx(StaffParticle particle) {
 		particle.color( Random.Int( 0x1000000 ) );
 		particle.am = 0.5f;
 		particle.setLifespan(1f);

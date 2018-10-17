@@ -34,6 +34,7 @@ import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.actors.hero.HeroClass;
 import com.gfpixel.gfpixeldungeon.actors.hero.HeroSubClass;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
+import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.bags.Bag;
 import com.gfpixel.gfpixeldungeon.items.bags.MagicalHolster;
@@ -255,7 +256,7 @@ public abstract class Wand extends Item {
 		Sample.INSTANCE.play( Assets.SND_ZAP );
 	}
 
-	public void staffFx( G11.StaffParticle particle ){
+	public void staffFx( StaffParticle particle ){
 		particle.color(0xFFFFFF); particle.am = 0.3f;
 		particle.setLifespan( 1f);
 		particle.speed.polar( Random.Float(PointF.PI2), 2f );

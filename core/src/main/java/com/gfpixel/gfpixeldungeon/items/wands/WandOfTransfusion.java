@@ -34,6 +34,7 @@ import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.effects.particles.BloodParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.LeafParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.ShadowParticle;
+import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.Generator;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.Item;
@@ -206,7 +207,7 @@ public class WandOfTransfusion extends Wand {
 	}
 
 	@Override
-	public void staffFx(G11.StaffParticle particle) {
+	public void staffFx(StaffParticle particle) {
 		particle.color( 0xCC0000 );
 		particle.am = 0.6f;
 		particle.setLifespan(1f);

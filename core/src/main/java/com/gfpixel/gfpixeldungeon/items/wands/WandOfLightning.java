@@ -27,6 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.Lightning;
 import com.gfpixel.gfpixeldungeon.effects.particles.SparkParticle;
+import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Shocking;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
@@ -140,7 +141,7 @@ public class WandOfLightning extends DamageWand {
 	}
 
 	@Override
-	public void staffFx(G11.StaffParticle particle) {
+	public void staffFx(StaffParticle particle) {
 		particle.color(0xFFFFFF);
 		particle.am = 0.6f;
 		particle.setLifespan(0.6f);

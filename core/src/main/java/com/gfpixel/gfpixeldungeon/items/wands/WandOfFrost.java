@@ -30,6 +30,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Chill;
 import com.gfpixel.gfpixeldungeon.actors.buffs.FlavourBuff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Frost;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
+import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
@@ -117,7 +118,7 @@ public class WandOfFrost extends DamageWand {
 	}
 
 	@Override
-	public void staffFx(G11.StaffParticle particle) {
+	public void staffFx(StaffParticle particle) {
 		particle.color(0x88CCFF);
 		particle.am = 0.6f;
 		particle.setLifespan(2f);
