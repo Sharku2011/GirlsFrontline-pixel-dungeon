@@ -21,17 +21,32 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
+import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
+import com.gfpixel.gfpixeldungeon.effects.particles.BlastParticle;
+import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
+import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.bags.Bag;
 import com.gfpixel.gfpixeldungeon.items.wands.Wand;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfGenoise;
+import com.gfpixel.gfpixeldungeon.messages.Messages;
+import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
+import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.particles.Emitter;
+import com.watabou.utils.Bundle;
+import com.watabou.utils.PathFinder;
+import com.watabou.utils.Random;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class Traviae extends Launcher {
     {
@@ -43,10 +58,10 @@ public class Traviae extends Launcher {
         unique = true;
         bones = false;
 
-        tier=2;
-        DLY = 0.8f;
+        tier= 2;
+        DLY = 1.0f;
         RCH = 2;
-        ACC = 1.5f; //27% boost to accuracy
+        ACC = 1.1f; //10% boost to accuracy
     }
 
     private Wand wand;
@@ -148,6 +163,21 @@ public class Traviae extends Launcher {
         return 0;
     }
 
+    private static final String WAND        = "wand";
+
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        bundle.put(WAND, wand);
+
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        super.restoreFromBundle(bundle);
+        wand = (Wand) bundle.get(WAND);
+    }
+
     private final Emitter.Factory StaffParticleFactory = new Emitter.Factory() {
         @Override
         //reimplementing this is needed as instance creation of new staff particles must be within this class.
@@ -166,6 +196,7 @@ public class Traviae extends Launcher {
             return wand.curCharges != 0;
         }
     };
+
 
 
 }
