@@ -5,6 +5,7 @@ import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.BlastParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
+import com.gfpixel.gfpixeldungeon.items.Generator;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.watabou.noosa.audio.Sample;
@@ -19,20 +20,13 @@ public class Genoise extends Actor {
 
     public float fuseTime;
 
-    Genoise(int cell, int min, int max, float time) {
-
-        super();
-
-        target = cell;
-        minDmg = min;
-        maxDmg = max;
-
-
-        fuseTime = getNow()+time;
-    }
-
     public static Genoise newGenoise(int cell, int min, int max, float time) {
-        return new Genoise(cell, min, max, time);
+        Genoise genoise = new Genoise();
+        genoise.target = cell;
+        genoise.minDmg = min;
+        genoise.maxDmg = max;
+        genoise.fuseTime = genoise.getNow()+time;
+        return genoise;
     }
 
     private static final String TARGET = "target";

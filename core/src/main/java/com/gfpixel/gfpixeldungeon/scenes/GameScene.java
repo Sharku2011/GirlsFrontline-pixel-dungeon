@@ -29,6 +29,7 @@ import com.gfpixel.gfpixeldungeon.SPDSettings;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.Statistics;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
+import com.gfpixel.gfpixeldungeon.actors.Genoise;
 import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.effects.BannerSprites;
@@ -718,8 +719,18 @@ public class GameScene extends PixelScene {
 		Actor.add( mob );
 		scene.addMobSprite( mob );
 	}
-	
-	public static void add( Mob mob, float delay ) {
+
+	public static void add( Genoise genoise ) {
+		Dungeon.level.genoises.add( genoise );
+		Actor.add( genoise );
+	}
+
+	public static void add( Genoise genoise, float delay ) {
+		Dungeon.level.genoises.add( genoise );
+		Actor.addDelayed( genoise, delay );
+	}
+
+	public static void add(Mob mob, float delay ) {
 		Dungeon.level.mobs.add( mob );
 		Actor.addDelayed( mob, delay );
 		scene.addMobSprite( mob );

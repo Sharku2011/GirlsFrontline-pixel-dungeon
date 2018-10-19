@@ -28,6 +28,7 @@ import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.Statistics;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.Genoise;
 import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
 import com.gfpixel.gfpixeldungeon.actors.blobs.WellWater;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Awareness;
@@ -131,6 +132,8 @@ public abstract class Level implements Bundlable {
 	public SparseArray<Trap> traps;
 	public HashSet<CustomTiledVisual> customTiles;
 	public HashSet<CustomTiledVisual> customWalls;
+
+	public HashSet<Genoise> genoises;
 	
 	protected ArrayList<Item> itemsToSpawn = new ArrayList<>();
 
@@ -156,6 +159,8 @@ public abstract class Level implements Bundlable {
 	private static final String MOBS		= "mobs";
 	private static final String BLOBS		= "blobs";
 	private static final String FEELING		= "feeling";
+
+	private static final String GENOISES	= "genoises";
 
 	public void create() {
 
@@ -232,6 +237,8 @@ public abstract class Level implements Bundlable {
 			traps = new SparseArray<>();
 			customTiles = new HashSet<>();
 			customWalls = new HashSet<>();
+
+			genoises = new HashSet<>();
 			
 		} while (!build());
 		
@@ -299,6 +306,8 @@ public abstract class Level implements Bundlable {
 		traps = new SparseArray<>();
 		customTiles = new HashSet<>();
 		customWalls = new HashSet<>();
+
+		genoises = new HashSet<>();
 		
 		map		= bundle.getIntArray( MAP );
 
@@ -361,8 +370,15 @@ public abstract class Level implements Bundlable {
 		}
 
 		feeling = bundle.getEnum( FEELING, Feeling.class );
-		if (feeling == Feeling.DARK)
-			viewDistance = Math.round(viewDistance/2f);
+		if (feeling == Feeling.DARK) {
+			viewDistance = Math.round(viewDistance / 2f);
+		}
+
+		collection = bundle.getCollection( GENOISES );
+		for (Bundlable b : collection) {
+			Genoise genoise = (Genoise)b;
+			genoises.add( genoise );
+		}
 
 		buildFlagMaps();
 		cleanWalls();
@@ -387,6 +403,8 @@ public abstract class Level implements Bundlable {
 		bundle.put( MOBS, mobs );
 		bundle.put( BLOBS, blobs.values() );
 		bundle.put( FEELING, feeling );
+
+		bundle.put( GENOISES, genoises );
 	}
 	
 	public int tunnelTile() {
