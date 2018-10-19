@@ -91,6 +91,7 @@ public class Noel extends NPC {
                 WndDialog wnd = new WndDialog( DialogID ) {
                     @Override
                     protected void onFinish() {
+                        Quest.processed = true;
                         GameScene.show(new WndNoel((Noel) this.npc, item));
                     }
                 };
@@ -130,14 +131,15 @@ public class Noel extends NPC {
         }
 
         private static boolean spawned;
-
         private static boolean given;
+        private static boolean processed;
 
         public static Wand wand1;
         public static Wand wand2;
 
         public static void reset() {
             spawned = false;
+            processed = false;
 
             wand1 = null;
             wand2 = null;
@@ -147,6 +149,8 @@ public class Noel extends NPC {
 
         private static final String SPAWNED		= "spawned";
         private static final String GIVEN		= "given";
+        private static final String PROCESSED   = "processed";
+
         private static final String WAND1		= "wand1";
         private static final String WAND2		= "wand2";
 
@@ -160,6 +164,7 @@ public class Noel extends NPC {
 
             if (spawned) {
                 node.put( GIVEN, given );
+                node.put( PROCESSED, processed );
 
                 node.put( WAND1, wand1 );
                 node.put( WAND2, wand2 );
@@ -177,6 +182,7 @@ public class Noel extends NPC {
             if (!node.isNull() && (spawned = node.getBoolean( SPAWNED ))) {
 
                 given = node.getBoolean( GIVEN );
+                processed = node.getBoolean( PROCESSED );
 
                 wand1 = (Wand)node.get( WAND1 );
                 wand2 = (Wand)node.get( WAND2 );
@@ -232,6 +238,10 @@ public class Noel extends NPC {
             wand2 = null;
 
             Notes.remove( Notes.Landmark.NOEL );
+        }
+
+        public static boolean completed(){
+            return spawned && given && processed && wand1 == null && wand2 == null;
         }
     }
 }

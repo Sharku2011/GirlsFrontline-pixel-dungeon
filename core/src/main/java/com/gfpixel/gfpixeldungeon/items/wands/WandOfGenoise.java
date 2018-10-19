@@ -50,7 +50,7 @@ public class WandOfGenoise extends Wand {
     @Override
     public void updateLevel() {
         maxCharges = 1;
-        curCharges = 1;
+        curCharges = Noel.Quest.completed() ? 2 : 1;
     }
 
     @Override
