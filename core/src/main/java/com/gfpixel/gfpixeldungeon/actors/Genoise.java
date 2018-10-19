@@ -5,9 +5,10 @@ import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.BlastParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
-import com.gfpixel.gfpixeldungeon.items.Generator;
 import com.gfpixel.gfpixeldungeon.items.Heap;
+import com.gfpixel.gfpixeldungeon.levels.Level;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
+import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
@@ -18,14 +19,19 @@ public class Genoise extends Actor {
     private int minDmg = 0;
     private int maxDmg = 0;
 
-    public float fuseTime;
+    Genoise() {
+        Level level = Dungeon.level;
 
-    public static Genoise newGenoise(int cell, int min, int max, float time) {
+        if (level != null) {
+            level.genoises.add(this);
+        }
+    }
+
+    public static Genoise newGenoise(int cell, int min, int max) {
         Genoise genoise = new Genoise();
         genoise.target = cell;
         genoise.minDmg = min;
         genoise.maxDmg = max;
-        genoise.fuseTime = genoise.getNow()+time;
         return genoise;
     }
 
@@ -39,11 +45,13 @@ public class Genoise extends Actor {
     @Override
     protected boolean act() {
 
+        /*
         if (getTime() < fuseTime)
         {
             spend(TICK);
             return true;
         }
+        */
 
         Sample.INSTANCE.play( Assets.SND_BLAST );
 
@@ -90,6 +98,7 @@ public class Genoise extends Actor {
         }
 
         Actor.remove(this);
+        Dungeon.level.genoises.remove(this);
         return true;
     }
 
@@ -100,7 +109,6 @@ public class Genoise extends Actor {
         bundle.put(TARGET, target);
         bundle.put(MINDMG, minDmg);
         bundle.put(MAXDMG, maxDmg);
-        bundle.put(FUSETIME, fuseTime);
     }
 
     @Override
@@ -110,6 +118,5 @@ public class Genoise extends Actor {
         target = bundle.getInt(TARGET);
         minDmg = bundle.getInt(MINDMG);
         maxDmg = bundle.getInt(MAXDMG);
-        fuseTime = bundle.getFloat(FUSETIME);
     }
 }

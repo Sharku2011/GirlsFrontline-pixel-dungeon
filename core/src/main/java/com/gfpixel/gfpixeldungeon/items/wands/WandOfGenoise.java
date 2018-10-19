@@ -42,8 +42,8 @@ public class WandOfGenoise extends Wand {
             GameScene.add( Blob.seed( beam.collisionPos, Math.round( 1 + TIME_TO_EXPLODE ), GenoiseWarn.class) );
         }
 
-        Genoise newGenoise = Genoise.newGenoise( beam.collisionPos, min(level()), max(level()), TIME_TO_EXPLODE );
-        Actor.add(newGenoise);
+        Genoise newGenoise = Genoise.newGenoise( beam.collisionPos, min(level()), max(level()) );
+        Actor.addDelayed(newGenoise, TIME_TO_EXPLODE);
 
     }
 

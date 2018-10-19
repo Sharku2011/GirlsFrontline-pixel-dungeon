@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon;
 
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.Genoise;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Amok;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Awareness;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
@@ -402,7 +403,11 @@ public class Dungeon {
 		Dungeon.level = level;
 		DriedRose.restoreGhostHero( level, pos );
 		Actor.init();
-		
+
+		for (Genoise g : level.genoises) {
+			Actor.add(g);
+		}
+
 		Actor respawner = level.respawner();
 		if (respawner != null) {
 			Actor.addDelayed( respawner, level.respawnTime() );
@@ -680,7 +685,7 @@ public class Dungeon {
 		Dungeon.level = null;
 		Actor.clear();
 		
-		Bundle bundle = FileUtils.bundleFromFile( GamesInProgress.depthFile( save, depth)) ;
+		Bundle bundle = FileUtils.bundleFromFile( GamesInProgress.depthFile( save, depth )) ;
 		
 		Level level = (Level)bundle.get( LEVEL );
 		
