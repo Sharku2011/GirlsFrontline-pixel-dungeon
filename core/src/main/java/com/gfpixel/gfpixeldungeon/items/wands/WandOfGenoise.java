@@ -6,6 +6,9 @@ import com.gfpixel.gfpixeldungeon.actors.Genoise;
 import com.gfpixel.gfpixeldungeon.actors.blobs.Blob;
 import com.gfpixel.gfpixeldungeon.actors.blobs.GenoiseWarn;
 import com.gfpixel.gfpixeldungeon.actors.blobs.GooWarn;
+import com.gfpixel.gfpixeldungeon.actors.buffs.LockedFloor;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Recharging;
+import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Noel;
 import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
@@ -20,6 +23,8 @@ public class WandOfGenoise extends Wand {
         image = ItemSpriteSheet.WAND_TRANSFUSION;
 
         collisionProperties = Ballistica.PROJECTILE;
+
+        charger = new Charger();
     }
 
     private static final float TIME_TO_EXPLODE = 2f;
@@ -72,6 +77,25 @@ public class WandOfGenoise extends Wand {
 
     public int max(int lvl){
         return 30 + 2*lvl;
+    }
+
+    public class Charger extends Wand.Charger {
+
+        @Override
+        protected void recharge(){
+
+            float turnsToCharge = 25f;
+
+            LockedFloor lock = target.buff(LockedFloor.class);
+            if (lock == null || lock.regenOn())
+                partialCharge += 1f/turnsToCharge;
+
+            for (Recharging bonus : target.buffs(Recharging.class)){
+                if (bonus != null && bonus.remainder() > 0f) {
+                    partialCharge += CHARGE_BUFF_BONUS * bonus.remainder();
+                }
+            }
+        }
     }
 
 }
