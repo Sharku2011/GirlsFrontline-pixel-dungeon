@@ -414,11 +414,11 @@ public abstract class Wand extends Item {
 	
 	public class Charger extends Buff {
 		
-		private static final float BASE_CHARGE_DELAY = 10f;
-		private static final float SCALING_CHARGE_ADDITION = 40f;
-		private static final float NORMAL_SCALE_FACTOR = 0.875f;
+		protected static final float BASE_CHARGE_DELAY = 10f;
+		protected static final float SCALING_CHARGE_ADDITION = 40f;
+		protected static final float NORMAL_SCALE_FACTOR = 0.875f;
 
-		private static final float CHARGE_BUFF_BONUS = 0.25f;
+		protected static final float CHARGE_BUFF_BONUS = 0.25f;
 
 		float scalingFactor = NORMAL_SCALE_FACTOR;
 		
@@ -445,7 +445,7 @@ public abstract class Wand extends Item {
 			return true;
 		}
 
-		private void recharge(){
+		protected void recharge(){
 			int missingCharges = maxCharges - curCharges;
 			missingCharges += Ring.getBonus(target, RingOfEnergy.Energy.class);
 			missingCharges = Math.max(0, missingCharges);

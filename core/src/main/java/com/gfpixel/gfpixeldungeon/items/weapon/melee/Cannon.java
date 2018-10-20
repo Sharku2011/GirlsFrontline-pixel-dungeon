@@ -53,7 +53,7 @@ public class Cannon extends MeleeWeapon {
         if (owner instanceof Hero) {
             Hero hero = (Hero)owner;
             Char enemy = hero.enemy();
-            Buff.append(hero, Light.class, 10);
+            Buff.affect(hero, Light.class, 10);
             Buff.prolong(hero, Speed.class, 10);
             //Dungeon.Flag = true;
             if (enemy instanceof Mob && ((Mob) enemy).surprisedBy(hero)) {
