@@ -28,6 +28,7 @@ import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.items.ArmorKit;
 import com.gfpixel.gfpixeldungeon.items.BrokenSeal;
+import com.gfpixel.gfpixeldungeon.items.Honeypot;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
@@ -137,6 +138,8 @@ public enum HeroClass {
 			Dungeon.LimitedDrops.VELVET_POUCH.drop();
 			Dungeon.LimitedDrops.MAGICAL_HOLSTER.drop();
 			Dungeon.LimitedDrops.SCROLL_HOLDER.drop();
+
+			new Honeypot().quantity(3).collect();
 
 			new Cannon().identify().collect();
             new Thunder().identify().collect();
