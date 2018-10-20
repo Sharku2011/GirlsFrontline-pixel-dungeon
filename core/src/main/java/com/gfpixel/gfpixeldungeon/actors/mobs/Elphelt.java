@@ -154,8 +154,6 @@ public class Elphelt extends Mob {
     @Override
     protected boolean act() {
 
-	    GLog.i(state.toString());
-
         switch (phase) {
             case 0: default:
                 break;
