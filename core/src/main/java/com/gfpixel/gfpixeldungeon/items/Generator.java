@@ -295,7 +295,7 @@ public class Generator {
                     Cannon.class,
 					SRS.class
 			};
-			WEP_T1.probs = new float[]{ 1, 0, 1, 1, 1, 1, 0, 1 };
+			WEP_T1.probs = new float[]{ 1, 0, 1, 1, 1, 1, 0, 1, 0 };
 			
 			WEP_T2.classes = new Class<?>[]{
 					M16.class,

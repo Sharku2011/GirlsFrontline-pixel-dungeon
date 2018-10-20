@@ -30,7 +30,6 @@ public class SRS extends Launcher {
 
         tier = 1;
         ACC = 2f;
-        DLY = 1.1f;
     }
 
     @Override

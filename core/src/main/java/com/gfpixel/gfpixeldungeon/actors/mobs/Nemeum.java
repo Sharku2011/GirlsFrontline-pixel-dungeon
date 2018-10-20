@@ -44,8 +44,8 @@ public class Nemeum extends Mob {
     {
         spriteClass = NemeumSprite.class;
 
-        HP = HT = 50;
-        EXP = 19;
+        HP = HT = 80;
+        EXP = 9;
         defenseSkill = 5;
         baseSpeed = 0.8f;
         maxLvl = 17;
@@ -62,7 +62,7 @@ public class Nemeum extends Mob {
 
     @Override
     public int attackSkill( Char target ) {
-        return 20;
+        return 30;
     }
 
     @Override
@@ -169,7 +169,7 @@ public class Nemeum extends Mob {
             }
 
             if (hit( this, ch, true )) {
-                ch.damage( Random.NormalIntRange( 15, 25 ), this );
+                ch.damage( Random.NormalIntRange( 35, 45 ), this );
 
                 if (Dungeon.level.heroFOV[pos]) {
                     ch.sprite.flash();

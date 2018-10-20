@@ -903,7 +903,7 @@ items.weapon.enchantments.vorpal.desc=예리한 무기는 날카롭게 깎인 �
 
 
 ###melee weapons
-###tier1
+###tier1 wep
 
 items.weapon.melee.ump40.name=H&K UMP40
 items.weapon.melee.ump40.stats_desc=이 기관단총은 아주 멀리 떨어진 적을 공격할수있습니다.
@@ -913,9 +913,9 @@ items.weapon.melee.ump45.name=H&K UMP45
 items.weapon.melee.ump45.stats_desc=이 기관단총은 명중률이 낮으며 피해를 일부 흡수합니다 강화할수록 막는 피해량이 늘어납니다.
 items.weapon.melee.ump45.desc="시작해, 9. 제대로 보라구."\n\n45ACP 탄종을 사용하는 UMP45의 기본 무장입니다. 준수한 데미지에 적당한 내구성으로 피해를 일부 막아낼수있습니다.
 
-items.weapon.melee.m9.name=IWI 제리코 941
-items.weapon.melee.m9.stats_desc=강력하지만 명중률이 크게 떨어집니다.
-items.weapon.melee.m9.desc=이스라엘의 41 Action Express 탄종을 사용하는 권총입니다. 권총 치고는 매우 고압력인 탄환을 사용해 관통력이 크게 올라갔지만, 높은 반동으로 인해 명중률이 크게 떨어졌습니다.
+items.weapon.melee.m9.name=H&K MP7
+items.weapon.melee.m9.stats_desc=빠르게 공격할 수 있지만 공격력과 명중률이 떨어지는 편입니다.
+items.weapon.melee.m9.desc="사육사 씨, 드디어 마중 나온 거야? 수고했어."\n\n 헤클러 운트 코흐 7호 기관단총입니다. G36과 같은 가스압 회전 노리쇠 방식을 적용했으며 전용 고속탄을 사용해 관통력이 높은 편이지만, 인형 소체를 대상으로는 글쎄요...
 
 items.weapon.melee.sr3.name=SR-3MP
 items.weapon.melee.sr3.stats_desc=이 무기는 무방비 상태의 적에게 더 강하며, 강화 효율이 높고, 피해를 일부 흡수할수있습니다.
@@ -936,6 +936,11 @@ items.weapon.melee.cannon.desc=젠장!
 items.weapon.melee.dp.name=DP-28
 items.weapon.melee.dp.stats_desc=이 무기는 다른 무기보다 압도적으로 빠르지만 명중률이 낮고 기습공격시 데미지가 떨어집니다.
 items.weapon.melee.dp.desc="LMG MOUNTED AND LOADED! Весомый аргумент готов." \n\n7.62x54mmR 47발들이 원반형 탄창을 사용하는 데그챠료프 보병기관총입니다. 머리가 나쁜 인간이라도 쉽게 사용할 수 있을만큼 단순하며, 가볍고 매우 높은 신뢰도와 내구성을 자랑합니다. 탄창만 빼고요! 
+
+items.weapon.melee.thunder.name=Triple-Action Thunder
+items.weapon.melee.thunder.stats_desc=이 무기는 한번의 명중으로 대부분의 적을 일격사 시킬수 있습니다.
+items.weapon.melee.thunder.desc="천둥이 치는 하늘에서도 새들은 필요한 법, 그렇기에 제가 여기서 싸우고 있어요." \n\n .50 BMG를 사용하는 거대한 권총입니다. 무지막지한 무게와 정신나간 반동으로 인해, 기습이 아닌 이상 적을 명중시킬 수 없다고 생각하면 편합니다. 
+
 
 items.weapon.melee.g11.name=H&K G11
 items.weapon.melee.g11.ac_imbue=장전한다
@@ -1030,7 +1035,7 @@ items.weapon.melee.meleeweapon.probably_too_heavy=아마도 이 무기는 당신
 items.weapon.melee.meleeweapon.stats_desc=
 
 items.weapon.melee.m16.name=M16A1
-items.weapon.melee.m16.stats_desc=이 무기는 멀리 떨어진 적을 공격할 수 있으며, 조금 느리고 기습공격을 할 수 없지만 적당한 피해를 막을 수 있습니다. 강화할수록 막는 피해가 늘어납니다.
+items.weapon.melee.m16.stats_desc=이 무기는 멀리 떨어진 적을 공격할 수 있으며, 적당한 피해를 막을 수 있습니다. 강화할수록 막는 피해가 늘어납니다.
 items.weapon.melee.m16.desc="좋았어! 빨리 임무 완수하고 한잔 마시러 가자고!" \n\nM14를 대체하기 위해 만들어진 미 육군 과거 제식소총이자 한국 예비군의 소총입니다. 튼튼한 동시에 빠른 탄속으로 조금 멀리 떨어진 적을 공격할 수 있습니다.
 
 items.weapon.melee.m1a1.name=톰슨 M1A1
@@ -1087,7 +1092,7 @@ items.weapon.melee.wa.desc="너 말이야, 어디 갔던 거야? 그렇게나 �
 items.weapon.melee.traviae.name=미스 트라비아에
 items.weapon.melee.traviae.stats_desc=이 무기는 조금 느리고 떨어진 적을 공격가능하며 공격을 일부 흡수합니다. 또한 50구경을 좀더 강력하게 발사할 수 있습니다.
 items.weapon.melee.traviae.desc="여자란 언제나 "사랑"이라는 전쟁터 위에 서있답니다! 아수라장을 거쳐온 수 만큼은 지지않는다구요!" \n\n 엘펠트가 사용하는 "키프로스 프로젝트"에 의해 완성된 총화기 형태의 무기 중 하나입니다.
-
+items.weapon.melee.traviae.ac_zap=발사한다
 
 ###missile weapons
 items.weapon.missiles.darts.blindingdart.name=50구경(섬광)
@@ -1191,11 +1196,11 @@ items.amulet.ac_end=게임을 끝낸다
 items.amulet.rankings_desc=M4A1구출 성공
 items.amulet.desc=슈토름 작전의 리더 M4A1입니다. 작전과 철혈 실험의 피로로 탈진한 상태입니다. 이제 그녀를 그리폰으로 다시 데리고갑시다.
 
-items.ankh.name=고속 수복계약
+items.ankh.name=고속 수복 계약
 items.ankh.ac_bless=강화한다
-items.ankh.bless=당신은 고속 수복계약을 강화했다.
-items.ankh.desc=지휘부에서 사용하는 고속 수복계약입니다. 인형이 격파될때 인형을 즉시 수복시킬수있지만 수복하는 중 착용하지 않은 모든 아이템들이 사라집니다. 가득 찬 이슬병을 사용해 수복계약을 강화시킬 수 있습니다.
-items.ankh.desc_blessed=지휘부에서 사용하는 고속 수복계약입니다. 인형이 격파될때 인형을 즉시 수복시킵니다. 이 수복계약은 강화됬으며 더 강력한 효과를 가집니다. 수복계약은 인형이 격파될 위기에 처했을 때 발동되며 완전격파를 피할수있습니다.
+items.ankh.bless=당신은 고속 수복 계약을 강화했다.
+items.ankh.desc=지휘부에서 사용하는 고속 수복 계약입니다. 인형이 격파될때 인형을 즉시 수복시킬수있지만 수복하는 중 착용하지 않은 모든 아이템들이 사라집니다. 가득 찬 이슬병을 사용해 수복계약을 강화시킬 수 있습니다.
+items.ankh.desc_blessed=지휘부에서 사용하는 고속 수복 계약입니다. 인형이 격파될때 인형을 즉시 수복시킵니다. 이 수복계약은 강화됬으며 더 강력한 효과를 가집니다. 수복계약은 인형이 격파될 위기에 처했을 때 발동되며 완전격파를 피할수있습니다.
 
 items.armorkit.name=외골격 개조 도구
 items.armorkit.ac_apply=추가한다
