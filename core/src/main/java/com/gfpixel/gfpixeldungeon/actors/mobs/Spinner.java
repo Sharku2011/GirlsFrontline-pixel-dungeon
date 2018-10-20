@@ -60,11 +60,6 @@ public class Spinner extends Mob {
 	}
 
 	@Override
-	protected float attackDelay() {
-		return 0.5f;
-	}
-
-	@Override
 	public int drRoll() {
 		return Random.NormalIntRange(0, 6);
 	}
