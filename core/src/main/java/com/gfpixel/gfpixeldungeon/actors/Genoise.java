@@ -8,7 +8,6 @@ import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.levels.Level;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
-import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
