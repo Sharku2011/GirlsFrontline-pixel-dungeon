@@ -11,7 +11,10 @@ import com.gfpixel.gfpixeldungeon.actors.blobs.GenoiseWarn;
 import com.gfpixel.gfpixeldungeon.actors.blobs.GooWarn;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Doom;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Frost;
 import com.gfpixel.gfpixeldungeon.actors.buffs.LockedFloor;
+import com.gfpixel.gfpixeldungeon.actors.buffs.MagicalSleep;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.actors.hero.HeroSubClass;
@@ -34,6 +37,7 @@ import com.gfpixel.gfpixeldungeon.levels.features.Door;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
+import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
 import com.gfpixel.gfpixeldungeon.sprites.ElpheltSprite;
 import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.gfpixel.gfpixeldungeon.ui.BossHealthBar;
@@ -95,7 +99,7 @@ public class Elphelt extends Mob {
 
     @Override
     public int drRoll() {
-        return Random.NormalIntRange(0, 10);
+        return Random.NormalIntRange(0, 0);
     }
 
     private Ballistica traceGenoise;
@@ -149,6 +153,9 @@ public class Elphelt extends Mob {
 
     @Override
     protected boolean act() {
+
+	    GLog.i(state.toString());
+
         switch (phase) {
             case 0: default:
                 break;
@@ -283,6 +290,32 @@ public class Elphelt extends Mob {
 
     @Override
     public void damage(int dmg, Object src) {
+
+        if (this.buff(Frost.class) != null){
+            Buff.detach( this, Frost.class );
+        }
+        if (this.buff(MagicalSleep.class) != null){
+            Buff.detach(this, MagicalSleep.class);
+        }
+        if (this.buff(Doom.class) != null){
+            dmg *= 2;
+        }
+
+        Class<?> srcClass = src.getClass();
+        if (isImmune( srcClass )) {
+            dmg = 0;
+        } else {
+            dmg = Math.round( dmg * resist( srcClass ));
+        }
+
+        if (dmg > 0) {
+            alerted = true;
+        }
+
+        if (buff( Paralysis.class ) != null) {
+            buff( Paralysis.class ).processDamage(dmg);
+        }
+
         int newHP = HP - dmg;
         int newDmg = dmg;
 
@@ -303,7 +336,12 @@ public class Elphelt extends Mob {
         LockedFloor lock = Dungeon.hero.buff(LockedFloor.class);
         if (lock != null) lock.addTime(dmg*2);
 
-        super.damage( newDmg, src );
+        HP -= newDmg;
+
+        sprite.showStatus( HP > HT / 2 ?
+                        CharSprite.WARNING :
+                        CharSprite.NEGATIVE,
+                Integer.toString( newDmg ) );
     }
 
     @Override
@@ -700,7 +738,14 @@ public class Elphelt extends Mob {
             switch (phase) {
                 case 0: default:
                     state = SLEEPING;
+
                     spend( TICK );
+
+                    if (justAlerted) {
+                        notice();
+                        return true;
+                    }
+
                     return true;
                 case 1:
                     if (enemy == null) {

@@ -81,14 +81,16 @@ public class WandOfGenoise extends Wand {
 
     public class Charger extends Wand.Charger {
 
+        private static final float TURNS_TO_CHARGE = 50f;
+
         @Override
         protected void recharge(){
 
-            float turnsToCharge = 25f;
+            //float turnsToCharge = 25f;
 
             LockedFloor lock = target.buff(LockedFloor.class);
             if (lock == null || lock.regenOn())
-                partialCharge += 1f/turnsToCharge;
+                partialCharge += 1f/TURNS_TO_CHARGE;
 
             for (Recharging bonus : target.buffs(Recharging.class)){
                 if (bonus != null && bonus.remainder() > 0f) {
