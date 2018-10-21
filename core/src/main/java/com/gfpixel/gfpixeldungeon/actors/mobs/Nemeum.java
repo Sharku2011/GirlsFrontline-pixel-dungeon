@@ -86,7 +86,7 @@ public class Nemeum extends Mob {
         if (beamCooldown == 0) {
             Ballistica aim = new Ballistica(pos, enemy.pos, Ballistica.STOP_TERRAIN);
 
-            if (enemy.invisible == 0 && !isCharmedBy(enemy) && fieldOfView[enemy.pos] && aim.subPath(1, aim.dist).contains(enemy.pos)){
+            if (enemy.invisible == 0 && !isCharmedBy(enemy) && fieldOfView[enemy.pos] && aim.dist <= 2 /*aim.subPath(1, aim.dist).contains(enemy.pos)*/){
                 beam = aim;
                 beamTarget = aim.collisionPos;
                 return true;
