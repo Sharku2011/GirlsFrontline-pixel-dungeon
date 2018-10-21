@@ -480,9 +480,7 @@ public class Elphelt extends Mob {
 
 	    for (int c : bridlePath) {
             if ( Blob.volumeAt( c, GenoiseWarn.class ) == 0 ) {
-                if (Blob.volumeAt(c, GenoiseWarn.class) == 0) {
-                    GameScene.add(Blob.seed(c, 2, GenoiseWarn.class));
-                }
+                GameScene.add(Blob.seed(c, 2, GenoiseWarn.class));
             }
         }
 
