@@ -50,10 +50,9 @@ public class Dp extends MeleeWeapon {
             Char enemy = hero.enemy();
             if (enemy instanceof Mob && ((Mob) enemy).surprisedBy(hero)) {
                 //deals 85% toward max to max on surprise, instead of min to max.
-                int diff = max() - min();
                 int damage = augment.damageFactor(Random.NormalIntRange(
-                        min() + Math.round(diff*0.4f),
-                        max()));
+                        Math.max(1, Math.round(min()*DLY)),
+                        Math.round(max()*DLY)));
                 int exStr = hero.STR() - STRReq();
                 if (exStr > 0) {
                     damage -= Random.IntRange(0, exStr);
