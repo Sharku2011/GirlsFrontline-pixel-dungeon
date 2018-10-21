@@ -87,7 +87,7 @@ windows.wndranking$statstab.enemies=죽인 철혈과 정규군의 수
 windows.wndranking$statstab.gold=획득한 보석
 windows.wndranking$statstab.food=먹은 음식 수
 windows.wndranking$statstab.alchemy=제조한 물약 수
-windows.wndranking$statstab.ankhs=사용한 앙크 수
+windows.wndranking$statstab.ankhs=사용한 고속 수복 계약 수
 
 windows.wndresurrect.message=당신은 죽었습니다. 하지만 다시 작전구역에 도전할 수 있는 기회가 주어졌습니다. 작전을 계속하시겠습니까? 하지만 착용하지 않은 장비들은 모두 사라집니다.
 windows.wndresurrect.yes=네, 속행하겠습니다!
@@ -388,7 +388,8 @@ windows.wnddialog.noelquest.branch0.2=네.. 네? 저 말인가요? 제 이름은
 windows.wnddialog.noelquest.branch0.3=2062년, 우리 소속은 말해줄 수 없어. 여긴 S18 작전구역인데 이렇게 위험한 곳에서 뭐하는거야?
 windows.wnddialog.noelquest.branch0.4=뭐, 뭐라구요?! 그럼 100년이나 과거로 왔단 말이야?! 호, 혹시 긴 토끼귀를 가진 녀석 못보셨나요?! 그 녀석만 찾으면 원래 세계로 돌아갈 수 있어!
 windows.wnddialog.noelquest.branch0.5=이상한 전파가 너 말고 하나 더 잡히긴 하는데 그 녀석일지도 모르지. 잘 됐다. 우린 지금 그 전파를 알아내야하는데, 협력해줄래?
-windows.wnddialog.noelquest.branch0.6=알겠습니다. 그런데 갑작스럽지만 배터리 4개를 구해 제가 타고 온 텔레포터에 설치해주시겠어요? \n\n 그리고 혹시 텔레포터에서 뭔가 나온다면, 녀석을 잡아 전리품을 가져다 주세요.
+windows.wnddialog.noelquest.branch0.6=알겠습니다. 그런데 갑작스럽지만 배터리 4개를 구해 제가 타고 온 텔레포터에 설치해주시겠어요?
+windows.wnddialog.noelquest.branch0.7=아, 혹시 텔레포터에서 뭔가 나오면 그 녀석을 잡아 전리품을 가져다 주세요!
 
 windows.wnddialog.noelquest.inprogress.branch0.0= _텔레포터 배터리_ 4개를 모아서 텔레포터로 가주세요. 분명 이 층에 있어요!
 

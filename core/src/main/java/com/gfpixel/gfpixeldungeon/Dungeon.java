@@ -279,8 +279,8 @@ public class Dungeon {
 		switch (depth) {
 		case 1:
 			if (BuildConfig.DEBUG) {
-				level =new RabbitBossLevel();
-				break;
+				//level =new RabbitBossLevel();
+				//break;
 			}
 		case 2:
 		case 3:

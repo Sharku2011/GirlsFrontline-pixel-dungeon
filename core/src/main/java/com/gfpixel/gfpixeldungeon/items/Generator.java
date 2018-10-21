@@ -118,6 +118,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1903;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1911;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M1a1;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SRS;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Thunder;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Usas12;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M99;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MeleeWeapon;
@@ -293,7 +294,8 @@ public class Generator {
 					Dp.class,
 					SR3.class,
                     Cannon.class,
-					SRS.class
+					SRS.class,
+					Thunder.class
 			};
 			WEP_T1.probs = new float[]{ 1, 0, 1, 1, 1, 1, 0, 1, 0 };
 			
