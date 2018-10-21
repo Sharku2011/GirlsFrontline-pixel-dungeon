@@ -595,7 +595,7 @@ public class Elphelt extends Mob {
                 dstRush = -1;
                 bridlePath.clear();
 
-                yell( Elphelt.this.enemy != null ? "브라이들 익스프레스!" : "어디있나요, 달링!");
+                yell( Messages.get(this, "bridleexpress") );
             }
         }), -1f);
 
@@ -794,7 +794,7 @@ public class Elphelt extends Mob {
                                 cell = Random.Int( Dungeon.level.length() );
                             } while ( Dungeon.level.distance(cell, enemy.pos) > 6 && !Dungeon.level.passable[cell]);
                             if (Random.Int(6) == 0) {
-                                yell("숨지 말아요, 달링!");
+                                yell( Messages.get(Elphelt.this, "seek"+Random.IntRange(1, 2)) );
                             }
                             target = cell;
                         }
@@ -811,7 +811,7 @@ public class Elphelt extends Mob {
                                 target = Dungeon.level.randomDestination();
                                 sprite.showLost();
                                 if (Random.Int(3) == 0) {
-                                    yell("어디에 있나요, 달링!");
+                                    yell( Messages.get(Elphelt.this, "seek"+Random.IntRange(1, 2)) );
                                 }
                             } else {
                                 target = enemy.pos;
