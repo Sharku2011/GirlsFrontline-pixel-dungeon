@@ -279,8 +279,29 @@ public class Dungeon {
 		switch (depth) {
 		case 1:
 			if (BuildConfig.DEBUG) {
-				//level =new RabbitBossLevel();
-				//break;
+				if (Challenges.numOfChallenges() == 1) {
+					level =new SewerBossLevel();
+					break;
+				} else if (Challenges.numOfChallenges() == 3) {
+					level =new PrisonBossLevel();
+					break;
+				} else if (Challenges.numOfChallenges() == 4) {
+					level =new RabbitBossLevel();
+					break;
+				} else if (Challenges.numOfChallenges() == 5) {
+					level =new CavesBossLevel();
+					break;
+				} else if (Challenges.numOfChallenges() == 6) {
+					level =new CityBossLevel();
+					break;
+				} else if (Challenges.numOfChallenges() == 7) {
+					level =new ReCavesBossLevel();
+					break;
+				} else if (Challenges.numOfChallenges() == 8) {
+					level =new HallsBossLevel();
+					break;
+				}
+
 			}
 		case 2:
 		case 3:
