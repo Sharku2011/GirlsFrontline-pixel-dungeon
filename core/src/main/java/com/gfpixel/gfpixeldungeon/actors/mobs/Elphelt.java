@@ -607,6 +607,8 @@ public class Elphelt extends Mob {
 
 	    int damage = Random.NormalIntRange(25,35) / traceMagnum.dist;
 
+        Sample.INSTANCE.play(Assets.SND_ZAP);
+
 	    Char ch = findChar(traceMagnum.collisionPos);
 	    if (ch != null) {
 	        // 필중
@@ -620,7 +622,6 @@ public class Elphelt extends Mob {
 
         for (int c : traceMagnum.subPath(0, traceMagnum.dist))
             CellEmitter.center(c).burst( BloodParticle.BURST, 1 );
-
 
 	    if (ch != null) {
             sprite.parent.add(new Beam.DeathRay(sprite.center(), ch.sprite.center()));

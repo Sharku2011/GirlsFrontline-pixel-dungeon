@@ -21,8 +21,10 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.Item;
@@ -30,8 +32,10 @@ import com.gfpixel.gfpixeldungeon.items.bags.Bag;
 import com.gfpixel.gfpixeldungeon.items.wands.Wand;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfGenoise;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
+import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.particles.Emitter;
 import com.watabou.utils.Bundle;
+import com.watabou.utils.Random;
 
 import java.util.ArrayList;
 
@@ -54,8 +58,8 @@ public class Cypros extends MeleeWeapon {
 
     enum Mode {
         TRAVAILLER,/*shotgun*/
-        CONFIRE/*rifle*/
-        /*MAGNUM - pistol*/
+        CONFIRE,/*rifle*/
+        MAGNUM/*pistol*/
     }
 
     private static Mode mode;
@@ -98,17 +102,19 @@ public class Cypros extends MeleeWeapon {
                 image = ItemSpriteSheet.TRAVAILLER;
                 RCH = 1;
                 DLY = 1f;
-                ACC = 0.8f;
+                ACC = 1.1f;
+                curUser.spend(2f);
                 break;
             case CONFIRE:
                 image = ItemSpriteSheet.CONFIRE;
                 RCH = 3;
                 DLY = 3f;
-                ACC = 1.1f;
+                ACC = 1.5f;
+                curUser.spend(1f);
                 break;
         }
         updateQuickslot();
-        curUser.spend(1f);
+
         curUser.busy();
         curUser.next();
     }
@@ -119,8 +125,24 @@ public class Cypros extends MeleeWeapon {
         if (curUser != null && mode == Mode.CONFIRE) {
             Char ch = curUser.enemy();
             if (ch != null) {
+                Sample.INSTANCE.play(Assets.SND_ZAP);
                 curUser.sprite.parent.add(new Beam.DeathRay(curUser.sprite.center(), ch.sprite.center()));
             }
+        }
+
+        Hero hero = (Hero)owner;
+        Char enemy = hero.enemy();
+        if (enemy instanceof Mob && ((Mob) enemy).surprisedBy(hero)) {
+            //deals 85% toward max to max on surprise, instead of min to max.
+            int diff = max() - min();
+            int damage = augment.damageFactor(Random.NormalIntRange(
+                    min() + Math.round(diff*0.85f),
+                    max()));
+            int exStr = hero.STR() - STRReq();
+            if (exStr > 0) {
+                damage += Random.IntRange(0, exStr);
+            }
+            return damage;
         }
 
         return super.damageRoll(owner);
