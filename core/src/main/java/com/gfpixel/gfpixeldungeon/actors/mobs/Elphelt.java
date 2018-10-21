@@ -30,7 +30,7 @@ import com.gfpixel.gfpixeldungeon.items.TomeOfMastery;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Travailler;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cypros;
 import com.gfpixel.gfpixeldungeon.levels.RabbitBossLevel;
 import com.gfpixel.gfpixeldungeon.levels.Terrain;
 import com.gfpixel.gfpixeldungeon.levels.features.Door;
@@ -348,7 +348,7 @@ public class Elphelt extends Mob {
         if (Dungeon.hero.subClass == HeroSubClass.NONE) {
             Dungeon.level.drop( new TomeOfMastery(), pos ).sprite.drop();
         }
-        Dungeon.level.drop( new Travailler(), pos).sprite.drop();
+        Dungeon.level.drop( new Cypros(), pos).sprite.drop();
 
         GameScene.bossSlain();
         super.die( cause );

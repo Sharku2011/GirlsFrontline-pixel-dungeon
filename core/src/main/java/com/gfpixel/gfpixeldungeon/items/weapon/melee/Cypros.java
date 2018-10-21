@@ -35,7 +35,7 @@ import com.watabou.utils.Bundle;
 
 import java.util.ArrayList;
 
-public class Travailler extends MeleeWeapon {
+public class Cypros extends MeleeWeapon {
     {
         mode = Mode.TRAVAILLER;
         image = ItemSpriteSheet.TRAVAILLER;
@@ -65,7 +65,7 @@ public class Travailler extends MeleeWeapon {
     public static final String AC_SWITCH= "SWITCH";
     private static final float STAFF_SCALE_FACTOR = 0.75f;
 
-    public Travailler(){
+    public Cypros(){
         Wand wand = new WandOfGenoise();
         wand.identify();
         wand.cursed = false;
@@ -74,9 +74,9 @@ public class Travailler extends MeleeWeapon {
         wand.curCharges = wand.maxCharges;
     }
 
-    public static void switchMode(Travailler travailler) {
-        Travailler.Mode newMode;
-        switch (travailler.getMode()) {
+    public static void switchMode(Cypros cypros) {
+        Cypros.Mode newMode;
+        switch (cypros.getMode()) {
             case TRAVAILLER:
                 newMode = Mode.CONFIRE;
                 break;
@@ -85,7 +85,7 @@ public class Travailler extends MeleeWeapon {
                 break;
         }
 
-        travailler.setMode(newMode);
+        cypros.setMode(newMode);
     }
 
     public void setMode(Mode newMode) {
