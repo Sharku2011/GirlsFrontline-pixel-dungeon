@@ -234,7 +234,7 @@ public class Elphelt extends Mob {
                 genoiseDst = traceGenoise.collisionPos;
 
                 if ( genoiseDst > 0 ) {
-                    if (Dungeon.level.adjacent(pos, enemy.pos)) {
+                    if (Dungeon.level.adjacent(pos, enemy.pos) && fieldOfView[enemy.pos]) {
                         Blast();
                         return true;
                     }
@@ -264,7 +264,7 @@ public class Elphelt extends Mob {
                         bridleExpress();
                         return true;
                     } else {
-                        if (Dungeon.level.adjacent(pos, enemy.pos)) {
+                        if (Dungeon.level.adjacent(pos, enemy.pos) && fieldOfView[enemy.pos]) {
                             Blast();
                             return true;
                         }
