@@ -34,8 +34,8 @@ public class Mg42 extends MeleeWeapon {
             if (enemy instanceof Mob && ((Mob) enemy).surprisedBy(hero)) {
                 //deals 85% toward max to max on surprise, instead of min to max.
                 int damage = augment.damageFactor(Random.NormalIntRange(
-                        Math.max(1, Math.round(min()*DLY)),
-                        Math.round(max()*DLY)));
+                        Math.max(1, min()/3),
+                        max()/3));
                 int exStr = hero.STR() - STRReq();
                 if (exStr > 0) {
                     damage -= Random.IntRange(0, exStr);
