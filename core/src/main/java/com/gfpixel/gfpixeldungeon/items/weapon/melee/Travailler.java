@@ -34,9 +34,9 @@ import com.watabou.utils.Bundle;
 
 import java.util.ArrayList;
 
-public class Traviae extends MeleeWeapon {
+public class Travailler extends MeleeWeapon {
     {
-        image = ItemSpriteSheet.TRAVIAE;
+        image = ItemSpriteSheet.TRAVAILLER;
 
         defaultAction = AC_ZAP;
         usesTargeting = true;
@@ -50,10 +50,17 @@ public class Traviae extends MeleeWeapon {
 
     private Wand wand;
 
+    //
+    enum MODE {
+        TRAVAILLER,/*shotgun*/
+        CONFIRE,/*rifle*/
+        MAGNUM/*pistol*/
+    }
+
     public static final String AC_ZAP	= "ZAP";
     private static final float STAFF_SCALE_FACTOR = 0.75f;
 
-    public Traviae(){
+    public Travailler(){
         Wand wand = new WandOfGenoise();
         wand.identify();
         wand.cursed = false;

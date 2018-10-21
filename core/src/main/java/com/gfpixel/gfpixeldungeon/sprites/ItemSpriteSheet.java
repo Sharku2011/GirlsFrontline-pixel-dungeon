@@ -172,7 +172,7 @@ public class ItemSpriteSheet {
 	public static final int M1A1    = WEP_TIER2+3;
 	public static final int NAGANTREVOLVER      = WEP_TIER2+4;
 	public static final int G36            = WEP_TIER2+5;
-	public static final int TRAVIAE           = WEP_TIER2+6;
+	public static final int TRAVAILLER           = WEP_TIER2+6;
 	public static final int TOWPROTO          = WEP_TIER2+7;
 	static{
 		assignItemRect(M16,      15, 16);
@@ -181,7 +181,7 @@ public class ItemSpriteSheet {
 		assignItemRect(M1A1,    16, 16);
 		assignItemRect(NAGANTREVOLVER,            13, 14);
 		assignItemRect(G36,            16, 16);
-		assignItemRect(TRAVIAE,            15, 15);
+		assignItemRect(TRAVAILLER,            15, 15);
 		assignItemRect(TOWPROTO,            16, 18);
 	}
 

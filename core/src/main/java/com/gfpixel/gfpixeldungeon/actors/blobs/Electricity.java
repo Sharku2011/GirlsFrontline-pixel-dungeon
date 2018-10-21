@@ -32,7 +32,7 @@ import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.wands.Wand;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Traviae;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Travailler;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
@@ -83,8 +83,8 @@ public class Electricity extends Blob {
 							((Wand) toShock).gainCharge(0.333f);
 						} else if (toShock instanceof G11){
 							((G11) toShock).gainCharge(0.333f);
-						} else if (toShock instanceof Traviae) {
-							((Traviae)toShock).gainCharge( 0.1f);
+						} else if (toShock instanceof Travailler) {
+							((Travailler)toShock).gainCharge( 0.1f);
 						}
 					}
 					
