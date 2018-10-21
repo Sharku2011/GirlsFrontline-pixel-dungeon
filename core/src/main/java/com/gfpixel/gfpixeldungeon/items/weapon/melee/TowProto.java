@@ -26,7 +26,7 @@ import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 public class TowProto extends MeleeWeapon {
 
     {
-        image = ItemSpriteSheet.TOWPROTO;
+        image = ItemSpriteSheet.MAGNUMWEDDING;
 
         tier = 2;
         ACC = 10000f;

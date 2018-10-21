@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
+import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.bags.Bag;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 
 public class Travailler extends MeleeWeapon {
     {
+        mode = Mode.TRAVAILLER;
         image = ItemSpriteSheet.TRAVAILLER;
 
         defaultAction = AC_ZAP;
@@ -50,14 +52,17 @@ public class Travailler extends MeleeWeapon {
 
     private Wand wand;
 
-    //
-    enum MODE {
+    enum Mode {
         TRAVAILLER,/*shotgun*/
-        CONFIRE,/*rifle*/
-        MAGNUM/*pistol*/
+        CONFIRE/*rifle*/
+        /*MAGNUM - pistol*/
     }
 
+    private static Mode mode;
+    public Mode getMode() { return mode; }
+
     public static final String AC_ZAP	= "ZAP";
+    public static final String AC_SWITCH= "SWITCH";
     private static final float STAFF_SCALE_FACTOR = 0.75f;
 
     public Travailler(){
@@ -69,21 +74,94 @@ public class Travailler extends MeleeWeapon {
         wand.curCharges = wand.maxCharges;
     }
 
+    public static void switchMode(Travailler travailler) {
+        Travailler.Mode newMode;
+        switch (travailler.getMode()) {
+            case TRAVAILLER:
+                newMode = Mode.CONFIRE;
+                break;
+            case CONFIRE: default:
+                newMode = Mode.TRAVAILLER;
+                break;
+        }
+
+        travailler.setMode(newMode);
+    }
+
+    public void setMode(Mode newMode) {
+        if (mode == newMode) {
+            return;
+        }
+        mode = newMode;
+        switch (mode) {
+            case TRAVAILLER: default:
+                image = ItemSpriteSheet.TRAVAILLER;
+                RCH = 1;
+                DLY = 1f;
+                ACC = 0.8f;
+                break;
+            case CONFIRE:
+                image = ItemSpriteSheet.CONFIRE;
+                RCH = 3;
+                DLY = 3f;
+                ACC = 1.1f;
+                break;
+        }
+        updateQuickslot();
+        curUser.spend(1f);
+        curUser.busy();
+        curUser.next();
+    }
+
+    @Override
+    public int damageRoll(Char owner) {
+
+        if (curUser != null && mode == Mode.CONFIRE) {
+            Char ch = curUser.enemy();
+            if (ch != null) {
+                curUser.sprite.parent.add(new Beam.DeathRay(curUser.sprite.center(), ch.sprite.center()));
+            }
+        }
+
+        return super.damageRoll(owner);
+    }
+
+    @Override
+    public int min(int lvl) {
+        return  Math.round(2.5f*tier) +         //base
+                lvl;                            //level scaling
+    }
+
     @Override
     public int max(int lvl) {
-        return  Math.round(5*(tier+1)) +        //35 base, up from 25
-                lvl*Math.round(2.5f*(tier+1));  //+8 per level, up from +5
+
+        switch (mode) {
+            case TRAVAILLER:
+                return  Math.round(5.f*(tier+1)) +        // 15 base
+                        lvl*Math.round(2.5f*(tier+1));    //+8 per level
+            case CONFIRE:
+                return  Math.round(7.f*(tier+1)) +        // 21 base
+                        lvl*Math.round(3.5f*(tier+1));    //+11 per level
+            default:
+                return super.max(lvl);
+        }
     }
 
     @Override
     public int defenseFactor( Char owner ) {
-        return 5+2*level();     //5 extra defence, plus 2 per level;
+        switch (mode) {
+            case CONFIRE: default:
+                return 0;
+            case TRAVAILLER:
+                return 5+2*level();     //5 extra defence, plus 2 per level;
+        }
     }
 
     @Override
     public ArrayList<String> actions(Hero hero) {
         ArrayList<String> actions = super.actions(hero);
         actions.add(AC_ZAP);
+        actions.add(AC_SWITCH);
 
         return actions;
     }
@@ -100,6 +178,9 @@ public class Travailler extends MeleeWeapon {
 
         if (action.equals(AC_ZAP)){
             wand.execute(hero, AC_ZAP);
+        }
+        if (action.equals(AC_SWITCH)) {
+            switchMode(this);
         }
     }
 
@@ -155,18 +236,29 @@ public class Travailler extends MeleeWeapon {
     }
 
     private static final String WAND        = "wand";
+    private static final String MODE        = "mode";
 
     @Override
     public void storeInBundle(Bundle bundle) {
         super.storeInBundle(bundle);
         bundle.put(WAND, wand);
-
+        bundle.put(MODE, mode.ordinal());
     }
 
     @Override
     public void restoreFromBundle(Bundle bundle) {
         super.restoreFromBundle(bundle);
         wand = (Wand) bundle.get(WAND);
+        Mode newMode;
+        switch (bundle.getInt(MODE)) {
+            case 0: default:
+                newMode = Mode.TRAVAILLER;
+                break;
+            case 1:
+                newMode = Mode.CONFIRE;
+                break;
+        }
+        setMode(newMode);
     }
 
     private final Emitter.Factory StaffParticleFactory = new Emitter.Factory() {

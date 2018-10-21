@@ -173,16 +173,18 @@ public class ItemSpriteSheet {
 	public static final int NAGANTREVOLVER      = WEP_TIER2+4;
 	public static final int G36            = WEP_TIER2+5;
 	public static final int TRAVAILLER           = WEP_TIER2+6;
-	public static final int TOWPROTO          = WEP_TIER2+7;
+	public static final int CONFIRE          = WEP_TIER2+7;
+	public static final int MAGNUMWEDDING	 = WEP_TIER2+8;
 	static{
-		assignItemRect(M16,      15, 16);
-		assignItemRect(M1911,        12, 14);
-		assignItemRect(M1903,           14, 16);
-		assignItemRect(M1A1,    16, 16);
-		assignItemRect(NAGANTREVOLVER,            13, 14);
-		assignItemRect(G36,            16, 16);
-		assignItemRect(TRAVAILLER,            15, 15);
-		assignItemRect(TOWPROTO,            16, 18);
+		assignItemRect(M16,					15, 16);
+		assignItemRect(M1911,				12, 14);
+		assignItemRect(M1903,				14, 16);
+		assignItemRect(M1A1,				16, 16);
+		assignItemRect(NAGANTREVOLVER,		13, 14);
+		assignItemRect(G36,					16, 16);
+		assignItemRect(TRAVAILLER,			15, 15);
+		assignItemRect(CONFIRE,				14, 16);
+		assignItemRect(MAGNUMWEDDING,		12, 12);
 	}
 
 	private static final int WEP_TIER3      =                               xy(1, 9);   //8 slots
