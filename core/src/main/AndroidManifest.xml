@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.gfpixel.gfpixeldungeon"
 	android:versionCode="500"
-	android:versionName="0.4.9-A"
+	android:versionName="0.4.7-A"
 	android:installLocation="auto">
 	
 	<uses-feature

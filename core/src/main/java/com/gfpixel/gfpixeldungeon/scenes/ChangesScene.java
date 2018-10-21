@@ -32,6 +32,7 @@ import com.gfpixel.gfpixeldungeon.items.potions.Potion;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Kriss;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.M16;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.M9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Negev;
 import com.gfpixel.gfpixeldungeon.levels.traps.CursingTrap;
@@ -135,9 +136,20 @@ public class ChangesScene extends PixelScene {
 		//       v0.6.5
 		//**********************
 
-		ChangeInfo changes = new ChangeInfo("v0.4.9", true, "");
+		ChangeInfo changes = new ChangeInfo("v0.4.7", true, "");
 		changes.hardlight( Window.TITLE_COLOR);
 		infos.add(changes);
+
+		changes = new ChangeInfo(Messages.get(this, "new"), false, null);
+		changes.hardlight( Window.TITLE_COLOR );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new M9(),
+				"무기 변경.\n\n" +
+
+						"_-_ HK416의 기본무기 제리코가 MP7으로 변경됐습니다. \n\n" +
+						"_-_ MP7은 MG계열보단 느리지만 매우 빠른 공격속도와 비교적 강한 공격력, 낮은 명중률을 가지고있습니다."));
+
 
 		changes = new ChangeInfo(Messages.get(this, "changes"), false, null);
 		changes.hardlight( CharSprite.WARNING );
@@ -172,13 +184,12 @@ public class ChangesScene extends PixelScene {
 
 		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 16, 16), "악랄해짐",
 				"일부 몹 강화.\n\n" +
-						"_-_게이저의 패턴에 돌진이 추가되었습니다.\n\n" +
-						"_-_네메움의 체력이 80으로 상향조치 됐으며, 광선 데미지도 최대 50으로 상향됐습니다. 대신 사거리가 2칸으로 줄어들게 됬습니다.\n\n" +
-						"_-_만티코어의 공격력이 크게 상향됐습니다."));
+						"_-_ 게이저의 패턴에 돌진이 추가되었습니다.\n\n" +
+						"_-_ 네메움의 체력이 80으로 상향조치 됐으며, 광선 데미지도 최대 50으로 상향됐습니다. 대신 사거리가 2칸으로 줄어들게 됬습니다.\n\n" +
+						"_-_ 만티코어의 공격력이 크게 상향됐습니다."));
 
-		changes.addButton( new ChangeButton(new M9(),
+		changes.addButton( new ChangeButton(new M16(),
 				"무기 조정.\n\n" +
-						"_-_ HK416의 기본무기 제리코가 MP7으로 변경됐습니다. MP7은 매우 빠른 공격속도와 비교적 강한 공격력, 낮은 명중률을 가지고있습니다.\n\n" +
 						"_-_ M16A1이 다시 기습공격을 할 수 있으며, 데미지가 소폭 상승했습니다.\n\n" +
 						"_-_ 런쳐 계열(50구경 강화무기) 무기들의 느린 공격속도가 사라져 평균적인 공격속도를 가지게 됐습니다.\n\n" +
 						"_-_ MG계열의 명중률이 소폭 상향됐지만 기습 데미지는 더 떨어졌습니다..\n\n" +
@@ -194,30 +205,10 @@ public class ChangesScene extends PixelScene {
 						"_-_ 명중 시 적용되던 시간 증폭 버프의 유지 시간이 감소되었습니다.\n\n" +
 						"_-_ 명중률이 50% 감소하였습니다."));
 
-		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.RING_EMERALD, null), new RingOfEvasion().trueName(),
-				"회피의 도트사이트 하향\n\n" +
-						"_-_ 더 이상 적들에게 감지될 확률을 낮추지 않음\n\n" +
-						"_-_정찰병이나 신속함의 특성의 효과와 중첩되는 정도 감소 -계산식이 곱연산에서 합연산으로 바뀜."));
-
-		changes.addButton( new ChangeButton(new HuntressArmor(),
-				"_-_ UMP9 & HK416의 외골격 하향.\n\n" +
-						"_-_ UMP9 - 연막탄 범위가 8칸으로 제한되며, 효과가 벽을 관통하지 않도록 변경\n\n" +
-						"_-_ HK416 - 살상류탄의 범위가 12칸으로 제한됨"));
-
 		changes.addButton( new ChangeButton(new Negev(),
 				"_-_ MG계열 하향.\n\n" +
 						"_-_ MG계열(공격속도가 기본 5회 이상인 무기) 무기들의 명중률과 기습공격이 조정됬습니다.\n\n" +
 						"_-_ 최대 40%의 명중률 패널티를 가지며, 공격력은 그대로지만 기습공격시 60%의 피해만 입힐 수 있게 됩니다."));
-		changes.addButton( new ChangeButton(new ItemSprite(ItemSpriteSheet.POTION_MAGENTA, null), new PotionOfHealing().trueName(),
-				"_-_ 수복포션 드랍 하향.\n\n" +
-						"_-_ 수복물약 드랍 몹에게 수복물약을 얻은 경우 이후 같은 몹에게 수복물약을 얻을 확률이 감소함"));
-
-		changes.addButton( new ChangeButton(new Sungrass.Seed(),
-				"_-_ 태양초 & 뱀뿌리 - 하향.\n\n" +
-						"_-_ 태양초의 회복 속도 대폭 감소, 레벨이 높을 수록 더 많이 감소하여 최대 기존의 40% 속도까지 감소합니다.\n\n" +
-						"_-_ 태양초의 회복을 받는 도중 피격당해도 회복량이 줄지 않는다.\n\n" +
-						"_-_ 태양초의 회복을 받는 도중 체력이 가득 차도 효과가 바로 끝나지 않는다.\n\n" +
-						"_-_ 뱀뿌리의 피해 흡수 비율이 기존의 50%에서 층 수에 비례하도록 변경"));
 
 
 		changes = new ChangeInfo("v0.4.6", true, "");
