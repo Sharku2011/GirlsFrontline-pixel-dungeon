@@ -43,7 +43,7 @@ public class WndImp extends Window {
 		
 		IconTitle titlebar = new IconTitle();
 		titlebar.icon( new ImpSprite() );
-		titlebar.label( "아~무 이상없는 사이트야!" );
+		titlebar.label( Messages.get(this, "title") );
 		titlebar.setRect( 0, 0, WIDTH, 0 );
 		add( titlebar );
 

@@ -44,7 +44,7 @@ public class WndWandmaker extends Window {
 		
 		IconTitle titlebar = new IconTitle();
 		titlebar.icon(new WandmakerSprite());
-		titlebar.label("원하는 탄환을 가져 가라고.");
+		titlebar.label(Messages.get(this, "title"));
 		titlebar.setRect(0, 0, WIDTH, 0);
 		add( titlebar );
 
