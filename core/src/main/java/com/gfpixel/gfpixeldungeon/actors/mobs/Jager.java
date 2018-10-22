@@ -1,5 +1,6 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
+import com.gfpixel.gfpixeldungeon.actors.buffs.Weakness;
 import com.gfpixel.gfpixeldungeon.sprites.JagerSprite;
 import com.watabou.utils.Random;
 
@@ -23,4 +24,7 @@ public class Jager extends Warlock {
     public int drRoll() {
         return Random.NormalIntRange(1, 2);
     }
+
+    @Override
+    protected float weaknessDuration() { return Weakness.DURATION / 2; }
 }

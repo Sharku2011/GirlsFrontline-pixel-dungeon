@@ -94,13 +94,15 @@ public class Warlock extends Mob implements Callback {
 			return !visible;
 		}
 	}
-	
+
+	protected float weaknessDuration() { return Weakness.DURATION; }
+
 	private void zap() {
 		spend( TIME_TO_ZAP );
 		
 		if (hit( this, enemy, true )) {
 			if (enemy == Dungeon.hero && Random.Int( 2 ) == 0) {
-				Buff.prolong( enemy, Weakness.class, Weakness.DURATION );
+				Buff.prolong( enemy, Weakness.class, weaknessDuration() );
 			}
 
 			enemy.damage( damageRoll(), this );
