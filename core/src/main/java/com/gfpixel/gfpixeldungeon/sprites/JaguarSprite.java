@@ -1,7 +1,6 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Jaguar;
 import com.watabou.noosa.TextureFilm;
 

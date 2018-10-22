@@ -1,7 +1,5 @@
 package com.gfpixel.gfpixeldungeon.windows;
 
-import android.app.Dialog;
-
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.DialogInfo;
@@ -15,7 +13,6 @@ import com.gfpixel.gfpixeldungeon.ui.RenderedTextMultiline;
 import com.gfpixel.gfpixeldungeon.ui.Window;
 import com.watabou.input.Touchscreen;
 import com.watabou.noosa.Game;
-import com.watabou.noosa.Gizmo;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.RenderedText;
 import com.watabou.noosa.TouchArea;

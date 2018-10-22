@@ -23,7 +23,6 @@ package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
-import com.gfpixel.gfpixeldungeon.effects.particles.ElmoParticle;
 import com.watabou.noosa.TextureFilm;
 
 public class GolemSprite extends MobSprite {

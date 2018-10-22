@@ -3,8 +3,6 @@ package com.gfpixel.gfpixeldungeon;
 import com.watabou.utils.Point;
 import com.watabou.utils.SparseArray;
 
-import java.util.HashSet;
-
 public  class DialogInfo
 {
     public final String ID;

@@ -21,8 +21,6 @@
 
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
-import com.watabou.utils.Random;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
