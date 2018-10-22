@@ -39,7 +39,6 @@ import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
-import com.gfpixel.gfpixeldungeon.windows.WndList;
 import com.gfpixel.gfpixeldungeon.windows.WndOptions;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.particles.Emitter;
