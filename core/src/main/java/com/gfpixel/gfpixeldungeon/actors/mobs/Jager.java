@@ -1,9 +1,12 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
+import com.gfpixel.gfpixeldungeon.sprites.JagerSprite;
 import com.watabou.utils.Random;
 
 public class Jager extends Warlock {
     {
+        spriteClass = JagerSprite.class;
+
         HP = HT = 20;
         defenseSkill = 8;
 
