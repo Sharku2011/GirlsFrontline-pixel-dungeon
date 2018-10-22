@@ -825,6 +825,10 @@ public class Elphelt extends Mob {
 
     private class Genoise extends Actor {
 
+        {
+            actPriority = BUFF_PRIO;
+        }
+
         private int target = -1;
 
         Genoise(int cell) {
