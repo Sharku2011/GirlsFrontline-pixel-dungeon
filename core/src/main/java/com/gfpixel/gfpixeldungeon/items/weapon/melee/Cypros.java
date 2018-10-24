@@ -146,6 +146,7 @@ public class Cypros extends MeleeWeapon {
         if (curUser != null) {
             curUser.spend(timeChange);
             curUser.busy();
+            curUser.sprite.operate( curUser.pos );
             curUser.next();
         }
     }
