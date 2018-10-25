@@ -24,7 +24,6 @@ package com.gfpixel.gfpixeldungeon.items.food;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Hunger;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
-import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 

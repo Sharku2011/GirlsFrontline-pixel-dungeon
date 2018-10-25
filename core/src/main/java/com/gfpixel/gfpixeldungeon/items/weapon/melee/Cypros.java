@@ -22,16 +22,24 @@
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.effects.Beam;
+import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.bags.Bag;
 import com.gfpixel.gfpixeldungeon.items.wands.Wand;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfGenoise;
+import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
+import com.gfpixel.gfpixeldungeon.messages.Messages;
+import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
+import com.gfpixel.gfpixeldungeon.windows.WndOptions;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.particles.Emitter;
 import com.watabou.utils.Bundle;
@@ -56,10 +64,17 @@ public class Cypros extends MeleeWeapon {
 
     private Wand wand;
 
-    enum Mode {
+    public enum Mode {
         TRAVAILLER,/*shotgun*/
         CONFIRE,/*rifle*/
-        MAGNUM/*pistol*/
+        MAGNUM;/*pistol*/
+
+        public String desc(){
+            return Messages.get(this, name());
+        }
+        public String title(){
+            return Messages.get(this,name()+".title");
+        }
     }
 
     private static Mode mode;
@@ -82,6 +97,9 @@ public class Cypros extends MeleeWeapon {
         Cypros.Mode newMode;
         switch (cypros.getMode()) {
             case TRAVAILLER:
+                newMode = Mode.MAGNUM;
+                break;
+            case MAGNUM:
                 newMode = Mode.CONFIRE;
                 break;
             case CONFIRE: default:
@@ -93,50 +111,80 @@ public class Cypros extends MeleeWeapon {
     }
 
     public void setMode(Mode newMode) {
-        if (mode == newMode) {
+        if (newMode == mode) {
             return;
         }
+
         mode = newMode;
+
+        float timeChange = 0f;
         switch (mode) {
             case TRAVAILLER: default:
                 image = ItemSpriteSheet.TRAVAILLER;
                 RCH = 1;
                 DLY = 1f;
                 ACC = 1.1f;
-                curUser.spend(2f);
+                timeChange = 2f;
                 break;
             case CONFIRE:
                 image = ItemSpriteSheet.CONFIRE;
                 RCH = 3;
                 DLY = 3f;
                 ACC = 1.5f;
-                curUser.spend(1f);
+                timeChange = 1f;
+                break;
+            case MAGNUM:
+                image = ItemSpriteSheet.MAGNUMWEDDING;
+                RCH = 1;
+                DLY = 1f;
+                ACC = 1.25f;
+                timeChange = 1f;
                 break;
         }
         updateQuickslot();
 
-        curUser.busy();
-        curUser.next();
+        if (curUser != null) {
+            curUser.spend(timeChange);
+            curUser.busy();
+            curUser.next();
+        }
     }
+
+    public final static int CHARMCHANCE = 30;
 
     @Override
     public int damageRoll(Char owner) {
 
-        if (curUser != null && mode == Mode.CONFIRE) {
-            Char ch = curUser.enemy();
-            if (ch != null) {
-                Sample.INSTANCE.play(Assets.SND_ZAP);
-                curUser.sprite.parent.add(new Beam.DeathRay(curUser.sprite.center(), ch.sprite.center()));
+        Hero hero = (Hero)owner;
+        Char enemy = (hero != null) ? hero.enemy() : null;
+
+        if (hero != null && enemy != null) {
+            switch (mode) {
+                case MAGNUM:
+                    if (Random.Int( CHARMCHANCE ) == 0) {
+                        Buff.affect( enemy, Charm.class, Random.IntRange( 3, 7 ) ).object = hero.id();
+                        enemy.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 5 );
+                        Sample.INSTANCE.play( Assets.SND_CHARMS );
+                    }
+                    break;
+                case CONFIRE:
+                    Sample.INSTANCE.play(Assets.SND_ZAP);
+                    hero.sprite.parent.add(new Beam.DeathRay(hero.sprite.center(), enemy.sprite.center()));
+                    break;
+                case TRAVAILLER: default:
+                    break;
             }
         }
 
-        Hero hero = (Hero)owner;
-        Char enemy = hero.enemy();
+
         if (enemy instanceof Mob && ((Mob) enemy).surprisedBy(hero)) {
-            //deals 85% toward max to max on surprise, instead of min to max.
+            //deals 85/50/0% toward max to max on surprise with pistol/rifle/shotgun, instead of min to max.
             int diff = max() - min();
+            float surpriseMultiplier =  (mode == Mode.MAGNUM)  ? 0.85f :
+                                        (mode == Mode.CONFIRE) ? 0.5f :
+                                                                 0;
             int damage = augment.damageFactor(Random.NormalIntRange(
-                    min() + Math.round(diff*0.85f),
+                    min() + Math.round(diff * surpriseMultiplier),
                     max()));
             int exStr = hero.STR() - STRReq();
             if (exStr > 0) {
@@ -150,7 +198,7 @@ public class Cypros extends MeleeWeapon {
 
     @Override
     public int min(int lvl) {
-        return  Math.round(2.5f*tier) +         //base
+        return  Math.round(1.5f*tier) +         //base
                 lvl;                            //level scaling
     }
 
@@ -159,11 +207,14 @@ public class Cypros extends MeleeWeapon {
 
         switch (mode) {
             case TRAVAILLER:
-                return  Math.round(5.f*(tier+1)) +        // 15 base
-                        lvl*Math.round(2.5f*(tier+1));    //+8 per level
+                return  Math.round(4.0f*(tier+1)) +        // 12 base
+                        lvl*Math.round(1.5f*(tier+1));    //+5(4.5) per level
             case CONFIRE:
-                return  Math.round(7.f*(tier+1)) +        // 21 base
-                        lvl*Math.round(3.5f*(tier+1));    //+11 per level
+                return  Math.round(6.0f*(tier+1)) +        // 18 base
+                        lvl*Math.round(2.5f*(tier+1));    //+8(7.5)= per level
+            case MAGNUM:
+                return  Math.round(4.5f*(tier+1)) +        // 14 base
+                        lvl*Math.round(2.0f*(tier+1));    //+6 per level
             default:
                 return super.max(lvl);
         }
@@ -172,10 +223,10 @@ public class Cypros extends MeleeWeapon {
     @Override
     public int defenseFactor( Char owner ) {
         switch (mode) {
-            case CONFIRE: default:
+            case CONFIRE: case MAGNUM: default:
                 return 0;
             case TRAVAILLER:
-                return 5+2*level();     //5 extra defence, plus 2 per level;
+                return 5+Math.round(1.66f*level());     //5 extra defence, plus 2 per level;
         }
     }
 
@@ -202,7 +253,28 @@ public class Cypros extends MeleeWeapon {
             wand.execute(hero, AC_ZAP);
         }
         if (action.equals(AC_SWITCH)) {
-            switchMode(this);
+            WndOptions wndOptions = new WndOptions( Messages.get(Cypros.class, "options.title"),
+                                                    Messages.get(this, "options.message", mode.title()),
+                                                    Mode.TRAVAILLER.title(), Mode.CONFIRE.title(), Mode.MAGNUM.title()
+            ) {
+                @Override
+                protected void onSelect( int index ) {
+                    Mode newMode;
+                    switch (index) {
+                        case 0: default:
+                            newMode = Mode.TRAVAILLER;
+                            break;
+                        case 1:
+                            newMode = Mode.CONFIRE;
+                            break;
+                        case 2:
+                            newMode = Mode.MAGNUM;
+                            break;
+                    }
+                    setMode(newMode);
+                }
+            };
+            GameScene.show(wndOptions);
         }
     }
 
@@ -240,7 +312,7 @@ public class Cypros extends MeleeWeapon {
 
         if (wand != null) {
             wand.upgrade();
-            wand.curCharges = 1;
+            wand.gainCharge(0.5f);
             updateQuickslot();
         }
 
@@ -250,6 +322,55 @@ public class Cypros extends MeleeWeapon {
     @Override
     public String status() {
         return wand.status();
+    }
+
+    @Override
+    public String info() {
+
+        String info = desc();
+
+        if (levelKnown) {
+            info += "\n\n" + Messages.get(MeleeWeapon.class, "stats_known", tier, augment.damageFactor(min()), augment.damageFactor(max()), STRReq());
+            if (STRReq() > Dungeon.hero.STR()) {
+                info += " " + Messages.get(Weapon.class, "too_heavy");
+            } else if (Dungeon.hero.STR() > STRReq()){
+                info += " " + Messages.get(Weapon.class, "excess_str", Dungeon.hero.STR() - STRReq());
+            }
+        } else {
+            info += "\n\n" + Messages.get(MeleeWeapon.class, "stats_unknown", tier, min(0), max(0), STRReq(0));
+            if (STRReq(0) > Dungeon.hero.STR()) {
+                info += " " + Messages.get(MeleeWeapon.class, "probably_too_heavy");
+            }
+        }
+
+        String stats_desc = Messages.get(this, "stats_desc");
+        if (!stats_desc.equals("")) info+= "\n\n" + stats_desc;
+
+        switch (augment) {
+            case SPEED:
+                info += "\n\n" + Messages.get(Weapon.class, "faster");
+                break;
+            case DAMAGE:
+                info += "\n\n" + Messages.get(Weapon.class, "stronger");
+                break;
+            case NONE:
+        }
+
+        // 모드 별 설명 추가
+        info += "\n\n" + mode.desc();
+
+        if (enchantment != null && (cursedKnown || !enchantment.curse())){
+            info += "\n\n" + Messages.get(Weapon.class, "enchanted", enchantment.name());
+            info += " " + Messages.get(enchantment, "desc");
+        }
+
+        if (cursed && isEquipped( Dungeon.hero )) {
+            info += "\n\n" + Messages.get(Weapon.class, "cursed_worn");
+        } else if (cursedKnown && cursed) {
+            info += "\n\n" + Messages.get(Weapon.class, "cursed");
+        }
+
+        return info;
     }
 
     @Override
@@ -278,6 +399,9 @@ public class Cypros extends MeleeWeapon {
                 break;
             case 1:
                 newMode = Mode.CONFIRE;
+                break;
+            case 2:
+                newMode = Mode.MAGNUM;
                 break;
         }
         setMode(newMode);
