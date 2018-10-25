@@ -2,7 +2,6 @@ package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Noel;
 import com.gfpixel.gfpixeldungeon.effects.Halo;
 import com.gfpixel.gfpixeldungeon.effects.particles.ElmoParticle;
 import com.watabou.glwrap.Blending;

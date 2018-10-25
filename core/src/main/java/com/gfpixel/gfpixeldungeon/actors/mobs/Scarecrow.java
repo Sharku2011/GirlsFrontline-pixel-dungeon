@@ -22,18 +22,14 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
 import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.actors.blobs.ToxicGas;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Bleeding;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Vertigo;
 import com.gfpixel.gfpixeldungeon.items.artifacts.TalismanOfForesight;
-import com.gfpixel.gfpixeldungeon.items.food.MysteryMeat;
-import com.gfpixel.gfpixeldungeon.items.potions.PotionOfParalyticGas;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfPsionicBlast;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
-import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
 import com.gfpixel.gfpixeldungeon.sprites.AlbinoSprite;
 import com.watabou.utils.Random;
 

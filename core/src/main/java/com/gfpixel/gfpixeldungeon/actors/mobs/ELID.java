@@ -1,10 +1,8 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
-import com.gfpixel.gfpixeldungeon.sprites.ElidSprite;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Bleeding;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
-import com.gfpixel.gfpixeldungeon.items.potions.PotionOfParalyticGas;
 import com.gfpixel.gfpixeldungeon.sprites.ElidSprite;
 import com.watabou.utils.Random;
 

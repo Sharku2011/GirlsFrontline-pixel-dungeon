@@ -58,7 +58,7 @@ public class Warlock extends Mob implements Callback {
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 16, 22 );
+		return Random.NormalIntRange( 12, 18 );
 	}
 	
 	@Override
@@ -94,17 +94,18 @@ public class Warlock extends Mob implements Callback {
 			return !visible;
 		}
 	}
-	
+
+	protected float weaknessDuration() { return Weakness.DURATION; }
+
 	private void zap() {
 		spend( TIME_TO_ZAP );
 		
 		if (hit( this, enemy, true )) {
 			if (enemy == Dungeon.hero && Random.Int( 2 ) == 0) {
-				Buff.prolong( enemy, Weakness.class, Weakness.DURATION );
+				Buff.prolong( enemy, Weakness.class, weaknessDuration() );
 			}
-			
-			int dmg = Random.Int( 12, 18 );
-			enemy.damage( dmg, this );
+
+			enemy.damage( damageRoll(), this );
 			
 			if (!enemy.isAlive() && enemy == Dungeon.hero) {
 				Dungeon.fail( getClass() );
