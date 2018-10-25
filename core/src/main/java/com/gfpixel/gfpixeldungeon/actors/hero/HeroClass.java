@@ -251,6 +251,7 @@ public enum HeroClass {
 		M79 m79 = new M79();
 		m79.identify().collect();
 
+		Dungeon.quickslot.setSlot(0, boomerang);
 		Dungeon.quickslot.setSlot(2, m79);
 
 		if (!BuildConfig.DEBUG) {

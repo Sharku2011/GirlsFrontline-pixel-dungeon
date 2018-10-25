@@ -4,7 +4,7 @@ import com.watabou.utils.Random;
 
 public class Jager extends Warlock {
     {
-        HP = HT = 20;
+        HP = HT = 30;
         defenseSkill = 8;
 
         EXP = 6;
