@@ -1,8 +1,8 @@
 package com.gfpixel.gfpixeldungeon.effects.particles;
 
-import com.gfpixel.gfpixeldungeon.items.wands.Wand;
 import com.watabou.noosa.particles.PixelParticle;
 import com.watabou.utils.Random;
+import com.gfpixel.gfpixeldungeon.items.wands.Wand;
 
 public class StaffParticle extends PixelParticle {
 

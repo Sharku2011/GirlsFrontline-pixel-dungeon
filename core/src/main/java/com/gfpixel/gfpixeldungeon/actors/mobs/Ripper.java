@@ -1,6 +1,12 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
+import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.effects.Speck;
+import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
+import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
+import com.gfpixel.gfpixeldungeon.sprites.BatSprite;
 import com.gfpixel.gfpixeldungeon.sprites.RipperSprite;
 import com.watabou.utils.Random;
 

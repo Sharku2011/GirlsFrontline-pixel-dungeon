@@ -22,6 +22,7 @@
 package com.gfpixel.gfpixeldungeon.levels.painters;
 
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Noel;
+import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Wandmaker;
 import com.gfpixel.gfpixeldungeon.levels.Level;
 import com.gfpixel.gfpixeldungeon.levels.Terrain;
 import com.gfpixel.gfpixeldungeon.levels.rooms.Room;

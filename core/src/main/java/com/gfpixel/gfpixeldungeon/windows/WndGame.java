@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.windows;
 
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.GamesInProgress;
+import com.gfpixel.gfpixeldungeon.SPDSettings;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;

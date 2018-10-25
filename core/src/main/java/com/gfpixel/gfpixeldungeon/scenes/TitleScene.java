@@ -23,8 +23,8 @@ package com.gfpixel.gfpixeldungeon.scenes;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.GamesInProgress;
-import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
+import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.effects.BannerSprites;
 import com.gfpixel.gfpixeldungeon.effects.Fireball;
 import com.gfpixel.gfpixeldungeon.messages.Messages;

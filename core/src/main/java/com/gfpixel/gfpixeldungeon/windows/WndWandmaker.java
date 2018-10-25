@@ -22,13 +22,20 @@
 package com.gfpixel.gfpixeldungeon.windows;
 
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.actors.hero.HeroClass;
 import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Wandmaker;
 import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.items.quest.CorpseDust;
+import com.gfpixel.gfpixeldungeon.items.quest.Embers;
 import com.gfpixel.gfpixeldungeon.items.wands.Wand;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
+import com.gfpixel.gfpixeldungeon.plants.Rotberry;
+import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
+import com.gfpixel.gfpixeldungeon.sprites.ItemSprite;
 import com.gfpixel.gfpixeldungeon.sprites.WandmakerSprite;
 import com.gfpixel.gfpixeldungeon.ui.RedButton;
+import com.gfpixel.gfpixeldungeon.ui.RenderedTextMultiline;
 import com.gfpixel.gfpixeldungeon.ui.Window;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 
@@ -44,7 +51,7 @@ public class WndWandmaker extends Window {
 		
 		IconTitle titlebar = new IconTitle();
 		titlebar.icon(new WandmakerSprite());
-		titlebar.label(Messages.get(this, "title"));
+		titlebar.label("원하는 탄환을 가져 가라고.");
 		titlebar.setRect(0, 0, WIDTH, 0);
 		add( titlebar );
 

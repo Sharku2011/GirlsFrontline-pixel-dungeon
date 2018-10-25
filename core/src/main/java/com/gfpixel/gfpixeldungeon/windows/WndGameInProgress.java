@@ -29,6 +29,7 @@ import com.gfpixel.gfpixeldungeon.actors.hero.HeroSubClass;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.InterlevelScene;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
+import com.gfpixel.gfpixeldungeon.scenes.StartScene;
 import com.gfpixel.gfpixeldungeon.scenes.TitleScene;
 import com.gfpixel.gfpixeldungeon.sprites.HeroSprite;
 import com.gfpixel.gfpixeldungeon.ui.RedButton;

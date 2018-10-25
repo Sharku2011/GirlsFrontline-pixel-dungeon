@@ -30,6 +30,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Sleep;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
+import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfLullaby;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfTeleportation;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;

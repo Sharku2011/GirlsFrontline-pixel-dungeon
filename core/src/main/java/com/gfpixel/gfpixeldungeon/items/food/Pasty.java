@@ -40,6 +40,8 @@ import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Holidays;
 
+import java.util.Calendar;
+
 public class Pasty extends Food {
 
 	{

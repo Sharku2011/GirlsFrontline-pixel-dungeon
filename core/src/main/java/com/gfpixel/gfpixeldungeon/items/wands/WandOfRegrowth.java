@@ -33,6 +33,7 @@ import com.gfpixel.gfpixeldungeon.effects.particles.StaffParticle;
 import com.gfpixel.gfpixeldungeon.items.Dewdrop;
 import com.gfpixel.gfpixeldungeon.items.Generator;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.G11;
 import com.gfpixel.gfpixeldungeon.levels.Level;
 import com.gfpixel.gfpixeldungeon.levels.Terrain;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;

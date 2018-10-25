@@ -24,8 +24,8 @@ package com.gfpixel.gfpixeldungeon.scenes;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
+import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.effects.Flare;
 import com.gfpixel.gfpixeldungeon.ui.Archs;
 import com.gfpixel.gfpixeldungeon.ui.ExitButton;

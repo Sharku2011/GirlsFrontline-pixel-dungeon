@@ -1,5 +1,6 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
+import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
@@ -10,6 +11,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Vertigo;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.particles.PurpleParticle;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfPsionicBlast;
+import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;

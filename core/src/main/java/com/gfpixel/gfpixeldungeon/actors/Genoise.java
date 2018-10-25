@@ -14,16 +14,11 @@ import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
 public class Genoise extends Actor {
-
-    {
-        actPriority = BUFF_PRIO;
-    }
-
     private int target = -1;
     private int minDmg = 0;
     private int maxDmg = 0;
 
-    public Genoise() {
+    Genoise() {
         Level level = Dungeon.level;
 
         if (level != null) {

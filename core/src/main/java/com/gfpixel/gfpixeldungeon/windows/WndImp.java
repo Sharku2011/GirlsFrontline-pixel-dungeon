@@ -26,8 +26,11 @@ import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Imp;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.quest.DwarfToken;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
+import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
 import com.gfpixel.gfpixeldungeon.sprites.ImpSprite;
+import com.gfpixel.gfpixeldungeon.sprites.ItemSprite;
 import com.gfpixel.gfpixeldungeon.ui.RedButton;
+import com.gfpixel.gfpixeldungeon.ui.RenderedTextMultiline;
 import com.gfpixel.gfpixeldungeon.ui.Window;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 
@@ -43,7 +46,7 @@ public class WndImp extends Window {
 		
 		IconTitle titlebar = new IconTitle();
 		titlebar.icon( new ImpSprite() );
-		titlebar.label( Messages.get(this, "title") );
+		titlebar.label( "아~무 이상없는 사이트야!" );
 		titlebar.setRect( 0, 0, WIDTH, 0 );
 		add( titlebar );
 

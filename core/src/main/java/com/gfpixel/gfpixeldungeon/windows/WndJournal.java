@@ -22,8 +22,8 @@
 package com.gfpixel.gfpixeldungeon.windows;
 
 import com.gfpixel.gfpixeldungeon.Dungeon;
-import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
+import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.potions.Potion;
 import com.gfpixel.gfpixeldungeon.items.rings.Ring;

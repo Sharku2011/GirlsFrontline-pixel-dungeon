@@ -24,8 +24,8 @@ package com.gfpixel.gfpixeldungeon.scenes;
 import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.GamesInProgress;
-import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
+import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.actors.hero.HeroSubClass;
 import com.gfpixel.gfpixeldungeon.journal.Journal;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
@@ -33,15 +33,18 @@ import com.gfpixel.gfpixeldungeon.ui.ActionIndicator;
 import com.gfpixel.gfpixeldungeon.ui.Archs;
 import com.gfpixel.gfpixeldungeon.ui.ExitButton;
 import com.gfpixel.gfpixeldungeon.ui.Icons;
+import com.gfpixel.gfpixeldungeon.ui.ScrollPane;
 import com.gfpixel.gfpixeldungeon.ui.Window;
 import com.gfpixel.gfpixeldungeon.windows.WndGameInProgress;
 import com.gfpixel.gfpixeldungeon.windows.WndSelectGameInProgress;
+import com.gfpixel.gfpixeldungeon.windows.WndStartGame;
 import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.NinePatch;
 import com.watabou.noosa.RenderedText;
 import com.watabou.noosa.ui.Button;
+import com.watabou.noosa.ui.Component;
 
 import java.util.ArrayList;
 
