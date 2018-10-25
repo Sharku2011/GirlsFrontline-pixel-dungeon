@@ -115,7 +115,7 @@ public class Cypros extends MeleeWeapon {
             return;
         }
 
-        float timeChange = (mode == Mode.TRAVAILLER ? 2.5f :
+        float timeChange = (mode == Mode.TRAVAILLER ? 3.0f :
                             mode == Mode.CONFIRE    ? 1.0f :
                             mode == Mode.MAGNUM     ? 0.5f :
                             0f);
@@ -128,7 +128,7 @@ public class Cypros extends MeleeWeapon {
                 RCH = 1;
                 DLY = 1f;
                 ACC = 1.1f;
-                timeChange += 2.5f;
+                timeChange += 3.0f;
                 break;
             case CONFIRE:
                 image = ItemSpriteSheet.CONFIRE;
