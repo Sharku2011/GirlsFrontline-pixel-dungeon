@@ -9,8 +9,8 @@ public class Ripper extends Mob {
     {
         spriteClass = RipperSprite.class;
 
-        HP = HT = 15;
-        defenseSkill = 15;
+        HP = HT = 30;
+        defenseSkill = 10;
 
         EXP = 7;
         maxLvl = 15;
@@ -23,7 +23,7 @@ public class Ripper extends Mob {
 
     @Override
     public int attackSkill( Char target ) {
-        return 7;
+        return 18;
     }
 
     @Override
@@ -34,5 +34,16 @@ public class Ripper extends Mob {
     @Override
     protected float attackDelay() {
         return 0.5f;
+    }
+
+    @Override
+    public void damage(int dmg, Object src) {
+        super.damage(dmg, src);
+
+        int initialDefenceSkill = 10;
+
+        if (isAlive()) {
+            defenseSkill = initialDefenceSkill + ((HT-HP) / 3);
+        }
     }
 }

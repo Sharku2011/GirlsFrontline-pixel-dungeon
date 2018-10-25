@@ -8,7 +8,7 @@ public class Jager extends Warlock {
     {
         spriteClass = JagerSprite.class;
 
-        HP = HT = 20;
+        HP = HT = 30;
         defenseSkill = 8;
 
         EXP = 6;
