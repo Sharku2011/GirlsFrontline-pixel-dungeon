@@ -115,30 +115,44 @@ public class Cypros extends MeleeWeapon {
             return;
         }
 
+        float timeChange = (mode == Mode.TRAVAILLER ? 3.0f :
+                            mode == Mode.CONFIRE    ? 1.0f :
+                            mode == Mode.MAGNUM     ? 0.5f :
+                            0f);
+
         mode = newMode;
 
-        float timeChange = 0f;
         switch (mode) {
             case TRAVAILLER: default:
                 image = ItemSpriteSheet.TRAVAILLER;
                 RCH = 1;
                 DLY = 1f;
+<<<<<<< HEAD
                 ACC = 0.9f;
                 timeChange = 2f;
+=======
+                ACC = 1.1f;
+                timeChange += 3.0f;
+>>>>>>> master
                 break;
             case CONFIRE:
                 image = ItemSpriteSheet.CONFIRE;
                 RCH = 3;
                 DLY = 3f;
                 ACC = 1.5f;
-                timeChange = 1f;
+                timeChange += 1f;
                 break;
             case MAGNUM:
                 image = ItemSpriteSheet.MAGNUMWEDDING;
                 RCH = 1;
                 DLY = 1f;
+<<<<<<< HEAD
                 ACC = 10.25f;
                 timeChange = 1f;
+=======
+                ACC = 1.25f;
+                timeChange += 0.5f;
+>>>>>>> master
                 break;
         }
         updateQuickslot();
@@ -146,6 +160,7 @@ public class Cypros extends MeleeWeapon {
         if (curUser != null) {
             curUser.spend(timeChange);
             curUser.busy();
+            curUser.sprite.operate( curUser.pos );
             curUser.next();
         }
     }
