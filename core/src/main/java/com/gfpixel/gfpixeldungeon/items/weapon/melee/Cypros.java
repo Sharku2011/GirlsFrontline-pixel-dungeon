@@ -60,6 +60,13 @@ public class Cypros extends MeleeWeapon {
 
         tier= 2;
         ACC = 1.1f; //10% boost to accuracy
+
+        name = Messages.get(this, "name", mode.title());
+    }
+
+    @Override
+    public String name() {
+        return Messages.get(this, "name", mode.title());
     }
 
     private Wand wand;
@@ -203,8 +210,15 @@ public class Cypros extends MeleeWeapon {
 
     @Override
     public int min(int lvl) {
-        return  Math.round(1.5f*tier) +         //base
-                lvl;                            //level scaling
+        switch (mode) {
+            case TRAVAILLER: default:
+                return  Math.round(1.5f*tier) +         //base
+                        lvl;                            //level scaling
+            case CONFIRE:
+                return 3*tier + lvl;
+            case MAGNUM:
+                return tier + lvl;
+        }
     }
 
     @Override
