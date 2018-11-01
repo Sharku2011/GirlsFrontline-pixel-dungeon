@@ -26,13 +26,11 @@ public class Jaguar extends Mob {
     {
         spriteClass = JaguarSprite.class;
 
-<<<<<<< HEAD
+
         HP = HT = 40;
         defenseSkill = 25;
-=======
         HP = HT = 20;
         defenseSkill = 9;
->>>>>>> master
         baseSpeed = 0.9f;
 
         EXP = 11;

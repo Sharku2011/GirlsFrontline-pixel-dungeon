@@ -127,13 +127,10 @@ public class Cypros extends MeleeWeapon {
                 image = ItemSpriteSheet.TRAVAILLER;
                 RCH = 1;
                 DLY = 1f;
-<<<<<<< HEAD
                 ACC = 0.9f;
                 timeChange = 2f;
-=======
                 ACC = 1.1f;
                 timeChange += 3.0f;
->>>>>>> master
                 break;
             case CONFIRE:
                 image = ItemSpriteSheet.CONFIRE;
@@ -146,13 +143,10 @@ public class Cypros extends MeleeWeapon {
                 image = ItemSpriteSheet.MAGNUMWEDDING;
                 RCH = 1;
                 DLY = 1f;
-<<<<<<< HEAD
-                ACC = 10.25f;
+                ACC = 1.25f;
                 timeChange = 1f;
-=======
                 ACC = 1.25f;
                 timeChange += 0.5f;
->>>>>>> master
                 break;
         }
         updateQuickslot();

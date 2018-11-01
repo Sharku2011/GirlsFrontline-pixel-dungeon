@@ -27,6 +27,7 @@ import com.gfpixel.gfpixeldungeon.effects.particles.BloodParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.TomeOfMastery;
+import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfPsionicBlast;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
@@ -716,7 +717,7 @@ public class Elphelt extends Mob {
     }
 
     {
-        resistances.add( WandOfDisintegration.class );
+        resistances.add( ScrollOfPsionicBlast.class );
         resistances.add( Grim.class );
         resistances.add( Vampiric.class );
     }
