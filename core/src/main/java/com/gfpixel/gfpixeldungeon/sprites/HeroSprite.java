@@ -74,18 +74,18 @@ public class HeroSprite extends CharSprite {
 		die.frames( film, 12, 13, 14, 15 );
 		
 		attack = new Animation( 20, false );
-		attack.frames( film, 19, 18, 17, 18, 17, 19 );
+		attack.frames( film, 21, 18, 17, 20, 19, 21 );
 		
 		zap = attack.clone();
 		
 		operate = new Animation( 8, false );
-		operate.frames( film, 20, 21, 20, 21 );
+		operate.frames( film, 22, 23, 22, 23 );
 
 		fly = new Animation( 1, true );
-		fly.frames( film, 22 );
+		fly.frames( film, 24 );
 
 		read = new Animation( 20, false );
-		read.frames( film, 23, 24, 24, 24, 24, 24, 24, 24, 24, 23 );
+		read.frames( film, 25, 26, 26, 26, 26, 26, 26, 26, 26, 25 );
 		
 		if (ch.isAlive())
 			idle();

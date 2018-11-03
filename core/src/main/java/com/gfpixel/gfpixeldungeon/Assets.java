@@ -117,6 +117,7 @@ public class Assets {
 	public static final String NEMEUM = "nemeum.png";
 	public static final String ELPHELT = "Elphelt.png";
 	public static final String TOW = "tow.png";
+	public static final String INTRUDER = "intruder.png";
 
 	public static final String ITEMS	        = "items.png";
 	public static final String TERRAIN_FEATURES	= "terrain_features.png";
