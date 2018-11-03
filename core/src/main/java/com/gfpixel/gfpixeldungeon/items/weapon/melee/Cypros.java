@@ -134,6 +134,8 @@ public class Cypros extends MeleeWeapon {
                 image = ItemSpriteSheet.TRAVAILLER;
                 RCH = 1;
                 DLY = 1f;
+                ACC = 0.9f;
+                timeChange = 2f;
                 ACC = 1.1f;
                 timeChange += 3.0f;
                 break;
@@ -148,6 +150,8 @@ public class Cypros extends MeleeWeapon {
                 image = ItemSpriteSheet.MAGNUMWEDDING;
                 RCH = 1;
                 DLY = 1f;
+                ACC = 1.25f;
+                timeChange = 1f;
                 ACC = 1.25f;
                 timeChange += 0.5f;
                 break;
@@ -226,8 +230,8 @@ public class Cypros extends MeleeWeapon {
 
         switch (mode) {
             case TRAVAILLER:
-                return  Math.round(4.0f*(tier+1)) +        // 12 base
-                        lvl*Math.round(1.5f*(tier+1));    //+5(4.5) per level
+                return  Math.round(2.0f*(tier+1)) +        // 6 base
+                        lvl*Math.round(1.1f*(tier+1));    //+3(3.3) per level
             case CONFIRE:
                 return  Math.round(6.0f*(tier+1)) +        // 18 base
                         lvl*Math.round(2.5f*(tier+1));    //+8(7.5)= per level

@@ -70,7 +70,7 @@ actors.buffs.blindness.desc=실명 상태는 대상의 주변의 모든 것을 �
 actors.buffs.burning.name=연소
 actors.buffs.burning.heromsg=당신에게 불이 붙었다!
 actors.buffs.burning.burnsup=%s에게 불이 붙었다!
-actors.buffs.burning.ondeath=통구이가 됬다...
+actors.buffs.burning.ondeath=통구이가 되어버렸다...
 actors.buffs.burning.rankings_desc=재가 되어버림
 actors.buffs.burning.desc=불이 붙는 것만큼 고통스러운 것은 거의 없습니다.\n\n불이 붙으면 물에 들어가거나 꺼질 때 까지 매 턴 지속적으로 피해를 입힙니다. 물에 들어가거나 물약을 깨트리면 끌 수 잇습니다. 또한, 불이 붙은 상태에서 다른 지형이나 아이템에 불을 옮길 수도 있습니다. \n\n불이 스스로 꺼지기까지 %s 만큼 남았습니다.
 
@@ -275,26 +275,26 @@ actors.hero.heroclass.rogue_desc_subclasses=두 번째 보스를 쓰러트리면
 
 actors.hero.heroclass.huntress=HK416
 actors.hero.heroclass.huntress_desc_item=HK416은 사용자에게 돌아오는 _특별한 도끼_ 를 가지고 시작합니다. CZ75가 사용하던 것으로 보이는 이 도끼는 멀리 있는 적에게 던질 수 있으며 절대로 부서지지 않습니다.\n\n또한 여타 근접 무기들처럼 강화가 가능하며 특성을 융합할 수 있습니다.
-actors.hero.heroclass.huntress_desc_loadout=HK416은 적에게 층수에 비례한 폭발 데미지를 주는 _유탄 발사기_ 를 가지고 시작합니다.\n\nHK416은 그녀의 도끼를 투척 무기로도, 근접무기로도 사용할 수 있습니다.\n\nHK416은 _씨앗 주머니_ 를 가지고 시작하며, 씨앗과 작은 교정 모듈들을 담아둘 수 있습니다.
+actors.hero.heroclass.huntress_desc_loadout=HK416은 적에게 층수에 비례한 폭발 데미지를 주는 _유탄 발사기_ 를 가지고 시작합니다.\n\nHK416은 그녀의 도끼를 투척 무기로도, 근접무기로도 사용할 수 있습니다.\n\nHK416은 _벨벳 주머니_ 를 가지고 시작하며, 씨앗과 작은 교정 모듈들을 담아둘 수 있습니다.
 actors.hero.heroclass.huntress_desc_misc=HK416은 투척 무기를 던질 때 초과한 힘 만큼의 추가 피해를 얻습니다.\n\nHK416은 투척 무기를 조금 더 오래 사용할 수 있습니다.\n\nHK416은 벽 뒤에 숨은 주변의 적을 감지할 수 있습니다.\n\nHK416은 심안의 물약을 식별하여 가지고 있는 상태로 시작합니다.
 actors.hero.heroclass.huntress_desc_subclasses=두 번째 보스를 쓰러트리면 보조 직업을 선택할 수 있습니다. HK416의 두 가지 보조 직업은 다음과 같습니다.
 
 actors.hero.herosubclass.gladiator=파이터
-actors.hero.herosubclass.gladiator_desc=_UMP45_ 는 이제 근접 공격을 성공시킬 때 마다 연속 타격을 개시합니다. 연속 타격 수치에 따라 특별한 필살기를 사용할 수 있습니다.
+actors.hero.herosubclass.gladiator_desc=_파이터_ 는 이제 근접 공격을 성공시킬 때 마다 연속 타격을 개시합니다. 연속 타격 수치에 따라 특별한 필살기를 사용할 수 있습니다.
 actors.hero.herosubclass.berserker=투신
-actors.hero.herosubclass.berserker_desc=_UMP45_ 는 이제 받은 피해에 비례해 추가 피해를 입힙니다. \n격노한 상태에서, 그는 탈진을 무릅쓰고 짧은 시간동안 죽음을 유예할 수 있습니다.
+actors.hero.herosubclass.berserker_desc=_투신_ 은 이제 받은 피해에 비례해 추가 피해를 입힙니다. \n격노한 상태에서, 그는 탈진을 무릅쓰고 짧은 시간동안 죽음을 유예할 수 있습니다.
 actors.hero.herosubclass.warlock=해커
-actors.hero.herosubclass.warlock_desc=_G11_ 은 이제 적에게 총탄을 사용함으로써 영혼 표식을 걸 확률이 있습니다. 표식이 걸린 적들은 물리 피해를 입을 때 마다 해커 G11의 체력과 허기를 충족시킵니다.
+actors.hero.herosubclass.warlock_desc=_해커_ 는 이제 적에게 총탄을 사용함으로써 영혼 표식을 걸 확률이 있습니다. 표식이 걸린 적들은 물리 피해를 입을 때 마다 해커 G11의 체력과 허기를 충족시킵니다.
 actors.hero.herosubclass.battlemage=호크아이
-actors.hero.herosubclass.battlemage_desc=_G11_ 은 이제 자신의 돌격소총로 물리 공격을 할 때, 돌격소총가 흡수한 특성에 따른 추가 효과를 줄 수 있습니다. 또한 피해를 입힐 때 마다 추가 탄환을 장전할 수 있습니다.
+actors.hero.herosubclass.battlemage_desc=_호크아이_ 는 이제 자신의 돌격소총로 물리 공격을 할 때, 돌격소총가 흡수한 특성에 따른 추가 효과를 줄 수 있습니다. 또한 피해를 입힐 때 마다 추가 탄환을 장전할 수 있습니다.
 actors.hero.herosubclass.assassin=암살자
-actors.hero.herosubclass.assassin_desc=_UMP9_ 는 이제 투명화 상태가 되면 다음 공격을 신중하게 준비합니다. 투명화 한 시간이 길어질수록 더욱 강력한 공격을 할 수 있습니다.
+actors.hero.herosubclass.assassin_desc=_암살자_ 는 이제 투명화 상태가 되면 다음 공격을 신중하게 준비합니다. 투명화 한 시간이 길어질수록 더욱 강력한 공격을 할 수 있습니다.
 actors.hero.herosubclass.freerunner=정찰병
-actors.hero.herosubclass.freerunner_desc=_UMP9_ 는 이제 이동할 때 마다 가속력을 쌓습니다. 가속력이 높을수록 이동속도와 회피가 증가하지만, 움직이지 않으면 가속력이 급속도로 줄어듭니다.
+actors.hero.herosubclass.freerunner_desc=_정찰병_ 은 이제 이동할 때 마다 가속력을 쌓습니다. 가속력이 높을수록 이동속도와 회피가 증가하지만, 움직이지 않으면 가속력이 급속도로 줄어듭니다.
 actors.hero.herosubclass.sniper=저격수
-actors.hero.herosubclass.sniper_desc=_HK416_ 은 이제 적의 방어가 취약한 곳을 조준하여, 투척 공격을 할 때 대상의 방어를 무시할 수 있습니다.
+actors.hero.herosubclass.sniper_desc=_저격수_ 는 이제 적의 방어가 취약한 곳을 조준하여, 투척 공격을 할 때 대상의 방어를 무시할 수 있습니다.
 actors.hero.herosubclass.warden=유탄수
-actors.hero.herosubclass.warden_desc=_HK416_ 은 M79의 40mm유탄의 살상력을 극대화 하여, 자신의 도끼로 적을 타격할때마다 유탄의 데미지를 크게 올립니다. 또한 야생에서 생존하는 법을 터득해, 이슬에서 추가로 체력을 화복하고, 긴 수풀을 밟았을 때 추가 방어를 얻으며, 식물에서 씨앗과 이슬이 더 자주 나옵니다.
+actors.hero.herosubclass.warden_desc=_유탄수_ 는 M79의 40mm유탄의 살상력을 극대화 하여, 자신의 도끼로 적을 타격할때마다 유탄의 데미지를 크게 올립니다. 또한 야생에서 생존하는 법을 터득해, 이슬에서 추가로 체력을 화복하고, 긴 수풀을 밟았을 때 추가 방어를 얻으며, 식물에서 씨앗과 이슬이 더 자주 나옵니다.
 
 
 
@@ -418,6 +418,7 @@ actors.mobs.dm300.defeated=아키...텍트...
 actors.mobs.dm300.repair=게이저는 스스로를 수리했다!
 actors.mobs.dm300.rankings_desc=게이저에게 썰려나감
 actors.mobs.dm300.desc=게이저는 주로 지휘 작전과인원의 배치를 맡고 있습니다. 결코 낮지 않은 작전능력을 가지고 있으며, 직접 작전을 지휘할수도 있습니다. 지위는 비교적 높으며, 에이전트가 직접 관리합니다. 매사에 진지하며, 빈틈이 없으며 맡은 일은 최선을 다해 처리합니다. 언행중에는 엄격하지만 가지런한 느낌을 주며 설령 적이라 하더라도 원칙과 예절을 중요시 합니다. \n\n 그리폰에 포로로 잡힌 아키텍트를 그리워하고있습니다.
+actors.mobs.dm300.tackle=번뜩이는 송곳니
 
 actors.mobs.typhootin.name=티폰 프로토타입
 actors.mobs.typhootin.notice=미확인 인형 4기 감지. 섬멸 모드로 전환.
@@ -537,7 +538,7 @@ actors.mobs.rat.name=디너게이트
 actors.mobs.rat.desc="소문으로는 개조를 통해서 민간용 애완동물로 바꿀 수 있대!" \n\n철혈의 저급 작전 기갑입니다. 전투 능력은 비교적 약하지만 양산에 적합하며 통상적으로 경비와 수색 임무에 사용됩니다. 무리를 지어 감행하는 충돌 공격은 그 전투력을 얕잡아 볼 수 없게 만듭니다.
 
 actors.mobs.goliath.name=드라군
-actors.mobs.goliath.desc= 생산 코드명 Dragoon, 철혈의 2족 보행병기입니다. 매우 빠른 이동속도와 발칸으로 전장의 선두에서 적을 쓸어버리는 담당을 하고있습니다. 이 기병은 당신이 준비가 되있든 안되있든, 매우 빠른 속도로 찾아와 당신을 제거하려 할것입니다.
+actors.mobs.goliath.desc=생산 코드명 Dragoon, 철혈의 2족 보행병기입니다. 매우 빠른 이동속도와 발칸으로 전장의 선두에서 적을 쓸어버리는 담당을 하고있습니다. 이 기병은 당신이 준비가 되있든 안되있든, 매우 빠른 속도로 찾아와 당신을 제거하려 할것입니다.
 
 actors.mobs.rotheart.name=부패 심장
 actors.mobs.rotheart.desc=썩은열매의 열매는 매우 특이합니다. 썩어서 양분을 주는 대신, 열매가 자라나 단단해지며, 씨앗을 감쌉니다. 그리고 열매 내부에 생명 활동을 주관하는 기관이 자라나며, 단단해진 열매는 이를 보호합니다. 이 거대한 열매는 다 자란 썩은열매 식물의 심장에 비유됩니다.
@@ -578,6 +579,9 @@ actors.mobs.swarm.desc=작지만 자가복제로 적을 제압하는 소형 정�
 
 actors.mobs.elphelt.name=엘펠트 발렌타인
 actors.mobs.elphelt.2페이즈=최종병기! 매그넘 웨딩!!
+actors.mobs.elphelt.bridleexpress1=브라이들 익스프레스!
+actors.mobs.elphelt.seek1=어디에 있나요, 달링!
+actors.mobs.elphelt.seek2=숨지 말아요, 달링!
 actors.mobs.elphelt.돌진=조준합니다!
 actors.mobs.elphelt.desc=여기 보세요~ 미래의 서방님들~ 저는 엘펠트 밸런타인이에요! 비록 인형을 말살하기 위한 목적으로 만들어졌지만... 행복한 가정을 꾸리고 싶답니다! 이세계에서 이상적인 남편감을 찾을 수 있을려나요? 아아 망상이 멈추질 않네요... 앗! 코피가!
 actors.mobs.elphelt.genoise_kill=사랑의 힘이 너무 강했다...
@@ -597,15 +601,19 @@ actors.mobs.thief.carries=\n\n저 도둑은 _%s_ 을/를 들고 있습니다. �
 actors.mobs.thief.escapes=인권단체 회원이 당신의 %s을/를 들고 탈출했다!
 actors.mobs.thief.desc=이 인권단체들은 항상 인형보다 인간이 먼저라며 인형들의 자원을 약탈해갑니다. 정작 그들을 지켜주는 존재는 인형이지만요. \n\n이 배은망덕한 자들은 직접 싸우기보다는 물건을 훔쳐서 달아나려고 합니다. 그들을 시야에서 놓치지 마십시오. 아니면 도둑맞은 아이템을 다신 볼 수 없게 됩니다.
 
+actors.mobs.jager.name=예거 C형
+actors.mobs.jager.bolt_kill=BOOM, Headshot.
+actors.mobs.jager.desc=예거 D형의 전신인 시험형 모델입니다. 명중시 대상의 힘을 약화시켜 제압할 수 있지만 화력이 충분하지 않아 외진 곳에 배치되었습니다.
+
 actors.mobs.warlock.name=예거 D형
 actors.mobs.warlock.bolt_kill=BOOM, Headshot.
-actors.mobs.warlock.desc=프로토타입 저격병의 양산기입니다. A형을 기반으로, 거의 10배에 달하는 성능을 확보했습니다. 강력한 원거리 능력을 가지고 있으며, 명중시 대상의 힘을 약화시켜 제압합니다.
+actors.mobs.warlock.desc=프로토타입 저격병의 양산기입니다. C형을 기반으로, 거의 3배에 달하는 성능을 확보했습니다. 강력한 원거리 능력을 가지고 있으며, 명중시 대상의 힘을 약화시켜 제압합니다.
 
 actors.mobs.wraith.name=사이버 망령
 actors.mobs.wraith.def_verb=회피
 actors.mobs.wraith.desc=사이머 망령은 자신의 하드를 스캔한 자를 쫓는 복수심 가득한 영혼입니다. 완전한 영체로 이루어져 있어 일반적인 무기로 공격하는 것은 매우 힘듭니다.
 
-======필드보스
+#필드보스
 
 actors.mobs.scarecrow.name=스케어크로우
 actors.mobs.scarecrow.desc="나는 전투보다 정찰 임무를 수행하는 편이 나은데…라고 중얼거리며 많은 사람을 다치게 하지. 그래서 나는 그저 허수아비처럼, 제자리에 서 있는 채로, 모두와 임무를 수행하기만 하면 충분해.." \n\n 철혈 선두 작전 인형 중 하나로, 엑스큐서너와 자주 공동 작전을 벌입니다. 그녀는 공중에 살짝 떠다니며, 출혈을 일으키는 빠른 공격과 저급 작전유닛과는 차원이 다른 내구성을 가집니다. \n\n _상황이 불리하다면 도망을 주저하지 마십시오._
@@ -615,7 +623,8 @@ actors.mobs.intruder.disarm=인트루더가 당신의 %s을/를 손에서 튕겨
 actors.mobs.intruder.def_verb=막음
 actors.mobs.intruder.desc="보통 후방에서 작전 책략을 제공하며, 정보를 캐내고 교란시키는 전술을 사용하고 있어. 단순한 이름을 가지고 있지만, 인형으로서 내 취미는 매우 고상하지. 지휘관, 한 번 맞혀 볼래?" \n\n 철혈 최하위 지휘권을 가진 인형으로 부대 지휘에 능하며 들고있는 무기를 튕겨내는 매우 빠른 공격을 주로 사용합니다. \n\n _상황이 불리하다면 도망을 주저하지 마십시오._
 
-===========
+#
+
 actors.mobs.yog.name=속박된 M4A1
 actors.mobs.yog.notice=도와줘... 도와줘... 누가 나좀....
 actors.mobs.yog.defeated=드디어... 자유로구나...
