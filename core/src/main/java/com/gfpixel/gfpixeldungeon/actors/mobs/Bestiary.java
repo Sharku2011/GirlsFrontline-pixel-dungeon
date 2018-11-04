@@ -57,7 +57,7 @@ public class Bestiary {
 						//10x rat
 						return new ArrayList<Class<? extends Mob>>(Arrays.asList(
 								Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
-								Rat.class, Rat.class, Rat.class, Rat.class, Rat.class));
+								Rat.class, Rat.class, Rat.class, Rat.class, Intruder.class));
 					case 2:
 						//3x rat, 3x gnoll
 						return new ArrayList<>(Arrays.asList(
@@ -209,9 +209,9 @@ public class Bestiary {
 					case 4:
 						//1x elemental, 1x warlock, 2x monk, 3x golem
 						return new ArrayList<>(Arrays.asList(
-								Elemental.class,
-								Warlock.class,
-								Monk.class, Monk.class,
+								Warlock.class, Warlock.class,
+								Golem.class, Golem.class,
+								Golem.class, Golem.class,
 								Golem.class, Golem.class, Golem.class));
 				}
 			}
