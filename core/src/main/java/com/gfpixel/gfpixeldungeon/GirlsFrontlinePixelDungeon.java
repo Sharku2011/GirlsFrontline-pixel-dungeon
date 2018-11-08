@@ -53,7 +53,8 @@ public class GirlsFrontlinePixelDungeon extends Game {
 
 	public static final int v0_6_5  = 260;
 
-	public static final int v0_5_0	= 500;
+	//new version numbering for gpd
+	public static final int v0_4_7_g	= 100;
 	
 	public GirlsFrontlinePixelDungeon() {
 		super( WelcomeScene.class );
