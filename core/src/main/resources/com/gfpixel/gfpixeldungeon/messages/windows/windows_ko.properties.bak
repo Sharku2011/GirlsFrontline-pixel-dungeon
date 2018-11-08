@@ -51,6 +51,7 @@ windows.wndhero$statstab.gold=획득한 보석
 windows.wndhero$statstab.depth=최고 레벨
 windows.wndhero$statstab.challenges=활성화된 도전과제
 
+windows.wndimp.title=아~무 이상없는 사이트야!
 windows.wndimp.message=가져가! 내 총에는 광학장비를 달기가 어려워서 말이지.. 헤헤. 이거? 옛날에 카리나에게 샀던거야!. 왠 일인지 싸게 팔더라?
 windows.wndimp.reward=도트사이트를 가져간다
 
@@ -146,6 +147,7 @@ windows.wndtradeitem.sell_1=1개당 판매 가격 %dg
 windows.wndtradeitem.sell_all=모두 판매 가격 %dg
 windows.wndtradeitem.cancel=돌아가기
 
+windows.wndwandmaker.title=원하는 탄환을 가져 가라고.
 windows.wndwandmaker.farewell=만나서 더러웠고, 다시는 보지 말자!
 windows.wndwandmaker.farewell_hk416=특히 너, HK416, 너 말이야.
 
@@ -380,7 +382,7 @@ windows.wnddialog.m16a1.berry44=UMP45
 windows.wnddialog.m16a1.inprogress00=M16A1
 windows.wnddialog.m16a1.complete00=M16A1
 
-windows.wnddialog.uroboros0=감히 구식 인형 따위가, %s! 덤벼보아라, 단숨에 끝내주마!
+windows.wnddialog.uroboros0=감히 구식 인형 따위가! 덤벼보아라, 단숨에 끝내주마!
 
 windows.wnddialog.noelquest.branch0.0=....그래, 내가 "가마" 안으로 떨어지고 난 후에...
 windows.wnddialog.noelquest.branch0.1=언니, 아까 말한 전파중 하나는 이 애가 내고있던건가봐. 저기, 넌 누구니?
@@ -464,7 +466,7 @@ windows.wnddialog.ppsh47quest.branch.completed00 = PPSH
 
 windows.wnddialog.ppsh47quest.branch.get_lost00 = PPSH
 
-windows.wnddialog.gager0=무릎을 꿇어라. 아니면 이 총알을 한 방 맞을 거냐? 어느 쪽인지 선택해라.
+windows.wnddialog.dm3000=무릎을 꿇어라. 아니면 이 총알을 한 방 맞을 거냐? 어느 쪽인지 선택해라.
 
 windows.wnddialog.p7quest.branch1.0 = 뭐야, 404 소대가 여기는 웬 일이야?
 windows.wnddialog.p7quest.branch1.1 = 작전중이야. 미안하지만 작전 내용은 말해줄수없어.
@@ -504,4 +506,4 @@ windows.wnddialog.p7questmonks_proc00 = P7
 windows.wnddialog.p7questcompleted00 = P7
 
 
-windows.wnddialog.destroyer0=이 그리폰 꼬맹이들이! 좋아, 이제 더이상 드리머에게 놀림받지 않도록, 네 녀석들을 이곳에 묻어버리겠어!
+windows.wnddialog.kingr0=이 그리폰 꼬맹이들이! 좋아, 이제 더이상 드리머에게 놀림받지 않도록, 네 녀석들을 이곳에 묻어버리겠어!

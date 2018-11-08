@@ -114,7 +114,7 @@ public class DM300 extends Mob {
 
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 20, 30 );
+		return Random.NormalIntRange( 20, 20 );
 	}
 	
 	@Override

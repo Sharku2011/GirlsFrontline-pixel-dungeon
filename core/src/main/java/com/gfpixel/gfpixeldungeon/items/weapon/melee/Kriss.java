@@ -33,14 +33,13 @@ public class Kriss extends MeleeWeapon {
 		image = ItemSpriteSheet.KRISS;
 
 		tier = 3;
-		DLY = 0.5f; //2x speed
 		ACC = 0.5f;
 	}
 
 	@Override
 	public int damageRoll(Char owner) {
 		if (owner instanceof Hero && owner.buffs(Speed.class).isEmpty()) {
-			Buff.prolong(owner, Speed.class, 0.25f);
+			Buff.prolong(owner, Speed.class, 1.2f);
 		}
 		return super.damageRoll(owner);
 	}

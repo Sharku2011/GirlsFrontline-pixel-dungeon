@@ -54,7 +54,7 @@ public class GROZA extends MeleeWeapon {
                 //deals 50% toward max to max on surprise, instead of min to max.
                 int diff = max() - min();
                 int damage = augment.damageFactor(Random.NormalIntRange(
-                        min() + Math.round(diff*1.80f),
+                        min() + Math.round(diff*0.9f),
                         max()));
                 int exStr = hero.STR() - STRReq();
                 if (exStr > 0) {

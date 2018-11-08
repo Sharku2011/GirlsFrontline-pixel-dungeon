@@ -24,7 +24,12 @@ package com.gfpixel.gfpixeldungeon.actors.mobs;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Bleeding;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.items.artifacts.TimekeepersHourglass;
+import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfPsionicBlast;
+import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
+import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
 import com.gfpixel.gfpixeldungeon.sprites.IntruderSprite;
 import com.watabou.utils.Random;
 
@@ -40,12 +45,12 @@ public class Intruder extends Golem {
         loot = new TimekeepersHourglass();
         lootChance = 0.2f;
 
-        HP = HT = 240;
+        HP = HT = 370;
     }
 
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange( 20, 25 );
+        return Random.NormalIntRange( 25, 25 );
     }
 
     @Override
@@ -71,5 +76,14 @@ public class Intruder extends Golem {
         }
 
         return damage;
+    }
+
+    {
+        resistances.add( ScrollOfPsionicBlast.class );
+        resistances.add( Grim.class );
+    }
+
+    {
+        immunities.add( Terror.class );
     }
 }

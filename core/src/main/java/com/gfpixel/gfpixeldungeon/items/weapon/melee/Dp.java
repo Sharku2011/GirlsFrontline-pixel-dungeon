@@ -34,33 +34,13 @@ public class Dp extends MeleeWeapon {
 
         tier = 1;
         DLY = 0.2f; //1time 10hit
-        ACC = 0.6f;
+        ACC = 0.7f;
     }
 
     @Override
     public int max(int lvl) {
         return  Math.round(2.1f*(tier+1)) +    //5 base, down from 20
                 lvl*Math.round(0.5f*(tier+1));   //+1 per level, down from +2
-    }
-
-    @Override
-    public int damageRoll(Char owner) {
-        if (owner instanceof Hero) {
-            Hero hero = (Hero)owner;
-            Char enemy = hero.enemy();
-            if (enemy instanceof Mob && ((Mob) enemy).surprisedBy(hero)) {
-                //deals 85% toward max to max on surprise, instead of min to max.
-                int damage = augment.damageFactor(Random.NormalIntRange(
-                        Math.max(1, min()/2),
-                        max()/2));
-                int exStr = hero.STR() - STRReq();
-                if (exStr > 0) {
-                    damage -= Random.IntRange(0, exStr);
-                }
-                return damage;
-            }
-        }
-        return super.damageRoll(owner);
     }
 
 }
