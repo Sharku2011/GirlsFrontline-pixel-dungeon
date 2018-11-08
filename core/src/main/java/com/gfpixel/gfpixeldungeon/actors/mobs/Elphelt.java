@@ -28,6 +28,7 @@ import com.gfpixel.gfpixeldungeon.effects.particles.SmokeParticle;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.items.TomeOfMastery;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfPsionicBlast;
+import com.gfpixel.gfpixeldungeon.items.wands.DamageWand;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Vampiric;
@@ -309,6 +310,12 @@ public class Elphelt extends Mob {
 
         if (dmg > 0) {
             alerted = true;
+            if (src instanceof Char) {
+                beckon( ((Char)src).pos );
+            }
+            if (src instanceof DamageWand) {
+                beckon( Dungeon.hero.pos );
+            }
         }
 
         if (buff( Paralysis.class ) != null) {
