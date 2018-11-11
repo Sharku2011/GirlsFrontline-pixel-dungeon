@@ -85,7 +85,7 @@ public class Nemeum extends Mob {
         if (beamCooldown == 0) {
             Ballistica aim = new Ballistica(pos, enemy.pos, Ballistica.STOP_TERRAIN);
 
-            if (enemy.invisible == 0 && !isCharmedBy(enemy) && fieldOfView[enemy.pos] && aim.dist <= 2 /*aim.subPath(1, aim.dist).contains(enemy.pos)*/){
+            if (enemy.invisible == 0 && !isCharmedBy(enemy) && fieldOfView[enemy.pos] && aim.subPath(1, aim.dist).contains(enemy.pos)){
                 beam = aim;
                 beamTarget = aim.collisionPos;
                 return true;
@@ -168,7 +168,7 @@ public class Nemeum extends Mob {
             }
 
             if (hit( this, ch, true )) {
-                ch.damage( Random.NormalIntRange( 35, 45 ), this );
+                ch.damage( Random.NormalIntRange( 30, 35 ), this );
 
                 if (Dungeon.level.heroFOV[pos]) {
                     ch.sprite.flash();

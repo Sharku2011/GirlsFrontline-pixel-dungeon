@@ -25,6 +25,7 @@ import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Bleeding;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Corrosion;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.items.artifacts.TimekeepersHourglass;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfPsionicBlast;
@@ -79,11 +80,9 @@ public class Intruder extends Golem {
     }
 
     {
-        resistances.add( ScrollOfPsionicBlast.class );
-        resistances.add( Grim.class );
-    }
-
-    {
         immunities.add( Terror.class );
+        immunities.add( Corrosion.class );
+        immunities.add( ScrollOfPsionicBlast.class );
+        immunities.add( Grim.class );
     }
 }

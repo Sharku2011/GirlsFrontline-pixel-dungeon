@@ -4,6 +4,7 @@ import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.blobs.ToxicGas;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Corrosion;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Paralysis;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Vertigo;
@@ -195,8 +196,6 @@ public class Typhoon extends Hydra {
 
     {
         resistances.add( ToxicGas.class );
-        resistances.add( Grim.class );
-        resistances.add( ScrollOfPsionicBlast.class );
         resistances.add( Vampiric.class );
     }
 
@@ -206,6 +205,9 @@ public class Typhoon extends Hydra {
         immunities.add( Paralysis.class );
         immunities.add( Vertigo.class );
         immunities.add( Terror.class );
+        immunities.add( Corrosion.class );
+        immunities.add( ScrollOfPsionicBlast.class );
+        immunities.add( Grim.class );
     }
 
     @Override
