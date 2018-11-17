@@ -23,11 +23,12 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Hk416 extends MeleeWeapon {
+public class Hk416 extends AssaultRifle {
 
 	{
 		image = ItemSpriteSheet.HK416;
 
+		DLY = 0.8f;
 		tier = 4;
 	}
 

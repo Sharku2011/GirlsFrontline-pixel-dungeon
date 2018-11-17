@@ -24,7 +24,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Mos extends MeleeWeapon {
+public class Mos extends BulletProof {
 
 	{
 		image = ItemSpriteSheet.MOS;

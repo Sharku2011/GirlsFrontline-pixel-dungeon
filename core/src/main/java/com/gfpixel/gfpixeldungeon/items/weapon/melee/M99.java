@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class M99 extends MeleeWeapon {
+public class M99 extends DesignatedMarksmanRifle {
 
 	{
 		image = ItemSpriteSheet.GLAIVE;

@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class AWP extends MeleeWeapon {
+public class AWP extends SniperRifle {
 
     {
         image = ItemSpriteSheet.AWP;

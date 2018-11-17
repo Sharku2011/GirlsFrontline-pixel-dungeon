@@ -7,7 +7,7 @@ import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
  * Girls Piexl Dungeon , Weapon NTW20
  */
 
-public class Ntw20 extends MeleeWeapon {
+public class Ntw20 extends SniperRifle {
 
     {
         image = ItemSpriteSheet.NTW20;

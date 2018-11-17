@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Win97 extends MeleeWeapon {
+public class Win97 extends ShotGun {
 	
 	{
 		image = ItemSpriteSheet.WIN97;

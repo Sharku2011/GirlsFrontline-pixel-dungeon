@@ -24,7 +24,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class SAIGA extends MeleeWeapon {
+public class SAIGA extends SubMachineGun {
 
     {
         image = ItemSpriteSheet.SAIGA;
@@ -36,6 +36,6 @@ public class SAIGA extends MeleeWeapon {
 
     @Override
     public int defenseFactor( Char owner ) {
-        return 6+2*level();     //6 extra defence, plus 2 per level;
+        return 5+2*level();     //5 extra defence, plus 2 per level;
     }
 }

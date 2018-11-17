@@ -27,7 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.utils.Random;
 
-public class GUA91 extends MeleeWeapon {
+public class GUA91 extends SurpriseAttack {
 
 	{
 		image = ItemSpriteSheet.GUA91;

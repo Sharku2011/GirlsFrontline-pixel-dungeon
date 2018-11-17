@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Kar98 extends MeleeWeapon {
+public class Kar98 extends DesignatedMarksmanRifle {
 
 	{
 		image = ItemSpriteSheet.KAR98;

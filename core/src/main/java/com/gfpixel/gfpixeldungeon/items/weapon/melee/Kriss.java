@@ -27,7 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Kriss extends MeleeWeapon {
+public class Kriss extends HitBuffer {
 
 	{
 		image = ItemSpriteSheet.KRISS;

@@ -10,13 +10,13 @@ import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
 import java.util.ArrayList;
 
-public class Ump40 extends MeleeWeapon {
+public class Ump40 extends LongRange {
 
     {
         image = ItemSpriteSheet.UMP40;
 
         tier = 1;
-        RCH = 5;
+        RCH = 4;
     }
     public Char owner;
     public ArrayList<Item> items = new ArrayList<Item>();

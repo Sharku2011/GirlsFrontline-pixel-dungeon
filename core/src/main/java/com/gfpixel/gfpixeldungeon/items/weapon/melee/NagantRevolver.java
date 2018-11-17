@@ -27,7 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.utils.Random;
 
-public class NagantRevolver extends MeleeWeapon {
+public class NagantRevolver extends SurpriseAttack {
 
 	{
 		image = ItemSpriteSheet.NAGANTREVOLVER;

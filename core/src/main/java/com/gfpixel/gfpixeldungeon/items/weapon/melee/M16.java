@@ -24,7 +24,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class M16 extends MeleeWeapon {
+public class M16 extends DesignatedMarksmanRifle {
 
 	{
 		image = ItemSpriteSheet.M16;

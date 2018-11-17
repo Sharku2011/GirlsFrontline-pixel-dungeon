@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Ks23 extends MeleeWeapon {
+public class Ks23 extends ShotGun {
 	
 	{
 		image = ItemSpriteSheet.KS23;

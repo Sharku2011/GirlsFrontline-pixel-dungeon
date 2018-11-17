@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class AK47 extends MeleeWeapon {
+public class AK47 extends DesignatedMarksmanRifle {
 
 	{
 		image = ItemSpriteSheet.AK47;

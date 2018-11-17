@@ -20,14 +20,9 @@
  */
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
-
-import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
-import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
-import com.watabou.utils.Random;
 
-public class Negev extends MeleeWeapon {
+public class Negev extends MachineGun {
 
 	{
 		image = ItemSpriteSheet.NEGEV;

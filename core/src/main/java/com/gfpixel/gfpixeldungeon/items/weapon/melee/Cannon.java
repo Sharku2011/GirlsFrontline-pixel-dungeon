@@ -31,7 +31,7 @@ import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.utils.Random;
 
-public class Cannon extends MeleeWeapon {
+public class Cannon extends UniversaleGun {
 
     {
         image = ItemSpriteSheet.CANNON;

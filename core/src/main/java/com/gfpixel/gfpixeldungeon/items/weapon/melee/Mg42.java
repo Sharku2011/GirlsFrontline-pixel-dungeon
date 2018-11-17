@@ -10,7 +10,7 @@ import com.watabou.utils.Random;
  * Created by LoveKirsi on 2017-11-22.
  */
 
-public class Mg42 extends MeleeWeapon {
+public class Mg42 extends MachineGun {
 
     {
         image = ItemSpriteSheet.MG42;

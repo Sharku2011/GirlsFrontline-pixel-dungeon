@@ -24,7 +24,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Ump45 extends MeleeWeapon {
+public class Ump45 extends SubMachineGun {
 
     {
         image = ItemSpriteSheet.UMP45;

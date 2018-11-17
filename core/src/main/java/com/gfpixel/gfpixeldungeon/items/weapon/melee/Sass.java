@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Sass extends MeleeWeapon {
+public class Sass extends DesignatedMarksmanRifle {
 
 	{
 		image = ItemSpriteSheet.SASS;

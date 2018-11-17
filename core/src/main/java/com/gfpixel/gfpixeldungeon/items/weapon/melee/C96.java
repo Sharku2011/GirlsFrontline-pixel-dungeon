@@ -27,7 +27,7 @@ import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 import com.watabou.utils.Random;
 
-public class C96 extends MeleeWeapon {
+public class C96 extends UniversaleGun {
 
     {
         image = ItemSpriteSheet.C96;

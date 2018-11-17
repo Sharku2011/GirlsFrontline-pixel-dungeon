@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Wa extends MeleeWeapon {
+public class Wa extends LongRange {
 
 	{
 		image = ItemSpriteSheet.WA;

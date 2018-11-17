@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class M1903 extends MeleeWeapon {
+public class M1903 extends SniperRifle {
 
 	{
 		image = ItemSpriteSheet.M1903;

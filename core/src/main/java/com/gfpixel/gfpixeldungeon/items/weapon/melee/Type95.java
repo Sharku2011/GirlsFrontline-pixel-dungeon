@@ -21,16 +21,36 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
+import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
+import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Usas12 extends ShotGun {
+public class Type95 extends HitBuffer {
 
-	{
-		image = ItemSpriteSheet.USAS12;
+    {
+        image = ItemSpriteSheet.KRISS;
 
-		DLY = 0.8f;
-		ACC = 2f;
-		tier=5;
-	}
+        tier = 3;
+        ACC = 0.5f;
+    }
 
+    @Override
+    public int damageRoll(Char owner) {
+        if (owner instanceof Hero && owner.buffs(Speed.class).isEmpty()) {
+            Buff.prolong(owner, Speed.class, 1.2f);
+        }
+        return super.damageRoll(owner);
+    }
+
+    @Override
+    public int max(int lvl) {
+        return  Math.round(2.5f*(tier+1)) +     //10 base, down from 20
+                lvl*Math.round(0.5f*(tier+1));  //+2 per level, down from +4
+    }
+    @Override
+    public int defenseFactor( Char owner ) {
+        return 3;	//3 extra defence
+    }
 }

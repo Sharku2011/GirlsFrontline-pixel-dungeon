@@ -31,7 +31,7 @@ import com.watabou.utils.Random;
  * Created by NamSek on 2018-3-15.
  */
 
-public class GROZA extends MeleeWeapon {
+public class GROZA extends SurpriseAttack {
 
     {
         image = ItemSpriteSheet.GROZA;

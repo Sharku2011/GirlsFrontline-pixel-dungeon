@@ -23,13 +23,13 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class M1911 extends MeleeWeapon {
+public class M1911 extends LongRange {
 
 	{
 		image = ItemSpriteSheet.M1911;
 
 		tier = 2;
-		RCH = 3;    //lots of extra reach
+		RCH = 4;    //lots of extra reach
 	}
 
 	@Override

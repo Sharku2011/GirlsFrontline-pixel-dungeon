@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class NAGANT extends MeleeWeapon {
+public class NAGANT extends LongRange {
 
     {
         image = ItemSpriteSheet.NAGANT;

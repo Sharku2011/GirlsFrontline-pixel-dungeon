@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.items.weapon.melee;
 
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Dragunov extends MeleeWeapon {
+public class Dragunov extends DesignatedMarksmanRifle {
 
 	{
 		image = ItemSpriteSheet.DRAGUNOV;
