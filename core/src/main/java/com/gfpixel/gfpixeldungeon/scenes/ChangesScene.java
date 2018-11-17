@@ -126,10 +126,6 @@ public class ChangesScene extends PixelScene {
 
 		};
 		add( list );
-		
-		//**********************
-		//       v0.6.5
-		//**********************
 
 		ChangeInfo changes = new ChangeInfo("v0.4.7", true, "");
 		changes.hardlight( Window.TITLE_COLOR);
@@ -138,6 +134,13 @@ public class ChangesScene extends PixelScene {
 		changes = new ChangeInfo(Messages.get(this, "new"), false, null);
 		changes.hardlight( Window.TITLE_COLOR );
 		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new Image(Assets.INTRUDER, 0, 0, 17, 17), "인트루더",
+				"필드보스가 추가됨.\n\n" +
+
+						"_-_ 인트루더는 챕터 4에서 매우 낮은 확률로 등장합니다. \n\n" +
+						"_-_ 인트루더는 5번의 연속 공격을 평타로 사용하며, 매 공격시 대상에게 출혈을 일으킵니다. 또한, 우산과 자폭의 디스크에 내성을 가지고 있습니다. \n\n" +
+						"_-_ 인트루더는 실험적인 몬스터입니다. 실험 결과가 맘에 들면 점차적으로 필드보스를 추가시킬 예정입니다."));
 
 		changes.addButton( new ChangeButton(new M9(),
 				"무기 변경.\n\n" +
@@ -154,11 +157,21 @@ public class ChangesScene extends PixelScene {
 				"버그 수정\n\n" +
 
 						"_-_ 오타와 맛춤뻡들을 고쳣습미다맛춤뻡을 꼮 지키는 착한 사람이 됍시다\n\n" +
+						"_-_ 예거 C형(분기점) 의 데미지가 지나치게 높던 버그를 수정하였습니다.\n\n" +
+						"  - 예거 C형의 약화 디버프 지속시간을 하향하였습니다.\n\n" +
 						"_-_ 재규어의 공격이 격발될 때 크래시가 발생하는 버그를 수정하였습니다.\n\n" +
 						"_-_ 엘펠트가 자고 있던 중 체력의 절반 이상을 잃게 될 경우, 2페이즈가 아닌 1페이즈로 시작하는 버그를 수정하였습니다. \n\n" +
 						"_-_ 엘펠트가 2페이즈에서 돌진과 매그넘웨딩을 발사한 뒤 플레이어를 놓치는 버그를 수정하였습니다. \n\n" +
 						"_-_ 엘펠트가 벽에 붙어있는 적에게 돌진할 경우 크래시가 발생하는 버그를 수정하였습니다. \n\n" +
+						"_-_ 지상으로 올라온 엔딩 신에서 선택했던 캐릭터와 다른 캐릭터가 나오는 버그를 수정하였습니다. \n\n" +
+						"_-_ 우로보로스, 디스트로이어와 조우 시 대사가 정상적으로 출력되지 않던 버그를 수정하였습니다. \n\n" +
 						"_-_ 엘펠트가 자고 있을 때 새틀라이트에게 공격받을 시, 페이즈가 진행되지 않던 버그를 수정하였습니다."));
+
+		changes.addButton( new ChangeButton(new Negev(),
+				"_-_ 무기 조정.\n\n" +
+						"_-_ MG계열 무기의 기습시 데미지 하락이 삭제된 대신 기습불가로 변경됐으며, 명중률이 20% 상승했습니다.\n\n" +
+						"_-_ 장비 교정권의 이름이 다른 아이템과의 혼동을 피하기 위해 외골격 교정권으로 변경되었습니다.\n\n" +
+						"_-_ 씨앗 주머니가 벨벳 주머니로 변경되었습니다. 씨앗 이외에도 외골격 교정권과 고급 장비 교정권, 특성 장비 교정권, 고속 수복 계약을 추가로 수납할 수 있습니다."));
 
 		changes.addButton( new ChangeButton(new VelvetPouch(),
 				"_-_ 아이템 조정.\n\n" +
@@ -179,16 +192,15 @@ public class ChangesScene extends PixelScene {
 
 		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 16, 16), "악랄해짐",
 				"일부 몹 강화.\n\n" +
-						"_-_ 게이저의 패턴에 돌진이 추가되었습니다.\n\n" +
-						"_-_ 네메움의 체력이 80으로 상향조치 됐으며, 광선 데미지도 최대 50으로 상향됐습니다. 대신 사거리가 2칸으로 줄어들게 됬습니다.\n\n" +
+						"_-_ 리퍼의 체력이 15에서 30으로 강화됐으며 체력이 낮아질때 자동으로 회피율이 크게 증가하게 됩니다.\n\n" +
 						"_-_ 만티코어의 공격력이 크게 상향됐습니다."));
 
 		changes.addButton( new ChangeButton(new M16(),
-				"무기 조정.\n\n" +
+				"아이템 조정.\n\n" +
 						"_-_ M16A1이 다시 기습공격을 할 수 있으며, 데미지가 소폭 상승했습니다.\n\n" +
 						"_-_ 런쳐 계열(50구경 강화무기) 무기들의 느린 공격속도가 사라져 평균적인 공격속도를 가지게 됐습니다.\n\n" +
-						"_-_ MG계열의 명중률이 소폭 상향됐지만 기습 데미지는 더 떨어졌습니다..\n\n" +
-						"_-_ 미스 트라비아에의 데미지 흡수를 제외한 모든 부가 효과가 삭제됐으며, 대신 무기 자체 스킬을 사용할 수 있게 됐습니다."));
+						"_-_ 완력의 물약의 추가 체력상승 효과가 5 HP 늘어났습니다.\n\n" +
+						"_-_ 미스 트라비아에의 명칭이 키프로스로 변경됐으며 무기 모드를 변환가능하게 됐습니다. 또한 무기 자체 스킬을 사용할 수 있게 됐습니다."));
 
 		changes = new ChangeInfo(Messages.get(this, "nerfs"), false, null);
 		changes.hardlight( CharSprite.NEGATIVE );
@@ -198,12 +210,7 @@ public class ChangesScene extends PixelScene {
 				"벡터가 전반적으로 하향되었습니다.\n\n" +
 						"_-_ 기습공격이 불가능해졌습니다.\n\n" +
 						"_-_ 명중 시 적용되던 시간 증폭 버프의 유지 시간이 감소되었습니다.\n\n" +
-						"_-_ 명중률이 50% 감소하였습니다."));
-
-		changes.addButton( new ChangeButton(new Negev(),
-				"_-_ MG계열 하향.\n\n" +
-						"_-_ MG계열(공격속도가 기본 5회 이상인 무기) 무기들의 명중률과 기습공격이 조정됬습니다.\n\n" +
-						"_-_ 최대 40%의 명중률 패널티를 가지며, 공격력은 그대로지만 기습공격시 60%의 피해만 입힐 수 있게 됩니다."));
+						"_-_ 공격속도가 1로 낮아졌고 명중률이 50% 감소하였습니다."));
 
 
 		changes = new ChangeInfo("v0.4.6", true, "");

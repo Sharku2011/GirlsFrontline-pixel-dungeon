@@ -31,7 +31,7 @@ public class Ump45 extends SubMachineGun {
 
         tier = 1;
         RCH = 1;
-        ACC = 0.65f;
+        ACC = 0.7f;
     }
 
     @Override

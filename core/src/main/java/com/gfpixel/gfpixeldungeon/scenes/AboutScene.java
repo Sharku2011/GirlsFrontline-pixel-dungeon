@@ -45,7 +45,7 @@ public class AboutScene extends PixelScene {
 
 	private static final String TXT_SHPX =
 			"Code, & Graphics: NamSek\n" +
-			"Code: Sharku";
+			"Main Code: Sharku";
 
 	private static final String LNK_SHPX = "www.pixiv.net/member.php?id=14086167";
 
@@ -71,7 +71,7 @@ public class AboutScene extends PixelScene {
 		align(shpx);
 		add( shpx );
 
-		new Flare( 7, 64 ).color( 0x225511, true ).show( shpx, 0 ).angularSpeed = +20;
+		new Flare( 7, 64 ).color( 0x551144, true ).show( shpx, 0 ).angularSpeed = +20;
 
 		RenderedText shpxtitle = renderText( TTL_SHPX, 8 );
 		shpxtitle.hardlight( Window.SHPX_COLOR );
