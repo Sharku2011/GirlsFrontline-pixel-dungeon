@@ -39,7 +39,7 @@ public class Welrod extends SurpriseAttack {
 
 	@Override
 	public int max(int lvl) {
-		return  3*(tier+1) +    //4 base, down from 10
+		return  4*(tier+1) +    //4 base, down from 10
 				lvl*(tier+1);   //scaling unchanged
 	}
 	
@@ -52,7 +52,7 @@ public class Welrod extends SurpriseAttack {
 				//deals 85% toward max to max on surprise, instead of min to max.
 				int diff = max() - min();
 				int damage = augment.damageFactor(Random.NormalIntRange(
-						min() + Math.round(diff*1.7f),
+						min() + Math.round(diff*0.9f),
 						max()));
 				int exStr = hero.STR() - STRReq();
 				if (exStr > 0) {
