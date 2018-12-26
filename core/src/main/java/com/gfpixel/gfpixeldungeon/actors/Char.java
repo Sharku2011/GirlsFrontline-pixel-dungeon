@@ -167,6 +167,7 @@ public abstract class Char extends Actor {
 			
 			if (this instanceof Hero){
 				Hero h = (Hero)this;
+				// 저격수의 경우 투척무기 사용시 적의 방어력 무시하는 구문
 				if (h.belongings.weapon instanceof MissileWeapon
 						&& h.subClass == HeroSubClass.SNIPER){
 					dr = 0;
