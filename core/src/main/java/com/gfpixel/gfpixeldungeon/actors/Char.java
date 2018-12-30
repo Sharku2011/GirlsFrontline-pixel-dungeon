@@ -50,6 +50,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Vertigo;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.actors.hero.HeroSubClass;
+import com.gfpixel.gfpixeldungeon.items.KindOfWeapon;
 import com.gfpixel.gfpixeldungeon.items.armor.glyphs.Potential;
 import com.gfpixel.gfpixeldungeon.items.rings.RingOfElements;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfPsionicBlast;
@@ -58,6 +59,8 @@ import com.gfpixel.gfpixeldungeon.items.wands.WandOfLightning;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Blazing;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Shocking;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.DesignatedMarksmanRifle;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.HitBuffer;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.darts.ShockingDart;
 import com.gfpixel.gfpixeldungeon.levels.Terrain;
@@ -160,7 +163,14 @@ public abstract class Char extends Actor {
 		if (enemy == null || !enemy.isAlive()) return false;
 		
 		boolean visibleFight = Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[enemy.pos];
-		
+
+		if (this instanceof Hero)
+		{
+			Hero h = (Hero)this;
+			KindOfWeapon weapon = h.belongings.weapon;
+			weapon.onAttack();
+		}
+
 		if (hit( this, enemy, false )) {
 			
 			int dr = enemy.drRoll();
