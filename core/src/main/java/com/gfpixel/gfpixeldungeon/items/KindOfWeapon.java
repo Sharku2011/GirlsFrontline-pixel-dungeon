@@ -78,6 +78,8 @@ abstract public class KindOfWeapon extends EquipableItem {
 		}
 	}
 
+	public void onAttack() { return; }
+
 	public int min(){
 		return min(level());
 	}

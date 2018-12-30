@@ -42,7 +42,7 @@ import com.gfpixel.gfpixeldungeon.items.armor.MailArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.ScaleArmor;
 import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.M16;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.M16;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.gfpixel.gfpixeldungeon.journal.Notes;
 import com.gfpixel.gfpixeldungeon.levels.SewerLevel;
