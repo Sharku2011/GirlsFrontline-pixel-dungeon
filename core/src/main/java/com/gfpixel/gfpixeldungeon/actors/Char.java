@@ -168,7 +168,7 @@ public abstract class Char extends Actor {
 		{
 			Hero h = (Hero)this;
 			KindOfWeapon weapon = h.belongings.weapon;
-			weapon.onAttack();
+			weapon.onAttack( enemy );
 		}
 
 		if (hit( this, enemy, false )) {
