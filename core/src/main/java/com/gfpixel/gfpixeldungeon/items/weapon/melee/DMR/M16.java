@@ -30,7 +30,6 @@ public class M16 extends DesignatedMarksmanRifle {
 		image = ItemSpriteSheet.M16;
 
 		tier = 2;
-		RCH = 2;
 	}
 
 	@Override

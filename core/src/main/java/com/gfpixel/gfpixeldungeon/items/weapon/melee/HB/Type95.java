@@ -22,8 +22,8 @@
 package com.gfpixel.gfpixeldungeon.items.weapon.melee.HB;
 
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Bless;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
-import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
@@ -37,9 +37,14 @@ public class Type95 extends HitBuffer {
     }
 
     @Override
+    public void onAttack( Char h, Char enemy ) {
+
+    }
+
+    @Override
     public int damageRoll(Char owner) {
-        if (owner instanceof Hero && owner.buffs(Speed.class).isEmpty()) {
-            Buff.prolong(owner, Speed.class, 1.2f);
+        if (owner instanceof Hero && owner.buffs(Bless.class).isEmpty()) {
+            Buff.prolong(owner, Bless.class, 1.2f);
         }
         return super.damageRoll(owner);
     }
@@ -48,9 +53,5 @@ public class Type95 extends HitBuffer {
     public int max(int lvl) {
         return  Math.round(2.5f*(tier+1)) +     //10 base, down from 20
                 lvl*Math.round(0.5f*(tier+1));  //+2 per level, down from +4
-    }
-    @Override
-    public int defenseFactor( Char owner ) {
-        return 3;	//3 extra defence
     }
 }

@@ -162,11 +162,11 @@ public abstract class Char extends Actor {
 		
 		boolean visibleFight = Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[enemy.pos];
 
+		// on attack 이벤트
 		if (this instanceof Hero)
 		{
 			Hero h = (Hero)this;
-			KindOfWeapon weapon = h.belongings.weapon;
-			weapon.onAttack( enemy );
+			h.belongings.weapon.onAttack( h, enemy );
 		}
 
 		if (hit( this, enemy, false )) {

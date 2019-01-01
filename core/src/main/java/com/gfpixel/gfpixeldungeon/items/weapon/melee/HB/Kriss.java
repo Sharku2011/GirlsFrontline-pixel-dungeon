@@ -37,11 +37,10 @@ public class Kriss extends HitBuffer {
 	}
 
 	@Override
-	public int damageRoll(Char owner) {
+	public void onAttack( Char owner, Char enemy ) {
 		if (owner instanceof Hero && owner.buffs(Speed.class).isEmpty()) {
 			Buff.prolong(owner, Speed.class, 1.2f);
 		}
-		return super.damageRoll(owner);
 	}
 
 	@Override

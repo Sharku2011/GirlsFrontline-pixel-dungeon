@@ -30,7 +30,6 @@ public class Dragunov extends DesignatedMarksmanRifle {
 
 		tier = 4;
 		DLY = 0.6f;
-		RCH = 2;
 	}
 
 	@Override

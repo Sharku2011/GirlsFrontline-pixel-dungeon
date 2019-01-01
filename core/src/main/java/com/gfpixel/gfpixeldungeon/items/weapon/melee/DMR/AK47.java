@@ -30,7 +30,6 @@ public class AK47 extends DesignatedMarksmanRifle {
 
 		tier = 4;
 		ACC = 0.9f; //0.9x accuracy
-		RCH = 2;
 		//also cannot surprise attack, see Hero.canSurpriseAttack
 	}
 

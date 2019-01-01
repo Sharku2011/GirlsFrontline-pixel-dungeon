@@ -30,7 +30,6 @@ public class Sass extends DesignatedMarksmanRifle {
 
 		tier = 5;
 		DLY = 0.6f; //1.25x speed
-		RCH = 2;    //extra reach
 	}
 
 	@Override

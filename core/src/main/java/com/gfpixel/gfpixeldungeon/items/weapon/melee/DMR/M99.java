@@ -30,8 +30,6 @@ public class M99 extends DesignatedMarksmanRifle {
 
 		tier = 5;
 		ACC = 1.6f;	// 60% additional accuracy
-		//DLY = 1.5f; //0.67x speed
-		RCH = 2;    //extra reach
 	}
 
 	@Override

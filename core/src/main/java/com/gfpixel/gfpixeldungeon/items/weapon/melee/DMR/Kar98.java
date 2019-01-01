@@ -30,7 +30,6 @@ public class Kar98 extends DesignatedMarksmanRifle {
 
 		tier = 3;
 		DLY = 0.8f; //1.25x speed
-		RCH = 2;    //extra reach
 	}
 
 	@Override
