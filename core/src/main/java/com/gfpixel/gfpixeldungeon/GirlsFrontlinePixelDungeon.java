@@ -58,6 +58,130 @@ public class GirlsFrontlinePixelDungeon extends Game {
 	
 	public GirlsFrontlinePixelDungeon() {
 		super( WelcomeScene.class );
+
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.AR.G36.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.G36" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.AR.Hk416.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.HK416" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.BP.Mos.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Mos" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.BP.SaigaPlate.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.SaigaPlate" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.AK47.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.AK47" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.Dragunov.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Dragunov" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.Kar98.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Kar98" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.M16.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.M16" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.M99.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.M99" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.Sass.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Sass" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.HB.Kriss.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Kriss" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.HB.Type95.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Type95" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.Launcher.Gepard.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Gepard" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.Launcher.SRS.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.SRS" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.LR.M1911.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.M1911" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.LR.NAGANT.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.NAGANT" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.LR.Ump40.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump40" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.LR.Wa.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Wa" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Dp.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Dp" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Mg42.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Mg42" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Negev.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Negev" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.GROZA.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.GROZA" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.GUA91.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.GUA91" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.NagantRevolver.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.NagantRevolver" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.Welrod.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod" );
+
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SG.Ks23.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Ks23" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SG.Usas12.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Usas12" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SG.Win97.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Win97" );
+
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SMG.M1a1.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.M1a1" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SMG.M9.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.M9" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SMG.SAIGA.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.SAIGA" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SMG.Ump45.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Ump45" );
+
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SR.AWP.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.AWP" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SR.M1903.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.M1903" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SR.Ntw20.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Ntw20" );
+
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.UG.C96.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.C96" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.UG.Cannon.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Cannon" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.UG.Lar.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Lar" );
+		com.watabou.utils.Bundle.addAlias(
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.UG.SR3.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.SR3" );
+
+
 		
 		//v0.6.2
 		com.watabou.utils.Bundle.addAlias(

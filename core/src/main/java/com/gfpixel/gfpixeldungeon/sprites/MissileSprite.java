@@ -23,7 +23,7 @@ package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.items.Item;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Launcher;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Launcher.Launcher;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Bolas;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Boomerang;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.FishingSpear;

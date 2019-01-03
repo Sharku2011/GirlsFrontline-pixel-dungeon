@@ -25,7 +25,7 @@ import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Projecting;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.Launcher;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Launcher.Launcher;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
