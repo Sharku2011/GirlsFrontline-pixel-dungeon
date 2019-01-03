@@ -25,6 +25,10 @@ import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.ui.BuffIndicator;
 
 public class Speed extends FlavourBuff {
+
+	{
+		type = buffType.POSITIVE;
+	}
 	
 	public static final float DURATION = 10f;
 
