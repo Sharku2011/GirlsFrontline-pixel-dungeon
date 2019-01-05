@@ -43,7 +43,7 @@ public class Nemeum extends Mob {
     {
         spriteClass = NemeumSprite.class;
 
-        HP = HT = 80;
+        HP = HT = 40;
         EXP = 9;
         defenseSkill = 5;
         baseSpeed = 0.8f;
@@ -117,7 +117,7 @@ public class Nemeum extends Mob {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((NemeumSprite)sprite).charge( enemy.pos );
-            spend( attackDelay()*2f );
+            spend( attackDelay()*4f );
             beamCharged = true;
             return true;
         } else {
