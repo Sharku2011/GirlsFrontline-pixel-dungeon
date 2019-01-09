@@ -29,7 +29,6 @@ public class Negev extends MachineGun {
 		image = ItemSpriteSheet.NEGEV;
 
 		tier = 3;
-		ACC = 0.9f;
 		DLY = 0.2f; //1time 5hit
 	}
 

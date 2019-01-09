@@ -29,7 +29,7 @@ public class Kar98 extends DesignatedMarksmanRifle {
 		image = ItemSpriteSheet.KAR98;
 
 		tier = 3;
-		DLY = 0.8f; //1.25x speed
+		DLY = 0.6f; //1.25x speed
 	}
 
 	@Override

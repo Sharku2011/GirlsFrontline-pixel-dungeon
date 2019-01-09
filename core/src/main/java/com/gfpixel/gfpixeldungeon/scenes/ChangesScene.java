@@ -127,7 +127,35 @@ public class ChangesScene extends PixelScene {
 		};
 		add( list );
 
-		ChangeInfo changes = new ChangeInfo("v0.4.7", true, "");
+		ChangeInfo changes = new ChangeInfo("v0.4.8", true, "");
+		changes.hardlight( Window.TITLE_COLOR);
+		infos.add(changes);
+
+		changes = new ChangeInfo(Messages.get(this, "new"), false, null);
+		changes.hardlight( Window.TITLE_COLOR );
+		infos.add(changes);
+
+		changes = new ChangeInfo(Messages.get(this, "changes"), false, null);
+		changes.hardlight( CharSprite.WARNING );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new Negev(),
+				"_-_ 무기 조정.\n\n" +
+						"_-_ MG계열 무기의 기습불가가 제거 됐으며, MG무기의 명중치가 90%로 조정됐습니다. MG4는 75%로 조정.\n\n" +
+						"_-_ DMR 속사계열 (Kar98k, SVD, Super SASS)의 공격속도가 전부 +40%로 통합됐습니다.\n\n" +
+						"_-_ H&K MP7의 명중률이 55%로 하향 됐습니다."));
+
+		changes = new ChangeInfo(Messages.get(this, "nerfs"), false, null);
+		changes.hardlight( CharSprite.NEGATIVE );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 16, 16), "나약해짐",
+				"장갑계 몬스터 하향.\n\n" +
+						"_-_ 네메움의 공격력이 35로 하향 됐으며, 데미지 리미트가 삭제되고 레이저 발사에 필요한 시간이 2턴 증가했습니다.\n\n" +
+						"_-_ 주피터의 레이저 발사에 필요한 시간이 2턴 증가해 7턴으로 변경됐습니다.\n\n" +
+						"_-_ 만티코어의 공격력이 35로 하락했으며 데미지 리미트가 50, 체력이 140으로 하락해 원래 목표인 SR계열 무기 견제만 가능하도록 바꿨습니다."));
+
+		changes = new ChangeInfo("v0.4.7", true, "");
 		changes.hardlight( Window.TITLE_COLOR);
 		infos.add(changes);
 

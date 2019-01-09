@@ -66,7 +66,7 @@ public class Terrain {
 	public static final int LIQUID			= 0x40;
 	public static final int PIT				= 0x80;
 	
-	public static final int[] flags = new int[256];
+	public static final int[] flags = new int[384];
 	static {
 		flags[CHASM]		= AVOID	| PIT;
 		flags[EMPTY]		= PASSABLE;

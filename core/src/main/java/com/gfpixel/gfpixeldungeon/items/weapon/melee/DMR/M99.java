@@ -29,7 +29,7 @@ public class M99 extends DesignatedMarksmanRifle {
 		image = ItemSpriteSheet.GLAIVE;
 
 		tier = 5;
-		ACC = 1.6f;	// 60% additional accuracy
+		ACC = 2f;	// 60% additional accuracy
 	}
 
 	@Override

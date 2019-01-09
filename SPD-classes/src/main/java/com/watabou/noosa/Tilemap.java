@@ -126,7 +126,7 @@ public class Tilemap extends Visual {
 
 				bottomRightUpdating = pos + 1;
 
-				quads.position(pos*16);
+				quads.position(pos*24);
 				
 				uv = tileset.get(data[pos]);
 				
@@ -197,8 +197,8 @@ public class Tilemap extends Visual {
 					fullUpdate = false;
 				} else {
 					buffer.updateVertices(quads,
-							topLeftUpdating * 16,
-							bottomRightUpdating * 16);
+							topLeftUpdating * 24,
+							bottomRightUpdating * 24);
 				}
 			}
 			topLeftUpdating = -1;
