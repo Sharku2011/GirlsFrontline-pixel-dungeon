@@ -36,10 +36,10 @@ import com.watabou.utils.RectF;
 
 public class HeroSprite extends CharSprite {
 	
-	private static final int FRAME_WIDTH	= 15;
-	private static final int FRAME_HEIGHT	= 17;
+	private static final int FRAME_WIDTH	= 22;
+	private static final int FRAME_HEIGHT	= 22;
 	
-	private static final int RUN_FRAMERATE	= 20;
+	private static final int RUN_FRAMERATE	= 22;
 	
 	private static TextureFilm tiers;
 	
@@ -64,17 +64,17 @@ public class HeroSprite extends CharSprite {
 
 		TextureFilm film = new TextureFilm( tiers(), ((Hero)ch).tier(), FRAME_WIDTH, FRAME_HEIGHT );
 		
-		idle = new Animation( 3, true );
-		idle.frames( film, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 2, 3, 4, 4, 4, 5, 5, 5, 5, 4, 4, 4, 5, 5, 5, 5, 4, 4, 4, 5, 5, 5, 5, 3, 3, 2, 2, 0, 0, 0, 0 );
+		idle = new Animation( 10, true );
+		idle.frames( film, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 );
 		
 		run = new Animation( RUN_FRAMERATE, true );
-		run.frames( film, 6, 7, 8, 9, 10, 11 );
+		run.frames( film, 2, 3, 4, 5, 6, 7 );
 		
 		die = new Animation( 20, false );
-		die.frames( film, 12, 13, 14, 15 );
+		die.frames( film, 8, 9, 10, 11, 12, 13 );
 		
 		attack = new Animation( 20, false );
-		attack.frames( film, 21, 18, 17, 20, 19, 21 );
+		attack.frames( film, 14, 14, 15, 16, 17, 18, 17, 16, 15 );
 		
 		zap = attack.clone();
 		
