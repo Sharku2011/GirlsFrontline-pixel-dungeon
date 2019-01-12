@@ -25,5 +25,3 @@ local.properties
 
 # Apk Key file
 keystore.properties
-core/build.gradle
-.gitignore
