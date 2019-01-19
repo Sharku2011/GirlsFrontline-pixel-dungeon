@@ -37,7 +37,7 @@ import com.watabou.utils.RectF;
 public class HeroSprite extends CharSprite {
 	
 	private static final int FRAME_WIDTH	= 22;
-	private static final int FRAME_HEIGHT	= 22;
+	private static final int FRAME_HEIGHT	= 23;
 	
 	private static final int RUN_FRAMERATE	= 22;
 	
@@ -79,10 +79,10 @@ public class HeroSprite extends CharSprite {
 		zap = attack.clone();
 		
 		operate = new Animation( 8, false );
-		operate.frames( film, 22, 23, 22, 23 );
+		operate.frames( film, 19, 20, 21, 22, 23, 24, 25, 26 );
 
 		fly = new Animation( 1, true );
-		fly.frames( film, 24 );
+		fly.frames( film, 1 );
 
 		read = new Animation( 20, false );
 		read.frames( film, 25, 26, 26, 26, 26, 26, 26, 26, 26, 25 );
