@@ -150,7 +150,10 @@ public class HeroSprite extends CharSprite {
 	
 	public static TextureFilm tiers() {
 		if (tiers == null) {
-			SmartTexture texture = TextureCache.get( Assets.ROGUE );
+			// 우선적으로  texture를 불러와서 캐릭터 스프라이트 전체의 크기를 가져온다 - 기존의 경우 도적, 현재는 흥국이로 변경
+			SmartTexture texture = TextureCache.get( Assets.RANGER );
+			// 불러온 texture의 넓이와 정해진 tier별 높이만큼을 다른 스프라이트에서 제한적으로 불러와 메모리를 절약한다
+			// 향후 TIERWIDTH와 TIERHEIGHT 등의 변수를 별도로 분리하여 관리하는 방안 고려할 것
 			tiers = new TextureFilm( texture, texture.width, FRAME_HEIGHT );
 		}
 		
