@@ -40,24 +40,24 @@ public class GooSprite extends MobSprite {
 	public GooSprite() {
 		super();
 		
-		texture( Assets.GOO );
+		texture( Assets.EXCU );
 
-		TextureFilm frames = new TextureFilm( texture, 19, 20 );
+		TextureFilm frames = new TextureFilm( texture, 26, 24 );
 
 		idle = new Animation( 5, true );
-		idle.frames( frames, 0, 0, 0, 1 );
+		idle.frames( frames, 0, 0, 0 );
 
 		run = new Animation( 15, true );
-		run.frames( frames, 2, 3, 4, 5, 6 );
+		run.frames( frames, 4, 5, 6, 7, 8, 9 );
 
 		pump = new Animation( 10, true );
-		pump.frames( frames, 4, 3, 2, 1, 0 );
+		pump.frames( frames, 0 );
 
 		pumpAttack = new Animation ( 10, false );
-		pumpAttack.frames( frames, 7, 8, 9 );
+		pumpAttack.frames( frames, 1, 2, 3 );
 
 		attack = new Animation( 10, false );
-		attack.frames( frames, 7, 8, 9 );
+		attack.frames( frames, 1, 2, 3 );
 
 		die = new Animation( 5, false );
 		die.frames( frames, 10, 11, 12 );

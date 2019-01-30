@@ -39,7 +39,7 @@ public class HeroSprite extends CharSprite {
 	private static final int FRAME_WIDTH	= 22;
 	private static final int FRAME_HEIGHT	= 23;
 	
-	private static final int RUN_FRAMERATE	= 22;
+	private static final int RUN_FRAMERATE	= 18;
 	
 	private static TextureFilm tiers;
 	
@@ -64,8 +64,8 @@ public class HeroSprite extends CharSprite {
 
 		TextureFilm film = new TextureFilm( tiers(), ((Hero)ch).tier(), FRAME_WIDTH, FRAME_HEIGHT );
 		
-		idle = new Animation( 10, true );
-		idle.frames( film, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 );
+		idle = new Animation( 5, true );
+		idle.frames( film, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 );
 		
 		run = new Animation( RUN_FRAMERATE, true );
 		run.frames( film, 2, 3, 4, 5, 6, 7 );
@@ -73,19 +73,19 @@ public class HeroSprite extends CharSprite {
 		die = new Animation( 20, false );
 		die.frames( film, 8, 9, 10, 11, 12, 13 );
 		
-		attack = new Animation( 20, false );
-		attack.frames( film, 14, 14, 15, 16, 17, 18, 17, 16, 15 );
+		attack = new Animation( 22, false );
+		attack.frames( film, 14, 15, 16, 17, 18, 16, 17, 14 );
 		
 		zap = attack.clone();
 		
 		operate = new Animation( 8, false );
-		operate.frames( film, 19, 20, 21, 22, 23, 24, 25, 26 );
+		operate.frames( film, 28, 29, 28, 29 );
 
 		fly = new Animation( 1, true );
-		fly.frames( film, 1 );
+		fly.frames( film, 27 );
 
-		read = new Animation( 20, false );
-		read.frames( film, 25, 26, 26, 26, 26, 26, 26, 26, 26, 25 );
+		read = new Animation( 10, false );
+		read.frames( film, 19, 20, 21, 22, 23, 24, 25, 26, 20, 19  );
 		
 		if (ch.isAlive())
 			idle();

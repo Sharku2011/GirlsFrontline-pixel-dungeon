@@ -29,21 +29,21 @@ public class AlbinoSprite extends MobSprite {
 	public AlbinoSprite() {
 		super();
 		
-		texture( Assets.RAT );
+		texture( Assets.SPRING );
 		
-		TextureFilm frames = new TextureFilm( texture, 16, 15 );
+		TextureFilm frames = new TextureFilm( texture, 20, 20 );
 		
 		idle = new Animation( 2, true );
-		idle.frames( frames, 16, 16, 16, 17 );
+		idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1 );
 		
 		run = new Animation( 10, true );
-		run.frames( frames, 22, 23, 24, 25, 26 );
+		run.frames( frames, 7, 8, 9, 10, 11, 12 );
 		
 		attack = new Animation( 15, false );
-		attack.frames( frames, 18, 19, 20, 21 );
+		attack.frames( frames, 3, 4, 5, 6 );
 		
 		die = new Animation( 10, false );
-		die.frames( frames, 27, 28, 29, 30 );
+		die.frames( frames, 0, 13, 14, 15 );
 		
 		play( idle );
 	}

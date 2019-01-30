@@ -62,25 +62,28 @@ public class Assets {
 	public static final String SPECKS		= "specks.png";
 	public static final String EFFECTS		= "effects.png";
 	
-	public static final String RAT			= "rat.png";
-	public static final String GNOLL		= "gnoll.png";
-	public static final String CRAB			= "crab.png";
-	public static final String GOO			= "goo.png";
+	public static final String DINER			= "dinergate.png";
+	public static final String SPRING			= "springfield.png";
+	public static final String PROWLER		= "prowler.png";
+	public static final String STG		= "stg.png";
+	public static final String WJAEGER		= "weak_jaeger.png";
+	public static final String BRUTE			= "brute.png";
+	public static final String AEGIS		= "aegis.png";
+	public static final String EXCU			= "excutioner.png";
+
 	public static final String SWARM		= "swarm.png";
-	public static final String SKELETON		= "skeleton.png";
-	public static final String SHAMAN		= "shaman.png";
+	public static final String GOLYAT		= "golyat.png";
+	public static final String JAEGER		= "jaeger.png";
 	public static final String THIEF		= "thief.png";
 	public static final String TENGU		= "tengu.png";
 	public static final String SHEEP		= "sheep.png";
 	public static final String KEEPER		= "shopkeeper.png";
 	public static final String BAT			= "bat.png";
-	public static final String BRUTE		= "brute.png";
 	public static final String SPINNER		= "spinner.png";
 	public static final String GAGER		= "gager.png";
 	public static final String WRAITH		= "wraith.png";
 	public static final String ELEMENTAL	= "elemental.png";
 	public static final String MONK			= "monk.png";
-	public static final String WARLOCK		= "warlock.png";
 	public static final String MANTI		= "manti.png";
 	public static final String UNDEAD		= "undead.png";
 	public static final String KING			= "king.png";
@@ -104,7 +107,6 @@ public class Assets {
 	public static final String ROT_LASH 	= "rot_lasher.png";
 	public static final String ROT_HEART	= "rot_heart.png";
 	public static final String GUARD	    = "guard.png";
-	public static final String AEGIS		= "aegis.png";
 	public static final String GOLIATH		= "goliath.png";
 	public static final String CYCLOPS		= "cyclops.png";
 	public static final String JUPITER		= "jupiter.png";
