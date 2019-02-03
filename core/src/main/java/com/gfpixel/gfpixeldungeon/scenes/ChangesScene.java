@@ -434,7 +434,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 텍스트 출력 문제를 해결했습니다." ));
 
 
-		changes.addButton( new ChangeButton(new Image(Assets.GHOST, 0, 0, 14, 16), "개발진 교체",
+		changes.addButton( new ChangeButton(new Image(Assets.STAR, 0, 0, 14, 16), "개발진 교체",
 				"_-_ 기존 개발자 Kirsi 님이 새로운 개발자 Sharku 님으로 바뀌었습니다. 기초 개발 수고하셨습니다. Kirsi 님! " ));
 
 

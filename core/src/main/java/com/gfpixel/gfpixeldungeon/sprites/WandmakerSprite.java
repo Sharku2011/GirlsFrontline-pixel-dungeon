@@ -38,12 +38,12 @@ public class WandmakerSprite extends MobSprite {
 	public WandmakerSprite() {
 		super();
 		
-		texture( Assets.MAKER );
+		texture( Assets.M16 );
 		
-		TextureFilm frames = new TextureFilm( texture, 12, 14 );
+		TextureFilm frames = new TextureFilm( texture, 18, 16 );
 		
-		idle = new Animation( 10, true );
-		idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 3, 3, 3, 3, 3, 2, 1 );
+		idle = new Animation( 2, true );
+		idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 3, 3, 3, 3, 3, 3, 2, 0 );
 		
 		run = new Animation( 20, true );
 		run.frames( frames, 0 );

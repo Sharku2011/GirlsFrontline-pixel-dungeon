@@ -29,21 +29,21 @@ public class BatSprite extends MobSprite {
 	public BatSprite() {
 		super();
 		
-		texture( Assets.BAT );
+		texture( Assets.SCOUT );
 		
-		TextureFilm frames = new TextureFilm( texture, 15, 15 );
+		TextureFilm frames = new TextureFilm( texture, 18, 19 );
 		
 		idle = new Animation( 8, true );
-		idle.frames( frames, 0, 1 );
+		idle.frames( frames, 0 );
 		
 		run = new Animation( 12, true );
-		run.frames( frames, 0, 1 );
+		run.frames( frames, 0 );
 		
-		attack = new Animation( 12, false );
-		attack.frames( frames, 2, 3, 0, 1 );
+		attack = new Animation( 15, false );
+		attack.frames( frames, 1, 0, 2, 0 );
 		
 		die = new Animation( 12, false );
-		die.frames( frames, 4, 5, 6 );
+		die.frames( frames, 3, 4, 5 );
 		
 		play( idle );
 	}

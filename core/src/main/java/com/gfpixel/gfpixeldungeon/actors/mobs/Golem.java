@@ -37,7 +37,7 @@ public class Golem extends Mob {
 
 		HP = HT = 150;
 		defenseSkill = 0;
-		baseSpeed = 0.9f;
+		baseSpeed = 0.99f;
 		EXP = 15;
 		maxLvl = 25;
 

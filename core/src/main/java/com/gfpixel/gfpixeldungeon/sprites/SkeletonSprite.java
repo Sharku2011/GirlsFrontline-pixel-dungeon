@@ -44,7 +44,7 @@ public class SkeletonSprite extends MobSprite {
 		attack = new Animation( 15, false );
 		attack.frames( frames, 3, 3, 4 );
 		
-		die = new Animation( 12, false );
+		die = new Animation( 18, false );
 		die.frames( frames, 5, 6, 7, 8, 9 );
 		
 		play( idle );

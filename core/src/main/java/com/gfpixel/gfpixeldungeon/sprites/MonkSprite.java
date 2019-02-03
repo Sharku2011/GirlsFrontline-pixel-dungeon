@@ -32,24 +32,24 @@ public class MonkSprite extends MobSprite {
 	public MonkSprite() {
 		super();
 		
-		texture( Assets.MONK );
+		texture( Assets.STRIKER );
 		
-		TextureFilm frames = new TextureFilm( texture, 15, 14 );
+		TextureFilm frames = new TextureFilm( texture, 21, 20 );
 		
 		idle = new Animation( 6, true );
-		idle.frames( frames, 1, 0, 1, 2 );
+		idle.frames( frames, 0 );
 		
 		run = new Animation( 15, true );
-		run.frames( frames, 11, 12, 13, 14, 15, 16 );
+		run.frames( frames, 5, 6, 7, 8, 9, 10 );
 		
-		attack = new Animation( 12, false );
-		attack.frames( frames, 3, 4, 3, 4 );
+		attack = new Animation( 18, false );
+		attack.frames( frames, 4, 1, 4, 2, 4, 3, 4, 4 );
 		
-		kick = new Animation( 10, false );
-		kick.frames( frames, 5, 6, 5 );
+		kick = new Animation( 18, false );
+		kick.frames( frames, 4, 1, 4, 2, 4, 3, 4, 4 );
 		
 		die = new Animation( 15, false );
-		die.frames( frames, 1, 7, 8, 8, 9, 10 );
+		die.frames( frames, 1, 11, 12, 13 );
 		
 		play( idle );
 	}

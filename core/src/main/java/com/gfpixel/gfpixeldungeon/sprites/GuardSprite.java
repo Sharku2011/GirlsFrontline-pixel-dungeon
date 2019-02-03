@@ -31,21 +31,21 @@ public class GuardSprite extends MobSprite {
 	public GuardSprite() {
 		super();
 
-		texture( Assets.GUARD );
+		texture( Assets.MG5 );
 
-		TextureFilm frames = new TextureFilm( texture, 17, 17 );
+		TextureFilm frames = new TextureFilm( texture, 22, 22 );
 
 		idle = new Animation( 2, true );
 		idle.frames( frames, 0, 0, 0, 1, 0, 0, 1, 1 );
 
 		run = new MovieClip.Animation( 15, true );
-		run.frames( frames, 2, 3, 4, 5, 6, 7 );
+		run.frames( frames,  4, 5, 6, 7, 8, 9 );
 
 		attack = new MovieClip.Animation( 12, false );
-		attack.frames( frames, 8, 9, 10 );
+		attack.frames( frames, 2, 2, 3);
 
 		die = new MovieClip.Animation( 8, false );
-		die.frames( frames, 11, 12, 13, 14 );
+		die.frames( frames, 1, 10, 11, 12 );
 
 		play( idle );
 	}

@@ -30,59 +30,36 @@ public class DM300Sprite extends MobSprite {
 	
 	public DM300Sprite() {
 		super();
-		
-		texture( Assets.GAGER );
 
-		TextureFilm frames = new TextureFilm( texture, 24, 18 );
+		texture( Assets.MANTI );
+
+		TextureFilm frames = new TextureFilm( texture, 48, 39 );
 
 		idle = new Animation( 2, true );
-		idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 10 );
-
-		run = new Animation( 15, true );
-		run.frames( frames, 1, 2, 3, 4, 5 );
-
-		attack = new Animation( 20, false );
-		attack.frames( frames, 7, 6, 7, 6 );
-		//돌진 전 대기동작은 8, 돌진 후 동작은 9
-
-		die = new Animation( 2, false );
-		die.frames( frames, 10, 11, 12 );
-
-		/*
-		TextureFilm frames = new TextureFilm( texture, 22, 20 );
-
-		idle = new Animation( 10, true );
-		idle.frames( frames, 0, 1 );
+		idle.frames( frames, 0, 0, 0, 0 );
 
 		run = new Animation( 10, true );
-		run.frames( frames, 2, 3 );
+		run.frames( frames, 3, 4, 5, 6, 7 );
 
-		attack = new Animation( 15, false );
-		attack.frames( frames, 4, 5, 6 );
+		attack = new Animation( 20, false );
+		attack.frames( frames, 0, 1, 0, 2, 0, 1, 0 );
 
-		die = new Animation( 20, false );
-		die.frames( frames, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 8 );
-		*/
+		die = new Animation( 10, false );
+		die.frames( frames, 0, 8, 9, 10 );
 
 		play( idle );
 	}
 
 	@Override
-	public void attack(int pos) {
-		super.attack(pos);
-		((DM300)ch).magnum();
-	}
-
-	@Override
 	public void onComplete( Animation anim ) {
-		
+
 		super.onComplete( anim );
-		
+
 		if (anim == die) {
 			emitter().burst( Speck.factory( Speck.WOOL ), 15 );
 		}
 	}
-	
+
 	@Override
 	public int blood() {
 		return 0xFFFFFF88;

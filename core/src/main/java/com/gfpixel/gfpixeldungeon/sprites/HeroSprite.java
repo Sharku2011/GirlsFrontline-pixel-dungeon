@@ -70,10 +70,10 @@ public class HeroSprite extends CharSprite {
 		run = new Animation( RUN_FRAMERATE, true );
 		run.frames( film, 2, 3, 4, 5, 6, 7 );
 		
-		die = new Animation( 20, false );
+		die = new Animation( 15, false );
 		die.frames( film, 8, 9, 10, 11, 12, 13 );
 		
-		attack = new Animation( 22, false );
+		attack = new Animation( 23, false );
 		attack.frames( film, 14, 15, 16, 17, 18, 16, 17, 14 );
 		
 		zap = attack.clone();
@@ -84,7 +84,7 @@ public class HeroSprite extends CharSprite {
 		fly = new Animation( 1, true );
 		fly.frames( film, 27 );
 
-		read = new Animation( 10, false );
+		read = new Animation( 11, false );
 		read.frames( film, 19, 20, 21, 22, 23, 24, 25, 26, 20, 19  );
 		
 		if (ch.isAlive())

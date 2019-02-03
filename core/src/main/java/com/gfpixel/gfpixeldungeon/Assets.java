@@ -61,7 +61,13 @@ public class Assets {
 	public static final String FIREBALL		= "fireball.png";
 	public static final String SPECKS		= "specks.png";
 	public static final String EFFECTS		= "effects.png";
-	
+
+	public static final String SHEEP		= "sheep.png";
+	public static final String KEEPER		= "shopkeeper.png";
+    public static final String STAR		= "star.png";
+    public static final String M16	= "m16a1.png";
+    public static final String PPSH	= "ppsh.png";
+
 	public static final String DINER			= "dinergate.png";
 	public static final String SPRING			= "springfield.png";
 	public static final String PROWLER		= "prowler.png";
@@ -75,19 +81,25 @@ public class Assets {
 	public static final String GOLYAT		= "golyat.png";
 	public static final String JAEGER		= "jaeger.png";
 	public static final String THIEF		= "thief.png";
-	public static final String TENGU		= "tengu.png";
-	public static final String SHEEP		= "sheep.png";
-	public static final String KEEPER		= "shopkeeper.png";
-	public static final String BAT			= "bat.png";
+	public static final String BANDIT		= "bandit.png";
+	public static final String MG5	    = "mg5.png";
+	public static final String URO		= "uro.png";
+
+	public static final String SCOUT			= "scout.png";
+	public static final String VESPID		= "vespid.png";
+	public static final String SVESPID		= "shieldvespid.png";
 	public static final String SPINNER		= "spinner.png";
+	public static final String NEMEUM = "nemeum.png";
 	public static final String GAGER		= "gager.png";
+
 	public static final String WRAITH		= "wraith.png";
 	public static final String ELEMENTAL	= "elemental.png";
-	public static final String MONK			= "monk.png";
+	public static final String STRIKER			= "striker.png";
+	public static final String ESTRIKER			= "elitestriker.png";
 	public static final String MANTI		= "manti.png";
 	public static final String UNDEAD		= "undead.png";
 	public static final String KING			= "king.png";
-	public static final String STATUE		= "statue.png";
+	public static final String SKS		= "sks.png";
 	public static final String PIRANHA		= "piranha.png";
 	public static final String EYE			= "eye.png";
 	public static final String SUCCUBUS		= "succubus.png";
@@ -96,17 +108,13 @@ public class Assets {
 	public static final String BURNING		= "burning_fist.png";
 	public static final String YOG			= "yog.png";
 	public static final String LARVA		= "larva.png";
-	public static final String GHOST		= "ghost.png";
-	public static final String MAKER		= "wandmaker.png";
 	public static final String NOEL			= "noel.png";
-	public static final String TROLL		= "blacksmith.png";
 	public static final String IMP			= "demon.png";
 	public static final String RATKING		= "ratking.png";
 	public static final String BEE      	= "bee.png";
 	public static final String MIMIC    	= "mimic.png";
 	public static final String ROT_LASH 	= "rot_lasher.png";
 	public static final String ROT_HEART	= "rot_heart.png";
-	public static final String GUARD	    = "guard.png";
 	public static final String GOLIATH		= "goliath.png";
 	public static final String CYCLOPS		= "cyclops.png";
 	public static final String JUPITER		= "jupiter.png";
@@ -116,7 +124,6 @@ public class Assets {
 	public static final String ELID = "elid.png";
 	public static final String RIPPER = "Ripper.png";
 	public static final String JAGUAR = "Jaguar.png";
-	public static final String NEMEUM = "nemeum.png";
 	public static final String ELPHELT = "Elphelt.png";
 	public static final String TOW = "tow.png";
 	public static final String INTRUDER = "intruder.png";

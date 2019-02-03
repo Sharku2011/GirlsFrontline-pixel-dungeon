@@ -29,27 +29,22 @@ public class StatueSprite extends MobSprite {
 	public StatueSprite() {
 		super();
 		
-		texture( Assets.STATUE );
+		texture( Assets.SKS );
 		
-		TextureFilm frames = new TextureFilm( texture, 12, 15 );
+		TextureFilm frames = new TextureFilm( texture, 20, 22 );
 		
 		idle = new Animation( 2, true );
-		idle.frames( frames, 0, 0, 0, 0, 0, 1, 1 );
+		idle.frames( frames, 0, 0, 0, 0, 0, 1, 2, 0 );
 		
 		run = new Animation( 15, true );
-		run.frames( frames, 2, 3, 4, 5, 6, 7 );
+		run.frames( frames, 3, 4, 5, 6, 7, 8 );
 		
 		attack = new Animation( 12, false );
-		attack.frames( frames, 8, 9, 10 );
+		attack.frames( frames, 12, 13, 12 );
 		
 		die = new Animation( 5, false );
-		die.frames( frames, 11, 12, 13, 14, 15, 15 );
+		die.frames( frames, 9, 9, 10, 10, 11, 11, 11 );
 		
 		play( idle );
-	}
-	
-	@Override
-	public int blood() {
-		return 0xFFcdcdb7;
 	}
 }

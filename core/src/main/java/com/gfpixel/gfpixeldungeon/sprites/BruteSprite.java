@@ -29,9 +29,9 @@ public class BruteSprite extends MobSprite {
 	public BruteSprite() {
 		super();
 
-		texture( Assets.BRUTE );
+		texture( Assets.VESPID );
 
-		TextureFilm frames = new TextureFilm( texture, 20, 19 );
+		TextureFilm frames = new TextureFilm( texture, 20, 21 );
 
 		idle = new Animation( 5, true );
 		idle.frames( frames, 0 );
@@ -39,8 +39,8 @@ public class BruteSprite extends MobSprite {
 		run = new Animation( 15, true );
 		run.frames( frames,  4, 5, 6, 7, 8, 9 );
 
-		attack = new Animation( 12, false );
-		attack.frames( frames, 1, 2, 3, 1 );
+		attack = new Animation( 18, false );
+		attack.frames( frames, 1, 2, 3, 2 );
 
 		die = new Animation( 12, false );
 		die.frames( frames, 10, 11, 12 );
