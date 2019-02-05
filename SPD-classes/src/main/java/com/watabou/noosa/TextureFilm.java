@@ -27,8 +27,6 @@ import com.watabou.utils.RectF;
 
 import java.util.HashMap;
 
-import static java.lang.Math.round;
-
 public class TextureFilm {
 	
 	private static final RectF FULL = new RectF( 0, 0, 1, 1 );
@@ -85,7 +83,6 @@ public class TextureFilm {
 		
 		float uw = (float)width / texWidth;
 		float vh = (float)height / texHeight;
-
 		int cols = (int)(width( patch ) / width);
 		int rows = (int)(height( patch ) / height);
 		
@@ -123,11 +120,6 @@ public class TextureFilm {
 	}
 	
 	public float height( RectF frame ) {
-		// 부동 소수점 연산의 부정확성(0.70897654 - 0.56790125 = 0.14197529) 으로 인해서 5번째 행
-		// (4티어 스프라이트 영역)의 높이가 23이 아닌 22.96 픽셀로 판정되어 줄의 수를 계산하는 과정에서
-		// (int)를 통한 강제 형변환 때문에 22.96/23 = 0으로 버림되어 버림. 임시로 반올림하여
-		// 계산하도록 바꾸었지만 혹시라도 다른 곳에서 문제가 생길 수 있음. 문제가 없다면 width 계산
-		// 에도 반영할 것
-		return round(frame.height() * texHeight);
+		return frame.height() * texHeight;
 	}
 }
