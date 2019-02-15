@@ -32,6 +32,7 @@ import com.gfpixel.gfpixeldungeon.items.Honeypot;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
+import com.gfpixel.gfpixeldungeon.items.armor.ScaleArmor;
 import com.gfpixel.gfpixeldungeon.items.artifacts.CloakOfShadows;
 import com.gfpixel.gfpixeldungeon.items.bags.MagicalHolster;
 import com.gfpixel.gfpixeldungeon.items.bags.PotionBandolier;
@@ -143,7 +144,7 @@ public enum HeroClass {
 
 			new Cannon().identify().collect();
             new Thunder().identify().collect();
-			new Kriss().identify().collect();
+			new ScaleArmor().identify().collect();
 			new Cypros().identify().collect();
 			new Dp().identify().collect();
 			new Negev().identify().collect();

@@ -43,13 +43,13 @@ public class JupiterSprite extends MobSprite {
 
         texture( Assets.JUPITER );
 
-        TextureFilm frames = new TextureFilm( texture, 39, 24 );
+        TextureFilm frames = new TextureFilm( texture, 73, 38 );
 
         idle = new Animation( 8, true );
-        idle.frames( frames, 0 );
+        idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0, 0 );
 
         charging = new Animation( 12, true);
-        charging.frames( frames, 1 );
+        charging.frames( frames, 3 );
 
         chargeParticles = centerEmitter();
         chargeParticles.autoKill = false;
@@ -59,12 +59,12 @@ public class JupiterSprite extends MobSprite {
         run = new Animation( 12, true );
         run.frames( frames, 0 );
 
-        attack = new Animation( 8, false );
-        attack.frames( frames,  2,3,4,5);
+        attack = new Animation( 13, false );
+        attack.frames( frames,  4, 5, 6, 7, 2);
         zap = attack.clone();
 
         die = new Animation( 8, false );
-        die.frames( frames, 6, 7, 8 );
+        die.frames( frames, 0, 8, 9, 10 );
 
         play( idle );
     }

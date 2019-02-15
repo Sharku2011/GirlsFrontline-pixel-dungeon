@@ -52,14 +52,13 @@ public class ItemSpriteSheet {
 	public static final int SOMETHING       = PLACEHOLDERS+8;
 	static{
 		assignItemRect(NULLWARN,        16, 7);
-		assignItemRect(WEAPON_HOLDER,   14, 14);
+		assignItemRect(WEAPON_HOLDER,   16, 12);
 		assignItemRect(ARMOR_HOLDER,    14, 12);
 		assignItemRect(WAND_HOLDER,     14, 14);
 		assignItemRect(RING_HOLDER,     15,  10);
 		assignItemRect(ARTIFACT_HOLDER, 15, 15);
 		assignItemRect(POTION_HOLDER,   10, 14);
 		assignItemRect(SCROLL_HOLDER,   15, 14);
-		assignItemRect(SOMETHING,       8,  13);
 	}
 
 
@@ -151,6 +150,7 @@ public class ItemSpriteSheet {
 	public static final int CANNON         	= WEP_TIER1+7;
 	public static final int SRS         	= WEP_TIER1+8;
 	public static final int THUNDER         	= WEP_TIER1+9;
+	public static final int M2HB        	= WEP_TIER1+10;
 	
 	static{
 		assignItemRect(UMP45, 	15, 16);
@@ -163,6 +163,7 @@ public class ItemSpriteSheet {
 		assignItemRect(CANNON,  15, 15);
 		assignItemRect(SRS, 	16, 16);
 		assignItemRect(THUNDER, 	15, 15);
+		assignItemRect(M2HB, 	20, 16);
 	}
 
 	private static final int WEP_TIER2      =                               xy(1, 8);   //8 slots

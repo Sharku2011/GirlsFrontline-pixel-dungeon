@@ -33,20 +33,19 @@ public class Kriss extends HitBuffer {
 		image = ItemSpriteSheet.KRISS;
 
 		tier = 3;
-		ACC = 0.5f;
 	}
 
 	@Override
 	public void onAttack( Char owner, Char enemy ) {
 		if (owner instanceof Hero && owner.buffs(Speed.class).isEmpty()) {
-			Buff.prolong(owner, Speed.class, 1.2f);
+			Buff.prolong(owner, Speed.class, 1.5f);
 		}
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  Math.round(2.5f*(tier+1)) +     //10 base, down from 20
-				lvl*Math.round(0.5f*(tier+1));  //+2 per level, down from +4
+		return  Math.round(3f*(tier+1)) +     //10 base, down from 20
+				lvl*Math.round(0.5f*(tier+2));  //+2 per level, down from +4
 	}
 	@Override
 	public int defenseFactor( Char owner ) {
