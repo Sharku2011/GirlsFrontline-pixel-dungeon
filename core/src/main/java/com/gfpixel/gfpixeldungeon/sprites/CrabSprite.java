@@ -29,21 +29,21 @@ public class CrabSprite extends MobSprite {
 	public CrabSprite() {
 		super();
 
-		texture( Assets.CRAB );
+		texture( Assets.BRUTE );
 
-		TextureFilm frames = new TextureFilm( texture, 16, 16 );
+		TextureFilm frames = new TextureFilm( texture, 20, 19 );
 
 		idle = new Animation( 5, true );
-		idle.frames( frames, 0, 1, 0, 2 );
+		idle.frames( frames, 0 );
 
-		run = new Animation( 15, true );
-		run.frames( frames, 3, 4, 5, 6 );
+		run = new Animation( 17, true );
+		run.frames( frames,  4, 5, 6, 7, 8, 9 );
 
-		attack = new Animation( 12, false );
-		attack.frames( frames, 7, 8, 9 );
+		attack = new Animation( 18, false );
+		attack.frames( frames, 1, 2, 3, 1 );
 
 		die = new Animation( 12, false );
-		die.frames( frames, 10, 11, 12, 13 );
+		die.frames( frames, 10, 11, 12 );
 
 		play( idle );
 	}

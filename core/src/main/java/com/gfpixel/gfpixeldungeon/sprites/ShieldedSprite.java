@@ -28,23 +28,23 @@ public class ShieldedSprite extends MobSprite {
 	
 	public ShieldedSprite() {
 		super();
-		
-		texture( Assets.BRUTE );
-		
-		TextureFilm frames = new TextureFilm( texture, 12, 16 );
-		
-		idle = new Animation( 2, true );
-		idle.frames( frames, 21, 21, 21, 22, 21, 21, 22, 22 );
-		
-		run = new Animation( 12, true );
-		run.frames( frames, 25, 26, 27, 28 );
-		
-		attack = new Animation( 12, false );
-		attack.frames( frames, 23, 24 );
-		
+
+		texture( Assets.SVESPID );
+
+		TextureFilm frames = new TextureFilm( texture, 20, 21 );
+
+		idle = new Animation( 5, true );
+		idle.frames( frames, 0 );
+
+		run = new Animation( 15, true );
+		run.frames( frames,  4, 5, 6, 7, 8, 9 );
+
+		attack = new Animation( 18, false );
+		attack.frames( frames, 1, 2, 3, 2 );
+
 		die = new Animation( 12, false );
-		die.frames( frames, 29, 30, 31 );
-		
+		die.frames( frames, 10, 11, 12 );
+
 		play( idle );
 	}
 }

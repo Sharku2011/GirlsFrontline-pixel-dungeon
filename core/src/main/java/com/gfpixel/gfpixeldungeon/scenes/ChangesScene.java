@@ -25,7 +25,7 @@ import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.items.Item;
-import com.gfpixel.gfpixeldungeon.items.armor.HuntressArmor;
+import com.gfpixel.gfpixeldungeon.items.armor.RangerArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.curses.Bulk;
 import com.gfpixel.gfpixeldungeon.items.artifacts.TalismanOfForesight;
@@ -127,7 +127,7 @@ public class ChangesScene extends PixelScene {
 		};
 		add( list );
 
-		ChangeInfo changes = new ChangeInfo("v0.4.8", true, "");
+		ChangeInfo changes = new ChangeInfo("v0.4.9", true, "");
 		changes.hardlight( Window.TITLE_COLOR);
 		infos.add(changes);
 
@@ -141,19 +141,20 @@ public class ChangesScene extends PixelScene {
 
 		changes.addButton( new ChangeButton(new Negev(),
 				"_-_ 무기 조정.\n\n" +
-						"_-_ MG계열 무기의 기습불가가 제거 됐으며, MG무기의 명중치가 90%로 조정됐습니다. MG4는 75%로 조정.\n\n" +
+						"_-_ MG계열 명중치가 90%로 조정됐습니다. 다만 MG4는 75%로 조정.\n\n" +
+						"_-_ 크리스 벡터의 기본 데미지와 강화 효율이 2 상승했습니다. 또한 명중 패널티가 제거되고 버프 지속시간도 소폭 상승했습니다..\n\n" +
 						"_-_ DMR 속사계열 (Kar98k, SVD, Super SASS)의 공격속도가 전부 +40%로 통합됐습니다.\n\n" +
-						"_-_ H&K MP7의 명중률이 55%로 하향 됐습니다."));
+						"_-_ H&K MP7의 명중률이 65%로 조정 됐습니다. MP7은 충분히 강한 무기입니다. 하지만 1티어의 한계는 명확하며, 방어력을 갖춘 대상을 상대론 데미지가 거의 들어가지 않아 패널티를 조금이나마 줄였습니다."));
 
 		changes = new ChangeInfo(Messages.get(this, "nerfs"), false, null);
 		changes.hardlight( CharSprite.NEGATIVE );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 16, 16), "나약해짐",
+		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 26, 21), "나약해짐",
 				"장갑계 몬스터 하향.\n\n" +
 						"_-_ 네메움의 공격력이 35로 하향 됐으며, 데미지 리미트가 삭제되고 레이저 발사에 필요한 시간이 2턴 증가했습니다.\n\n" +
-						"_-_ 주피터의 레이저 발사에 필요한 시간이 2턴 증가해 7턴으로 변경됐습니다.\n\n" +
-						"_-_ 만티코어의 공격력이 35로 하락했으며 데미지 리미트가 50, 체력이 140으로 하락해 원래 목표인 SR계열 무기 견제만 가능하도록 바꿨습니다."));
+						"_-_ 주피터의 레이저 발사에 필요한 시간이 2턴 증가해 7턴으로 조정됐습니다.\n\n" +
+						"_-_ 만티코어의 공격력이 35로 하락했으며 데미지 리미트가 50, 체력이 150으로 하락해 원래 목표인 SR계열 무기 견제만 가능하도록 바꿨습니다."));
 
 		changes = new ChangeInfo("v0.4.7", true, "");
 		changes.hardlight( Window.TITLE_COLOR);
@@ -162,13 +163,6 @@ public class ChangesScene extends PixelScene {
 		changes = new ChangeInfo(Messages.get(this, "new"), false, null);
 		changes.hardlight( Window.TITLE_COLOR );
 		infos.add(changes);
-
-		changes.addButton( new ChangeButton(new Image(Assets.INTRUDER, 0, 0, 17, 17), "인트루더",
-				"필드보스가 추가됨.\n\n" +
-
-						"_-_ 인트루더는 챕터 4에서 매우 낮은 확률로 등장합니다. \n\n" +
-						"_-_ 인트루더는 5번의 연속 공격을 평타로 사용하며, 매 공격시 대상에게 출혈을 일으킵니다. 또한, 우산과 자폭의 디스크에 내성을 가지고 있습니다. \n\n" +
-						"_-_ 인트루더는 실험적인 몬스터입니다. 실험 결과가 맘에 들면 점차적으로 필드보스를 추가시킬 예정입니다."));
 
 		changes.addButton( new ChangeButton(new M9(),
 				"무기 변경.\n\n" +
@@ -218,7 +212,7 @@ public class ChangesScene extends PixelScene {
 		changes.hardlight( CharSprite.POSITIVE );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 16, 16), "악랄해짐",
+		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 26, 21), "악랄해짐",
 				"일부 몹 강화.\n\n" +
 						"_-_ 리퍼의 체력이 15에서 30으로 강화됐으며 체력이 낮아질때 자동으로 회피율이 크게 증가하게 됩니다.\n\n" +
 						"_-_ 만티코어의 공격력이 크게 상향됐습니다."));
@@ -329,13 +323,13 @@ public class ChangesScene extends PixelScene {
 		changes.hardlight( CharSprite.POSITIVE );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton( new Image(Assets.HUNTRESS, 0, 34, 13, 17), "상향",
+		changes.addButton( new ChangeButton( new Image(Assets.RANGER, 0, 69, 21, 23), "상향",
 				"HK416 상향.\n\n" +
 						"_-_모든 투척무기 내구도가  50% 추가됨\n\n" +
 						"_-_M79 유탄발사기의 매커니즘이 바뀌어 적이 아니라 벽 등을 맞춰도 폭발해 스플래시 데미지를 줄 수 있도록 변경되었습니다.\n\n" +
 						"IOP 탄창이 제공하는 투척무기 내구도 20% 증가와 기본 능력이 곱연산으로 중첩되 80%의 추가 내구도를 가지게 됩니다."));
 
-		changes.addButton( new ChangeButton( new Image(Assets.MAGE, 0, 34, 13, 17), "리워크",
+		changes.addButton( new ChangeButton( new Image(Assets.MAGE, 0, 69, 21, 23), "리워크",
 				"G11 외골격 리워크.\n\n" +
 						"_-_ G11의 외골격 스킬이 액티브에서 버프로 바뀌었습니다. 반드시 체력이 100% 일때만 사용하십시오.\n\n" +
 						"_-_ G11의 외골격 스킬이 주변의 적을 화상 상태로 만드는 쓸모없는 능력에서 가속이라는 버프를 받게 됩니다.\n\n" +
@@ -362,7 +356,7 @@ public class ChangesScene extends PixelScene {
 		changes.hardlight( CharSprite.NEGATIVE );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton(new Image(Assets.WARRIOR, 0, 34, 15, 17), "너프",
+		changes.addButton( new ChangeButton(new Image(Assets.WARRIOR, 0, 69, 21, 23), "너프",
 				"투신 변경 및 하향\n\n" +
 						"_-_ 격노(죽음 유예)하기 위한 레벨이 2에서 3으로 증가\n\n" +
 						"_-_ 물리 피해를 입을때마다 분노 버프가 쌓이며 버프에 비례해 자신의 물리공격력이 50%까지 증가, 버프는 시간이 지날수록 줄어들지만 체력이 낮을수록 느리게 감소\n\n" +
@@ -374,7 +368,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 더 이상 적들에게 감지될 확률을 낮추지 않음\n\n" +
 						"_-_정찰병이나 신속함의 특성의 효과와 중첩되는 정도 감소 -계산식이 곱연산에서 합연산으로 바뀜."));
 
-		changes.addButton( new ChangeButton(new HuntressArmor(),
+		changes.addButton( new ChangeButton(new RangerArmor(),
 				"_-_ UMP9 & HK416의 외골격 하향.\n\n" +
 						"_-_ UMP9 - 연막탄 범위가 8칸으로 제한되며, 효과가 벽을 관통하지 않도록 변경\n\n" +
 						"_-_ HK416 - 살상류탄의 범위가 12칸으로 제한됨"));
@@ -434,7 +428,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 텍스트 출력 문제를 해결했습니다." ));
 
 
-		changes.addButton( new ChangeButton(new Image(Assets.GHOST, 0, 0, 14, 16), "개발진 교체",
+		changes.addButton( new ChangeButton(new Image(Assets.STAR, 0, 0, 21, 20), "개발진 교체",
 				"_-_ 기존 개발자 Kirsi 님이 새로운 개발자 Sharku 님으로 바뀌었습니다. 기초 개발 수고하셨습니다. Kirsi 님! " ));
 
 
@@ -514,7 +508,7 @@ public class ChangesScene extends PixelScene {
 		changes.hardlight( CharSprite.POSITIVE );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton( new Image(Assets.HUNTRESS, 0, 34, 13, 17), "유탄수 상향",
+		changes.addButton( new ChangeButton( new Image(Assets.RANGER, 0, 69, 21, 23),"유탄수 상향",
 				"유탄수의 유탄 배율을 높혔습니다.\n\n" +
 						"좀더 유탄을 통상전에서 쓰기 편하도록 기존 충전 배율을 7%에서 10%로 높혔습니다."));
 
@@ -547,7 +541,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 스토리 진행방식을 대화 형식으로 바꿔 좀더 스토리에 몰입할수있게 만들었습니다.\n\n" +
 						"계속 업데이트할 예정입니다. 몬스터의 능력치 조정이나 아이디어는 트위터나 디씨 배포글에 말해주시면 감사하겠습니다."));
 
-		changes.addButton( new ChangeButton( new Image(Assets.HUNTRESS, 0, 34, 13, 17), "HK416 세부 전직 개편!",
+		changes.addButton( new ChangeButton( new Image(Assets.RANGER, 0, 34, 13, 17), "HK416 세부 전직 개편!",
 				"HK416의 플레이 스타일이 바뀌었습니다!\n\n" +
 						"기존의 코만도가 유탄수로 변경 됬습니다.\n" +
 						"_-_ HK416은 M79 유탄발사기를 가지고 시작합니다. \n" +

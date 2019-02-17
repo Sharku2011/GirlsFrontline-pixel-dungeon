@@ -32,9 +32,9 @@ public class GhostSprite extends MobSprite {
 	public GhostSprite() {
 		super();
 
-		texture( Assets.GHOST );
+		texture( Assets.STAR );
 
-		TextureFilm frames = new TextureFilm( texture, 14, 15 );
+		TextureFilm frames = new TextureFilm( texture, 21, 20 );
 
 		idle = new Animation( 5, true );
 		idle.frames( frames, 0, 1 );
@@ -42,27 +42,20 @@ public class GhostSprite extends MobSprite {
 		run = new Animation( 10, true );
 		run.frames( frames, 0, 1 );
 
-		attack = new Animation( 10, false );
-		attack.frames( frames, 0, 2, 3 );
+		attack = new Animation( 20, false );
+		attack.frames( frames, 2, 3, 4, 3, 4, 2);
 
 		die = new Animation( 8, false );
-		die.frames( frames, 0, 4, 5, 6, 7 );
+		die.frames( frames, 0, 5, 6, 7 );
 
 		play( idle );
-	}
-
-	@Override
-	public void draw() {
-		Blending.setLightMode();
-		super.draw();
-		Blending.setNormalMode();
 	}
 
 	@Override
 	public void die() {
 		super.die();
 		emitter().start( ShaftParticle.FACTORY, 0.3f, 4 );
-		emitter().start( Speck.factory( Speck.LIGHT ), 0.2f, 3 );
+		emitter().start( Speck.factory( Speck.LIGHT ), 0.1f, 1 );
 	}
 
 	@Override

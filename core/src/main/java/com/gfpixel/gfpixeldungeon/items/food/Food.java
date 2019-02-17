@@ -87,7 +87,7 @@ public class Food extends Item {
 				ScrollOfRecharging.charge( hero );
 				break;
 			case ROGUE:
-			case HUNTRESS:
+			case RANGER:
 				break;
 			}
 			

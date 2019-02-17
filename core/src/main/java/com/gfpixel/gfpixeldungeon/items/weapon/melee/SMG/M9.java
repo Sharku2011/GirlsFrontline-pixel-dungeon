@@ -29,7 +29,7 @@ public class M9 extends SubMachineGun {
 		image = ItemSpriteSheet.M9;
 
 		tier = 1;
-		ACC = 0.55f;
+		ACC = 0.65f;
         DLY = 0.333f;
 	}
 

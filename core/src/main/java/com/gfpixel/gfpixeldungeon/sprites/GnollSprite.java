@@ -30,9 +30,9 @@ public class GnollSprite extends MobSprite {
 	public GnollSprite() {
 		super();
 		
-		texture( Assets.GNOLL );
+		texture( Assets.PROWLER );
 
-		TextureFilm frames = new TextureFilm( texture, 15, 13 );
+		TextureFilm frames = new TextureFilm( texture, 18, 16 );
 
 		idle = new Animation( 8, true );
 		idle.frames( frames, 0, 1 );

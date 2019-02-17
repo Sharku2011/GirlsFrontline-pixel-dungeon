@@ -33,11 +33,11 @@ import com.watabou.utils.Callback;
 
 import java.util.HashMap;
 
-public class HuntressArmor extends ClassArmor {
+public class RangerArmor extends ClassArmor {
 
 	
 	{
-		image = ItemSpriteSheet.ARMOR_HUNTRESS;
+		image = ItemSpriteSheet.ARMOR_RANGER;
 	}
 	
 	private HashMap<Callback, Mob> targets = new HashMap<Callback, Mob>();

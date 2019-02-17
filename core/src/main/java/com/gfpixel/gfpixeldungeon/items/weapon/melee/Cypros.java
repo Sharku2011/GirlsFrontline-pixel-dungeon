@@ -142,7 +142,7 @@ public class Cypros extends MeleeWeapon {
             case CONFIRE:
                 image = ItemSpriteSheet.CONFIRE;
                 RCH = 3;
-                DLY = 3f;
+                DLY = 1.5f;
                 ACC = 1.5f;
                 timeChange += 1f;
                 break;
@@ -186,7 +186,7 @@ public class Cypros extends MeleeWeapon {
                 case CONFIRE:
                     Sample.INSTANCE.play(Assets.SND_ZAP);
                     hero.sprite.parent.add(new Beam.DeathRay(hero.sprite.center(), enemy.sprite.center()));
-                    break;
+                break;
                 case TRAVAILLER: default:
                     break;
             }

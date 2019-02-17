@@ -32,6 +32,7 @@ import com.gfpixel.gfpixeldungeon.items.Honeypot;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
+import com.gfpixel.gfpixeldungeon.items.armor.ScaleArmor;
 import com.gfpixel.gfpixeldungeon.items.artifacts.CloakOfShadows;
 import com.gfpixel.gfpixeldungeon.items.bags.MagicalHolster;
 import com.gfpixel.gfpixeldungeon.items.bags.PotionBandolier;
@@ -80,7 +81,7 @@ public enum HeroClass {
 	WARRIOR( "warrior", HeroSubClass.BERSERKER, HeroSubClass.GLADIATOR ),
 	MAGE( "mage", HeroSubClass.BATTLEMAGE, HeroSubClass.WARLOCK ),
 	ROGUE( "rogue", HeroSubClass.ASSASSIN, HeroSubClass.FREERUNNER ),
-	HUNTRESS( "huntress", HeroSubClass.WARDEN, HeroSubClass.SNIPER );
+	RANGER( "ranger", HeroSubClass.WARDEN, HeroSubClass.SNIPER );
 
 	private String title;
 	private HeroSubClass[] subClasses;
@@ -109,8 +110,8 @@ public enum HeroClass {
 				initRogue( hero );
 				break;
 
-			case HUNTRESS:
-				initHuntress( hero );
+			case RANGER:
+				initRanger( hero );
 				break;
 		}
 		
@@ -143,7 +144,7 @@ public enum HeroClass {
 
 			new Cannon().identify().collect();
             new Thunder().identify().collect();
-			new Kriss().identify().collect();
+			new ScaleArmor().identify().collect();
 			new Cypros().identify().collect();
 			new Dp().identify().collect();
 			new Negev().identify().collect();
@@ -173,8 +174,8 @@ public enum HeroClass {
 				return Badges.Badge.MASTERY_MAGE;
 			case ROGUE:
 				return Badges.Badge.MASTERY_ROGUE;
-			case HUNTRESS:
-				return Badges.Badge.MASTERY_HUNTRESS;
+			case RANGER:
+				return Badges.Badge.MASTERY_RANGER;
 		}
 		return null;
 	}
@@ -242,7 +243,7 @@ public enum HeroClass {
 
 	}
 
-	private static void initHuntress( Hero hero ) {
+	private static void initRanger( Hero hero ) {
 
 		(hero.belongings.weapon = new M9()).identify();
 		Boomerang boomerang = new Boomerang();
@@ -279,7 +280,7 @@ public enum HeroClass {
 			return Assets.MAGE;
 		case ROGUE:
 			return Assets.ROGUE;
-		case HUNTRESS:
+		case RANGER:
 			return Assets.RANGER;
 		}
 		
@@ -313,13 +314,13 @@ public enum HeroClass {
 					Messages.get(HeroClass.class, "rogue_perk4"),
 					Messages.get(HeroClass.class, "rogue_perk5"),
 			};
-		case HUNTRESS:
+		case RANGER:
 			return new String[]{
-					Messages.get(HeroClass.class, "huntress_perk1"),
-					Messages.get(HeroClass.class, "huntress_perk2"),
-					Messages.get(HeroClass.class, "huntress_perk3"),
-					Messages.get(HeroClass.class, "huntress_perk4"),
-					Messages.get(HeroClass.class, "huntress_perk5"),
+					Messages.get(HeroClass.class, "ranger_perk1"),
+					Messages.get(HeroClass.class, "ranger_perk2"),
+					Messages.get(HeroClass.class, "ranger_perk3"),
+					Messages.get(HeroClass.class, "ranger_perk4"),
+					Messages.get(HeroClass.class, "ranger_perk5"),
 			};
 		}
 		
@@ -334,6 +335,9 @@ public enum HeroClass {
 	
 	public static HeroClass restoreInBundle( Bundle bundle ) {
 		String value = bundle.getString( CLASS );
+		if (value.equals("HUNTRESS")) {
+			value = "RANGER";
+		}
 		return value.length() > 0 ? valueOf( value ) : ROGUE;
 	}
 }

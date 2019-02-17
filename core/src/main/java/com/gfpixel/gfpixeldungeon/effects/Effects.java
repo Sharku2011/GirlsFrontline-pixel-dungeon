@@ -56,13 +56,13 @@ public class Effects {
 				icon.frame(icon.texture.uvRect(6, 16, 11, 22));
 				break;
 			case DEATH_RAY:
-				icon.frame(icon.texture.uvRect(16, 16, 32, 24));
+				icon.frame(icon.texture.uvRect(16, 16, 32, 25));
 				break;
 			case LIGHT_RAY:
-				icon.frame(icon.texture.uvRect(16, 23, 32, 31));
+				icon.frame(icon.texture.uvRect(16, 26, 32, 34));
 				break;
 			case HEALTH_RAY:
-				icon.frame(icon.texture.uvRect(16, 30, 32, 38));
+				icon.frame(icon.texture.uvRect(16, 35, 32, 43));
 				break;
 		}
 		return icon;

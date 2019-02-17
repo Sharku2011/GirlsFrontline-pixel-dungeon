@@ -74,7 +74,7 @@ public class ThrowingKnife extends MissileWeapon {
 						max()));
 				damage = Math.round(damage * RingOfSharpshooting.damageMultiplier( hero ));
 				int exStr = hero.STR() - STRReq();
-				if (exStr > 0 && hero.heroClass == HeroClass.HUNTRESS) {
+				if (exStr > 0 && hero.heroClass == HeroClass.RANGER) {
 					damage += Random.IntRange(0, exStr);
 				}
 				return damage;

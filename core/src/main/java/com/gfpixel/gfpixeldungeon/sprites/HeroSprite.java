@@ -36,10 +36,10 @@ import com.watabou.utils.RectF;
 
 public class HeroSprite extends CharSprite {
 	
-	private static final int FRAME_WIDTH	= 22;
-	private static final int FRAME_HEIGHT	= 22;
+	public static final int FRAME_WIDTH	= 22;
+	public static final int FRAME_HEIGHT	= 23;
 	
-	private static final int RUN_FRAMERATE	= 22;
+	private static final int RUN_FRAMERATE	= 18;
 	
 	private static TextureFilm tiers;
 	
@@ -64,28 +64,28 @@ public class HeroSprite extends CharSprite {
 
 		TextureFilm film = new TextureFilm( tiers(), ((Hero)ch).tier(), FRAME_WIDTH, FRAME_HEIGHT );
 		
-		idle = new Animation( 10, true );
-		idle.frames( film, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 );
+		idle = new Animation( 5, true );
+		idle.frames( film, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 );
 		
 		run = new Animation( RUN_FRAMERATE, true );
 		run.frames( film, 2, 3, 4, 5, 6, 7 );
 		
-		die = new Animation( 20, false );
+		die = new Animation( 15, false );
 		die.frames( film, 8, 9, 10, 11, 12, 13 );
 		
-		attack = new Animation( 20, false );
-		attack.frames( film, 14, 14, 15, 16, 17, 18, 17, 16, 15 );
+		attack = new Animation( 23, false );
+		attack.frames( film, 14, 15, 16, 17, 18, 16, 17, 14 );
 		
 		zap = attack.clone();
 		
 		operate = new Animation( 8, false );
-		operate.frames( film, 22, 23, 22, 23 );
+		operate.frames( film, 28, 29, 28, 29 );
 
 		fly = new Animation( 1, true );
-		fly.frames( film, 24 );
+		fly.frames( film, 27 );
 
-		read = new Animation( 20, false );
-		read.frames( film, 25, 26, 26, 26, 26, 26, 26, 26, 26, 25 );
+		read = new Animation( 11, false );
+		read.frames( film, 19, 20, 21, 22, 23, 24, 25, 26, 20, 19  );
 		
 		if (ch.isAlive())
 			idle();
@@ -150,7 +150,10 @@ public class HeroSprite extends CharSprite {
 	
 	public static TextureFilm tiers() {
 		if (tiers == null) {
-			SmartTexture texture = TextureCache.get( Assets.ROGUE );
+			// 우선적으로  texture를 불러와서 캐릭터 스프라이트 전체의 크기를 가져온다 - 기존의 경우 도적, 현재는 흥국이로 변경
+			SmartTexture texture = TextureCache.get( Assets.RANGER );
+			// 불러온 texture의 넓이와 정해진 tier별 높이만큼을 다른 스프라이트에서 제한적으로 불러와 메모리를 절약한다
+			// 향후 TIERWIDTH와 TIERHEIGHT 등의 변수를 별도로 분리하여 관리하는 방안 고려할 것
 			tiers = new TextureFilm( texture, texture.width, FRAME_HEIGHT );
 		}
 		

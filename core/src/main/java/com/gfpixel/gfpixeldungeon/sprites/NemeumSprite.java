@@ -43,13 +43,13 @@ public class NemeumSprite extends MobSprite {
 
         texture( Assets.NEMEUM );
 
-        TextureFilm frames = new TextureFilm( texture, 16, 16 );
+        TextureFilm frames = new TextureFilm( texture, 26, 21 );
 
         idle = new Animation( 4, true );
-        idle.frames( frames, 0, 1 );
+        idle.frames( frames, 0 );
 
-        charging = new Animation( 12, true);
-        charging.frames( frames, 6 );
+        charging = new Animation( 2, true);
+        charging.frames( frames, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2 );
 
         chargeParticles = centerEmitter();
         chargeParticles.autoKill = false;
@@ -57,14 +57,14 @@ public class NemeumSprite extends MobSprite {
         chargeParticles.on = false;
 
         run = new Animation( 12, true );
-        run.frames( frames, 2, 3, 4, 5 );
+        run.frames( frames, 5, 6, 7, 8, 9, 10 );
 
         attack = new Animation( 10, false );
-        attack.frames( frames,  7, 8, 9 );
+        attack.frames( frames,  3, 4, 4, 1, 1 );
         zap = attack.clone();
 
         die = new Animation( 8, false );
-        die.frames( frames, 10, 11, 12, 13 );
+        die.frames( frames, 1, 1, 11, 12 );
 
         play( idle );
     }

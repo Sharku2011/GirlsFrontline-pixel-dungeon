@@ -96,6 +96,7 @@ public abstract class Char extends Actor {
 
 	public int paralysed	    = 0;
 	public boolean rooted		= false;
+	public boolean deploying	= false;
 	public boolean flying		= false;
 	public int invisible		= 0;
 	

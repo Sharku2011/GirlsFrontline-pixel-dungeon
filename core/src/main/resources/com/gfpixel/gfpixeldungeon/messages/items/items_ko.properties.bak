@@ -38,7 +38,7 @@ items.armor.glyphs.camouflage.name=위장의 %s
 items.armor.glyphs.camouflage.desc=이 특성은 착용자를 기다란 풀에 숨어들어, 일시적으로 투명화시킬 수 있습니다.
 
 items.armor.glyphs.entanglement.name=속박의 %s
-items.armor.glyphs.entanglement.desc=이 특성은 착용자를 자연의 외골격으로 감싸 피해를 흡수 할 수 있습니다.
+items.armor.glyphs.entanglement.desc=이 특성은 착용자를 자연의 외골격으로 감싸 피해를 흡수할 수 있습니다.
 
 items.armor.glyphs.flow.name=흐름의 %s
 items.armor.glyphs.flow.desc=이 특성은 물결의 흐름을 조종하여, 물 위를 이동하는 걸 훨씬 빠르게 합니다.
@@ -59,7 +59,7 @@ items.armor.glyphs.stone.desc=이 특성은 외골격을 두꺼운 역장로 둘
 items.armor.glyphs.swiftness.name=신속함의 %s
 items.armor.glyphs.swiftness.desc=이 특성은 적과 가까이 있지 않을 때마다 착용자의 속도를 높여 줍니다.
 
-items.armor.glyphs.thorns.name=반발의 %s
+items.armor.glyphs.thorns.name=가시의 %s
 items.armor.glyphs.thorns.desc=이 강력한 특성은 공격자를 상처 내어, 입힌 피해에 따른 출혈 피해를 줍니다.
 
 items.armor.glyphs.viscosity.name=점성의 %s
@@ -101,10 +101,10 @@ items.armor.clotharmor.desc=IOP사의 T1 초기형 외골격입니다. 외골격
 items.armor.umpux.name=UMP UX 외골격
 items.armor.umpux.desc=UMP 자매들이 더 빠르게 회피할수 있습니다.
 
-items.armor.huntressarmor.name=HK416의 외골격
-items.armor.huntressarmor.ac_special=살상류탄
-items.armor.huntressarmor.no_enemies=시야 내에 적이 없습니다.
-items.armor.huntressarmor.desc=이 외골격을 장비한 인형은 다수의 회전유탄을 날릴 수 있습니다. 각각의 유탄들은 인형의 시야 안에 들어온 적 하나를 추적하여, 현재 장비한 무기에 비례한 피해량을 줍니다.
+items.armor.rangerarmor.name=HK416의 외골격
+items.armor.rangerarmor.ac_special=살상류탄
+items.armor.rangerarmor.no_enemies=시야 내에 적이 없습니다.
+items.armor.rangerarmor.desc=이 외골격을 장비한 인형은 다수의 회전유탄을 날릴 수 있습니다. 각각의 유탄들은 인형의 시야 안에 들어온 적 하나를 추적하여, 현재 장비한 무기에 비례한 피해량을 줍니다.
 
 items.armor.ump40armor.name=UMP UX 강화 외골격
 items.armor.ump40armor.ac_special=가속
@@ -138,7 +138,6 @@ items.armor.warriorarmor.prompt=도약할 지역을 선택하세요
 items.armor.warriorarmor.desc=이 외골격은 매우 무거워 보이지만, 이제 UMP 45는 이 정도 무게는 아무것도 아닙니다. 이 외골격은 무거운 무게와 높은 도약력으로 높이 뛰어오를수 있으며, UMP 45가 착지한 곳 주변의 모든 적을 강타하여 기절시킵니다.
 
 
-
 ###artifacts
 items.artifacts.alchemiststoolkit.name=연금술사의 도구
 items.artifacts.alchemiststoolkit.ac_brew=제조
@@ -150,7 +149,7 @@ items.artifacts.artifact.curse_known=당신은 악의로 가득 찬 바이러스
 items.artifacts.artifact.need_to_equip=먼저 유물을 착용해야 합니다.
 
 items.artifacts.capeofthorns.name=만티코어의 장갑판
-items.artifacts.capeofthorns.desc=만티코어에서 떨어져 나온 장갑판의 파편이 합쳐져 방패가 됬습니다.하지만 한손으로 들기엔 너무 무거워 방패보단 갑옷에 가까운것 같습니다.
+items.artifacts.capeofthorns.desc=만티코어에서 떨어져 나온 장갑판의 파편이 합쳐져 방패가 됐습니다.하지만 한손으로 들기엔 너무 무거워 방패보단 갑옷에 가까운것 같습니다.
 items.artifacts.capeofthorns.desc_inactive= 이 장갑판은 당신이 피해를 입을 때 마다 에너지를 얻는 것 같습니다. 에너지가 모두 모이면 반발역장을 자동으로 실행합니다.
 items.artifacts.capeofthorns.desc_active=이 장갑판이 저장한 에너지를 방출하는 것처럼 보이며, 보호의 힘을 발하고 있습니다.
 items.artifacts.capeofthorns$thorns.inert=반발역장 해제.
@@ -185,34 +184,34 @@ items.artifacts.cloakofshadows$cloakstealth.desc=슈트를 몸에 둘러 투명�
 items.artifacts.driedrose.name=누군가의 바요넷
 items.artifacts.driedrose.ac_summon=소환
 items.artifacts.driedrose.ac_outfit=장비시킨다
-items.artifacts.driedrose.spawned=이미 STAR-15를 소환했다.
-items.artifacts.driedrose.no_charge=아직 STAR-15이 수복되지 않았다.
+items.artifacts.driedrose.spawned=이미 ST AR-15를 소환했다.
+items.artifacts.driedrose.no_charge=아직 ST AR-15이 수복되지 않았다.
 items.artifacts.driedrose.cursed=감염당한 바요넷을 사용할 수 없다.
 items.artifacts.driedrose.no_space=당신 주변에 빈 공간이 없다.
-items.artifacts.driedrose.charged=STAR-15, 전투준비 끝!
-items.artifacts.driedrose.desc=STAR-15의 팬티와 연결되있던 단검입니다. 단검은 멀쩡하게 있는데 왜 팬티는 없을까요? 이 단검엔 영적인 힘을 붙드는 힘이 있어, 쓰러진 인형의 기억을 모을 수 있을 것 같습니다.
+items.artifacts.driedrose.charged=ST AR-15, 전투준비 끝!
+items.artifacts.driedrose.desc=ST AR-15의 팬티와 연결되있던 단검입니다. 단검은 멀쩡하게 있는데 왜 팬티는 없을까요? 이 단검엔 영적인 힘을 붙드는 힘이 있어, 쓰러진 인형의 기억을 모을 수 있을 것 같습니다.
 items.artifacts.driedrose.desc_no_quest=많이 닳아있고 피가 조금 묻어있는 단검입니다. 누가 흘린걸까요?.\n\n영적인 힘을 담고 있는 것 같지만, 어떻게 그것을 사용해야 할지 도저히 알 수 없습니다.
-items.artifacts.driedrose.desc_hint=아무래도 기억 몇 개가 모자란 것 같습니다. 기억을 다시 찾아주면 STAR-15도 강력해질 것입니다.
+items.artifacts.driedrose.desc_hint=아무래도 기억 몇 개가 모자란 것 같습니다. 기억을 다시 찾아주면 ST AR-15도 강력해질 것입니다.
 items.artifacts.driedrose.desc_cursed=단검이 당신의 팬티에 달라붙었으며, 매우 차가운 느낌입니다.
-items.artifacts.driedrose$petal.name=STAR-15의 전투 메모리
-items.artifacts.driedrose$petal.no_rose=STAR-15에게 줄 메모리가 없다.
+items.artifacts.driedrose$petal.name=ST AR-15의 전투 메모리
+items.artifacts.driedrose$petal.no_rose=ST AR-15에게 줄 메모리가 없다.
 items.artifacts.driedrose$petal.no_room=메모리가 들어갈 공간이 없어서 버릴 수 밖에 없었다.
-items.artifacts.driedrose$petal.maxlevel=STAR-15가 모든 기억을 되찾았다!!
-items.artifacts.driedrose$petal.levelup=STAR-15에게 기억의 일부를 되찾아줬다.
+items.artifacts.driedrose$petal.maxlevel=ST AR-15가 모든 기억을 되찾았다!!
+items.artifacts.driedrose$petal.levelup=ST AR-15에게 기억의 일부를 되찾아줬다.
 items.artifacts.driedrose$petal.desc=메모리의 파편으로, 조금만 손보면 사용할수있을거같다.
-items.artifacts.driedrose$ghosthero.name=STAR-15
+items.artifacts.driedrose$ghosthero.name=ST AR-15
 items.artifacts.driedrose$ghosthero.def_verb=회피
 items.artifacts.driedrose$ghosthero.hello=좋아, 같이 해보자고 %s.
 items.artifacts.driedrose$ghosthero.introduce=내 영혼은 이 단검에 묶여있어. 인형인 나에게 왜 영혼이라는게 있는진 모르겠지만.\n\n지휘부로 돌아가서 다시 내 동료들을 볼순 없지만,훌쩍... 네 덕에 내 사명을 완수할 두 번째 기회를 얻었어. 가능하다면 네 부름에 응해 같이 싸워줄 거야.\n\n부디 넌 나처럼 되지 않기를...
-items.artifacts.driedrose$ghosthero.desc=허약해 보이는 인간 모양의 영체다. 당신이 가지고 있는 단검에 힘이 묶여 있는 듯 하다.\n\n이 영체은 그리 친근하진 않지만 여기 전장에서 유일한 말동무가 될 것이다.
-items.artifacts.driedrose$wndghosthero.title=STAR-15의 장비
-items.artifacts.driedrose$wndghosthero.desc=영체 그 자체의 전투력은 약하지만, 그 형태는 당신이 쓸 수 있는 무기와 방어구를 들 수 있을 정도로 단단한 편입니다. 유령에게 들려준 장비들은 당신이 사용할 때와 같은 효과를 낼 것입니다.\n\n STAR-15는 현재 _%d의 힘 요구량_ 이하의 장비를 들 수 있습니다.
+items.artifacts.driedrose$ghosthero.desc=허약해 보이는 인형의 영체다. 당신이 가지고 있는 단검에 힘이 묶여 있는 듯 하다.\n\n이 영체는 그리 친근하진 않지만 여기 전장에서 유일한 말동무가 될 것이다.
+items.artifacts.driedrose$wndghosthero.title=ST AR-15의 장비
+items.artifacts.driedrose$wndghosthero.desc=영체 그 자체의 전투력은 약하지만, 그 형태는 당신이 쓸 수 있는 무기와 방어구를 들 수 있을 정도로 단단한 편입니다. 유령에게 들려준 장비들은 당신이 사용할 때와 같은 효과를 낼 것입니다.\n\n ST AR-15는 현재 _%d의 힘 요구량_ 이하의 장비를 들 수 있습니다.
 items.artifacts.driedrose$wndghosthero.weapon_prompt=무기를 선택하세요
 items.artifacts.driedrose$wndghosthero.armor_prompt=외골격을 선택하세요
-items.artifacts.driedrose$wndghosthero.cant_unique=STAR-15은 무기와 방어구 외의 장비를 들 수 없습니다.
+items.artifacts.driedrose$wndghosthero.cant_unique=ST AR-15은 무기와 방어구 외의 장비를 들 수 없습니다.
 items.artifacts.driedrose$wndghosthero.cant_unidentified=해당 아이템에 대해 충분히 알지 못한다.
-items.artifacts.driedrose$wndghosthero.cant_cursed=STAR-15에게 감염당한 장비를 줄 수 없습니다.
-items.artifacts.driedrose$wndghosthero.cant_strength=STAR-15은 그 장비를 들 만큼 강하지 않습니다.
+items.artifacts.driedrose$wndghosthero.cant_cursed=ST AR-15에게 감염당한 장비를 줄 수 없습니다.
+items.artifacts.driedrose$wndghosthero.cant_strength=ST AR-15은 그 장비를 들 만큼 강하지 않습니다.
 
 items.artifacts.etherealchains.name=에테르 사슬
 items.artifacts.etherealchains.ac_cast=시전
@@ -276,7 +275,7 @@ items.artifacts.sandalsofnature.absorb_seed=당신의 신발은 씨앗을 흡수
 items.artifacts.sandalsofnature.desc_1=Kar98k의 힘의 근원인 부츠입니다! 사실 이것은 신발모양의 생명체로, 지금은 본래의 힘을 잃어 샌들의 모습으로 돌아갔습니다. 씨앗을 공급해 성장시킬 수 있을겁니다!
 items.artifacts.sandalsofnature.desc_2=이 샌들이 자라나서 두 개의 온전한 신발 모양이 되었습니다. 부츠의 일부는 본래의 색을 되찾았지만, 아직 더 영양을 흡수해야 할 것일지도요?
 items.artifacts.sandalsofnature.desc_3=부츠가 더 자라나 작은 부츠 모양이 되었습니다. 힘을 거의 되찾은 듯 보이지만, 그래도 더 자라날 수 있지 않을까요?
-items.artifacts.sandalsofnature.desc_4=이제 부츠가 완전히 자라나서 거대한 한 쌍의 부츠가 되었습니다. 본래 Kar98k의 사격능력을 가질수는 없지만, 더 오랜 시간동안 자연의 힘을 사용할수있게됬습니다.
+items.artifacts.sandalsofnature.desc_4=이제 부츠가 완전히 자라나서 거대한 한 쌍의 부츠가 되었습니다. 본래 Kar98k의 사격능력을 가질수는 없지만, 더 오랜 시간동안 자연의 힘을 사용할수있게됐습니다.
 items.artifacts.sandalsofnature.desc_hint=이 부츠를 신고있는 동안 자연과 더 친화됨을 느낍니다.
 items.artifacts.sandalsofnature.desc_cursed=감염당한 샌들은 자연과의 교감을 방해합니다.
 items.artifacts.sandalsofnature.desc_ability=당신의 신발은 움직일 수 없는 자연의 갑옷을 만들어낼 수 있는 능력을 얻었습니다. 하지만 이 능력을 사용하려면 먼저 에너지를 얻어야 합니다.
@@ -338,7 +337,7 @@ items.artifacts.towcall.spawned=이미 중화기반을 호출했다.
 items.artifacts.towcall.no_charge=아직 중화기반이 수복되지 않았다.
 items.artifacts.towcall.cursed=고장난 호출기를 사용할 수 없다.
 items.artifacts.towcall.no_space=당신 주변에 빈 공간이 없다.
-items.artifacts.towcall.charged=TOW 대전차화기반, 지금 준비됬습니다!
+items.artifacts.towcall.charged=TOW 대전차화기반, 지금 준비됐습니다!
 items.artifacts.towcall.desc=그리폰 산하의 중화기반을 호출합니다. 호출된 중화기반은 플레이어를 따라다니면서 거리를 두고 강력한 지원공격을 할것입니다. \n\n 하지만 중화기반은 적의 공격에 매우 취약하고 기동성이 낮으며 호출 대기시간이 길기 때문에 신중하게 결정해야합니다.
 items.artifacts.towcall.desc_no_quest=그리폰 산하의 중화기반을 호출합니다. 호출된 중화기반은 플레이어를 따라다니면서 거리를 두고 강력한 지원공격을 할것입니다. \n\n 하지만 중화기반은 적의 공격에 매우 취약하고 기동성이 낮으며 호출 대기시간이 길기 때문에 신중하게 결정해야합니다.
 items.artifacts.towcall.desc_hint=아무래도 훈련이 덜 된 신참들 같습니다. 고급 메모리를 찾아 빠르게 훈련시켜주면 충분히 강해질 수 있을 것입니다.
@@ -395,7 +394,7 @@ items.food.blandfruit.sorrowfruit=슬픔과
 items.food.blandfruit.stormfruit=폭풍과
 items.food.blandfruit.dreamfruit=꿈과일
 items.food.blandfruit.starfruit=별과일
-items.food.blandfruit.raw=으겍 퉷퉷퉷 쓉창엠창.
+items.food.blandfruit.raw=단백과는 너무 말라있어 그냥 먹을 수 없습니다.
 items.food.blandfruit.ice_msg=눈꽃과에서 얼린 생고기 맛이 났다.
 items.food.blandfruit.fire_msg=당신은 말 그대로 속이 타들어가는 것을 느꼈다.
 items.food.blandfruit.toxic_msg=당신은 사악한 독과 하나가 되었다!
@@ -438,7 +437,7 @@ items.food.pasty.pie=호박 파이
 items.food.pasty.cane=사탕 막대
 
 items.food.pasty.pasty_desc=민트초코를 바른 맛있는 케이크입니다. 환상적인 맛에 배가 조금 찰것입니다!
-items.food.pasty.cinnamonroll_desc=디씨인사이드 빵집소녀 갤러리 부활을 기념하여 롤모양 반죽에 시나몬 가루를 섞은 설탕을 뿌려 구워낸 롤 모양 빵입니다. 그런데 다시 폐쇄됬네요. 젠장!
+items.food.pasty.cinnamonroll_desc=디씨인사이드 빵집소녀 갤러리 부활을 기념하여 롤모양 반죽에 시나몬 가루를 섞은 설탕을 뿌려 구워낸 롤 모양 빵입니다. 젠장! 또 시나몬 롤인가요?
 items.food.pasty.pie_desc=커다란 호박 파이입니다! 달고 향긋한 맛에 배가 차고 약간 치유가 될 것입니다.\n\n행복한 할로윈 보내세요!
 items.food.pasty.cane_desc=설탕으로 만들어진 거대한 사탕 막대입니다!  배를 채우기엔 충분한 양이고, 총탄의 충전량을 채울 수도 있습니다.\n\n즐거운 연말 되세요!
 
@@ -449,7 +448,7 @@ items.journal.documentpage.name=찢긴 쪽지
 items.journal.documentpage.desc=책 같은 것에서 찢겨나간 페이지 한 장이다. 먼저 읽기 위해서는 주워야 할 것 같다.
 
 items.journal.guidepage.name=찢긴 가이드북 쪽지
-items.journal.guidepage.desc=모험가의 가이드에서 뜯겨져 나온 페이지입니다.\n\n대부분의 글자는 멀리서 알아볼 순 없지만, 해당 페이지의 제목은 겨우 읽을 수 있을 정도입니다.\n\n_"%s"_ 라고 쓰여 있습니다.
+items.journal.guidepage.desc=다른 인형의 가이드에서 뜯겨져 나온 페이지입니다.\n\n대부분의 글자는 멀리서 알아볼 순 없지만, 해당 페이지의 제목은 겨우 읽을 수 있을 정도입니다.\n\n_"%s"_ 라고 쓰여 있습니다.
 
 items.food.maccol.name=보리맛 콜라
 items.food.maccol.eat_msg=당신의 갈증이 사라졌다!
@@ -623,24 +622,24 @@ items.rings.ringoftenacity.name=인내의 도트 사이트
 items.rings.ringoftenacity.desc=이 도트 사이트는 착용자가 받은 치명적인 일격에 저항할 수 있게 합니다. 착용자가 더 많이 다칠수록, 피해에 저항하는 정도도 커집니다. 감염 당한 도트 사이트는 착용자를 더 쉽게 죽게 만듭니다.
 
 items.rings.ringofwealth.name=부유함의 도트 사이트
-items.rings.ringofwealth.desc=이 도트 사이트가 정확히 어떤 효과가 있는지는 밝혀지지 않았지만, 이 도트 사이트를 가진 모험가들은 여러가지 방법으로 행운에 영향을 끼친다고 합니다. 감염 당한 도트 사이트는 악운을 준다고 알려져 있습니다.
+items.rings.ringofwealth.desc=이 도트 사이트가 정확히 어떤 효과가 있는지는 밝혀지지 않았지만, 이 도트 사이트를 가진 인형들은 여러가지 방법으로 행운에 영향을 끼친다고 합니다. 감염 당한 도트 사이트는 악운을 준다고 알려져 있습니다.
 
 
 
 ###scrolls
 items.scrolls.scroll.ac_read=읽는다
-items.scrolls.scroll.kaunan=활성화 디스크 (N)
-items.scrolls.scroll.sowilo=활성화 디스크 (A)
-items.scrolls.scroll.laguz=활성화 디스크 (M)
-items.scrolls.scroll.yngvi=활성화 디스크 (S)
+items.scrolls.scroll.kaunan=활성화 디스크 (A)
+items.scrolls.scroll.sowilo=활성화 디스크 (B)
+items.scrolls.scroll.laguz=활성화 디스크 (C)
+items.scrolls.scroll.yngvi=활성화 디스크 (D)
 items.scrolls.scroll.gyfu=활성화 디스크 (E)
-items.scrolls.scroll.raido=활성화 디스크 (K)
-items.scrolls.scroll.isaz=활성화 디스크 (I)
-items.scrolls.scroll.mannaz=활성화 디스크 (S)
-items.scrolls.scroll.naudiz=활성화 디스크 (G)
-items.scrolls.scroll.berkanan=활성화 디스크 (O)
-items.scrolls.scroll.odal=활성화 디스크 (D)
-items.scrolls.scroll.tiwaz=활성화 디스크 (-)
+items.scrolls.scroll.raido=활성화 디스크 (F)
+items.scrolls.scroll.isaz=활성화 디스크 (G)
+items.scrolls.scroll.mannaz=활성화 디스크 (H)
+items.scrolls.scroll.naudiz=활성화 디스크 (I)
+items.scrolls.scroll.berkanan=활성화 디스크 (J)
+items.scrolls.scroll.odal=활성화 디스크 (K)
+items.scrolls.scroll.tiwaz=활성화 디스크 (L)
 items.scrolls.scroll.unknown_desc=이 작은 활성화 디스크에는 인형에게 일시적으로 특별한 능력을 발휘할 수 있는 기능을 가지고 있습니다. 이 디스크를 사용했을 때 어떤 일이 일어날까요?
 items.scrolls.scroll.blinded=눈이 먼 상태에선 활성화 디스크를 사용할 수 없다.
 items.scrolls.scroll.cursed=당신의 감염당한 USB가 디스크의 프로그램을 막았다! 아마도 백신의 디스크로 이 바이러스를 없애야 한다...
@@ -672,7 +671,7 @@ items.scrolls.scrollofmagicmapping.layout=당신은 현재 층의 구조를 알�
 items.scrolls.scrollofmagicmapping.desc=이 디스크를 읽으면, 수정같이 맑은 형상이 마인드 맵에 각인되어, 현재 층의 모든 비밀을 포함한 지형을 드러나게 합니다. 아이템과 적들의 위치는 여전히 알 수 없습니다.
 
 items.scrolls.scrollofmirrorimage.name=편제확대의 디스크
-items.scrolls.scrollofmirrorimage.desc=이 디스크에 적인 글귀는 독자와 똑같이 생긴 더미들을 만들어 그의 적들을 쫓아다닙니다.
+items.scrolls.scrollofmirrorimage.desc=이 디스크 안에 들어있는 프로그램은 독자와 똑같이 생긴 더미들을 만들어 그의 적들을 쫓아다닙니다.
 
 items.scrolls.scrollofpsionicblast.name=자폭의 디스크
 items.scrolls.scrollofpsionicblast.ondeath=폭발로 인해 당신의 몸은 산산조각났다...
@@ -684,7 +683,7 @@ items.scrolls.scrollofrage.desc=이 디스크를 읽으면, 모든 적들을 독
 
 items.scrolls.scrollofrecharging.name=고속 장전의 디스크
 items.scrolls.scrollofrecharging.surge=쇄도하는 에너지가 당신 몸을 타고 흘러 가,  당신의 탄창을 충전시켰다!
-items.scrolls.scrollofrecharging.desc=이 디스크에 담겨 있는 그대로의 마력은 풀려날 때 사용자의 탄창들을 서서히 장전시킵니다.
+items.scrolls.scrollofrecharging.desc=이 디스크에 담겨 있는 그대로의 에너지는 풀려날 때 사용자의 탄창들을 서서히 장전시킵니다.
 
 items.scrolls.scrollofremovecurse.name=백신의 디스크
 items.scrolls.scrollofremovecurse.inv_title=정화할 아이템을 선택하세요
@@ -697,7 +696,7 @@ items.scrolls.scrollofteleportation.tele=당신은 눈 깜짝할 사이에 이 �
 items.scrolls.scrollofteleportation.no_tele=이 장소에 있는 강력한 방해 전파가 당신의 공수낙하를 방해했다!
 items.scrolls.scrollofteleportation.cant_reach=그 곳으로 순간이동할 수 없습니다.
 items.scrolls.scrollofteleportation.prompt=순간이동할 위치를 선택
-items.scrolls.scrollofteleportation.desc=이 디스크에 담긴 주문은 독자를 해당 층의 무작위 위치로 공간이동시킵니다. 위험한 상황에서 탈출할 때 사용할 수 있지만, 간혹 운 나쁜 사용자들은 더 위함한 장소에 떨어져 버리고 맙니다.
+items.scrolls.scrollofteleportation.desc=이 디스크에 담긴 내용은 사용자를 해당 층의 무작위 위치로 공간이동시킵니다. 위험한 상황에서 탈출할 때 사용할 수 있지만, 간혹 운 나쁜 사용자들은 더 위함한 장소에 떨어져 버리고 맙니다.
 
 items.scrolls.scrollofterror.name=공포의 디스크
 items.scrolls.scrollofterror.none=디스크에서 눈이 부시도록 시뻘건 빛이 뿜어져 나왔다.
@@ -709,7 +708,7 @@ items.scrolls.scrollofupgrade.name=강화의 디스크
 items.scrolls.scrollofupgrade.inv_title=강화할 아이템을 선택하세요
 items.scrolls.scrollofupgrade.weaken_curse=강화의 디스크가 아이템의 바이러스를 약화했다.
 items.scrolls.scrollofupgrade.remove_curse=강화의 디스크가 아이템의 바이러스를 없애버렸다!
-items.scrolls.scrollofupgrade.desc=이 디스크는 하나의 아이템을 강화하여 품질을 높힙니다. 총탄은 더 강력해지고 장탄수가 증가하며, 무기는 더 많은 피해를 줄 수 있고, 방어구는 피해를 더 잘 흡수하게 됩니다. 또한 도트 사이트는 착용자에게 주어지는 효과를 더 강화합니다. 무기와 외골격은 또한 착용하는 데 필요한 힘을 소폭 감소시키며, 바이러스 해제의 디스크보다는 못하지만 아이템에 걸린 바이러스를 약화시킬 수도 있습니다.
+items.scrolls.scrollofupgrade.desc=이 디스크는 하나의 아이템을 강화하여 품질을 높입니다. 총탄은 더 강력해지고 장탄수가 증가하며, 무기는 더 많은 피해를 줄 수 있고, 방어구는 피해를 더 잘 흡수하게 됩니다. 또한 도트 사이트는 착용자에게 주어지는 효과를 더 강화합니다. 무기와 외골격은 또한 착용하는 데 필요한 힘을 소폭 감소시키며, 바이러스 해제의 디스크보다는 못하지만 아이템에 걸린 바이러스를 약화시킬 수도 있습니다.
 
 
 
@@ -832,12 +831,12 @@ items.wands.wandofcorrosion.stats_desc=이 탄환은 목표 지점에 착탄하�
 
 ###weapon curses
 items.weapon.curses.annoying.name=짜증나는 %s
-items.weapon.curses.annoying.msg_1="야~ 기분좋다~!"
-items.weapon.curses.annoying.msg_2="부끄러운줄알아야지!"
-items.weapon.curses.annoying.msg_3="제가 말놓고 한마디 할까요?
-items.weapon.curses.annoying.msg_4="부엉부엉 이기야노데스웅챠"
-items.weapon.curses.annoying.msg_5="딲!"
-items.weapon.curses.annoying.desc=짜증나는 무기는 말을 할 수 있습니다만 너무 시끄럽습니다. 게다가 일베충인것 같네요. 이 소리는 원치 않게 적들의 주의를 끌 수 도 있습니다.
+items.weapon.curses.annoying.msg_1="우리 지금 싸우는거 맞지!?"
+items.weapon.curses.annoying.msg_2="좋아, 박살내버려!"
+items.weapon.curses.annoying.msg_3="이봐, 여기야!"
+items.weapon.curses.annoying.msg_4="보스는 아직이야!?"
+items.weapon.curses.annoying.msg_5="아야, 그렇게 세게 휘두르지 말라고!"
+items.weapon.curses.annoying.desc=짜증나는 무기는 말을 할 수 있습니다만 너무 시끄럽습니다. 이 소리는 원치 않게 적들의 주의를 끌 수 도 있습니다.
 
 items.weapon.curses.displacing.name=변위의 %s
 items.weapon.curses.displacing.desc=변위의 무기는 혼돈스러운 공간이동 이 깃들어 있습니다. 이따금 상대를 현재 층의 무작위 위치로 보내버립니다.
@@ -950,9 +949,9 @@ items.weapon.melee.g11.imbue=당신은 당신의 탄창에 %s을 장전했다.
 items.weapon.melee.g11.conflict=상반되는 총탄이 탄창의 차탄을 없애 버렸다.
 items.weapon.melee.g11.id_first=먼저 탄환을 감정해야 합니다.
 items.weapon.melee.g11.cursed=감염된 탄환을 사용할 수 없습니다.
-items.weapon.melee.g11.warning=정말로 이 탄환을 탄창에 장전하시겠습니까? 현재 탄창에 장전된 모든 탄환이 사라집니다.\n\n장전될 탄환이 장전된 탄환보다 강화 수치가 높다면, 탄환의 강화 수치에 기관단총의 강화 수치를 1만큼 가져옵니다.\n\n이 장전으로 +%d 강화된 탄창을 얻게 됩니다.
+items.weapon.melee.g11.warning=정말로 이 탄환을 탄창에 장전하시겠습니까? 현재 탄창에 장전된 모든 탄환이 사라집니다.\n\n장전할 탄환이 장전된 탄환보다 강화 수치가 높다면, 탄환의 강화 수치에 기관단총의 강화 수치를 1만큼 가져옵니다.\n\n이 장전으로 +%d 강화된 탄창을 얻게 됩니다.
 items.weapon.melee.g11.yes=네, 그렇게 하겠습니다.
-items.weapon.melee.g11.no=아니오,  생각을 바꾸었습니다.
+items.weapon.melee.g11.no=아니오, 생각을 바꾸었습니다.
 items.weapon.melee.g11.desc=G11이 항상 들고다니는 돌격소총입니다. 평소엔 배게로 사용하는듯 하며 핸드가드 쪽엔 침자국이 있습니다. G11은 다양한 탄환을 장전할수있지만, 탄환을 따로 직접 구해서 장전해야합니다.
 items.weapon.melee.g11.no_wand=이 돌격소총에는 현재 탄환이 장전되있지 있지 않습니다. _다른 탄환을 장전_ 해야 발사할수있습니다.
 items.weapon.melee.g11.has_wand=이 돌격소총에는 현재 _%s가_ 장전됬습니다.
@@ -983,9 +982,9 @@ items.weapon.melee.sa.nagantrevolver.name=Nagant M1895
 items.weapon.melee.sa.nagantrevolver.stats_desc=이 무기는 무방비 상태의 적에게 더 강합니다.
 items.weapon.melee.sa.nagantrevolver.desc="돌아왔는가, 어서 오게!"\n\n 소음기를 장착할수있는 소련의 리볼버입니다. 웰로드보다 소음성능이 떨어지지만, 좀더 높은 피해를 입힐 수 있습니다.
 
-items.weapon.melee.ar.ak47.name=AK-47
-items.weapon.melee.ar.ak47.stats_desc=이 무기는 명중률이 낮고 떨어진 적을 공격할 수 있으며, 기습 공격을 할 수 없습니다.
-items.weapon.melee.ar.ak47.desc="아하핫, 드디어 나의 차례구나, 지구를 뒤흔들 성능을 보여줄게!"\n\n 소련군의 제식 소총이자 동구권 돌격소총의 대명사인 소총,\n 7,62-мм автомат Калашникова AK-47입니다. 명중률도 낮고 기습공격또한 불가능하지만, 제대로 적중한다면 치명적입니다. 
+items.weapon.melee.dmr.ak47.name=AK-47
+items.weapon.melee.dmr.ak47.stats_desc=이 무기는 명중률이 낮고 떨어진 적을 공격할 수 있으며, 기습 공격을 할 수 없습니다.
+items.weapon.melee.dmr.ak47.desc="아하핫, 드디어 나의 차례구나, 지구를 뒤흔들 성능을 보여줄게!"\n\n 소련군의 제식 소총이자 동구권 돌격소총의 대명사인 소총,\n 7,62-мм автомат Калашникова AK-47입니다. 명중률도 낮고 기습공격또한 불가능하지만, 제대로 적중한다면 치명적입니다. 
 
 items.weapon.melee.dmr.m99.name=M99
 items.weapon.melee.dmr.m99.stats_desc=이 무기는 명중률이 높고 떨어진 적을 공격할 수 있으며, 기습 공격을 할 수 없습니다.
@@ -1081,9 +1080,9 @@ items.weapon.melee.mg.mg42.name=H&K MG4
 items.weapon.melee.mg.mg42.stats_desc=이 무기는 다른 무기보다 압도적으로 빠르지만 명중률이 낮고 기습공격시 데미지가 떨어집니다.
 items.weapon.melee.mg.mg42.desc="준비만전이에요!" \n\n Heckler & Koch Maschinengewehr 4, FN사가 개발한 FN 미니미의 인기에 자극받은 H&K가 1999년에 개발을 시작해서 2001년에 마친 경기관총입니다. \n H&K 최초의 가스작동식 경기관총으로, 탄피 및 금속 링크 배출구 개량 및 새로운 안전장치 개발, 접이식 개머리판 도입 등 미니미의 단점을 개선했습니다.
 
-items.weapon.melee.lr.sass.name=Super SASS
-items.weapon.melee.lr.sass.stats_desc=이 무기는 멀리 떨어진 적을 공격할수있으며, 다른 무기보다 빠릅니다.
-items.weapon.melee.lr.sass.desc="지휘관님, Super SASS 지금 막 도착했습니다! 아직 신입이라 부족한 게 많지만, 지도편달 잘 부탁드려요!"\n\nAR-10의 개량형인 민수용 저격소총입니다. 고속사격 반동제어를 위해 많은 힘을 필요로 하지만, 공격력은 다른 무기에 비해 조금 떨어집니다.
+items.weapon.melee.dmr.sass.name=Super SASS
+items.weapon.melee.dmr.sass.stats_desc=이 무기는 멀리 떨어진 적을 공격할수있으며, 다른 무기보다 빠릅니다.
+items.weapon.melee.dmr.sass.desc="지휘관님, Super SASS 지금 막 도착했습니다! 아직 신입이라 부족한 게 많지만, 지도편달 잘 부탁드려요!"\n\nAR-10의 개량형인 민수용 저격소총입니다. 고속사격 반동제어를 위해 많은 힘을 필요로 하지만, 공격력은 다른 무기에 비해 조금 떨어집니다.
 
 items.weapon.melee.lr.wa.name=WA2000
 items.weapon.melee.lr.wa.stats_desc=이 무기는 긴 공격범위를 가집니다.
@@ -1311,17 +1310,6 @@ items.tomeofmastery.name=마인드맵 업그레이드
 items.tomeofmastery.ac_read=사용한다
 items.tomeofmastery.way=당신은 %s로 업그레이드 했습니다!
 items.tomeofmastery.desc=가볍고 단순해보이지만 범상찮아보이는 마인드맵 업그레이드 팩입니다. 마인드맵을 업그레이드 하는데는 어느 정도의 시간이 걸리는 것에 주의하십시오.
-
-items.weightstone.name=다목적 쵸크
-items.weightstone.ac_apply=조정한다
-items.weightstone.select=조정할 무기를 선택하세요
-items.weightstone.light=당신은 무기의 총구를 느슨하게 조정했다
-items.weightstone.heavy=당신은 무기를 총구를 꽉 조이게 조정했다
-items.weightstone.desc=당신의 총기에 초크를 사용하여 총구의 끄트머리를 강하게 조이거나 느슨하게 만들 수 있습니다. 그리하여 총기의 피해량이나 사격속도를 증가시키지만, 그 반대의 것을 어느정도 잃게 됩니다.
-items.weightstone$wndbalance.choice=당신의 무기를 어떻게 조정하겠습니까?
-items.weightstone$wndbalance.light=느슨하게
-items.weightstone$wndbalance.heavy=꽉 조이게
-items.weightstone$wndbalance.cancel=괜찮아요
 
 items.torch.name=조명요정
 items.torch.ac_light=사용한다

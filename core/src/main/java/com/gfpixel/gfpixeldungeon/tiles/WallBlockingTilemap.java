@@ -28,7 +28,7 @@ import com.watabou.noosa.Tilemap;
 
 public class WallBlockingTilemap extends Tilemap {
 
-	public static final int SIZE = 16;
+	public static final int SIZE = 24;
 
 	private static final int CLEARED        = -2;
 	private static final int BLOCK_NONE     = -1;

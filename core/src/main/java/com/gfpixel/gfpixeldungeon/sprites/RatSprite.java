@@ -29,7 +29,7 @@ public class RatSprite extends MobSprite {
 	public RatSprite() {
 		super();
 		
-		texture( Assets.RAT );
+		texture( Assets.DINER );
 		
 		TextureFilm frames = new TextureFilm( texture, 16, 15 );
 		

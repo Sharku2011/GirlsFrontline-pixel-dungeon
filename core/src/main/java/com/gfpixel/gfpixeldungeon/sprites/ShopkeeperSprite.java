@@ -33,7 +33,7 @@ public class ShopkeeperSprite extends MobSprite {
 		super();
 		
 		texture( Assets.KEEPER );
-		TextureFilm film = new TextureFilm( texture, 14, 14 );
+		TextureFilm film = new TextureFilm( texture, 27, 20 );
 		
 		idle = new Animation( 10, true );
 		idle.frames( film, 1, 1, 1, 1, 1, 0, 0, 0, 0 );
@@ -57,7 +57,7 @@ public class ShopkeeperSprite extends MobSprite {
 				coin = new PixelParticle();
 				parent.add( coin );
 			}
-			coin.reset( x + (flipHorizontal ? 0 : 13), y + 7, 0xFFFF00, 1, 0.5f );
+			coin.reset( x + (flipHorizontal ? 0 : 19), y + 11, 0xFFFF00, 1, 0.5f );
 			coin.speed.y = -40;
 			coin.acc.y = +160;
 		}

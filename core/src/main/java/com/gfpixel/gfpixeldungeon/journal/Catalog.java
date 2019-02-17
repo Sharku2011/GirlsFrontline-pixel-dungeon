@@ -24,7 +24,7 @@ package com.gfpixel.gfpixeldungeon.journal;
 import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.armor.ClothArmor;
-import com.gfpixel.gfpixeldungeon.items.armor.HuntressArmor;
+import com.gfpixel.gfpixeldungeon.items.armor.RangerArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.LeatherArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.MageArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.MailArmor;
@@ -213,7 +213,7 @@ public enum Catalog {
 		ARMOR.seen.put( WarriorArmor.class,                 false);
 		ARMOR.seen.put( MageArmor.class,                    false);
 		ARMOR.seen.put( RogueArmor.class,                   false);
-		ARMOR.seen.put( HuntressArmor.class,                false);
+		ARMOR.seen.put( RangerArmor.class,		            false);
 	
 		WANDS.seen.put( WandOfMagicMissile.class,           false);
 		WANDS.seen.put( WandOfLightning.class,              false);

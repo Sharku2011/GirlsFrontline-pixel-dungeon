@@ -85,7 +85,7 @@ public class WndWandmaker extends Window {
 		String farewellMsg = Messages.get(this, "farewell");
 
 
-		if (Dungeon.hero.heroClass == HeroClass.HUNTRESS)
+		if (Dungeon.hero.heroClass == HeroClass.RANGER)
 		{
 			farewellMsg += Messages.get(this, "farewell_hk416");
 		}

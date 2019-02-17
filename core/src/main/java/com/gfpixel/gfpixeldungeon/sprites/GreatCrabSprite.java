@@ -31,21 +31,21 @@ public class GreatCrabSprite extends MobSprite {
 	public GreatCrabSprite() {
 		super();
 
-		texture( Assets.CRAB );
+		texture( Assets.AEGIS );
 
-		TextureFilm frames = new TextureFilm( texture, 16, 16 );
+		TextureFilm frames = new TextureFilm( texture, 20, 20 );
 
 		idle = new MovieClip.Animation( 5, true );
-		idle.frames( frames, 16, 17, 16, 18 );
+		idle.frames( frames, 0 );
 
 		run = new MovieClip.Animation( 10, true );
-		run.frames( frames, 19, 20, 21, 22 );
+		run.frames( frames, 3, 4, 5, 6, 7 );
 
 		attack = new MovieClip.Animation( 12, false );
-		attack.frames( frames, 23, 24, 25 );
+		attack.frames( frames, 0, 1, 1, 2, 2 );
 
 		die = new MovieClip.Animation( 12, false );
-		die.frames( frames, 26, 27, 28, 29 );
+		die.frames( frames, 8, 9, 10 );
 
 		play( idle );
 	}

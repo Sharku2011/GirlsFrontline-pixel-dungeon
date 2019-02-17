@@ -66,8 +66,8 @@ abstract public class ClassArmor extends Armor {
 		case MAGE:
 			classArmor = new MageArmor();
 			break;
-		case HUNTRESS:
-			classArmor = new HuntressArmor();
+		case RANGER:
+			classArmor = new RangerArmor();
 			break;
 		}
 		

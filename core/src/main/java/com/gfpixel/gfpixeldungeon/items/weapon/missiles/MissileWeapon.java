@@ -172,7 +172,7 @@ abstract public class MissileWeapon extends Weapon {
 	protected float durabilityPerUse(){
 		float usage = MAX_DURABILITY/10f;
 		
-		if (Dungeon.hero.heroClass == HeroClass.HUNTRESS)   usage /= 1.5f;
+		if (Dungeon.hero.heroClass == HeroClass.RANGER)   usage /= 1.5f;
 		if (holster)                                        usage /= MagicalHolster.HOLSTER_DURABILITY_FACTOR;
 		
 		usage /= RingOfSharpshooting.durabilityMultiplier( Dungeon.hero );
@@ -186,7 +186,7 @@ abstract public class MissileWeapon extends Weapon {
 		damage = Math.round( damage * RingOfSharpshooting.damageMultiplier( owner ));
 		
 		if (owner instanceof Hero &&
-				((Hero)owner).heroClass == HeroClass.HUNTRESS) {
+				((Hero)owner).heroClass == HeroClass.RANGER) {
 			int exStr = ((Hero)owner).STR() - STRReq();
 			if (exStr > 0) {
 				damage += Random.IntRange( 0, exStr );
@@ -259,7 +259,7 @@ abstract public class MissileWeapon extends Weapon {
 
 		if (STRReq() > Dungeon.hero.STR()) {
 			info += " " + Messages.get(Weapon.class, "too_heavy");
-		} else if (Dungeon.hero.heroClass == HeroClass.HUNTRESS && Dungeon.hero.STR() > STRReq()){
+		} else if (Dungeon.hero.heroClass == HeroClass.RANGER && Dungeon.hero.STR() > STRReq()){
 			info += " " + Messages.get(Weapon.class, "excess_str", Dungeon.hero.STR() - STRReq());
 		}
 

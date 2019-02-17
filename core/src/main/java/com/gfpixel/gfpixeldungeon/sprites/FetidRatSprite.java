@@ -34,21 +34,21 @@ public class FetidRatSprite extends MobSprite {
 	public FetidRatSprite() {
 		super();
 
-		texture( Assets.RAT );
+		texture( Assets.STG );
 
-		TextureFilm frames = new TextureFilm( texture, 16, 15 );
+		TextureFilm frames = new TextureFilm( texture, 21, 23 );
 
 		idle = new Animation( 2, true );
-		idle.frames( frames, 32, 32, 32, 33 );
+		idle.frames( frames, 0 );
 
 		run = new Animation( 10, true );
-		run.frames( frames, 38, 39, 40, 41, 42 );
+		run.frames( frames, 4, 5, 6, 7, 8, 9 );
 
 		attack = new Animation( 15, false );
-		attack.frames( frames, 34, 35, 36, 37, 32 );
+		attack.frames( frames, 1, 2, 1, 3, 1, 2 );
 
 		die = new Animation( 10, false );
-		die.frames( frames, 43, 44, 45, 46 );
+		die.frames( frames, 0, 10, 11, 12 );
 
 		play( idle );
 	}

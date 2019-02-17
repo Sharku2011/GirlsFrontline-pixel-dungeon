@@ -171,7 +171,7 @@ public class WelcomeScene extends PixelScene {
 		
 		//convert game saves from the old format
 		if (previousVersion <= GirlsFrontlinePixelDungeon.v0_6_2e){
-			//old save file names for warrior, mage, rogue, huntress
+			//old save file names for warrior, mage, rogue, ranger
 			String[] classes = new String[]{"warrior", "mage", "game", "ranger"};
 			for (int i = 1; i <= classes.length; i++){
 				String name = classes[i-1];

@@ -34,6 +34,7 @@ import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.InterlevelScene;
 import com.gfpixel.gfpixeldungeon.scenes.IntroScene;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
+import com.gfpixel.gfpixeldungeon.sprites.HeroSprite;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSprite;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 import com.gfpixel.gfpixeldungeon.ui.IconButton;
@@ -50,7 +51,7 @@ import com.watabou.noosa.ui.Component;
 public class WndStartGame extends Window {
 	
 	private static final int WIDTH    = 120;
-	private static final int HEIGHT   = 140;
+	private static final int HEIGHT   = 150;
 
 	public WndStartGame(final int slot){
 		
@@ -158,8 +159,8 @@ public class WndStartGame extends Window {
 		
 		private Image hero;
 		
-		private static final int WIDTH = 24;
-		private static final int HEIGHT = 16;
+		private static final int WIDTH = HeroSprite.FRAME_WIDTH;
+		private static final int HEIGHT = HeroSprite.FRAME_HEIGHT;
 		
 		HeroBtn ( HeroClass cl ){
 			super();
@@ -167,13 +168,13 @@ public class WndStartGame extends Window {
 			this.cl = cl;
 			
 			if (cl == HeroClass.WARRIOR){
-				hero = new Image(Assets.WARRIOR, 0, 86, 13, 17);
+				hero = new Image(Assets.WARRIOR, 0, 0, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
 			} else if (cl == HeroClass.MAGE){
-				hero = new Image(Assets.MAGE, 0, 86, 13, 17);
+				hero = new Image(Assets.MAGE, 0, HeroSprite.FRAME_HEIGHT * 2 /*tier*/, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
 			} else if (cl == HeroClass.ROGUE){
-				hero = new Image(Assets.ROGUE, 0, 86, 13, 17);
-			} else if (cl == HeroClass.HUNTRESS){
-				hero = new Image(Assets.RANGER, 0, 86, 13, 17);
+				hero = new Image(Assets.ROGUE, 0, 0, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
+			} else if (cl == HeroClass.RANGER){
+				hero = new Image(Assets.RANGER, 0, HeroSprite.FRAME_HEIGHT * 2 /*tier*/, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
 			}
 			add(hero);
 			
@@ -193,7 +194,7 @@ public class WndStartGame extends Window {
 		public void update() {
 			super.update();
 			if (cl != GamesInProgress.selectedClass){
-				if (cl == HeroClass.HUNTRESS && !Badges.isUnlocked(Badges.Badge.BOSS_SLAIN_3)){
+				if (cl == HeroClass.RANGER && !Badges.isUnlocked(Badges.Badge.BOSS_SLAIN_3)){
 					hero.brightness( 0f );
 				} else {
 					hero.brightness(0.6f);
@@ -207,9 +208,9 @@ public class WndStartGame extends Window {
 		protected void onClick() {
 			super.onClick();
 			
-			if( cl == HeroClass.HUNTRESS && !Badges.isUnlocked(Badges.Badge.BOSS_SLAIN_3)){
+			if( cl == HeroClass.RANGER && !Badges.isUnlocked(Badges.Badge.BOSS_SLAIN_3)){
 				GirlsFrontlinePixelDungeon.scene().add(
-						new WndMessage(Messages.get(WndStartGame.class, "huntress_unlock")));
+						new WndMessage(Messages.get(WndStartGame.class, "ranger_unlock")));
 			} else {
 				GamesInProgress.selectedClass = cl;
 			}
@@ -334,7 +335,7 @@ public class WndStartGame extends Window {
 							heroLoadout.icon(new ItemSprite(ItemSpriteSheet.DAGGER, null));
 							heroMisc.icon(Icons.get(Icons.DEPTH));
 							break;
-						case HUNTRESS:
+						case RANGER:
 							heroItem.icon(new ItemSprite(ItemSpriteSheet.BOOMERANG, null));
 							heroLoadout.icon(new ItemSprite(ItemSpriteSheet.M79, null));
 							heroMisc.icon(new ItemSprite(ItemSpriteSheet.DART, null));
