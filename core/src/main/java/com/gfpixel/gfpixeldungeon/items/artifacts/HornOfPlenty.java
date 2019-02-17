@@ -106,7 +106,7 @@ public class HornOfPlenty extends Artifact {
 						ScrollOfRecharging.charge(hero);
 						break;
 					case ROGUE:
-					case HUNTRESS:
+					case RANGER:
 						break;
 				}
 

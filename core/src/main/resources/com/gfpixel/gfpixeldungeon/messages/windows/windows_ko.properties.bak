@@ -136,7 +136,7 @@ windows.wndsettings$audiotab.sfx_vol=효과음 크기
 windows.wndsettings$audiotab.sfx_mute=효과음 음소거
 
 windows.wndstartgame.title=인형을 선택하십시오
-windows.wndstartgame.huntress_unlock=이 캐릭터를 사용하려면 15층의 보스를 쓰러트리십시오.
+windows.wndstartgame.ranger_unlock=이 캐릭터를 사용하려면 15층의 보스를 쓰러트리십시오.
 windows.wndstartgame.start=게임 시작
 
 windows.wndtradeitem.sale=판매 중: %1$s - %2$dg

@@ -881,7 +881,7 @@ public abstract class Level implements Bundlable {
 					}
 
 				}
-			} else if (((Hero)c).heroClass == HeroClass.HUNTRESS) {
+			} else if (((Hero)c).heroClass == HeroClass.RANGER) {
 				for (Mob mob : mobs) {
 					int p = mob.pos;
 					if (distance( c.pos, p) == 2) {

@@ -40,7 +40,7 @@ public enum Icons {
 	WARRIOR,
 	MAGE,
 	ROGUE,
-	HUNTRESS,
+	RANGER,
 	CLOSE,
 	DEPTH,
 	SLEEP,
@@ -106,7 +106,7 @@ public enum Icons {
 		case ROGUE:
 			icon.frame( icon.texture.uvRect( 32, 29, 48, 45 ) );
 			break;
-		case HUNTRESS:
+		case RANGER:
 			icon.frame( icon.texture.uvRect( 48, 29, 64, 45 ) );
 			break;
 		case CLOSE:
@@ -175,8 +175,8 @@ public enum Icons {
 			return get( MAGE );
 		case ROGUE:
 			return get( ROGUE );
-		case HUNTRESS:
-			return get( HUNTRESS );
+		case RANGER:
+			return get( RANGER );
 		default:
 			return null;
 		}

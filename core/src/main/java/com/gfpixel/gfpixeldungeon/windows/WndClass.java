@@ -158,7 +158,7 @@ public class WndClass extends WndTabbed {
 				case ROGUE:
 					message = HeroSubClass.FREERUNNER.desc() + "\n\n" + HeroSubClass.ASSASSIN.desc();
 					break;
-				case HUNTRESS:
+				case RANGER:
 					message = HeroSubClass.SNIPER.desc() + "\n\n" + HeroSubClass.WARDEN.desc();
 					break;
 			}

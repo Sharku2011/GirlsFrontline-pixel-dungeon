@@ -63,7 +63,7 @@ public class Badges {
 		BOSS_SLAIN_1_WARRIOR,
 		BOSS_SLAIN_1_MAGE,
 		BOSS_SLAIN_1_ROGUE,
-		BOSS_SLAIN_1_HUNTRESS,
+		BOSS_SLAIN_1_RANGER,
 		BOSS_SLAIN_1( 12 ),
 		BOSS_SLAIN_2( 13 ),
 		BOSS_SLAIN_3( 14 ),
@@ -110,7 +110,7 @@ public class Badges {
 		VICTORY_WARRIOR,
 		VICTORY_MAGE,
 		VICTORY_ROGUE,
-		VICTORY_HUNTRESS,
+		VICTORY_RANGER,
 		VICTORY( 34 ),
 		VICTORY_ALL_CLASSES( 35, true ),
 		HAPPY_END( 36 ),
@@ -130,7 +130,7 @@ public class Badges {
 		MASTERY_WARRIOR,
 		MASTERY_MAGE,
 		MASTERY_ROGUE,
-		MASTERY_HUNTRESS,
+		MASTERY_RANGER,
 		ITEM_LEVEL_1( 48 ),
 		ITEM_LEVEL_2( 49 ),
 		ITEM_LEVEL_3( 50 ),
@@ -655,8 +655,8 @@ public class Badges {
 				case ROGUE:
 					badge = Badge.BOSS_SLAIN_1_ROGUE;
 					break;
-				case HUNTRESS:
-					badge = Badge.BOSS_SLAIN_1_HUNTRESS;
+				case RANGER:
+					badge = Badge.BOSS_SLAIN_1_RANGER;
 					break;
 				}
 				local.add( badge );
@@ -668,7 +668,7 @@ public class Badges {
 				if (global.contains( Badge.BOSS_SLAIN_1_WARRIOR ) &&
 					global.contains( Badge.BOSS_SLAIN_1_MAGE ) &&
 					global.contains( Badge.BOSS_SLAIN_1_ROGUE ) &&
-					global.contains( Badge.BOSS_SLAIN_1_HUNTRESS)) {
+					global.contains( Badge.BOSS_SLAIN_1_RANGER)) {
 					
 					badge = Badge.BOSS_SLAIN_1_ALL_CLASSES;
 					if (!global.contains( badge )) {
@@ -746,8 +746,8 @@ public class Badges {
 		case ROGUE:
 			badge = Badge.MASTERY_ROGUE;
 			break;
-		case HUNTRESS:
-			badge = Badge.MASTERY_HUNTRESS;
+		case RANGER:
+			badge = Badge.MASTERY_RANGER;
 			break;
 		}
 		
@@ -780,8 +780,8 @@ public class Badges {
 		case ROGUE:
 			badge = Badge.VICTORY_ROGUE;
 			break;
-		case HUNTRESS:
-			badge = Badge.VICTORY_HUNTRESS;
+		case RANGER:
+			badge = Badge.VICTORY_RANGER;
 			break;
 		}
 		local.add( badge );
@@ -793,7 +793,7 @@ public class Badges {
 		if (global.contains( Badge.VICTORY_WARRIOR ) &&
 			global.contains( Badge.VICTORY_MAGE ) &&
 			global.contains( Badge.VICTORY_ROGUE ) &&
-			global.contains( Badge.VICTORY_HUNTRESS )) {
+			global.contains( Badge.VICTORY_RANGER )) {
 			
 			badge = Badge.VICTORY_ALL_CLASSES;
 			displayBadge( badge );

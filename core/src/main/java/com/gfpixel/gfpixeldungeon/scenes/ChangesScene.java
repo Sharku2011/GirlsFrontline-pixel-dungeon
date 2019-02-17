@@ -25,7 +25,7 @@ import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Chrome;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.items.Item;
-import com.gfpixel.gfpixeldungeon.items.armor.HuntressArmor;
+import com.gfpixel.gfpixeldungeon.items.armor.RangerArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.PlateArmor;
 import com.gfpixel.gfpixeldungeon.items.armor.curses.Bulk;
 import com.gfpixel.gfpixeldungeon.items.artifacts.TalismanOfForesight;
@@ -323,7 +323,7 @@ public class ChangesScene extends PixelScene {
 		changes.hardlight( CharSprite.POSITIVE );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton( new Image(Assets.HUNTRESS, 0, 69, 21, 23), "상향",
+		changes.addButton( new ChangeButton( new Image(Assets.RANGER, 0, 69, 21, 23), "상향",
 				"HK416 상향.\n\n" +
 						"_-_모든 투척무기 내구도가  50% 추가됨\n\n" +
 						"_-_M79 유탄발사기의 매커니즘이 바뀌어 적이 아니라 벽 등을 맞춰도 폭발해 스플래시 데미지를 줄 수 있도록 변경되었습니다.\n\n" +
@@ -368,7 +368,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 더 이상 적들에게 감지될 확률을 낮추지 않음\n\n" +
 						"_-_정찰병이나 신속함의 특성의 효과와 중첩되는 정도 감소 -계산식이 곱연산에서 합연산으로 바뀜."));
 
-		changes.addButton( new ChangeButton(new HuntressArmor(),
+		changes.addButton( new ChangeButton(new RangerArmor(),
 				"_-_ UMP9 & HK416의 외골격 하향.\n\n" +
 						"_-_ UMP9 - 연막탄 범위가 8칸으로 제한되며, 효과가 벽을 관통하지 않도록 변경\n\n" +
 						"_-_ HK416 - 살상류탄의 범위가 12칸으로 제한됨"));
@@ -508,7 +508,7 @@ public class ChangesScene extends PixelScene {
 		changes.hardlight( CharSprite.POSITIVE );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton( new Image(Assets.HUNTRESS, 0, 69, 21, 23),"유탄수 상향",
+		changes.addButton( new ChangeButton( new Image(Assets.RANGER, 0, 69, 21, 23),"유탄수 상향",
 				"유탄수의 유탄 배율을 높혔습니다.\n\n" +
 						"좀더 유탄을 통상전에서 쓰기 편하도록 기존 충전 배율을 7%에서 10%로 높혔습니다."));
 
@@ -541,7 +541,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 스토리 진행방식을 대화 형식으로 바꿔 좀더 스토리에 몰입할수있게 만들었습니다.\n\n" +
 						"계속 업데이트할 예정입니다. 몬스터의 능력치 조정이나 아이디어는 트위터나 디씨 배포글에 말해주시면 감사하겠습니다."));
 
-		changes.addButton( new ChangeButton( new Image(Assets.HUNTRESS, 0, 34, 13, 17), "HK416 세부 전직 개편!",
+		changes.addButton( new ChangeButton( new Image(Assets.RANGER, 0, 34, 13, 17), "HK416 세부 전직 개편!",
 				"HK416의 플레이 스타일이 바뀌었습니다!\n\n" +
 						"기존의 코만도가 유탄수로 변경 됬습니다.\n" +
 						"_-_ HK416은 M79 유탄발사기를 가지고 시작합니다. \n" +

@@ -80,7 +80,7 @@ public class TomeOfMastery extends Item {
 				way1 = HeroSubClass.FREERUNNER;
 				way2 = HeroSubClass.ASSASSIN;
 				break;
-			case HUNTRESS:
+			case RANGER:
 				way1 = HeroSubClass.SNIPER;
 				way2 = HeroSubClass.WARDEN;
 				break;
