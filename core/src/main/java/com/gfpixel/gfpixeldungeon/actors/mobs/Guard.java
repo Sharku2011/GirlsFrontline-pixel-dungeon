@@ -22,163 +22,90 @@
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
 import com.gfpixel.gfpixeldungeon.Dungeon;
-import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.actors.buffs.Cripple;
-import com.gfpixel.gfpixeldungeon.effects.Chains;
-import com.gfpixel.gfpixeldungeon.effects.Pushing;
-import com.gfpixel.gfpixeldungeon.items.Generator;
-import com.gfpixel.gfpixeldungeon.items.Item;
-import com.gfpixel.gfpixeldungeon.items.armor.Armor;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Amok;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
+import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
+import com.gfpixel.gfpixeldungeon.items.KindOfWeapon;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfHealing;
-import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
-import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.GuardSprite;
+import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.utils.Bundle;
-import com.watabou.utils.Callback;
 import com.watabou.utils.Random;
 
 public class Guard extends Mob {
 
-	//they can only use their chains once
-	private boolean chainsUsed = false;
-
 	{
 		spriteClass = GuardSprite.class;
 
-		HP = HT = 40;
-		defenseSkill = 10;
+		HP = HT = 300;
+		EXP = 15;
+		defenseSkill = 5;
+		baseSpeed = 0.8f;
+		maxLvl = 26;
 
-		EXP = 6;
-		maxLvl = 14;
-
-		loot = null;    //see createloot.
-		lootChance = 0.25f;
-
-		properties.add(Property.UNDEAD);
-		
-		HUNTING = new Hunting();
+		loot = new PotionOfHealing();
+		lootChance = 0.3333f; //by default, see die()
 	}
 
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange(4, 12);
-	}
-
-	private boolean chain(int target){
-		if (chainsUsed || enemy.properties().contains(Property.IMMOVABLE))
-			return false;
-
-		Ballistica chain = new Ballistica(pos, target, Ballistica.PROJECTILE);
-
-		if (chain.collisionPos != enemy.pos
-				|| chain.path.size() < 2
-				|| Dungeon.level.pit[chain.path.get(1)])
-			return false;
-		else {
-			int newPos = -1;
-			for (int i : chain.subPath(1, chain.dist)){
-				if (!Dungeon.level.solid[i] && Actor.findChar(i) == null){
-					newPos = i;
-					break;
-				}
-			}
-
-			if (newPos == -1){
-				return false;
-			} else {
-				final int newPosFinal = newPos;
-				this.target = newPos;
-				yell( Messages.get(this, "scorpion") );
-				sprite.parent.add(new Chains(sprite.center(), enemy.sprite.center(), new Callback() {
-					public void call() {
-						Actor.addDelayed(new Pushing(enemy, enemy.pos, newPosFinal, new Callback(){
-							public void call() {
-								enemy.pos = newPosFinal;
-								Dungeon.level.press(newPosFinal, enemy, true);
-								Cripple.prolong(enemy, Cripple.class, 4f);
-								if (enemy == Dungeon.hero) {
-									Dungeon.hero.interrupt();
-									Dungeon.observe();
-									GameScene.updateFog();
-								}
-							}
-						}), -1);
-						next();
-					}
-				}));
-			}
-		}
-		chainsUsed = true;
-		return true;
+		return Random.NormalIntRange( 5, 15 );
 	}
 
 	@Override
 	public int attackSkill( Char target ) {
-		return 14;
+		return 15;
 	}
 
 	@Override
 	public int drRoll() {
-		return Random.NormalIntRange(0, 8);
+		return Random.NormalIntRange(0, 5);
 	}
+	private int hitsToDisarm = 0;
 
 	@Override
-	protected Item createLoot() {
-		//first see if we drop armor, overall chance is 1/8
-		if (Random.Int(2) == 0){
-			Armor loot;
-			do{
-				loot = Generator.randomArmor();
-				//50% chance of re-rolling tier 4 or 5 items
-			} while (loot.tier >= 4 && Random.Int(2) == 0);
-			loot.level(0);
-			return loot;
-		//otherwise, we may drop a health potion. overall chance is 1/8 * (6-potions dropped)/6
-		//with 0 potions dropped that simplifies to 1/8
-		} else {
-			if (Random.Float() < ((6f - Dungeon.LimitedDrops.GUARD_HP.count) / 6f)){
-				Dungeon.LimitedDrops.GUARD_HP.drop();
-				return new PotionOfHealing();
+	public int attackProc( Char enemy, int damage ) {
+		damage = super.attackProc( enemy, damage );
+
+		if (enemy == Dungeon.hero) {
+
+			Hero hero = Dungeon.hero;
+			KindOfWeapon weapon = hero.belongings.weapon;
+
+			if (weapon != null  && !weapon.cursed) {
+				if (hitsToDisarm == 0) hitsToDisarm = Random.NormalIntRange(4, 8);
+
+				if (--hitsToDisarm == 0) {
+					hero.belongings.weapon = null;
+					Dungeon.quickslot.convertToPlaceholder(weapon);
+					weapon.updateQuickslot();
+					Dungeon.level.drop(weapon, hero.pos).sprite.drop();
+					GLog.w(Messages.get(this, "disarm", weapon.name()));
+				}
 			}
 		}
 
-		return null;
+		return damage;
 	}
 
-	private final String CHAINSUSED = "chainsused";
+	{
+		immunities.add( Amok.class );
+		immunities.add( Terror.class );
+	}
+
+	private static String DISARMHITS = "hitsToDisarm";
 
 	@Override
 	public void storeInBundle(Bundle bundle) {
 		super.storeInBundle(bundle);
-		bundle.put(CHAINSUSED, chainsUsed);
+		bundle.put(DISARMHITS, hitsToDisarm);
 	}
 
 	@Override
 	public void restoreFromBundle(Bundle bundle) {
 		super.restoreFromBundle(bundle);
-		chainsUsed = bundle.getBoolean(CHAINSUSED);
-	}
-	
-	private class Hunting extends Mob.Hunting{
-		@Override
-		public boolean act( boolean enemyInFOV, boolean justAlerted ) {
-			enemySeen = enemyInFOV;
-			
-			if (!chainsUsed
-					&& enemyInFOV
-					&& !isCharmedBy( enemy )
-					&& !canAttack( enemy )
-					&& Dungeon.level.distance( pos, enemy.pos ) < 5
-					&& Random.Int(3) == 0
-					
-					&& chain(enemy.pos)){
-				return false;
-			} else {
-				return super.act( enemyInFOV, justAlerted );
-			}
-			
-		}
+		hitsToDisarm = bundle.getInt(DISARMHITS);
 	}
 }

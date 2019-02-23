@@ -35,7 +35,7 @@ import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
 import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
-import com.gfpixel.gfpixeldungeon.sprites.hydraSprite;
+import com.gfpixel.gfpixeldungeon.sprites.HydraSprite;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
@@ -43,7 +43,7 @@ import com.watabou.utils.Random;
 public class Hydra extends Mob {
 
     {
-        spriteClass = hydraSprite.class;
+        spriteClass = HydraSprite.class;
 
         HP = HT = 400;
         EXP = 19;
@@ -119,7 +119,7 @@ public class Hydra extends Mob {
         if (beamCooldown > 0) {
             return super.doAttack(enemy);
         } else if (!beamCharged){
-            ((hydraSprite)sprite).charge( enemy.pos );
+            ((HydraSprite)sprite).charge( enemy.pos );
             spend( attackDelay()*2f );
             beamCharged = true;
             return true;

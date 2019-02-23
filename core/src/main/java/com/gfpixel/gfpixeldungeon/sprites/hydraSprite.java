@@ -31,25 +31,25 @@ import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.noosa.particles.Emitter;
 
-public class hydraSprite extends MobSprite {
+public class HydraSprite extends MobSprite {
 
     private int zapPos;
 
     private Animation charging;
     private Emitter chargeParticles;
 
-    public hydraSprite() {
+    public HydraSprite() {
         super();
 
         texture( Assets.HYDRA );
 
-        TextureFilm frames = new TextureFilm( texture, 25, 19 );
+        TextureFilm frames = new TextureFilm( texture, 48, 35 );
 
         idle = new Animation( 2, true );
         idle.frames( frames, 0, 0, 0, 0 );
 
         charging = new Animation( 14, true);
-        charging.frames( frames, 1 );
+        charging.frames( frames, 9 );
 
         chargeParticles = centerEmitter();
         chargeParticles.autoKill = false;
@@ -57,15 +57,15 @@ public class hydraSprite extends MobSprite {
         chargeParticles.on = false;
 
         run = new Animation( 10, true );
-        run.frames( frames, 1, 2, 3, 4, 5 );
+        run.frames( frames, 4, 5, 6, 7, 8 );
 
-        attack = new Animation( 10, false );
-        attack.frames( frames, 6, 7, 6, 7 );
+        attack = new Animation( 25, false );
+        attack.frames( frames, 0, 1, 0, 2, 0, 1, 0, 2, 0 );
         zap = new Animation( 15, false );
-        zap.frames( frames, 8, 9 );
+        zap.frames( frames, 0, 3, 0 );
 
         die = new Animation( 10, false );
-        die.frames( frames, 0, 4, 4, 10, 10, 10, 11 );
+        die.frames( frames, 9, 10, 11 );
 
         play( idle );
     }

@@ -88,30 +88,30 @@ public class Bestiary {
 					case 1:
 						//3x skeleton, 1x thief, 1x swarm
 						return new ArrayList<>(Arrays.asList(
-								Skeleton.class, Skeleton.class, Skeleton.class,
+								Golyat.class, Golyat.class, Golyat.class,
 								Thief.class,
 								Swarm.class));
 					case 2:
 						//3x skeleton, 1x thief, 1x shaman, 1x guard
 						return new ArrayList<>(Arrays.asList(
-								Skeleton.class, Skeleton.class, Skeleton.class,
+								Golyat.class, Golyat.class, Golyat.class,
 								Thief.class,
 								Shaman.class,
-								Guard.class));
+								Mg5.class));
 					case 3:
 						//3x skeleton, 1x thief, 2x shaman, 2x guard
 						return new ArrayList<>(Arrays.asList(
-								Skeleton.class, Skeleton.class, Skeleton.class,
+								Golyat.class, Golyat.class, Golyat.class,
 								Thief.class,
 								Shaman.class, Shaman.class,
-								Guard.class, Guard.class));
+								Mg5.class, Mg5.class));
 					case 4:
 						//3x skeleton, 1x thief, 2x shaman, 3x guard
 						return new ArrayList<>(Arrays.asList(
-								Skeleton.class, Skeleton.class, Skeleton.class,
+								Golyat.class, Golyat.class, Golyat.class,
 								Thief.class,
 								Shaman.class, Shaman.class,
-								Guard.class, Guard.class, Guard.class));
+								Mg5.class, Mg5.class, Mg5.class));
 				}
 			}
 		};
@@ -123,24 +123,24 @@ public class Bestiary {
 						return null;
 					case 1:
 						return new ArrayList<>(Arrays.asList(
-                                Skeleton.class, Skeleton.class, Skeleton.class,
+								Golyat.class, Golyat.class, Golyat.class,
 								Ripper.class, Ripper.class,
 								Jager.class));
 					case 2:
 						return new ArrayList<>(Arrays.asList(
-                                Skeleton.class, Skeleton.class, Skeleton.class,
+								Golyat.class, Golyat.class, Golyat.class,
 								Ripper.class, Ripper.class,
 								Jager.class,
 								Jaguar.class));
 					case 3:
 						return new ArrayList<>(Arrays.asList(
-                                Skeleton.class, Skeleton.class,
+								Golyat.class, Golyat.class,
 								Ripper.class, Ripper.class,
 								Jager.class,
 								Jaguar.class, Jaguar.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
-                                Skeleton.class, Skeleton.class,
+                                Golyat.class, Golyat.class,
 								Ripper.class, Ripper.class,Ripper.class,
 								Jager.class,
 								Jaguar.class, Jaguar.class));
@@ -225,19 +225,19 @@ public class Bestiary {
 					case 2:
 						//3x Goliath, 4x Aegis, 2x Jupiter, 1x Scorpio
 						return new ArrayList<>(Arrays.asList(
-								Goliath.class, Goliath.class, Goliath.class,
-								Aegis.class, Aegis.class, Aegis.class, Aegis.class,
+								Dragun.class, Dragun.class, Dragun.class,
+								Guard.class, Guard.class, Guard.class, Guard.class,
 								Jupiter.class, Jupiter.class));
 					case 3:
 						//3x Goliath, 4x Aegis, 2x Jupiter, 1x Scorpio
 						return new ArrayList<>(Arrays.asList(
-								Goliath.class, Goliath.class, Goliath.class,
-								Aegis.class, Aegis.class, Aegis.class, Aegis.class,
+								Dragun.class, Dragun.class, Dragun.class,
+								Guard.class, Guard.class, Guard.class, Guard.class,
 								Jupiter.class, Jupiter.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
-								Goliath.class, Goliath.class, Goliath.class, Goliath.class,
-								Aegis.class, Aegis.class, Aegis.class,
+								Dragun.class, Dragun.class, Dragun.class, Dragun.class,
+								Guard.class, Guard.class, Guard.class, Guard.class,
 								Jupiter.class, Jupiter.class));
 				}
 			}

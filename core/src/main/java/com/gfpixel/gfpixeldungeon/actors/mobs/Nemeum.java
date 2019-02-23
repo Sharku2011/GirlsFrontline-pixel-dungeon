@@ -117,7 +117,7 @@ public class Nemeum extends Mob {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((NemeumSprite)sprite).charge( enemy.pos );
-            spend( attackDelay()*4f );
+            spend( attackDelay()*3f );
             beamCharged = true;
             return true;
         } else {

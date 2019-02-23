@@ -22,31 +22,45 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.actors.mobs.DM300;
+import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Golyat;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.watabou.noosa.TextureFilm;
 
-public class DM300Sprite extends MobSprite {
-	
-	public DM300Sprite() {
-		super();
+public class GolyatSprite extends MobSprite {
 
-		texture( Assets.GAGER );
+    public GolyatSprite() {
+        super();
 
-		TextureFilm frames = new TextureFilm( texture, 26, 22 );
+        texture( Assets.GOLYAT );
 
-		idle = new Animation( 2, true );
-		idle.frames( frames, 0, 0, 0, 0 );
+        TextureFilm frames = new TextureFilm( texture, 26, 23 );
 
-		run = new Animation( 10, true );
-		run.frames( frames, 1, 2, 3, 4, 5, 6 );
+        idle = new Animation( 12, true );
+        idle.frames( frames, 0, 0, 1, 1, 2, 2, 1, 1 );
 
-		attack = new Animation( 24, false );
-		attack.frames( frames, 7, 8, 7, 8, 7, 8 );
+        run = new Animation( 10, true );
+        run.frames( frames, 0, 1, 2, 1, 0 );
 
-		die = new Animation( 10, false );
-		die.frames( frames, 9, 10, 11 );
+        attack = new Animation( 15, false );
+        attack.frames( frames, 3, 3, 4 );
 
-		play( idle );
-	}
+        die = new Animation( 18, false );
+        die.frames( frames, 5, 6, 7, 8, 9 );
+
+        play( idle );
+    }
+
+    @Override
+    public void die() {
+        super.die();
+        if (Dungeon.level.heroFOV[ch.pos]) {
+            emitter().burst( Speck.factory( Speck.BONE ), 6 );
+        }
+    }
+
+    @Override
+    public int blood() {
+        return 0xFFcccccc;
+    }
 }

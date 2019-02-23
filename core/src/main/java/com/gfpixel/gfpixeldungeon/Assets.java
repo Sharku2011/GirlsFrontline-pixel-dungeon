@@ -62,6 +62,8 @@ public class Assets {
 	public static final String EFFECTS		= "effects.png";
 
 	public static final String SHEEP		= "sheep.png";
+	public static final String SKS		= "sks.png";
+	public static final String PYRO		= "pyro.png";
 	public static final String KEEPER		= "shopkeeper.png";
     public static final String STAR		= "star.png";
     public static final String M16	= "m16a1.png";
@@ -98,7 +100,6 @@ public class Assets {
 	public static final String MANTI		= "manti.png";
 	public static final String UNDEAD		= "undead.png";
 	public static final String KING			= "king.png";
-	public static final String SKS		= "sks.png";
 	public static final String PIRANHA		= "piranha.png";
 	public static final String EYE			= "eye.png";
 	public static final String SUCCUBUS		= "succubus.png";
@@ -114,13 +115,19 @@ public class Assets {
 	public static final String MIMIC    	= "mimic.png";
 	public static final String ROT_LASH 	= "rot_lasher.png";
 	public static final String ROT_HEART	= "rot_heart.png";
-	public static final String GOLIATH		= "goliath.png";
-	public static final String CYCLOPS		= "cyclops.png";
+
+	public static final String GUARD		= "guard.png";
+	public static final String DRAGUN		= "dragun.png";
 	public static final String JUPITER		= "jupiter.png";
+	public static final String TYPHOOTIN	= "typhootin.png";
+
+	public static final String ACYCLOPS		= "acyclops.png";
+	public static final String SGCYCLOPS		= "sgcyclops.png";
 	public static final String HYDRA		= "hydra.png";
 	public static final String TYPHOON		= "typhoon.png";
-	public static final String TYPHOOTIN	= "typhootin.png";
+
 	public static final String ELID = "elid.png";
+
 	public static final String RIPPER = "Ripper.png";
 	public static final String JAGUAR = "Jaguar.png";
 	public static final String ELPHELT = "Elphelt.png";

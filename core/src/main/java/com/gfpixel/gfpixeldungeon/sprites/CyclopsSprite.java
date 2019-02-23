@@ -29,21 +29,21 @@ public class CyclopsSprite extends MobSprite {
     public CyclopsSprite() {
         super();
 
-        texture( Assets.CYCLOPS );
+        texture( Assets.ACYCLOPS );
 
-        TextureFilm frames = new TextureFilm( texture, 14, 16 );
+        TextureFilm frames = new TextureFilm( texture, 20, 20 );
 
         idle = new Animation( 2, true );
         idle.frames( frames, 0, 0, 0, 1 );
 
         run = new Animation( 10, true );
-        run.frames( frames, 2, 3, 4, 5, 6, 7 );
+        run.frames( frames, 4, 5, 6, 7, 8, 9 );
 
-        attack = new Animation( 15, false );
-        attack.frames( frames, 8,9 );
+        attack = new Animation( 18, false );
+        attack.frames( frames, 1, 1, 2, 1, 3, 1, 2, 1, 1 );
 
         die = new Animation( 10, false );
-        die.frames( frames, 10,11,12,13 );
+        die.frames( frames, 10, 11, 12 );
 
         play( idle );
     }

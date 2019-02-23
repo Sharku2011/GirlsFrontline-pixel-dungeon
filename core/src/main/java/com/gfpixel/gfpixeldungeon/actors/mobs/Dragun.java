@@ -19,42 +19,45 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.gfpixel.gfpixeldungeon.sprites;
+package com.gfpixel.gfpixeldungeon.actors.mobs;
 
-
-import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.watabou.noosa.MovieClip;
-import com.watabou.noosa.TextureFilm;
+import com.gfpixel.gfpixeldungeon.items.Torch;
+import com.gfpixel.gfpixeldungeon.sprites.DragunSprite;
+import com.watabou.utils.Random;
 
-public class NewbornElementalSprite extends MobSprite{
+public class Dragun extends Mob {
 
-	public NewbornElementalSprite() {
-		super();
+    {
+        spriteClass = DragunSprite.class;
 
-		texture( Assets.PYRO );
+        HP = HT = 30;
+        EXP = 16;
+        defenseSkill = 75;
+        baseSpeed = 2f;
+        maxLvl = 26;
 
-		TextureFilm frames = new TextureFilm( texture, 20, 19 );
+        loot = new Torch();
+        lootChance = 0.253f;
+    }
 
-		idle = new MovieClip.Animation( 1, true );
-		idle.frames( frames, 0, 0, 0, 0, 0, 1 );
+    @Override
+    public int damageRoll() {
+        return Random.NormalIntRange( 30, 35 );
+    }
 
-		run = new MovieClip.Animation( 12, true );
-		run.frames( frames, 5, 6, 7, 8, 9, 10 );
+    @Override
+    public int attackSkill( Char target ) {
+        return 55;
+    }
 
-		attack = new MovieClip.Animation( 15, false );
-		attack.frames( frames, 1, 2, 3, 4, 3, 4 );
+    @Override
+    protected float attackDelay() {
+        return 0.5f;
+    }
 
-		die = new MovieClip.Animation( 15, false );
-		die.frames( frames, 11, 12, 13 );
-
-		play( idle );
-	}
-
-	@Override
-	public void die() {
-		super.die();
-		remove( CharSprite.State.BURNING );
-	}
-
+    @Override
+    public int drRoll() {
+        return Random.NormalIntRange(0, 5);
+    }
 }

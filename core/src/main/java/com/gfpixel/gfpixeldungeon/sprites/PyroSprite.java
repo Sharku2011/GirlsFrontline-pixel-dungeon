@@ -21,32 +21,40 @@
 
 package com.gfpixel.gfpixeldungeon.sprites;
 
+
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.effects.particles.ShadowParticle;
+import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.watabou.noosa.MovieClip;
 import com.watabou.noosa.TextureFilm;
 
-public class GuardSprite extends MobSprite {
+public class PyroSprite extends MobSprite{
 
-	public GuardSprite() {
-		super();
+    public PyroSprite() {
+        super();
 
-		texture( Assets.GUARD );
+        texture( Assets.PYRO );
 
-		TextureFilm frames = new TextureFilm( texture, 19, 21 );
+        TextureFilm frames = new TextureFilm( texture, 20, 19 );
 
-		idle = new Animation( 2, true );
-		idle.frames( frames, 0, 0, 0, 1, 0, 0, 1, 1 );
+        idle = new MovieClip.Animation( 1, true );
+        idle.frames( frames, 0, 0, 0, 0, 0, 1 );
 
-		run = new MovieClip.Animation( 15, true );
-		run.frames( frames,  1, 2, 3, 4, 5 );
+        run = new MovieClip.Animation( 12, true );
+        run.frames( frames, 5, 6, 7, 8, 9, 10 );
 
-		attack = new MovieClip.Animation( 12, false );
-		attack.frames( frames, 6, 7, 6);
+        attack = new MovieClip.Animation( 15, false );
+        attack.frames( frames, 1, 2, 3, 4, 3, 4 );
 
-		die = new MovieClip.Animation( 8, false );
-		die.frames( frames, 1, 8, 9 );
+        die = new MovieClip.Animation( 15, false );
+        die.frames( frames, 11, 12, 13 );
 
-		play( idle );
-	}
+        play( idle );
+    }
+
+    @Override
+    public void die() {
+        super.die();
+        remove( CharSprite.State.BURNING );
+    }
+
 }

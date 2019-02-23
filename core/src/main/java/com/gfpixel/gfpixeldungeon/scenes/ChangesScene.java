@@ -449,7 +449,7 @@ public class ChangesScene extends PixelScene {
 		changes.hardlight( CharSprite.NEGATIVE );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton(new Image(Assets.CYCLOPS, 0, 0, 12, 16), "너프",
+		changes.addButton( new ChangeButton(new Image(Assets.ACYCLOPS, 0, 0, 20, 20), "너프",
 				"일부 적의 체력을 낮췄습니다.\n\n" +
 						"_-_ 하이드라의 체력이 360에서 190으로 너프됬습니다.\n\n" +
 						"_-_ 방패병의 체력이 늘어났지만, 이동속도와 공격력, 방어력이 감소했습니다."));
@@ -516,7 +516,7 @@ public class ChangesScene extends PixelScene {
 		changes.hardlight( CharSprite.NEGATIVE );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton(new Image(Assets.GOLIATH, 0, 0, 12, 19), "너프",
+		changes.addButton( new ChangeButton(new Image(Assets.DRAGUN, 0, 0, 21, 27), "너프",
 				"일부 적의 체력을 낮췄습니다.\n\n" +
 						"_-_ 기병의 체력을 30으로 조정했습니다. 높은 회피율과 공격력은 그대로지만, 한번의 명중으로 즉사할 체력으로 조정했습니다.\n\n" +
 						"_-_ 주피터의 장전시간이 1턴 증가했으며, 우산에 걸릴 확률을 크게 높혔습니다. 하지만 얻는 경험치는 1로 줄어들었습니다.\n\n" +

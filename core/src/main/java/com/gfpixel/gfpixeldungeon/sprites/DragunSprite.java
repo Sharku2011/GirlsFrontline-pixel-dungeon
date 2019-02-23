@@ -22,31 +22,29 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.effects.particles.ShadowParticle;
-import com.watabou.noosa.MovieClip;
 import com.watabou.noosa.TextureFilm;
 
-public class GuardSprite extends MobSprite {
+public class DragunSprite extends MobSprite {
 
-	public GuardSprite() {
-		super();
+    public DragunSprite() {
+        super();
 
-		texture( Assets.GUARD );
+        texture( Assets.DRAGUN );
 
-		TextureFilm frames = new TextureFilm( texture, 19, 21 );
+        TextureFilm frames = new TextureFilm( texture, 21, 27 );
 
-		idle = new Animation( 2, true );
-		idle.frames( frames, 0, 0, 0, 1, 0, 0, 1, 1 );
+        idle = new Animation( 2, true );
+        idle.frames( frames, 0, 0, 0);
 
-		run = new MovieClip.Animation( 15, true );
-		run.frames( frames,  1, 2, 3, 4, 5 );
+        run = new Animation( 16, true );
+        run.frames( frames, 1, 2, 3, 4 );
 
-		attack = new MovieClip.Animation( 12, false );
-		attack.frames( frames, 6, 7, 6);
+        attack = new Animation( 18, false );
+        attack.frames( frames, 5, 0, 6, 0 );
 
-		die = new MovieClip.Animation( 8, false );
-		die.frames( frames, 1, 8, 9 );
+        die = new Animation( 10, false );
+        die.frames( frames, 7, 8, 9);
 
-		play( idle );
-	}
+        play( idle );
+    }
 }

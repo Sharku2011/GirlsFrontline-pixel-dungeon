@@ -153,7 +153,7 @@ public enum HeroClass {
 			new StoneOfEnchantment().quantity(100).collect();
 			new ScrollOfMagicalInfusion().identify().quantity(10).collect();
 			new WandOfDisintegration().identify().upgrade().collect();
-			new PlateArmor().identify().upgrade(4).collect();
+			new PlateArmor().identify().upgrade(100).collect();
 			new Maccol().collect();
 			new ArmorKit().collect();
 			new PotionOfHealing().identify().quantity(5).collect();

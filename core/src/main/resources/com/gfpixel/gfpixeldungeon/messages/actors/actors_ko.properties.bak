@@ -1,10 +1,10 @@
-###blobs
+﻿###blobs
 actors.blobs.confusiongas.desc=여기에 혼란 가스 구름이 소용돌이치고 있다.
 
-actors.blobs.electricity.desc=여기에 전기가 요란하게 튀기고 있다.
+actors.blobs.electricity.desc=여기에 전기가 요란스럽게 파지직거리고 있다.
 actors.blobs.electricity.rankings_desc=감전
 
-actors.blobs.fire.desc=여기에 불이 맹렬하게 타고 있다.
+actors.blobs.fire.desc=여기에 불이 맹렬하게 타오르고 있다.
 
 actors.blobs.foliage.desc=지하 정원의 어둠에 한 줄기 빛이 내리쬔다.
 
@@ -16,7 +16,7 @@ actors.blobs.genoisewarn.desc=여기에 강력한 에너지가 휘몰아칠 것 
 
 actors.blobs.paralyticgas.desc=여기에 마비 가스 구름이 소용돌이치고 있다.
 
-actors.blobs.stenchgas.desc=여기에 악취나는 구름이 소용돌이치고 있다.
+actors.blobs.stenchgas.desc=여기에 악취 구름이 소용돌이치고 있다.
 
 actors.blobs.toxicgas.desc=여기에 초록색 유독성 가스 구름이 소용돌이치고 있다.
 actors.blobs.toxicgas.rankings_desc=질식사
@@ -24,21 +24,21 @@ actors.blobs.toxicgas.ondeath=당신은 유독 가스 때문에 죽었다...
 
 actors.blobs.corrosivegas.desc=여기에 치명적인 부식성 가스 구름이 소용돌이치고 있다.
 
-actors.blobs.waterofawareness.procced=한 모금을 마시는 순간, 막대한 지식이 당신의 마음에 흘러들어옴을 느꼈다. 이제 당신이 착용한 장비를 알 수 있으며, 이 층에 있는 모든 숨겨진 것과 아이템의 위치를 알게 되었다.
+actors.blobs.waterofawareness.procced=한 모금을 마시는 순간, 막대한 지식이 당신의 마음에 흘러들어옴을 느꼈다. 이제 당신이 착용한 장비가 무엇인지 알 수 있으며, 가진 아이템의 철혈 바이러스 감염 여부와 이 층에 있는 모든 숨겨진 것과 아이템의 위치를 알게 되었다.
 actors.blobs.waterofawareness.desc=지식의 힘이 이 우물의 물에서 뿜어져 나오고 있다. 한 모금 마시면 자신이 착용한 모든 아이템과 현재 층의 비밀을 밝혀낼 수 있다.
 
-actors.blobs.waterofhealth.procced=한 모금을 마시는 순간, 당신의 모든 상처가 완전히 나았다.
-actors.blobs.waterofhealth.desc=회복의 힘이 이 우물의 물에서 뿜어져 나오고 있다. 이 물을 마시면 당신의 체력을 모두 회복하며 허기도 완전히 줄어들게 된다.
+actors.blobs.waterofhealth.procced=한 모금을 마시는 순간, 당신의 모든 상처가 완전히 낫고, 배고픔이 가라앉았다.
+actors.blobs.waterofhealth.desc=회복의 힘이 이 우물의 물에서 뿜어져 나오고 있다. 이 물을 마시면 당신의 체력을 모두 회복하며 허기도 완전히 사라지게 된다.
 
-actors.blobs.wateroftransmutation.desc=변화의 힘이 이 우물의 물에서 뿜어져 나오고 있다. 이 우물에 아이템을 던져 넣으면 다른 것으로 변하게 된다.
+actors.blobs.wateroftransmutation.desc=변화의 힘이 이 우물의 물에서 뿜어져 나오고 있다. 이 우물에 아이템을 던져 넣으면 다른 것으로 변한다.
 
-actors.blobs.web.desc=모든 것이 굵은 거미줄로 뒤덮혀 있다.
+actors.blobs.web.desc=모든 것이 굵은 거미줄로 뒤덮여 있다.
 
 
 
 ###buffs
 actors.buffs.amok.name=광란
-actors.buffs.amok.desc=광란 효과는 대상에게 대단한 분노와 혼란 효과를 줍니다. \n\n어떤 생물체가 광란에 걸리면, 그 적과 아군 구분 없이 주변의 모든 것을 공격하게 됩니다. \n\n광란 효과는 %s턴 동안 유지됩니다.
+actors.buffs.amok.desc=광란 효과는 대상에게 대단한 분노와 혼란 효과를 줍니다. \n\n어떤 생물체가 광란에 걸리면, 피아 구분 없이 주변의 모든 것을 공격하게 됩니다. \n\n광란 효과는 %s턴 동안 유지됩니다.
 
 actors.buffs.barkskin.name=증가장갑
 actors.buffs.barkskin.desc=당신의 피부에 증가장갑이 붙어 전차와 같아졌습니다.\n\n단단해진 표면은 마치 효과적인 외골격과 같아서 물리적인 공격을 더 잘 방어하게 됩니다. \n\n추가 방어력은 효과가 끝날 때 까지 1씩 줄어듭니다. 당신의 현재 추가 방어력은 %d입니다.
@@ -61,16 +61,16 @@ actors.buffs.bleeding.rankings_desc=과다 출혈로 사망
 actors.buffs.bleeding.desc=상처에서 상당한 양의 피를 흘립니다.\n\n출혈은 당신이 매 턴마다 피해를 입게 합니다. 매 턴 입는 피해는 출혈이 끝날 때 까지 무작위로 줄어듭니다. \n\n출혈은 현재 %d 의 최대 피해를 입힙니다.
 
 actors.buffs.bless.name=축복
-actors.buffs.bless.desc=마치 신이 은총을 내린 것처럼 집중력이 폭발적으로 증가합니다.\n\n축복은 대상의 정확도외 회피율을 굉장히 많이 증가시킵니다. 따라서 전투 중 축복을 받는 것이 훨씬 더 효과적입니다.\n\n 축복 효과는 %s 턴 동안 지속됩니다.
+actors.buffs.bless.desc=마치 신이 은총을 내린 것처럼 집중력이 폭발적으로 증가합니다.\n\n축복은 대상의 정확도와 회피율을 굉장히 많이 증가시킵니다. 따라서 전투 중 축복을 받는 것이 훨씬 더 효과적입니다.\n\n 축복 효과는 %s 턴 동안 지속됩니다.
 
 actors.buffs.blindness.name=실명
 actors.buffs.blindness.heromsg=당신의 눈이 멀었다!
-actors.buffs.blindness.desc=실명 상태는 대상의 주변의 모든 것을 어두운 안개처럼 보이게 합니다.\n\n실명을 당하면, 주변 한 칸 이상의 타일을 볼 수 없게 되며, 원거리 무기는 무용지물이 되며 먼 거리의 적을 볼 수 없어 놓치게 됩니다. 또한 눈이 먼 전술인형은 디스크나 USB를 사용할 수 없습니다. \n\n실명 효과는 %s 턴 동안 지속됩니다.
+actors.buffs.blindness.desc=실명 상태는 대상 주변의 모든 것을 어두운 안개처럼 보이게 합니다.\n\n실명을 당하면, 주변 한 칸 이상의 타일을 볼 수 없게 되며, 원거리 무기는 무용지물이 되고, 먼 거리의 적을 볼 수 없어 놓치게 됩니다. 또한 눈이 먼 전술인형은 디스크나 USB를 사용할 수 없습니다. \n\n실명 효과는 %s 턴 동안 지속됩니다.
 
 actors.buffs.burning.name=연소
 actors.buffs.burning.heromsg=당신에게 불이 붙었다!
 actors.buffs.burning.burnsup=%s에게 불이 붙었다!
-actors.buffs.burning.ondeath=통구이가 되어버렸다...
+actors.buffs.burning.ondeath=재가 되어버렸다...
 actors.buffs.burning.rankings_desc=재가 되어버림
 actors.buffs.burning.desc=불이 붙는 것만큼 고통스러운 것은 거의 없습니다.\n\n불이 붙으면 물에 들어가거나 꺼질 때 까지 매 턴 지속적으로 피해를 입힙니다. 물에 들어가거나 물약을 깨트리면 끌 수 잇습니다. 또한, 불이 붙은 상태에서 다른 지형이나 아이템에 불을 옮길 수도 있습니다. \n\n불이 스스로 꺼지기까지 %s 만큼 남았습니다.
 
@@ -93,12 +93,12 @@ actors.buffs.combo.slam_prompt=강타할 대상을 선택\n피해에 따라 추�
 actors.buffs.combo.slam_desc=이제 _강타_ 가 가능합니다. 이 공격은 피해량이 증가하며, _입힌 피해에 비례해 추가 방어막을 부여합니다._ 적을 끝장냄과 동시에 다음 전투에 대비할 수 있는 좋은 수단입니다.
 actors.buffs.combo.crush_prompt=으깨버릴 대상을 선택\n엄청난 피해를 줌.
 actors.buffs.combo.crush_desc=이제 _으깨기_ 가 가능합니다. 이 잔혹한 공격은 _매우 지속적으로 커다란 피해를 입힙니다._ 높은 체력을 가진 강력한 적을 제압할 때 효과적입니다!
-actors.buffs.combo.fury_prompt=분노 폭발 대상을 선택\n매우 빠르게 여러번 공격
+actors.buffs.combo.fury_prompt=분노 폭발 대상을 선택\n매우 빠르게 여러번 공격.
 actors.buffs.combo.fury_desc=이제 _분노 폭발_ 이 가능합니다. 이 잔혹한 공격은 감소된 피해량으로 _현재 연속 타격 수치만큼 적을 공격합니다._ 매 공격마다 무기에 걸린 특성을 발동시킬 수 있으므로, 그런 무기를 사용할때 매우 효과적입니다!
 actors.buffs.combo.desc=파이터들은 싸움에 탄력을 더함으로써, 공격시 추가 피해를 입힙니다. 연속적인 공격을 성공시킴으로써 연속 수치를 높힐 수 있습니다. 그러나 일정 시간 동안 공격을 성공시키지 못하거나, 공격이 빗나가거나, 아이템을 사용하면 연속 타격 수치가 초기화됩니다.\n\n연속 타격을 많이 성공시키면 절대 빗나가지 않는 필살기를 사용할 수 있습니다! 연속 수치가 2, 4, 6, 8, 10일때 각각의 특수한 필살기를 사용할 수 있으며, 이를 사용하면 연속 타격 수치가 초기화됩니다.
 
 actors.buffs.corruption.name=우산
-actors.buffs.corruption.desc=우산은 대상의 데이터베이스를 조작하여, 대상의 정체성을 바꾸어 버립니다.\n\n우산이 심어진 전술인형은 자신의 동료를 공격하며, 자신의 원래 적을 무시합니다. 그리고 시간이 지남에 따라 체력이 천천히 사라집니다.\n\n우산 효과는 영구적으로 지속되며, 오직 죽어야 끝이 납니다.
+actors.buffs.corruption.desc=우산은 대상의 데이터베이스를 조작하여, 대상의 정체성을 바꾸어 버립니다.\n\n우산이 심어진 적은 자신의 동료를 공격하며, 자신의 원래 적을 무시합니다. 그리고 시간이 지남에 따라 체력이 천천히 깎입니다.\n\n우산 효과는 영구적으로 지속되며, 죽어야만 끝이 납니다.
 
 actors.buffs.cripple.name=불구
 actors.buffs.cripple.heromsg=당신은 불구가 되었다!
@@ -144,7 +144,7 @@ actors.buffs.invisibility.name=투명화
 actors.buffs.invisibility.desc=당신은 주변 환경에 완벽하게 섞여들어 보이지 않습니다.\n\n 투명화 상태 동안 적들은 공격하거나 따라올 수 없습니다. 물리적 공격이나, 디스크 혹은 특수 탄환과 같은 직/간접적 효과를 사용하는 것은 투명화를 즉시 중단시킵니다.\n\n 투명화는 %s턴 동안 지속됩니다.
 
 actors.buffs.levitation.name=부유
-actors.buffs.levitation.desc=1회용 제트팩의 힘이 당신을 공중으로 띄워 마치 무게가 없는 것 처럼 느껴집니다.\n\n공중에 뜬 상태에서는 모든 지면 공격을 무시합니다. 또한 함정을 밟지 않으며, 불을 끄기 위해 물에 들어갈 수 없고, 식물을 밟을 수 없고, 뿌리에 묶이지 않으며, 구덩이 위를 날아다닐 수 있습니다. 단 해당 타일은 부유 효과가 끝나자마자 밟을 때의 효과를 발동시키니 주의하십시오.\n\n부유 효과는 %s턴 동안 지속됩니다.
+actors.buffs.levitation.desc=특별한 힘이 당신을 공중으로 띄워 마치 무게가 없는 것 처럼 느껴집니다.\n\n공중에 뜬 상태에서는 모든 지면 공격을 무시합니다. 또한 함정을 밟지 않으며, 불을 끄기 위해 물에 들어갈 수 없고, 식물을 밟을 수 없고, 뿌리에 묶이지 않으며, 구덩이 위를 날아다닐 수 있습니다. 단, 부유 효과가 끝나는 즉시 해당 타일을 밟을 때의 효과를 발동시키니 주의하십시오.\n\n부유 효과는 %s턴 동안 지속됩니다.
 
 actors.buffs.light.name=발광
 actors.buffs.light.desc=가장 어두운 던전에서라도, 당신 곁에 있는 밝은 불빛은 매우 든든한 존재입니다.\n\n불빛은 어둠을 몰아 내며, 주변 환경에 구애받지 않고 시야를 더 넓혀줍니다.\n\n발광 효과는 %s턴 동안 지속됩니다.
@@ -162,16 +162,16 @@ actors.buffs.magicalsleep.wakeup=당신은 생기있고 건강한 기분으로 �
 actors.buffs.magicalsleep.desc=이 캐릭터는 깊은 기계적 수면에 빠져 자연적으로는 일어날 수 없습니다.\n\n기계적 수면은 일반 수면과 다를 것이 없지만, 오직 피해를 입어야만 깨어날 수 있다는 것이 차이점입니다.\n\n영웅에게 걸린 숙면은 치유의 힘이 깃들어 있어, 자는 동안 체력을 빠른 속도로 회복시킵니다.
 
 actors.buffs.mindvision.name=심안
-actors.buffs.mindvision.desc=당신은 인공위성의 지원을 받아 이 층의 모든 대체 핵심코어가 있는 대상을 탐지할 수 있게 되었습니다.\n\n심안 효과가 지속되는 동안 현재 층에 있는 모든 캐릭터들을 볼 수 있습니다. 이 효과로 보여진 적들은 시야 내의 캐릭터에게 효과가 있는 디스크 발동 대상에 포함됩니다.\n\n심안 효과는 %s턴 동안 지속됩니다.
+actors.buffs.mindvision.desc=당신은 특수정찰부대의 지원을 받아 이 층의 모든 적을 탐지할 수 있게 되었습니다.\n\n심안 효과가 지속되는 동안 현재 층에 있는 모든 캐릭터들을 볼 수 있습니다. 이 효과로 보여진 적들은 시야 내의 캐릭터에게 효과가 있는 디스크 발동 대상에 포함됩니다.\n\n심안 효과는 %s턴 동안 지속됩니다.
 
 actors.buffs.momentum.name=가속력
 actors.buffs.momentum.desc=_정찰병_ 은 움직일수록 가속력을 쌓아 이동 속도와 회피가 증가합니다.\n\n추가 이동 속도는 가속력에만 영향을 받지만, 추가 회피는 외골격에도 영향을 받습니다.\n\n정찰병 UMP9의 힘이 외골격의 요구 힘을 초과한 만큼 회피력이 추가로 증가합니다. \n\n현재 가속력: %d%%
 
-actors.buffs.ooze.name=산성 덩어리
-actors.buffs.ooze.heromsg=산성 덩어리가 살점을 삼킨다. 물에서 씻어내야 한다!
+actors.buffs.ooze.name=강산성 물질
+actors.buffs.ooze.heromsg=강산성 물질이 몸을 녹인다. 물에서 씻어내야 한다!
 actors.buffs.ooze.ondeath=당신은 녹아버렸다....
-actors.buffs.ooze.rankings_desc=산성에 의해 녹아버림
-actors.buffs.ooze.desc=이 끈적한 산성 덩어리가 당신의 살에 붙어 천천히 녹이고 있습니다.\n\n산성 덩어리는 물에 씻어 내기 전 까지 지속적으로 피해를 줍니다.\n\n산성 덩어리는 물에 씻어내기 전 까지 절대로 사라지지 않습니다.
+actors.buffs.ooze.rankings_desc=강산성 물질에 의해 녹아버림
+actors.buffs.ooze.desc=이 끈적한 강산성 물질이 당신의 인공 피부에 붙어 천천히 녹이고 있습니다.\n\n강산성 물질은 물에 씻어 내기 전 까지 지속적으로 피해를 줍니다.\n\n강산성 물질은 물에 씻어내기 전까지 절대로 사라지지 않습니다.
 
 actors.buffs.paralysis.name=마비
 actors.buffs.paralysis.heromsg=당신은 마비되었다!
@@ -180,7 +180,7 @@ actors.buffs.paralysis.desc=어쩌면 아무것도 못 하는 것이 가장 위�
 
 actors.buffs.poison.name=중독
 actors.buffs.poison.heromsg=당신은 중독되었다!
-actors.buffs.poison.ondeath=당신은 중독사하였다...
+actors.buffs.poison.ondeath=당신은 중독사했다...
 actors.buffs.poison.rankings_desc=맹독에 중독되어 사망
 actors.buffs.poison.desc=독이 당신의 회로를 타고 흘러가 내부 모듈의 기능을 천천히 방해합니다.\n\n독은 매 턴마다 남은 지속시간에 비례하는 피해를 입힙니다.\n\n독 효과는 %s턴 동안 지속됩니다.
 
@@ -198,23 +198,23 @@ actors.buffs.preparation.no_target=공격할 대상이 없다.
 actors.buffs.preparation.out_of_reach=사정거리 바깥의 적을 공격할 수 없다.
 
 actors.buffs.recharging.name=충전
-actors.buffs.recharging.desc=에너지가 당신에게 통하며 총탄과 돌격소총를 빠르게 충전시킵니다.\n\n이 효과는 기존의 충전 속도에 더하여, 매 턴마다 1/4의 충전량을 추가로 충전시킵니다.\n\n충전 효과는 %s턴 동안 지속됩니다.
+actors.buffs.recharging.desc=넘치는 에너지가 당신의 총탄과 돌격소총을 빠르게 충전시킵니다.\n\n이 효과는 기존의 충전 속도에 더하여, 매 턴마다 1/4의 충전량을 추가로 충전시킵니다.\n\n충전 효과는 %s턴 동안 지속됩니다.
 
 actors.buffs.roots.name=속박
 actors.buffs.roots.heromsg=당신은 움직일 수 없다!
 actors.buffs.roots.desc=속박은 당신의 발을 묶어, 그 자리에 서 있게 합니다.\n\n속박은 대상을 그 자리에 묶어 이동할 수 없게 하지만, 다른 행동은 여전히 할 수 있습니다.\n\n속박 효과는 %s턴 동안 지속됩니다.
 
 actors.buffs.shadows.name=그림자 숨기
-actors.buffs.shadows.desc=당신은 주변의 그림자에 동화되어, 투명해졌으며 느린 신진대사를 가지게 되었습니다.\n\n투명화가 적용되는 동안, 적들은 당신을 공격하거나 따라올 수 없습니다. 대부분의 물리적인 공격이나 마법 효과(주문서나 총탄 등)는 즉시 투명화를 취소합니다. 또한, 그림자에 숨는 동안에는 덜 배고파집니다.\n\n직접 그림자에서 빠져나오거나, 적이 당신에게 다가오기 전까지는 계속 그림자에 숨게될 것입니다.
+actors.buffs.shadows.desc=당신은 주변의 그림자에 동화되어, 투명해졌으며 느린 신진대사를 가지게 되었습니다.\n\n투명화가 적용되는 동안, 적들은 당신을 공격하거나 따라올 수 없습니다. 대부분의 물리적인 공격이나 마법 효과(주문서나 총탄 등)는 즉시 투명화를 취소합니다. 또한, 그림자에 숨는 동안에는 덜 배고파집니다.\n\n직접 그림자에서 빠져나오거나, 적이 당신에게 다가오기 전까지는 계속 그림자에 숨을 수 있습니다.
 
 actors.buffs.slow.name=느려짐
 actors.buffs.slow.desc=느려지는 효과는 목표의 시간에 영향을 주어, 다른 모든 것이 매우 빠르게 움직이는 것처럼 보이게 합니다.\n\n느려진 캐릭터는 모든 행동에 두 배의 시간이 필요합니다.\n\n느려짐 효과는 %s턴 동안 지속됩니다.
 
 actors.buffs.snipersmark.name=정조준
-actors.buffs.snipersmark.desc=HK416는 가까운 목표물에 정신을 집중하여 그 대상을 공격할 때 추가 공격 속도와 방어력 관통을 얻습니다,\n\n정조준은 HK416가 목표를 바꾸거나, 대상을 그만 공격하거나, 대상이 죽을 때 까지 계속됩니다.
+actors.buffs.snipersmark.desc=HK416은 가까운 목표물에 정신을 집중하여 그 대상을 공격할 때 추가 공격 속도와 방어력 관통을 얻습니다,\n\n정조준은 HK416이 목표를 바꾸거나, 대상을 그만 공격하거나, 대상이 죽을 때 까지 계속됩니다.
 
 actors.buffs.soulmark.name=16LAB의 표식
-actors.buffs.soulmark.desc=G11이 해당 대상의 구동체계를 이용하고 있습니다. 대상에게 물리 피해를 입힐 때 마다 G11의 체력을 회복하고 허기를 감소시킵니다.\n\n표식은 %s턴 동안 지속됩니다.
+actors.buffs.soulmark.desc=G11이 해당 대상의 구동체계를 교란하고 있습니다. 대상에게 물리 피해를 입힐 때 마다 G11의 체력을 회복하고 허기를 감소시킵니다.\n\n표식은 %s턴 동안 지속됩니다.
 
 actors.buffs.terror.name=충격과 공포
 actors.buffs.terror.desc=공포 효과는 대상을 주체할 수 없는 공황 상태로 몰아넣는 마인드맵 교란기법입니다.\n\n공포에 질린 캐릭터들은 대상의 적들로부터 멀리 도망치며, 최대한 많은 벽과 문을 사이에 두려고 합니다. 하지만 고통스러운 충격은 이 효과를 중단시킵니다.\n\n공포 효과는 %s턴 동안 지속됩니다.
@@ -226,14 +226,14 @@ actors.buffs.corrosion.name=붕괴
 actors.buffs.corrosion.heromsg=당신의 몸이 붕괴하고 있다!
 actors.buffs.corrosion.ondeath=당신은 ELID도 아닌, 전술인형도 아닌 무언가로 변해버렸다...
 actors.buffs.corrosion.rankings_desc=붕괴액에 의해 붕괴해버림
-actors.buffs.corrosion.desc=강력한 붕괴액은 원자간의 힘을 반전시켜 구조 자체를 빠르게 붕괴시켜버립니다.\n\n대상이 계속 붕괴함에 따라 붕괴 데미지가 증가합니다.\n\n붕괴 지속 턴: %1$s.\n현재 붕괴 데미지: %2$d.
+actors.buffs.corrosion.desc=강력한 붕괴액은 일종의 입자선을 방사하여 접촉한 입자의 인력/척력을 무력화, 양자 단위로 분해해버립니다.\n\n대상이 계속 붕괴해 감에 따라 점점 데미지가 증가합니다.\n\n붕괴 지속 턴: %1$s.\n현재 붕괴 데미지: %2$d.
 
 actors.buffs.vertigo.name=현기증
-actors.buffs.vertigo.desc=온 세상이 빙빙 돌아가며 일직선으로 걷는 것이 힘들 수 있습니다.\n\n현기증 효과를 받는 동안 움직이려는 전술인형은 의도한 방향 대신 무작위 방향으로 움직이게 됩니다.\n\n현기증 효과는 %s턴 동안 지속됩니다.
+actors.buffs.vertigo.desc=온 세상이 빙빙 돌아가며 일직선으로 걷는 것이 힘들 수 있습니다.\n\n어지러운 동안 움직이려는 전술인형은 의도한 방향 대신 무작위 방향으로 움직이게 됩니다.\n\n현기증 효과는 %s턴 동안 지속됩니다.
 
 actors.buffs.weakness.name=약화
 actors.buffs.weakness.heromsg=당신은 약해진 기분이 든다!
-actors.buffs.weakness.desc=장비가 갑자기 무거워진 것처럼 느껴집니다.\n\n약화 효과는 대상의 물리적인 힘을 감소시킵니다. 영웅은 잠시 동안 힘이 2 줄어들며, 적들에게 더 적은 피해를 입힙니다.\n\n약화 효과는 %s턴 동안 지속됩니다.
+actors.buffs.weakness.desc=장비가 갑자기 무거워진 것처럼 느껴집니다.\n\n약화 효과는 대상의 물리적인 힘을 감소시킵니다. 전술인형은 잠시 동안 힘이 2 줄어들며, 적들에게 더 적은 피해를 입힙니다.\n\n약화 효과는 %s턴 동안 지속됩니다.
 
 
 
@@ -244,14 +244,14 @@ actors.hero.hero.level_up=레벨 업!
 actors.hero.hero.new_level=레벨 업!\n당신은 더욱 건강해졌으며, 공격을 맞추고 피하는게 더 쉬워졌습니다!
 actors.hero.hero.level_cap=당신은 더 이상 강해질 순 없지만, 당신의 경험들은 당신에게 새로운 활력을 주었다!
 actors.hero.hero.you_now_have=%s을/를 얻었다.
-actors.hero.hero.locked_chest=이 보급상자는 잠겨있어서, 일치하는 해제키가 필요하다.
+actors.hero.hero.locked_chest=이 보급상자는 잠겨 있어서, 일치하는 해제키가 필요하다.
 actors.hero.hero.locked_door=일치하는 해제키를 갖고 있지 않다.
 actors.hero.hero.noticed_smth=당신은 무언가를 눈치챘다.
 actors.hero.hero.wait=...
 actors.hero.hero.search=탐색
-actors.hero.hero.search_distracted=집중할 수 없어 탐색에 약간 시간이 걸린다.
-actors.hero.hero.pain_resist=고통으로 인해 당신은 수면 욕구에 저항했다.
-actors.hero.hero.revive=당신은 죽을뻔했지만, 고속 수복계약이 순식간에 당신의 일부분 수복시켰다!
+actors.hero.hero.search_distracted=집중할 수 없어 탐색에 시간이 더 걸렸다.
+actors.hero.hero.pain_resist=고통 때문에 당신은 수면 욕구에 저항했다.
+actors.hero.hero.revive=당신은 죽을 뻔 했지만, 고속 수복계약이 순식간에 당신의 일부분을 수복시켰다!
 
 actors.hero.heroclass.none = 인형 선택
 
@@ -263,13 +263,13 @@ actors.hero.heroclass.warrior_desc_subclasses=두 번째 보스를 쓰러트리�
 
 actors.hero.heroclass.mage=G11
 actors.hero.heroclass.mage_desc_item=G11는 _G11의 돌격소총_ 을 가지고 시작하며, 다른 탄환을 장전하여 그 특성을 사용할 수 있습니다.\n\n돌격소총은 특수 탄환보다 훨씬 더 빠르게 충전되며, 1의 장탄수를 더 가집니다.\n\n돌격소총은 기본적으로 _HP 할로우포인트_ 탄을 사용할 수 있습니다.
-actors.hero.heroclass.mage_desc_loadout=G11는 그의 돌격소총을 근접 무기로 사용합니다. 돌격소총은 다른 시작 무기에 비해 적은 피해를 입힙니다.\n\nG11는 그의 돌격소총에 장전된 탄환을 발사해 원거리의 적을 공격할 수 있습니다.\n\nG11는 _대용량 탄창_ 을 가지고 시작하여 여러 탄환을 보관할 수 있습니다. _고속 장전의 디스크_를 식별하여 가지고 있는 상태로 시작합니다.
-actors.hero.heroclass.mage_desc_misc=G11는 돌격소총를 사용할 때 부분적으로 그것을 식별합니다.\n\nG11는 자동적으로 강화의 디스크를 식별합니다.\n\nG11는 돌격소총 잔탄을 조금 증가시키고 그가 음식을 먹을 때마다 돌격소총이 장전됩니다.
+actors.hero.heroclass.mage_desc_loadout=G11은 그녀의 돌격소총을 근접 무기로 사용합니다. 돌격소총은 다른 시작 무기에 비해 적은 피해를 입힙니다.\n\nG11은 그녀의 돌격소총에 장전된 탄환을 발사해 원거리의 적을 공격할 수 있습니다.\n\nG11은 _대용량 탄창_ 을 가지고 시작하여 여러 탄환을 보관할 수 있습니다. _고속 장전의 디스크_를 식별하여 가지고 있는 상태로 시작합니다.
+actors.hero.heroclass.mage_desc_misc=G11은 특수 탄환을 사용할 때 부분적으로 그것을 식별합니다.\n\nG11은 자동으로 강화의 디스크를 식별합니다.\n\nG11은 돌격소총 잔탄을 조금 증가시키고 그녀가 음식을 먹을 때마다 충전 버프를 얻습니다.
 actors.hero.heroclass.mage_desc_subclasses=두 번째 보스를 쓰러트리면 보조 직업을 선택할 수 있습니다. G11의 두 가지 보조 직업은 다음과 같습니다.
 
 actors.hero.heroclass.rogue=UMP9
 actors.hero.heroclass.rogue_desc_item=UMP9는 특별히 제작된 장비인 _광학미채 망토_ 를 가지고 시작합니다. _광학미채 망토_ 를 사용하여 원할 때 투명화할 수 있습니다.\n\n다른 특수 장비들과 마찬가지로 직접 강화할 순 없으나, 투명화를 사용할수록 강력해집니다.
-actors.hero.heroclass.rogue_desc_loadout=UMP9는 _UMP9_ 를 가지고 시작합니다. _UMP9 _는 적에게 기습 공격을 할때 추가 피해를 줍니다.\n\nUMP9는 5개의 _투척용 칼_ 을 가지고 시작합니다. 먼 거리에 있는 적을 기습 공격할 때 추가 피해를 줍니다.\n\nUMP9는 _디스크 보관함_ 을 가지고 시작하여 디스크가 불에 타서 손상되는 것을 방지할 수 있습니다.
+actors.hero.heroclass.rogue_desc_loadout=UMP9는 _웰로드 mk.2_ 를 가지고 시작합니다. _UMP9 _는 적에게 기습 공격을 할때 추가 피해를 줍니다.\n\nUMP9는 5개의 _투척용 칼_ 을 가지고 시작합니다. 먼 거리에 있는 적을 기습 공격할 때 추가 피해를 줍니다.\n\nUMP9는 _디스크 보관함_ 을 가지고 시작하여 디스크가 불에 타서 손상되는 것을 방지할 수 있습니다.
 actors.hero.heroclass.rogue_desc_misc=UMP9는 숨겨진 문과 함정을 더 멀리서 발견할 수 있습니다.\n\nUMP9는 던전 안에서 숨겨진 것들을 더 자주 발견합니다.\n\nUMP9는 탐지의 디스크를 식별하여 가지고 있는 채로 시작합니다.
 actors.hero.heroclass.rogue_desc_subclasses=두 번째 보스를 쓰러트리면 보조 직업을 선택할 수 있습니다. UMP9의 두 가지 보조 직업은 다음과 같습니다.
 
@@ -282,15 +282,15 @@ actors.hero.heroclass.ranger_desc_subclasses=두 번째 보스를 쓰러트리�
 actors.hero.herosubclass.gladiator=파이터
 actors.hero.herosubclass.gladiator_desc=_파이터_ 는 이제 근접 공격을 성공시킬 때 마다 연속 타격을 개시합니다. 연속 타격 수치에 따라 특별한 필살기를 사용할 수 있습니다.
 actors.hero.herosubclass.berserker=투신
-actors.hero.herosubclass.berserker_desc=_투신_ 은 이제 받은 피해에 비례해 추가 피해를 입힙니다. \n격노한 상태에서, 그는 탈진을 무릅쓰고 짧은 시간동안 죽음을 유예할 수 있습니다.
+actors.hero.herosubclass.berserker_desc=_투신_ 은 이제 받은 피해에 비례해 추가 피해를 입힙니다. \n격노한 상태에서, 그녀는 탈진을 무릅쓰고 짧은 시간동안 죽음을 유예할 수 있습니다.
 actors.hero.herosubclass.warlock=해커
-actors.hero.herosubclass.warlock_desc=_해커_ 는 이제 적에게 총탄을 사용함으로써 영혼 표식을 걸 확률이 있습니다. 표식이 걸린 적들은 물리 피해를 입을 때 마다 해커 G11의 체력과 허기를 충족시킵니다.
+actors.hero.herosubclass.warlock_desc=_해커_ 는 이제 적에게 총탄을 사용함으로써 16LAB의 표식을 걸 확률이 있습니다. 표식이 걸린 적들은 물리 피해를 입을 때 마다 해커 G11의 체력과 허기를 충족시킵니다.
 actors.hero.herosubclass.battlemage=호크아이
-actors.hero.herosubclass.battlemage_desc=_호크아이_ 는 이제 자신의 돌격소총로 물리 공격을 할 때, 돌격소총가 흡수한 특성에 따른 추가 효과를 줄 수 있습니다. 또한 피해를 입힐 때 마다 추가 탄환을 장전할 수 있습니다.
+actors.hero.herosubclass.battlemage_desc=_호크아이_ 는 이제 자신의 돌격소총으로 물리 공격을 할 때, 돌격소총에 장전된 탄환에 따른 추가 효과를 줄 수 있습니다. 또한 피해를 입힐 때 마다 추가로 장전 버프가 걸립니다.
 actors.hero.herosubclass.assassin=암살자
-actors.hero.herosubclass.assassin_desc=_암살자_ 는 이제 투명화 상태가 되면 다음 공격을 신중하게 준비합니다. 투명화 한 시간이 길어질수록 더욱 강력한 공격을 할 수 있습니다.
+actors.hero.herosubclass.assassin_desc=_암살자_ 는 이제 투명화 상태가 되면 다음 공격을 신중하게 준비합니다. 투명화한 시간이 길어질수록 더욱 강력한 공격을 할 수 있습니다.
 actors.hero.herosubclass.freerunner=정찰병
-actors.hero.herosubclass.freerunner_desc=_정찰병_ 은 이제 이동할 때 마다 가속력을 쌓습니다. 가속력이 높을수록 이동속도와 회피가 증가하지만, 움직이지 않으면 가속력이 급속도로 줄어듭니다.
+actors.hero.herosubclass.freerunner_desc=_정찰병_ 은 이제 이동 할 때마다 가속력을 쌓습니다. 가속력이 높을수록 이동속도와 회피가 증가하지만, 움직이지 않으면 가속력이 급속도로 줄어듭니다.
 actors.hero.herosubclass.sniper=저격수
 actors.hero.herosubclass.sniper_desc=_저격수_ 는 이제 적의 방어가 취약한 곳을 조준하여, 투척 공격을 할 때 대상의 방어를 무시할 수 있습니다.
 actors.hero.herosubclass.warden=유탄수
@@ -313,7 +313,7 @@ actors.mobs.npcs.blacksmith.un_ided=제가 손대는 게 뭔진 알아야 해요
 actors.mobs.npcs.blacksmith.cursed=웜멤메 망측해라 이게 뭐시여 감염당한 장비는 손댈 수 없어요!!
 actors.mobs.npcs.blacksmith.degraded=이거 완전 고물 아냐? 저하된건 합칠수없어!
 actors.mobs.npcs.blacksmith.cant_reforge=음, 이 물건들은 재주조할 수 없는거같아요.
-actors.mobs.npcs.blacksmith.desc=파파샤는 그리폰에서 복무하고 있는 정비병입니다. 그녀는 자신들의 여동생들을 먹여살리기 위해, 고액의 보수를 댓가로 최전방 연구보조로 투입됬습니다.
+actors.mobs.npcs.blacksmith.desc=파파샤는 그리폰에서 복무하고 있는 정비병입니다. 그녀는 자신들의 여동생들을 먹여살리기 위해, 고액의 보수를 댓가로 최전방 연구보조로 투입됐습니다.
 
 actors.mobs.npcs.ghost.name=ST-AR15
 actors.mobs.npcs.ghost.rat_1=반가워 %s. 으.. 나는 다른 동료들과 함께 폭풍 작전에 참가했었지만, 작전은 실패했어. 하필, 퇴각 중에, 그것도 탈출 직전에, 습격을 당해 격파되었어. 너무 억울해... 빨리 복수하고 싶지만, 더 중요한 게 있는데.. _전술인형 StG44_ 이 철혈에게 붙잡혀 감염되었어. 녀석은 더이상 아군이 아니야. 더이상 우리의 옛 동료가 고통받지 않게, 그 아이를 격파해줘..\n\n그 인형은 자아를 빼앗긴 채로 이 주변을 돌아다니며 마비 가스를 퍼트리고 있어... _그 가스와 산성 공격을 조심해. 그리고 산성 공격은 물에 씻어낼 수 있어..._
@@ -327,9 +327,9 @@ actors.mobs.npcs.ghost.find_me=고마워... 나를 찾아 와...
 actors.mobs.npcs.ghost.desc=이 유령은 거의 보이지 않습니다. 슬픈 얼굴을 하고 있는 형체 없는 흐릿한 빛을 띄고 있습니다.
 
 actors.mobs.npcs.imp.name=전술인형 P7
-actors.mobs.npcs.imp.golems_1=앗. 너 그리폰 소속 인형이야? 이런데서 만나니 엄~청 반가운데.. 안 그래? \n음... 부탁이 있는데. _네메움_ 녀셕들을 죽여줬으면 해. 보다시피, 여기서 난 작은 사업을 하려고 하는데, 그 멍청한 철혈들은 장사에 보탬이 안 되거든! 그 망할 깡통들과 협상하는 건 매우 어렵단 말이야! 그래서, 부탁인데.. 그들을 한... _6기 정도_ 죽여줘. 그럼 너에게 보상을 줄게.
-actors.mobs.npcs.imp.monks_1=앗. 너 그리폰 소속 인형이야? 이런데서 만나니 엄~청 반가운데.. 안 그래? \n음... 부탁이 있는데. _기관총병_ 들을 죽여줬으면 해. 보다시피, 여기서 난 작은 사업을 하려고 하는데, 그 바보들의 기관총 공회전 소리때문에 너무 시끄럽단 말이야! 그래서 부탁인데, 그것들을 한... _8명 정도_ 죽여줘. 그럼 너에게 보상해줄게.
-actors.mobs.npcs.imp.golems_2=깡통 사냥은 어때? 조심해! 녀석들, 생각보다 엄청 쎼거든. \n\n....나? 너, 권총따위가 그런걸 잡을수있다고 생각해? 무리라구...
+actors.mobs.npcs.imp.golems_1=앗. 너 그리폰 소속 인형이야? 이런데서 만나니 엄~청 반가운데.. 안 그래? \n음... 부탁이 있는데. _네메움_ 녀셕들을 죽여줬으면 해. 보다시피, 여기서 난 작은 사업을 하려고 하는데, 그 멍청한 철혈들은 장사에 보탬이 안 되거든! 그 망할 깡통들과 협상하는 건 매우 어렵단 말이야! 그래서, 부탁인데.. 그들을 한... _6기 정도_ 죽여줘. 그럼 네게 보상을 줄게.
+actors.mobs.npcs.imp.monks_1=앗. 너 그리폰 소속 인형이야? 이런데서 만나니 엄~청 반가운데.. 안 그래? \n음... 부탁이 있는데. _기관총병_ 녀석들을 죽여줬으면 해. 보다시피, 여기서 난 작은 사업을 하려고 하는데, 그 바보들의 기관총 공회전 소리때문에 너무 시끄럽단 말이야! 그래서 부탁인데, 그것들을 한... _8명 정도_ 죽여줘. 그럼 네게 보상을 줄게.
+actors.mobs.npcs.imp.golems_2=깡통 사냥은 어때? 조심해! 녀석들, 생각보다 엄청 쎼거든. \n\n....나? 너, 권총 따위가 그런걸 잡을수있다고 생각해? 무리라구...
 actors.mobs.npcs.imp.monks_2=아, 아직 안죽었구나! 녀석들과 근접전을 벌이다보면 가끔 무기를 손에서 튕겨내더라구. \n\n함정같은걸 사용하는게 좋을 거야. 아마도!
 actors.mobs.npcs.imp.cya=있다 봐, %s!
 actors.mobs.npcs.imp.hey=야! %s!
@@ -358,7 +358,7 @@ actors.mobs.npcs.sheep.baa...=꼬우신가요?
 actors.mobs.npcs.sheep.desc=대기권에 거주하는 창조신 우중의 딸, 6P62입니다. 신의 자식이기 때문에 당신은 이 인형을 죽일 수 없습니다. 이 인형은 비웃는 눈으로 웃기나 하면서, 시간이 지날때까지 이 자리에 계속 있을겁니다.
 
 actors.mobs.npcs.shopkeeper.name=카리나
-actors.mobs.npcs.shopkeeper.thief=도둑, 도둑이야!
+actors.mobs.npcs.shopkeeper.thief=도둑, 도둑이에요!
 actors.mobs.npcs.shopkeeper.sell=판매할 아이템을 선택하세요
 actors.mobs.npcs.shopkeeper.desc=이 20대 처녀는 쪼잔한 지휘관의 지휘부에서 일하는 것보단 철혈 최전방에서 장사를 하는 것에 더 소질이 있는 것 같습니다. 손님들에게 바가지를 씌우는 걸 보면 왜 그런지 알 수 있죠.
 
@@ -368,9 +368,9 @@ actors.mobs.npcs.wandmaker.intro_rogue=오, UMP 9! 이런곳에서 다시 만나
 actors.mobs.npcs.wandmaker.intro_mage=오, 반가워 %s! 네 녀석의 명성은 나도 잘 알고있지. 넌 충분히 강할테니 내 부탁하나 들어줄수 있나? \n\n....졸지 말고 내 말좀 들어줬으면 하는데.
 actors.mobs.npcs.wandmaker.intro_ranger=....하하, 이거 참 꼴불견인걸. 그렇지 않아? 뭐 어쨌든, 날 이대로 죽여도 상관은 없어. 하지만 그 전에 부탁 하나 들어줬으면 하는데.
 actors.mobs.npcs.wandmaker.intro_1=\n\n난 M4A1의 퇴각명령으로 후퇴하는 중이였어. 다른 인형들의 퇴각을 돕기위해 시간을 끌다 다리를 크게 다쳤지. 역장방패로 몸을 방어하고있지만 에너지가 떨어져가고 있어. 곧 여길 떠야할 것 같지만, 그 물건을 못 얻고 그냥 갈 수는 없어서 말야.
-actors.mobs.npcs.wandmaker.intro_dust=내가 필요한 건 _페르시카의 신호기_ 야. 폭풍작전 이전의 인형들에게 지급됬던 귀환 장비인데, 난 다른 인형을 귀환시키는데 사용해서 이게 없으면 돌아갈수 없어. 여기 어딘가에 나무로 막힌 문이 있을 텐데,  그 문 너머에 있을 거라고 확신하지. 하지만 주의해. 그 신호기에 깃든 바이러스는 꽤 강력하거든, _신호기를 얻었으면 최대한 빨리 나에게로 돌아와 줘._ 그 바이러스를 치료해 줄 테니 말야.
+actors.mobs.npcs.wandmaker.intro_dust=내가 필요한 건 _페르시카의 신호기_ 야. 폭풍작전 이전의 인형들에게 지급됐던 귀환 장비인데, 난 다른 인형을 귀환시키는데 사용해서 이게 없으면 돌아갈수 없어. 여기 어딘가에 나무로 막힌 문이 있을 텐데,  그 문 너머에 있을 거라고 확신하지. 하지만 주의해. 그 신호기에 깃든 바이러스는 꽤 강력하거든, _신호기를 얻었으면 최대한 빨리 나에게로 돌아와 줘._ 그 바이러스를 치료해 줄 테니 말야.
 actors.mobs.npcs.wandmaker.intro_ember=내가 필요한 건 갓 소환된 화염구에게 얻을 수 있는 _불타는 엔진_ 인데. 화염구는 조정되지 않은 텔레포터로 쉽게 부를 수 있으니, 텔레포터에 전지를 몇 개 가져가면 화염구를 소환할 수 있을 거야. 화염구는 강하지만 얼음으로 쉽게 제압할 수 있으니, _얼음을 일으키는 아이템을 가져가면 좋을 거야._
-actors.mobs.npcs.wandmaker.intro_berry=예전에 이 감옥의 한 인형은 _썩은열매 식물_ 을 키웠다고 하네, 그리고 난 그 씨앗을 필요로 하고 있어. 하지만 지금쯤 그 식물은 통제불능으로 자랐을 거고, 씨앗을 쉽게 얻을 수는 없을 거야. 썩은열매가 만든 정원은 여기 근처에 있어. 살고 싶으면 _덩굴에 묶이지 않게 주의_ 해. 불을 쓰고 싶겠지만, 불을 이용하면 식물과 함께 씨앗을 태워 버리니 _불은 절대로 사용하지마._
+actors.mobs.npcs.wandmaker.intro_berry=예전에 이 감옥의 한 인형은 _썩은열매 식물_ 을 키웠다고 하네, 그리고 난 그 씨앗을 필요로 하고 있어. 하지만 지금쯤 그 식물은 통제불능으로 자랐을 거고, 씨앗을 쉽게 얻을 수는 없을 거야. 썩은열매가 만든 정원은 여기 근처에 있어. 살고 싶으면 _덩굴에 묶이지 않게 주의_ 해. 불을 쓰고 싶겠지만, 불을 이용하면 식물과 함께 씨앗을 태워 버리니 _불은 절대로 사용하지 마._
 actors.mobs.npcs.wandmaker.intro_2=\n\n그 물건을 가져오면 작전중 사용한 탄환중 하나를 줄게. 나한테 두 발이 남아있으니, 둘 중 원하는 것을 하나 가져가면 된다구.
 actors.mobs.npcs.wandmaker.reminder_dust=페르시카의 신호기는 아직이야 %s? 나무로 막힌 곳을 찾아봐.
 actors.mobs.npcs.wandmaker.reminder_ember=불타는 엔진은 아직이야 %s? 신호기 4개를 찾아 텔레포터로 가봐.
@@ -404,8 +404,8 @@ actors.mobs.brute.enraged_text=화력전개 T 발동.
 actors.mobs.brute.desc="헬멧은 더 넓고 정확한 시야를 표시해주고 있어. 헬멧이 부서진 뒤에야 어떻게 생겼는지 확인할 수 있어."\n\n철혈의 표준 작전 더미입니다. 원거리 돌격 무기를 장비하고 있으며 화력은 저급 군용 인형과 비슷합니다. 주로 소규모 교전에서 활약하고 있습니다.
 
 actors.mobs.ripper.name=리퍼
-actors.mobs.ripper.enraged=회피기동 C
-actors.mobs.ripper.enraged_text=회피기동 C 발동.
+actors.mobs.ripper.enraged=회피기동 T
+actors.mobs.ripper.enraged_text=회피기동 T 발동.
 actors.mobs.ripper.desc="눈을 가린 것은 자아가 필요하지 않다는 뜻이지, 눈이 없다거나 보이지 않는 뜻이 아니란 말이야."  \n\n철혈의 표준 작전 더미입니다. 가볍고 짧은 돌격 무기를 장비하여 기동성은 비교적 높은 편으로 전장에서는 선봉과 정찰을 담당하고 있습니다.
 
 actors.mobs.crab.name=브루트
@@ -459,7 +459,7 @@ actors.mobs.cyclops.enraged=화력전개 T
 actors.mobs.cyclops.desc=정규군의 표준 작전인형입니다. 신형 돌격소총과 높은 체력을 가지고 있으며 일부는 장갑판을 들고 선두에 나서기도 합니다. \n\n 어느정도 큰 피해를 입으면 철갑고폭탄을 사격해 대상에게 굉장히 높은 피해를 입힙니다.
 
 actors.mobs.fetidrat.name=StG44
-actors.mobs.fetidrat.desc=그리폰의 전술인형입니다. 눈은 초점을 잃었으며 계속 이상한 말을 나지막하게 말하고 있습니다. 뭔가 잘못된것 같습니다.\n\n원인을 모르겠지만, 이 인형 근처에서 지독한 악취의 구름을 발생시킵니다. 가까이 있을 수록 강력해지는 것 같습니다.\n\n어두운 덩어리가 이 인형의 손에서 흘러내립니다. 바닥을 녹일 정도로 강력하지만 물에는 쉽게 녹는 것 같습니다.
+actors.mobs.fetidrat.desc=그리폰의 전술인형입니다. 눈은 초점을 잃었으며 계속 이상한 말을 나지막하게 말하고 있습니다. 뭔가 잘못된것 같습니다.\n\n원인을 모르겠지만, 이 인형 근처에서 지독한 악취의 구름을 발생시킵니다. 가까이 있을 수록 강력해지는 것 같습니다.\n\n강산성 액체가 이 인형의 손에서 흘러내립니다. 바닥을 녹일 정도로 강력하지만 물에는 쉽게 녹는 것 같습니다.
 
 actors.mobs.gnoll.name=프롤러
 actors.mobs.gnoll.desc="뚜껑 안쪽은 탄창으로 쓰이며, 함부로 다른 물건을 넣는 건 안 될것 같아 보입니다." \n\n 철혈의 저급 작전기갑입니다. 4륜의 바퀴로 느리게 움직이며 정면의 카메라로 정해진 구역을 순찰합니다. 기계형 철혈중에선 약한 편에 속하지만, 아직 숙련되지 않은 인형을 상대론 위협적인 적입니다.
@@ -499,7 +499,7 @@ actors.mobs.greatcrab.blocked=방어
 actors.mobs.greatcrab.desc=군용 작전 사양으로 제작된 인형으로, 군에서 발주하기로 한 표준 군용 인형입니다. 현대의 군용 장갑과 방패를 탑재해 뛰어난 근접 공격 능력을 갖추고 있습니다. 그러나, 출고 전에 철혈에게 감염당해 적으로 변했습니다.\n\n이 인형은 다른 인형보다 무거워 기동성이 크게 떨어지지만, 강력한 공격력과 온몸을 감싼 중장갑이 모든것을 커버합니다. 또한, 자신의 시야에 들어온 공격은 완벽히 방어합니다. 하지만 사각에서의 원거리 공격에는 취약합니다.
 
 actors.mobs.guard.name=독일검사
-actors.mobs.guard.scorpion=우리의 동료가 되라!
+actors.mobs.guard.scorpion=우리의 동료가 되어라!
 actors.mobs.guard.def_verb=방어
 actors.mobs.guard.desc=한때 그리폰의 전술인형이였던 MG5입니다. 하지만 제작자의 실수로 메모리에 손상이 가면서 스스로를 검사로 칭하며 총을 버리곤 두개의 검을 들었습니다. 뭐 어찌됐든, 지금은 적입니다. \n\n인푸쿤을 살
 
@@ -528,8 +528,8 @@ actors.mobs.monk.disarm=스트라이커가 당신의 %s을/를 손에서 튕겨 
 actors.mobs.monk.def_verb=막음
 actors.mobs.monk.desc=철혈의 표준 작전유닛입니다. 기관총을 장비하고 있어 화력과 사격속도가 높아 화력지원과 제압 용도로 사용됩니다.
 
-actors.mobs.newbornelemental.name=갓 소환된 화염구
-actors.mobs.newbornelemental.desc=철혈의 창조 실험중 만들어진 실패작으로, 그들의 본성은 매우 예측할 수 없어 철혈 보스들 마저도 제대로 제어할 수 없습니다.\n\n이 화염구는 갓 소환되었으며, 그러므로 아직은 약합니다. 또한 유난히 추위에 약한 것으로 보이나, 공격 능력은 보통의 화염구만큼 위험하니 주의가 필요합니다.
+actors.mobs.newbornelemental.name=파이로
+actors.mobs.newbornelemental.desc=텔레포터에 이상이 생겨 M16A1이 부탁한 물건과 함께 다른 세계에서 온 것 같다.. 쓰러트리면 다시 원래 세계로 리스폰 될테니 미안하지만 쓰러트리고 부탁한 물건을 가져가자. \n\n 강하지만, 추위에는 유독 약한 것 같아. 냉기를 일으킬 만한 물건이 없을까?
 
 actors.mobs.piranha.name=철혈 수중 정찰기
 actors.mobs.piranha.desc=이 수중 로봇은 정찰견의 파생형 중 하나로, 장착된 소나 탐지기로 정해진 구역의 물속을 감시하고 방어합니다.
@@ -538,7 +538,7 @@ actors.mobs.rat.name=디너게이트
 actors.mobs.rat.desc="소문으로는 개조를 통해서 민간용 애완동물로 바꿀 수 있대!" \n\n철혈의 저급 작전 기갑입니다. 전투 능력은 비교적 약하지만 양산에 적합하며 통상적으로 경비와 수색 임무에 사용됩니다. 무리를 지어 감행하는 충돌 공격은 그 전투력을 얕잡아 볼 수 없게 만듭니다.
 
 actors.mobs.goliath.name=드라군
-actors.mobs.goliath.desc=생산 코드명 Dragoon, 철혈의 2족 보행병기입니다. 매우 빠른 이동속도와 발칸으로 전장의 선두에서 적을 쓸어버리는 담당을 하고있습니다. 이 기병은 당신이 준비가 되있든 안되있든, 매우 빠른 속도로 찾아와 당신을 제거하려 할것입니다.
+actors.mobs.goliath.desc=생산 코드명 Dragoon, 철혈의 2족 보행병기입니다. 매우 빠른 이동속도와 발칸으로 전장의 선두에서 적을 쓸어버리는 담당을 하고있습니다. 이 기병은 당신의 준비 여부와 상관없이, 매우 빠른 속도로 찾아와 당신을 제거하려 할것입니다.
 
 actors.mobs.rotheart.name=부패 심장
 actors.mobs.rotheart.desc=썩은열매의 열매는 매우 특이합니다. 썩어서 양분을 주는 대신, 열매가 자라나 단단해지며, 씨앗을 감쌉니다. 그리고 열매 내부에 생명 활동을 주관하는 기관이 자라나며, 단단해진 열매는 이를 보호합니다. 이 거대한 열매는 다 자란 썩은열매 식물의 심장에 비유됩니다.
@@ -570,7 +570,7 @@ actors.mobs.spinner.desc=이 외계에서 온 괴생명체는 누군가에게 �
 actors.mobs.statue.name=표적인형 시모노프
 actors.mobs.statue.desc=단순히 봐서는 그리폰의 다른 표적인형과 다를 것 없다고 느낄 것입니다. 그런데, 짜잔! 이 표적인형은 철혈이 전투훈련용으로 복제한 표적입니다!\n\n이 인형은 훈련용이지만, 인형이 들고 있는 _%s_ 은/는 진짜 같아 보입니다.
 
-actors.mobs.succubus.name=다크틸
+actors.mobs.succubus.name=댁틸
 actors.mobs.succubus.desc=정규군 이동식 지뢰매설기입니다. 데이터 링크를 사용하여 인형을 교란할 수 있으며, 교란당한 인형은 효과가 끝날 때 까지 직접적인 공격을 할 수 없게 됩니다.
 
 actors.mobs.swarm.name=옵저버
@@ -578,7 +578,7 @@ actors.mobs.swarm.def_verb=회피
 actors.mobs.swarm.desc=작지만 자가복제로 적을 제압하는 소형 정찰기입니다. 모든 물리형 공격은 옵저버를 두 개의 기체로 분열시키지만. 피해량은 그대로입니다.
 
 actors.mobs.elphelt.name=엘펠트 발렌타인
-actors.mobs.elphelt.2페이즈=최종병기! 매그넘 웨딩!!
+actors.mobs.elphelt.inprogress=최종병기! 매그넘 웨딩!!
 actors.mobs.elphelt.bridleexpress1=브라이들 익스프레스!
 actors.mobs.elphelt.seek1=어디에 있나요, 달링!
 actors.mobs.elphelt.seek2=숨지 말아요, 달링!
@@ -611,7 +611,7 @@ actors.mobs.warlock.desc=프로토타입 저격병의 양산기입니다. C형�
 
 actors.mobs.wraith.name=사이버 망령
 actors.mobs.wraith.def_verb=회피
-actors.mobs.wraith.desc=사이머 망령은 자신의 하드를 스캔한 자를 쫓는 복수심 가득한 영혼입니다. 완전한 영체로 이루어져 있어 일반적인 무기로 공격하는 것은 매우 힘듭니다.
+actors.mobs.wraith.desc=사이버 망령은 자신의 하드를 스캔한 자를 쫓는 복수심 가득한 영혼입니다. 완전한 영체로 이루어져 있어 일반적인 무기로 공격하는 것은 매우 힘듭니다.
 
 #필드보스
 
@@ -619,14 +619,13 @@ actors.mobs.scarecrow.name=스케어크로우
 actors.mobs.scarecrow.desc="나는 전투보다 정찰 임무를 수행하는 편이 나은데…라고 중얼거리며 많은 사람을 다치게 하지. 그래서 나는 그저 허수아비처럼, 제자리에 서 있는 채로, 모두와 임무를 수행하기만 하면 충분해.." \n\n 철혈 선두 작전 인형 중 하나로, 엑스큐서너와 자주 공동 작전을 벌입니다. 그녀는 공중에 살짝 떠다니며, 출혈을 일으키는 빠른 공격과 저급 작전유닛과는 차원이 다른 내구성을 가집니다. \n\n _상황이 불리하다면 도망을 주저하지 마십시오._
 
 actors.mobs.intruder.name=인트루더
-actors.mobs.intruder.disarm=인트루더가 당신의 %s을/를 손에서 튕겨 냈습니다!
 actors.mobs.intruder.def_verb=막음
-actors.mobs.intruder.desc="보통 후방에서 작전 책략을 제공하며, 정보를 캐내고 교란시키는 전술을 사용하고 있어. 단순한 이름을 가지고 있지만, 인형으로서 내 취미는 매우 고상하지. 지휘관, 한 번 맞혀 볼래?" \n\n 철혈 최하위 지휘권을 가진 인형으로 부대 지휘에 능하며 들고있는 무기를 튕겨내는 매우 빠른 공격을 주로 사용합니다. \n\n _상황이 불리하다면 도망을 주저하지 마십시오._
+actors.mobs.intruder.desc="보통 후방에서 작전 책략을 제공하며, 정보를 캐내고 교란시키는 전술을 사용하고 있어. 단순한 이름을 가지고 있지만, 인형으로서 내 취미는 매우 고상하지. 지휘관, 한 번 맞혀 볼래?" \n\n 철혈 최하위 지휘권을 가진 인형으로 부대 지휘에 능하며 대상을 출혈시키는 매우 빠른 공격을 주로 사용합니다. \n\n _상황이 불리하다면 도망을 주저하지 마십시오. 녀석은 당신보다 느립니다._
 
 #
 
 actors.mobs.yog.name=속박된 M4A1
-actors.mobs.yog.notice=도와줘... 도와줘... 누가 나좀....
+actors.mobs.yog.notice=도와줘... 도와줘... 누가 나 좀....
 actors.mobs.yog.defeated=드디어... 자유로구나...
 actors.mobs.yog.rankings_desc=M4A1 구출작전 실패
 actors.mobs.yog.desc=M4A1. Anti_Rain과 슈토름 작전 당시 리더 인형이였습니다. 작전실패로 다른 인형을 퇴각시킬 때 끝까지 남아 시간을 벌었지만, 그 결과 철혈의 좋은 실험체가 되었습니다. 실험 중 그녀의 마인드맵이 조금 손상되었지만 아직 심각한 단계는 아닙니다. 최대한 신속하게 그녀를 구출해야 합니다!
