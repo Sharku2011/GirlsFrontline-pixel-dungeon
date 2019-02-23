@@ -223,13 +223,13 @@ public class Bestiary {
 					case 0: case 1: default:
 						return null;
 					case 2:
-						//3x Goliath, 4x Aegis, 2x Jupiter, 1x Scorpio
+						//3x Dragun, 4x Aegis, 2x Jupiter, 1x Scorpio
 						return new ArrayList<>(Arrays.asList(
 								Dragun.class, Dragun.class, Dragun.class,
 								Guard.class, Guard.class, Guard.class, Guard.class,
 								Jupiter.class, Jupiter.class));
 					case 3:
-						//3x Goliath, 4x Aegis, 2x Jupiter, 1x Scorpio
+						//3x Dragun, 4x Aegis, 2x Jupiter, 1x Scorpio
 						return new ArrayList<>(Arrays.asList(
 								Dragun.class, Dragun.class, Dragun.class,
 								Guard.class, Guard.class, Guard.class, Guard.class,
