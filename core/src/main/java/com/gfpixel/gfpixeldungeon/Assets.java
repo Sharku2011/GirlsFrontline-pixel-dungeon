@@ -64,6 +64,9 @@ public class Assets {
 	public static final String SHEEP		= "sheep.png";
 	public static final String SKS		= "sks.png";
 	public static final String PYRO		= "pyro.png";
+    public static final String NOEL			= "noel.png";
+    public static final String IMP			= "demon.png";
+    public static final String FNC		= "fnc.png";
 	public static final String KEEPER		= "shopkeeper.png";
     public static final String STAR		= "star.png";
     public static final String M16	= "m16a1.png";
@@ -99,7 +102,7 @@ public class Assets {
 	public static final String ESTRIKER			= "elitestriker.png";
 	public static final String MANTI		= "manti.png";
 	public static final String UNDEAD		= "undead.png";
-	public static final String KING			= "king.png";
+	public static final String DISLOLI			= "disloli.png";
 	public static final String PIRANHA		= "piranha.png";
 	public static final String EYE			= "eye.png";
 	public static final String SUCCUBUS		= "succubus.png";
@@ -108,9 +111,6 @@ public class Assets {
 	public static final String BURNING		= "burning_fist.png";
 	public static final String YOG			= "yog.png";
 	public static final String LARVA		= "larva.png";
-	public static final String NOEL			= "noel.png";
-	public static final String IMP			= "demon.png";
-	public static final String RATKING		= "ratking.png";
 	public static final String BEE      	= "bee.png";
 	public static final String MIMIC    	= "mimic.png";
 	public static final String ROT_LASH 	= "rot_lasher.png";
@@ -128,9 +128,9 @@ public class Assets {
 
 	public static final String ELID = "elid.png";
 
-	public static final String RIPPER = "Ripper.png";
+	public static final String RIPPER = "ripper.png";
 	public static final String JAGUAR = "Jaguar.png";
-	public static final String ELPHELT = "Elphelt.png";
+	public static final String ELPHELT = "elphelt.png";
 	public static final String TOW = "tow.png";
 	public static final String INTRUDER = "intruder.png";
 

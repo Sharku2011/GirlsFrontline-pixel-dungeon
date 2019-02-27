@@ -24,27 +24,37 @@ package com.gfpixel.gfpixeldungeon.sprites;
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.watabou.noosa.TextureFilm;
 
-public class KingSprite extends MobSprite {
-	
-	public KingSprite() {
-		super();
-		
-		texture( Assets.KING );
-		
-		TextureFilm frames = new TextureFilm( texture, 17, 18 );
-		
-		idle = new Animation( 5, true );
-		idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2 );
-		
-		run = new Animation( 15, true );
-		run.frames( frames, 3, 4, 5, 6, 7, 8 );
-		
-		attack = new Animation( 5, false );
-		attack.frames( frames, 9, 10, 11 );
-		
-		die = new Animation( 8, false );
-		die.frames( frames, 12, 13, 14, 15 );
-		
-		play( idle );
-	}
+import java.util.Calendar;
+
+public class FncSprite extends MobSprite {
+
+    public boolean festive;
+
+    public FncSprite() {
+        super();
+
+        final Calendar calendar = Calendar.getInstance();
+        //once a year the rat king feels a bit festive!
+        festive = (calendar.get(Calendar.MONTH) == 11 && calendar.get(Calendar.WEEK_OF_MONTH) > 2);
+
+        final int c = festive ? 8 : 0;
+
+        texture( Assets.FNC );
+
+        TextureFilm frames = new TextureFilm( texture, 20, 24 );
+
+        idle = new Animation( 2, true );
+        idle.frames( frames, c+0, c+0, c+0);
+
+        run = new Animation( 10, true );
+        run.frames( frames, c+1, c+2, c+3, c+4, c+5, c+6 );
+
+        attack = new Animation( 15, false );
+        attack.frames( frames, c+0 );
+
+        die = new Animation( 10, false );
+        die.frames( frames, c+0 );
+
+        play( idle );
+    }
 }

@@ -44,10 +44,10 @@ public class TyphoonSprite extends MobSprite {
 
         texture( Assets.TYPHOON );
 
-        TextureFilm frames = new TextureFilm( texture, 55, 30 );
+        TextureFilm frames = new TextureFilm( texture, 76, 48 );
 
         idle = new Animation( 2, true );
-        idle.frames( frames, 0, 1, 2, 3 );
+        idle.frames( frames, 0 );
 
         charging = new Animation( 14, true);
         charging.frames( frames, 4 );
@@ -58,15 +58,15 @@ public class TyphoonSprite extends MobSprite {
         chargeParticles.on = false;
 
         run = new Animation( 8, true );
-        run.frames( frames, 0, 1, 2, 3 );
+        run.frames( frames, 0, 1, 2, 3, 0 );
 
-        attack = new Animation( 10, false );
-        attack.frames( frames, 5, 6, 7, 8, 9 );
+        attack = new Animation( 1, false );
+        attack.frames( frames, 4, 4, 4, 4, 4, 4, 5, 5, 6, 6, 7, 7 );
         zap = new Animation( 15, false );
-        zap.frames( frames, 6, 7, 6, 7 );
+        zap.frames( frames, 4, 5, 6, 7 );
 
         die = new Animation( 15, false );
-        die.frames( frames, 0, 10, 10, 11, 11, 12, 12 );
+        die.frames( frames, 0, 8, 9, 10 );
 
         play( idle );
     }

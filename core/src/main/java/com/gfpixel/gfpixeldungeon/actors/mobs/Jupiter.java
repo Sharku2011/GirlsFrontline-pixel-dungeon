@@ -114,11 +114,11 @@ public class Jupiter extends Mob {
     @Override
     protected boolean doAttack( Char enemy ) {
 
-        if (beamCooldown > 3) {
+        if (beamCooldown > 2) {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((JupiterSprite)sprite).charge( enemy.pos );
-            spend( attackDelay()*7f );
+            spend( attackDelay()*4f );
             beamCharged = true;
             return true;
         } else {

@@ -344,11 +344,11 @@ actors.mobs.npcs.impshopkeeper.desc=P7은 그리폰 소속의 권총입니다. �
 actors.mobs.npcs.mirrorimage.name=더미
 actors.mobs.npcs.mirrorimage.desc=이 더미는 당신을 꼭 빼닮았습니다. 다행히도 더미들이 당신의 식량에 손대진 않을 것 같네요.
 
-actors.mobs.npcs.ratking.name=전술인형 네게브
-actors.mobs.npcs.ratking.not_sleeping=뭐, 뭐야! 전투의 스페셜 리스트는 잠같은거 안 잔다고!
-actors.mobs.npcs.ratking.what_is_it=뭐야? 난 지금 이 곳의 상황을 빨리 파악해야된다고. 이런 전쟁터는 나 같은 전문가 없인 무리라니까?
-actors.mobs.npcs.ratking.desc_festive=(자칭)전투의 스페셜 리스트, 네게브입니다. 왜 여기서 자고있던걸까요? 아무리 작전중이라지만, 적어도 기념일 정도는 지키고싶어하는 것 같네요.
-actors.mobs.npcs.ratking.desc=(자칭)전투의 스페셜 리스트, 네게브입니다. 왜 여기서 자고있던걸까요?
+actors.mobs.npcs.ratking.name=전술인형 FNC
+actors.mobs.npcs.ratking.not_sleeping=아, 아니에요! 안졸고있었다구요!
+actors.mobs.npcs.ratking.what_is_it=열심히 경계중이에요! 죄송하지만 비켜주세요!
+actors.mobs.npcs.ratking.desc_festive=FN소대 소속 AR인형 FNC입니다.
+actors.mobs.npcs.ratking.desc=FN소대 소속 AR인형 FNC입니다. Treat or Trick!
 
 actors.mobs.npcs.sheep.name=전술인형 6P62
 actors.mobs.npcs.sheep.baa!=꼬우면...
@@ -450,9 +450,9 @@ actors.mobs.jupiter.rankings_desc=주피터에 맞아 분해됨
 actors.mobs.gepard.name=세르니티스
 actors.mobs.gepard.desc=정규군의 2족보행 자주대공포입니다. 본래 항공기를 잡는 용도지만, 빠른 고폭소이탄 사격으로 보병 제압에도 매우 효과적인 성능을 보입니다.
 
-actors.mobs.aegis.name=가드
-actors.mobs.aegis.disarm=철혈 방패병이 당신의 %s을/를 손에서 튕겨 냈습니다!
-actors.mobs.aegis.desc=철혈의 고급 작전 더미입니다. 방패와 단거리 화력 무기를 장비하고 있으며 생긴 것처럼 높은 방어력을 가지고 있습니다. 일반적으로 중요한 거점을 지키는데 사용하거나 고급유닛이 선두에 서야할 시 출전합니다.
+actors.mobs.guard.name=가드
+actors.mobs.guard.disarm=가드가 당신의 %s을/를 손에서 튕겨 냈습니다!
+actors.mobs.guard.desc=철혈의 고급 작전 더미입니다. 방패와 단거리 화력 무기를 장비하고 있으며 생긴 것처럼 높은 방어력을 가지고 있습니다. 일반적으로 중요한 거점을 지키는데 사용하거나 고급유닛이 선두에 서야할 시 출전합니다.
 
 actors.mobs.cyclops.name=키클롭스 A
 actors.mobs.cyclops.enraged=화력전개 T
@@ -498,10 +498,10 @@ actors.mobs.greatcrab.noticed=이지스가 당신의 공격을 눈치채고 방�
 actors.mobs.greatcrab.blocked=방어
 actors.mobs.greatcrab.desc=군용 작전 사양으로 제작된 인형으로, 군에서 발주하기로 한 표준 군용 인형입니다. 현대의 군용 장갑과 방패를 탑재해 뛰어난 근접 공격 능력을 갖추고 있습니다. 그러나, 출고 전에 철혈에게 감염당해 적으로 변했습니다.\n\n이 인형은 다른 인형보다 무거워 기동성이 크게 떨어지지만, 강력한 공격력과 온몸을 감싼 중장갑이 모든것을 커버합니다. 또한, 자신의 시야에 들어온 공격은 완벽히 방어합니다. 하지만 사각에서의 원거리 공격에는 취약합니다.
 
-actors.mobs.guard.name=독일검사
-actors.mobs.guard.scorpion=우리의 동료가 되어라!
-actors.mobs.guard.def_verb=방어
-actors.mobs.guard.desc=한때 그리폰의 전술인형이였던 MG5입니다. 하지만 제작자의 실수로 메모리에 손상이 가면서 스스로를 검사로 칭하며 총을 버리곤 두개의 검을 들었습니다. 뭐 어찌됐든, 지금은 적입니다. \n\n인푸쿤을 살
+actors.mobs.mg5.name=독일검사
+actors.mobs.mg5.scorpion=우리의 동료가 되어라!
+actors.mobs.mg5.def_verb=방어
+actors.mobs.mg5.desc=한때 그리폰의 전술인형이였던 MG5입니다. 하지만 제작자의 실수로 메모리에 손상이 가면서 스스로를 검사로 칭하며 총을 버리곤 두개의 검을 들었습니다. 뭐 어찌됐든, 지금은 적입니다. \n\n인푸쿤을 살
 
 actors.mobs.king.name=디스트로이어
 actors.mobs.king.notice=이 그리폰 꼬맹이들이!
@@ -537,8 +537,8 @@ actors.mobs.piranha.desc=이 수중 로봇은 정찰견의 파생형 중 하나�
 actors.mobs.rat.name=디너게이트
 actors.mobs.rat.desc="소문으로는 개조를 통해서 민간용 애완동물로 바꿀 수 있대!" \n\n철혈의 저급 작전 기갑입니다. 전투 능력은 비교적 약하지만 양산에 적합하며 통상적으로 경비와 수색 임무에 사용됩니다. 무리를 지어 감행하는 충돌 공격은 그 전투력을 얕잡아 볼 수 없게 만듭니다.
 
-actors.mobs.goliath.name=드라군
-actors.mobs.goliath.desc=생산 코드명 Dragoon, 철혈의 2족 보행병기입니다. 매우 빠른 이동속도와 발칸으로 전장의 선두에서 적을 쓸어버리는 담당을 하고있습니다. 이 기병은 당신의 준비 여부와 상관없이, 매우 빠른 속도로 찾아와 당신을 제거하려 할것입니다.
+actors.mobs.dragun.name=드라군
+actors.mobs.dragun.desc=생산 코드명 Dragoon, 철혈의 2족 보행병기입니다. 매우 빠른 이동속도와 발칸으로 전장의 선두에서 적을 쓸어버리는 담당을 하고있습니다. 이 기병은 당신의 준비 여부와 상관없이, 매우 빠른 속도로 찾아와 당신을 제거하려 할것입니다.
 
 actors.mobs.rotheart.name=부패 심장
 actors.mobs.rotheart.desc=썩은열매의 열매는 매우 특이합니다. 썩어서 양분을 주는 대신, 열매가 자라나 단단해지며, 씨앗을 감쌉니다. 그리고 열매 내부에 생명 활동을 주관하는 기관이 자라나며, 단단해진 열매는 이를 보호합니다. 이 거대한 열매는 다 자란 썩은열매 식물의 심장에 비유됩니다.
@@ -559,10 +559,10 @@ actors.mobs.shaman.desc=저격병 프로토타입의 양산형입니다. 하지�
 actors.mobs.shielded.name=엘리트 베스피드
 actors.mobs.shielded.def_verb=방어
 
-actors.mobs.skeleton.name=골리앗
-actors.mobs.skeleton.explo_kill=당신은 골리앗의 자폭에 의해 사망했다...
-actors.mobs.skeleton.def_verb=방어
-actors.mobs.skeleton.desc=골리앗은 철혈의 신형 기계입니다. 양산과 근접전투를 위해 근접시 자폭되는 기능을 없앴지만, 이 기체들이 격파되면 폭발하여 파편을 사방에 날립니다.
+actors.mobs.golyat.name=골리앗
+actors.mobs.golyat.explo_kill=당신은 골리앗의 자폭에 의해 사망했다...
+actors.mobs.golyat.def_verb=방어
+actors.mobs.golyat.desc=골리앗은 철혈의 신형 기계입니다. 양산과 근접전투를 위해 근접시 자폭되는 기능을 없앴지만, 이 기체들이 격파되면 폭발하여 파편을 사방에 날립니다.
 
 actors.mobs.spinner.name=헤드 크랩
 actors.mobs.spinner.desc=이 외계에서 온 괴생명체는 누군가에게 호되게 당한 이후로 직접 전투를 피하려고 합니다. 대신 근처에 희생양이 다가오면, 배 아래에서 나오는 분비물로 적을 가두어 맹독성 이빨로 천천히 죽어가게 합니다.

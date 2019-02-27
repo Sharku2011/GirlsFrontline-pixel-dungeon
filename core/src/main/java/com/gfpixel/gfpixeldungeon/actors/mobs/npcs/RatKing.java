@@ -27,12 +27,12 @@ import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
-import com.gfpixel.gfpixeldungeon.sprites.RatKingSprite;
+import com.gfpixel.gfpixeldungeon.sprites.FncSprite;
 
 public class RatKing extends NPC {
 
 	{
-		spriteClass = RatKingSprite.class;
+		spriteClass = FncSprite.class;
 		
 		state = SLEEPING;
 	}
@@ -80,7 +80,7 @@ public class RatKing extends NPC {
 	
 	@Override
 	public String description() {
-		return ((RatKingSprite)sprite).festive ?
+		return ((FncSprite)sprite).festive ?
 				Messages.get(this, "desc_festive")
 				: super.description();
 	}

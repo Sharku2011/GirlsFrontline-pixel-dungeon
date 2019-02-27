@@ -27,11 +27,11 @@ public class Typhoon extends Hydra {
     {
         spriteClass = TyphoonSprite.class;
 
-        HP = HT = 3500;
-        EXP = 500;
+        HP = HT = 4500;
+        EXP = 1000;
         defenseSkill = 0;
-        baseSpeed = 0.8f;
-        maxLvl = 40;
+        baseSpeed = 0.5f;
+        maxLvl = 50;
 
         properties.add(Property.ARMO);
 
@@ -44,17 +44,12 @@ public class Typhoon extends Hydra {
 
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange(5, 10);
+        return Random.NormalIntRange(5, 5);
     }
 
     @Override
     public int attackSkill( Char target ) {
         return 10;
-    }
-
-    @Override
-    protected float attackDelay() {
-        return 0.5f;
     }
 
     @Override
@@ -101,11 +96,11 @@ public class Typhoon extends Hydra {
     @Override
     protected boolean doAttack( Char enemy ) {
 
-        if (beamCooldown > 0) {
+        if (beamCooldown > 5) {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((TyphoonSprite)sprite).charge( enemy.pos );
-            spend( attackDelay()*2f );
+            spend( attackDelay()*14f );
             beamCharged = true;
             return true;
         } else {
@@ -149,7 +144,7 @@ public class Typhoon extends Hydra {
             }
 
             if (hit( this, ch, true )) {
-                ch.damage( Random.NormalIntRange( 40, 60 ), this );
+                ch.damage( Random.NormalIntRange( 60, 85 ), this );
 
                 if (Dungeon.level.heroFOV[pos]) {
                     ch.sprite.flash();

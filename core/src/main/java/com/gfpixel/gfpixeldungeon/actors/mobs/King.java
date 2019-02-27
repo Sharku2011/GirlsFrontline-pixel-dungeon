@@ -45,7 +45,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.levels.CityBossLevel;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
-import com.gfpixel.gfpixeldungeon.sprites.KingSprite;
+import com.gfpixel.gfpixeldungeon.sprites.DisloliSprite;
 import com.gfpixel.gfpixeldungeon.sprites.UndeadSprite;
 import com.gfpixel.gfpixeldungeon.ui.BossHealthBar;
 import com.gfpixel.gfpixeldungeon.windows.WndDialog;
@@ -59,7 +59,7 @@ public class King extends Mob {
 	private static final int MAX_ARMY_SIZE	= 5;
 
 	{
-		spriteClass = KingSprite.class;
+		spriteClass = DisloliSprite.class;
 
 		HP = HT = 300;
 		EXP = 40;

@@ -146,9 +146,8 @@ public enum HeroClass {
             new Thunder().identify().collect();
 			new ScaleArmor().identify().collect();
 			new Cypros().identify().collect();
-			new Dp().identify().collect();
-			new Negev().identify().collect();
-			new Mg42().identify().collect();
+			new ScrollOfMagicMapping().identify().quantity(5).collect();
+			new PotionOfMindVision().identify().quantity(5).collect();
 			new ScrollOfUpgrade().identify().quantity(5).collect();
 			new StoneOfEnchantment().quantity(100).collect();
 			new ScrollOfMagicalInfusion().identify().quantity(10).collect();

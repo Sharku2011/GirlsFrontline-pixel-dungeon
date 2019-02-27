@@ -45,7 +45,7 @@ public class Hydra extends Mob {
     {
         spriteClass = HydraSprite.class;
 
-        HP = HT = 400;
+        HP = HT = 200;
         EXP = 19;
         defenseSkill = 0;
         viewDistance = Light.DISTANCE;
@@ -59,7 +59,7 @@ public class Hydra extends Mob {
 
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange(25, 35);
+        return Random.NormalIntRange(22, 22);
     }
 
     @Override
@@ -116,11 +116,11 @@ public class Hydra extends Mob {
     @Override
     protected boolean doAttack( Char enemy ) {
 
-        if (beamCooldown > 0) {
+        if (beamCooldown > 3) {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((HydraSprite)sprite).charge( enemy.pos );
-            spend( attackDelay()*2f );
+            spend( attackDelay()*4f );
             beamCharged = true;
             return true;
         } else {
@@ -171,7 +171,7 @@ public class Hydra extends Mob {
             }
 
             if (hit( this, ch, true )) {
-                ch.damage( Random.NormalIntRange( 30, 50 ), this );
+                ch.damage( Random.NormalIntRange( 22, 22 ), this );
 
                 if (Dungeon.level.heroFOV[pos]) {
                     ch.sprite.flash();

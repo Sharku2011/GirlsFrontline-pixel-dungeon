@@ -48,25 +48,17 @@ public class Typhootin extends Mob {
 
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange( 10, 60 );
+        return Random.NormalIntRange( 5, 60 );
     }
 
     @Override
     public int attackSkill( Char target ) {
-        return 58;
+        return 50;
     }
 
     @Override
     public int drRoll() {
         return Random.NormalIntRange(0, 10);
-    }
-
-    @Override
-    public boolean act() {
-
-        GameScene.add( Blob.seed( pos, 30, Freezing.class ) );
-
-        return super.act();
     }
 
     @Override

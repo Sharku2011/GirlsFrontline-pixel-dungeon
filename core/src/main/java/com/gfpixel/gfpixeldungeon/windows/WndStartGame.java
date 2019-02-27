@@ -166,13 +166,13 @@ public class WndStartGame extends Window {
 			super();
 			
 			this.cl = cl;
-			
+			//hero = new Image(Assets.WARRIOR, 0, 0, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
 			if (cl == HeroClass.WARRIOR){
-				hero = new Image(Assets.WARRIOR, 0, 0, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
+				hero = new Image(Assets.WARRIOR, 0, HeroSprite.FRAME_HEIGHT * 2 /*tier*/, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
 			} else if (cl == HeroClass.MAGE){
 				hero = new Image(Assets.MAGE, 0, HeroSprite.FRAME_HEIGHT * 2 /*tier*/, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
 			} else if (cl == HeroClass.ROGUE){
-				hero = new Image(Assets.ROGUE, 0, 0, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
+				hero = new Image(Assets.ROGUE, 0, HeroSprite.FRAME_HEIGHT * 2 /*tier*/, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
 			} else if (cl == HeroClass.RANGER){
 				hero = new Image(Assets.RANGER, 0, HeroSprite.FRAME_HEIGHT * 2 /*tier*/, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
 			}

@@ -39,7 +39,7 @@ public class CyclopsSprite extends MobSprite {
         run = new Animation( 10, true );
         run.frames( frames, 4, 5, 6, 7, 8, 9 );
 
-        attack = new Animation( 18, false );
+        attack = new Animation( 20, false );
         attack.frames( frames, 1, 1, 2, 1, 3, 1, 2, 1, 1 );
 
         die = new Animation( 10, false );

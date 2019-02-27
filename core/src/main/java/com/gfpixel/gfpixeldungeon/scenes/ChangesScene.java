@@ -414,7 +414,7 @@ public class ChangesScene extends PixelScene {
 				"2종의 무기가 추가되었습니다!\n\n" +
 						"_-_ 1티어 히든무기와 5티어에 새로운 무기가 추가됬습니다!"));
 
-		changes.addButton( new ChangeButton(new Image(Assets.KING, 0, 0, 17, 18), "추가",
+		changes.addButton( new ChangeButton(new Image(Assets.DISLOLI, 0, 0, 19, 19), "추가",
 				"새로운 보스와 레어 몬스터, 새로운 테마가 추가됬습니다.\n\n" +
 						"_-_ 25층의 보스를 조금 수정했고, 30층 구간의 레어 몬스터와 25층의 새로운 테마가 추가됬습니다. "));
 
