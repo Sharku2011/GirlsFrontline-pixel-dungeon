@@ -46,11 +46,11 @@ import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
-import com.gfpixel.gfpixeldungeon.sprites.BurningFistSprite;
+import com.gfpixel.gfpixeldungeon.sprites.DreamerSprite;
 import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
+import com.gfpixel.gfpixeldungeon.sprites.GarmSprite;
 import com.gfpixel.gfpixeldungeon.sprites.LarvaSprite;
-import com.gfpixel.gfpixeldungeon.sprites.RottingFistSprite;
-import com.gfpixel.gfpixeldungeon.sprites.YogSprite;
+import com.gfpixel.gfpixeldungeon.sprites.M4a1Sprite;
 import com.gfpixel.gfpixeldungeon.ui.BossHealthBar;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.utils.Bundle;
@@ -63,7 +63,7 @@ import java.util.HashSet;
 public class Yog extends Mob {
 	
 	{
-		spriteClass = YogSprite.class;
+		spriteClass = M4a1Sprite.class;
 		
 		HP = HT = 500;
 		
@@ -103,7 +103,7 @@ public class Yog extends Mob {
 		return super.act();
 	}
 
-	private static final int damageCap = 30;
+	private static final int damageCap = 100;
 
 	@Override
 	public void damage( int dmg, Object src ) {
@@ -204,7 +204,7 @@ public class Yog extends Mob {
 		private static final int REGENERATION	= 4;
 		
 		{
-			spriteClass = RottingFistSprite.class;
+			spriteClass = GarmSprite.class;
 			
 			HP = HT = 300;
 			defenseSkill = 25;
@@ -276,7 +276,7 @@ public class Yog extends Mob {
 	public static class BurningFist extends Mob {
 		
 		{
-			spriteClass = BurningFistSprite.class;
+			spriteClass = DreamerSprite.class;
 			
 			HP = HT = 200;
 			defenseSkill = 25;
@@ -374,7 +374,7 @@ public class Yog extends Mob {
 		{
 			spriteClass = LarvaSprite.class;
 			
-			HP = HT = 25;
+			HP = HT = 5;
 			defenseSkill = 20;
 			
 			EXP = 0;
@@ -391,7 +391,7 @@ public class Yog extends Mob {
 		
 		@Override
 		public int damageRoll() {
-			return Random.NormalIntRange( 22, 30 );
+			return Random.NormalIntRange( 20, 40 );
 		}
 		
 		@Override

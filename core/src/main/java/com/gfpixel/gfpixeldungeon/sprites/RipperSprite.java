@@ -18,11 +18,11 @@ public class RipperSprite extends MobSprite {
         run = new Animation( 12, true );
         run.frames( frames, 4, 5, 6, 7, 8, 9 );
 
-        attack = new Animation( 12, false );
+        attack = new Animation( 18, false );
         attack.frames( frames, 1, 2, 3, 1, 2, 3 );
 
-        die = new Animation( 12, false );
-        die.frames( frames, 10, 11, 12 );
+        die = new Animation( 8, false );
+        die.frames( frames, 10, 11, 12);
 
         play( idle );
     }

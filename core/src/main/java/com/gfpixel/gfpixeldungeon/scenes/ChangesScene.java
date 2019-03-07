@@ -150,9 +150,14 @@ public class ChangesScene extends PixelScene {
 		changes.hardlight( CharSprite.NEGATIVE );
 		infos.add(changes);
 
+		changes.addButton( new ChangeButton(new Image(Assets.M4A1, 0, 0, 17, 20), "수치 조정",
+				"M4A1 관련 수치 조정.\n\n" +
+						"_-_ M4A1의 데미지 캡이 30에서 100으로 조정됐습니다.\n\n" +
+						"_-_ 시나몬 롤의 체력이 5로 줄었지만 공격력이 최대 40까지 상승했습니다. 최소 데미지는 기존 버전처럼 22로 유지합니다."));
+
 		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 26, 21), "나약해짐",
 				"장갑계 몬스터 하향.\n\n" +
-						"_-_ 네메움의 공격력이 35로 하향 됐으며, 데미지 리미트가 삭제되고 레이저 발사에 필요한 시간이 2턴 증가했습니다.\n\n" +
+						"_-_ 네메움의 공격력이 35로 하향 됐으며, 데미지캡이 삭제되고 레이저 발사에 필요한 시간이 2턴 증가했습니다.\n\n" +
 						"_-_ 주피터의 레이저 발사에 필요한 시간이 2턴 증가해 7턴으로 조정됐습니다.\n\n" +
 						"_-_ 만티코어의 공격력이 35로 하락했으며 데미지 리미트가 50, 체력이 150으로 하락해 원래 목표인 SR계열 무기 견제만 가능하도록 바꿨습니다."));
 

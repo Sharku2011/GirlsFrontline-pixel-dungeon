@@ -273,11 +273,11 @@ actors.hero.heroclass.rogue_desc_loadout=【UMP9在开始时携带_UMP9_。_UMP9
 actors.hero.heroclass.rogue_desc_misc=【UMP9更容易发现隐藏的门和陷阱。\n\nUMP9更容易发现隐藏在地下城的物品。\n\nUMP9在开始时识别并携带探测DESC】
 actors.hero.heroclass.rogue_desc_subclasses=【击倒第二个BOSS时可选择辅助职业。UMP9的两种辅助职业如下。】
 
-actors.hero.heroclass.ranger=HK416
-actors.hero.heroclass.ranger_desc_item=【HK416在开始时携带可回旋的_特殊斧头_。这是CZ75曾使用过的武器，可对远处的敌人进行攻击，且绝对不会损坏。\n\n和其他的近身武器一样可以强化，且可以进行属性融合。】
-actors.hero.heroclass.ranger_desc_loadout=【HK416在开始时携带_榴弹发射器_，将会根据敌人层数按比例造成爆炸伤害。\n\nHK416可将斧头同时作为投掷武器与近身武器使用。\n\nHK416在开始时携带_天鹅绒口袋_，可用来放置种子和小型校准模块。】
-actors.hero.heroclass.ranger_desc_misc=【HK416在使用投掷武器时，将获得相当于其多余力量的附加伤害。\n\nHK416可较长时间地使用投掷武器。\n\nHK416可感知到藏在墙后的周边的敌人。\n\nHK416在开始时携带心眼药水。】
-actors.hero.heroclass.ranger_desc_subclasses=【击倒第二个BOSS时可选择辅助职业。HK416的两种辅助职业如下。】
+actors.hero.heroclass.huntress=HK416
+actors.hero.heroclass.huntress_desc_item=【HK416在开始时携带可回旋的_特殊斧头_。这是CZ75曾使用过的武器，可对远处的敌人进行攻击，且绝对不会损坏。\n\n和其他的近身武器一样可以强化，且可以进行属性融合。】
+actors.hero.heroclass.huntress_desc_loadout=【HK416在开始时携带_榴弹发射器_，将会根据敌人层数按比例造成爆炸伤害。\n\nHK416可将斧头同时作为投掷武器与近身武器使用。\n\nHK416在开始时携带_天鹅绒口袋_，可用来放置种子和小型校准模块。】
+actors.hero.heroclass.huntress_desc_misc=【HK416在使用投掷武器时，将获得相当于其多余力量的附加伤害。\n\nHK416可较长时间地使用投掷武器。\n\nHK416可感知到藏在墙后的周边的敌人。\n\nHK416在开始时携带心眼药水。】
+actors.hero.heroclass.huntress_desc_subclasses=【击倒第二个BOSS时可选择辅助职业。HK416的两种辅助职业如下。】
 
 actors.hero.herosubclass.gladiator=角斗士
 actors.hero.herosubclass.gladiator_desc=成功的近战攻击可以让_角斗士_开启连击。累积连击数能够使他释放特殊的处决技能。

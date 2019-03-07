@@ -44,13 +44,13 @@ public class ElpheltSprite extends MobSprite {
         run.frames( frames, 8, 9, 10, 11, 12, 13 );
 
         attack = new Animation( 15, false );
-        attack.frames( frames, 3, 4, 3 );
+        attack.frames( frames, 1, 2, 1  );
 
         genoise = new Animation( 8, false );
         genoise.frames( frames, 5, 6, 7);
 
         zap = new Animation( 15, false );
-        zap.frames( frames, 1, 2, 1 );
+        zap.frames( frames, 3, 4, 3 );
 
         die = new Animation( 12, false );
         die.frames( frames, 14, 14, 15, 16 );

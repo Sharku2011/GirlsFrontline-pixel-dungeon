@@ -142,7 +142,7 @@ public class Cypros extends MeleeWeapon {
             case CONFIRE:
                 image = ItemSpriteSheet.CONFIRE;
                 RCH = 3;
-                DLY = 1.5f;
+                DLY = 3f;
                 ACC = 1.5f;
                 timeChange += 1f;
                 break;

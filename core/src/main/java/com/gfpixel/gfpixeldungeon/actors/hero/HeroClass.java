@@ -56,6 +56,7 @@ import com.gfpixel.gfpixeldungeon.items.stones.StoneOfEnchantment;
 import com.gfpixel.gfpixeldungeon.items.wands.M79;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.Launcher.SRS;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.UG.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cypros;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Dp;
@@ -70,6 +71,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.Welrod;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Boomerang;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.ThrowingKnife;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.ThrowingStone;
+import com.gfpixel.gfpixeldungeon.items.weapon.missiles.darts.Dart;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Holidays;
@@ -143,7 +145,7 @@ public enum HeroClass {
 			new Honeypot().quantity(3).collect();
 
 			new Cannon().identify().collect();
-            new Thunder().identify().collect();
+            new SRS().identify().collect();
 			new ScaleArmor().identify().collect();
 			new Cypros().identify().collect();
 			new ScrollOfMagicMapping().identify().quantity(5).collect();
@@ -159,6 +161,7 @@ public enum HeroClass {
 			new PotionOfExperience().identify().quantity(30).collect();
 			new PotionOfMight().identify().quantity(12).collect();
 			new PotionOfStrength().identify().quantity(12).collect();
+			new Dart().identify().quantity(50).collect();
 			new PotionOfInvisibility().identify().quantity(10).collect();
 		}
 

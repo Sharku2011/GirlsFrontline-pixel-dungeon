@@ -29,6 +29,7 @@ public class SRS extends Launcher {
         image = ItemSpriteSheet.SRS;
 
         tier = 1;
+        DLY = 1f;
         ACC = 2f;
     }
 

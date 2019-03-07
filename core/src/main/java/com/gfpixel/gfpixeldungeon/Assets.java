@@ -107,9 +107,9 @@ public class Assets {
 	public static final String EYE			= "eye.png";
 	public static final String SUCCUBUS		= "succubus.png";
 	public static final String SCORPIO		= "scorpio.png";
-	public static final String ROTTING		= "rotting_fist.png";
-	public static final String BURNING		= "burning_fist.png";
-	public static final String YOG			= "yog.png";
+	public static final String GARM		= "garm.png";
+	public static final String DREAMER		= "dreamer.png";
+	public static final String M4A1			= "m4a1.png";
 	public static final String LARVA		= "larva.png";
 	public static final String BEE      	= "bee.png";
 	public static final String MIMIC    	= "mimic.png";
@@ -128,9 +128,9 @@ public class Assets {
 
 	public static final String ELID = "elid.png";
 
-	public static final String RIPPER = "ripper.png";
+	public static final String RIPPER = "Ripper.png";
 	public static final String JAGUAR = "Jaguar.png";
-	public static final String ELPHELT = "elphelt.png";
+	public static final String ELPHELT = "Elphelt.png";
 	public static final String TOW = "tow.png";
 	public static final String INTRUDER = "intruder.png";
 

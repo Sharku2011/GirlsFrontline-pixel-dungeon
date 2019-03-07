@@ -22,46 +22,52 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.effects.Splash;
+import com.watabou.noosa.Camera;
 import com.watabou.noosa.TextureFilm;
 
-public class YogSprite extends MobSprite {
+public class GarmSprite extends MobSprite {
 	
-	public YogSprite() {
+	private static final float FALL_SPEED	= 64;
+	
+	public GarmSprite() {
 		super();
-
-		perspectiveRaise = 0.2f;
-
-		texture( Assets.YOG );
 		
-		TextureFilm frames = new TextureFilm( texture, 20, 19 );
+		texture( Assets.GARM );
 		
-		idle = new Animation( 10, true );
-		idle.frames( frames, 0, 1, 2, 2, 1, 0, 3, 4, 4, 3, 0, 5, 6, 6, 5 );
+		TextureFilm frames = new TextureFilm( texture, 36, 27 );
+		
+		idle = new Animation( 2, true );
+		idle.frames( frames, 0);
 		
 		run = new Animation( 12, true );
-		run.frames( frames, 0 );
+		run.frames( frames, 1, 2, 3, 4 );
 		
-		attack = new Animation( 12, false );
-		attack.frames( frames, 0 );
+		attack = new Animation( 5, false );
+		attack.frames( frames, 2, 2, 4, 4 );
 		
-		die = new Animation( 10, false );
-		die.frames( frames, 0, 7, 8, 9 );
+		die = new Animation( 8, false );
+		die.frames( frames, 5, 6, 7 );
 		
 		play( idle );
 	}
-
+	
 	@Override
-	public void link(Char ch) {
-		super.link(ch);
-		renderShadow = false;
-	}
-
-	@Override
-	public void die() {
-		super.die();
+	public void attack( int cell ) {
+		super.attack( cell );
 		
-		Splash.at( center(), blood(), 12 );
+		speed.set( 0, -FALL_SPEED );
+		acc.set( 0, FALL_SPEED * 4 );
+	}
+	
+	@Override
+	public void onComplete( Animation anim ) {
+		super.onComplete( anim );
+		if (anim == attack) {
+			speed.set( 0 );
+			acc.set( 0 );
+			place( ch.pos );
+			
+			Camera.main.shake( 1, 0.2f );
+		}
 	}
 }

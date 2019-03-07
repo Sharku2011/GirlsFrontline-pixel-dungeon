@@ -94,7 +94,7 @@ public class Golyat extends Mob {
         do {
             loot = Generator.randomWeapon();
             //50% chance of re-rolling tier 4 or 5 melee weapons
-        } while (((MeleeWeapon) loot).tier >= 4 && Random.Int(2) == 0);
+        } while (((MeleeWeapon) loot).tier >= 6 && Random.Int(2) == 0);
         loot.level(0);
         return loot;
     }

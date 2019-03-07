@@ -30,7 +30,7 @@ public class Typhoon extends Hydra {
         HP = HT = 4500;
         EXP = 1000;
         defenseSkill = 0;
-        baseSpeed = 0.5f;
+        baseSpeed = 0.8f;
         maxLvl = 50;
 
         properties.add(Property.ARMO);
@@ -190,8 +190,9 @@ public class Typhoon extends Hydra {
     }
 
     {
-        resistances.add( ToxicGas.class );
+        resistances.add( Corrosion.class );
         resistances.add( Vampiric.class );
+        resistances.add( ToxicGas.class );
     }
 
 

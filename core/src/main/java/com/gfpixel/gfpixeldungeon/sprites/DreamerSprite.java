@@ -22,52 +22,63 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.watabou.noosa.Camera;
+import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.watabou.noosa.TextureFilm;
+import com.watabou.noosa.audio.Sample;
+import com.watabou.utils.Callback;
 
-public class RottingFistSprite extends MobSprite {
+public class DreamerSprite extends MobSprite {
 	
-	private static final float FALL_SPEED	= 64;
-	
-	public RottingFistSprite() {
+	public DreamerSprite() {
 		super();
 		
-		texture( Assets.ROTTING );
+		texture( Assets.DREAMER );
 		
-		TextureFilm frames = new TextureFilm( texture, 24, 17 );
+		TextureFilm frames = new TextureFilm( texture, 24, 24 );
 		
 		idle = new Animation( 2, true );
-		idle.frames( frames, 0, 0, 1 );
+		idle.frames( frames, 0, 1, 2, 1, 0 );
 		
 		run = new Animation( 3, true );
-		run.frames( frames, 0, 1 );
+		run.frames( frames, 0, 1, 2, 1, 0 );
 		
-		attack = new Animation( 2, false );
-		attack.frames( frames, 0 );
+		attack = new Animation( 8, false );
+		attack.frames( frames, 0, 3, 4, 0 );
 		
-		die = new Animation( 10, false );
-		die.frames( frames, 0, 2, 3, 4 );
+		die = new Animation( 8, false );
+		die.frames( frames, 0, 3, 5, 6, 7 );
 		
 		play( idle );
 	}
 	
+	private int posToShoot;
+	
 	@Override
 	public void attack( int cell ) {
+		posToShoot = cell;
 		super.attack( cell );
-		
-		speed.set( 0, -FALL_SPEED );
-		acc.set( 0, FALL_SPEED * 4 );
 	}
 	
 	@Override
 	public void onComplete( Animation anim ) {
-		super.onComplete( anim );
 		if (anim == attack) {
-			speed.set( 0 );
-			acc.set( 0 );
-			place( ch.pos );
+
+			Sample.INSTANCE.play( Assets.SND_ZAP );
+			MagicMissile.boltFromChar( parent,
+					MagicMissile.SHADOW,
+					this,
+					posToShoot,
+					new Callback() {
+						@Override
+						public void call() {
+							ch.onAttackComplete();
+						}
+					} );
+
+			idle();
 			
-			Camera.main.shake( 4, 0.2f );
+		} else {
+			super.onComplete( anim );
 		}
 	}
 }
