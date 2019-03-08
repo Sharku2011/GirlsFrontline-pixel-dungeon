@@ -57,6 +57,7 @@ public class DM300 extends Mob {
 		EXP = 30;
 		defenseSkill = 18;
 
+		HUNTING = new Hunting();
 		/*
 		loot = new CapeOfThorns();
 		lootChance = 0.333f;
@@ -82,7 +83,7 @@ public class DM300 extends Mob {
 		boolean visible = Dungeon.level.heroFOV[pos] || Dungeon.level.heroFOV[aim.collisionPos];
 
 		if (visible) {
-			sprite.attack( enemy.pos );
+			((DM300Sprite)sprite).magnum( enemy.pos );
 		} else {
 			magnum();
 		}
@@ -209,4 +210,24 @@ public class DM300 extends Mob {
 		super.restoreFromBundle(bundle);
 		BossHealthBar.assignBoss(this);
 	}
+
+	private class Hunting extends Mob.Hunting {
+		@Override
+		public boolean act(boolean enemyInFOV, boolean justAlerted) {
+			// 적 인식이 지워졌을 경우
+			if (enemy == null) {
+				spend( TICK );
+				state = WANDERING;
+				target = Dungeon.level.randomDestination();
+				return true;
+			}
+
+			if ( canAttack(enemy) ) {
+
+			}
+
+			return true;
+		}
+	}
 }
+
