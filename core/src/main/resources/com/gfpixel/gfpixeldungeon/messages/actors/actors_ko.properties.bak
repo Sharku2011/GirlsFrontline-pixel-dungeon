@@ -420,27 +420,23 @@ actors.mobs.dm300.rankings_desc=게이저에게 썰려나감
 actors.mobs.dm300.desc=게이저는 주로 지휘 작전과인원의 배치를 맡고 있습니다. 결코 낮지 않은 작전능력을 가지고 있으며, 직접 작전을 지휘할수도 있습니다. 지위는 비교적 높으며, 에이전트가 직접 관리합니다. 매사에 진지하며, 빈틈이 없으며 맡은 일은 최선을 다해 처리합니다. 언행중에는 엄격하지만 가지런한 느낌을 주며 설령 적이라 하더라도 원칙과 예절을 중요시 합니다. \n\n 그리폰에 포로로 잡힌 아키텍트를 그리워하고있습니다.
 actors.mobs.dm300.tackle=번뜩이는 송곳니
 
-actors.mobs.typhootin.name=티폰 프로토타입
-actors.mobs.typhootin.notice=미확인 인형 4기 감지. 섬멸 모드로 전환.
-actors.mobs.typhootin.defeated=임무 실패. 동력 차단.
-actors.mobs.typhootin.repair=티폰은 스스로를 수리했다!
+actors.mobs.typhootin.name=정규군 정찰분대
+actors.mobs.typhootin.notice=아군으로 식별되지 않음. 제거.
+actors.mobs.typhootin.defeated=...
+actors.mobs.typhootin.repair=정규군 정찰분대는 스스로를 수리했다!
 actors.mobs.typhootin.rankings_desc=정규군에게 무릎꿇음
-actors.mobs.typhootin.desc=중장갑을 갖춘 정규군의 시제형 전차입니다. 출력 실험을 위해 보병용 단포신 야포를 장착하고있으며, 아직 조준기가 장비되지 않아 장거리 공격을 할수없습니다.
+actors.mobs.typhootin.desc=소규모로 편성된 히드라와 키클롭스 SG,키클롭스 A타입 2기로 이루어진 경보병 정찰분대입니다. 이들은 정해진 구역을 순찰하며, 식별되지 않은 모든 대상을 제거합니다. 
 
-actors.mobs.typhoon.name=티폰 양산형
-actors.mobs.typhoon.rankings_desc=개깝추시내요
-actors.mobs.typhoon.desc=시제형에서 만족한 성능을 보여준 티폰을 좀더 개량한 정규군의 양산형 전차입니다. 최신형 조준기와 주피터를 개량한 장포신 광자포를 장비했으며, 조금 느려지긴 했지만 시제형의 두배에 달하는 두꺼운 장갑을 확보했습니다. \n\n_현존 정규군 최강의 기갑입니다. 현명한 사람이라면 바로 티폰의 사거리에서 벗어나려고 할겁니다._
+actors.mobs.typhoon.name=티폰
+actors.mobs.typhoon.rankings_desc=전차에 뭉게짐
+actors.mobs.typhoon.desc=시제형에서 만족한 성능을 보여준 티폰을 좀더 개량한 정규군의 양산형 전차입니다. 최신형 조준기와 주피터를 개량한 장포신 광자포를 장비했으며 느리지만 매우 높은 체력과 방어관통 공격력을 갖고있습니다. \n\n_현존 정규군 최강의 기갑입니다. 현명한 사람이라면 바로 티폰의 사거리에서 벗어나려고 할겁니다._
 
 actors.mobs.elemental.name=화염구
 actors.mobs.elemental.desc=철혈의 창조 실험중 만들어진 실패작으로, 그들의 본성은 매우 예측할 수 없어 철혈 보스들 마저도 제대로 제어할 수 없습니다.
 
-actors.mobs.eye.name=골리앗 G형
-actors.mobs.eye.deathgaze_kill=공열안자경에 관통당했다...
-actors.mobs.eye.desc=골리앗의 최종형태입니다. 자폭기능은 완전 삭제되었으며 대신 무시무시한 체력과 근접공격력을 얻었습니다. 하지만, 진정한 무서움은 그것이 사용하는 광선에서 나옵니다.\n\n짧은 시간 동안 에너지를 충전한 골리앗은 _공열안자경_ 이라는 강력한 에너지 광선을 발사합니다. 골리앗의 시야에 든 모든 것들은 커다란 피해를 입게 되니, 현명한 인형들은 사각으로 도망쳐서 피해야 할 것입니다.
-
 actors.mobs.hydra.name=히드라
 actors.mobs.hydra.deathgaze_kill=어흑 마이깟
-actors.mobs.hydra.desc=정규군의 4족보행 작전인형입니다. 보병인형들과 같이 움직이며 공격과 방어를 모두 할수있으며, 하단에 달린 주포에서 상대의 장갑을 뚫는 레이저를 발사합니다.  
+actors.mobs.hydra.desc=정규군의 고기동 중장갑 4족보행 작전인형입니다. 상부의 기관포로 근접한 적을 공격하며, 하단에 달린 주포에서 상대의 장갑을 뚫는 레이저를 발사합니다.    
 
 actors.mobs.jupiter.name=주피터
 actors.mobs.jupiter.desc=과거 철혈공조공단이 만들어낸 정규군의 제식 야포입니다. 이 야포는 스스로 움직일 수 없지만, 잠시동안 조준을 하고 발사하는 광선은 준비되지 않은 모든 대상을 즉사시킬만큼 강력합니다.

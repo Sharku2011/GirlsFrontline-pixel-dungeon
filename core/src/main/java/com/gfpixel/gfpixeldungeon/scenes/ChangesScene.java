@@ -141,7 +141,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 기존보다 커진 픽셀로 인해 모션이 살짝 어긋나는 등의 오류가 있을 수도 있습니다.\n\n" +
 						"_-_ 현재 배경이 미완성이므로 지속적으로 업데이트 해갈 예정입니다."));
 
-		changes.addButton( new ChangeButton(new Image(Assets.GOLYATP, 0, 0, 26, 23), "변종",
+		changes.addButton( new ChangeButton(new Image(Assets.GOLYATPLUS, 0, 0, 26, 23), "변종",
 				"분기점 변종 몬스터 추가.\n\n" +
 						"_-_ 분기점에 등장하는 골리앗이 골리앗 PLUS로 바뀌었습니다.\n\n" +
 						"_-_ 골리앗 PLUS는 기존의 검은 외형과 다른 붉은 외형을 가지고 있으며 이동속도가 느리고 매우 낮은 체력과 공격력을 가지고 있습니다.\n\n" +

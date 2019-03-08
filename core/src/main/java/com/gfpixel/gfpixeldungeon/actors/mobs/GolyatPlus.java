@@ -29,17 +29,16 @@ import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.gfpixel.gfpixeldungeon.levels.features.Chasm;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
-import com.gfpixel.gfpixeldungeon.sprites.GolyatSprite;
-import com.gfpixel.gfpixeldungeon.sprites.GolyatpSprite;
+import com.gfpixel.gfpixeldungeon.sprites.GolyatPlusSprite;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 
-public class GolyatPuls extends Mob {
+public class GolyatPlus extends Mob {
 
     {
-        spriteClass = GolyatpSprite.class;
+        spriteClass = GolyatPlusSprite.class;
 
         HP = HT = 5;
         defenseSkill = 9;

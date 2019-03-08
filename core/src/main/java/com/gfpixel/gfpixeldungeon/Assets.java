@@ -129,7 +129,7 @@ public class Assets {
 	public static final String ELID = "elid.png";
 
 	public static final String RIPPER = "Ripper.png";
-	public static final String GOLYATP		= "golyatp.png";
+	public static final String GOLYATPLUS		= "golyatplus.png";
 	public static final String JAGUAR = "Jaguar.png";
 	public static final String ELPHELT = "Elphelt.png";
 	public static final String TOW = "tow.png";

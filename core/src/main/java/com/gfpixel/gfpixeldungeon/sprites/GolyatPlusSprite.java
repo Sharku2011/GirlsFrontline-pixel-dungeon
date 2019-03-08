@@ -23,16 +23,15 @@ package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Dungeon;
-import com.gfpixel.gfpixeldungeon.actors.mobs.Golyat;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.watabou.noosa.TextureFilm;
 
-public class GolyatpSprite extends MobSprite {
+public class GolyatPlusSprite extends MobSprite {
 
-    public GolyatpSprite() {
+    public GolyatPlusSprite() {
         super();
 
-        texture( Assets.GOLYATP );
+        texture( Assets.GOLYATPLUS );
 
         TextureFilm frames = new TextureFilm( texture, 26, 23 );
 
