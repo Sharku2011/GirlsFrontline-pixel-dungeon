@@ -65,7 +65,7 @@ public class Assets {
 	public static final String SKS		= "sks.png";
 	public static final String PYRO		= "pyro.png";
     public static final String NOEL			= "noel.png";
-    public static final String IMP			= "demon.png";
+    public static final String P7			= "p7.png";
     public static final String FNC		= "fnc.png";
 	public static final String KEEPER		= "shopkeeper.png";
     public static final String STAR		= "star.png";
@@ -129,6 +129,7 @@ public class Assets {
 	public static final String ELID = "elid.png";
 
 	public static final String RIPPER = "Ripper.png";
+	public static final String GOLYATP		= "golyatp.png";
 	public static final String JAGUAR = "Jaguar.png";
 	public static final String ELPHELT = "Elphelt.png";
 	public static final String TOW = "tow.png";

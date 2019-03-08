@@ -35,7 +35,7 @@ import com.gfpixel.gfpixeldungeon.journal.Notes;
 import com.gfpixel.gfpixeldungeon.levels.CityLevel;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
-import com.gfpixel.gfpixeldungeon.sprites.ImpSprite;
+import com.gfpixel.gfpixeldungeon.sprites.P7Sprite;
 import com.gfpixel.gfpixeldungeon.windows.WndDialog;
 import com.gfpixel.gfpixeldungeon.windows.WndImp;
 import com.gfpixel.gfpixeldungeon.windows.WndQuest;
@@ -46,7 +46,7 @@ import com.watabou.utils.Random;
 public class Imp extends NPC {
 
 	{
-		spriteClass = ImpSprite.class;
+		spriteClass = P7Sprite.class;
 
 		properties.add(Property.IMMOVABLE);
 	}

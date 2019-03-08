@@ -19,7 +19,7 @@ public class NoelSprite extends MobSprite {
 
         texture( Assets.NOEL );
 
-        TextureFilm frames = new TextureFilm( texture, 13, 14 );
+        TextureFilm frames = new TextureFilm( texture, 14, 16 );
 
         idle = new Animation( 4, true );
         idle.frames( frames, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3 );

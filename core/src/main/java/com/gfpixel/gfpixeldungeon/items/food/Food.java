@@ -26,11 +26,13 @@ import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.Statistics;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Hunger;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Invisibility;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Recharging;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.effects.SpellSprite;
 import com.gfpixel.gfpixeldungeon.items.Item;
+import com.gfpixel.gfpixeldungeon.items.potions.PotionOfInvisibility;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
@@ -79,6 +81,7 @@ public class Food extends Item {
 				if (hero.HP < hero.HT) {
 					hero.HP = Math.min( hero.HP + 5, hero.HT );
 					hero.sprite.emitter().burst( Speck.factory( Speck.HEALING ), 1 );
+					Buff.affect( hero, Invisibility.class, 4f );
 				}
 				break;
 			case MAGE:

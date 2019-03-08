@@ -135,6 +135,18 @@ public class ChangesScene extends PixelScene {
 		changes.hardlight( Window.TITLE_COLOR );
 		infos.add(changes);
 
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.RING_GARNET, null), new RingOfMight().trueName(),
+				"그래픽 개선.\n\n" +
+						"_-_ 기존의 픽셀보다 더 큰 픽셀을 적용해 좀더 높은 해상도의 배경과 캐릭터들을 만들었습니다.\n\n" +
+						"_-_ 기존보다 커진 픽셀로 인해 모션이 살짝 어긋나는 등의 오류가 있을 수도 있습니다.\n\n" +
+						"_-_ 현재 배경이 미완성이므로 지속적으로 업데이트 해갈 예정입니다."));
+
+		changes.addButton( new ChangeButton(new Image(Assets.GOLYATP, 0, 0, 26, 23), "변종",
+				"분기점 변종 몬스터 추가.\n\n" +
+						"_-_ 분기점에 등장하는 골리앗이 골리앗 PLUS로 바뀌었습니다.\n\n" +
+						"_-_ 골리앗 PLUS는 기존의 검은 외형과 다른 붉은 외형을 가지고 있으며 이동속도가 느리고 매우 낮은 체력과 공격력을 가지고 있습니다.\n\n" +
+						"_-_ 하지만 골리앗 PLUS가 가하는 공격은 반드시 명중하며, 처치할 경우 주변에 높은 자폭 피해를 입힙니다."));
+
 		changes = new ChangeInfo(Messages.get(this, "changes"), false, null);
 		changes.hardlight( CharSprite.WARNING );
 		infos.add(changes);
@@ -143,8 +155,16 @@ public class ChangesScene extends PixelScene {
 				"_-_ 무기 조정.\n\n" +
 						"_-_ MG계열 명중치가 90%로 조정됐습니다. 다만 MG4는 75%로 조정.\n\n" +
 						"_-_ 크리스 벡터의 기본 데미지와 강화 효율이 2 상승했습니다. 또한 명중 패널티가 제거되고 버프 지속시간도 소폭 상승했습니다..\n\n" +
-						"_-_ DMR 속사계열 (Kar98k, SVD, Super SASS)의 공격속도가 전부 +40%로 통합됐습니다.\n\n" +
+						"_-_ DMR 속사계열 (Kar98k, SVD, Super SASS)의 공격속도가 전부 +20%로 통합됐습니다.\n\n" +
 						"_-_ H&K MP7의 명중률이 65%로 조정 됐습니다. MP7은 충분히 강한 무기입니다. 하지만 1티어의 한계는 명확하며, 방어력을 갖춘 대상을 상대론 데미지가 거의 들어가지 않아 패널티를 조금이나마 줄였습니다."));
+
+		changes = new ChangeInfo(Messages.get(this, "buffs"), false, null);
+		changes.hardlight( CharSprite.POSITIVE );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new Image(Assets.WARRIOR, 0, 69, 21, 23),  "소폭상향",
+				"임시 땜빵.\n\n" +
+						"_-_ UMP45가 음식을 섭취하면 HP 5% 회복과 더해서 2턴 동안 투명화 상태가 됩니다."));
 
 		changes = new ChangeInfo(Messages.get(this, "nerfs"), false, null);
 		changes.hardlight( CharSprite.NEGATIVE );
@@ -157,8 +177,8 @@ public class ChangesScene extends PixelScene {
 
 		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 26, 21), "나약해짐",
 				"장갑계 몬스터 하향.\n\n" +
-						"_-_ 네메움의 공격력이 35로 하향 됐으며, 데미지캡이 삭제되고 레이저 발사에 필요한 시간이 2턴 증가했습니다.\n\n" +
-						"_-_ 주피터의 레이저 발사에 필요한 시간이 2턴 증가해 7턴으로 조정됐습니다.\n\n" +
+						"_-_ 네메움의 공격력이 40으로 고정 됐으며, 데미지캡이 삭제되고 레이저 발사에 필요한 시간이 4턴으로 조정됐습니다.\n\n" +
+						"_-_ 주피터의 레이저 발사에 필요한 시간이 1턴 증가해 5턴으로, 레이저 피해는 70으로 고정됐으며 방어력이 다른 장갑계열처럼 사라진 대신 체력이 150으로 늘었습니다.\n\n" +
 						"_-_ 만티코어의 공격력이 35로 하락했으며 데미지 리미트가 50, 체력이 150으로 하락해 원래 목표인 SR계열 무기 견제만 가능하도록 바꿨습니다."));
 
 		changes = new ChangeInfo("v0.4.7", true, "");
@@ -249,7 +269,7 @@ public class ChangesScene extends PixelScene {
 		infos.add(changes);
 
 
-		changes.addButton( new ChangeButton(new Image(Assets.ELPHELT, 288, 0, 18, 19), "분기점",
+		changes.addButton( new ChangeButton(new Image(Assets.ELPHELT, 69, 0, 23, 24), "분기점",
 				"_-_ 1번 분기점 활성화. \n\n" +
 						"_-_ 소녀전선&길티기어&블레이블루 분기점 챕터가 활성화 되었습니다.\n\n" +
 						"_-_ 기존 스테이지에서 특정 조건을 만족할시 다음 챕터에서 분기점 챕터가 활성화됩니다.\n\n" +
@@ -316,7 +336,7 @@ public class ChangesScene extends PixelScene {
 						"_-_ 투척 무기가 소모되지 않을 확률 제거, 대신 원거리 무기의 내구도를 증가시킴\n\n" +
 						"_-_ 투척 무기의 피해량을 강화 수치에 비례하여 증가시키는 효과 추가"));
 
-		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 16, 16), "변경",
+		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 26, 21), "변경",
 				"기계형 몬스터가 개편됬습니다.\n\n" +
 						"_-_ 아래 설명에 나오는 몬스터에겐 전부 장갑 속성이 부여됩니다.\n\n" +
 						"_-_ 네메움은 이제 챕터 3 구간에 등장하며, 짧은 시간동안 장전한 뒤 지형과 외골격의 방어율을 무시하는 붕괴광선을 발사합니다.\n\n" +
@@ -544,9 +564,9 @@ public class ChangesScene extends PixelScene {
 						"_-_ 새로운 층 23~31층이 추가됬습니다.\n\n" +
 						"_-_ 새로운 몬스터 6종이 추가됬습니다.\n\n" +
 						"_-_ 스토리 진행방식을 대화 형식으로 바꿔 좀더 스토리에 몰입할수있게 만들었습니다.\n\n" +
-						"계속 업데이트할 예정입니다. 몬스터의 능력치 조정이나 아이디어는 트위터나 디씨 배포글에 말해주시면 감사하겠습니다."));
+						"계속 업데이트할 예정입니다. 몬스터의 능력치 조정이나 아이디어는 트위터나 DCinsid 배포글에 말해주시면 감사하겠습니다."));
 
-		changes.addButton( new ChangeButton( new Image(Assets.RANGER, 0, 34, 13, 17), "HK416 세부 전직 개편!",
+		changes.addButton( new ChangeButton( new Image(Assets.RANGER, 0, 69, 21, 23), "HK416 세부 전직 개편!",
 				"HK416의 플레이 스타일이 바뀌었습니다!\n\n" +
 						"기존의 코만도가 유탄수로 변경 됬습니다.\n" +
 						"_-_ HK416은 M79 유탄발사기를 가지고 시작합니다. \n" +

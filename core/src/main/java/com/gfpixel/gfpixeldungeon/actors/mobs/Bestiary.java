@@ -123,24 +123,24 @@ public class Bestiary {
 						return null;
 					case 1:
 						return new ArrayList<>(Arrays.asList(
-								Golyat.class, Golyat.class, Golyat.class,
+								GolyatPuls.class, GolyatPuls.class, GolyatPuls.class,
 								Ripper.class, Ripper.class,
 								Jager.class));
 					case 2:
 						return new ArrayList<>(Arrays.asList(
-								Golyat.class, Golyat.class, Golyat.class,
+								GolyatPuls.class, GolyatPuls.class, GolyatPuls.class,
 								Ripper.class, Ripper.class,
 								Jager.class,
 								Jaguar.class));
 					case 3:
 						return new ArrayList<>(Arrays.asList(
-								Golyat.class, Golyat.class,
+								GolyatPuls.class, GolyatPuls.class,
 								Ripper.class, Ripper.class,
 								Jager.class,
 								Jaguar.class, Jaguar.class));
 					case 4:
 						return new ArrayList<>(Arrays.asList(
-                                Golyat.class, Golyat.class,
+                                GolyatPuls.class, GolyatPuls.class,
 								Ripper.class, Ripper.class,Ripper.class,
 								Jager.class,
 								Jaguar.class, Jaguar.class));

@@ -28,12 +28,12 @@ import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.effects.particles.ElmoParticle;
 import com.gfpixel.gfpixeldungeon.items.Heap;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
-import com.gfpixel.gfpixeldungeon.sprites.ImpSprite;
+import com.gfpixel.gfpixeldungeon.sprites.P7Sprite;
 
 public class ImpShopkeeper extends Shopkeeper {
 
 	{
-		spriteClass = ImpSprite.class;
+		spriteClass = P7Sprite.class;
 	}
 	
 	private boolean seenBefore = false;

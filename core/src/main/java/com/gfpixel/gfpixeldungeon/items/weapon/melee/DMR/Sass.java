@@ -29,7 +29,7 @@ public class Sass extends DesignatedMarksmanRifle {
 		image = ItemSpriteSheet.SASS;
 
 		tier = 5;
-		DLY = 0.6f; //1.25x speed
+		DLY = 0.8f; //1.25x speed
 	}
 
 	@Override

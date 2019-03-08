@@ -29,7 +29,7 @@ public class Dragunov extends DesignatedMarksmanRifle {
 		image = ItemSpriteSheet.DRAGUNOV;
 
 		tier = 4;
-		DLY = 0.6f;
+		DLY = 0.8f;
 	}
 
 	@Override

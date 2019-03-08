@@ -45,8 +45,8 @@ public class Jupiter extends Mob {
     {
         spriteClass = JupiterSprite.class;
 
-        HP = HT = 110;
-        defenseSkill = 30;
+        HP = HT = 150;
+        defenseSkill = 5;
         viewDistance = Light.DISTANCE;
         baseSpeed = 1f;
         maxLvl = 26;
@@ -118,7 +118,7 @@ public class Jupiter extends Mob {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((JupiterSprite)sprite).charge( enemy.pos );
-            spend( attackDelay()*4f );
+            spend( attackDelay()*5f );
             beamCharged = true;
             return true;
         } else {
@@ -169,7 +169,7 @@ public class Jupiter extends Mob {
             }
 
             if (hit( this, ch, true )) {
-                ch.damage( Random.NormalIntRange( 50, 60 ), this );
+                ch.damage( Random.NormalIntRange( 70, 70 ), this );
 
                 if (Dungeon.level.heroFOV[pos]) {
                     ch.sprite.flash();

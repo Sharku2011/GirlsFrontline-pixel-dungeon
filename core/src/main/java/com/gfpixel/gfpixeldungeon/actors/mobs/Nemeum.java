@@ -117,7 +117,7 @@ public class Nemeum extends Mob {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((NemeumSprite)sprite).charge( enemy.pos );
-            spend( attackDelay()*3f );
+            spend( attackDelay()*4f );
             beamCharged = true;
             return true;
         } else {
@@ -168,7 +168,7 @@ public class Nemeum extends Mob {
             }
 
             if (hit( this, ch, true )) {
-                ch.damage( Random.NormalIntRange( 30, 35 ), this );
+                ch.damage( Random.NormalIntRange( 40, 40 ), this );
 
                 if (Dungeon.level.heroFOV[pos]) {
                     ch.sprite.flash();

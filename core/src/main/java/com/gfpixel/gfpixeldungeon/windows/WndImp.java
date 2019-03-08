@@ -26,7 +26,7 @@ import com.gfpixel.gfpixeldungeon.actors.mobs.npcs.Imp;
 import com.gfpixel.gfpixeldungeon.items.Item;
 import com.gfpixel.gfpixeldungeon.items.quest.DwarfToken;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
-import com.gfpixel.gfpixeldungeon.sprites.ImpSprite;
+import com.gfpixel.gfpixeldungeon.sprites.P7Sprite;
 import com.gfpixel.gfpixeldungeon.ui.RedButton;
 import com.gfpixel.gfpixeldungeon.ui.Window;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
@@ -42,7 +42,7 @@ public class WndImp extends Window {
 		super();
 		
 		IconTitle titlebar = new IconTitle();
-		titlebar.icon( new ImpSprite() );
+		titlebar.icon( new P7Sprite() );
 		titlebar.label( Messages.get(this, "title") );
 		titlebar.setRect( 0, 0, WIDTH, 0 );
 		add( titlebar );
