@@ -57,7 +57,8 @@ public class ShopkeeperSprite extends MobSprite {
 				coin = new PixelParticle();
 				parent.add( coin );
 			}
-			coin.reset( x + (flipHorizontal ? 0 : 19), y + 11, 0xFFFF00, 1, 0.5f );
+			//TODO 추후 타일맵 크기에 맞추어 일정 비율에 해당하는 위치로 세팅하도록 리팩토링 할 것
+			coin.reset( x + (flipHorizontal ? 7 : 19), y + 11, 0xFFFF00, 1, 0.5f );
 			coin.speed.y = -40;
 			coin.acc.y = +160;
 		}
