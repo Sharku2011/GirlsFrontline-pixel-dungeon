@@ -84,7 +84,7 @@ public class Messages {
 		Locale locale = new Locale(lang.code());
 
 		for (String file : prop_files) {
-			ResourceBundle bundle = ResourceBundle.getBundle( file, locale);
+			ResourceBundle bundle = ResourceBundle.getBundle( file, locale );
 			Enumeration<String> keys = bundle.getKeys();
 			while (keys.hasMoreElements()) {
 				String key = keys.nextElement();

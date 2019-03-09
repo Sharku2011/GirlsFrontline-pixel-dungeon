@@ -227,8 +227,7 @@ public class WndStory extends Window {
 				return 6;
 			case "PPSH":
 				return 8;
-			// FIXME typo - destroyer
-			case "DISTROYER" :
+			case "DESTROYER" :
 				return 9;
 			case "DREAMER" :
 				return 10;
