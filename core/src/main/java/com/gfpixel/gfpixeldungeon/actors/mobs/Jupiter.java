@@ -51,6 +51,8 @@ public class Jupiter extends Mob {
         baseSpeed = 1f;
         maxLvl = 26;
 
+
+
         properties.add(Property.ARMO);
     }
 

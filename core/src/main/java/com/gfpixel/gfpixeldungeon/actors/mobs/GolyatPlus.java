@@ -40,10 +40,10 @@ public class GolyatPlus extends Mob {
     {
         spriteClass = GolyatPlusSprite.class;
 
-        HP = HT = 5;
+        HP = HT = 1;
         defenseSkill = 9;
 
-        EXP = 5;
+        EXP = 3;
         maxLvl = 10;
 
         properties.add(Property.UNDEAD);
@@ -66,7 +66,7 @@ public class GolyatPlus extends Mob {
         for (int i = 0; i < PathFinder.NEIGHBOURS8.length; i++) {
             Char ch = findChar( pos + PathFinder.NEIGHBOURS8[i] );
             if (ch != null && ch.isAlive()) {
-                int damage = Random.NormalIntRange(25, 35);
+                int damage = Random.NormalIntRange(35, 45);
                 damage = Math.max( 0,  damage - (ch.drRoll() + ch.drRoll()) );
                 ch.damage( damage, this );
                 if (ch == Dungeon.hero && !ch.isAlive()) {

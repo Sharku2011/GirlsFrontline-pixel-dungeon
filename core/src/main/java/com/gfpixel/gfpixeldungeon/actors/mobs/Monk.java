@@ -59,12 +59,12 @@ public class Monk extends Mob {
 
 	@Override
 	public int attackSkill( Char target ) {
-		return 30;
+		return 15;
 	}
 
 	@Override
 	protected float attackDelay() {
-		return 0.5f;
+		return 0.2f;
 	}
 
 	@Override

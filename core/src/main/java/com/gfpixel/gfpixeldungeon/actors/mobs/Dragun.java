@@ -31,7 +31,7 @@ public class Dragun extends Mob {
     {
         spriteClass = DragunSprite.class;
 
-        HP = HT = 30;
+        HP = HT = 20;
         EXP = 16;
         defenseSkill = 75;
         baseSpeed = 2f;

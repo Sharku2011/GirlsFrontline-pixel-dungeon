@@ -42,13 +42,13 @@ public class MonkSprite extends MobSprite {
 		run = new Animation( 15, true );
 		run.frames( frames, 5, 6, 7, 8, 9, 10 );
 		
-		attack = new Animation( 18, false );
+		attack = new Animation( 24, false );
 		attack.frames( frames, 4, 1, 4, 2, 4, 3, 4, 4 );
 		
-		kick = new Animation( 18, false );
+		kick = new Animation( 24, false );
 		kick.frames( frames, 4, 1, 4, 2, 4, 3, 4, 4 );
 		
-		die = new Animation( 15, false );
+		die = new Animation( 8, false );
 		die.frames( frames, 1, 11, 12, 13 );
 		
 		play( idle );
