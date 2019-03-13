@@ -391,7 +391,7 @@ public class Yog extends Mob {
 		
 		@Override
 		public int damageRoll() {
-			return Random.NormalIntRange( 20, 40 );
+			return Random.NormalIntRange( 25, 40 );
 		}
 		
 		@Override

@@ -70,10 +70,10 @@ public class HeroSprite extends CharSprite {
 		run = new Animation( RUN_FRAMERATE, true );
 		run.frames( film, 2, 3, 4, 5, 6, 7 );
 		
-		die = new Animation( 8, false );
+		die = new Animation( 6, false );
 		die.frames( film, 8, 9, 10, 11, 12, 13 );
 		
-		attack = new Animation( 22, false );
+		attack = new Animation( 23, false );
 		attack.frames( film, 14, 15, 16, 17, 18, 17, 16, 14 );
 		
 		zap = attack.clone();

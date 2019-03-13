@@ -54,11 +54,12 @@ public class ItemSpriteSheet {
 		assignItemRect(NULLWARN,        16, 7);
 		assignItemRect(WEAPON_HOLDER,   16, 12);
 		assignItemRect(ARMOR_HOLDER,    14, 12);
-		assignItemRect(WAND_HOLDER,     14, 14);
-		assignItemRect(RING_HOLDER,     15,  10);
-		assignItemRect(ARTIFACT_HOLDER, 15, 15);
-		assignItemRect(POTION_HOLDER,   10, 14);
-		assignItemRect(SCROLL_HOLDER,   15, 14);
+		assignItemRect(WAND_HOLDER,     13, 13);
+		assignItemRect(RING_HOLDER,     13,  8);
+		assignItemRect(ARTIFACT_HOLDER, 11, 14);
+		assignItemRect(POTION_HOLDER,   8, 14);
+		assignItemRect(SCROLL_HOLDER,   11, 12);
+        assignItemRect(SOMETHING,         8, 13);
 	}
 
 
@@ -321,8 +322,8 @@ public class ItemSpriteSheet {
 	public static final int ARMOR_SCALE     = ARMOR+3;
 	public static final int ARMOR_PLATE     = ARMOR+4;
 	public static final int ARMOR_WARRIOR   = ARMOR+5;
-	public static final int ARMOR_MAGE      = ARMOR+6;
-	public static final int ARMOR_ROGUE     = ARMOR+7;
+	public static final int ARMOR_ROGUE     = ARMOR+6;
+	public static final int ARMOR_MAGE      = ARMOR+7;
 	public static final int ARMOR_RANGER  = ARMOR+8;
 	public static final int ARMOR_UMP40 	= ARMOR+9;
 	static{
@@ -331,10 +332,10 @@ public class ItemSpriteSheet {
 		assignItemRect(ARMOR_MAIL,      14, 12);
 		assignItemRect(ARMOR_SCALE,     14, 11);
 		assignItemRect(ARMOR_PLATE,     12, 12);
-		assignItemRect(ARMOR_WARRIOR,   12, 12);
-		assignItemRect(ARMOR_MAGE,      15, 15);
-		assignItemRect(ARMOR_ROGUE,     14, 12);
-		assignItemRect(ARMOR_RANGER,  13, 15);
+		assignItemRect(ARMOR_WARRIOR,   16, 15);
+		assignItemRect(ARMOR_ROGUE,     16, 15);
+		assignItemRect(ARMOR_MAGE,      16, 15);
+		assignItemRect(ARMOR_RANGER,  16, 15);
 		assignItemRect(ARMOR_UMP40,  12, 12);
 	}
 

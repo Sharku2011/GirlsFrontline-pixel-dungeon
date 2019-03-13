@@ -1,6 +1,6 @@
 ###features
 levels.features.alchemypot.select_seed=씨앗을 선택하세요
-levels.features.alchemypot.pot=연금술 솥
+levels.features.alchemypot.pot=조합대
 levels.features.alchemypot.fruit=단백과를 요리한다
 levels.features.alchemypot.potion=물약을 제조한다
 levels.features.alchemypot.options=단백과를 씨앗과 요리하시겠습니까? 아니면 씨앗으로 물약을 제조하시겠습니까?
@@ -41,9 +41,9 @@ levels.traps.chillingtrap.desc=이 함정이 작동되면, 화합물을 방출�
 levels.traps.confusiontrap.name=혼란 가스 함정
 levels.traps.confusiontrap.desc=이 함정을 작동시키면 이 주변에 혼란 가스가 뿌려질 것이다.
 
-levels.traps.cursingtrap.name=저주 함정
-levels.traps.cursingtrap.curse=당신이 장비한 모든 장비가 저주받았다!
-levels.traps.cursingtrap.desc=이 함정은 저주받은 장비들과 같은 사악한 마법이 깃들어 있다. 밟는 순간 주변의 아이템 몇개에 저주를 내린다.
+levels.traps.cursingtrap.name=감염 함정
+levels.traps.cursingtrap.curse=당신이 장비한 모든 장비가 감염되었다!
+levels.traps.cursingtrap.desc=이 함정은 저주받은 장비들과 같은 사악한 바이러스가 깃들어 있다. 밟는 순간 주변의 아이템 몇개에 저주를 내린다.
 
 levels.traps.disarmingtrap.name=무장 해제 함정
 levels.traps.disarmingtrap.disarm=당신의 무기가 어디론가 순간이동해버렸다!
@@ -143,7 +143,7 @@ levels.citylevel.entrance_desc=위층으로 올라가는 경사로이다.
 levels.citylevel.exit_desc=아래층으로 내려가는 경사로이다.
 levels.citylevel.deco_desc=몇몇 타일이 빠져 있다.
 levels.citylevel.sp_desc=두꺼운 카펫이 바닥에 깔려 있다.
-levels.citylevel.statue_desc=영웅적인 자세를 취하고 있는 드워프의 모습을 본딴 석상이다.
+levels.citylevel.statue_desc=철혈의 마스코트 디너게이트를 본뜬 석상이다.
 levels.citylevel.bookshelf_desc=각종 분류의 책들이 책장에 가지런히 꽂혀 있다.
 
 levels.hallslevel.water_name=차가운 용암
@@ -159,7 +159,7 @@ levels.rabbitlevel.grass_name=높게 자란 풀
 levels.rabbitlevel.high_grass_name=더 높게 자란 풀
 levels.rabbitlevel.statue_name=석상
 levels.rabbitlevel.water_desc=유적 위에서 흘러들어온 물이다.
-levels.rabbitlevel.bookshelf_desc=여러가지 책이 꽂혀있다. 하나가 눈에 띈다. 82년생 뭐시기.. 음, 볼 가치가 없는 것 같다.
+levels.rabbitlevel.bookshelf_desc=여러가지 책이 꽂혀있다.
 
 levels.level.hidden_trap=숨겨진 %s이/가 발동했다!
 levels.level.chasm_name=낭떠러지

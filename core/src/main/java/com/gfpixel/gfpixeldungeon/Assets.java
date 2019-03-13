@@ -52,7 +52,7 @@ public class Assets {
 	public static final String ROGUE	= "rogue.png";
 	public static final String RANGER	= "ranger.png";
 	public static final String AVATARS	= "avatars.png";
-	public static final String PET		= "pet.png";
+	public static final String KAR98		= "kar98.png";
 	public static final String UMP40 	= "ump40.png";
 	public static final String EMOTION 	= "emotion.png";
 	
@@ -69,6 +69,7 @@ public class Assets {
     public static final String P7			= "p7.png";
     public static final String FNC		= "fnc.png";
 	public static final String KEEPER		= "shopkeeper.png";
+	public static final String SAIGA		= "saiga.png";
     public static final String STAR		= "star.png";
     public static final String M16	= "m16a1.png";
     public static final String PPSH	= "ppsh.png";
