@@ -144,7 +144,7 @@ public class ChangesScene extends PixelScene {
 		changes.addButton( new ChangeButton(new Image(Assets.GOLYATPLUS, 0, 0, 26, 23), "변종",
 				"분기점 변종 몬스터 추가.\n\n" +
 						"_-_ 분기점에 등장하는 골리앗이 골리앗 PLUS로 바뀌었습니다.\n\n" +
-						"_-_ 골리앗 PLUS는 기존의 검은 외형과 다른 붉은 외형을 가지고 있으며 이동속도가 느리고 매우 낮은 체력과 공격력을 가지고 있습니다.\n\n" +
+						"_-_ 골리앗 PLUS는 기존의 검은 외형과 다른 붉은 외형을 가지고 있으며 매우 낮은 체력과 공격력을 가지고 있습니다.\n\n" +
 						"_-_ 하지만 골리앗 PLUS가 가하는 공격은 반드시 명중하며, 처치할 경우 주변에 높은 자폭 피해를 입힙니다."));
 
 		changes = new ChangeInfo(Messages.get(this, "changes"), false, null);
@@ -164,7 +164,7 @@ public class ChangesScene extends PixelScene {
 
 		changes.addButton( new ChangeButton(new Image(Assets.WARRIOR, 0, 69, 21, 23),  "소폭상향",
 				"임시 땜빵.\n\n" +
-						"_-_ UMP45가 음식을 섭취하면 HP 5% 회복과 더해서 2턴 동안 투명화 상태가 됩니다."));
+						"_-_ UMP45가 음식을 섭취하면 HP 5% 회복과 더해서 3턴 동안 투명화 상태가 됩니다."));
 
 		changes = new ChangeInfo(Messages.get(this, "nerfs"), false, null);
 		changes.hardlight( CharSprite.NEGATIVE );
@@ -173,12 +173,12 @@ public class ChangesScene extends PixelScene {
 		changes.addButton( new ChangeButton(new Image(Assets.M4A1, 0, 0, 17, 20), "수치 조정",
 				"M4A1 관련 수치 조정.\n\n" +
 						"_-_ M4A1의 데미지 캡이 30에서 100으로 조정됐습니다.\n\n" +
-						"_-_ 시나몬 롤의 체력이 5로 줄었지만 공격력이 최대 40까지 상승했습니다. 최소 데미지는 기존 버전처럼 22로 유지합니다."));
+						"_-_ 시나몬 롤의 체력이 5로 줄었지만 공격력이 25~40까지 상승했습니다."));
 
 		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 26, 21), "나약해짐",
 				"장갑계 몬스터 하향.\n\n" +
 						"_-_ 네메움의 공격력이 40으로 고정 됐으며, 데미지캡이 삭제되고 레이저 발사에 필요한 시간이 4턴으로 조정됐습니다.\n\n" +
-						"_-_ 주피터의 레이저 발사에 필요한 시간이 1턴 증가해 5턴으로, 레이저 피해는 70으로 고정됐으며 방어력이 다른 장갑계열처럼 사라진 대신 체력이 150으로 늘었습니다.\n\n" +
+						"_-_ 주피터의 레이저 발사에 필요한 시간이 1턴 증가해 6턴으로, 레이저 피해는 70으로 고정됐으며 방어력이 다른 장갑계열처럼 사라진 대신 체력이 150으로 늘었습니다.\n\n" +
 						"_-_ 만티코어의 공격력이 35로 하락했으며 데미지 리미트가 50, 체력이 150으로 하락해 원래 목표인 SR계열 무기 견제만 가능하도록 바꿨습니다."));
 
 		changes = new ChangeInfo("v0.4.7", true, "");
