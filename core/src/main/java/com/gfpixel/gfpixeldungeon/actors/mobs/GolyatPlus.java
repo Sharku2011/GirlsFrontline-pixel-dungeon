@@ -52,7 +52,7 @@ public class GolyatPlus extends Mob {
 
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange( 1, 2 );
+        return Random.NormalIntRange( 8, 8 );
     }
 
     @Override
@@ -87,7 +87,7 @@ public class GolyatPlus extends Mob {
 
     @Override
     public int attackSkill( Char target ) {
-        return 12;
+        return 75;
     }
 
     @Override

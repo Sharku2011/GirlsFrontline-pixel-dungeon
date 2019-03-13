@@ -37,7 +37,7 @@ public class Golem extends Mob {
 
 		HP = HT = 150;
 		defenseSkill = 0;
-		baseSpeed = 0.99f;
+		baseSpeed = 0.95f;
 		EXP = 15;
 		maxLvl = 25;
 
@@ -49,7 +49,7 @@ public class Golem extends Mob {
 
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 30, 45 );
+		return Random.NormalIntRange( 35, 35 );
 	}
 
 	@Override
