@@ -23,7 +23,6 @@ package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.actors.mobs.DM300;
-import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.watabou.noosa.TextureFilm;
 
 public class DM300Sprite extends MobSprite {
@@ -48,5 +47,12 @@ public class DM300Sprite extends MobSprite {
 		die.frames( frames, 9, 10, 11 );
 
 		play( idle );
+	}
+
+	@Override
+	public void attack( int cell ) {
+		turnTo( ch.pos, cell );
+		((DM300)ch).magnum();
+		play( attack );
 	}
 }
