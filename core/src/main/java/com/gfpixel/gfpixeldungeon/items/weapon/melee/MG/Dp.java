@@ -29,6 +29,8 @@ public class Dp extends MachineGun {
         image = ItemSpriteSheet.DP;
 
         tier = 1;
+        ACC = 0.85f;
+        DLY = 0.2f;
     }
 
     @Override
