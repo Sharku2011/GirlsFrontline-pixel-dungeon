@@ -22,6 +22,9 @@
 package com.gfpixel.gfpixeldungeon.items.weapon.melee.UG;
 
 import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
@@ -44,6 +47,14 @@ public class C96 extends UniversaleGun {
     }
 
     @Override
+    public void onAttack( Char owner, Char enemy ) {
+        if (owner instanceof Hero && owner.buffs(Speed.class).isEmpty()) {
+            Buff.prolong(owner, Light.class, 9.5f);
+        }
+    }
+
+
+    @Override
     public int damageRoll(Char owner) {
         if (owner instanceof Hero) {
             Hero hero = (Hero)owner;
@@ -52,7 +63,7 @@ public class C96 extends UniversaleGun {
                 //deals 67% toward max to max on surprise, instead of min to max.
                 int diff = max() - min();
                 int damage = augment.damageFactor(Random.NormalIntRange(
-                        min() + Math.round(diff*0.4f),
+                        min() + Math.round(diff*0.7f),
                         max()));
                 int exStr = hero.STR() - STRReq();
                 if (exStr > 0) {
