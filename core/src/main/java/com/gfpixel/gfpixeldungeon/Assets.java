@@ -34,6 +34,7 @@ public class Assets {
 
 	public static final String SAVESLOT	= "new_ui.png";
 	public static final String PORTRAIT	= "portrait.png";
+	public static final String PORTRAIT1= "portrait1.png";
 	
 	public static final String CHROME	= "chrome.png";
 	public static final String ICONS	= "icons.png";

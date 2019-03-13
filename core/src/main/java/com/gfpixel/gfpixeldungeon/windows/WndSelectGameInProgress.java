@@ -156,7 +156,7 @@ public class WndSelectGameInProgress extends Window {
                     break;
             }
 
-            portrait = new Image(Assets.PORTRAIT, (order % 5) * 20, (order / 5) * 26, 19, 25);
+            portrait = new Image(Assets.PORTRAIT1, (order % 5) * 38, (order / 5) * 60, 38, 60);
             frame = new Image(Assets.SAVESLOT, 0, 0, 21, 52);
 
             setRect(0, 0, frame.width * SCALE, frame.height * SCALE);
@@ -192,10 +192,13 @@ public class WndSelectGameInProgress extends Window {
 
             frame.scale.set( SCALE );
 
-            portrait.scale.set( 15.0f / 17.0f * SCALE );
+            portrait.scale.set( 8.0f / 17.0f * SCALE );
 
+            // 2 는 프레임 좌측 상단에서 margin 넣는거, x는 변할 일 없는데 y는 높낮이 조절용으로 좀 건드릴듯
+            // 하드코딩이니 나중에 한 곳에 다 몰아넣고 조절하도록 바꾸자
+            //TODO Refactor as variable
             portrait.x = x + 2 * SCALE;
-            portrait.y = y + 8 * SCALE;
+            portrait.y = y + 2 * SCALE;
 
             add( portrait );
 
@@ -205,7 +208,7 @@ public class WndSelectGameInProgress extends Window {
             add( frame );
 
 
-            add(name);
+            add( name );
 
             if (Info.heroClass == HeroClass.NONE) {
                 name.text( Info.heroClass.title() );
