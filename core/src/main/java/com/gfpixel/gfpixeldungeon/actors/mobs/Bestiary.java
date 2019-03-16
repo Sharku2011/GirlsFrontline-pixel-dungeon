@@ -202,16 +202,14 @@ public class Bestiary {
 					case 3:
 						//1x elemental, 1x warlock, 2x monk, 1x golem
 						return new ArrayList<>(Arrays.asList(
-								Elemental.class,
 								Warlock.class,
-								Monk.class, Monk.class,
+								Monk.class, Monk.class, Monk.class,
 								Golem.class));
 					case 4:
 						//1x elemental, 1x warlock, 2x monk, 3x golem
 						return new ArrayList<>(Arrays.asList(
 								Warlock.class, Warlock.class,
-								Golem.class, Golem.class,
-								Golem.class, Golem.class,
+								Monk.class, Golem.class,
 								Golem.class, Golem.class, Golem.class));
 				}
 			}

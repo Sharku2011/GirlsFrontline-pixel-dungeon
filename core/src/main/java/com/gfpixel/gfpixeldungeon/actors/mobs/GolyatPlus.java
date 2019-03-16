@@ -41,13 +41,12 @@ public class GolyatPlus extends Mob {
         spriteClass = GolyatPlusSprite.class;
 
         HP = HT = 1;
-        defenseSkill = 9;
+        defenseSkill = 5;
 
         EXP = 3;
         maxLvl = 10;
 
-        properties.add(Property.UNDEAD);
-        properties.add(Property.INORGANIC);
+        properties.add(Property.ARMO);
     }
 
     @Override

@@ -49,7 +49,7 @@ public class Typhoon extends Hydra {
 
     @Override
     public int attackSkill( Char target ) {
-        return 100;
+        return 1000;
     }
 
     @Override
@@ -144,7 +144,7 @@ public class Typhoon extends Hydra {
             }
 
             if (hit( this, ch, true )) {
-                ch.damage( Random.NormalIntRange( 120, 135 ), this );
+                ch.damage( Random.NormalIntRange( 125, 135 ), this );
 
                 if (Dungeon.level.heroFOV[pos]) {
                     ch.sprite.flash();

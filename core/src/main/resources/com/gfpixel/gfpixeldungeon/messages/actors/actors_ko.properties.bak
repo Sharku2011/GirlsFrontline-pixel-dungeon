@@ -1,4 +1,4 @@
-﻿###blobs
+###blobs
 actors.blobs.confusiongas.desc=여기에 혼란 가스 구름이 소용돌이치고 있다.
 
 actors.blobs.electricity.desc=여기에 전기가 요란스럽게 파지직거리고 있다.
@@ -559,6 +559,11 @@ actors.mobs.golyat.name=골리앗
 actors.mobs.golyat.explo_kill=당신은 골리앗의 자폭에 의해 사망했다...
 actors.mobs.golyat.def_verb=방어
 actors.mobs.golyat.desc=골리앗은 철혈의 신형 기계입니다. 양산과 근접전투를 위해 근접시 자폭되는 기능을 없앴지만, 이 기체들이 격파되면 폭발하여 파편을 사방에 날립니다.
+
+actors.mobs.golyatplus.name=골리앗 플러스
+actors.mobs.golyatplus.explo_kill=당신은 골리앗의 자폭에 의해 사망했다...
+actors.mobs.golyatplus.def_verb=방어
+actors.mobs.golyatplus.desc=골리앗은 철혈의 신형 기계입니다. 공격력과 체력 모두 낮지만 양산형과는 다르게 격파될경우 주변에 매우 높은 피해를 입힙니다. 아군과 적군을 가리지 않고요!
 
 actors.mobs.spinner.name=헤드 크랩
 actors.mobs.spinner.desc=이 외계에서 온 괴생명체는 누군가에게 호되게 당한 이후로 직접 전투를 피하려고 합니다. 대신 근처에 희생양이 다가오면, 배 아래에서 나오는 분비물로 적을 가두어 맹독성 이빨로 천천히 죽어가게 합니다.
