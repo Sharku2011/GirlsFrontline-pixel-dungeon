@@ -356,7 +356,7 @@ public class Elphelt extends Mob {
         if (Dungeon.hero.subClass == HeroSubClass.NONE) {
             Dungeon.level.drop( new TomeOfMastery(), pos ).sprite.drop();
         }
-        Dungeon.level.drop( new Cypros(), pos).sprite.drop();
+        Dungeon.level.drop( new Cypros().identify(), pos).sprite.drop();
 
         GameScene.bossSlain();
         super.die( cause );
