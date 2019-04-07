@@ -11,7 +11,6 @@ import com.gfpixel.gfpixeldungeon.actors.blobs.GenoiseWarn;
 import com.gfpixel.gfpixeldungeon.actors.blobs.GooWarn;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
-import com.gfpixel.gfpixeldungeon.actors.buffs.Corruption;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Doom;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Frost;
 import com.gfpixel.gfpixeldungeon.actors.buffs.LockedFloor;
@@ -733,7 +732,6 @@ public class Elphelt extends Mob {
     {
         immunities.add( Charm.class );
         immunities.add( Terror.class );
-        immunities.add( Corruption.class );
     }
 
 
