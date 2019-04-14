@@ -47,12 +47,12 @@ public class Assets {
 	public static final String SHADOW   = "shadow.png";
 	public static final String BOSSHP   = "boss_hp.png";
 
-	public static final String WARRIOR	= "warrior.png";
-	public static final String MAGE		= "mage.png";
-	public static final String ROGUE	= "rogue.png";
-	public static final String RANGER	= "ranger.png";
+	public static final String WARRIOR	= "ump45.png";
+	public static final String MAGE		= "g11.png";
+	public static final String ROGUE	= "ump9.png";
+	public static final String RANGER	= "hk416.png";
 	public static final String AVATARS	= "avatars.png";
-	public static final String KAR98		= "kar98.png";
+	public static final String KAR98	= "kar98.png";
 	public static final String UMP40 	= "ump40.png";
 	public static final String EMOTION 	= "emotion.png";
 	
@@ -140,7 +140,7 @@ public class Assets {
 	public static final String ITEMS	        = "items.png";
 	public static final String TERRAIN_FEATURES	= "terrain_features.png";
 	
-	public static final String TILES_SEWERS	= "work/tiles_sewers.png";
+	public static final String TILES_SEWERS	= "tiles_sewers.png";
 	public static final String TILES_PRISON	= "tiles_prison.png";
 	public static final String TILES_CAVES	= "tiles_caves.png";
 	public static final String TILES_RECAVES= "tiles_recaves.png";

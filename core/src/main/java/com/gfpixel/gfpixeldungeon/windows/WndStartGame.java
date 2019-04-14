@@ -53,6 +53,8 @@ public class WndStartGame extends Window {
 	private static final int WIDTH    = 120;
 	private static final int HEIGHT   = 150;
 
+	private static final int CLASSES  = 4;
+
 	public WndStartGame(final int slot){
 		
 		Badges.loadGlobal();
@@ -64,7 +66,7 @@ public class WndStartGame extends Window {
 		title.y = 2;
 		add(title);
 		
-		float heroBtnSpacing = (WIDTH - 4*HeroBtn.WIDTH)/5f;
+		float heroBtnSpacing = (WIDTH - CLASSES * HeroBtn.WIDTH)/5f;
 		
 		float curX = heroBtnSpacing;
 		for (HeroClass cl : HeroClass.values()){
@@ -73,7 +75,7 @@ public class WndStartGame extends Window {
 			}
 			HeroBtn button = new HeroBtn(cl);
 			button.setRect(curX, title.baseLine() + 4, HeroBtn.WIDTH, HeroBtn.HEIGHT);
-			curX += HeroBtn.WIDTH + heroBtnSpacing;
+			curX += (HeroBtn.WIDTH) + heroBtnSpacing;
 			add(button);
 		}
 		
@@ -159,31 +161,42 @@ public class WndStartGame extends Window {
 		
 		private Image hero;
 		
-		private static final int WIDTH = HeroSprite.FRAME_WIDTH;
-		private static final int HEIGHT = HeroSprite.FRAME_HEIGHT;
+		private static final int WIDTH = HeroSprite.FRAME_WIDTH / 2;
+		private static final int HEIGHT = HeroSprite.FRAME_HEIGHT / 2;
 		
 		HeroBtn ( HeroClass cl ){
 			super();
 			
 			this.cl = cl;
-			//hero = new Image(Assets.WARRIOR, 0, 0, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
-			if (cl == HeroClass.WARRIOR){
-				hero = new Image(Assets.WARRIOR, 0, HeroSprite.FRAME_HEIGHT * 2 /*tier*/, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
-			} else if (cl == HeroClass.MAGE){
-				hero = new Image(Assets.MAGE, 0, HeroSprite.FRAME_HEIGHT * 2 /*tier*/, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
-			} else if (cl == HeroClass.ROGUE){
-				hero = new Image(Assets.ROGUE, 0, HeroSprite.FRAME_HEIGHT * 2 /*tier*/, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
-			} else if (cl == HeroClass.RANGER){
-				hero = new Image(Assets.RANGER, 0, HeroSprite.FRAME_HEIGHT * 2 /*tier*/, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
+
+			String AssetString;
+
+			switch (cl)
+			{
+				case NONE:default:
+					return;
+				case WARRIOR:
+					AssetString = Assets.WARRIOR;
+					break;
+				case MAGE:
+					AssetString = Assets.MAGE;
+					break;
+				case ROGUE:
+					AssetString = Assets.ROGUE;
+					break;
+				case RANGER:
+					AssetString = Assets.RANGER;
+					break;
 			}
+			hero = new Image(AssetString, 0, HeroSprite.FRAME_HEIGHT * 2, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
 			add(hero);
-			
 		}
 		
 		@Override
 		protected void layout() {
 			super.layout();
 			if (hero != null){
+				hero.scale.set(0.5f);
 				hero.x = x + (width - hero.width()) / 2f;
 				hero.y = y + (height - hero.height()) / 2f;
 				PixelScene.align(hero);
