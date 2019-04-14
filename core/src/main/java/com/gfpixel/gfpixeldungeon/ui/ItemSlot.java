@@ -101,24 +101,28 @@ public class ItemSlot extends Button {
 		super.createChildren();
 		
 		icon = new ItemSprite();
+		//
+		icon.scale.set(0.5f);
+		//
 		add( icon );
 		
-		topLeft = new BitmapText( PixelScene.pixelFont);
+		topLeft = new BitmapText( PixelScene.pixelFont );
 		add( topLeft );
 		
-		topRight = new BitmapText( PixelScene.pixelFont);
+		topRight = new BitmapText( PixelScene.pixelFont );
 		add( topRight );
 		
-		bottomRight = new BitmapText( PixelScene.pixelFont);
+		bottomRight = new BitmapText( PixelScene.pixelFont );
 		add( bottomRight );
 	}
 	
 	@Override
 	protected void layout() {
 		super.layout();
-		
-		icon.x = x + (width - icon.width) / 2f;
-		icon.y = y + (height - icon.height) / 2f;
+		//
+		icon.x = x + (width - icon.width/2) / 2f;
+		icon.y = y + (height - icon.height/2) / 2f;
+		//
 		PixelScene.align(icon);
 		
 		if (topLeft != null) {
