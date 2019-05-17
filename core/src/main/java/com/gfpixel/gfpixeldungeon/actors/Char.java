@@ -59,7 +59,6 @@ import com.gfpixel.gfpixeldungeon.items.wands.WandOfLightning;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Blazing;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Shocking;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.darts.ShockingDart;
 import com.gfpixel.gfpixeldungeon.levels.Terrain;

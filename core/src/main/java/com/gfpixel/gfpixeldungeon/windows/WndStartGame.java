@@ -314,7 +314,29 @@ public class WndStartGame extends Window {
 			name.x = x + (avatar.width() - name.width())/2f;
 			name.y = avatar.y + avatar.height() + 2;
 			PixelScene.align(name);
-			
+
+			if (heroItem.icon() == null)
+			{
+				return;
+			}
+			if (heroLoadout.icon() == null)
+			{
+				return;
+			}
+			if (heroMisc.icon() == null)
+			{
+				return;
+			}
+			if (heroSubclass.icon() == null)
+			{
+				return;
+			}
+
+			heroItem.icon().scale.set(0.5f);
+			heroLoadout.icon().scale.set(0.5f);
+			heroMisc.icon().scale.set(0.5f);
+			heroSubclass.icon().scale.set(0.5f);
+
 			heroItem.setPos(x + width - BTN_SIZE, y);
 			heroLoadout.setPos(x + width - BTN_SIZE, heroItem.bottom());
 			heroMisc.setPos(x + width - BTN_SIZE, heroLoadout.bottom());

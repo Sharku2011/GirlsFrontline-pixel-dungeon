@@ -144,8 +144,10 @@ public class StatusPane extends Component {
 
 		bg.size( width, bg.height );
 
-		avatar.x = bg.x + 15 - avatar.width / 2f;
-		avatar.y = bg.y + 16 - avatar.height / 2f;
+		avatar.scale.set(0.5f);
+
+		avatar.x = bg.x + 15 - avatar.width() / 2f;
+		avatar.y = bg.y + 16 - avatar.height() / 2f;
 		PixelScene.align(avatar);
 
 		compass.x = avatar.x + avatar.width / 2f - compass.origin.x;

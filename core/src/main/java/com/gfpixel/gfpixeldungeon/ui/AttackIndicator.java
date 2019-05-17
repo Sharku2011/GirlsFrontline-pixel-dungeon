@@ -28,6 +28,8 @@ import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.scenes.PixelScene;
 import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
 import com.watabou.noosa.Game;
+import com.watabou.utils.GameMath;
+import com.watabou.utils.PointF;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
@@ -65,8 +67,13 @@ public class AttackIndicator extends Tag {
 	@Override
 	protected synchronized void layout() {
 		super.layout();
-		
+
 		if (sprite != null) {
+
+			float originMaxScale = Math.max(sprite.width, sprite.height);
+
+			sprite.scale.set(22.f / originMaxScale);
+
 			sprite.x = x + (width - sprite.width()) / 2;
 			sprite.y = y + (height - sprite.height()) / 2;
 			PixelScene.align(sprite);
@@ -140,6 +147,9 @@ public class AttackIndicator extends Tag {
 			sprite.idle();
 			sprite.paused = true;
 			add( sprite );
+
+			float originMaxScale = Math.max(sprite.width, sprite.height);
+			sprite.scale.set(22.f / originMaxScale);
 
 			sprite.x = x + (width - sprite.width()) / 2 + 1;
 			sprite.y = y + (height - sprite.height()) / 2;

@@ -853,9 +853,13 @@ public class ChangesScene extends PixelScene {
 
 		public ChangeButton( Image icon, String title, String message){
 			super();
-			
+
 			this.icon = icon;
+
+			this.icon.scale.set(0.5f);
+
 			add(this.icon);
+
 
 			this.title = Messages.titleCase(title);
 			this.message = message;
