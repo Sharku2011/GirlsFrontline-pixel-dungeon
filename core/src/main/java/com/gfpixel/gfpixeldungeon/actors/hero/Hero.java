@@ -406,8 +406,7 @@ public class Hero extends Char {
 			belongings.weapon instanceof AK47 ||
 			belongings.weapon instanceof Dp ||
 			belongings.weapon instanceof Negev ||
-			belongings.weapon instanceof Mg42 ||
-			belongings.weapon instanceof M99)                                     return false;
+			belongings.weapon instanceof Mg42)                                     return false;
 
 		return true;
 	}

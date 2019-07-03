@@ -449,7 +449,7 @@ items.food.pasty.pie=호박 파이
 items.food.pasty.cane=사탕 막대
 
 items.food.pasty.pasty_desc=민트초코를 바른 맛있는 케이크입니다. 환상적인 맛에 배가 조금 찰것입니다!
-items.food.pasty.cinnamonroll_desc=소녀 픽셀던전 첫 배포일을 기념하여 롤모양 반죽에 시나몬 가루를 섞은 설탕을 뿌려 구워낸 롤 모양 빵입니다. 젠장! 또 시나몬 롤인가요?
+items.food.pasty.cinnamonroll_desc=2017년 9월 24일 21시 22분, 소녀 픽셀던전 첫 배포일을 기념하여 만든 롤모양 반죽에 시나몬 가루를 섞은 설탕을 뿌려 구워낸 롤 모양 빵입니다. 즐거운 게임 되세요!
 items.food.pasty.pie_desc=커다란 호박 파이입니다! 달고 향긋한 맛에 배가 차고 약간 치유가 될 것입니다.\n\n행복한 할로윈 보내세요!
 items.food.pasty.cane_desc=설탕으로 만들어진 거대한 사탕 막대입니다!  배를 채우기엔 충분한 양이고, 총탄의 충전량을 채울 수도 있습니다.\n\n즐거운 연말 되세요!
 
@@ -917,7 +917,7 @@ items.weapon.enchantments.vorpal.desc=예리한 무기는 날카롭게 깎인 �
 ###tier1 wep
 
 items.weapon.melee.lr.ump40.name=H&K UMP40
-items.weapon.melee.lr.ump40.stats_desc=이 기관단총은 아주 멀리 떨어진 적을 공격할수있습니다.
+items.weapon.melee.lr.ump40.stats_desc=이 무기는 플레이어로부터 _3_칸 떨어진 적을 공격할 수 있습니다.
 items.weapon.melee.lr.ump40.desc=40S&W 탄종을 사용하는 UMP40의 기본 무장입니다. 강하고 가벼우며 멀리 떨어진 적을 공격할수있습니다.
 
 items.weapon.melee.smg.ump45.name=H&K UMP45
@@ -925,7 +925,7 @@ items.weapon.melee.smg.ump45.stats_desc=이 기관단총은 명중률이 낮으�
 items.weapon.melee.smg.ump45.desc="시작해, 9. 제대로 보라구."\n\n45ACP 탄종을 사용하는 UMP45의 기본 무장입니다. 준수한 데미지에 적당한 내구성으로 피해를 일부 막아낼수있습니다.
 
 items.weapon.melee.smg.m9.name=H&K MP7
-items.weapon.melee.smg.m9.stats_desc=빠르게 공격할 수 있지만 공격력과 명중률이 떨어지는 편입니다.
+items.weapon.melee.smg.m9.stats_desc=이 무기는 최대 _3_번까지 공격할 수 있고,명중률이 40% 낮습니다.
 items.weapon.melee.smg.m9.desc="사육사 씨, 드디어 마중 나온 거야? 수고했어."\n\n 헤클러 운트 코흐 7호 기관단총입니다. G36과 같은 가스압 회전 노리쇠 방식을 적용했으며 전용 고속탄을 사용해 관통력이 높은 편이지만, 인형 소체를 대상으로는 글쎄요...
 
 items.weapon.melee.ug.sr3.name=SR-3MP
@@ -945,7 +945,7 @@ items.weapon.melee.ug.cannon.stats_desc=_어떤 적이든 쓰러트릴수있는 
 items.weapon.melee.ug.cannon.desc=젠장!
 
 items.weapon.melee.mg.dp.name=DP-28
-items.weapon.melee.mg.dp.stats_desc=이 무기는 다른 무기보다 압도적으로 빠르지만 명중률이 낮고 기습공격시 데미지가 떨어집니다.
+items.weapon.melee.mg.dp.stats_desc=이 무기는 최대 _5_번까지 공격할 수 있고,기습공격을 할 수 없으며 명중률이 15% 낮습니다.
 items.weapon.melee.mg.dp.desc="LMG MOUNTED AND LOADED! Весомый аргумент готов." \n\n7.62x54mmR 47발들이 원반형 탄창을 사용하는 데그챠료프 보병기관총입니다. 머리가 나쁜 인간이라도 쉽게 사용할 수 있을만큼 단순하며, 가볍고 매우 높은 신뢰도와 내구성을 자랑합니다. 탄창만 빼고요! 
 
 items.weapon.melee.thunder.name=Triple-Action Thunder
@@ -970,8 +970,34 @@ items.weapon.melee.g11.has_wand=이 돌격소총에는 현재 _%s가_ 장전됬�
 
 ###tier2
 
+items.weapon.melee.lr.m1911.name=콜트 M1911
+items.weapon.melee.lr.m1911.stats_desc=이 무기는 플레이어로부터 _2_칸 떨어진 적을 공격할 수 있습니다.
+items.weapon.melee.lr.m1911.desc="세상에, 이거 우리 할아버지가 쓰던 권총이잖아!" \n\n 자동권총의 전설이자 전세계적으로 사랑받는 오래된 권총 콜트 M1911입니다. 아주 강력하진 않지만, 긴 사거리가 단점을 보완해줍니다.
+
+items.weapon.melee.ar.g36.name=H&K G36
+items.weapon.melee.ar.g36.stats_desc=이 무기는 강화효율이 _1_ 높고, 가끔 _2_번까지 공격할 수 있습니다.
+items.weapon.melee.ar.g36.desc=_Thx Play With Me!_\n\n "주인님을 위해서, 출발하겠습니다"\n\nH&K사에서 개발한 제식소총입니다. 명중률 문제가 해결됬으며, 파카티니 레일이 장착되어 높은 강화효율을 가집니다.
+
+items.weapon.melee.dmr.m16.name=M16A1
+items.weapon.melee.dmr.m16.stats_desc=이 무기는 플레이어로부터 _2_칸 떨어진 적을 공격할 수 있으며, 적당한 피해를 막을 수 있습니다. 강화할수록 막는 피해가 늘어납니다.
+items.weapon.melee.dmr.m16.desc="좋았어! 빨리 임무 완수하고 한잔 마시러 가자고!" \n\nM14를 대체하기 위해 만들어진 미 육군 과거 제식소총이자 한국 예비군의 소총입니다. 튼튼한 동시에 빠른 탄속으로 조금 멀리 떨어진 적을 공격할 수 있습니다.
+
+items.weapon.melee.sa.nagantrevolver.name=Nagant M1895
+items.weapon.melee.sa.nagantrevolver.stats_desc=이 무기는 무방비 상태의 적에게 _90%_의 추가 피해를 입힙니다.
+items.weapon.melee.sa.nagantrevolver.desc="돌아왔는가, 어서 오게!"\n\n 소음기를 장착할수있는 소련의 리볼버입니다. 웰로드보다 소음성능이 떨어지지만, 좀더 높은 피해를 입힐 수 있습니다.
+
+###tier3
+
+items.weapon.melee.dmr.kar98.name=Kar98k
+items.weapon.melee.dmr.kar98.stats_desc=이 무기는 플레이어로부터 _2_칸 떨어진 적을 공격할 수 있고, 자주 _2_번까지 공격할 수 있습니다.
+items.weapon.melee.dmr.kar98.desc="마우저 카라비너 98 Kurz가 당신을 위해 있는 힘을 다하겠습니다. 당신에게 방해되는 것은 한 번에 처리해버릴게요."\n\n Gew98을 단축화시킨 독일 국방군의 볼트액션 소총입니다. 오랜 시간이 흘러도 많은 사람에게 사랑받는 소총 중 하나로, 긴 사거리와 빠른 공격속도를 자랑합니다.\n\n 소문에 의하면 이 소총을 숭배하는 집단이 있다고 합니다. 아 정말 무섭다
+
+items.weapon.melee.ug.c96.name=마우저 C96
+items.weapon.melee.ug.c96.stats_desc=이 무기는 1턴에 _0.5_번 공격할 수 있습니다.
+items.weapon.melee.ug.c96.desc=_C96 짤좀 그려주세요_\n\n "제 배꼽, 보이시나요? 헤헤.."\n\n 마우저에서 개발한 클립식 자동권총입니다. 완전 자동사격이 가능하며, 탄젠트 가늠자를 채용해 아주 먼 거리의 적을 공격할 수 있습니다.
+
 items.weapon.melee.sa.gua91.name=9A-91
-items.weapon.melee.sa.gua91.stats_desc=이 무기는 무방비 상태의 적에게 더 강합니다.
+items.weapon.melee.sa.gua91.stats_desc=이 무기는 무방비 상태의 적에게 _90%_의 추가 피해를 입힙니다.
 items.weapon.melee.sa.gua91.desc=""지휘관, 제 시선에서 벗어날 때에는 제대로 알려주세요?"\n\n러시아의 단축형 돌격소총입니다. 더 작은 크기와 낮은 소음은 기습시 적에게 더 높은 피해를 입힐 수 있습니다.
 
 items.weapon.melee.sa.groza.name=OTs-14 그로자
@@ -989,10 +1015,6 @@ items.weapon.melee.dmr.dragunov.desc="스나이퍼 SVD야. 어디보자, 어느 
 items.weapon.melee.launcher.gepard.name=게파드 M6 Lynx
 items.weapon.melee.launcher.gepard.stats_desc=이 무기는 50구경 탄종의 피해를 증가시키며, 이 무기에 깃든 특성을 50구경 탄종에 실어보낼 수도 있습니다.
 items.weapon.melee.launcher.gepard.desc="총알 한 발당 타깃 하나씩 처리하라"는 압박을 계속 받아왔어요......에휴...이렇게 힘든 일을, 어째서 이렇게 약한 제게 맡긴 걸까요...." \n\n 강력한 50구경 탄환를 사용하는 헝가리군의 불펍식 반자동 대물저격총입니다. 불펍식의 한계로 근접전은 어렵지만, 그럭저럭 어느정도는 싸울 수 있습니다.
-
-items.weapon.melee.sa.nagantrevolver.name=Nagant M1895
-items.weapon.melee.sa.nagantrevolver.stats_desc=이 무기는 무방비 상태의 적에게 더 강합니다.
-items.weapon.melee.sa.nagantrevolver.desc="돌아왔는가, 어서 오게!"\n\n 소음기를 장착할수있는 소련의 리볼버입니다. 웰로드보다 소음성능이 떨어지지만, 좀더 높은 피해를 입힐 수 있습니다.
 
 items.weapon.melee.dmr.ak47.name=AK-47
 items.weapon.melee.dmr.ak47.stats_desc=이 무기는 명중률이 낮고 떨어진 적을 공격할 수 있으며, 기습 공격을 할 수 없습니다.
@@ -1017,24 +1039,8 @@ items.weapon.melee.smg.saiga.name=Saiga-12
 items.weapon.melee.smg.saiga.stats_desc= 이 무기는 피해를 일부 흡수할 수 있습니다.
 items.weapon.melee.smg.saiga.desc="저는 Saiga-12 입니다! 지휘관님, 저희 앞길을 막는 쓰레기는 모조리 날려버리겠습니다!" \n\n AK 47을 기반으로 만든 반자동 전투산탄총, 사이가12입니다. 다른 산탄총들처럼 평균적인 데미지를 가지고 있지만 좀더 빠르고 적의 피해를 일부 흡수할 수 있습니다.
 
-items.weapon.melee.lr.m1911.name=콜트 M1911
-items.weapon.melee.lr.m1911.stats_desc=이 무기는 긴 공격범위를 가집니다.
-items.weapon.melee.lr.m1911.desc="세상에, 이거 우리 할아버지가 쓰던 권총이잖아!" \n\n 자동권총의 전설이자 전세계적으로 사랑받는 오래된 권총 콜트 M1911입니다. 아주 강력하진 않지만, 긴 사거리가 단점을 보완해줍니다.
-
 items.weapon.melee.sg.win97.name=윈체스터 M1897
 items.weapon.melee.sg.win97.desc="지휘관님, 저는 M1897이라고 해요. 전투든 청소든 뭐든 전부 노력할게요!!"\n\n일명 트렌치 건, 미국의 펌프액션 산탄총입니다. 안정적인 데미지를 가지고있지만, 별다른 특징은 없습니다.
-
-items.weapon.melee.dmr.kar98.name=Kar98k
-items.weapon.melee.dmr.kar98.stats_desc=이 무기는 멀리 떨어진 적을 공격할수있으며, 다른 무기보다 빠릅니다.
-items.weapon.melee.dmr.kar98.desc="마우저 카라비너 98 Kurz가 당신을 위해 있는 힘을 다하겠습니다. 당신에게 방해되는 것은 한 번에 처리해버릴게요."\n\n Gew98을 단축화시킨 독일 국방군의 볼트액션 소총입니다. 오랜 시간이 흘러도 많은 사람에게 사랑받는 소총 중 하나로, 긴 사거리와 빠른 공격속도를 자랑합니다.\n\n 소문에 의하면 이 소총을 숭배하는 집단이 있다고 합니다. 아 정말 무섭다
-
-items.weapon.melee.ar.g36.name=H&K G36
-items.weapon.melee.ar.g36.stats_desc=이 무기는 강화 효율이 높고 조금 빠른 공격속도를 가집니다.
-items.weapon.melee.ar.g36.desc=_Thx Play With Me!_\n\n "주인님을 위해서, 출발하겠습니다"\n\nH&K사에서 개발한 제식소총입니다. 명중률 문제가 해결됬으며, 파카티니 레일이 장착되어 높은 강화효율을 가집니다.
-
-items.weapon.melee.ug.c96.name=마우저 C96
-items.weapon.melee.ug.c96.stats_desc=이 무기는 조금 느리지만 매우 멀리 떨어진 적을 공격할수있으며, 무방비 상태의 적에게 더 강합니다.
-items.weapon.melee.ug.c96.desc=_C96 짤좀 그려주세요_\n\n "제 배꼽, 보이시나요? 헤헤.."\n\n 마우저에서 개발한 클립식 자동권총입니다. 완전 자동사격이 가능하며, 탄젠트 가늠자를 채용해 아주 먼 거리의 적을 공격할 수 있습니다.
 
 items.weapon.melee.ug.lar.name=그리즐리 MK V
 items.weapon.melee.ug.lar.stats_desc=이 무기는 빠르고 정확하며 먼 거리를 공격할 수 있고, 무방비 상태의 적에게 더 강합니다.
@@ -1044,10 +1050,6 @@ items.weapon.melee.meleeweapon.stats_known=이 _%1$d단계_ 무기는 _%2$d-%3$d
 items.weapon.melee.meleeweapon.stats_unknown=보통 이 _%1$d단계_ 무기는 _%2$d-%3$d의 피해_ 를 입히며 _힘이 %4$d이상_ 이어야 제대로 다룰 수 있습니다.
 items.weapon.melee.meleeweapon.probably_too_heavy=아마도 이 무기는 당신에게 너무 무거울 것입니다.
 items.weapon.melee.meleeweapon.stats_desc=
-
-items.weapon.melee.dmr.m16.name=M16A1
-items.weapon.melee.dmr.m16.stats_desc=이 무기는 멀리 떨어진 적을 공격할 수 있으며, 적당한 피해를 막을 수 있습니다. 강화할수록 막는 피해가 늘어납니다.
-items.weapon.melee.dmr.m16.desc="좋았어! 빨리 임무 완수하고 한잔 마시러 가자고!" \n\nM14를 대체하기 위해 만들어진 미 육군 과거 제식소총이자 한국 예비군의 소총입니다. 튼튼한 동시에 빠른 탄속으로 조금 멀리 떨어진 적을 공격할 수 있습니다.
 
 items.weapon.melee.smg.m1a1.name=톰슨 M1A1
 items.weapon.melee.smg.m1a1.stats_desc=이 무기는 피해의 일부를 막을 수 있습니다.

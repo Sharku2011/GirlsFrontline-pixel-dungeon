@@ -21,6 +21,11 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee.SR;
 
+import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Buff;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Charm;
+import com.gfpixel.gfpixeldungeon.actors.buffs.Speed;
+import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
 public class M1903 extends SniperRifle {
@@ -30,7 +35,7 @@ public class M1903 extends SniperRifle {
 
 		tier = 2;
 		ACC = 1.75f;
-		DLY = 5f;
+		DLY = 3f;
 		RCH = 60;
 	}
 
@@ -40,6 +45,11 @@ public class M1903 extends SniperRifle {
 		return  Math.round(15.4f*(tier+1)) +    //40 base, up from 35
 				lvl*Math.round(2.1f*(tier+2)); //+4 per level, up from +3
 	}
+	@Override
+	public void onAttack(Char owner, Char enemy ) {
+		if (owner instanceof Hero && owner.buffs(Speed.class).isEmpty()) {
+			Buff.prolong(owner, Charm.class, 6.5f);
+		}
+	}
 
 }
-

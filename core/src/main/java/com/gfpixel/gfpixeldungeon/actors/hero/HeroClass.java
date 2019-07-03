@@ -57,6 +57,8 @@ import com.gfpixel.gfpixeldungeon.items.wands.M79;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Launcher.SRS;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SMG.M1a1;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SR.Ntw20;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.UG.Cannon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.Cypros;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Dp;
@@ -233,6 +235,8 @@ public enum HeroClass {
 
 		ThrowingKnife knives = new ThrowingKnife();
 		knives.quantity(3).collect();
+		new Ntw20().identify().collect();
+		new M1a1().identify().upgrade(3).collect();
 
 		Dungeon.quickslot.setSlot(0, cloak);
 		Dungeon.quickslot.setSlot(1, knives);

@@ -33,7 +33,7 @@ public class Lar extends UniversaleGun {
         image = ItemSpriteSheet.LAR;
 
         tier=5;
-        ACC = 1.475f; //47.5% boost to accuracy
+        ACC = 1.5f; //47.5% boost to accuracy
         DLY = 0.5f;
         RCH = 3;
     }

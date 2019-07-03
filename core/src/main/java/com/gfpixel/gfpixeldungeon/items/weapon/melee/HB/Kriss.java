@@ -33,12 +33,13 @@ public class Kriss extends HitBuffer {
 		image = ItemSpriteSheet.KRISS;
 
 		tier = 3;
+		DLY = 0.5f;
 	}
 
 	@Override
 	public void onAttack( Char owner, Char enemy ) {
 		if (owner instanceof Hero && owner.buffs(Speed.class).isEmpty()) {
-			Buff.prolong(owner, Speed.class, 1.5f);
+			Buff.prolong(owner, Speed.class, 2f);
 		}
 	}
 

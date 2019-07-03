@@ -29,6 +29,7 @@ public class SakuraBlade extends MeleeWeapon {
 		image = ItemSpriteSheet.GREATAXE;
 
 		tier = 5;
+		DLY = 0.5f;
 	}
 
 	@Override

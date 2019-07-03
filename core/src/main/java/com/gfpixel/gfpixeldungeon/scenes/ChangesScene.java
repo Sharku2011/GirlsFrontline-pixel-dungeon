@@ -127,7 +127,58 @@ public class ChangesScene extends PixelScene {
 		};
 		add( list );
 
-		ChangeInfo changes = new ChangeInfo("v0.4.9", true, "");
+		ChangeInfo changes = new ChangeInfo("v0.5.0", true, "");
+		changes.hardlight( Window.TITLE_COLOR);
+		infos.add(changes);
+
+		changes = new ChangeInfo(Messages.get(this, "new"), false, null);
+		changes.hardlight( Window.TITLE_COLOR );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton( new ItemSprite(ItemSpriteSheet.RING_GARNET, null), new RingOfMight().trueName(),
+				"그래픽 개선.\n\n" +
+						"_-_ 기존의 픽셀보다 더 큰 픽셀을 적용해 좀더 높은 해상도의 배경과 캐릭터들을 만들었습니다.\n\n" +
+						"_-_ 기존보다 커진 픽셀로 인해 모션이 살짝 어긋나는 등의 오류가 있을 수도 있습니다.\n\n" +
+						"_-_ 현재 배경이 미완성이므로 지속적으로 업데이트 해갈 예정입니다."));
+
+		changes.addButton( new ChangeButton(new Image(Assets.GOLYATPLUS, 0, 0, 26, 23), "변종",
+				"분기점 변종 몬스터 추가.\n\n" +
+						"_-_ 브루트의 공격력이 3 낮아지고 공격속도가 두배로 바뀌었습니다. 또한 수상한 고기의 드랍률이 20%로 상향됐습니다.\n\n" +
+						"_-_ 골리앗 PLUS는 기존의 검은 외형과 다른 붉은 외형을 가지고 있으며 매우 낮은 체력과 공격력을 가지고 있습니다.\n\n" +
+						"_-_ 하지만 골리앗 PLUS가 가하는 공격은 반드시 명중하며, 처치할 경우 주변에 높은 자폭 피해를 입힙니다."));
+
+		changes = new ChangeInfo(Messages.get(this, "changes"), false, null);
+		changes.hardlight( CharSprite.WARNING );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new Negev(),
+				"_-_ 무기 조정.\n\n" +
+						"_-_ RF계열 공격속도가 조정됐습니다.\n\n" +
+						"_-_ 스프링필드는 공격속도가 3턴, AWP는 4턴으로 조정됐습니다. 하지만 스프링필드와 AWP는 공격 직후 6턴동안 교란상태가 되어 무기를 사용할 수 없게 됩니다 .\n\n" +
+						"_-_ NTW의 명중률이 500%로 상향, 공격속도가 6턴으로 감소했으며 공격 직후 10턴동안 교란상태가 됩니다.\n\n" +
+						"_-_ 크리스 벡터의 공격 속도가 50% 상승하고, 버프 지속시간이 0.5턴 증가했습니다."));
+
+		changes = new ChangeInfo(Messages.get(this, "buffs"), false, null);
+		changes.hardlight( CharSprite.POSITIVE );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new Image(Assets.WARRIOR, 0, 69, 21, 23),  "소폭상향",
+				"임시 땜빵.\n\n" +
+						"_-_ UMP45가 음식을 섭취하면 HP 5% 회복과 더해서 3턴 동안 투명화 상태가 됩니다."));
+
+		changes = new ChangeInfo(Messages.get(this, "nerfs"), false, null);
+		changes.hardlight( CharSprite.NEGATIVE );
+		infos.add(changes);
+
+		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 26, 21), "나약해짐",
+				"장갑계 몬스터 하향.\n\n" +
+						"_-_ 네메움의 공격력이 40으로 고정 됐으며, 데미지캡이 삭제되고 레이저 발사에 필요한 시간이 4턴으로 조정됐습니다.\n\n" +
+						"_-_ 히드라의 체력이 400에서 200으로 하향됐으며, 근접 공격과 원거리 공격 모두 22 데미지로 바뀌었고, 레이저 준비시간이 4턴, 레이저 재사용에 3턴의 쿨타임이 생겼습니다. 또한 근접 공격이 2연타로 적용됩니다.\n\n" +
+						"_-_ 주피터의 레이저 발사에 필요한 시간이 1턴 증가해 6턴으로, 레이저 피해는 70으로 고정됐으며 방어력이 다른 장갑계열처럼 사라진 대신 체력이 150으로 늘었습니다.\n\n" +
+						"_-_ 티폰의 체력이 4500, 이동속도가 80%,최대 레벨 50.공격속도 8턴에 레이저 피해가 최대 135, 우산에 면역을 가지게 변경되었습니다.\n\n\n" +
+						"_-_ 19층의 만티코어 스폰률이 크게 줄어들었고, 만티코어의 공격력이 35로 하락했으며 데미지 리미트가 50, 체력이 150으로 하락해 원래 목표인 SR계열 무기 견제만 가능하도록 바꿨습니다."));
+
+		changes = new ChangeInfo("v0.4.9", true, "");
 		changes.hardlight( Window.TITLE_COLOR);
 		infos.add(changes);
 
