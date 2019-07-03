@@ -25,3 +25,4 @@ local.properties
 
 # Apk Key file
 keystore.properties
+*.jks

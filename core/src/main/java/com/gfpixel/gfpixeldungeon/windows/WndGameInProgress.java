@@ -34,6 +34,7 @@ import com.gfpixel.gfpixeldungeon.sprites.HeroSprite;
 import com.gfpixel.gfpixeldungeon.ui.RedButton;
 import com.gfpixel.gfpixeldungeon.ui.Window;
 import com.watabou.noosa.Game;
+import com.watabou.noosa.Image;
 import com.watabou.noosa.RenderedText;
 import com.watabou.utils.FileUtils;
 
@@ -60,7 +61,9 @@ public class WndGameInProgress extends Window {
 		}
 		
 		IconTitle title = new IconTitle();
-		title.icon( HeroSprite.avatar(info.heroClass, info.armorTier) );
+		Image avatar = HeroSprite.avatar(info.heroClass, info.armorTier);
+		avatar.scale.set(0.5f);
+		title.icon( avatar );
 		title.label((Messages.get(this, "title", info.level, className)).toUpperCase(Locale.ENGLISH));
 		title.color(Window.SHPX_COLOR);
 		title.setRect( 0, 0, WIDTH, 0 );
