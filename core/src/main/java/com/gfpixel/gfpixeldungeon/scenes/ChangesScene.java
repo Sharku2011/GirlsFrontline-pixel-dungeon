@@ -906,11 +906,7 @@ public class ChangesScene extends PixelScene {
 			super();
 
 			this.icon = icon;
-
-			this.icon.scale.set(0.5f);
-
 			add(this.icon);
-
 
 			this.title = Messages.titleCase(title);
 			this.message = message;

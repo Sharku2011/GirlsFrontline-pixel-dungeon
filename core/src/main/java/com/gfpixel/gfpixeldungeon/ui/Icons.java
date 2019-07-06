@@ -68,100 +68,100 @@ public enum Icons {
 		Image icon = new Image( Assets.ICONS );
 		switch (type) {
 		case SKULL:
-			icon.frame( icon.texture.uvRect( 0, 0, 16, 16 ) );
+			icon.frame( icon.texture.uvRect( 0, 0, 8, 8 ) );
 			break;
 		case BUSY:
-			icon.frame( icon.texture.uvRect( 16, 0, 32, 16 ) );
+			icon.frame( icon.texture.uvRect( 8, 0, 16, 8 ) );
 			break;
 		case COMPASS:
-			icon.frame( icon.texture.uvRect( 0, 16, 14, 26 ) );
+			icon.frame( icon.texture.uvRect( 0, 8, 7, 13 ) );
 			break;
 		case INFO:
-			icon.frame( icon.texture.uvRect( 32, 0, 60, 28 ) );
+			icon.frame( icon.texture.uvRect( 16, 0, 30, 14 ) );
 			break;
 		case PREFS:
-			icon.frame( icon.texture.uvRect( 60, 0, 92, 32 ) );
+			icon.frame( icon.texture.uvRect( 30, 0, 46, 16 ) );
 			break;
 		case WARNING:
-			icon.frame( icon.texture.uvRect( 92, 0, 116, 24 ) );
+			icon.frame( icon.texture.uvRect( 46, 0, 58, 12 ) );
 			break;
 		case TARGET:
-			icon.frame( icon.texture.uvRect( 0, 26, 32, 58 ) );
+			icon.frame( icon.texture.uvRect( 0, 13, 16, 29 ) );
 			break;
 		case MASTERY:
-			icon.frame( icon.texture.uvRect( 32, 28, 60, 56 ) );
+			icon.frame( icon.texture.uvRect( 16, 14, 30, 28 ) );
 			break;
 		case WATA:
-			icon.frame( icon.texture.uvRect( 60, 32, 90, 52 ) );
+			icon.frame( icon.texture.uvRect( 30, 16, 45, 26 ) );
 			break;
 		case SHPX:
-			icon.frame( icon.texture.uvRect( 112, 98, 140, 126 ) );
+			icon.frame( icon.texture.uvRect( 56, 49, 70, 63 ) );
 			break;
 		case WARRIOR:
-			icon.frame( icon.texture.uvRect( 0, 58, 32, 90 ) );
+			icon.frame( icon.texture.uvRect( 0, 29, 16, 45 ) );
 			break;
 		case MAGE:
-			icon.frame( icon.texture.uvRect( 32, 58, 64, 90 ) );
+			icon.frame( icon.texture.uvRect( 16, 29, 32, 45 ) );
 			break;
 		case ROGUE:
-			icon.frame( icon.texture.uvRect( 64, 58, 96, 90 ) );
+			icon.frame( icon.texture.uvRect( 32, 29, 48, 45 ) );
 			break;
 		case RANGER:
-			icon.frame( icon.texture.uvRect( 96, 58, 128, 90 ) );
+			icon.frame( icon.texture.uvRect( 48, 29, 64, 45 ) );
 			break;
 		case CLOSE:
-			icon.frame( icon.texture.uvRect( 0, 90, 26, 116 ) );
+			icon.frame( icon.texture.uvRect( 0, 45, 13, 58 ) );
 			break;
 		case DEPTH:
-			icon.frame( icon.texture.uvRect( 76, 92, 108, 124 ) );
+			icon.frame( icon.texture.uvRect( 38, 46, 54, 62 ) );
 			break;
 		case SLEEP:
-			icon.frame( icon.texture.uvRect( 26, 90, 44, 106 ) );
+			icon.frame( icon.texture.uvRect( 13, 45, 22, 53 ) );
 			break;
 		case ALERT:
-			icon.frame( icon.texture.uvRect( 44, 90, 60, 106 ) );
+			icon.frame( icon.texture.uvRect( 22, 45, 30, 53 ) );
 			break;
 		case LOST:
-			icon.frame( icon.texture.uvRect( 60, 90, 76, 106 ) );
+			icon.frame( icon.texture.uvRect( 30, 45, 38, 53 ) );
 			break;
 		case BACKPACK:
-			icon.frame( icon.texture.uvRect( 116, 0, 136, 20 ) );
+			icon.frame( icon.texture.uvRect( 58, 0, 68, 10 ) );
 			break;
 		case SCROLL_HOLDER:
-			icon.frame( icon.texture.uvRect( 136, 0, 156, 20 ) );
+			icon.frame( icon.texture.uvRect( 68, 0, 78, 10 ) );
 			break;
 		case SEED_POUCH:
-			icon.frame( icon.texture.uvRect( 156, 0, 176, 20 ) );
+			icon.frame( icon.texture.uvRect( 78, 0, 88, 10 ) );
 			break;
 		case WAND_HOLSTER:
-			icon.frame( icon.texture.uvRect( 176, 0, 196, 20 ) );
+			icon.frame( icon.texture.uvRect( 88, 0, 98, 10 ) );
 			break;
 		case POTION_BANDOLIER:
-			icon.frame( icon.texture.uvRect( 196, 0, 216, 20 ) );
+			icon.frame( icon.texture.uvRect( 98, 0, 108, 10 ) );
 			break;
 		case CHECKED:
-			icon.frame( icon.texture.uvRect( 108, 24, 132, 48 ) );
+			icon.frame( icon.texture.uvRect( 54, 12, 66, 24 ) );
 			break;
 		case UNCHECKED:
-			icon.frame( icon.texture.uvRect( 132, 24, 156, 48 ) );
+			icon.frame( icon.texture.uvRect( 66, 12, 78, 24 ) );
 			break;
 		case EXIT:
-			icon.frame( icon.texture.uvRect( 216, 0, 248, 32 ) );
+			icon.frame( icon.texture.uvRect( 108, 0, 124, 16 ) );
 			break;
 		case NOTES:
-			icon.frame( icon.texture.uvRect( 144, 104, 164, 126 ) );
+			icon.frame( icon.texture.uvRect( 72, 52, 82, 63 ) );
 			break;
 		case LANGS:
-			icon.frame( icon.texture.uvRect( 166, 108, 190, 126 ) );
+			icon.frame( icon.texture.uvRect( 83, 54, 95, 63 ) );
 			break;
 		case CHALLENGE_OFF:
-			icon.frame( icon.texture.uvRect( 156, 24, 184, 48 ) );
+			icon.frame( icon.texture.uvRect( 78, 12, 92, 24 ) );
 			break;
 		case CHALLENGE_ON:
-			icon.frame( icon.texture.uvRect( 184, 24, 216, 48 ) );
+			icon.frame( icon.texture.uvRect( 92, 12, 108, 24 ) );
 			break;
 		case RESUME:
-			icon.frame( icon.texture.uvRect( 26, 106, 48, 128 ) );
+			icon.frame( icon.texture.uvRect( 13, 53, 24, 64 ) );
 			break;
 		}
 		return icon;

@@ -49,7 +49,7 @@ public class Albino extends Rat {
 		return damage;
 	}
 
-	// 춘전이 잡으면 부동액 드랍되는거 명시할지 판단 필요
+	// TODO 춘전이 잡으면 부동액 드랍되는거 명시할지 판단 필요
 	@Override
 	public void die( Object cause ) {
 		super.die(cause);

@@ -161,8 +161,8 @@ public class WndStartGame extends Window {
 		
 		private Image hero;
 		
-		private static final int WIDTH = HeroSprite.FRAME_WIDTH / 2;
-		private static final int HEIGHT = HeroSprite.FRAME_HEIGHT / 2;
+		private static final int WIDTH = HeroSprite.FRAME_WIDTH / SPDSettings.SCALE_MODIFIER;
+		private static final int HEIGHT = HeroSprite.FRAME_HEIGHT / SPDSettings.SCALE_MODIFIER;
 		
 		HeroBtn ( HeroClass cl ){
 			super();
@@ -196,7 +196,7 @@ public class WndStartGame extends Window {
 		protected void layout() {
 			super.layout();
 			if (hero != null){
-				hero.scale.set(0.5f);
+				hero.scale.set(1.f / (float)SPDSettings.SCALE_MODIFIER);
 				hero.x = x + (width - hero.width()) / 2f;
 				hero.y = y + (height - hero.height()) / 2f;
 				PixelScene.align(hero);

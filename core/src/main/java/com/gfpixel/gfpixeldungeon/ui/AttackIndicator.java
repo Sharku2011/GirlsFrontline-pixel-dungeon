@@ -39,6 +39,8 @@ public class AttackIndicator extends Tag {
 	private static final float ENABLED	= 1.0f;
 	private static final float DISABLED	= 0.3f;
 
+	private static final float PADDNIG	= 1.0f;
+
 	private static float delay;
 	
 	private static AttackIndicator instance;
@@ -69,10 +71,7 @@ public class AttackIndicator extends Tag {
 		super.layout();
 
 		if (sprite != null) {
-
-			float originMaxScale = Math.max(sprite.width, sprite.height);
-
-			sprite.scale.set(22.f / originMaxScale);
+			sprite.scale.set(getResizedSpriteScale());
 
 			sprite.x = x + (width - sprite.width()) / 2;
 			sprite.y = y + (height - sprite.height()) / 2;
@@ -148,8 +147,7 @@ public class AttackIndicator extends Tag {
 			sprite.paused = true;
 			add( sprite );
 
-			float originMaxScale = Math.max(sprite.width, sprite.height);
-			sprite.scale.set(22.f / originMaxScale);
+			sprite.scale.set(getResizedSpriteScale());
 
 			sprite.x = x + (width - sprite.width()) / 2 + 1;
 			sprite.y = y + (height - sprite.height()) / 2;
@@ -193,5 +191,12 @@ public class AttackIndicator extends Tag {
 	
 	public static void updateState() {
 		instance.checkEnemies();
+	}
+
+	public float getResizedSpriteScale() {
+		float iconMaxScale = Math.max(width, height) - 2 * PADDNIG;
+		float originMaxScale = Math.max(sprite.width, sprite.height);
+
+		return iconMaxScale / originMaxScale;
 	}
 }

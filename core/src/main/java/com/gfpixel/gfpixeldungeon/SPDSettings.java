@@ -54,6 +54,8 @@ public class SPDSettings extends GameSettings {
 	public static final String KEY_ZOOM			= "zoom";
 	public static final String KEY_BRIGHTNESS	= "brightness";
 	public static final String KEY_GRID 	    = "visual_grid";
+
+	public static final int SCALE_MODIFIER	= 2;
 	
 	public static void fullscreen( boolean value ) {
 		put( KEY_FULLSCREEN, value );
