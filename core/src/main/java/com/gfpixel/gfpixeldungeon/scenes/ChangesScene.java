@@ -360,7 +360,7 @@ public class ChangesScene extends PixelScene {
 				"_-_ \"시스템 변경\n\n" +
 
 						"_-_ UI가 크게 개편됐습니다! 좀더 소녀전선에 가까운 UI를 만들기 위해 노력했습니다.\n\n" +
-						"_-_ 힘 포션이 드랍되지 않는 도전모드가 추가됬습니다.\n\n" +
+						"_-_ 힘의 물약이 드랍되지 않는 도전모드가 추가됬습니다.\n\n" +
 						"_-_  새로운 뱃지들이 추가됬습니다.\n\n" +
 						"_-_ 투척무기가 개편됬습니다. 많은 투척무기가 추가되었고, 투척무기에 내구도 시스템이 적용됬습니다.\n\n" +
 						"_-_ 수중 정찰기가 있는 방에 1칸의 타일을 깔아둬 실수로 들어가 데미지를 입는 경우를 줄였습니다. \n\n" +
@@ -457,8 +457,8 @@ public class ChangesScene extends PixelScene {
 						"_-_ MG계열(공격속도가 기본 5회 이상인 무기) 무기들의 명중률과 기습공격이 조정됬습니다.\n\n" +
 						"_-_ 최대 40%의 명중률 패널티를 가지며, 공격력은 그대로지만 기습공격시 60%의 피해만 입힐 수 있게 됩니다."));
         changes.addButton( new ChangeButton(new ItemSprite(ItemSpriteSheet.POTION_MAGENTA, null), new PotionOfHealing().trueName(),
-				"_-_ 수복포션 드랍 하향.\n\n" +
-						"_-_ 수복물약 드랍 몹에게 수복물약을 얻은 경우 이후 같은 몹에게 수복물약을 얻을 확률이 감소함"));
+				"_-_ 수복 물약 드랍 하향.\n\n" +
+						"_-_ 수복 물약 드랍 몹에게 수복물약을 얻은 경우 이후 같은 몹에게 수복물약을 얻을 확률이 감소함"));
 
 		changes.addButton( new ChangeButton(new Sungrass.Seed(),
 				"_-_ 태양초 & 뱀뿌리 - 하향.\n\n" +
@@ -574,7 +574,7 @@ public class ChangesScene extends PixelScene {
 		changes.addButton( new ChangeButton(new MagicalHolster(),
 				"_-_ 초반 난이도를 낮췄습니다!\n\n" +
 						"_-_ 4명의 캐릭터 모두 기본 아이템을 두가지를 추가했습니다.\n\n" +
-						"_-_ UMP45는 기본으로 물약 보관함과 수복포션을 가지고 시작하며, UMP9는 디스크 보관함과 투명화 포션을 가지고 시작합니다.\n\n" +
+						"_-_ UMP45는 기본으로 물약 보관함과 수복 물약을 가지고 시작하며, UMP9는 디스크 보관함과 투명화 물약을 가지고 시작합니다.\n\n" +
 						"_-_ 그리고 G11은 대용량 탄창과 고속 장전의 디스크를, HK416은 씨앗 주머니를 가지고 시작합니다."));
 
 
