@@ -169,11 +169,8 @@ public class Cypros extends MeleeWeapon {
     public final static int CHARMCHANCE = 30;
 
     @Override
-    public int damageRoll(Char owner) {
-
+    public void onAttack( Char owner, Char enemy ) {
         Hero hero = (Hero)owner;
-        Char enemy = (hero != null) ? hero.enemy() : null;
-
         if (hero != null && enemy != null) {
             switch (mode) {
                 case MAGNUM:
@@ -186,12 +183,18 @@ public class Cypros extends MeleeWeapon {
                 case CONFIRE:
                     Sample.INSTANCE.play(Assets.SND_ZAP);
                     hero.sprite.parent.add(new Beam.DeathRay(hero.sprite.center(), enemy.sprite.center()));
-                break;
+                    break;
                 case TRAVAILLER: default:
                     break;
             }
         }
+    }
 
+    @Override
+    public int damageRoll(Char owner) {
+
+        Hero hero = (Hero)owner;
+        Char enemy = (hero != null) ? hero.enemy() : null;
 
         if (enemy instanceof Mob && ((Mob) enemy).surprisedBy(hero)) {
             //deals 85/50/0% toward max to max on surprise with pistol/rifle/shotgun, instead of min to max.
