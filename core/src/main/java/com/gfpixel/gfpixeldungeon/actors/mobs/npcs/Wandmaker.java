@@ -45,6 +45,7 @@ import com.gfpixel.gfpixeldungeon.windows.WndWandmaker;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 import com.watabou.utils.SparseArray;
+import com.gfpixel.gfpixeldungeon.utils.GLog;
 
 import java.util.ArrayList;
 
@@ -193,23 +194,26 @@ public class Wandmaker extends NPC {
 		public static void restoreFromBundle( Bundle bundle ) {
 
 			Bundle node = bundle.getBundle( NODE );
-			
-			if (!node.isNull() && (spawned = node.getBoolean( SPAWNED ))) {
 
-				type = node.getInt(TYPE);
-				
-				given = node.getBoolean( GIVEN );
-				
-				wand1 = (Wand)node.get( WAND1 );
-				wand2 = (Wand)node.get( WAND2 );
+			if (node.isNull()) {
+			    reset();
+            }
 
-				if (type == 2){
-					CeremonialCandle.ritualPos = node.getInt( RITUALPOS );
-				}
+			spawned = node.getBoolean(SPAWNED);
 
-			} else {
-				reset();
-			}
+			if (!spawned) {
+			    reset();
+            }
+
+            type = node.getInt(TYPE);
+            given = node.getBoolean( GIVEN );
+
+            wand1 = (Wand)node.get( WAND1 );
+            wand2 = (Wand)node.get( WAND2 );
+
+            if (type == 2){
+                CeremonialCandle.ritualPos = node.getInt( RITUALPOS );
+            }
 		}
 		
 		private static boolean questRoomSpawned;

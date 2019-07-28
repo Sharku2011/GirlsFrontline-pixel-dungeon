@@ -179,19 +179,24 @@ public class Noel extends NPC {
 
             Bundle node = bundle.getBundle( NODE );
 
-            if (!node.isNull() && (spawned = node.getBoolean( SPAWNED ))) {
-
-                given = node.getBoolean( GIVEN );
-                processed = node.getBoolean( PROCESSED );
-
-                wand1 = (Wand)node.get( WAND1 );
-                wand2 = (Wand)node.get( WAND2 );
-
-                CeremonialCandle.ritualPos = node.getInt( RITUALPOS );
-
-            } else {
+            if (node.isNull()) {
                 reset();
             }
+
+            spawned = node.getBoolean(SPAWNED);
+
+            if (!spawned) {
+                reset();
+            }
+
+            given = node.getBoolean( GIVEN );
+            processed = node.getBoolean( PROCESSED );
+
+            wand1 = (Wand)node.get( WAND1 );
+            wand2 = (Wand)node.get( WAND2 );
+
+            CeremonialCandle.ritualPos = node.getInt( RITUALPOS );
+
         }
 
         private static boolean questRoomSpawned;
