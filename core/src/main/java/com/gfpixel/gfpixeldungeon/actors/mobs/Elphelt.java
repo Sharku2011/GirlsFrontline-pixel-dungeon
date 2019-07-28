@@ -601,7 +601,7 @@ public class Elphelt extends Mob {
                 dstRush = -1;
                 bridlePath.clear();
 
-                yell( Messages.get(this, "bridleexpress") );
+                yell( Messages.get(Elphelt.this, "bridleexpress") );
             }
         }), -1f);
 
