@@ -23,6 +23,7 @@ package com.gfpixel.gfpixeldungeon.windows;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Badges;
+import com.gfpixel.gfpixeldungeon.BuildConfig;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.GamesInProgress;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
@@ -120,7 +121,7 @@ public class WndStartGame extends Window {
 		start.setRect(0, HEIGHT - 20, WIDTH, 20);
 		add(start);
 		
-		if (Badges.isUnlocked(Badges.Badge.VICTORY)){
+		if ( BuildConfig.DEBUG || Badges.isUnlocked(Badges.Badge.VICTORY) ){
 			IconButton challengeButton = new IconButton(
 					Icons.get( SPDSettings.challenges() > 0 ? Icons.CHALLENGE_ON :Icons.CHALLENGE_OFF)){
 				@Override
@@ -220,8 +221,14 @@ public class WndStartGame extends Window {
 		@Override
 		protected void onClick() {
 			super.onClick();
-			
-			if( cl == HeroClass.RANGER && !Badges.isUnlocked(Badges.Badge.BOSS_SLAIN_3)){
+
+			if ( BuildConfig.DEBUG ) {
+				GamesInProgress.selectedClass = cl;
+
+				return;
+			}
+
+			if( cl == HeroClass.RANGER && !Badges.isUnlocked(Badges.Badge.BOSS_SLAIN_3) ){
 				GirlsFrontlinePixelDungeon.scene().add(
 						new WndMessage(Messages.get(WndStartGame.class, "ranger_unlock")));
 			} else {

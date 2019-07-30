@@ -278,27 +278,28 @@ public class Dungeon {
 		Level level;
 		switch (depth) {
 		case 1:
+			// TODO 층 선택을 위한 별도의 위젯을 준비할 것, PrisonBossLevel의 하드코딩된 부분 제거할 것
 			if (BuildConfig.DEBUG) {
 				if (Challenges.numOfChallenges() == 1) {
-					level =new SewerBossLevel();
+					level = new SewerBossLevel();
 					break;
 				} else if (Challenges.numOfChallenges() == 3) {
-					level =new PrisonBossLevel();
+					level = new PrisonBossLevel();
 					break;
 				} else if (Challenges.numOfChallenges() == 4) {
-					level =new RabbitBossLevel();
+					level = new RabbitBossLevel();
 					break;
 				} else if (Challenges.numOfChallenges() == 5) {
-					level =new CavesBossLevel();
+					level = new CavesBossLevel();
 					break;
 				} else if (Challenges.numOfChallenges() == 6) {
-					level =new CityBossLevel();
+					level = new CityBossLevel();
 					break;
 				} else if (Challenges.numOfChallenges() == 7) {
-					level =new ReCavesBossLevel();
+					level = new ReCavesBossLevel();
 					break;
 				} else if (Challenges.numOfChallenges() == 8) {
-					level =new HallsBossLevel();
+					level = new HallsBossLevel();
 					break;
 				}
 

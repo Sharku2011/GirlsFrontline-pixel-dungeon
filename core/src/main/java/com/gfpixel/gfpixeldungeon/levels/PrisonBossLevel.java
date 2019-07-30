@@ -23,6 +23,8 @@ package com.gfpixel.gfpixeldungeon.levels;
 
 import com.gfpixel.gfpixeldungeon.Assets;
 import com.gfpixel.gfpixeldungeon.Bones;
+import com.gfpixel.gfpixeldungeon.BuildConfig;
+import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.DialogInfo;
 import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
@@ -159,7 +161,12 @@ public class PrisonBossLevel extends Level {
 		if (item != null) {
 			drop( item, randomRespawnCell() ).type = Heap.Type.REMAINS;
 		}
-		drop(new IronKey(10), randomPrisonCell());
+
+		if (BuildConfig.DEBUG) {
+			drop(new IronKey( Dungeon.depth ), randomPrisonCell());
+		} else {
+			drop(new IronKey(10), randomPrisonCell());
+		}
 	}
 
 	private int randomPrisonCell(){

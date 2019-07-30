@@ -26,6 +26,7 @@ import com.gfpixel.gfpixeldungeon.Badges;
 import com.gfpixel.gfpixeldungeon.BuildConfig;
 import com.gfpixel.gfpixeldungeon.Challenges;
 import com.gfpixel.gfpixeldungeon.Dungeon;
+import com.gfpixel.gfpixeldungeon.items.Amulet;
 import com.gfpixel.gfpixeldungeon.items.ArmorKit;
 import com.gfpixel.gfpixeldungeon.items.BrokenSeal;
 import com.gfpixel.gfpixeldungeon.items.Honeypot;
@@ -50,6 +51,7 @@ import com.gfpixel.gfpixeldungeon.items.potions.PotionOfMindVision;
 import com.gfpixel.gfpixeldungeon.items.potions.PotionOfStrength;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
+import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMirrorImage;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.stones.StoneOfEnchantment;
@@ -165,6 +167,8 @@ public enum HeroClass {
 			new PotionOfStrength().identify().quantity(12).collect();
 			new Dart().identify().quantity(50).collect();
 			new PotionOfInvisibility().identify().quantity(10).collect();
+			new ScrollOfMirrorImage().identify().quantity(10).collect();
+			new Amulet().identify().collect();
 		}
 
 
