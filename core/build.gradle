@@ -29,7 +29,7 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix ".indev"
-            versionNameSuffix '-개발버전'
+            versionNameSuffix '-indev'
             debuggable true
             jniDebuggable true
             renderscriptDebuggable true
@@ -41,6 +41,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.gpd
         }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
     }
 }
 
