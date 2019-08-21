@@ -80,7 +80,7 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 16, 0, 30, 14 ) );
 			break;
 		case PREFS:
-			icon.frame( icon.texture.uvRect( 30, 0, 46, 16 ) );
+			icon.frame( icon.texture.uvRect( 32, 1, 44, 13 ) );
 			break;
 		case WARNING:
 			icon.frame( icon.texture.uvRect( 46, 0, 58, 12 ) );
@@ -146,13 +146,13 @@ public enum Icons {
 			icon.frame( icon.texture.uvRect( 66, 12, 78, 24 ) );
 			break;
 		case EXIT:
-			icon.frame( icon.texture.uvRect( 108, 0, 124, 16 ) );
+			icon.frame( icon.texture.uvRect( 109, 0, 121, 12 ) );
 			break;
 		case NOTES:
-			icon.frame( icon.texture.uvRect( 72, 52, 82, 63 ) );
+			icon.frame( icon.texture.uvRect( 72, 51, 80, 63 ) );
 			break;
 		case LANGS:
-			icon.frame( icon.texture.uvRect( 83, 54, 95, 63 ) );
+			icon.frame( icon.texture.uvRect( 81, 51, 93, 63 ) );
 			break;
 		case CHALLENGE_OFF:
 			icon.frame( icon.texture.uvRect( 78, 12, 92, 24 ) );

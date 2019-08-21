@@ -56,7 +56,7 @@ public class Button extends Component {
 				if (!processed) {
 					Button.this.onClick();
 				}
-			};
+			}
 		};
 		add( hotArea );
 	}

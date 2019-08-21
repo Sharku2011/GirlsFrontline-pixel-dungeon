@@ -29,6 +29,7 @@ import com.watabou.noosa.NoosaScriptNoLighting;
 import com.watabou.noosa.SkinnedBlock;
 import com.watabou.noosa.ui.Component;
 
+// 타이틀 배경을 관리
 public class Archs extends Component {
 
 	private static final float SCROLL_SPEED	= 20f;
@@ -43,7 +44,7 @@ public class Archs extends Component {
 
 	@Override
 	protected void createChildren() {
-		arcsBg = new SkinnedBlock( 1, 1, Assets.ARCS_BG ){
+		arcsBg = new SkinnedBlock( 1, 1, Assets.ARCS_BG_NEW ){
 			@Override
 			protected NoosaScript script() {
 				return NoosaScriptNoLighting.get();
@@ -61,7 +62,7 @@ public class Archs extends Component {
 		arcsBg.offsetTo( 0,  offsB );
 		add( arcsBg );
 
-		arcsFg = new SkinnedBlock( 1, 1, Assets.ARCS_FG ){
+		arcsFg = new SkinnedBlock( 1, 1, Assets.ARCS_BG_NEW ){
 			@Override
 			protected NoosaScript script() {
 				return NoosaScriptNoLighting.get();

@@ -62,8 +62,8 @@ public class TitleScene extends PixelScene {
 		Archs archs = new Archs();
 		archs.setSize( w, h );
 		add( archs );
-		
-		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON );
+
+		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON_SIGNS/*PIXEL_DUNGEON*/ );
 		add( title );
 
 		float topRegion = Math.max(95f, h*0.45f);
@@ -76,44 +76,9 @@ public class TitleScene extends PixelScene {
 
 		align(title);
 
-		placeTorch(title.x + 22, title.y + 46);
-		placeTorch(title.x + title.width - 22, title.y + 46);
+		//placeTorch(title.x + 22, title.y + 46);
+		//placeTorch(title.x + title.width - 22, title.y + 46);
 
-		Image signs = new Image( BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON_SIGNS ) ) {
-			private float time = 0;
-			@Override
-			public void update() {
-				super.update();
-				am = Math.max(0f, (float)Math.sin( time += Game.elapsed ));
-				if (time >= 1.5f*Math.PI) time = 0;
-			}
-			@Override
-			public void draw() {
-				Blending.setLightMode();
-				super.draw();
-				Blending.setNormalMode();
-			}
-		};
-		signs.x = title.x + (title.width() - signs.width())/2f;
-		signs.y = title.y;
-		add( signs );
-		
-		DashboardItem btnBadges = new DashboardItem( Messages.get(this, "badges"), 3 ) {
-			@Override
-			protected void onClick() {
-				GirlsFrontlinePixelDungeon.switchNoFade( BadgesScene.class );
-			}
-		};
-		add(btnBadges);
-		
-		DashboardItem btnAbout = new DashboardItem( Messages.get(this, "about"), 1 ) {
-			@Override
-			protected void onClick() {
-				GirlsFrontlinePixelDungeon.switchNoFade( AboutScene.class );
-			}
-		};
-		add( btnAbout );
-		
 		DashboardItem btnPlay = new DashboardItem( Messages.get(this, "play"), 0 ) {
 			@Override
 			protected void onClick() {
@@ -126,6 +91,14 @@ public class TitleScene extends PixelScene {
 			}
 		};
 		add( btnPlay );
+
+		final DashboardItem btnAbout = new DashboardItem( Messages.get(this, "about"), 1 ) {
+			@Override
+			protected void onClick() {
+				GirlsFrontlinePixelDungeon.switchNoFade( AboutScene.class );
+			}
+		};
+		add( btnAbout );
 		
 		DashboardItem btnRankings = new DashboardItem( Messages.get(this, "rankings"), 2 ) {
 			@Override
@@ -134,6 +107,14 @@ public class TitleScene extends PixelScene {
 			}
 		};
 		add( btnRankings );
+
+		DashboardItem btnBadges = new DashboardItem( Messages.get(this, "badges"), 3 ) {
+			@Override
+			protected void onClick() {
+				GirlsFrontlinePixelDungeon.switchNoFade( BadgesScene.class );
+			}
+		};
+		add(btnBadges);
 
 		if (SPDSettings.landscape()) {
 			btnRankings     .setPos( w / 2 - btnRankings.width(), topRegion );
@@ -154,24 +135,26 @@ public class TitleScene extends PixelScene {
 		version.y = h - version.height();
 		add( version );
 
+		final int PADDING = 4;
+
 		Button changes = new ChangesButton();
-		changes.setPos( w-changes.width(), h - version.height() - changes.height());
+		changes.setPos( w-changes.width() - 4, h - version.height() - changes.height() - PADDING);
 		add( changes );
 		
-		int pos = 0;
-		
+		int pos = PADDING;
+
 		PrefsButton btnPrefs = new PrefsButton();
-		btnPrefs.setRect( pos, 0, 16, 16 );
+		btnPrefs.setRect( pos, PADDING, 12, 12 );
 		add( btnPrefs );
 		
-		pos += btnPrefs.width();
+		pos += btnPrefs.width() + PADDING;
 
 		LanguageButton btnLang = new LanguageButton();
-		btnLang.setRect(pos, 0, 14, 16);
+		btnLang.setRect(pos, PADDING, 12, 12);
 		add( btnLang );
 
 		ExitButton btnExit = new ExitButton();
-		btnExit.setPos( w - btnExit.width(), 0 );
+		btnExit.setRect(w - btnExit.width() - PADDING, PADDING, 12, 12 );
 		add( btnExit );
 
 		fadeIn();
@@ -200,6 +183,8 @@ public class TitleScene extends PixelScene {
 			
 			setSize( SIZE, SIZE );
 		}
+
+		public final Image getImage() { return image; }
 		
 		@Override
 		protected void createChildren() {
@@ -227,7 +212,7 @@ public class TitleScene extends PixelScene {
 		
 		@Override
 		protected void onTouchDown() {
-			image.brightness( 1.5f );
+			getImage().color(52/255f, 50/255f, 53/255f);
 			Sample.INSTANCE.play( Assets.SND_CLICK, 1, 1, 0.8f );
 		}
 		

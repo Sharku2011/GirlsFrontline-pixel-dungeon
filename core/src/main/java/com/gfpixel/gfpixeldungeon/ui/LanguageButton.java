@@ -84,7 +84,7 @@ public class LanguageButton extends Button {
 
 	@Override
 	protected void onTouchDown() {
-		image.brightness( 1.5f );
+		image.color(52/255f, 50/255f, 53/255f);
 		Sample.INSTANCE.play( Assets.SND_CLICK );
 	}
 
