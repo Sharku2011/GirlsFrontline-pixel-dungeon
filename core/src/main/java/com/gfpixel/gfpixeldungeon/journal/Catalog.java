@@ -90,7 +90,10 @@ import com.gfpixel.gfpixeldungeon.items.wands.WandOfMagicMissile;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfPrismaticLight;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfRegrowth;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfTransfusion;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.AR.Lvoat2;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.AK47;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.Lvoat3;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SMG.Lvoat1;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SR.AWP;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.UG.C96;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Dp;
@@ -127,7 +130,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.LR.Ump40;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SMG.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SG.Usas12;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.LR.Wa;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.Welrod;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.UMP9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SG.Win97;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Boomerang;
 import com.watabou.utils.Bundle;
@@ -165,14 +168,16 @@ public enum Catalog {
 	
 	static {
 		WEAPONS.seen.put( M9.class,                   false);
-		WEAPONS.seen.put( Welrod.class,                     false);
+		WEAPONS.seen.put( UMP9.class,                     false);
 		WEAPONS.seen.put( G11.class,                 false);
 		WEAPONS.seen.put( Ump45.class,                   false);
 		WEAPONS.seen.put( Ump40.class,                   false);
 		WEAPONS.seen.put( Dp.class,                   false);
 		WEAPONS.seen.put( SR3.class,                   false);
 		WEAPONS.seen.put( SRS.class,                   false);
-		WEAPONS.seen.put( Thunder.class,				false);
+		WEAPONS.seen.put( Lvoat1.class,				false);
+		WEAPONS.seen.put( Lvoat2.class,				false);
+		WEAPONS.seen.put( Lvoat3.class,				false);
 		WEAPONS.seen.put( Boomerang.class,                  false);
 		WEAPONS.seen.put( M16.class,                 false);
 		WEAPONS.seen.put( M1911.class,                    false);
@@ -198,6 +203,7 @@ public enum Catalog {
 		WEAPONS.seen.put( Sass.class,                       false);
 		WEAPONS.seen.put( M99.class,                     false);
 		WEAPONS.seen.put( SakuraBlade.class,                   false);
+		WEAPONS.seen.put( SaigaPlate.class,                false);
 		WEAPONS.seen.put( SaigaPlate.class,                false);
 		WEAPONS.seen.put( Lar.class,         			       false);
 		WEAPONS.seen.put( SAIGA.class,                        false);

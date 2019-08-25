@@ -141,30 +141,34 @@ public class ItemSpriteSheet {
 	                                                                                    //32 free slots
 
 	private static final int WEP_TIER1      =                               xy(1, 7);   //8 slots
-	public static final int UMP45         	= WEP_TIER1+0;
+	public static final int UMP40         	= WEP_TIER1+0;
 	public static final int DP             	= WEP_TIER1+1;
 	public static final int M9   = WEP_TIER1+2;
-	public static final int UMP40          	= WEP_TIER1+3;
-	public static final int DAGGER          = WEP_TIER1+4;
+	public static final int UMP45          	= WEP_TIER1+3;
+	public static final int UMP9          = WEP_TIER1+4;
 	public static final int G11             = WEP_TIER1+5;
 	public static final int SR3             = WEP_TIER1+6;
 	public static final int CANNON         	= WEP_TIER1+7;
 	public static final int SRS         	= WEP_TIER1+8;
 	public static final int THUNDER         	= WEP_TIER1+9;
-	public static final int M2HB        	= WEP_TIER1+10;
+	public static final int LVOAT1        	= WEP_TIER1+10;
+	public static final int LVOAT2        	= WEP_TIER1+11;
+	public static final int LVOAT3       	= WEP_TIER1+12;
 
 	static{
-		assignItemRect(UMP45, 	15, 16);
+		assignItemRect(UMP40, 	16, 16);
 		assignItemRect(DP,     	15, 16);
 		assignItemRect(M9,   	14, 16);
-		assignItemRect(UMP40, 	16, 16);
-		assignItemRect(DAGGER,  12, 13);
+		assignItemRect(UMP45, 	16, 16);
+		assignItemRect(UMP9,  16, 16);
 		assignItemRect(G11,     15, 16);
 		assignItemRect(SR3,     15, 16);
 		assignItemRect(CANNON,  15, 15);
 		assignItemRect(SRS, 	16, 16);
 		assignItemRect(THUNDER, 	15, 15);
-		assignItemRect(M2HB, 	20, 16);
+		assignItemRect(LVOAT1, 	16, 16);
+		assignItemRect(LVOAT2, 	16, 16);
+		assignItemRect(LVOAT3, 	16, 16);
 	}
 
 	private static final int WEP_TIER2      =                               xy(1, 8);   //8 slots
@@ -179,7 +183,7 @@ public class ItemSpriteSheet {
 	public static final int MAGNUMWEDDING	 = WEP_TIER2+8;
 	static{
 		assignItemRect(M16,					15, 16);
-		assignItemRect(M1911,				12, 14);
+		assignItemRect(M1911,				10, 13);
 		assignItemRect(M1903,				14, 16);
 		assignItemRect(M1A1,				16, 16);
 		assignItemRect(NAGANTREVOLVER,		13, 14);
@@ -218,8 +222,8 @@ public class ItemSpriteSheet {
 	static{
 		assignItemRect(WIN97,       15, 15);
 		assignItemRect(DRAGUNOV,      16, 16);
-		assignItemRect(AK47,           14, 14);
-		assignItemRect(HK416,     14, 14);
+		assignItemRect(AK47,           14, 15);
+		assignItemRect(HK416,     14, 16);
 		assignItemRect(GUA91, 14, 15);
 		assignItemRect(AWP,               16, 18);
 		assignItemRect(CROSSBOW,        16, 18);
@@ -232,6 +236,7 @@ public class ItemSpriteSheet {
 	public static final int GREATAXE        = WEP_TIER5+3;
 	public static final int GREATSHIELD     = WEP_TIER5+4;
 	public static final int LAR              = WEP_TIER5+5;
+	public static final int M2HB             = WEP_TIER5+6;
 	static{
 		assignItemRect(USAS12,  16, 16);
 		assignItemRect(SASS,  16, 16);
@@ -239,9 +244,10 @@ public class ItemSpriteSheet {
 		assignItemRect(GREATAXE,    12, 16);
 		assignItemRect(GREATSHIELD, 12, 16);
 		assignItemRect(LAR,            11, 15);
+		assignItemRect(M2HB,            17, 20);
 	}
 
-	private static final int WEP_TIER6      =                               xy(1, 12);
+	private static final int WEP_TIER6      =                               xy(1, 11);
 	public static final int GROZA            = WEP_TIER6+0;
 	public static final int MG42			= WEP_TIER6+1;
 	public static final int SAIGA			= WEP_TIER6+2;
@@ -315,7 +321,7 @@ public class ItemSpriteSheet {
 			assignItemRect(i, 11, 11);
 	}
 
-	private static final int ARMOR          =                               xy(1, 11);  //16 slots
+	private static final int ARMOR          =                               xy(1, 13);  //16 slots
 	public static final int ARMOR_CLOTH     = ARMOR+0;
 	public static final int ARMOR_LEATHER   = ARMOR+1;
 	public static final int ARMOR_MAIL      = ARMOR+2;

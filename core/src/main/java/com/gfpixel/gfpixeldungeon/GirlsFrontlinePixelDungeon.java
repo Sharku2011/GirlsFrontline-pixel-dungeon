@@ -132,8 +132,8 @@ public class GirlsFrontlinePixelDungeon extends Game {
 				com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.NagantRevolver.class,
 				"com.gfpixel.gfpixeldungeon.items.weapon.melee.NagantRevolver" );
 		com.watabou.utils.Bundle.addAlias(
-				com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.Welrod.class,
-				"com.gfpixel.gfpixeldungeon.items.weapon.melee.Welrod" );
+				com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.UMP9.class,
+				"com.gfpixel.gfpixeldungeon.items.weapon.melee.UMP9" );
 
 		com.watabou.utils.Bundle.addAlias(
 				com.gfpixel.gfpixeldungeon.items.weapon.melee.SG.Ks23.class,

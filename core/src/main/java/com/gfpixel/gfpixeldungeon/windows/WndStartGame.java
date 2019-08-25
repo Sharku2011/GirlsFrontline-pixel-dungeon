@@ -374,7 +374,7 @@ public class WndStartGame extends Window {
 							break;
 						case ROGUE:
 							heroItem.icon(new ItemSprite(ItemSpriteSheet.ARTIFACT_CLOAK, null));
-							heroLoadout.icon(new ItemSprite(ItemSpriteSheet.DAGGER, null));
+							heroLoadout.icon(new ItemSprite(ItemSpriteSheet.UMP9, null));
 							heroMisc.icon(Icons.get(Icons.DEPTH));
 							break;
 						case RANGER:

@@ -136,8 +136,11 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.Thunder;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SMG.Ump45;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SG.Usas12;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.LR.Wa;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.Welrod;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.UMP9;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SG.Win97;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SMG.Lvoat1;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.AR.Lvoat2;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.Lvoat3;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Bolas;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.FishingSpear;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.Javelin;
@@ -289,15 +292,18 @@ public class Generator {
 			WEP_T1.classes = new Class<?>[]{
 					Ump45.class,
 					G11.class,
-                    Welrod.class,
+                    UMP9.class,
 					M9.class,
 					Dp.class,
 					SR3.class,
                     Cannon.class,
 					SRS.class,
-					Thunder.class
+					Thunder.class,
+					Lvoat1.class,
+					Lvoat2.class,
+					Lvoat3.class
 			};
-			WEP_T1.probs = new float[]{ 1, 0, 1, 1, 1, 1, 0, 1, 0 };
+			WEP_T1.probs = new float[]{ 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1 };
 			
 			WEP_T2.classes = new Class<?>[]{
 					M16.class,

@@ -257,7 +257,7 @@ actors.hero.heroclass.none = 인형 선택
 
 actors.hero.heroclass.warrior=UMP45
 actors.hero.heroclass.warrior_desc_item=UMP45는 외골격에 붙일 수 있는 _특별한 부러진 외골격의 부품_ 을 가지고 시작합니다.\n\n부러진 부품이 붙은 외골격을 장비하고 있을 때 천천히 재생되는 방어막을 얻습니다.\n\n부러진 부품은 다른 외골격에 옮겨붙일 수 있으며, 1만큼의 강화 수치를 이전할 수 있습니다.
-actors.hero.heroclass.warrior_desc_loadout=UMP45는 _UMP45_ 을 가지고 시작합니다. _UMP45_ 는 피해를 조금 막을 수 있습니다.\n\nUMP45는 5개의 _유탄_ 를 가지고 시작합니다. _유탄_은 약한 원거리 피해를 줍니다.\n\nUMP45는 _물약 보관대_ 를 가지고 시작하여 포션이 얼어버리는 것을 방지할 수 있습니다.
+actors.hero.heroclass.warrior_desc_loadout=UMP45는 _UMP45_ 을 가지고 시작합니다. _UMP45_ 는 피해를 조금 막을 수 있습니다.\n\nUMP45는 5개의 _유탄_ 를 가지고 시작합니다. _유탄_은 약한 원거리 피해를 줍니다.\n\nUMP45는 _물약 보관대_ 를 가지고 시작하여 물약이 얼어버리는 것을 방지할 수 있습니다.
 actors.hero.heroclass.warrior_desc_misc=UMP45는 수복 물약을 식별하여 가지고 있는 상태로 시작합니다.\n\nUMP45는 음식을 먹을 때마다 소량의 체력을 회복합니다.
 actors.hero.heroclass.warrior_desc_subclasses=두 번째 보스를 쓰러트리면 보조 직업을 선택할 수 있습니다. UMP45의 두 가지 보조 직업은 다음과 같습니다.
 
@@ -448,6 +448,7 @@ actors.mobs.gepard.desc=정규군의 2족보행 자주대공포입니다. 본래
 
 actors.mobs.guard.name=가드
 actors.mobs.guard.disarm=가드가 당신의 %s을/를 손에서 튕겨 냈습니다!
+actors.mobs.guard.def_verb=막음
 actors.mobs.guard.desc=철혈의 고급 작전 더미입니다. 방패와 단거리 화력 무기를 장비하고 있으며 생긴 것처럼 높은 방어력을 가지고 있습니다. 일반적으로 중요한 거점을 지키는데 사용하거나 고급유닛이 선두에 서야할 시 출전합니다.
 
 actors.mobs.cyclops.name=키클롭스 A
@@ -580,7 +581,7 @@ actors.mobs.swarm.desc=작지만 자가복제로 적을 제압하는 소형 정�
 
 actors.mobs.elphelt.name=엘펠트 발렌타인
 actors.mobs.elphelt.inprogress=최종병기! 매그넘 웨딩!!
-actors.mobs.elphelt.bridleexpress1=브라이들 익스프레스!
+actors.mobs.elphelt.bridleexpress=브라이들 익스프레스!
 actors.mobs.elphelt.seek1=어디에 있나요, 달링!
 actors.mobs.elphelt.seek2=숨지 말아요, 달링!
 actors.mobs.elphelt.돌진=조준합니다!

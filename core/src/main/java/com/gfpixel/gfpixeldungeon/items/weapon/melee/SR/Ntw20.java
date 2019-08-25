@@ -18,8 +18,7 @@ public class Ntw20 extends SniperRifle {
         image = ItemSpriteSheet.NTW20;
 
         tier = 6;
-        ACC = 5f;
-        DLY = 6f;
+        DLY = 5f;
         RCH = 1000;
     }
 

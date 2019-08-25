@@ -34,7 +34,6 @@ public class AWP extends SniperRifle {
         image = ItemSpriteSheet.AWP;
 
         tier = 4;
-        ACC = 1.75f;
         DLY = 4f;
         RCH = 50;
     }
@@ -48,7 +47,7 @@ public class AWP extends SniperRifle {
     @Override
     public void onAttack(Char owner, Char enemy ) {
         if (owner instanceof Hero && owner.buffs(Speed.class).isEmpty()) {
-            Buff.prolong(owner, Charm.class, 6.5f);
+            Buff.prolong(owner, Charm.class, 9.5f);
         }
     }
 

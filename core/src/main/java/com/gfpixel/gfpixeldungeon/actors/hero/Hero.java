@@ -91,6 +91,7 @@ import com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.AK47;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Dp;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.HB.Kriss;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.M99;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.M2HB;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Mg42;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Negev;
 import com.gfpixel.gfpixeldungeon.items.weapon.missiles.MissileWeapon;
@@ -406,6 +407,7 @@ public class Hero extends Char {
 			belongings.weapon instanceof AK47 ||
 			belongings.weapon instanceof Dp ||
 			belongings.weapon instanceof Negev ||
+			belongings.weapon instanceof M2HB ||
 			belongings.weapon instanceof Mg42)                                     return false;
 
 		return true;

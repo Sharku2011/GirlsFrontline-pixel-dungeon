@@ -48,7 +48,7 @@ public class M1903 extends SniperRifle {
 	@Override
 	public void onAttack(Char owner, Char enemy ) {
 		if (owner instanceof Hero && owner.buffs(Speed.class).isEmpty()) {
-			Buff.prolong(owner, Charm.class, 6.5f);
+			Buff.prolong(owner, Charm.class, 8.5f);
 		}
 	}
 

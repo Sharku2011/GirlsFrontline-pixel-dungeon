@@ -49,7 +49,7 @@ public class Hydra extends Mob {
         EXP = 19;
         defenseSkill = 0;
         viewDistance = Light.DISTANCE;
-        baseSpeed = 0.9f;
+        baseSpeed = 0.5f;
         maxLvl = 36;
 
         properties.add(Property.ARMO);

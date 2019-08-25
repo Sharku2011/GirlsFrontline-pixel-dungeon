@@ -44,7 +44,7 @@ public class Typhoon extends Hydra {
 
     @Override
     public int damageRoll() {
-        return Random.NormalIntRange(5, 5);
+        return Random.NormalIntRange(85, 85);
     }
 
     @Override
@@ -79,6 +79,7 @@ public class Typhoon extends Hydra {
             return super.canAttack(enemy);
     }
 
+
     @Override
     protected boolean act() {
         if (beamCharged && state != HUNTING){
@@ -100,7 +101,7 @@ public class Typhoon extends Hydra {
             return super.doAttack(enemy);
         } else if (!beamCharged){
             ((TyphoonSprite)sprite).charge( enemy.pos );
-            spend( attackDelay()*14f );
+            spend( attackDelay()*1f );
             beamCharged = true;
             return true;
         } else {

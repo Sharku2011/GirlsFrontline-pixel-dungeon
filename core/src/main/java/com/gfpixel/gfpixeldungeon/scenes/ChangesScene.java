@@ -41,6 +41,9 @@ import com.gfpixel.gfpixeldungeon.items.rings.RingOfSharpshooting;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfDisintegration;
 import com.gfpixel.gfpixeldungeon.items.wands.WandOfTransfusion;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.AK47;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.M2HB;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SMG.Lvoat1;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SR.AWP;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.UG.C96;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Dp;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AR.G36;
@@ -139,32 +142,45 @@ public class ChangesScene extends PixelScene {
 				"그래픽 개선.\n\n" +
 						"_-_ 기존의 픽셀보다 더 큰 픽셀을 적용해 좀더 높은 해상도의 배경과 캐릭터들을 만들었습니다.\n\n" +
 						"_-_ 기존보다 커진 픽셀로 인해 모션이 살짝 어긋나는 등의 오류가 있을 수도 있습니다.\n\n" +
-						"_-_ 현재 배경이 미완성이므로 지속적으로 업데이트 해갈 예정입니다."));
+						"_-_ 현재 미완성이므로 지속적으로 업데이트 해갈 예정입니다."));
+
+		changes.addButton( new ChangeButton(new Lvoat1(),
+				"_-_ 무기 추가.\n\n" +
+						"_-_ MG계열 변종인 M2HB가 추가 됐습니다. M2HB는 비교적 높은 명중률과 4티어에 근접하는 높은 데미지를 가지고 있으며, 최대 5회까지 공격 가능합니다.\n\n" +
+						"_-_ 하지만 MG계열 특징인 기습 불가는 여전하며 M2HB를 사용할 때마다 출혈과 이동 불가 디버프가 적용됩니다. 출혈은 중첩되며, 사용자에게 큰 부담을 안겨줄 것입니다.\n\n" +
+						"_-_ LVOA 3종이 추가됐습니다. 1티어 히든 무기로 변환의 우물에 1티어 무기를 던질 경우 확률적으로 획득 가능합니다.\n\n" +
+						"_-_ LVOA type1은 기본 모델로, 명중-20%에 최대 3번까지 공격 가능합니다.\n\n" +
+						"_-_ LVOA type2는 7.62mm 사용 모델로, 명중+20%에 강화당 5라는 높은 강화율을 가집니다.\n\n" +
+						"_-_ LVOA type3는 단축형 모델로, 명중-60%에 기습시 50% 추가피해, 최대 3번까지 공격 가능합니다."));
+
+
 
 		changes.addButton( new ChangeButton(new Image(Assets.GOLYATPLUS, 0, 0, 26, 23), "변종",
-				"분기점 변종 몬스터 추가.\n\n" +
-						"_-_ 브루트의 공격력이 3 낮아지고 공격속도가 두배로 바뀌었습니다. 또한 수상한 고기의 드랍률이 20%로 상향됐습니다.\n\n" +
-						"_-_ 골리앗 PLUS는 기존의 검은 외형과 다른 붉은 외형을 가지고 있으며 매우 낮은 체력과 공격력을 가지고 있습니다.\n\n" +
-						"_-_ 하지만 골리앗 PLUS가 가하는 공격은 반드시 명중하며, 처치할 경우 주변에 높은 자폭 피해를 입힙니다."));
+				"그를 건드리지 마십시오.\n\n" +
+						"_-_ 덱틸을 처치할 경우 매우 낮은 확률로 융합의 디스크가 드랍됩니다.\n\n" +
+						"_-_ 티폰의 근접 데미지가 85로 상승하고, 더이상 광선을 발사하는데 추가적인 시간을 소모하지 않고 바로 차탄을 준비합니다."));
 
 		changes = new ChangeInfo(Messages.get(this, "changes"), false, null);
 		changes.hardlight( CharSprite.WARNING );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton(new Negev(),
+		changes.addButton( new ChangeButton(new AWP(),
 				"_-_ 무기 조정.\n\n" +
 						"_-_ RF계열 공격속도가 조정됐습니다.\n\n" +
-						"_-_ 스프링필드는 공격속도가 3턴, AWP는 4턴으로 조정됐습니다. 하지만 스프링필드와 AWP는 공격 직후 6턴동안 교란상태가 되어 무기를 사용할 수 없게 됩니다 .\n\n" +
-						"_-_ NTW의 명중률이 500%로 상향, 공격속도가 6턴으로 감소했으며 공격 직후 10턴동안 교란상태가 됩니다.\n\n" +
+						"_-_ 스프링필드는 공격속도가 3턴, AWP는 4턴으로 조정됐습니다. 하지만 스프링필드와 AWP는 공격 직후 각각 6턴,7턴 동안 교란상태가 되어 무기를 사용할 수 없게 됩니다 .\n\n" +
+						"_-_ NTW의 명중률이 500%로 상향, 공격속도가 5턴으로 감소했으며 공격 직후 8턴동안 교란상태가 됩니다.\n\n" +
 						"_-_ 크리스 벡터의 공격 속도가 50% 상승하고, 버프 지속시간이 0.5턴 증가했습니다."));
 
 		changes = new ChangeInfo(Messages.get(this, "buffs"), false, null);
 		changes.hardlight( CharSprite.POSITIVE );
 		infos.add(changes);
 
-		changes.addButton( new ChangeButton(new Image(Assets.WARRIOR, 0, 69, 21, 23),  "소폭상향",
-				"임시 땜빵.\n\n" +
-						"_-_ UMP45가 음식을 섭취하면 HP 5% 회복과 더해서 3턴 동안 투명화 상태가 됩니다."));
+		changes.addButton( new ChangeButton(new AWP(),
+				"_-_ 무기 조정.\n\n" +
+						"_-_ RF계열 공격속도가 조정됐습니다.\n\n" +
+						"_-_ 스프링필드는 공격속도가 3턴, AWP는 4턴으로 조정됐습니다. 하지만 스프링필드와 AWP는 공격 직후 각각 6턴,7턴 동안 교란상태가 되어 무기를 사용할 수 없게 됩니다 .\n\n" +
+						"_-_ NTW의 명중률이 500%로 상향, 공격속도가 5턴으로 감소했으며 공격 직후 8턴동안 교란상태가 됩니다.\n\n" +
+						"_-_ 크리스 벡터의 공격 속도가 50% 상승하고, 버프 지속시간이 0.5턴 증가했습니다."));
 
 		changes = new ChangeInfo(Messages.get(this, "nerfs"), false, null);
 		changes.hardlight( CharSprite.NEGATIVE );
@@ -172,11 +188,8 @@ public class ChangesScene extends PixelScene {
 
 		changes.addButton( new ChangeButton(new Image(Assets.NEMEUM, 0, 0, 26, 21), "나약해짐",
 				"장갑계 몬스터 하향.\n\n" +
-						"_-_ 네메움의 공격력이 40으로 고정 됐으며, 데미지캡이 삭제되고 레이저 발사에 필요한 시간이 4턴으로 조정됐습니다.\n\n" +
-						"_-_ 히드라의 체력이 400에서 200으로 하향됐으며, 근접 공격과 원거리 공격 모두 22 데미지로 바뀌었고, 레이저 준비시간이 4턴, 레이저 재사용에 3턴의 쿨타임이 생겼습니다. 또한 근접 공격이 2연타로 적용됩니다.\n\n" +
-						"_-_ 주피터의 레이저 발사에 필요한 시간이 1턴 증가해 6턴으로, 레이저 피해는 70으로 고정됐으며 방어력이 다른 장갑계열처럼 사라진 대신 체력이 150으로 늘었습니다.\n\n" +
-						"_-_ 티폰의 체력이 4500, 이동속도가 80%,최대 레벨 50.공격속도 8턴에 레이저 피해가 최대 135, 우산에 면역을 가지게 변경되었습니다.\n\n\n" +
-						"_-_ 19층의 만티코어 스폰률이 크게 줄어들었고, 만티코어의 공격력이 35로 하락했으며 데미지 리미트가 50, 체력이 150으로 하락해 원래 목표인 SR계열 무기 견제만 가능하도록 바꿨습니다."));
+						"_-_ 브루트의 공격력이 3 낮아지고 공격속도가 두배로 바뀌었습니다. 또한 수상한 고기의 드랍률이 20%로 상향됐습니다.\n\n" +
+						"_-_ 만티코어와 히드라의 이동속도가 50%로 줄어들었습니다. 추가로 만티코어는 공격력이 15~20으로 낮아지고 1턴에 두번 공격하게 바뀌었습니다."));
 
 		changes = new ChangeInfo("v0.4.9", true, "");
 		changes.hardlight( Window.TITLE_COLOR);

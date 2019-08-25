@@ -19,29 +19,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.gfpixel.gfpixeldungeon.items.weapon.melee.SMG;
+package com.gfpixel.gfpixeldungeon.items.weapon.melee.SA;
 
-import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.SurpriseAttack;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
 
-public class Ump45 extends SubMachineGun {
+public class Lvoat3 extends SurpriseAttack {
 
     {
-        image = ItemSpriteSheet.UMP45;
+        image = ItemSpriteSheet.LVOAT3;
 
+
+        DLY = 0.3f;
+        ACC = 0.8f;
         tier = 1;
-        RCH = 1;
-        ACC = 0.95f;
     }
+
+    //Essentially it's a tier 4 weapon, with tier 3 base max damage, and tier 5 scaling.
+    //equal to tier 4 in damage at +5
 
     @Override
     public int max(int lvl) {
-        return  5*(tier+1) +    //8 base, down from 10
-                lvl*(tier+1);   //scaling unchanged
-    }
-
-    @Override
-    public int defenseFactor( Char owner ) {
-        return 0 + 1 * level();
+        return  Math.round(6*(tier+1)) +  //base, down from 25
+                Math.round(lvl*(tier+2));	//+6 per level, up from +5
     }
 }
