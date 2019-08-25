@@ -338,7 +338,7 @@ public class WndStartGame extends Window {
 			{
 				return;
 			}
-
+			
 			heroItem.setPos(x + width - BTN_SIZE, y);
 			heroLoadout.setPos(x + width - BTN_SIZE, heroItem.bottom());
 			heroMisc.setPos(x + width - BTN_SIZE, heroLoadout.bottom());
