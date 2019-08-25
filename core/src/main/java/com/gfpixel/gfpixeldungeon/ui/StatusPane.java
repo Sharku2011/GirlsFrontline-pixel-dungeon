@@ -216,7 +216,7 @@ public class StatusPane extends Component {
 		int tier = Dungeon.hero.tier();
 		if (tier != lastTier) {
 			lastTier = tier;
-			avatar.copy( HeroSprite.avatar( Dungeon.hero.heroClass, tier ) );
+			avatar.copy( HeroSprite.avatar( Dungeon.hero.heroClass, Dungeon.hero.isEquipping() ? 1 : 0 ) );
 		}
 	}
 

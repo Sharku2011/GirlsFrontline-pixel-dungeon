@@ -189,7 +189,7 @@ public class WndStartGame extends Window {
 					AssetString = Assets.RANGER;
 					break;
 			}
-			hero = new Image(AssetString, 0, HeroSprite.FRAME_HEIGHT * 2, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
+			hero = new Image(AssetString, 0, HeroSprite.FRAME_HEIGHT, HeroSprite.FRAME_WIDTH, HeroSprite.FRAME_HEIGHT);
 			add(hero);
 		}
 		

@@ -37,6 +37,7 @@ import com.watabou.noosa.Game;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.RenderedText;
 import com.watabou.utils.FileUtils;
+import com.watabou.utils.GameMath;
 
 import java.util.Locale;
 
@@ -61,7 +62,7 @@ public class WndGameInProgress extends Window {
 		}
 		
 		IconTitle title = new IconTitle();
-		Image avatar = HeroSprite.avatar(info.heroClass, info.armorTier);
+		Image avatar = HeroSprite.avatar( info.heroClass, Math.min(info.armorTier, 1) );
 		title.icon( avatar );
 		title.label((Messages.get(this, "title", info.level, className)).toUpperCase(Locale.ENGLISH));
 		title.color(Window.SHPX_COLOR);

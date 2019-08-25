@@ -284,6 +284,10 @@ public class Hero extends Char {
 		return belongings.armor == null ? 0 : belongings.armor.tier;
 	}
 
+	public boolean isEquipping() {
+		return belongings.armor != null;
+	}
+
 	//this variable is only needed because of the boomerang, remove if/when it is no longer equippable
 	boolean rangedAttack = false;
 	

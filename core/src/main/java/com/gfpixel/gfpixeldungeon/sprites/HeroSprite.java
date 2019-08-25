@@ -62,7 +62,7 @@ public class HeroSprite extends CharSprite {
 	
 	public void updateArmor() {
 
-		TextureFilm film = new TextureFilm( tiers(), ((Hero)ch).tier(), FRAME_WIDTH, FRAME_HEIGHT );
+		TextureFilm film = new TextureFilm( tiers(), ((Hero)ch).isEquipping() ? 1 : 0, FRAME_WIDTH, FRAME_HEIGHT );
 		
 		idle = new Animation( 5, true );
 		idle.frames( film, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 );
