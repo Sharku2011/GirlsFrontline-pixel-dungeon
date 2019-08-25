@@ -46,6 +46,8 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.ui.Button;
 import com.watabou.utils.PointF;
 
+import java.util.ArrayList;
+
 public class TitleScene extends PixelScene {
 
 	static public final int PADDING = 4;
@@ -66,21 +68,76 @@ public class TitleScene extends PixelScene {
 		archs.setSize( w, h );
 		add( archs );
 
-		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON_TITLE );
-		add( title );
+		ArrayList<Image> logos = new ArrayList<>();
+
+		Image logoAntiRain = new Image( BannerSprites.get( BannerSprites.Type.LOGO_ANTIRAIN ) ) {
+			private float time = 0;
+			@Override
+			public void update() {
+				super.update();
+				am = Math.max(0f, (float)Math.sin( time += Game.elapsed ));
+				if (time >= 2f*Math.PI) {
+					time = 0;
+				}
+			}
+			@Override
+			public void draw() {
+				Blending.setLightMode();
+				super.draw();
+				Blending.setNormalMode();
+			}
+		};
+		logos.add(logoAntiRain);
+
+		Image logo404 = new Image( BannerSprites.get( BannerSprites.Type.LOGO_404 ) ) {
+			private float time = 0;
+			@Override
+			public void update() {
+				super.update();
+				am = Math.max(0f, -(float)Math.sin( time += Game.elapsed ));
+				if (time >= 2f*Math.PI) {
+					time = 0;
+				}
+			}
+			@Override
+			public void draw() {
+				Blending.setLightMode();
+				super.draw();
+				Blending.setNormalMode();
+			}
+		};
+		logos.add(logo404);
 
 		float topRegion = Math.max(95f, h*0.45f);
 
+		for (Image logo : logos) {
+
+			add(logo);
+
+			float pivotX = (w - logo.width()) / 2f;
+			float pivotY = topRegion / 2f;
+
+			if (SPDSettings.landscape()) {
+				pivotY = (topRegion - logo.height()) / 6f;
+			} else {
+				pivotY = 16 + (topRegion - logoAntiRain.height() - 16) / 6f;
+			}
+
+			logo.x = pivotX;
+			logo.y = pivotY;
+
+			align(logo);
+		}
+
+		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON_TITLE );
 		title.x = (w - title.width()) / 2f;
-		if (SPDSettings.landscape())
-			title.y = (topRegion - title.height()) / 2f;
-		else
-			title.y = 16 + (topRegion - title.height() - 16) / 2f;
 
-		align(title);
-
-		//placeTorch(title.x + 22, title.y + 46);
-		//placeTorch(title.x + title.width - 22, title.y + 46);
+		if (SPDSettings.landscape()) {
+			title.y = (topRegion - title.height()) / 6f * 5f;
+		} else {
+			title.y = 16 + (topRegion - title.height() - 16) / 6f * 5f;
+		}
+		add(title);
 
 		DashboardItem btnPlay = new DashboardItem( Messages.get(this, "play"), 0 ) {
 			@Override

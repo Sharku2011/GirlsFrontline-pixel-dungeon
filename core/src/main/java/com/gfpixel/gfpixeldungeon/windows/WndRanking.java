@@ -148,7 +148,9 @@ public class WndRanking extends WndTabbed {
 		public StatsTab() {
 			super();
 
-			if (Dungeon.challenges > 0) GAP--;
+			if (Dungeon.challenges > 0) {
+				GAP--;
+			}
 			
 			String heroClass = Dungeon.hero.className();
 			
