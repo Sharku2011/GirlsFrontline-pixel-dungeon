@@ -338,12 +338,7 @@ public class WndStartGame extends Window {
 			{
 				return;
 			}
-
-			heroItem.icon().scale.set(0.5f);
-			heroLoadout.icon().scale.set(0.5f);
-			heroMisc.icon().scale.set(0.5f);
-			heroSubclass.icon().scale.set(0.5f);
-
+			
 			heroItem.setPos(x + width - BTN_SIZE, y);
 			heroLoadout.setPos(x + width - BTN_SIZE, heroItem.bottom());
 			heroMisc.setPos(x + width - BTN_SIZE, heroLoadout.bottom());
