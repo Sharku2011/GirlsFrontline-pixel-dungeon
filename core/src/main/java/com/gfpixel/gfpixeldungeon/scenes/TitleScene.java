@@ -46,6 +46,8 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.ui.Button;
 
 public class TitleScene extends PixelScene {
+
+	static public final int PADDING = 4;
 	
 	@Override
 	public void create() {
@@ -134,8 +136,6 @@ public class TitleScene extends PixelScene {
 		version.x = w - version.width();
 		version.y = h - version.height();
 		add( version );
-
-		final int PADDING = 4;
 
 		Button changes = new ChangesButton();
 		changes.setPos( w-changes.width() - 4, h - version.height() - changes.height() - PADDING);
