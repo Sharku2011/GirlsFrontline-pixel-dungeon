@@ -44,6 +44,7 @@ import com.watabou.noosa.RenderedText;
 import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.ui.Button;
+import com.watabou.utils.PointF;
 
 public class TitleScene extends PixelScene {
 
@@ -65,7 +66,7 @@ public class TitleScene extends PixelScene {
 		archs.setSize( w, h );
 		add( archs );
 
-		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON_SIGNS/*PIXEL_DUNGEON*/ );
+		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON_TITLE );
 		add( title );
 
 		float topRegion = Math.max(95f, h*0.45f);
@@ -130,23 +131,24 @@ public class TitleScene extends PixelScene {
 			btnAbout.setPos( w / 2, btnBadges.top() );
 		}
 
+		Button changes = new ChangesButton();
+		changes.setPos( w - changes.width() - PADDING, h - changes.height() - PADDING);
+		add( changes );
+
 		BitmapText version = new BitmapText( "v " + Game.version + "", pixelFont);
 		version.measure();
 		version.hardlight( 0xCCCCCC );
-		version.x = w - version.width();
-		version.y = h - version.height();
+		version.scale = new PointF( 1.25f, 1.25f );
+		version.x = w - changes.width() - PADDING - version.width() - PADDING;
+		version.y = h - version.height() - PADDING;
 		add( version );
 
-		Button changes = new ChangesButton();
-		changes.setPos( w-changes.width() - 4, h - version.height() - changes.height() - PADDING);
-		add( changes );
-		
 		int pos = PADDING;
 
 		PrefsButton btnPrefs = new PrefsButton();
 		btnPrefs.setRect( pos, PADDING, 12, 12 );
 		add( btnPrefs );
-		
+
 		pos += btnPrefs.width() + PADDING;
 
 		LanguageButton btnLang = new LanguageButton();
