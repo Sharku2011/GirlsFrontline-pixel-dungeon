@@ -3,7 +3,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion '28.0.3'
     defaultConfig {
-        minSdkVersion 8
+        minSdkVersion 21
     }
     task ndkBuild(type: Exec) {
         description "builds JNI libs from source. " +
