@@ -35,8 +35,8 @@ import com.watabou.utils.Bundle;
 public class Berserk extends Buff {
 
 	private enum State{
-		NORMAL, BERSERK, RECOVERING;
-	}
+		NORMAL, BERSERK, RECOVERING
+    }
 	private State state = State.NORMAL;
 
 	private static final float LEVEL_RECOVER_START = 2f;

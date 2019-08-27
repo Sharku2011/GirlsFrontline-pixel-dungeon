@@ -52,10 +52,10 @@ public class ToxicImbue extends Buff {
 
 	public void set( float duration ) {
 		this.left = duration;
-	};
+	}
 
 
-	@Override
+    @Override
 	public boolean act() {
 		GameScene.add(Blob.seed(target.pos, 50, ToxicGas.class));
 

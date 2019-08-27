@@ -12,7 +12,7 @@ public class MobRotations {
 
     public ArrayList<Class<? extends Mob>> getRotation(int floor) {
         return null;
-    };
+    }
 }
 
 

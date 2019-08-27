@@ -228,7 +228,7 @@ public class Badges {
 
 	private static void store( Bundle bundle, HashSet<Badge> badges ) {
 		int count = 0;
-		String names[] = new String[badges.size()];
+        String[] names = new String[badges.size()];
 		
 		for (Badge badge:badges) {
 			names[count++] = badge.toString();
@@ -836,9 +836,7 @@ public class Badges {
 	
 	//necessary in order to display the happy end badge in the surface scene
 	public static void silentValidateHappyEnd() {
-		if (!local.contains( Badge.HAPPY_END )){
-			local.add( Badge.HAPPY_END );
-		}
+        local.add( Badge.HAPPY_END );
 	}
 	
 	public static void validateHappyEnd() {

@@ -40,8 +40,9 @@ public class Buff extends Actor {
 
 	//determines how the buff is announced when it is shown.
 	//buffs that work behind the scenes, or have other visual indicators can usually be silent.
-	public enum buffType {POSITIVE, NEGATIVE, NEUTRAL, SILENT};
-	public buffType type = buffType.SILENT;
+	public enum buffType {POSITIVE, NEGATIVE, NEUTRAL, SILENT}
+
+    public buffType type = buffType.SILENT;
 	
 	protected HashSet<Class> resistances = new HashSet<>();
 	
@@ -92,9 +93,9 @@ public class Buff extends Actor {
 
 	public void fx(boolean on) {
 		//do nothing by default
-	};
+	}
 
-	public String heroMessage(){
+    public String heroMessage(){
 		return null;
 	}
 

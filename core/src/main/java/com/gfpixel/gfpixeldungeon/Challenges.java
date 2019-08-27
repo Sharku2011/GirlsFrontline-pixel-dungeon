@@ -44,9 +44,9 @@ public class Challenges {
 	public static final int SWARM_INTELLIGENCE	= 16;
 	public static final int DARKNESS			= 32;
 	public static final int NO_SCROLLS		    = 64;
-	public static final int NO_STRENGTH				= 128;
+	public static final int NO_STRENGTH			= 128;
 	public static final int NO_ANKH				= 256;
-	public static final int INFLATION				= 512;
+	public static final int INFLATION			= 512;
 
 	public static final int MAX_VALUE           = 1023;
 
@@ -120,9 +120,7 @@ public class Challenges {
 		}
 
 		if (Dungeon.isChallenged(NO_ANKH)){
-			if (item instanceof Ankh) {
-				return true;
-			}
+			return (item instanceof Ankh);
 		}
 
 		//if (Dungeon.isChallenged(INFLATION)){
