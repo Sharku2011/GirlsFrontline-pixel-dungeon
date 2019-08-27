@@ -132,7 +132,7 @@ public class M79 extends DamageWand {
     @Override
     public String statsDesc(){
         return Messages.get(this, "stats_desc", returnPlusDamage());
-    };
+    }
 
     public int returnPlusDamage(){
         return (int)(damageStack * 100 + 100);

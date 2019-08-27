@@ -104,7 +104,7 @@ public class MassGraveRoom extends SpecialRoom {
 
 		@Override
 		public CustomTiledVisual create() {
-			int data[] = new int[tileW*tileH];
+            int[] data = new int[tileW * tileH];
 			for (int i = 0; i < data.length; i++){
 				if (i < tileW)  data[i] = WALL_OVERLAP;
 				else            data[i] = FLOOR;

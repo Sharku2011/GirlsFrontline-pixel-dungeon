@@ -72,7 +72,7 @@ public abstract class CustomTiledVisual extends Tilemap implements Bundlable {
 
 	//assumes that width and height are already set.
 	protected void mapSimpleImage(int txX, int txY){
-		int data[] = new int[tileW * tileH];
+        int[] data = new int[tileW * tileH];
 		int texTileWidth = texture.width/SIZE;
 		int x = txX, y = txY;
 		for (int i = 0; i < data.length; i++){

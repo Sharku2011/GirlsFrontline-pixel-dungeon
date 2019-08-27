@@ -74,11 +74,9 @@ public class Blandfruit extends Food {
 	public boolean isSimilar( Item item ) {
 		if (item instanceof Blandfruit){
 			if (potionAttrib == null){
-				if (((Blandfruit)item).potionAttrib == null)
-					return true;
+				return ((Blandfruit) item).potionAttrib == null;
 			} else if (((Blandfruit)item).potionAttrib != null){
-				if (((Blandfruit)item).potionAttrib.getClass() == potionAttrib.getClass())
-					return true;
+				return ((Blandfruit) item).potionAttrib.getClass() == potionAttrib.getClass();
 			}
 		}
 		return false;
@@ -262,12 +260,8 @@ public class Blandfruit extends Food {
 			if (fruit.quantity() >= 1 && fruit.potionAttrib == null
 				&& seed.quantity() >= 1){
 
-				if (Dungeon.isChallenged(Challenges.NO_HEALING)
-						&& seed instanceof Sungrass.Seed){
-					return false;
-				}
-
-				return true;
+				return !Dungeon.isChallenged(Challenges.NO_HEALING)
+						|| !(seed instanceof Sungrass.Seed);
 			}
 			
 			return false;

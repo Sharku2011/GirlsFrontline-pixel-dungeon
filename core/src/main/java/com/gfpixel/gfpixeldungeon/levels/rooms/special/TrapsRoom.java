@@ -96,7 +96,7 @@ public class TrapsRoom extends SpecialRoom {
 			int cell = level.pointToCell(p);
 			if (level.map[cell] == Terrain.TRAP){
 				try {
-					level.setTrap(((Trap) trapClass.newInstance()).reveal(), cell);
+					level.setTrap(trapClass.newInstance().reveal(), cell);
 				} catch (Exception e) {
 					GirlsFrontlinePixelDungeon.reportException(e);
 				}

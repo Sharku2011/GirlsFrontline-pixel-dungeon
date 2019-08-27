@@ -192,8 +192,8 @@ public abstract class Wand extends Item {
 
 	public String statsDesc(){
 		return Messages.get(this, "stats_desc");
-	};
-	
+	}
+
 	@Override
 	public boolean isIdentified() {
 		return super.isIdentified() && curChargeKnown;

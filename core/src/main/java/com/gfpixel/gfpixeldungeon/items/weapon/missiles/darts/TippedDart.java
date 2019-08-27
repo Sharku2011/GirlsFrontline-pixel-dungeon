@@ -123,15 +123,11 @@ public abstract class TippedDart extends Dart {
 			}
 			
 			Plant.Seed seed = (Plant.Seed) ingredients.get(1);
-			
-			if (ingredients.get(0).quantity() >= 2
-					&& seed.quantity() >= 1
-					&& types.containsKey(seed.getClass())){
-				return true;
-			}
-			
-			return false;
-		}
+
+            return ingredients.get(0).quantity() >= 2
+                    && seed.quantity() >= 1
+                    && types.containsKey(seed.getClass());
+        }
 		
 		@Override
 		public int cost(ArrayList<Item> ingredients) {
