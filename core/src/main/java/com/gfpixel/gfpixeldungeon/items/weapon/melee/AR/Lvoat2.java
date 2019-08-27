@@ -37,7 +37,7 @@ public class Lvoat2 extends AssaultRifle {
 
     @Override
     public int max(int lvl) {
-        return  Math.round(6*(tier+1)) +  //base, down from 25
+        return  Math.round(4*(tier+1)) +  //base, down from 25
                 Math.round(lvl*(tier+4));	//+6 per level, up from +5
     }
 }

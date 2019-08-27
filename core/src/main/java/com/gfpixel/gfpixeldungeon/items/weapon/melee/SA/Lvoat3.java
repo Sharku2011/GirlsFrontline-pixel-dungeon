@@ -21,8 +21,12 @@
 
 package com.gfpixel.gfpixeldungeon.items.weapon.melee.SA;
 
+import com.gfpixel.gfpixeldungeon.actors.Char;
+import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
+import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.SA.SurpriseAttack;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;
+import com.watabou.utils.Random;
 
 public class Lvoat3 extends SurpriseAttack {
 
@@ -31,7 +35,7 @@ public class Lvoat3 extends SurpriseAttack {
 
 
         DLY = 0.3f;
-        ACC = 0.8f;
+        ACC = 0.4f;
         tier = 1;
     }
 
@@ -40,7 +44,28 @@ public class Lvoat3 extends SurpriseAttack {
 
     @Override
     public int max(int lvl) {
-        return  Math.round(6*(tier+1)) +  //base, down from 25
+        return  Math.round(4*(tier+1)) +  //base, down from 25
                 Math.round(lvl*(tier+2));	//+6 per level, up from +5
     }
+    @Override
+    public int damageRoll(Char owner) {
+        if (owner instanceof Hero) {
+            Hero hero = (Hero)owner;
+            Char enemy = hero.enemy();
+            if (enemy instanceof Mob && ((Mob) enemy).surprisedBy(hero)) {
+                //deals 67% toward max to max on surprise, instead of min to max.
+                int diff = max() - min();
+                int damage = augment.damageFactor(Random.NormalIntRange(
+                        min() + Math.round(diff*0.5f),
+                        max()));
+                int exStr = hero.STR() - STRReq();
+                if (exStr > 0) {
+                    damage += Random.IntRange(0, exStr);
+                }
+                return damage;
+            }
+        }
+        return super.damageRoll(owner);
+    }
+
 }
