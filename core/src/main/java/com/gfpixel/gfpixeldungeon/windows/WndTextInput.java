@@ -188,7 +188,7 @@ public class WndTextInput extends Window {
 		return textInput.getText().toString().trim();
 	}
 
-	protected void onSelect( boolean positive ) {};
+	protected void onSelect( boolean positive ) {}
 
 	@Override
 	public void destroy() {

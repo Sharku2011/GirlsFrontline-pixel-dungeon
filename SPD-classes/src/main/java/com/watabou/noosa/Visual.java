@@ -281,9 +281,7 @@ public class Visual extends Gizmo {
 		//y coord
 		if (y > c.scroll.y + c.height)
 			return false;
-		else if (!(y >= c.scroll.y || y + height() >= c.scroll.y))
-			return false;
+		else return y >= c.scroll.y || y + height() >= c.scroll.y;
 
-		return true;
-	}
+    }
 }

@@ -94,7 +94,7 @@ public class WndStory extends Window {
 		CHAPTERS.put( ID_M16_QUEST, "m16quest");
 		CHAPTERS.put( ID_PPSH_QUEST, "ppshquest");
 		CHAPTERS.put( ID_P7_QUEST, "p7quest");
-	};
+	}
 
 	// 안쓰임
 	static {
@@ -105,7 +105,7 @@ public class WndStory extends Window {
 		CHAPTERSLENGTH.put( ID_RECAVES, 2 );
 		CHAPTERSLENGTH.put( ID_HALLS, 2 );
 		CHAPTERSLENGTH.put( ID_COLDWAR, 2);
-	};
+	}
 
 	private RenderedTextMultiline tf;
 	private RenderedTextMultiline cname;

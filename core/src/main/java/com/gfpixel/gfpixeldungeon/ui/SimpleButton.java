@@ -47,16 +47,18 @@ public class SimpleButton extends Component {
 			@Override
 			protected void onTouchDown(Touch touch) {
 				image.brightness( 1.2f );
-			};
-			@Override
+			}
+
+            @Override
 			protected void onTouchUp(Touch touch) {
 				image.brightness( 1.0f );
-			};
-			@Override
+			}
+
+            @Override
 			protected void onClick( Touch touch ) {
 				SimpleButton.this.onClick();
-			};
-		} );
+			}
+        } );
 	}
 	
 	@Override
@@ -65,5 +67,5 @@ public class SimpleButton extends Component {
 		image.y = y;
 	}
 	
-	protected void onClick() {};
+	protected void onClick() {}
 }
