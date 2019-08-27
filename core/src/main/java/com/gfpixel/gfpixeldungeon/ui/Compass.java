@@ -30,7 +30,7 @@ import com.watabou.utils.PointF;
 public class Compass extends Image {
 
 	private static final float RAD_2_G	= 180f / 3.1415926f;
-	private static final float RADIUS	= 12;
+	private static final float RADIUS	= 13;
 	
 	private int cell;
 	private PointF cellCenter;
