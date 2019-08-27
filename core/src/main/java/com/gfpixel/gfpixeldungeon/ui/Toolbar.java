@@ -72,7 +72,7 @@ public class Toolbar extends Component {
 	@Override
 	protected void createChildren() {
 		
-		add(btnWait = new Tool(24, 0, 20, 26) {
+		add(btnWait = new Tool(24, 0, 20, 31) {
 			@Override
 			protected void onClick() {
 				examining = false;
@@ -88,7 +88,7 @@ public class Toolbar extends Component {
 			;
 		});
 		
-		add(btnSearch = new Tool(44, 0, 20, 26) {
+		add(btnSearch = new Tool(44, 0, 20, 31) {
 			@Override
 			protected void onClick() {
 				if (!examining) {
@@ -109,15 +109,15 @@ public class Toolbar extends Component {
 
 		btnQuick = new QuickslotTool[4];
 
-		add( btnQuick[3] = new QuickslotTool( 64, 0, 22, 24, 3) );
+		add( btnQuick[3] = new QuickslotTool( 65, 0, 22, 24, 3) );
 
-		add( btnQuick[2] = new QuickslotTool( 64, 0, 22, 24, 2) );
+		add( btnQuick[2] = new QuickslotTool( 65, 0, 22, 24, 2) );
 
-		add(btnQuick[1] = new QuickslotTool(64, 0, 22, 24, 1));
+		add( btnQuick[1] = new QuickslotTool( 65, 0, 22, 24, 1) );
 
-		add(btnQuick[0] = new QuickslotTool(64, 0, 22, 24, 0));
+		add( btnQuick[0] = new QuickslotTool( 65, 0, 22, 24, 0) );
 		
-		add(btnInventory = new Tool(0, 0, 24, 26) {
+		add(btnInventory = new Tool(0, 0, 24, 30) {
 			private GoldIndicator gold;
 
 			@Override
@@ -160,12 +160,15 @@ public class Toolbar extends Component {
 		int slots = SPDSettings.quickSlots();
 
 		for(int i = 0; i <= 3; i++)
-			visible[i] = (int)((slots > i) ? y+2 : y+25);
+			visible[i] = (int)((slots > i) ? y + 6 : y+25);
 
 		for(int i = 0; i <= 3; i++) {
 			btnQuick[i].visible = btnQuick[i].active = slots > i;
 			//decides on quickslot layout, depending on available screen size.
-			if (slots == 4 && width < 152){
+
+			float minToolbarWidth = btnInventory.width() + btnSearch.width() + btnWait.width() + slots * btnQuick[0].width();
+
+			if (slots == 4 && width < minToolbarWidth){
 				if (width < 138){
 					if ((SPDSettings.flipToolbar() && i == 3) ||
 							(!SPDSettings.flipToolbar() && i == 0)) {
@@ -191,7 +194,7 @@ public class Toolbar extends Component {
 				}
 			} else {
 				btnQuick[i].border(2, 2);
-				btnQuick[i].frame(64, 0, 22, 24);
+				btnQuick[i].frame( 65, 0, 22, 24 );
 			}
 
 		}
@@ -199,22 +202,23 @@ public class Toolbar extends Component {
 		float right = width;
 		switch(Mode.valueOf(SPDSettings.toolbarMode())){
 			case SPLIT:
-				btnWait.setPos(x, y);
-				btnSearch.setPos(btnWait.right(), y);
-
+				btnWait.setPos(x, y - 2);
+				btnSearch.setPos(btnWait.right(), y - 2);
 				btnInventory.setPos(right - btnInventory.width(), y);
 
 				btnQuick[0].setPos(btnInventory.left() - btnQuick[0].width(), visible[0]);
-				btnQuick[1].setPos(btnQuick[0].left() - btnQuick[1].width(), visible[1]);
-				btnQuick[2].setPos(btnQuick[1].left() - btnQuick[2].width(), visible[2]);
-				btnQuick[3].setPos(btnQuick[2].left() - btnQuick[3].width(), visible[3]);
+				btnQuick[1].setPos(btnQuick[0].left() - btnQuick[1].width() - 1, visible[1]);
+				btnQuick[2].setPos(btnQuick[1].left() - btnQuick[2].width() - 1, visible[2]);
+				btnQuick[3].setPos(btnQuick[2].left() - btnQuick[3].width() - 1, visible[3]);
 				break;
 
 			//center = group but.. well.. centered, so all we need to do is pre-emptively set the right side further in.
 			case CENTER:
 				float toolbarWidth = btnWait.width() + btnSearch.width() + btnInventory.width();
 				for(Button slot : btnQuick){
-					if (slot.visible) toolbarWidth += slot.width();
+					if (slot.visible) {
+						toolbarWidth += slot.width();
+					}
 				}
 				right = (width + toolbarWidth)/2;
 
@@ -371,7 +375,7 @@ public class Toolbar extends Component {
 		@Override
 		protected void layout() {
 			super.layout();
-			slot.setRect( x + borderLeft, y + 2, width - borderLeft-borderRight, height - 4 );
+			slot.setRect( x + borderLeft, y + 2, width - borderLeft - borderRight, height - 4 );
 		}
 		
 		@Override
