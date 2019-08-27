@@ -33,9 +33,9 @@ public class BannerSprites {
 		SELECT_YOUR_HERO,
 		LOGO_ANTIRAIN,
 		LOGO_404
-	};
+	}
 
-	public static Image get( Type type ) {
+    public static Image get( Type type ) {
 		Image icon = new Image( Assets.BANNERS );
 		switch (type) {
 			case PIXEL_DUNGEON_TITLE:

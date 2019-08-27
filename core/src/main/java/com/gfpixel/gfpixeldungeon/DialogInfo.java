@@ -344,5 +344,5 @@ public  class DialogInfo
                 )
         );
     }
-};
+}
 

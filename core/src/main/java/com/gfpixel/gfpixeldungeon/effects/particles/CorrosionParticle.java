@@ -36,8 +36,8 @@ public class CorrosionParticle extends PixelParticle {
 		@Override
 		public boolean lightMode() {
 			return false;
-		};
-	};
+		}
+    };
 	
 	public static final Emitter.Factory SPLASH = new Emitter.Factory() {
 		@Override
@@ -47,8 +47,8 @@ public class CorrosionParticle extends PixelParticle {
 		@Override
 		public boolean lightMode() {
 			return false;
-		};
-	};
+		}
+    };
 	
 	public CorrosionParticle() {
 		super();

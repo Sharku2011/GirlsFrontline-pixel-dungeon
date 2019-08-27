@@ -173,9 +173,9 @@ public class Artifact extends KindofMisc {
 		className = className.replaceAll("(\\p{Ll})(\\p{Lu})", "$1 $2");
 
 		return className;
-	};
+	}
 
-	@Override
+    @Override
 	public Item random() {
 		//always +0
 		

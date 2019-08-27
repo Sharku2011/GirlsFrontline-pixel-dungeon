@@ -133,8 +133,8 @@ public class Bag extends Item implements Iterable<Item> {
 		super.restoreFromBundle( bundle );
 		for (Bundlable item : bundle.getCollection( ITEMS )) {
 			if (item != null) ((Item)item).collect( this );
-		};
-	}
+		}
+    }
 	
 	public boolean contains( Item item ) {
 		for (Item i : items) {

@@ -36,8 +36,8 @@ public class SparkParticle extends PixelParticle {
 		@Override
 		public boolean lightMode() {
 			return true;
-		};
-	};
+		}
+    };
 	
 	public SparkParticle() {
 		super();

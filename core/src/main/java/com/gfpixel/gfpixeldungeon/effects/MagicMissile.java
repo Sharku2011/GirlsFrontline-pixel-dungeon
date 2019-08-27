@@ -185,8 +185,8 @@ public class MagicMissile extends Emitter {
 			@Override
 			public boolean lightMode() {
 				return true;
-			};
-		};
+			}
+        };
 
 		public static final Emitter.Factory ATTRACTING = new Factory() {
 			@Override
@@ -196,8 +196,8 @@ public class MagicMissile extends Emitter {
 			@Override
 			public boolean lightMode() {
 				return true;
-			};
-		};
+			}
+        };
 		
 		public MagicParticle() {
 			super();
@@ -278,8 +278,8 @@ public class MagicMissile extends Emitter {
 			@Override
 			public boolean lightMode() {
 				return true;
-			};
-		};
+			}
+        };
 		
 		public WhiteParticle() {
 			super();
@@ -318,8 +318,8 @@ public class MagicMissile extends Emitter {
 			@Override
 			public boolean lightMode() {
 				return true;
-			};
-		};
+			}
+        };
 		
 		public SlowParticle() {
 			super();
@@ -387,8 +387,8 @@ public class MagicMissile extends Emitter {
 			@Override
 			public boolean lightMode() {
 				return true;
-			};
-		};
+			}
+        };
 		
 		public ColdParticle() {
 			super();

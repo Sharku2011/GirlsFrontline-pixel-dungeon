@@ -35,8 +35,8 @@ public class SacrificialParticle extends PixelParticle.Shrinking {
 		@Override
 		public boolean lightMode() {
 			return true;
-		};
-	};
+		}
+    };
 
 	public SacrificialParticle() {
 		super();

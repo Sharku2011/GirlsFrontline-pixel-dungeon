@@ -79,8 +79,8 @@ public class UnstableSpellbook extends Artifact {
 			probs[i] = 0;
 
 			i = Random.chances(probs);
-		};
-	}
+		}
+    }
 
 	@Override
 	public ArrayList<String> actions( Hero hero ) {

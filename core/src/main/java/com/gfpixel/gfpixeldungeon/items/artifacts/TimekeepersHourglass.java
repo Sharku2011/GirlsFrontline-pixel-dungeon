@@ -107,8 +107,8 @@ public class TimekeepersHourglass extends Artifact {
 									activeBuff.attachTo(Dungeon.hero);
 									((timeFreeze)activeBuff).processTime(0f);
 								}
-							};
-						}
+							}
+                        }
 				);
 		}
 	}

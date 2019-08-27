@@ -267,12 +267,8 @@ public class Dungeon {
 		depth++;
 		if (depth > Statistics.deepestFloor) {
 			Statistics.deepestFloor = depth;
-			
-			if (Statistics.qualifiedForNoKilling) {
-				Statistics.completedWithNoKilling = true;
-			} else {
-				Statistics.completedWithNoKilling = false;
-			}
+
+			Statistics.completedWithNoKilling = Statistics.qualifiedForNoKilling;
 		}
 		
 		Level level;
@@ -458,7 +454,7 @@ public class Dungeon {
 
 	public static void dropToChasm( Item item ) {
 		int depth = Dungeon.depth + 1;
-		ArrayList<Item> dropped = (ArrayList<Item>)Dungeon.droppedItems.get( depth );
+		ArrayList<Item> dropped = Dungeon.droppedItems.get( depth );
 		if (dropped == null) {
 			Dungeon.droppedItems.put( depth, dropped = new ArrayList<Item>() );
 		}
@@ -476,8 +472,7 @@ public class Dungeon {
 		int targetPOSLeft = 2 - floorThisSet/2;
 		if (floorThisSet % 2 == 1 && Random.Int(2) == 0) targetPOSLeft --;
 
-		if (targetPOSLeft < posLeftThisSet) return true;
-		else return false;
+		return targetPOSLeft < posLeftThisSet;
 
 	}
 	
@@ -545,7 +540,7 @@ public class Dungeon {
 			bundle.put ( LIMDROPS, limDrops );
 			
 			int count = 0;
-			int ids[] = new int[chapters.size()];
+			int[] ids = new int[chapters.size()];
 			for (Integer id : chapters) {
 				ids[count++] = id;
 			}
@@ -650,7 +645,7 @@ public class Dungeon {
 			}
 
 			chapters = new HashSet<Integer>();
-			int ids[] = bundle.getIntArray( CHAPTERS );
+			int[] ids = bundle.getIntArray(CHAPTERS);
 			if (ids != null) {
 				for (int id : ids) {
 					chapters.add( id );
@@ -833,7 +828,7 @@ public class Dungeon {
 			BArray.setFalse(passable);
 	}
 
-	public static PathFinder.Path findPath(Char ch, int from, int to, boolean pass[], boolean[] visible ) {
+	public static PathFinder.Path findPath(Char ch, int from, int to, boolean[] pass, boolean[] visible ) {
 
 		setupPassable();
 		if (ch.flying || ch.buff( Amok.class ) != null) {
@@ -852,7 +847,7 @@ public class Dungeon {
 
 	}
 	
-	public static int findStep(Char ch, int from, int to, boolean pass[], boolean[] visible ) {
+	public static int findStep(Char ch, int from, int to, boolean[] pass, boolean[] visible ) {
 
 		if (Dungeon.level.adjacent( from, to )) {
 			return Actor.findChar( to ) == null && (pass[to] || Dungeon.level.avoid[to]) ? to : -1;
@@ -875,7 +870,7 @@ public class Dungeon {
 
 	}
 	
-	public static int flee( Char ch, int cur, int from, boolean pass[], boolean[] visible ) {
+	public static int flee( Char ch, int cur, int from, boolean[] pass, boolean[] visible ) {
 
 		setupPassable();
 		if (ch.flying) {
