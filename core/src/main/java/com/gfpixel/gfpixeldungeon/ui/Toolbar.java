@@ -160,7 +160,7 @@ public class Toolbar extends Component {
 		int slots = SPDSettings.quickSlots();
 
 		for(int i = 0; i <= 3; i++)
-			visible[i] = (int)((slots > i) ? y + 4 : y+25);
+			visible[i] = (int)((slots > i) ? y + 6 : y+25);
 
 		for(int i = 0; i <= 3; i++) {
 			btnQuick[i].visible = btnQuick[i].active = slots > i;
@@ -202,8 +202,8 @@ public class Toolbar extends Component {
 		float right = width;
 		switch(Mode.valueOf(SPDSettings.toolbarMode())){
 			case SPLIT:
-				btnWait.setPos(x, y);
-				btnSearch.setPos(btnWait.right(), y);
+				btnWait.setPos(x, y - 2);
+				btnSearch.setPos(btnWait.right(), y - 2);
 				btnInventory.setPos(right - btnInventory.width(), y);
 
 				btnQuick[0].setPos(btnInventory.left() - btnQuick[0].width(), visible[0]);
