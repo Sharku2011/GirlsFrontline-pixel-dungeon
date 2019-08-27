@@ -65,6 +65,8 @@ public class StatusPane extends Component {
 	private BitmapText level;
 	private BitmapText depth;
 
+	private Image depthIcon;
+
 	private DangerIndicator danger;
 	private BuffIndicator buffs;
 	private Compass compass;
@@ -77,10 +79,10 @@ public class StatusPane extends Component {
 	@Override
 	protected void createChildren() {
 
-		bg = new NinePatch( Assets.STATUS, 0, 0, 128, 36, 85, 0, 45, 0 );
+		bg = new NinePatch( Assets.STATUS, 0, 0, 106, 41, 106, 0, 0, 0 );
 		add( bg );
 
-		add( new TouchArea( 0, 1, 31, 31 ) {
+		add( new TouchArea( 0, 1, 34, 34 ) {
 			@Override
 			protected void onClick( Touch touch ) {
 				Image sprite = Dungeon.hero.sprite;
@@ -123,6 +125,9 @@ public class StatusPane extends Component {
 		level.hardlight( 0xFFEBA4 );
 		add( level );
 
+		depthIcon = new Image( Assets.MENU, 32, 7, 15, 9  );
+		add( depthIcon );
+
 		depth = new BitmapText( Integer.toString( Dungeon.depth ), PixelScene.pixelFont);
 		depth.hardlight( 0xCACFC2 );
 		depth.measure();
@@ -144,26 +149,29 @@ public class StatusPane extends Component {
 
 		bg.size( width, bg.height );
 
-		avatar.x = bg.x + 15 - avatar.width / 2f;
-		avatar.y = bg.y + 16 - avatar.height / 2f;
+		avatar.x = bg.x + 19 - avatar.width / 2f;
+		avatar.y = bg.y + 17 - avatar.height / 2f;
 		PixelScene.align(avatar);
 
 		compass.x = avatar.x + avatar.width / 2f - compass.origin.x;
 		compass.y = avatar.y + avatar.height / 2f - compass.origin.y;
 		PixelScene.align(compass);
 
-		hp.x = shieldedHP.x = rawShielding.x = 30;
-		hp.y = shieldedHP.y = rawShielding.y = 3;
+		hp.x = shieldedHP.x = rawShielding.x = 38;
+		hp.y = shieldedHP.y = rawShielding.y = 4;
 
-		bossHP.setPos( 6 + (width - bossHP.width())/2, 20);
+		bossHP.setPos( 6 + (width - bossHP.width())/2.f, 20);
 
-		depth.x = width - 35.5f - depth.width() / 2f;
-		depth.y = 8f - depth.baseLine() / 2f;
+		depthIcon.x = width - 34f - depthIcon.width();
+		depthIcon.y = 7.5f;
+
+		depth.x = depthIcon.x + depthIcon.width() * 0.75f - depth.width() / 2.f;
+		depth.y = depthIcon.y + (depthIcon.height() - depth.baseLine()) / 2.f - 0.75f;
 		PixelScene.align(depth);
 
 		danger.setPos( width - danger.width(), 20 );
 
-		buffs.setPos( 31, 9 );
+		buffs.setPos( 37.f, 12.5f );
 
 		btnJournal.setPos( width - 42, 1 );
 
@@ -190,9 +198,9 @@ public class StatusPane extends Component {
 			avatar.resetColor();
 		}
 
-		hp.scale.x = Math.max( 0, (health-shield)/max);
-		shieldedHP.scale.x = health/max;
-		rawShielding.scale.x = shield/max;
+		hp.scale.x = health / Math.max( max, health + shield );//Math.max( 0, (health-shield)/max);
+		shieldedHP.scale.x = ( health + shield ) / Math.max( max, health + shield );
+		rawShielding.scale.x = 0.f;//shield/max;
 
 		exp.scale.x = (width / exp.width) * Dungeon.hero.exp / Dungeon.hero.maxExp();
 
@@ -208,8 +216,8 @@ public class StatusPane extends Component {
 			lastLvl = Dungeon.hero.lvl;
 			level.text( Integer.toString( lastLvl ) );
 			level.measure();
-			level.x = 27.5f - level.width() / 2f;
-			level.y = 28.0f - level.baseLine() / 2f;
+			level.x = 32.f - level.width() / 2f;
+			level.y = 31.5f - level.baseLine() / 2f;
 			PixelScene.align(level);
 		}
 
@@ -246,18 +254,18 @@ public class StatusPane extends Component {
 		public JournalButton() {
 			super();
 
-			width = bg.width + 13; //includes the depth display to the left
-			height = bg.height + 4;
+			width = bg.width;
+			height = bg.height;
 		}
 
 		@Override
 		protected void createChildren() {
 			super.createChildren();
 
-			bg = new Image( Assets.MENU, 2, 2, 13, 11 );
+			bg = new Image( Assets.MENU, 0, 0, 16, 16 );
 			add( bg );
 			
-			journalIcon = new Image( Assets.MENU, 31, 0, 11, 7);
+			journalIcon = new Image( Assets.MENU, 32, 0, 6, 6);
 			add( journalIcon );
 			
 			keyIcon = new KeyDisplay();
@@ -269,11 +277,11 @@ public class StatusPane extends Component {
 		protected void layout() {
 			super.layout();
 
-			bg.x = x + 13;
+			bg.x = x + 8;
 			bg.y = y + 2;
 			
-			journalIcon.x = bg.x + (bg.width() - journalIcon.width())/2f;
-			journalIcon.y = bg.y + (bg.height() - journalIcon.height())/2f;
+			journalIcon.x = bg.x + 2;
+			journalIcon.y = bg.y + 2;
 			PixelScene.align(journalIcon);
 			
 			keyIcon.x = bg.x + 1;
@@ -349,7 +357,7 @@ public class StatusPane extends Component {
 		protected void createChildren() {
 			super.createChildren();
 
-			image = new Image( Assets.MENU, 17, 2, 12, 11 );
+			image = new Image( Assets.MENU, 16, 0, 16, 16 );
 			add( image );
 		}
 
