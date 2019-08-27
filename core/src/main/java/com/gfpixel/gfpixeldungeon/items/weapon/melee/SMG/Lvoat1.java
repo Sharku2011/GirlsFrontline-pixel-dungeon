@@ -29,7 +29,7 @@ public class Lvoat1 extends SubMachineGun {
         image = ItemSpriteSheet.LVOAT1;
 
         DLY = 0.3f;
-        ACC = 0.8f;
+        ACC = 0.6f;
         tier = 1;
     }
 

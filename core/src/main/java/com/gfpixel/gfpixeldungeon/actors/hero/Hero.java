@@ -87,6 +87,7 @@ import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.AR.Lvoat2;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.AK47;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Dp;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.HB.Kriss;
@@ -409,6 +410,7 @@ public class Hero extends Char {
 		if (STR() < ((Weapon)belongings.weapon).STRReq())                           return false;
 		if (belongings.weapon instanceof Kriss ||
 			belongings.weapon instanceof AK47 ||
+			belongings.weapon instanceof Lvoat2 ||
 			belongings.weapon instanceof Dp ||
 			belongings.weapon instanceof Negev ||
 			belongings.weapon instanceof M2HB ||

@@ -28,8 +28,8 @@ public class Lvoat2 extends AssaultRifle {
     {
         image = ItemSpriteSheet.LVOAT2;
 
-        ACC = 1.2f;
         tier = 1;
+        RCH = 2 ;
     }
 
     //Essentially it's a tier 4 weapon, with tier 3 base max damage, and tier 5 scaling.

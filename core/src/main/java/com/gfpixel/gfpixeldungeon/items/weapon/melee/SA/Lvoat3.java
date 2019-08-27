@@ -35,7 +35,7 @@ public class Lvoat3 extends SurpriseAttack {
 
 
         DLY = 0.3f;
-        ACC = 0.4f;
+        ACC = 0.2f;
         tier = 1;
     }
 

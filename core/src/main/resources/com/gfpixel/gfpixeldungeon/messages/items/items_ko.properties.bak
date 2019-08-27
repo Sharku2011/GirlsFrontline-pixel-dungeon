@@ -933,8 +933,8 @@ items.weapon.melee.ug.sr3.stats_desc=이 무기는 강화효율이 _2_ 높고, �
 items.weapon.melee.ug.sr3.desc=_Thx Play With Me!_\n\n 러시아의 단축형 돌격소총 비효르(Vikhr), 9A-91의 원형이며, 크기는 기관단총급으로 작지만 9x39mm 아음속탄을 사용하는게 특징입니다. 무슨 뜻이냐면 맞으면 굉장히 아프다구요!
 
 items.weapon.melee.sa.ump9.name=UMP9
-items.weapon.melee.sa.welrod.stats_desc=이 무기는 기습 시 _90%_의 추가 피해를 입힙니다.
-items.weapon.melee.sa.welrod.desc="45언니, 있어? ...어? 지휘관이구나."\n\n Univasale MaschinenPistole, "다목적 기관단총" 9×19mm 탄종을 사용하는 UMP9의 기본 무장입니다. 홀로그래픽 조준기가 특징.
+items.weapon.melee.sa.ump9.stats_desc=이 무기는 기습 시 _90%_의 추가 피해를 입힙니다.
+items.weapon.melee.sa.ump9.desc="45언니, 있어? ...어? 지휘관이구나."\n\n Univasale MaschinenPistole, "다목적 기관단총" 9×19mm 탄종을 사용하는 UMP9의 기본 무장입니다. 홀로그래픽 조준기가 특징.
 
 items.weapon.melee.smg.lvoat1.name=Lova-c Type 1
 items.weapon.melee.smg.lvoat1.stats_desc=이 무기는 명중률이 _20%_ 낮고, 최대 _3_번까지 공격할 수 있습니다.
@@ -996,7 +996,7 @@ items.weapon.melee.dmr.m16.desc="좋았어! 빨리 임무 완수하고 한잔 �
 
 items.weapon.melee.sa.nagantrevolver.name=Nagant M1895
 items.weapon.melee.sa.nagantrevolver.stats_desc=이 무기는 무방비 상태의 적에게 _90%_의 추가 피해를 입힙니다.
-items.weapon.melee.sa.nagantrevolver.desc="돌아왔는가, 어서 오게!"\n\n 소음기를 장착할수있는 소련의 리볼버입니다. 웰로드보다 소음성능이 떨어지지만, 좀더 높은 피해를 입힐 수 있습니다.
+items.weapon.melee.sa.nagantrevolver.desc="돌아왔는가, 어서 오게!"\n\n 소음기를 장착할수있는 소련의 리볼버입니다. 본격적인 소음 권총보단 소음성능이 떨어지지만, 좀더 높은 피해를 입힐 수 있습니다.
 
 ###tier3
 
@@ -1073,7 +1073,7 @@ items.weapon.melee.bp.mos.desc=모스버그 590의 방탄판입니다. 그 인�
 
 items.weapon.melee.ar.hk416.name=HK416
 items.weapon.melee.ar.hk416.stats_desc=이 무기는 강화의 효율이 _2_ 더 높습니다.
-items.weapon.melee.ar.hk416.desc="HK416. 제대로 기억해 주세요, 지휘관.."\n\nH&K사에서 만든 AR-15의 개량형으로, M4보다 더 작은 크기에 좀더 높은 신뢰성을 갖고있습니다.
+items.weapon.melee.ar.hk416.desc="HK416. 제대로 기억해 주세요, 지휘관.."\n\nH&K사에서 만든 AR-15의 개량형으로, M4보다 더 작은 크기에 좀더 높은 신뢰성을 갖고있습니다. HK416 본인의 취향에 맞게 전방에 조준기를 달고 Tan색으로 도색한 모델입니다.
 
 items.weapon.melee.hb.kriss.name=크리스 벡터
 items.weapon.melee.hb.kriss.stats_desc=이 무기는 이 무기는 기습공격을 할 수 없으며 공격속도가 _50%_ 더 빠르고, 공격 시 _2_턴 동안 _가속_ 버프를 받습니다.
