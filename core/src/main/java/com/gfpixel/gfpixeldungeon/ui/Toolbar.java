@@ -84,8 +84,6 @@ public class Toolbar extends Component {
 				Dungeon.hero.rest(true);
 				return true;
 			}
-
-			;
 		});
 		
 		add(btnSearch = new Tool(44, 0, 20, 31) {
@@ -139,15 +137,11 @@ public class Toolbar extends Component {
 				add(gold);
 			}
 
-			;
-
 			@Override
 			protected void layout() {
 				super.layout();
 				gold.fill(this);
 			}
-
-			;
 		});
 
 		add(pickedUp = new PickedUpItem());
@@ -399,9 +393,8 @@ public class Toolbar extends Component {
 			
 			originToCenter();
 			
-			active =
-			visible =
-				false;
+			active = false;
+			visible = false;
 		}
 		
 		public void reset( Item item, int cell, float endX, float endY ) {
@@ -415,11 +408,11 @@ public class Toolbar extends Component {
 			Point screen = Camera.main.cameraToScreen(tile.x, tile.y);
 			PointF start = camera().screenToCamera(screen.x, screen.y);
 			
-			x = this.startX = start.x - ItemSprite.SIZE / 2;
-			y = this.startY = start.y - ItemSprite.SIZE / 2;
+			x = this.startX = start.x - ItemSprite.SIZE / 2.f;
+			y = this.startY = start.y - ItemSprite.SIZE / 2.f;
 			
-			this.endX = endX - ItemSprite.SIZE / 2;
-			this.endY = endY - ItemSprite.SIZE / 2;
+			this.endX = endX - ItemSprite.SIZE / 2.f;
+			this.endY = endY - ItemSprite.SIZE / 2.f;
 			left = DURATION;
 			
 			scale.set( startScale = Camera.main.zoom / camera().zoom );
