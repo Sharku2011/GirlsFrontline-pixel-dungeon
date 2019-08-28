@@ -24,7 +24,7 @@ package com.gfpixel.gfpixeldungeon.messages;
 import java.util.Locale;
 
 public enum Languages {
-	KOREAN("한국어",      "ko", Status.REVIEWED, null, null),
+	KOREAN("한국어",      "ko", Status.REVIEWED, new String[]{"X"}, null),
 
 	//RUSSIAN("русский",      "ru", Status.REVIEWED, new String[]{"ConsideredHamster", "Inevielle", "yarikonline"}, new String[]{"AttHawk46", "HerrGotlieb", "HoloTheWise", "MrXantar", "Shamahan", "roman.yagodin", "un_logic", "Вoвa"}),
 	CHINESE("中文",          "zh", Status.INCOMPLETE, new String[]{"X"}, null ),
