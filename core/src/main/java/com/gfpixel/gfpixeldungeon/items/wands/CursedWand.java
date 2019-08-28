@@ -405,7 +405,7 @@ public class CursedWand {
 			case 2:
 				try {
 					Dungeon.saveAll();
-					if(Messages.lang() != Languages.ENGLISH){
+					if(Messages.lang() != Languages.KOREAN){
 						//Don't bother doing this joke to none-english speakers, I doubt it would translate.
 						GLog.i(Messages.get(CursedWand.class, "nothing"));
 						wand.wandUsed();

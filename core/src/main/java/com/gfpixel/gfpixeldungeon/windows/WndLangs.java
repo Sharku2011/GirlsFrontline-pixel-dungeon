@@ -122,10 +122,10 @@ public class WndLangs extends Window {
 		PixelScene.align(title);
 		add(title);
 
-		if (currLang == Languages.ENGLISH){
+		if (currLang == Languages.KOREAN){
 
 			RenderedTextMultiline info = PixelScene.renderMultiline(6);
-			info.text("This is the source language, written by the developer.", width - textLeft);
+			info.text("개발자에 의해 작성된 기본 언어입니다.", width - textLeft);
 			info.setPos(textLeft, title.height() + 2);
 			add(info);
 

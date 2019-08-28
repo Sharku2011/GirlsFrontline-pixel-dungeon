@@ -410,7 +410,7 @@ public class DriedRose extends Artifact {
 		}
 
 		public void saySpawned(){
-			if (Messages.lang() != Languages.ENGLISH) return; //don't say anything if not on english
+			if (Messages.lang() != Languages.KOREAN) return; //don't say anything if not on english
 			int i = (Dungeon.depth - 1) / 5;
 			fieldOfView = new boolean[Dungeon.level.length()];
 			Dungeon.level.updateFieldOfView(this, fieldOfView);
@@ -427,13 +427,13 @@ public class DriedRose extends Artifact {
 		}
 
 		public void sayDefeated(){
-			if (Messages.lang() != Languages.ENGLISH) return; //don't say anything if not on english
+			if (Messages.lang() != Languages.KOREAN) return; //don't say anything if not on english
 			yell( Random.element( VOICE_DEFEATED[ Dungeon.bossLevel() ? 1 : 0 ] ) );
 			Sample.INSTANCE.play( Assets.SND_GHOST );
 		}
 
 		public void sayHeroKilled(){
-			if (Messages.lang() != Languages.ENGLISH) return; //don't say anything if not on english
+			if (Messages.lang() != Languages.KOREAN) return; //don't say anything if not on english
 			yell(Random.element(VOICE_HEROKILLED));
 			Sample.INSTANCE.play( Assets.SND_GHOST );
 		}
