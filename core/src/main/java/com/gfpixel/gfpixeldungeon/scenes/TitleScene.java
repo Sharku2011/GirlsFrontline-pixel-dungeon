@@ -68,66 +68,48 @@ public class TitleScene extends PixelScene {
 		archs.setSize( w, h );
 		add( archs );
 
-		ArrayList<Image> logos = new ArrayList<>();
-
-		Image logoAntiRain = new Image( BannerSprites.get( BannerSprites.Type.LOGO_ANTIRAIN ) ) {
+		// TODO 한번 변하면 (index가 10까지 진행됬다가) 잠시 기다렸다가 역방향 재생되도록 수정할 것
+		Image logoGif = new Image( Assets.LOGO, 0, 0, 128, 128) {
 			private float time = 0;
+			private int index = 0;
+			private boolean playForward = true;
 			@Override
 			public void update() {
 				super.update();
-				am = Math.max(0f, (float)Math.sin( time += Game.elapsed ));
-				if (time >= 2f*Math.PI) {
-					time = 0;
-				}
-			}
-			@Override
-			public void draw() {
-				Blending.setLightMode();
-				super.draw();
-				Blending.setNormalMode();
-			}
-		};
-		logos.add(logoAntiRain);
 
-		Image logo404 = new Image( BannerSprites.get( BannerSprites.Type.LOGO_404 ) ) {
-			private float time = 0;
-			@Override
-			public void update() {
-				super.update();
-				am = Math.max(0f, -(float)Math.sin( time += Game.elapsed ));
-				if (time >= 2f*Math.PI) {
-					time = 0;
+				time += Game.elapsed;
+				if (time < 0.09f) {
+					return;
+				} else {
+					time = 0.f;
 				}
-			}
-			@Override
-			public void draw() {
-				Blending.setLightMode();
-				super.draw();
-				Blending.setNormalMode();
+
+				int row = ( index % 4 ) * 128;
+				int col = ( index / 4 ) * 128;
+
+				frame( col, row, 128, 128 );
+
+				if (playForward) {
+					index++;
+					if (index > 10) {
+						playForward = false;
+					}
+				} else {
+					index--;
+					if (index < 0) {
+						playForward = true;
+					}
+				}
+
 			}
 		};
-		logos.add(logo404);
+		add(logoGif);
+
 
 		float topRegion = Math.max(95f, h*0.45f);
 
-		for (Image logo : logos) {
-
-			add(logo);
-
-			float pivotX = (w - logo.width()) / 2f;
-			float pivotY = topRegion / 2f;
-
-			if (SPDSettings.landscape()) {
-				pivotY = (topRegion - logo.height()) / 6f;
-			} else {
-				pivotY = 16 + (topRegion - logoAntiRain.height() - 16) / 6f;
-			}
-
-			logo.x = pivotX;
-			logo.y = pivotY;
-
-			align(logo);
-		}
+		logoGif.x = (w - logoGif.width()) / 2f;
+		logoGif.y = topRegion - logoGif.height() - 7.f;
 
 		Image title = BannerSprites.get( BannerSprites.Type.PIXEL_DUNGEON_TITLE );
 		title.x = (w - title.width()) / 2f;

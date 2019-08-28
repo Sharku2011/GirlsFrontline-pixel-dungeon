@@ -33,6 +33,8 @@ public class Assets {
 	public static final String LOCKED			= "locked_badge.png";
 	public static final String AMULET			= "amulet.png";
 
+	public static final String LOGO				= "titlelogo.png";
+
 	public static final String SAVESLOT			= "new_ui.png";
 	public static final String PORTRAIT			= "portrait.png";
 	public static final String PORTRAIT1		= "portrait1.png";
