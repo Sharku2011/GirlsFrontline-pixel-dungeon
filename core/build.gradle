@@ -33,7 +33,6 @@ android {
             debuggable true
             jniDebuggable true
             renderscriptDebuggable true
-            signingConfig signingConfigs.gpd
         }
         release {
             shrinkResources true
