@@ -22,6 +22,7 @@
 package com.gfpixel.gfpixeldungeon.scenes;
 
 import com.gfpixel.gfpixeldungeon.Assets;
+import com.gfpixel.gfpixeldungeon.BuildConfig;
 import com.gfpixel.gfpixeldungeon.GamesInProgress;
 import com.gfpixel.gfpixeldungeon.GirlsFrontlinePixelDungeon;
 import com.gfpixel.gfpixeldungeon.SPDSettings;
@@ -33,6 +34,7 @@ import com.gfpixel.gfpixeldungeon.ui.ChangesButton;
 import com.gfpixel.gfpixeldungeon.ui.ExitButton;
 import com.gfpixel.gfpixeldungeon.ui.LanguageButton;
 import com.gfpixel.gfpixeldungeon.ui.PrefsButton;
+import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.gfpixel.gfpixeldungeon.windows.WndSelectGameInProgress;
 import com.gfpixel.gfpixeldungeon.windows.WndStartGame;
 import com.watabou.glwrap.Blending;
@@ -51,7 +53,13 @@ import java.util.ArrayList;
 public class TitleScene extends PixelScene {
 
 	static public final int PADDING = 4;
-	
+
+	private enum playbackDirection {
+		FORWARD,
+		BACKWARD,
+		PAUSE
+	}
+
 	@Override
 	public void create() {
 		
@@ -71,40 +79,75 @@ public class TitleScene extends PixelScene {
 		// TODO 한번 변하면 (index가 10까지 진행됬다가) 잠시 기다렸다가 역방향 재생되도록 수정할 것
 		Image logoGif = new Image( Assets.LOGO, 0, 0, 128, 128) {
 			private float time = 0;
+			final private float pauseTime = 4.f;
 			private int index = 0;
-			private boolean playForward = true;
+			private playbackDirection playDirection = playbackDirection.FORWARD;
+
 			@Override
 			public void update() {
 				super.update();
 
 				time += Game.elapsed;
-				if (time < 0.09f) {
+
+				boolean bShouldUpdate = false;
+
+				if (playDirection == playbackDirection.PAUSE) {
+					bShouldUpdate = ( time >= pauseTime );
+				} else {
+					// 11 Fps
+					bShouldUpdate = ( time >= 0.09f );
+				}
+
+				if (!bShouldUpdate) {
 					return;
 				} else {
 					time = 0.f;
 				}
 
-				int row = ( index % 4 ) * 128;
-				int col = ( index / 4 ) * 128;
+				int currentFrame = index;
 
-				frame( col, row, 128, 128 );
-
-				if (playForward) {
-					index++;
-					if (index > 10) {
-						playForward = false;
-					}
-				} else {
-					index--;
-					if (index < 0) {
-						playForward = true;
-					}
+				switch (playDirection) {
+					case FORWARD:
+						if (index >= 10) {
+							playDirection = playbackDirection.PAUSE;
+						} else {
+							index++;
+						}
+						break;
+					case BACKWARD:
+						if (index <= 0) {
+							playDirection = playbackDirection.PAUSE;
+						} else {
+							index--;
+						}
+						break;
+					case PAUSE:
+						if (index >= 10) {
+							playDirection = playbackDirection.BACKWARD;
+						} else if (index <= 0) {
+							playDirection = playbackDirection.FORWARD;
+						} else {
+							if (!BuildConfig.DEBUG) {
+								playDirection = playbackDirection.FORWARD;
+								index = 0;
+								return;
+							} else {
+								GLog.w( "Animation is not ended, but playback status is pause" );
+								return;
+							}
+						}
+						return;
+					default:
+						return;
 				}
 
+				int row = ( currentFrame % 4 ) * 128;
+				int col = ( currentFrame / 4 ) * 128;
+
+				frame( col, row, 128, 128 );
 			}
 		};
 		add(logoGif);
-
 
 		float topRegion = Math.max(95f, h*0.45f);
 
