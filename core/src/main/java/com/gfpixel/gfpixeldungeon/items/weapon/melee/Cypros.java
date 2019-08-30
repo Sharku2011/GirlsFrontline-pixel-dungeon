@@ -60,8 +60,6 @@ public class Cypros extends MeleeWeapon {
 
         tier= 2;
         ACC = 1.1f; //10% boost to accuracy
-
-        name = Messages.get(this, "name", mode.title());
     }
 
     @Override
@@ -84,7 +82,7 @@ public class Cypros extends MeleeWeapon {
         }
     }
 
-    private static Mode mode;
+    private Mode mode;
     public Mode getMode() { return mode; }
 
     public static final String AC_ZAP	= "ZAP";
