@@ -346,30 +346,29 @@ public class Dungeon {
 		case 21:
 			level = new LastShopLevel();
 			break;
-			case 22:
-			case 23:
-			case 24:
-				level = new ReCavesLevel();
-				break;
-			case 25:
-				level = new ReCavesBossLevel();
-				break;
-			case 26:
-			case 27:
-			case 28:
-			case 29:
-				level = new HallsLevel();
-				break;
-			case 30:
-				level = new HallsBossLevel();
-				break;
-			case 31:
-				level = new LastLevel();
-				break;
-
-			default:
-				level = new DeadEndLevel();
-				Statistics.deepestFloor--;
+		case 22:
+		case 23:
+		case 24:
+			level = new ReCavesLevel();
+			break;
+		case 25:
+			level = new ReCavesBossLevel();
+			break;
+		case 26:
+		case 27:
+		case 28:
+		case 29:
+			level = new HallsLevel();
+			break;
+		case 30:
+			level = new HallsBossLevel();
+			break;
+		case 31:
+			level = new LastLevel();
+			break;
+		default:
+			level = new DeadEndLevel();
+			Statistics.deepestFloor--;
 		}
 		
 		level.create();
