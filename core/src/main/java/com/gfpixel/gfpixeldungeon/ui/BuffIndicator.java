@@ -94,6 +94,8 @@ public class BuffIndicator extends Component {
 
 	public static final int SIZE	= 7;
 	
+
+	private static final int ICONS_PER_ROW = 6;
 	private static BuffIndicator heroInstance;
 	
 	private SmartTexture texture;
@@ -184,7 +186,9 @@ public class BuffIndicator extends Component {
 		int pos = 0;
 		for (BuffIcon icon : buffIcons.values()){
 			icon.updateIcon();
-			icon.setRect(x + pos * (SIZE + 2), y, 9, 12);
+
+			int row = (pos / ICONS_PER_ROW);
+			icon.setRect( (row % 2) * 5 + x + (pos % ICONS_PER_ROW) * (SIZE + 2), y + row * 9, 9, 12);
 			pos++;
 		}
 	}
