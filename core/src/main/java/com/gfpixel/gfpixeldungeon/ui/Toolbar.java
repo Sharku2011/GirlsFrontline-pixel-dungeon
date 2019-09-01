@@ -68,7 +68,7 @@ public class Toolbar extends Component {
 
 		instance = this;
 
-		height = btnInventory.height();
+		height = Math.max(btnInventory.height(), btnWait.height());
 	}
 	
 	@Override
