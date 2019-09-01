@@ -196,9 +196,9 @@ public class Toolbar extends Component {
 		float right = width;
 		switch(Mode.valueOf(SPDSettings.toolbarMode())){
 			case SPLIT:
-				btnWait.setPos(x, y - 2);
-				btnSearch.setPos(btnWait.right(), y - 2);
-				btnInventory.setPos(right - btnInventory.width(), y);
+				btnWait.setPos(x, y);
+				btnSearch.setPos(btnWait.right(), y);
+				btnInventory.setPos(right - btnInventory.width(), y + 1);
 
 				btnQuick[0].setPos(btnInventory.left() - btnQuick[0].width(), visible[0]);
 				btnQuick[1].setPos(btnQuick[0].left() - btnQuick[1].width(), visible[1]);
@@ -219,7 +219,7 @@ public class Toolbar extends Component {
 			case GROUP:
 				btnWait.setPos(right - btnWait.width(), y);
 				btnSearch.setPos(btnWait.left() - btnSearch.width(), y);
-				btnInventory.setPos(btnSearch.left() - btnInventory.width(), y);
+				btnInventory.setPos(btnSearch.left() - btnInventory.width(), y + 1);
 
 				btnQuick[0].setPos(btnInventory.left() - btnQuick[0].width(), visible[0]);
 				btnQuick[1].setPos(btnQuick[0].left() - btnQuick[1].width(), visible[1]);
@@ -233,7 +233,7 @@ public class Toolbar extends Component {
 
 			btnWait.setPos( (right - btnWait.right()), y);
 			btnSearch.setPos( (right - btnSearch.right()), y);
-			btnInventory.setPos( (right - btnInventory.right()), y);
+			btnInventory.setPos( (right - btnInventory.right()), y + 1);
 
 			for(int i = 0; i <= 3; i++) {
 				btnQuick[i].setPos( right - btnQuick[i].right(), visible[i]);
