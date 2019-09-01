@@ -145,7 +145,7 @@ public class StatusPane extends Component {
 	@Override
 	protected void layout() {
 
-		height = 32;
+		height = 36;
 
 		bg.size( width, bg.height );
 
@@ -162,8 +162,8 @@ public class StatusPane extends Component {
 
 		bossHP.setPos( 6 + (width - bossHP.width())/2.f, 20);
 
-		depthIcon.x = width - 34f - depthIcon.width();
-		depthIcon.y = 7.5f;
+		depthIcon.x = width - depthIcon.width() - 2;
+		depthIcon.y = 4;
 
 		depth.x = depthIcon.x + depthIcon.width() * 0.75f - depth.width() / 2.f;
 		depth.y = depthIcon.y + (depthIcon.height() - depth.baseLine()) / 2.f - 0.75f;
@@ -173,9 +173,9 @@ public class StatusPane extends Component {
 
 		buffs.setPos( 37.f, 12.5f );
 
-		btnJournal.setPos( width - 42, 1 );
+		btnJournal.setPos( width - 42, 12 );
 
-		btnMenu.setPos( width - btnMenu.width(), 1 );
+		btnMenu.setPos( width - btnMenu.width(), 12 );
 	}
 	
 	private static final int[] warningColors = new int[]{0x660000, 0xCC0000, 0x660000};
@@ -251,8 +251,13 @@ public class StatusPane extends Component {
 		
 		private boolean flashing;
 
+		@SuppressWarnings("ConstantConditions")
 		public JournalButton() {
 			super();
+
+			if (bg == null) {
+				return;
+			}
 
 			width = bg.width;
 			height = bg.height;
@@ -279,7 +284,13 @@ public class StatusPane extends Component {
 
 			bg.x = x + 8;
 			bg.y = y + 2;
-			
+
+			hotArea.x = bg.x;
+			hotArea.y = bg.y;
+
+			hotArea.width = bg.width;
+			hotArea.height = bg.height;
+
 			journalIcon.x = bg.x + 2;
 			journalIcon.y = bg.y + 2;
 			PixelScene.align(journalIcon);
@@ -367,6 +378,12 @@ public class StatusPane extends Component {
 
 			image.x = x + 2;
 			image.y = y + 2;
+
+			hotArea.x = image.x;
+			hotArea.y = image.y;
+
+			hotArea.width = image.width;
+			hotArea.height = image.height;
 		}
 
 		@Override
