@@ -45,14 +45,14 @@ public class MirrorImage extends NPC {
 	private int attack;
 	private int damage;
 	
-	private static final String TIER	= "tier";
+	//private static final String TIER	= "tier";
 	private static final String ATTACK	= "attack";
 	private static final String DAMAGE	= "damage";
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {
 		super.storeInBundle( bundle );
-		bundle.put( TIER, tier );
+		//bundle.put( TIER, tier );
 		bundle.put( ATTACK, attack );
 		bundle.put( DAMAGE, damage );
 	}
@@ -60,13 +60,13 @@ public class MirrorImage extends NPC {
 	@Override
 	public void restoreFromBundle( Bundle bundle ) {
 		super.restoreFromBundle( bundle );
-		tier = bundle.getInt( TIER );
+		//tier = bundle.getInt( TIER );
 		attack = bundle.getInt( ATTACK );
 		damage = bundle.getInt( DAMAGE );
 	}
 	
 	public void duplicate( Hero hero ) {
-		tier = hero.tier();
+		tier = 1;
 		attack = hero.attackSkill( hero );
 		damage = hero.damageRoll();
 	}
