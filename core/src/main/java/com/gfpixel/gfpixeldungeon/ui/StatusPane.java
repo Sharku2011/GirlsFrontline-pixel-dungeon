@@ -44,6 +44,7 @@ import com.watabou.noosa.particles.Emitter;
 import com.watabou.noosa.ui.Button;
 import com.watabou.noosa.ui.Component;
 import com.watabou.utils.ColorMath;
+import com.watabou.utils.PointF;
 
 public class StatusPane extends Component {
 
@@ -169,7 +170,7 @@ public class StatusPane extends Component {
 		depth.y = depthIcon.y + (depthIcon.height() - depth.baseLine()) / 2.f - 0.75f;
 		PixelScene.align(depth);
 
-		danger.setPos( width - danger.width(), 20 );
+		danger.setPos( width - danger.width(), 2);
 
 		buffs.setPos( 37.f, 12.5f );
 
