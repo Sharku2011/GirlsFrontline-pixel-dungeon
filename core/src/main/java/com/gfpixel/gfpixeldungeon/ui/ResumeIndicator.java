@@ -30,7 +30,7 @@ public class ResumeIndicator extends Tag {
 	private Image icon;
 
 	public ResumeIndicator() {
-		super(0xCDD5C0);
+		super(0xFFB300);
 
 		setSize( 24, 24 );
 
