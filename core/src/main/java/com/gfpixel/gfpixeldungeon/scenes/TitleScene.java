@@ -76,7 +76,6 @@ public class TitleScene extends PixelScene {
 		archs.setSize( w, h );
 		add( archs );
 
-		// TODO 한번 변하면 (index가 10까지 진행됬다가) 잠시 기다렸다가 역방향 재생되도록 수정할 것
 		Image logoGif = new Image( Assets.LOGO, 0, 0, 128, 128) {
 			private float time = 0;
 			final private float pauseTime = 4.f;

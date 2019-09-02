@@ -75,25 +75,6 @@ public class WelcomeScene extends PixelScene {
 
 		align(title);
 
-		Image signs = new Image( BannerSprites.get( BannerSprites.Type.LOGO_404 ) ) {
-			private float time = 0;
-			@Override
-			public void update() {
-				super.update();
-				am = Math.max(0f, (float)Math.sin( time += Game.elapsed ));
-				if (time >= 1.5f*Math.PI) time = 0;
-			}
-			@Override
-			public void draw() {
-				Blending.setLightMode();
-				super.draw();
-				Blending.setNormalMode();
-			}
-		};
-		signs.x = title.x + (title.width() - signs.width())/2f;
-		signs.y = title.y;
-		add( signs );
-
 		DarkRedButton okay = new DarkRedButton(Messages.get(this, "continue")){
 			@Override
 			protected void onClick() {
