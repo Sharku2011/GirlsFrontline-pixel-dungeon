@@ -91,6 +91,9 @@ public class Eye extends Mob {
 
 			if (enemy.invisible == 0 && !isCharmedBy(enemy) && fieldOfView[enemy.pos] && aim.subPath(1, aim.dist).contains(enemy.pos)){
 				beam = aim;
+				if (aim.collisionPos == -1) {
+					return false;
+				}
 				beamTarget = aim.collisionPos;
 				return true;
 			} else
