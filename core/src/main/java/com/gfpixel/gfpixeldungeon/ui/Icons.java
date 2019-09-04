@@ -51,6 +51,16 @@ public enum Icons {
 	SCROLL_HOLDER,
 	POTION_BANDOLIER,
 	WAND_HOLSTER,
+	BACKPACK_SELECTED,
+	SEED_POUCH_SELECTED,
+	SCROLL_HOLDER_SELECTED,
+	POTION_BANDOLIER_SELECTED,
+	WAND_HOLSTER_SELECTED,
+	BACKPACK_UNSELECTED,
+	SEED_POUCH_UNSELECTED,
+	SCROLL_HOLDER_UNSELECTED,
+	POTION_BANDOLIER_UNSELECTED,
+	WAND_HOLSTER_UNSELECTED,
 	CHECKED,
 	UNCHECKED,
 	EXIT,
@@ -58,7 +68,8 @@ public enum Icons {
 	LANGS,
 	CHALLENGE_OFF,
 	CHALLENGE_ON,
-	RESUME;
+	RESUME,
+	COINS;
 
 	public Image get() {
 		return get( this );
@@ -139,6 +150,36 @@ public enum Icons {
 		case POTION_BANDOLIER:
 			icon.frame( icon.texture.uvRect( 98, 0, 108, 10 ) );
 			break;
+		case BACKPACK_SELECTED:
+			icon.frame( icon.texture.uvRect( 0, 64, 16, 80 ) );
+			break;
+		case SEED_POUCH_SELECTED:
+			icon.frame( icon.texture.uvRect( 16, 64, 32, 80 ) );
+			break;
+		case SCROLL_HOLDER_SELECTED:
+			icon.frame( icon.texture.uvRect( 32, 64, 48, 80 ) );
+			break;
+		case POTION_BANDOLIER_SELECTED:
+			icon.frame( icon.texture.uvRect( 48, 64, 58, 80 ) );
+			break;
+		case WAND_HOLSTER_SELECTED:
+			icon.frame( icon.texture.uvRect( 58, 64, 74, 78 ) );
+			break;
+		case BACKPACK_UNSELECTED:
+			icon.frame( icon.texture.uvRect( 0, 80, 16, 80 ) );
+			break;
+		case SEED_POUCH_UNSELECTED:
+			icon.frame( icon.texture.uvRect( 16, 80, 32, 80 ) );
+			break;
+		case SCROLL_HOLDER_UNSELECTED:
+			icon.frame( icon.texture.uvRect( 32, 80, 48, 80 ) );
+			break;
+		case POTION_BANDOLIER_UNSELECTED:
+			icon.frame( icon.texture.uvRect( 48, 80, 58, 80 ) );
+			break;
+		case WAND_HOLSTER_UNSELECTED:
+			icon.frame( icon.texture.uvRect( 58, 80, 74, 78 ) );
+			break;
 		case CHECKED:
 			icon.frame( icon.texture.uvRect( 54, 12, 66, 24 ) );
 			break;
@@ -162,6 +203,9 @@ public enum Icons {
 			break;
 		case RESUME:
 			icon.frame( icon.texture.uvRect( 13, 53, 24, 64 ) );
+			break;
+		case COINS:
+			icon.frame( icon.texture.uvRect( 94, 51, 106, 55 ) );
 			break;
 		}
 		return icon;
