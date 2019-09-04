@@ -297,7 +297,6 @@ public class WndBag extends WndTabbed {
 		
 		private Image icon() {
 			if (bag instanceof VelvetPouch) {
-				return Icons.get( Icons.SEED_POUCH );
 				return Icons.get( bag == lastBag ? Icons.SEED_POUCH_SELECTED : Icons.SEED_POUCH_UNSELECTED );
 			} else if (bag instanceof ScrollHolder) {
 				return Icons.get( bag == lastBag ? Icons.SCROLL_HOLDER_SELECTED : Icons.SCROLL_HOLDER_UNSELECTED );
