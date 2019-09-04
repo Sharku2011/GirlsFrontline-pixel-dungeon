@@ -44,7 +44,7 @@ public class Chrome {
 		String Asset = Assets.CHROME;
 		switch (type) {
 		case WINDOW:
-			return new NinePatch( Asset, 0, 0, 20, 20, 6 );
+			return new NinePatch( Asset, 0, 0, 20, 20, 6, 6, 10, 6 );
 		case TOAST:
 			return new NinePatch( Asset, 22, 0, 18, 18, 5 );
 		case TOAST_TR:
