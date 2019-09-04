@@ -32,7 +32,8 @@ public class WndSelectGameInProgress extends Window {
 
     private ArrayList<SaveSlot> Slots = new ArrayList<>(GamesInProgress.MAX_SLOTS);
 
-    protected static final int MARGIN = SPDSettings.landscape() ? 7:5;
+    protected static final int MARGIN_SLOTS = SPDSettings.landscape() ? 7:5;
+    protected static final int MARGIN_SLIDER = 2;
 
     protected static Point SlotsToDisplay;
     protected static ScrollPane squad;
@@ -48,6 +49,12 @@ public class WndSelectGameInProgress extends Window {
         ArrayList<GamesInProgress.Info> games = GamesInProgress.checkAll();
 
         squad = new ScrollPane( new Component() ) {
+            @Override
+            protected void layout() {
+                width = content.width() + WndSelectGameInProgress.this.chrome.marginRight() - MARGIN_SLIDER;
+
+                super.layout();
+            }
             @Override
             public void onClick( float x, float y ) {
                 for ( SaveSlot slot : Slots ) {
@@ -72,8 +79,8 @@ public class WndSelectGameInProgress extends Window {
             };
             Slots.add( newSlot );
             content.add( newSlot );
-            newSlot.setPos( 5 + (newSlot.width() + MARGIN) * ((slotNumber) % SlotsToDisplay.x),
-                            MARGIN + (newSlot.height() + MARGIN) * ((slotNumber) / SlotsToDisplay.x) );
+            newSlot.setPos( 5 + (newSlot.width() + MARGIN_SLOTS) * ((slotNumber) % SlotsToDisplay.x),
+                    MARGIN_SLOTS + (newSlot.height() + MARGIN_SLOTS) * ((slotNumber) / SlotsToDisplay.x) );
             ++slotNumber;
         }
 
@@ -88,21 +95,21 @@ public class WndSelectGameInProgress extends Window {
             };
             Slots.add( newSlot );
             content.add( newSlot );
-            newSlot.setPos( 5 + (Slots.get(0).width() + MARGIN) * ((games.size()) % SlotsToDisplay.x),
-                            MARGIN + (newSlot.height() + MARGIN) * ((games.size()) / SlotsToDisplay.x) );
+            newSlot.setPos( 5 + (Slots.get(0).width() + MARGIN_SLOTS) * ((games.size()) % SlotsToDisplay.x),
+                    MARGIN_SLOTS + (newSlot.height() + MARGIN_SLOTS) * ((games.size()) / SlotsToDisplay.x) );
         }
 
         add(squad);
 
-        DISPWIDTH = SlotsToDisplay.x * (int)Slots.get(0).width() + (SlotsToDisplay.x + 1) * MARGIN;
-        DISPHEIGHT = SlotsToDisplay.y * (int)Slots.get(0).height() + (SlotsToDisplay.y + 1) * MARGIN;
+        DISPWIDTH = SlotsToDisplay.x * (int)Slots.get(0).width() + (SlotsToDisplay.x + 1) * MARGIN_SLOTS;
+        DISPHEIGHT = SlotsToDisplay.y * (int)Slots.get(0).height() + (SlotsToDisplay.y + 1) * MARGIN_SLOTS;
         resize(DISPWIDTH, DISPHEIGHT);
 
 
 
         Point TotalSlots = SPDSettings.landscape() ? new Point( 5, 2 ) : new Point( 2, 5 );
-        int REALWIDTH = (int)Slots.get(0).width() * TotalSlots.x + MARGIN * (TotalSlots.x+1);
-        int REALHEIGHT = (int)Slots.get(0).height() * TotalSlots.y  + MARGIN * (TotalSlots.y + 1);
+        int REALWIDTH = (int)Slots.get(0).width() * TotalSlots.x + MARGIN_SLOTS * (TotalSlots.x+1);
+        int REALHEIGHT = (int)Slots.get(0).height() * TotalSlots.y  + MARGIN_SLOTS * (TotalSlots.y + 1);
         content.setRect(0, 0, REALWIDTH, REALHEIGHT);
 
         squad.setSize( DISPWIDTH, DISPHEIGHT );
