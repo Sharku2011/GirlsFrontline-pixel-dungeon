@@ -65,7 +65,7 @@ import com.watabou.utils.RectF;
 public class WndBag extends WndTabbed {
 	
 	//FIXME this is getting cumbersome, there should be a better way to manage this
-	public static enum Mode {
+	public enum Mode {
 		ALL,
 		UNIDENTIFED,
 		UNIDED_OR_CURSED,
@@ -217,10 +217,12 @@ public class WndBag extends WndTabbed {
 	}
 	
 	protected void placeItem( final Item item ) {
-		
+
+		final int gap = 3;
+
 		int x = col * (SLOT_WIDTH + SLOT_MARGIN);
 		int y = TITLE_HEIGHT + row * (SLOT_HEIGHT + SLOT_MARGIN);
-		
+
 		add( new ItemButton( item ).setPos( x, y ) );
 		
 		if (++col >= nCols) {
@@ -254,7 +256,7 @@ public class WndBag extends WndTabbed {
 	
 	@Override
 	protected int tabHeight() {
-		return 20;
+		return 27;
 	}
 	
 	private class BagTab extends Tab {
@@ -296,14 +298,15 @@ public class WndBag extends WndTabbed {
 		private Image icon() {
 			if (bag instanceof VelvetPouch) {
 				return Icons.get( Icons.SEED_POUCH );
+				return Icons.get( bag == lastBag ? Icons.SEED_POUCH_SELECTED : Icons.SEED_POUCH_UNSELECTED );
 			} else if (bag instanceof ScrollHolder) {
-				return Icons.get( Icons.SCROLL_HOLDER );
+				return Icons.get( bag == lastBag ? Icons.SCROLL_HOLDER_SELECTED : Icons.SCROLL_HOLDER_UNSELECTED );
 			} else if (bag instanceof MagicalHolster) {
-				return Icons.get( Icons.WAND_HOLSTER );
+				return Icons.get( bag == lastBag ? Icons.WAND_HOLSTER_SELECTED : Icons.WAND_HOLSTER_UNSELECTED );
 			} else if (bag instanceof PotionBandolier) {
-				return Icons.get( Icons.POTION_BANDOLIER );
+				return Icons.get( bag == lastBag ? Icons.POTION_BANDOLIER_SELECTED : Icons.POTION_BANDOLIER_UNSELECTED );
 			} else {
-				return Icons.get( Icons.BACKPACK );
+				return Icons.get( bag == lastBag ? Icons.BACKPACK_SELECTED : Icons.BACKPACK_UNSELECTED );
 			}
 		}
 	}
@@ -330,8 +333,8 @@ public class WndBag extends WndTabbed {
 	
 	private class ItemButton extends ItemSlot {
 		
-		private static final int NORMAL		= 0x9953564D;
-		private static final int EQUIPPED	= 0x9991938C;
+		private static final int NORMAL		= 0x5250534D;
+		private static final int EQUIPPED	= 0x5250534D;
 		
 		private Item item;
 		private ColorBlock bg;
