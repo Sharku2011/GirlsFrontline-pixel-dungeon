@@ -56,7 +56,7 @@ public class Chrome {
 		case GEM:
 			return new NinePatch( Asset, 0, 32, 32, 32, 13 );
 		case SCROLL:
-			return new NinePatch( Asset, 32, 32, 32, 32, 5, 11, 5, 11 );
+			return new NinePatch( Asset, 32, 32, 32, 32, 5, 11, 7, 7 );
 		case TAB_SET:
 			return new NinePatch( Asset, 64, 0, 20, 20, 6 );
 		case TAB_SELECTED:
@@ -64,7 +64,7 @@ public class Chrome {
 		case TAB_UNSELECTED:
 			return new NinePatch( Asset, 75, 22, 8, 13, 3, 7, 3, 5 );
 		case DIALOG:
-			return new NinePatch ( Asset, 74, 39,24,23,4);
+			return new NinePatch ( Asset, 74, 39, 24, 23, 17, 6, 6, 6);
 		case NONE:
 			return new NinePatch( Asset, 0,21,1,1,1);
 		default:

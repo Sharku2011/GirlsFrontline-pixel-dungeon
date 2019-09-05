@@ -79,7 +79,7 @@ public class WndDialog extends Window {
 
         tf = PixelScene.renderMultiline( Messages.get(this, dialog.ID + dialog.BRANCH + dialogStep), fontSize );
         tf.maxWidth( PixelScene.uiCamera.width - 2 * (MARGIN_X + fontSize) );
-        tf.setPos( fontSize, chrome.y + fontSize );
+        tf.setPos( fontSize, chrome.y + fontSize + 1 );
 
         add(tf);
         add(nametag);
