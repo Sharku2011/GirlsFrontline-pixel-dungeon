@@ -93,6 +93,7 @@ public class WndBag extends WndTabbed {
 	protected static final int SLOT_MARGIN	= 1;
 	
 	protected static final int TITLE_HEIGHT	= 14;
+	protected static final int TITLE_MARGIN = 3;
 	
 	private Listener listener;
 	private WndBag.Mode mode;
@@ -129,7 +130,7 @@ public class WndBag extends WndTabbed {
 		
 		placeItems( bag );
 
-		resize( slotsWidth, slotsHeight + TITLE_HEIGHT );
+		resize( slotsWidth, slotsHeight + TITLE_HEIGHT + TITLE_MARGIN );
 
 		Belongings stuff = Dungeon.hero.belongings;
 		Bag[] bags = {
@@ -180,8 +181,8 @@ public class WndBag extends WndTabbed {
 		txtTitle.y = (int)(TITLE_HEIGHT - txtTitle.baseLine()) / 2f - 1;
 		PixelScene.align(txtTitle);
 		add( txtTitle );
-		
-		ItemSprite gold = new ItemSprite(ItemSpriteSheet.GOLD, null);
+
+		Image gold = Icons.get( Icons.COINS );
 		gold.x = width - gold.width() - 1;
 		gold.y = (TITLE_HEIGHT - gold.height())/2f - 1;
 		PixelScene.align(gold);
@@ -218,10 +219,8 @@ public class WndBag extends WndTabbed {
 	
 	protected void placeItem( final Item item ) {
 
-		final int gap = 3;
-
 		int x = col * (SLOT_WIDTH + SLOT_MARGIN);
-		int y = TITLE_HEIGHT + row * (SLOT_HEIGHT + SLOT_MARGIN);
+		int y = TITLE_HEIGHT + row * (SLOT_HEIGHT + SLOT_MARGIN) + Math.min(1, row) * TITLE_MARGIN;
 
 		add( new ItemButton( item ).setPos( x, y ) );
 		
