@@ -19,8 +19,8 @@ android {
             storePassword keystoreProperties['storePassword']
         }
     }
-    compileSdkVersion 27
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.0'
     defaultConfig {
         resConfigs "en_US", "cs", "tr", "ca", "ko", "pl", "it",
                 "eo", "ru", "zh_CN", "de", "fr", "es", "pt", "fi", "hu", "in"
