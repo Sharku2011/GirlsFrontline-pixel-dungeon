@@ -28,6 +28,7 @@ import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.effects.CellEmitter;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
 import com.gfpixel.gfpixeldungeon.effects.particles.ShadowParticle;
+import com.gfpixel.gfpixeldungeon.items.weapon.enchantments.Grim;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
@@ -76,7 +77,7 @@ public class GrimTrap extends Trap {
 				damage = finalTarget.HP;
 			}
 			
-			final int finalDmg = damage;
+			final int finalDmg = finalTarget.isImmune( Grim.class ) ? 0 : damage;
 			
 			Actor.add(new Actor() {
 				
