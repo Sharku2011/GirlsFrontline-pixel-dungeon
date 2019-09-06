@@ -726,11 +726,11 @@ public class Elphelt extends Mob {
 
     {
         resistances.add( ScrollOfPsionicBlast.class );
-        resistances.add( Grim.class );
         resistances.add( Vampiric.class );
     }
 
     {
+        immunities.add( Grim.class );
         immunities.add( Charm.class );
         immunities.add( Terror.class );
         immunities.add( Corruption.class );
