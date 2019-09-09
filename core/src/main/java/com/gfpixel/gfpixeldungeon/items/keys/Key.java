@@ -48,7 +48,7 @@ public abstract class Key extends Item {
 
 	@Override
 	public boolean doPickUp(Hero hero) {
-		GameScene.pickUpJournal(this, hero.pos);
+		GameScene.pickUpKey(this, hero.pos);
 		WndJournal.last_index = 1;
 		Notes.add(this);
 		Sample.INSTANCE.play( Assets.SND_ITEM );

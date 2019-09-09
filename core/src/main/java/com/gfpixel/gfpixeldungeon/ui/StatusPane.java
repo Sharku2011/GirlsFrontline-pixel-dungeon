@@ -33,6 +33,7 @@ import com.gfpixel.gfpixeldungeon.windows.WndGame;
 import com.gfpixel.gfpixeldungeon.windows.WndHero;
 import com.gfpixel.gfpixeldungeon.windows.WndJournal;
 import com.watabou.input.Touchscreen.Touch;
+import com.watabou.noosa.ColorBlock;
 import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
@@ -44,7 +45,6 @@ import com.watabou.noosa.particles.Emitter;
 import com.watabou.noosa.ui.Button;
 import com.watabou.noosa.ui.Component;
 import com.watabou.utils.ColorMath;
-import com.watabou.utils.PointF;
 
 public class StatusPane extends Component {
 
@@ -76,6 +76,10 @@ public class StatusPane extends Component {
 	private MenuButton btnMenu;
 
 	private Toolbar.PickedUpItem pickedUp;
+
+	private KeyDisplay keys;
+	private ColorBlock keysBg;
+	private TouchArea keysTouchArea;
 
 	@Override
 	protected void createChildren() {
@@ -141,6 +145,23 @@ public class StatusPane extends Component {
 		add( buffs );
 
 		add( pickedUp = new Toolbar.PickedUpItem());
+
+		keysBg = new ColorBlock(1, 1, 0xFF444444);
+		add(keysBg);
+
+		keysTouchArea = new TouchArea( keysBg ) {
+			@Override
+			protected void onClick( Touch touch ) {
+
+				WndJournal.last_index = 1;
+				GameScene.show( new WndJournal() );
+			}
+		};
+		add( keysTouchArea );
+
+		keys = new KeyDisplay();
+		add(keys);
+		updateKeys();
 	}
 
 	@Override
@@ -176,9 +197,15 @@ public class StatusPane extends Component {
 
 		btnJournal.setPos( width - 42, 12 );
 
-		btnMenu.setPos( width - btnMenu.width(), 12 );
+        btnMenu.setPos( width - btnMenu.width(), 12 );
+
+		keys.x = bg.x + 3;
+		keys.y = bg.y + bg.height;
+
+		keysBg.x = keys.x;
+		keysBg.y = keys.y;
 	}
-	
+
 	private static final int[] warningColors = new int[]{0x660000, 0xCC0000, 0x660000};
 
 	@Override
@@ -229,27 +256,32 @@ public class StatusPane extends Component {
 		}
 	}
 
-	public void pickup( Item item, int cell) {
-		pickedUp.reset( item,
-			cell,
-			btnJournal.journalIcon.x + btnJournal.journalIcon.width()/2f,
-			btnJournal.journalIcon.y + btnJournal.journalIcon.height()/2f);
+	public void pickupJournal( Item item, int cell) {
+			pickedUp.reset(item,
+					cell,
+					btnJournal.journalIcon.x + btnJournal.journalIcon.width() / 2f,
+					btnJournal.journalIcon.y + btnJournal.journalIcon.height() / 2f);
 	}
-	
+
+	public void pickupKey(Item item, int cell){
+		pickedUp.reset(item, cell, keys.x, keys.y);
+	}
+
 	public void flash(){
 		btnJournal.flashing = true;
 	}
-	
+
 	public void updateKeys(){
-		btnJournal.updateKeyDisplay();
+		keys.updateKeys();
+		keysTouchArea.active = keysBg.visible = keys.visible;
+		keysBg.size(keys.width,  keys.height);
 	}
 
 	private static class JournalButton extends Button {
 
 		private Image bg;
 		private Image journalIcon;
-		private KeyDisplay keyIcon;
-		
+
 		private boolean flashing;
 
 		@SuppressWarnings("ConstantConditions")
@@ -270,13 +302,9 @@ public class StatusPane extends Component {
 
 			bg = new Image( Assets.MENU, 0, 0, 16, 16 );
 			add( bg );
-			
+
 			journalIcon = new Image( Assets.MENU, 32, 0, 6, 6);
 			add( journalIcon );
-			
-			keyIcon = new KeyDisplay();
-			add(keyIcon);
-			updateKeyDisplay();
 		}
 
 		@Override
@@ -295,37 +323,19 @@ public class StatusPane extends Component {
 			journalIcon.x = bg.x + 2;
 			journalIcon.y = bg.y + 2;
 			PixelScene.align(journalIcon);
-			
-			keyIcon.x = bg.x + 1;
-			keyIcon.y = bg.y + 1;
-			keyIcon.width = bg.width - 2;
-			keyIcon.height = bg.height - 2;
-			PixelScene.align(keyIcon);
 		}
 
 		private float time;
-		
+
 		@Override
 		public void update() {
 			super.update();
-			
+
 			if (flashing){
 				journalIcon.am = (float)Math.abs(Math.cos( 3 * (time += Game.elapsed) ));
-				keyIcon.am = journalIcon.am;
 				if (time >= 0.333f*Math.PI) {
 					time = 0;
 				}
-			}
-		}
-
-		public void updateKeyDisplay() {
-			keyIcon.updateKeys();
-			keyIcon.visible = keyIcon.keyCount() > 0;
-			journalIcon.visible = !keyIcon.visible;
-			if (keyIcon.keyCount() > 0) {
-				bg.brightness(.8f - (Math.min(6, keyIcon.keyCount()) / 20f));
-			} else {
-				bg.resetColor();
 			}
 		}
 
@@ -337,18 +347,14 @@ public class StatusPane extends Component {
 
 		@Override
 		protected void onTouchUp() {
-			if (keyIcon.keyCount() > 0) {
-				bg.brightness(.8f - (Math.min(6, keyIcon.keyCount()) / 20f));
-			} else {
 				bg.resetColor();
-			}
 		}
 
 		@Override
 		protected void onClick() {
 			flashing = false;
 			time = 0;
-			keyIcon.am = journalIcon.am = 1;
+			journalIcon.am = 1;
 			GameScene.show( new WndJournal() );
 		}
 

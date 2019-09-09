@@ -780,13 +780,17 @@ public class GameScene extends PixelScene {
 	}
 
 	public static void pickUpJournal( Item item, int pos ) {
-		if (scene != null) scene.pane.pickup( item, pos );
+		if (scene != null) scene.pane.pickupJournal( item, pos );
+	}
+
+	public static void pickUpKey(Item item, int pos){
+		if (scene != null) scene.pane.pickupKey( item, pos );
 	}
 	
 	public static void flashJournal(){
 		if (scene != null) scene.pane.flash();
 	}
-	
+
 	public static void updateKeyDisplay(){
 		if (scene != null) scene.pane.updateKeys();
 	}
