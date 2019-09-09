@@ -97,6 +97,8 @@ public abstract class Level implements Bundlable {
 	
 	protected static final float TIME_TO_RESPAWN	= 50;
 
+	public static final int INVALID_POS = -1;
+
 	public int version;
 	
 	public int[] map;
