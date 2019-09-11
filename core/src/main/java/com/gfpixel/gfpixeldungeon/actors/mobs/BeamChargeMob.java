@@ -9,7 +9,7 @@ import com.gfpixel.gfpixeldungeon.levels.Level;
 import com.gfpixel.gfpixeldungeon.mechanics.Ballistica;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.scenes.GameScene;
-import com.gfpixel.gfpixeldungeon.sprites.BeamChargeMobSpriteInterface;
+import com.gfpixel.gfpixeldungeon.sprites.BeamChargeMobSprite;
 import com.gfpixel.gfpixeldungeon.sprites.CharSprite;
 import com.gfpixel.gfpixeldungeon.utils.GLog;
 import com.watabou.utils.Bundle;
@@ -35,18 +35,18 @@ public abstract class BeamChargeMob extends Mob {
         return chargeManager.isCharged();
     }
 
-    protected int attackRange() {
+    public int attackRange() {
         return 5;
     }
 
-    public int DamageReducer() {
+    public int damageReducer() {
         return 1;
     }
 
     @Override
     public void damage(int dmg, Object src) {
         if (chargeManager.isCharging()) {
-            dmg /= DamageReducer();
+            dmg /= damageReducer();
         }
         super.damage(dmg, src);
     }
@@ -62,14 +62,14 @@ public abstract class BeamChargeMob extends Mob {
         boolean visible = Dungeon.level.heroFOV[pos];
 
         if (chargeManager.isCharged()) {
-            if (visible && sprite instanceof BeamChargeMobSpriteInterface) {
+            if (visible && sprite instanceof BeamChargeMobSprite) {
                 sprite.attack( chargeManager.beamTarget );
             } else {
                 chargeManager.shootBeam();
             }
         } else {
-            if (visible && sprite instanceof BeamChargeMobSpriteInterface) {
-                ((BeamChargeMobSpriteInterface)sprite).charge( chargeManager.beamTarget );
+            if (visible && sprite instanceof BeamChargeMobSprite) {
+                ((BeamChargeMobSprite)sprite).charge( chargeManager.beamTarget );
             } else {
                 chargeManager.increaseCharge();
             }

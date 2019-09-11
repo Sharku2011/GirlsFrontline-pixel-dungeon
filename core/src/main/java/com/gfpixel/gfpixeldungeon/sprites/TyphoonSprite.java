@@ -22,22 +22,10 @@
 package com.gfpixel.gfpixeldungeon.sprites;
 
 import com.gfpixel.gfpixeldungeon.Assets;
-import com.gfpixel.gfpixeldungeon.actors.Actor;
-import com.gfpixel.gfpixeldungeon.actors.Char;
-import com.gfpixel.gfpixeldungeon.actors.mobs.Hydra;
-import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.effects.MagicMissile;
-import com.gfpixel.gfpixeldungeon.effects.Speck;
-import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.watabou.noosa.TextureFilm;
-import com.watabou.noosa.particles.Emitter;
 
-public class TyphoonSprite extends MobSprite {
-
-    private int zapPos;
-
-    private Animation charging;
-    private Emitter chargeParticles;
+public class TyphoonSprite extends BeamChargeMobSprite {
 
     public TyphoonSprite() {
         super();
@@ -60,66 +48,18 @@ public class TyphoonSprite extends MobSprite {
         run = new Animation( 8, true );
         run.frames( frames, 0, 1, 2, 3, 0 );
 
-        attack = new Animation( 1, false );
-        attack.frames( frames, 4, 4, 4, 4, 4, 4, 5, 5, 6, 6, 7, 7 );
-        zap = new Animation( 15, false );
-        zap.frames( frames, 4, 5, 6, 7 );
+        //attack = new Animation( 1, false );
+        //attack.frames( frames, 4, 4, 4, 4, 4, 4, 5, 5, 6, 6, 7, 7 );
+
+        //zap = new Animation( 15, false );
+        //zap.frames( frames, 4, 5, 6, 7 );
+
+        attack = new Animation( 15, false );
+        attack.frames( frames, 4, 5, 6, 7 );
 
         die = new Animation( 15, false );
         die.frames( frames, 0, 8, 9, 10 );
 
         play( idle );
-    }
-
-
-    @Override
-    public void link(Char ch) {
-        super.link(ch);
-        if (((Hydra)ch).beamCharged) play(charging);
-    }
-
-    @Override
-    public void update() {
-        super.update();
-        chargeParticles.pos(center());
-        chargeParticles.visible = visible;
-    }
-
-    public void charge( int pos ){
-        turnTo(ch.pos, pos);
-        play(charging);
-    }
-
-    @Override
-    public void play(Animation anim) {
-        chargeParticles.on = anim == charging;
-        super.play(anim);
-    }
-
-    @Override
-    public void zap( int pos ) {
-        zapPos = pos;
-        super.zap( pos );
-    }
-
-    @Override
-    public void onComplete( Animation anim ) {
-        super.onComplete( anim );
-
-        if (anim == die) {
-            emitter().burst( Speck.factory( Speck.WOOL ), 15 );
-        }
-        if (anim == zap) {
-            idle();
-            if (Actor.findChar(zapPos) != null){
-                parent.add(new Beam.DeathRay(center(), Actor.findChar(zapPos).sprite.center()));
-            } else {
-                parent.add(new Beam.DeathRay(center(), DungeonTilemap.raisedTileCenterToWorld(zapPos)));
-            }
-            ((Hydra)ch).deathGaze();
-            ch.next();
-        } else if (anim == die){
-            chargeParticles.killAndErase();
-        }
     }
 }
