@@ -31,9 +31,9 @@ import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.noosa.particles.Emitter;
 
-public class HydraSprite extends MobSprite {
+public class HydraSprite extends MobSprite implements BeamChargeMobSpriteInterface {
 
-    private int zapPos;
+    private int beamTarget;
 
     private Animation charging;
     private Emitter chargeParticles;
@@ -74,7 +74,7 @@ public class HydraSprite extends MobSprite {
     @Override
     public void link(Char ch) {
         super.link(ch);
-        if (((Hydra)ch).beamCharged) play(charging);
+        if (((Hydra)ch).isCharged()) play(charging);
     }
 
     @Override
@@ -96,24 +96,27 @@ public class HydraSprite extends MobSprite {
     }
 
     @Override
-    public void zap( int pos ) {
-        zapPos = pos;
-        super.zap( pos );
+    public void attack( int pos ) {
+        beamTarget = pos;
+        super.attack( pos );
     }
 
     @Override
     public void onComplete( Animation anim ) {
         super.onComplete( anim );
 
-
-        if (anim == zap) {
+        if (anim == attack) {
             idle();
-            if (Actor.findChar(zapPos) != null){
-                parent.add(new Beam.DeathRay(center(), Actor.findChar(zapPos).sprite.center()));
+
+            if (Actor.findChar(beamTarget) != null){
+                parent.add(new Beam.DeathRay(center(), Actor.findChar( beamTarget ).sprite.center()));
             } else {
-                parent.add(new Beam.DeathRay(center(), DungeonTilemap.raisedTileCenterToWorld(zapPos)));
+                parent.add(new Beam.DeathRay(center(), DungeonTilemap.raisedTileCenterToWorld( beamTarget )));
             }
-            ((Hydra)ch).deathGaze();
+            ((Hydra)ch).shootBeam();
+            ch.next();
+        } else if (anim == charging) {
+            ((Hydra)ch).charge();
             ch.next();
         } else if (anim == die){
             chargeParticles.killAndErase();
