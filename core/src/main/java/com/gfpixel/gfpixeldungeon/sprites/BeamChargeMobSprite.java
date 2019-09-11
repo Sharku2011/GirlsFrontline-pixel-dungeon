@@ -3,7 +3,6 @@ package com.gfpixel.gfpixeldungeon.sprites;
 import com.gfpixel.gfpixeldungeon.actors.Actor;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.mobs.BeamChargeMob;
-import com.gfpixel.gfpixeldungeon.actors.mobs.Hydra;
 import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.watabou.noosa.particles.Emitter;
@@ -56,10 +55,10 @@ public abstract class BeamChargeMobSprite extends MobSprite {
             } else {
                 parent.add(new Beam.DeathRay(center(), DungeonTilemap.raisedTileCenterToWorld( beamTarget )));
             }
-            ((Hydra)ch).shootBeam();
+            ((BeamChargeMob)ch).shootBeam();
             ch.next();
         } else if (anim == charging) {
-            ((Hydra)ch).charge();
+            ((BeamChargeMob)ch).charge();
             ch.next();
         } else if (anim == die){
             chargeParticles.killAndErase();

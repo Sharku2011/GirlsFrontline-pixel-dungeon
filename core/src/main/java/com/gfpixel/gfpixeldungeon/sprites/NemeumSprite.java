@@ -37,8 +37,8 @@ public class NemeumSprite extends BeamChargeMobSprite {
         idle = new Animation( 4, true );
         idle.frames( frames, 0 );
 
-        charging = new Animation( 2, true);
-        charging.frames( frames, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2 );
+        charging = new Animation( 14, true);
+        charging.frames( frames, 2);
 
         chargeParticles = centerEmitter();
         chargeParticles.autoKill = false;
@@ -50,6 +50,7 @@ public class NemeumSprite extends BeamChargeMobSprite {
 
         attack = new Animation( 10, false );
         attack.frames( frames,  3, 4, 4, 1, 1 );
+
         zap = attack.clone();
 
         die = new Animation( 8, false );
