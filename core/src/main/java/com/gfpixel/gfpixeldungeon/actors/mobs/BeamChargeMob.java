@@ -16,7 +16,7 @@ import com.watabou.utils.Bundle;
 import com.watabou.utils.Point;
 import com.watabou.utils.Random;
 
-public abstract class BeamChargeMob extends Mob {
+public abstract class BeamChargeMob extends Mob implements BeamChargeAttackInterface {
 
     {
         SLEEPING = new Sleeping();

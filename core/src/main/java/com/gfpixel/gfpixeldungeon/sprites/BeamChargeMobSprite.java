@@ -7,7 +7,7 @@ import com.gfpixel.gfpixeldungeon.effects.Beam;
 import com.gfpixel.gfpixeldungeon.tiles.DungeonTilemap;
 import com.watabou.noosa.particles.Emitter;
 
-public abstract class BeamChargeMobSprite extends MobSprite {
+public abstract class BeamChargeMobSprite extends MobSprite implements BeamChargeMobSpriteInterface {
 
     private int beamTarget;
     protected Animation charging;
