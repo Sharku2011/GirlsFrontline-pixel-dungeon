@@ -43,7 +43,7 @@ import java.util.ArrayList;
 
 public class Food extends Item {
 
-	public static float TIME_TO_EAT	= 3f;
+	public float TIME_TO_EAT	= 3f;
 	
 	public static final String AC_EAT	= "EAT";
 	
