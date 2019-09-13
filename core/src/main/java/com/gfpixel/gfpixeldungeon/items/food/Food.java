@@ -43,7 +43,7 @@ import java.util.ArrayList;
 public class Food extends Item {
 
 	public float TIME_TO_EAT	= 3f;
-	
+	protected float DURTION_INVISIBILITY = 5f;
 	public static final String AC_EAT	= "EAT";
 	
 	public float energy = Hunger.HUNGRY;
@@ -77,7 +77,10 @@ public class Food extends Item {
 			
 			switch (hero.heroClass) {
 			case WARRIOR:
-				Buff.affect( hero, Invisibility.class,  5.f );
+				if (DURTION_INVISIBILITY > 0.f) {
+					Buff.affect( hero, Invisibility.class, DURTION_INVISIBILITY );
+				}
+
 				if (hero.HP < hero.HT) {
 					hero.HP = Math.min( hero.HP + (int)(hero.HT * 0.1f), hero.HT );
 					hero.sprite.emitter().burst( Speck.factory( Speck.HEALING ), 1 );

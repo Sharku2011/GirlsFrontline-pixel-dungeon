@@ -45,6 +45,8 @@ public class Pasty extends Food {
 	{
 		reset();
 
+		DURTION_INVISIBILITY = 0.f;
+
 		energy = Hunger.STARVING;
 
 		bones = true;

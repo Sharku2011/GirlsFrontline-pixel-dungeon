@@ -29,6 +29,7 @@ public class ChargrilledMeat extends Food {
 	{
 		image = ItemSpriteSheet.STEAK;
 		energy = Hunger.HUNGRY/2f;
+		DURTION_INVISIBILITY = 0.f;
 	}
 	
 	@Override

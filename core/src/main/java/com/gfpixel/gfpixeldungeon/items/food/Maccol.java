@@ -35,7 +35,7 @@ public class Maccol extends Food {
         image = ItemSpriteSheet.MACCOL;
         energy = Hunger.HUNGRY/2f;
 
-
+        DURTION_INVISIBILITY = 3.f;
     }
 
     @Override
