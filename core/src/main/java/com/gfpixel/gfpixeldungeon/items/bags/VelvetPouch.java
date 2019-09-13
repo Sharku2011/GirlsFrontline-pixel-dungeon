@@ -41,7 +41,10 @@ public class VelvetPouch extends Bag {
 		// 씨앗
 		// 증강석(고급 장비 교정권), 인챈트석(특성 장비 교정권)
 		// 수복 계약
-		return item instanceof Plant.Seed || item instanceof Runestone || item instanceof Stylus || item instanceof Ankh;
+		return 	item instanceof Plant.Seed ||
+				item instanceof Runestone ||
+				item instanceof Stylus ||
+				item instanceof Ankh;
 	}
 	
 	@Override

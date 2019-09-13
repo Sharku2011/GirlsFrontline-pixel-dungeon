@@ -32,7 +32,6 @@ import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.effects.Speck;
 import com.gfpixel.gfpixeldungeon.effects.SpellSprite;
 import com.gfpixel.gfpixeldungeon.items.Item;
-import com.gfpixel.gfpixeldungeon.items.potions.PotionOfInvisibility;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfRecharging;
 import com.gfpixel.gfpixeldungeon.messages.Messages;
 import com.gfpixel.gfpixeldungeon.sprites.ItemSpriteSheet;

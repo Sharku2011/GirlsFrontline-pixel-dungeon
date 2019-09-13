@@ -47,6 +47,7 @@ import java.util.ArrayList;
 
 public class HornOfPlenty extends Artifact {
 
+	public static float TIME_TO_EAT = 3.f;
 
 	{
 		image = ItemSpriteSheet.ARTIFACT_HORN1;
@@ -120,7 +121,7 @@ public class HornOfPlenty extends Artifact {
 				Sample.INSTANCE.play(Assets.SND_EAT);
 				GLog.i( Messages.get(this, "eat") );
 
-				hero.spend(Food.TIME_TO_EAT);
+				hero.spend( TIME_TO_EAT );
 
 				Badges.validateFoodEaten();
 
@@ -263,7 +264,7 @@ public class HornOfPlenty extends Artifact {
 					Hero hero = Dungeon.hero;
 					hero.sprite.operate( hero.pos );
 					hero.busy();
-					hero.spend( Food.TIME_TO_EAT );
+					hero.spend( TIME_TO_EAT );
 
 					((HornOfPlenty)curItem).gainFoodValue(((Food)item));
 					item.detach(hero.belongings.backpack);

@@ -36,13 +36,12 @@ public abstract class InventoryStone extends Runestone {
 	
 	protected String inventoryTitle = Messages.get(this, "inv_title");
 	protected WndBag.Mode mode = WndBag.Mode.ALL;
-	
+	public static final String AC_USE	= "USE";
+
 	{
 		defaultAction = AC_USE;
 	}
-	
-	public static final String AC_USE	= "USE";
-	
+
 	@Override
 	public ArrayList<String> actions(Hero hero) {
 		ArrayList<String> actions = super.actions( hero );
@@ -78,8 +77,6 @@ public abstract class InventoryStone extends Runestone {
 	protected static WndBag.Listener itemSelector = new WndBag.Listener() {
 		@Override
 		public void onSelect( Item item ) {
-			
-			//FIXME this safety check shouldn't be necessary
 			//it would be better to eliminate the curItem static variable.
 			if (!(curItem instanceof InventoryStone)){
 				return;
