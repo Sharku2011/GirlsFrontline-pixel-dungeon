@@ -52,11 +52,6 @@ public abstract class TippedDart extends Dart {
 	}
 	
 	@Override
-	public int STRReq(int lvl) {
-		return 11;
-	}
-	
-	@Override
 	protected void rangedHit(Char enemy, int cell) {
 		if (enemy.isAlive())
 			Buff.affect(enemy, PinCushion.class).stick(new Dart());
