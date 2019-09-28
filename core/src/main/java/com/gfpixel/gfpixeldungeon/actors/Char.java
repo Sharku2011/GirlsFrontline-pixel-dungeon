@@ -291,9 +291,13 @@ public abstract class Char extends Actor {
 	public float speed() {
 		return buff( Cripple.class ) == null ? baseSpeed : baseSpeed * 0.5f;
 	}
-	
-	public void damage( int dmg, Object src ) {
-		
+
+	public void damage(int dmg, Object src){
+		damage(dmg, src, -1);
+	}
+
+	public void damage( int dmg, Object src,  int color) {
+
 		if (!isAlive() || dmg < 0) {
 			return;
 		}
@@ -306,14 +310,14 @@ public abstract class Char extends Actor {
 		if (this.buff(Doom.class) != null){
 			dmg *= 2;
 		}
-		
+
 		Class<?> srcClass = src.getClass();
 		if (isImmune( srcClass )) {
 			dmg = 0;
 		} else {
 			dmg = Math.round( dmg * resist( srcClass ));
 		}
-		
+
 		if (buff( Paralysis.class ) != null) {
 			buff( Paralysis.class ).processDamage(dmg);
 		}
@@ -327,8 +331,11 @@ public abstract class Char extends Actor {
 			HP -= (dmg - SHLD);
 			SHLD = 0;
 		}
-		
-		sprite.showStatus( HP > HT / 2 ?
+
+		if(color > 0)
+			sprite.showStatus(color, Integer.toString(dmg));
+		else
+			sprite.showStatus( HP > HT / 2 ?
 			CharSprite.WARNING :
 			CharSprite.NEGATIVE,
 			Integer.toString( dmg ) );
