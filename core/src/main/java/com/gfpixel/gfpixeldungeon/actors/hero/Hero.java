@@ -88,10 +88,10 @@ import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfMagicalInfusion;
 import com.gfpixel.gfpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.gfpixel.gfpixeldungeon.items.weapon.Weapon;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.AR.Lvoat2;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.BP.BulletProof;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.AK47;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Dp;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.HB.Kriss;
-import com.gfpixel.gfpixeldungeon.items.weapon.melee.DMR.M99;
+import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Dp;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.M2HB;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Mg42;
 import com.gfpixel.gfpixeldungeon.items.weapon.melee.MG.Negev;
@@ -937,7 +937,6 @@ public class Hero extends Char {
 		default:
 		}
 
-		
 		return damage;
 	}
 	
@@ -947,6 +946,11 @@ public class Hero extends Char {
 		if (damage > 0 && subClass == HeroSubClass.BERSERKER){
 			Berserk berserk = Buff.affect(this, Berserk.class);
 			berserk.damage(damage);
+
+			if(belongings.weapon instanceof BulletProof){
+				//Charge damage to BulletProof
+				((BulletProof)belongings.weapon).charge(damage);
+			}
 		}
 		
 		if (belongings.armor != null) {
