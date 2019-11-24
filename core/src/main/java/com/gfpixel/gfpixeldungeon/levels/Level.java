@@ -39,6 +39,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.MindVision;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Shadows;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.actors.hero.HeroClass;
+import com.gfpixel.gfpixeldungeon.actors.mobs.BeamChargeAttackInterface;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.effects.particles.FlowParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.WindParticle;
@@ -136,6 +137,7 @@ public abstract class Level implements Bundlable {
 	public HashSet<CustomTiledVisual> customWalls;
 
 	public HashSet<Genoise> genoises;
+	public HashSet<Mob> dangerousMobs;
 	
 	protected ArrayList<Item> itemsToSpawn = new ArrayList<>();
 
@@ -162,6 +164,7 @@ public abstract class Level implements Bundlable {
 	private static final String BLOBS		= "blobs";
 	private static final String FEELING		= "feeling";
 
+	private static final String DANGEROUSMOBS= "dangerousmobs";
 	private static final String GENOISES	= "genoises";
 
 	public void create() {
@@ -240,6 +243,7 @@ public abstract class Level implements Bundlable {
 			customTiles = new HashSet<>();
 			customWalls = new HashSet<>();
 
+			dangerousMobs = new HashSet<>();
 			genoises = new HashSet<>();
 			
 		} while (!build());
@@ -309,6 +313,7 @@ public abstract class Level implements Bundlable {
 		customTiles = new HashSet<>();
 		customWalls = new HashSet<>();
 
+		dangerousMobs = new HashSet<>();
 		genoises = new HashSet<>();
 		
 		map		= bundle.getIntArray( MAP );
@@ -376,10 +381,20 @@ public abstract class Level implements Bundlable {
 			viewDistance = Math.round(viewDistance / 2f);
 		}
 
+		collection = bundle.getCollection( DANGEROUSMOBS );
+		for (Bundlable b : collection) {
+			Mob dangerousMob = (Mob)b;
+			if ( dangerousMob != null ) {
+				dangerousMobs.add( dangerousMob );
+			}
+		}
+
 		collection = bundle.getCollection( GENOISES );
 		for (Bundlable b : collection) {
 			Genoise genoise = (Genoise)b;
-			genoises.add( genoise );
+			if (genoise != null) {
+				genoises.add( genoise );
+			}
 		}
 
 		buildFlagMaps();
@@ -406,6 +421,7 @@ public abstract class Level implements Bundlable {
 		bundle.put( BLOBS, blobs.values() );
 		bundle.put( FEELING, feeling );
 
+		bundle.put( DANGEROUSMOBS, dangerousMobs );
 		bundle.put( GENOISES, genoises );
 	}
 	
@@ -871,51 +887,56 @@ public abstract class Level implements Bundlable {
 			}
 		}
 
-		//Currently only the hero can get mind vision or awareness
-		if (c.isAlive() && c == Dungeon.hero) {
-			Dungeon.hero.mindVisionEnemies.clear();
-			if (c.buff( MindVision.class ) != null) {
-				for (Mob mob : mobs) {
-					int p = mob.pos;
+		if ( c == Dungeon.hero ) {
+			if ( c.isAlive() ) {
+				//Currently only the hero can get mind vision or awareness
+				Dungeon.hero.mindVisionEnemies.clear();
 
-					if (!fieldOfView[p]){
-						Dungeon.hero.mindVisionEnemies.add(mob);
-					}
-
-				}
-			} else if (((Hero)c).heroClass == HeroClass.RANGER) {
-				for (Mob mob : mobs) {
-					int p = mob.pos;
-					if (distance( c.pos, p) == 2) {
-
-						if (!fieldOfView[p]){
+				if (c.buff(MindVision.class) != null) {
+					for (Mob mob : mobs) {
+						int p = mob.pos;
+						if (!fieldOfView[p]) {
 							Dungeon.hero.mindVisionEnemies.add(mob);
 						}
 					}
+				} else if (((Hero)c).heroClass == HeroClass.RANGER) {
+					for (Mob mob : mobs) {
+						int p = mob.pos;
+						if (distance( c.pos, p) == 2) {
+							if (!fieldOfView[p]){
+								Dungeon.hero.mindVisionEnemies.add(mob);
+							}
+						}
+					}
 				}
-			}
-			
-			for (Mob m : Dungeon.hero.mindVisionEnemies) {
-				for (int i : PathFinder.NEIGHBOURS9) {
-					fieldOfView[m.pos + i] = true;
-				}
-			}
-			
-			if (c.buff( Awareness.class ) != null) {
-				for (Heap heap : heaps.values()) {
-					int p = heap.pos;
-					for (int i : PathFinder.NEIGHBOURS9)
-						fieldOfView[p+i] = true;
-				}
-			}
-		}
 
-		if (c == Dungeon.hero) {
-			for (Heap heap : heaps.values())
-				if (!heap.seen && fieldOfView[heap.pos])
+				for (Mob m : Dungeon.hero.mindVisionEnemies) {
+					for (int i : PathFinder.NEIGHBOURS9) {
+						fieldOfView[m.pos + i] = true;
+					}
+				}
+
+				for (Mob m : Dungeon.level.dangerousMobs) {
+					for (int i : PathFinder.NEIGHBOURS9) {
+						fieldOfView[m.pos + i] = true;
+					}
+				}
+
+				if (c.buff( Awareness.class ) != null) {
+					for (Heap heap : heaps.values()) {
+						int p = heap.pos;
+						for (int i : PathFinder.NEIGHBOURS9)
+							fieldOfView[p+i] = true;
+					}
+				}
+			}
+
+			for (Heap heap : heaps.values()) {
+				if (!heap.seen && fieldOfView[heap.pos]) {
 					heap.seen = true;
+				}
+			}
 		}
-
 	}
 	
 	public int distance( int a, int b ) {

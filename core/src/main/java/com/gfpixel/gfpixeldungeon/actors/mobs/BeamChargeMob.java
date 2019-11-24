@@ -184,6 +184,7 @@ public abstract class BeamChargeMob extends Mob implements BeamChargeAttackInter
             }
 
             curChargeCount += Random.IntRange( chargeAmountRange.x, chargeAmountRange.y );
+            Dungeon.level.dangerousMobs.add( BeamChargeMob.this );
         }
 
         private void decreaseCharge() {
@@ -192,6 +193,7 @@ public abstract class BeamChargeMob extends Mob implements BeamChargeAttackInter
             }
 
             curChargeCount--;
+            Dungeon.level.dangerousMobs.remove( BeamChargeMob.this );
         }
 
         private boolean updateBeamTrace() {
