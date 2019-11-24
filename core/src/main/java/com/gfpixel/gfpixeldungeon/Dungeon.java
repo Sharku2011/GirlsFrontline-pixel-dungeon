@@ -544,7 +544,9 @@ public class Dungeon {
 				ids[count++] = id;
 			}
 			bundle.put( CHAPTERS, ids );
-			
+
+			// if you intend to add another NPC(Quest), you should add your NPC in this code block.
+			// TODO 하드코딩으로 냅두지 말고, 배열로 저장해서 for loop 로 저장/초기화 일괄적으로 진행시킬 것
 			Bundle quests = new Bundle();
 			Ghost		.Quest.storeInBundle( quests );
 			Wandmaker	.Quest.storeInBundle( quests );

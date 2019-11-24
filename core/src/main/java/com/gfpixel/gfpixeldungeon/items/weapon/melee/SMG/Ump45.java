@@ -42,6 +42,6 @@ public class Ump45 extends SubMachineGun {
 
     @Override
     public int defenseFactor( Char owner ) {
-        return 0 + 1 * level();
+        return level();
     }
 }
