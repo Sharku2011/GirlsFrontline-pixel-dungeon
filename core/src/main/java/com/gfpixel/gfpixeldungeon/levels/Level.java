@@ -40,6 +40,7 @@ import com.gfpixel.gfpixeldungeon.actors.buffs.Shadows;
 import com.gfpixel.gfpixeldungeon.actors.hero.Hero;
 import com.gfpixel.gfpixeldungeon.actors.hero.HeroClass;
 import com.gfpixel.gfpixeldungeon.actors.mobs.BeamChargeAttackInterface;
+import com.gfpixel.gfpixeldungeon.actors.mobs.BeamChargeMob;
 import com.gfpixel.gfpixeldungeon.actors.mobs.Mob;
 import com.gfpixel.gfpixeldungeon.effects.particles.FlowParticle;
 import com.gfpixel.gfpixeldungeon.effects.particles.WindParticle;
@@ -917,8 +918,11 @@ public abstract class Level implements Bundlable {
 				}
 
 				for (Mob m : Dungeon.level.dangerousMobs) {
-					for (int i : PathFinder.NEIGHBOURS9) {
-						fieldOfView[m.pos + i] = true;
+					BeamChargeMob beamChargeMob = (BeamChargeMob)m;
+					if (beamChargeMob != null && beamChargeMob.isCharging()) {
+						for (int i : PathFinder.NEIGHBOURS9) {
+							fieldOfView[m.pos + i] = true;
+						}
 					}
 				}
 

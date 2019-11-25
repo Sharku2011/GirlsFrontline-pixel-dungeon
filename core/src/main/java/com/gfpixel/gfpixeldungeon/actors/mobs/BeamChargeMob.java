@@ -25,7 +25,10 @@ public abstract class BeamChargeMob extends Mob implements BeamChargeAttackInter
         FLEEING = new Fleeing();
     }
 
-    private ChargeManager chargeManager = new ChargeManager();
+    protected int maxChargeCount = 1;
+    protected Point chargeAmountRange = new Point( 1, 1 );
+
+    protected ChargeManager chargeManager = new ChargeManager( maxChargeCount, chargeAmountRange );
 
     public boolean isCharging() {
         return chargeManager.isCharging();
@@ -92,6 +95,10 @@ public abstract class BeamChargeMob extends Mob implements BeamChargeAttackInter
 
     public void charge() {
         chargeManager.increaseCharge();
+    }
+
+    public void discharge() {
+        chargeManager.decreaseCharge();
     }
 
     protected class Sleeping extends Mob.Sleeping {
@@ -162,41 +169,53 @@ public abstract class BeamChargeMob extends Mob implements BeamChargeAttackInter
         protected Ballistica beam;
         private int beamTarget = Level.INVALID_POS;
         private int curChargeCount = 0;
-        private int maxChargeCount = 1;
+        private int maxChargeCount;
 
         private Point chargeAmountRange = new Point( 1, 1 );
+
+        private ChargeManager( int MaxChargeCount, Point ChargeAmountRange ) {
+            maxChargeCount = MaxChargeCount;
+            chargeAmountRange.x = ChargeAmountRange.x;
+            chargeAmountRange.y = ChargeAmountRange.y;
+        }
+
+        public final int getMaxChargeCount() {
+            return maxChargeCount;
+        }
 
         public boolean isCharged() {
             return curChargeCount >= maxChargeCount;
         }
 
         public boolean isCharging() {
-            return curChargeCount < maxChargeCount;
+            return curChargeCount > 0;
         }
 
         private void resetCharge() {
             curChargeCount = 0;
+            Dungeon.level.dangerousMobs.remove( BeamChargeMob.this );
         }
 
         private void increaseCharge() {
+            curChargeCount += Random.IntRange( chargeAmountRange.x, chargeAmountRange.y );
+
             if (curChargeCount >= maxChargeCount) {
                 curChargeCount = maxChargeCount;
             }
 
-            curChargeCount += Random.IntRange( chargeAmountRange.x, chargeAmountRange.y );
             Dungeon.level.dangerousMobs.add( BeamChargeMob.this );
         }
 
         private void decreaseCharge() {
+            curChargeCount -= 1;
+
             if (curChargeCount <= 0) {
                 curChargeCount = 0;
+                Dungeon.level.dangerousMobs.remove( BeamChargeMob.this );
             }
-
-            curChargeCount--;
-            Dungeon.level.dangerousMobs.remove( BeamChargeMob.this );
         }
 
-        private boolean updateBeamTrace() {
+        public boolean updateBeamTrace() {
             // target의 위치가 유효하지 않을 경우 아무것도 하지 않는다
             if ( !Dungeon.level.insideMap( target ) ) {
                 beam = null;

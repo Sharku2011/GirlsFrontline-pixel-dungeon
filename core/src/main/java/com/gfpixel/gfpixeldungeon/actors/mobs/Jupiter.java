@@ -21,6 +21,7 @@
 
 package com.gfpixel.gfpixeldungeon.actors.mobs;
 
+import com.gfpixel.gfpixeldungeon.Dungeon;
 import com.gfpixel.gfpixeldungeon.actors.Char;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Light;
 import com.gfpixel.gfpixeldungeon.actors.buffs.Terror;
@@ -41,7 +42,13 @@ public class Jupiter extends BeamChargeMob {
         baseSpeed = 1f;
         maxLvl = 26;
 
+        HUNTING = new Hunting();
+        WANDERING = new Wandering();
+
         properties.add(Property.ARMO);
+        properties.add(Property.IMMOVABLE);
+
+        maxChargeCount = 3;
     }
 
     @Override
@@ -64,10 +71,51 @@ public class Jupiter extends BeamChargeMob {
         return Random.NormalIntRange(0, 7);
     }
 
-    @Override
-    public void move( int step ) {
-        // TODO 움직이지 못하는것을 immovable 태그를 주고 해당 메소드 오버라이드를 제거할 것
+    protected class Wandering extends Mob.Wandering {
+        @Override
+        public boolean act(boolean enemyInFOV, boolean justAlerted) {
+            if (enemyInFOV && (justAlerted || Random.Int( distance( enemy ) / 2 + enemy.stealth() ) == 0)) {
 
+                enemySeen = true;
+
+                notice();
+                alerted = true;
+                state = HUNTING;
+                target = enemy.pos;
+
+            } else {
+                enemySeen = false;
+                discharge();
+
+                boolean visible = Dungeon.level.heroFOV[pos];
+                if (visible) {
+                    sprite.idle();
+                }
+                spend( TICK );
+            }
+            return true;
+        }
+    }
+
+    protected class Hunting extends Mob.Hunting {
+        @Override
+        public boolean act(boolean enemyInFOV, boolean justAlerted) {
+
+            enemySeen = enemyInFOV;
+            if (enemyInFOV) {
+
+                target = enemy.pos;
+                chargeManager.updateBeamTrace();
+
+                if (!isCharmedBy( enemy ) && canAttack( enemy )) {
+                    return doAttack( enemy );
+                }
+            } else {
+                spend( TICK );
+                state = WANDERING;
+            }
+            return true;
+        }
     }
 
     {
