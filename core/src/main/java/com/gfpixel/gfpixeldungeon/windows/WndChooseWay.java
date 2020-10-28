@@ -30,6 +30,8 @@ import com.gfpixel.gfpixeldungeon.ui.RedButton;
 import com.gfpixel.gfpixeldungeon.ui.RenderedTextMultiline;
 import com.gfpixel.gfpixeldungeon.ui.Window;
 
+import java.util.Locale;
+
 public class WndChooseWay extends Window {
 	
 	private static final int WIDTH		= 120;
@@ -51,7 +53,7 @@ public class WndChooseWay extends Window {
 		hl.setPos( titlebar.left(), titlebar.bottom() + GAP );
 		add( hl );
 		
-		RedButton btnWay1 = new RedButton( way1.title().toUpperCase() ) {
+		RedButton btnWay1 = new RedButton( way1.title().toUpperCase(Locale.getDefault()) ) {
 			@Override
 			protected void onClick() {
 				hide();
@@ -61,7 +63,7 @@ public class WndChooseWay extends Window {
 		btnWay1.setRect( 0, hl.bottom() + GAP, (WIDTH - GAP) / 2, BTN_HEIGHT );
 		add( btnWay1 );
 		
-		RedButton btnWay2 = new RedButton( way2.title().toUpperCase() ) {
+		RedButton btnWay2 = new RedButton( way2.title().toUpperCase(Locale.getDefault()) ) {
 			@Override
 			protected void onClick() {
 				hide();

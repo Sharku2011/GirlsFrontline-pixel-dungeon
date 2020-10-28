@@ -30,6 +30,8 @@ import com.gfpixel.gfpixeldungeon.ui.RenderedTextMultiline;
 import com.watabou.noosa.Group;
 import com.watabou.noosa.RenderedText;
 
+import java.util.Locale;
+
 public class WndClass extends WndTabbed {
 
 	private static final int WIDTH			= 110;
@@ -50,7 +52,7 @@ public class WndClass extends WndTabbed {
 		tabPerks = new PerksTab();
 		add( tabPerks );
 
-		Tab tab = new RankingTab( cl.title().toUpperCase(), tabPerks );
+		Tab tab = new RankingTab( cl.title().toUpperCase(Locale.getDefault()), tabPerks );
 		tab.setSize( TAB_WIDTH, tabHeight() );
 		add( tab );
 
