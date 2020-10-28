@@ -1,7 +1,8 @@
 apply plugin: 'com.android.library'
 android {
     compileSdkVersion 29
-    buildToolsVersion '29.0.0'
+    buildToolsVersion '29.0.2'
+    android.ndkVersion '21.3.6528147'
     defaultConfig {
         minSdkVersion 21
     }
@@ -10,25 +11,6 @@ android {
                 "This requires the Android NDK and is optional as precompiled libs are provided."
 
         def root = project(':SPD-classes').projectDir
-        def ndkDir = android.ndkDirectory
-
-        //Need to execute through cmd on windows systems
-        if (System.properties["os.name"].toLowerCase().contains("windows")) {
-            executable "cmd"
-            args "/c", "$ndkDir${File.separator}ndk-build",
-                    "NDK_PROJECT_PATH=$root/src/main/jniSources",
-                    "NDK_APPLICATION_MK=$root/src/main/jniSources/Application.mk",
-                    "APP_BUILD_SCRIPT=$root/src/main/jniSources/Android.mk",
-                    "NDK_LIBS_OUT=$root/src/main/jniLibs"
-
-        } else {
-            executable "$ndkDir/ndk-build"
-            args "NDK_PROJECT_PATH=$root/src/main/jniSources",
-                    "NDK_APPLICATION_MK=$root/src/main/jniSources/Application.mk",
-                    "APP_BUILD_SCRIPT=$root/src/main/jniSources/Android.mk",
-                    "NDK_LIBS_OUT=$root/src/main/jniLibs"
-
-        }
     }
 }
 dependencies {
